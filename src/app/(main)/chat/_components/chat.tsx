@@ -5,6 +5,7 @@ import { type CSSProperties, useState } from "react";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
 import { useIsLg } from "@/hooks/use-lg";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useVisualViewport } from "@/hooks/use-visual-viewport";
 import { cn } from "@/lib/utils";
 
 import { ChatConversationList } from "./chat-conversation-list";
@@ -23,16 +24,20 @@ export function Chat({ conversations }: ChatProps) {
   const [showThread, setShowThread] = useState(false);
   const isLg = useIsLg();
   const isMobile = useIsMobile();
+  const visualViewportHeight = useVisualViewport();
 
   const activeConversation = conversations.find((c) => c.id === chat.selected) ?? conversations[0];
 
   return (
     <>
       <div
-        className="grid h-[calc(100svh-var(--header-height))] min-h-0 min-w-0 flex-1 grid-cols-1 overflow-hidden shadow-sm transition-[grid-template-columns] duration-300 ease-out *:min-h-0 *:min-w-0 md:grid-cols-[22.5rem_minmax(0,1fr)] md:*:first:border-r lg:grid-cols-[22.5rem_minmax(0,1fr)_var(--profile-width)]"
+        className="grid h-[calc(100dvh-var(--header-height))] min-h-0 min-w-0 flex-1 grid-cols-1 overflow-hidden shadow-sm transition-[grid-template-columns] duration-300 ease-out *:min-h-0 *:min-w-0 md:grid-cols-[22.5rem_minmax(0,1fr)] md:*:first:border-r lg:grid-cols-[22.5rem_minmax(0,1fr)_var(--profile-width)]"
         style={
           {
             "--profile-width": showContact ? "20rem" : "0rem",
+            ...(visualViewportHeight
+              ? { height: `calc(${visualViewportHeight}px - var(--header-height))` }
+              : {}),
           } as CSSProperties
         }
       >
