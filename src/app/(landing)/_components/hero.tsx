@@ -2,7 +2,7 @@ export function Hero() {
   return (
     <section className="relative isolate flex flex-col items-center justify-center px-4 py-24 text-center md:py-32">
       <div className="from-background via-background to-muted/30 absolute inset-0 -z-10 bg-gradient-to-b" />
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-8">
+      <div className="mx-auto flex w-full max-w-[1000px] flex-col items-center gap-8">
         <h1 className="font-semibold text-4xl tracking-tight md:text-6xl">
           Studio Admin
         </h1>
