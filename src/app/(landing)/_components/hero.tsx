@@ -6,7 +6,7 @@ export function Hero() {
           BCRM
         </h1>
         <p className="mt-3 text-lg text-neutral-400">
-          Multi-systemo, multi-equipe, tudo em um só lugar.
+          Multi-sistema, multi-equipe, tudo em um só lugar.
         </p>
       </div>
       <div className="huly-glow w-full max-w-[60rem]">
