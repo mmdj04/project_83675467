@@ -1,6 +1,11 @@
+import { ThemeTogglerButton } from '@/components/theme-toggler-button';
+
 export function Hero() {
   return (
     <section className="bg-background flex h-[1000px] flex-col items-center justify-center gap-10 overflow-hidden px-8">
+      <div className="fixed right-6 top-6 z-50">
+        <ThemeTogglerButton />
+      </div>
       <div className="text-center relative z-10">
         <h1 className="font-semibold text-4xl tracking-tight text-foreground md:text-6xl">
           BCRM
