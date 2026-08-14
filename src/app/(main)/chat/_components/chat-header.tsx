@@ -2,6 +2,7 @@ import { Bell, MessageSquarePlus, Search, Settings } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
+import { ThemeTogglerButton } from "@/components/theme-toggler-button";
 
 export function ChatHeader() {
   return (
@@ -26,6 +27,7 @@ export function ChatHeader() {
           <Button variant="ghost" size="icon-sm" aria-label="Settings">
             <Settings />
           </Button>
+          <ThemeTogglerButton variant="ghost" size="icon-sm" />
         </div>
       </div>
     </header>
