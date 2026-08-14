@@ -2,10 +2,10 @@ export function Hero() {
   return (
     <section className="bg-background flex h-[1000px] flex-col items-center justify-center gap-10 overflow-hidden px-8">
       <div className="text-center relative z-10">
-        <h1 className="font-semibold text-4xl tracking-tight text-white md:text-6xl">
+        <h1 className="font-semibold text-4xl tracking-tight text-foreground md:text-6xl">
           BCRM
         </h1>
-        <p className="mt-3 text-lg text-neutral-400">
+        <p className="mt-3 text-lg text-muted-foreground">
           Multi-sistema, multi-equipe, tudo em um só lugar.
         </p>
       </div>

@@ -132,7 +132,7 @@ html {
   aspect-ratio: inherit;
   background-image: radial-gradient(
     circle at 0.5px 0.5px,
-    #111 0.5px,
+    var(--background) 0.5px,
     transparent 0
   );
   background-size: var(--_background-size) var(--_background-size);
