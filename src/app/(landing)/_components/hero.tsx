@@ -14,6 +14,7 @@ export function Hero() {
           <div className="huly-glow__back" aria-hidden>
             <div className="huly-glow__back__layer" />
           </div>
+          <div className="huly-glow__dots" aria-hidden />
           <div className="huly-glow__front">
             <iframe
               src="/dashboard/default"
