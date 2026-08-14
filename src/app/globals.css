@@ -28,6 +28,7 @@ html {
   position: relative;
   display: grid;
   isolation: isolate;
+  overflow: hidden;
   border-radius: 16px;
   animation: huly-gradient-rotate 16s cubic-bezier(0.87, 0, 0.13, 1) infinite both;
 }

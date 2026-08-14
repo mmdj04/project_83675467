@@ -1,6 +1,6 @@
 export function Hero() {
   return (
-    <section className="bg-background flex min-h-dvh flex-col items-center justify-center gap-10 overflow-hidden px-8">
+    <section className="bg-background flex min-h-[130dvh] flex-col items-center justify-center gap-10 overflow-hidden px-8 py-24">
       <div className="text-center">
         <h1 className="font-semibold text-4xl tracking-tight text-white md:text-6xl">
           BCRM
