@@ -20,8 +20,8 @@ html {
 
 .huly-glow {
   --beam-gradient-degree: 142deg;
-  --beam-gradient-color-1: var(--color-blue-500);
-  --beam-gradient-color-2: var(--color-orange-500);
+  --beam-gradient-color-1: var(--color-violet-500);
+  --beam-gradient-color-2: var(--color-cyan-500);
   --beam-border-width: 4px;
   --huly-card-surface: var(--background);
 
