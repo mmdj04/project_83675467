@@ -1,5 +1,6 @@
 import { Hero } from "./_components/hero";
 import { Features } from "./_components/features";
+import { Changelog } from "./_components/changelog";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Features />
+        <Changelog />
       </main>
     </div>
   );
