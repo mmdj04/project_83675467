@@ -117,26 +117,26 @@ html {
 
 .huly-glow__front {
   background: linear-gradient(var(--huly-card-surface), var(--huly-card-surface)) padding-box;
+  aspect-ratio: 1.73 / 1;
   border: var(--beam-border-width) solid rgb(255 255 255 / 0.2);
   display: grid;
   place-items: center;
   overflow: hidden;
-  position: relative;
-  z-index: 1;
 }
 
-.huly-glow__dots {
+.huly-glow__front::before {
+  --_background-size: 3px;
+  content: "";
   position: absolute;
-  inset: calc(var(--beam-border-width) * -2.5);
-  border-radius: inherit;
+  width: 200%;
+  aspect-ratio: inherit;
   background-image: radial-gradient(
     circle at 0.5px 0.5px,
-    color-mix(in srgb, var(--color-muted-foreground) 30%, transparent) 0.5px,
+    var(--background) 0.5px,
     transparent 0
   );
-  background-size: 3px 3px;
-  z-index: 0;
-  pointer-events: none;
+  background-size: var(--_background-size) var(--_background-size);
+  z-index: -1;
 }
 
 @custom-variant dark (&:is(.dark *));
