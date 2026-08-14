@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { usePathname } from "next/navigation";
 
 export function CopyPageButton() {
@@ -10,9 +11,7 @@ export function CopyPageButton() {
   const handleCopy = async () => {
     setState("loading");
     try {
-      const response = await fetch(
-        `/api/docs-markdown?path=${encodeURIComponent(pathname)}`,
-      );
+      const response = await fetch(`/api/docs-markdown?path=${encodeURIComponent(pathname)}`);
       if (!response.ok) {
         throw new Error("Failed to fetch markdown");
       }
@@ -29,7 +28,7 @@ export function CopyPageButton() {
     <button
       onClick={handleCopy}
       disabled={state === "loading"}
-      className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs text-muted-foreground hover:text-foreground border border-border rounded-md hover:bg-muted transition-colors disabled:opacity-50"
+      className="flex items-center gap-1.5 rounded-md border border-border px-2.5 py-1.5 text-muted-foreground text-xs transition-colors hover:bg-muted hover:text-foreground disabled:opacity-50"
       aria-label="Copy page as Markdown"
     >
       {state === "copied" ? (

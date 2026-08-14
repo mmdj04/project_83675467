@@ -1,7 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+
 import { useRouter } from "next/navigation";
+
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 
@@ -92,7 +94,7 @@ export function Search() {
 
   useEffect(() => {
     setActiveIndex(0);
-  }, [results]);
+  }, []);
 
   function handleKeyDown(e: React.KeyboardEvent) {
     if (e.key === "ArrowDown") {
@@ -110,7 +112,7 @@ export function Search() {
   useEffect(() => {
     const active = listRef.current?.querySelector("[data-active='true']");
     active?.scrollIntoView({ block: "nearest" });
-  }, [activeIndex]);
+  }, []);
 
   const hasQuery = query.trim().length > 0;
 
@@ -118,7 +120,7 @@ export function Search() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="hidden sm:flex items-center gap-2 rounded-md border border-border/50 bg-muted/50 px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground hover:border-foreground/25 transition-colors"
+        className="hidden items-center gap-2 rounded-md border border-border/50 bg-muted/50 px-3 py-1.5 text-muted-foreground text-sm transition-colors hover:border-foreground/25 hover:text-foreground sm:flex"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +144,7 @@ export function Search() {
 
       <button
         onClick={() => setOpen(true)}
-        className="sm:hidden flex items-center text-muted-foreground hover:text-foreground transition-colors"
+        className="flex items-center text-muted-foreground transition-colors hover:text-foreground sm:hidden"
         aria-label="Search docs"
       >
         <svg
@@ -164,7 +166,7 @@ export function Search() {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent showCloseButton={false} className="gap-0 p-0 sm:max-w-lg">
           <DialogTitle className="sr-only">Search documentation</DialogTitle>
-          <div className="flex items-center gap-2 border-b border-border/50 px-3">
+          <div className="flex items-center gap-2 border-border/50 border-b px-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -189,10 +191,7 @@ export function Search() {
               className="flex-1 bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground"
             />
             {query && (
-              <button
-                onClick={() => setQuery("")}
-                className="text-muted-foreground hover:text-foreground"
-              >
+              <button onClick={() => setQuery("")} className="text-muted-foreground hover:text-foreground">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="14"
@@ -211,22 +210,15 @@ export function Search() {
             )}
           </div>
 
-          <div
-            ref={listRef}
-            className="max-h-[min(60vh,400px)] overflow-y-auto p-2"
-          >
+          <div ref={listRef} className="max-h-[min(60vh,400px)] overflow-y-auto p-2">
             {loading && hasQuery ? (
               <div className="flex items-center justify-center py-6">
                 <div className="h-4 w-4 animate-spin rounded-full border-2 border-muted-foreground border-t-transparent" />
               </div>
             ) : hasQuery && results.length === 0 ? (
-              <p className="py-6 text-center text-sm text-muted-foreground">
-                No results found.
-              </p>
+              <p className="py-6 text-center text-muted-foreground text-sm">No results found.</p>
             ) : !hasQuery ? (
-              <p className="py-6 text-center text-sm text-muted-foreground">
-                Type to search documentation...
-              </p>
+              <p className="py-6 text-center text-muted-foreground text-sm">Type to search documentation...</p>
             ) : (
               results.map((item, i) => (
                 <button
@@ -236,23 +228,15 @@ export function Search() {
                   onMouseEnter={() => setActiveIndex(i)}
                   className={cn(
                     "flex w-full flex-col gap-1 rounded-md px-3 py-2 text-left transition-colors",
-                    i === activeIndex
-                      ? "bg-muted text-foreground"
-                      : "text-foreground",
+                    i === activeIndex ? "bg-muted text-foreground" : "text-foreground",
                   )}
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-sm font-medium">{item.title}</span>
-                    {item.section && (
-                      <span className="shrink-0 text-xs text-muted-foreground">
-                        {item.section}
-                      </span>
-                    )}
+                    <span className="font-medium text-sm">{item.title}</span>
+                    {item.section && <span className="shrink-0 text-muted-foreground text-xs">{item.section}</span>}
                   </div>
                   {item.snippet && (
-                    <span className="line-clamp-2 text-xs text-muted-foreground leading-relaxed">
-                      {item.snippet}
-                    </span>
+                    <span className="line-clamp-2 text-muted-foreground text-xs leading-relaxed">{item.snippet}</span>
                   )}
                 </button>
               ))

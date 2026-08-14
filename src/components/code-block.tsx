@@ -1,4 +1,5 @@
 import { codeToHtml } from "shiki";
+
 import { CopyButton } from "./copy-button";
 
 const vercelDarkTheme = {
@@ -145,10 +146,7 @@ function shieldPlaceholders(code: string): string {
 }
 
 function restorePlaceholders(html: string): string {
-  return html.replace(
-    new RegExp(`${PLACEHOLDER_PREFIX}([\\w|]+)${PLACEHOLDER_SUFFIX}`, "g"),
-    "&lt;$1&gt;",
-  );
+  return html.replace(new RegExp(`${PLACEHOLDER_PREFIX}([\\w|]+)${PLACEHOLDER_SUFFIX}`, "g"), "&lt;$1&gt;");
 }
 
 interface CodeBlockProps {
@@ -170,7 +168,7 @@ export async function CodeBlock({ code, lang = "bash" }: CodeBlockProps) {
   html = restorePlaceholders(html);
 
   return (
-    <div className="code-block relative group">
+    <div className="code-block group relative">
       <CopyButton code={trimmedCode} />
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>

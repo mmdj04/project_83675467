@@ -1,15 +1,12 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Sheet,
-  SheetTrigger,
-  SheetContent,
-  SheetTitle,
-} from "@/components/ui/sheet";
-import { navigation, allDocsPages } from "@/lib/docs-navigation";
+
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { allDocsPages, navigation } from "@/lib/docs-navigation";
 
 export function DocsMobileNav() {
   const [open, setOpen] = useState(false);
@@ -22,9 +19,9 @@ export function DocsMobileNav() {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger className="lg:hidden sticky top-14 z-40 w-full px-6 py-3 bg-background/80 backdrop-blur-sm border-b border-border flex items-center justify-between focus:outline-none">
-        <div className="text-sm font-medium">{currentPage?.name}</div>
-        <div className="w-8 h-8 flex items-center justify-center">
+      <SheetTrigger className="sticky top-14 z-40 flex w-full items-center justify-between border-border border-b bg-background/80 px-6 py-3 backdrop-blur-sm focus:outline-none lg:hidden">
+        <div className="font-medium text-sm">{currentPage?.name}</div>
+        <div className="flex h-8 w-8 items-center justify-center">
           <svg
             width="16"
             height="16"
@@ -51,7 +48,7 @@ export function DocsMobileNav() {
           {navigation.map((section, sectionIndex) => (
             <div key={section.title ?? sectionIndex}>
               {section.title && (
-                <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
+                <h4 className="mb-2 font-medium text-muted-foreground text-xs uppercase tracking-wider">
                   {section.title}
                 </h4>
               )}
@@ -61,9 +58,9 @@ export function DocsMobileNav() {
                     <Link
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className={`text-sm block py-2 transition-colors ${
+                      className={`block py-2 text-sm transition-colors ${
                         pathname === item.href
-                          ? "text-primary font-medium"
+                          ? "font-medium text-primary"
                           : "text-muted-foreground hover:text-foreground"
                       }`}
                     >

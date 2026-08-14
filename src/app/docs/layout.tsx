@@ -18,12 +18,12 @@ export default function DocsLayout({ children }: Readonly<{ children: React.Reac
     <div className="bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
       <Header />
       <DocsMobileNav />
-      <div className="max-w-5xl mx-auto px-6 py-8 lg:py-12 flex gap-16">
-        <aside className="w-48 shrink-0 hidden lg:block sticky top-28 h-[calc(100vh-7rem)] overflow-y-auto">
+      <div className="mx-auto flex max-w-5xl gap-16 px-6 py-8 lg:py-12">
+        <aside className="scrollbar-thin scrollbar-thumb-zinc-200 dark:scrollbar-thumb-zinc-700 scrollbar-thumb-rounded-full sticky top-28 hidden h-[calc(100vh-7rem)] w-48 shrink-0 overflow-y-scroll overscroll-y-auto lg:block">
           <DocsSidebar />
         </aside>
-        <div className="flex-1 min-w-0 max-w-2xl pb-20">
-          <div className="flex justify-end mb-4">
+        <div className="min-w-0 max-w-2xl flex-1 pb-20">
+          <div className="mb-4 flex justify-end">
             <CopyPageButton />
           </div>
           <article className="prose">{children}</article>
