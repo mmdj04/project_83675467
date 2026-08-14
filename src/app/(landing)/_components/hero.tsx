@@ -1,6 +1,14 @@
 export function Hero() {
   return (
-    <section className="bg-background grid min-h-dvh place-items-center overflow-hidden px-8">
+    <section className="bg-background flex min-h-dvh flex-col items-center justify-center gap-10 overflow-hidden px-8">
+      <div className="text-center">
+        <h1 className="font-semibold text-4xl tracking-tight text-white md:text-6xl">
+          BCRM
+        </h1>
+        <p className="mt-3 text-lg text-neutral-400">
+          Multi-systemo, multi-equipe, tudo em um só lugar.
+        </p>
+      </div>
       <div className="huly-glow w-full max-w-[60rem]">
         <div className="huly-glow__back" aria-hidden>
           <div className="huly-glow__back__layer" />
