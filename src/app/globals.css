@@ -12,6 +12,30 @@ html {
   scroll-padding-top: 6rem;
 }
 
+@keyframes glow-drift-blue {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translate(32px, -24px) scale(1.1);
+  }
+}
+
+@keyframes glow-drift-orange {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translate(-28px, 20px) scale(1.08);
+  }
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
