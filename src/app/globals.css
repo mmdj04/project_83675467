@@ -12,28 +12,129 @@ html {
   scroll-padding-top: 6rem;
 }
 
-@keyframes glow-drift-blue {
-  0%,
-  100% {
-    opacity: 0.45;
-    transform: translate(0, 0) scale(1);
-  }
+@property --beam-gradient-degree {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 142deg;
+}
+
+.huly-glow {
+  --beam-gradient-degree: 142deg;
+  --beam-gradient-color-1: var(--color-blue-500);
+  --beam-gradient-color-2: var(--color-orange-500);
+  --beam-border-width: 4px;
+  --huly-card-surface: var(--background);
+
+  position: relative;
+  display: grid;
+  isolation: isolate;
+  border-radius: 16px;
+  animation: huly-gradient-rotate 16s cubic-bezier(0.87, 0, 0.13, 1) infinite both;
+}
+
+@keyframes huly-gradient-rotate {
   50% {
-    opacity: 0.85;
-    transform: translate(32px, -24px) scale(1.1);
+    --beam-gradient-degree: 322deg;
+  }
+  100% {
+    --beam-gradient-degree: 502deg;
   }
 }
 
-@keyframes glow-drift-orange {
-  0%,
-  100% {
-    opacity: 0.45;
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    opacity: 0.85;
-    transform: translate(-28px, 20px) scale(1.08);
-  }
+.huly-glow > * {
+  grid-area: 1 / 1;
+  border-radius: inherit;
+}
+
+.huly-glow__back {
+  --beam-gradient-color-highlight-lightness: 90%;
+  background: conic-gradient(
+    from var(--beam-gradient-degree),
+    hsl(from var(--beam-gradient-color-1) h s var(--beam-gradient-color-highlight-lightness)),
+    rgba(0, 0, 0, 0) 18% 29%,
+    hsl(from var(--beam-gradient-color-2) h s var(--beam-gradient-color-highlight-lightness)),
+    rgba(0, 0, 0, 0) 64% 80%,
+    hsl(from var(--beam-gradient-color-1) h s var(--beam-gradient-color-highlight-lightness))
+  );
+}
+
+.huly-glow__back::before,
+.huly-glow__back::after,
+.huly-glow__back__layer {
+  position: absolute;
+  border-radius: inherit;
+}
+
+.huly-glow__back::before,
+.huly-glow__back::after {
+  content: "";
+}
+
+.huly-glow__back::before {
+  --beam-gradient-color-highlight-lightness: 50%;
+  background: conic-gradient(
+    from var(--beam-gradient-degree),
+    hsl(from var(--beam-gradient-color-1) h s var(--beam-gradient-color-highlight-lightness)),
+    rgba(0, 0, 0, 0) 18% 29%,
+    hsl(from var(--beam-gradient-color-2) h s var(--beam-gradient-color-highlight-lightness)),
+    rgba(0, 0, 0, 0) 64% 80%,
+    hsl(from var(--beam-gradient-color-1) h s var(--beam-gradient-color-highlight-lightness))
+  );
+  inset: calc(var(--beam-border-width) * -5);
+  filter: blur(35px);
+  z-index: -3;
+}
+
+.huly-glow__back::after {
+  background: conic-gradient(
+    from var(--beam-gradient-degree),
+    var(--beam-gradient-color-1),
+    rgba(0, 0, 0, 0) 18% 29%,
+    var(--beam-gradient-color-2),
+    rgba(0, 0, 0, 0) 64% 80%,
+    var(--beam-gradient-color-1)
+  );
+  inset: calc(var(--beam-border-width) * -1.4);
+  filter: blur(2.5px);
+  z-index: -2;
+}
+
+.huly-glow__back__layer {
+  --beam-gradient-color-chroma: 70%;
+  --beam-gradient-color-lightness: 100%;
+  background: conic-gradient(
+    from var(--beam-gradient-degree),
+    oklch(from var(--beam-gradient-color-1) var(--beam-gradient-color-lightness) var(--beam-gradient-color-chroma) h),
+    rgba(0, 0, 0, 0) 18% 29%,
+    oklch(from var(--beam-gradient-color-2) var(--beam-gradient-color-lightness) var(--beam-gradient-color-chroma) h),
+    rgba(0, 0, 0, 0) 64% 80%,
+    oklch(from var(--beam-gradient-color-1) var(--beam-gradient-color-lightness) var(--beam-gradient-color-chroma) h)
+  );
+  inset: calc(var(--beam-border-width) * -0.6);
+  filter: blur(1.5px);
+  z-index: -1;
+}
+
+.huly-glow__front {
+  background: linear-gradient(var(--huly-card-surface), var(--huly-card-surface)) padding-box;
+  border: var(--beam-border-width) solid rgb(255 255 255 / 0.2);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.huly-glow__front::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  aspect-ratio: inherit;
+  background-image: radial-gradient(
+    circle at 0.5px 0.5px,
+    color-mix(in srgb, var(--color-muted-foreground) 12%, transparent) 0.5px,
+    transparent 0
+  );
+  background-size: 3px 3px;
+  z-index: -1;
 }
 
 @custom-variant dark (&:is(.dark *));

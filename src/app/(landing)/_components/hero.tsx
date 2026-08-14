@@ -10,15 +10,11 @@ export function Hero() {
           A modern, responsive admin template built with Next.js 16, React 19, TypeScript,
           Tailwind CSS v4, and shadcn/ui.
         </p>
-        <div className="relative w-full">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -inset-x-[10%] -inset-y-[22%] -z-10"
-          >
-            <div className="animate-[glow-drift-blue_10s_ease-in-out_infinite] absolute left-[6%] top-[4%] h-[55%] w-[38%] rounded-full bg-blue-500/30 blur-[90px]" />
-            <div className="animate-[glow-drift-orange_10s_ease-in-out_infinite] absolute bottom-[4%] right-[6%] h-[55%] w-[38%] rounded-full bg-orange-500/30 blur-[90px]" />
+        <div className="huly-glow w-full">
+          <div className="huly-glow__back" aria-hidden>
+            <div className="huly-glow__back__layer" />
           </div>
-          <div className="relative overflow-hidden rounded-xl border bg-background shadow-lg">
+          <div className="huly-glow__front">
             <iframe
               src="/dashboard/default"
               className="h-[700px] w-full border-0"
