@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-import { ThemeToggle } from "./theme-toggle";
+import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons/theme-toggler";
+
 import { Search } from "./search";
 
 export function Header() {
@@ -29,7 +30,7 @@ export function Header() {
             </svg>
             <span>GitHub</span>
           </a>
-          <ThemeToggle />
+          <ThemeTogglerButton variant="ghost" size="default" />
         </nav>
       </div>
     </header>

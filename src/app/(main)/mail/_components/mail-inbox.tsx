@@ -2,11 +2,11 @@
 
 import { Ellipsis, RotateCcw, Search, SlidersHorizontal } from "lucide-react";
 
+import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons/theme-toggler";
 import { Button } from "@/components/ui/button";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { ThemeTogglerButton } from "@/components/theme-toggler-button";
 
 import type { Mail } from "./data";
 import { MailList } from "./mail-list";
@@ -38,7 +38,7 @@ export function MailInbox({ mails, onSelectMail }: MailInboxProps) {
           <Button variant="ghost" size="icon-sm">
             <Ellipsis />
           </Button>
-          <ThemeTogglerButton variant="ghost" size="icon-sm" />
+          <ThemeTogglerButton variant="ghost" size="sm" />
         </div>
       </div>
 
