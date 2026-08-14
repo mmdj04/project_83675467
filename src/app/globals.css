@@ -126,15 +126,15 @@ html {
 .huly-glow__front::before {
   content: "";
   position: absolute;
-  width: 200%;
-  aspect-ratio: inherit;
+  inset: 0;
   background-image: radial-gradient(
     circle at 0.5px 0.5px,
-    color-mix(in srgb, var(--color-muted-foreground) 12%, transparent) 0.5px,
+    color-mix(in srgb, var(--color-muted-foreground) 40%, transparent) 0.5px,
     transparent 0
   );
   background-size: 3px 3px;
-  z-index: -1;
+  z-index: 1;
+  pointer-events: none;
 }
 
 @custom-variant dark (&:is(.dark *));
