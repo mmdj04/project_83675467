@@ -132,12 +132,12 @@ html {
   aspect-ratio: inherit;
   background-image: radial-gradient(
     circle at 0.5px 0.5px,
-    var(--background) 0.5px,
+    black 0.5px,
     transparent 0
   );
   background-size: var(--_background-size) var(--_background-size);
   z-index: -1;
-  mix-blend-mode: screen;
+  mix-blend-mode: overlay;
 }
 
 @custom-variant dark (&:is(.dark *));
