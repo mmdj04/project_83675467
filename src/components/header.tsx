@@ -10,9 +10,6 @@ export function Header() {
       <div className="flex h-14 items-center justify-between gap-6 px-4">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex size-7 items-center justify-center rounded-md bg-primary font-semibold text-primary-foreground text-xs">
-              S
-            </div>
             <span className="font-medium text-lg tracking-tight">Studio Admin</span>
             <span className="text-muted-foreground text-xs">Docs</span>
           </Link>
