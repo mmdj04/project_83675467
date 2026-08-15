@@ -11,7 +11,7 @@ export default async function Layout({ children }: Readonly<{ children: ReactNod
 
   return (
     <main>
-      <div className="grid h-dvh justify-center overflow-hidden p-2 lg:grid-cols-2">
+      <div className="grid h-dvh justify-center p-2 lg:grid-cols-2">
         <div className="relative order-2 hidden h-full rounded-3xl bg-primary lg:flex">
           <div className="absolute top-10 space-y-1 px-10 text-primary-foreground">
             <Command className="size-10" />
@@ -31,7 +31,7 @@ export default async function Layout({ children }: Readonly<{ children: ReactNod
             </div>
           </div>
         </div>
-        <div className="relative order-1 flex h-full overflow-hidden">{children}</div>
+        <div className="relative order-1 flex h-full">{children}</div>
       </div>
     </main>
   );
