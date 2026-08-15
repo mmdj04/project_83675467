@@ -7,10 +7,21 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 **Resumo**: 36 commits • 39 arquivos • +6.474 −2.543 • 30 manutenção, 2 merges, 4 novidades
 
 ### Novidades
-- Added **profile screen** (#80)
-- Migrated **dnd kit to** latest implementation and packages
-- Migrated **data table to** use tanstack table v9
-- Added **patient monitoring dashboard** (#79)
+- Adiciona a tela de perfil (#80)
+- Migra o dnd kit para a implementação e os pacotes mais recentes
+- Migra a tabela de dados para o TanStack Table v9
+- Adiciona o dashboard de monitoramento de pacientes (#79)
+
+### Manutenção
+- Atualiza dependências
+- Atualizações de manutenção
+- Correção rápida
+- Atualiza o layout do perfil
+- Atualiza dependências e componentes
+- Added **shadcn questionnaire component**
+- Atualiza a versão do Next.js
+- Atualiza o README
+- Correções rápidas
 
 ### Arquivos principais
 - package-lock.json (modificado, +749 −611)
@@ -28,7 +39,30 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/profile/_components/profile-details.tsx (adicionado e removido, +129 −129)
 - src/app/(main)/dashboard/profile/_components/profile-header.tsx (adicionado, +239 −11)
 - src/app/(main)/dashboard/profile/_components/profile-personal-details.tsx (adicionado, +213 −33)
-- +24 outros arquivos
+- src/app/(main)/dashboard/patient-monitoring/_components/use-patient-vital-series.ts (adicionado, +202 −1)
+- src/app/(main)/dashboard/kanban/_components/kanban.tsx (modificado, +57 −120)
+- src/app/(main)/dashboard/profile/_components/profile-time-off-details.tsx (adicionado, +123 −44)
+- src/app/(main)/dashboard/profile/_components/profile-status-sidebar.tsx (adicionado, +127 −31)
+- src/app/(main)/dashboard/patient-monitoring/_components/patient-card.tsx (adicionado, +144 −2)
+- src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/columns.tsx (modificado, +84 −50)
+- src/app/(main)/dashboard/profile/page.tsx (adicionado, +119 −14)
+- src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/table.tsx (modificado, +52 −66)
+- src/app/(main)/dashboard/profile/_components/profile-fields.tsx (adicionado e removido, +47 −47)
+- src/app/(main)/dashboard/invoice/_components/invoice-items.tsx (modificado, +30 −59)
+- src/app/(main)/dashboard/patient-monitoring/_components/realtime-utils.ts (adicionado, +64 −0)
+- package.json (modificado, +30 −30)
+- src/app/(main)/dashboard/kanban/_components/kanban-column.tsx (modificado, +30 −20)
+- src/app/(main)/dashboard/patient-monitoring/page.tsx (modificado, +41 −9)
+- src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/columns.tsx (modificado, +27 −13)
+- src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/table.tsx (modificado, +14 −19)
+- src/app/(main)/dashboard/crm/_components/opportunities-section.tsx (modificado, +14 −19)
+- src/app/(main)/dashboard/patient-monitoring/_components/chart-grid.ts (adicionado, +30 −0)
+- src/app/(main)/dashboard/patient-monitoring/_components/use-realtime-tick.ts (adicionado, +24 −1)
+- src/app/(main)/dashboard/kanban/_components/sortable-task-card.tsx (modificado, +9 −14)
+- src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-actions-risk-ledger.tsx (modificado, +9 −14)
+- src/navigation/sidebar/sidebar-items.ts (modificado, +8 −0)
+- README.md (modificado, +5 −0)
+- biome.json (modificado, +2 −2)
 
 ### Contribuidores
 - @mmdj04
@@ -40,8 +74,25 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 **Resumo**: 38 commits • 44 arquivos • +10.925 −9.515 • 30 manutenção, 2 merges, 2 novidades, 2 refatorações, 1 outros, 1 documentação
 
 ### Novidades
-- Added **file manager dashboard** (#78)
-- Added **project versions dropdown** to dashboard header
+- Adiciona o dashboard de gerenciador de arquivos (#78)
+- Adiciona seletor de versões do projeto no cabeçalho do dashboard
+
+### Refatorações
+- Organiza os componentes do dashboard
+- Simplifica as atualizações de preferências (#76)
+
+### Manutenção
+- Atualiza dependências
+- Correção rápida
+- Limpeza de código
+- Reverte a versão do Radix
+- Atualiza o README
+- Atualiza dependências e corrige lint
+- Atualizações de manutenção
+- Otimiza preferências
+
+### Documentação
+- Adiciona o link do dashboard React Aria
 
 ### Arquivos principais
 - package-lock.json (modificado, +9.130 −8.884)
@@ -59,7 +110,35 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/_components/github-repositories-menu.tsx (adicionado, +59 −0)
 - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado, +7 −46)
 - src/lib/preferences/layout-utils.ts (removido, +0 −48)
-- +29 outros arquivos
+- src/app/(main)/dashboard/_components/sidebar/nav-secondary.tsx (removido, +0 −43)
+- src/app/(main)/dashboard/layout.tsx (modificado, +13 −29)
+- src/lib/preferences/preference-attributes.ts (adicionado e removido, +18 −18)
+- src/lib/fonts/registry.ts (modificado, +16 −18)
+- src/lib/preferences/preference-runtime.ts (adicionado, +34 −0)
+- src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado, +16 −10)
+- src/stores/preferences/preferences-store.ts (modificado, +12 −9)
+- src/app/layout.tsx (modificado, +5 −14)
+- src/navigation/sidebar/sidebar-items.ts (modificado, +16 −2)
+- src/app/(main)/dashboard/_components/sidebar/sidebar-support-card.tsx (modificado, +13 −4)
+- src/lib/preferences/preferences-storage.ts (modificado, +8 −9)
+- src/app/(main)/dashboard/kanban/_components/kanban.tsx (modificado, +5 −6)
+- src/app/(main)/dashboard/users/_components/users.tsx (modificado, +6 −5)
+- biome.json (modificado, +5 −5)
+- src/lib/preferences/theme-utils.ts (modificado, +3 −7)
+- README.md (modificado, +6 −2)
+- src/app/(main)/dashboard/default/_components/recent-customers-table/table.tsx (modificado, +4 −4)
+- src/app/(main)/dashboard/roles/_components/roles.tsx (modificado, +4 −4)
+- src/stores/preferences/preferences-provider.tsx (modificado, +3 −3)
+- src/scripts/theme-boot.tsx (modificado, +2 −3)
+- src/app/(main)/dashboard/crm/_components/opportunities-section.tsx (modificado, +2 −2)
+- src/server/server-actions.ts (modificado, +2 −2)
+- src/app/(main)/dashboard/_components/sidebar/support-card.tsx (renomeado, +1 −1)
+- src/app/(main)/dashboard/tasks/_components/tasks-toolbar.tsx (modificado, +1 −1)
+- src/app/(main)/dashboard/_components/header/account-switcher.tsx (renomeado)
+- src/app/(main)/dashboard/_components/header/github-repositories-menu.tsx (renomeado)
+- src/app/(main)/dashboard/_components/header/layout-controls.tsx (renomeado)
+- src/app/(main)/dashboard/_components/header/search-dialog.tsx (renomeado)
+- src/app/(main)/dashboard/_components/header/theme-switcher.tsx (renomeado)
 
 ### Contribuidores
 - @mmdj04
@@ -71,15 +150,45 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 **Resumo**: 70 commits • 115 arquivos • +29.811 −16.791 • 6 refatorações, 31 manutenção, 2 documentação, 9 novidades, 11 merges, 1 correções, 10 outros
 
 ### Novidades
-- Added **new shadcn components** & update deps
-- Added **tasks** (#73)
-- Improved **infrastructure health data** (#71)
-- Refined **infrastructure dashboard** (#71)
-- Added **infrastructure dashboard** (#71)
+- Adiciona novos componentes shadcn e atualiza dependências
+- Adiciona tarefas (#73)
+- Melhora os dados de saúde da infraestrutura (#71)
+- Refina o dashboard de infraestrutura (#71)
+- Adiciona o dashboard de infraestrutura (#71)
 - Added **full calendar** (#70)
+- Added **calendar** (#70)
+- Refined **defaults and mobile** items (#69)
+- Refined **preview paper layout** (#69)
 
 ### Correções
-- Polished **collapsed sidebar navigation**
+- Melhora a navegação da sidebar recolhida
+
+### Refatorações
+- Corrige os achados de manutenibilidade (react doctor)
+- Aperta o modelo de dados dos itens de navegação
+- Simplifica a renderização dos itens de navegação
+- Clean up builder components (#69)
+- Break into components, fix drag cancel and won status (#68)
+
+### Manutenção
+- Atualiza dependências
+- Atualiza dependências e componentes
+- Correções rápidas
+- Added **scroll fade in** mail list
+- Usa componentes de chat do shadcn na tela de chat
+- Added **nested ternary lint** rule and clean warnings
+- Configura o componente FullCalendar v7
+- Correção rápida
+- Atualiza o README
+- Added **print invoice**
+- Atualizações de manutenção
+- Updated **deps and fix** lint warnings
+- Fixed **layout**
+- Chat update
+
+### Documentação
+- Adiciona diretrizes ao AGENTS.md
+- Adiciona o dashboard de infraestrutura ao README (#71)
 
 ### Arquivos principais
 - package-lock.json (modificado, +6.371 −11.145)
@@ -97,7 +206,106 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/chat/_components/chat-thread.tsx (adicionado, +578 −77)
 - src/app/(external)/test-chat/page.tsx (removido, +0 −654)
 - src/app/(main)/dashboard/infrastructure/_components/project-environments.tsx (adicionado, +594 −11)
-- +100 outros arquivos
+- src/app/(main)/dashboard/invoice/_components/data.ts (adicionado, +460 −98)
+- src/app/(main)/dashboard/tasks/_components/tasks.tsx (adicionado, +498 −0)
+- src/components/calendar/event-calendar-views.tsx (adicionado, +497 −0)
+- src/app/(main)/dashboard/roles/_components/roles.tsx (adicionado, +376 −110)
+- src/app/(main)/dashboard/infrastructure/_components/infrastructure-project-group.tsx (adicionado e removido, +242 −242)
+- src/app/(main)/dashboard/_components/sidebar/nav-main.tsx (modificado, +282 −190)
+- src/app/(main)/dashboard/invoice/_components/invoice-paper.tsx (adicionado, +372 −93)
+- src/app/(main)/dashboard/calendar/_components/calendar.tsx (adicionado, +369 −87)
+- src/app/(main)/dashboard/invoice/page.tsx (modificado, +415 −1)
+- src/app/(main)/dashboard/roles/_components/roles-table/table.tsx (adicionado, +416 −0)
+- src/app/(main)/dashboard/tasks/_components/columns.tsx (adicionado, +400 −2)
+- src/app/(main)/dashboard/kanban/_components/task-card.tsx (adicionado, +358 −8)
+- src/app/(main)/dashboard/invoice/_components/invoice-items-editor.tsx (adicionado, +264 −88)
+- src/app/(main)/chat/_components/chat-conversations.tsx (adicionado, +247 −85)
+- src/app/(main)/dashboard/invoice/_components/invoice-preview.tsx (adicionado, +231 −92)
+- src/app/(main)/dashboard/roles/_components/roles-table/columns.tsx (adicionado, +286 −0)
+- src/app/(main)/dashboard/invoice/_components/invoice-items.tsx (adicionado, +238 −42)
+- src/app/(main)/dashboard/invoice/_components/client-selector.tsx (adicionado, +213 −61)
+- src/app/(main)/dashboard/logistics/_components/shipment-details.tsx (adicionado, +273 −0)
+- src/app/(main)/dashboard/infrastructure/_components/infrastructure-data.ts (adicionado, +247 −19)
+- src/app/(main)/dashboard/roles/_components/roles-table/data.ts (adicionado, +266 −0)
+- src/app/(main)/chat/_components/chat-view.tsx (removido, +67 −195)
+- src/app/(main)/chat/_components/chat-messages.tsx (adicionado e removido, +131 −131)
+- src/app/(main)/chat/_components/chat.tsx (adicionado, +206 −47)
+- src/app/(main)/dashboard/invoice/_components/invoice-details-fields.tsx (adicionado e removido, +125 −125)
+- src/app/(main)/dashboard/roles/_components/roles-data.ts (removido, +0 −233)
+- package.json (modificado, +124 −107)
+- src/app/(main)/chat/_components/chat-contact.tsx (adicionado e removido, +115 −115)
+- src/app/(main)/dashboard/kanban/_components/kanban-column.tsx (adicionado, +188 −40)
+- src/app/(main)/dashboard/invoice/_components/invoice-details.tsx (adicionado, +222 −0)
+- src/app/(main)/dashboard/logistics/_components/shipment-route-map.tsx (adicionado, +220 −0)
+- src/components/ui/attachment.tsx (adicionado, +207 −3)
+- src/app/(main)/chat/_components/chat-header.tsx (adicionado, +187 −22)
+- src/app/(main)/dashboard/infrastructure/_components/infrastructure-header.tsx (adicionado, +194 −8)
+- src/app/(main)/dashboard/kanban/_components/types.ts (adicionado, +143 −53)
+- src/app/(main)/dashboard/tasks/_components/task-priority-filter.tsx (adicionado, +190 −0)
+- src/app/(main)/dashboard/tasks/_components/task-status-filter.tsx (adicionado, +190 −0)
+- src/app/(main)/chat/_components/chat-settings.tsx (adicionado e removido, +95 −95)
+- src/app/(main)/dashboard/tasks/_components/tasks-toolbar.tsx (adicionado, +188 −0)
+- src/app/(main)/dashboard/logistics/_components/shipment-list.tsx (adicionado, +185 −0)
+- src/app/(main)/dashboard/kanban/_components/deal-card.tsx (adicionado e removido, +91 −91)
+- src/app/(main)/dashboard/kanban/_components/kanban-toolbar.tsx (adicionado e removido, +67 −67)
+- src/components/ui/message-scroller.tsx (adicionado, +132 −1)
+- src/app/(main)/chat/_components/data.tsx (adicionado, +130 −0)
+- src/app/(main)/dashboard/roles/_components/role-details-panel.tsx (removido, +0 −130)
+- src/components/ui/bubble.tsx (adicionado, +125 −0)
+- src/app/(main)/dashboard/roles/_components/roles-table.tsx (removido, +0 −119)
+- src/app/(main)/dashboard/invoice/_components/tax-discount-fields.tsx (modificado, +67 −38)
+- AGENTS.md (adicionado, +96 −0)
+- src/components/ui/message.tsx (adicionado, +92 −0)
+- src/navigation/sidebar/sidebar-items.ts (modificado, +66 −24)
+- src/app/(main)/dashboard/invoice/_components/invoice-adjustments.tsx (adicionado, +83 −4)
+- src/app/(main)/dashboard/invoice/_components/invoice-form.tsx (adicionado, +78 −8)
+- src/app/(main)/chat/_components/chat-composer.tsx (adicionado e removido, +35 −35)
+- src/components/ui/marker.tsx (adicionado, +69 −0)
+- src/app/(main)/dashboard/roles/_components/role-ui.tsx (removido, +0 −63)
+- src/app/(main)/dashboard/logistics/_components/logistics.tsx (adicionado, +58 −2)
+- README.md (modificado, +32 −26)
+- src/app/(main)/dashboard/kanban/_components/utils.ts (adicionado, +48 −10)
+- src/app/(main)/chat/_components/use-chat.ts (adicionado, +54 −1)
+- src/app/(main)/dashboard/infrastructure/_components/resource-meter.tsx (adicionado e removido, +26 −26)
+- biome.json (modificado, +36 −15)
+- src/app/(main)/dashboard/invoice/_components/use-visible-center-position.ts (adicionado, +48 −0)
+- src/app/globals.css (modificado, +45 −0)
+- src/app/(main)/dashboard/infrastructure/page.tsx (adicionado, +42 −2)
+- src/app/(main)/dashboard/calendar/_components/events-data.ts (adicionado, +44 −0)
+- src/app/(main)/dashboard/kanban/_components/sortable-task-card.tsx (adicionado, +36 −6)
+- src/app/(main)/dashboard/analytics/_components/top-traffic-sources.tsx (modificado, +17 −17)
+- src/app/(main)/dashboard/kanban/_components/view-tabs.tsx (removido, +0 −33)
+- src/app/(main)/dashboard/invoice/_components/address-block.tsx (adicionado e removido, +15 −15)
+- src/app/(main)/dashboard/kanban/_components/sortable-deal-card.tsx (adicionado, +30 −0)
+- src/app/(main)/dashboard/tasks/page.tsx (adicionado, +28 −0)
+- src/app/(main)/dashboard/chat/page.tsx (modificado, +25 −1)
+- src/app/(main)/dashboard/invoice/_components/print-invoice.tsx (adicionado, +25 −0)
+- src/app/(main)/auth/_components/login-form.tsx (modificado, +11 −11)
+- src/app/(main)/auth/_components/register-form.tsx (modificado, +11 −11)
+- src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (modificado, +10 −12)
+- src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-overview.tsx (modificado, +13 −8)
+- src/hooks/use-lg.ts (adicionado, +19 −0)
+- src/app/(main)/dashboard/default/_components/recent-customers-table/table.tsx (modificado, +7 −10)
+- src/app/(main)/dashboard/ecommerce/_components/inventory.tsx (modificado, +14 −3)
+- src/app/(main)/dashboard/_components/sidebar/sidebar-support-card.tsx (modificado, +4 −4)
+- src/components/ui/card.tsx (modificado, +4 −4)
+- src/app/(main)/dashboard/kanban/page.tsx (modificado, +5 −1)
+- src/app/(main)/dashboard/roles/page.tsx (adicionado, +6 −0)
+- src/app/(main)/dashboard/ecommerce/_components/traffic-sources.tsx (modificado, +4 −1)
+- src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado, +5 −0)
+- src/components/ui/carousel.tsx (modificado, +2 −2)
+- src/app/(main)/dashboard/ecommerce/_components/kpi-strip.tsx (modificado, +2 −1)
+- src/app/(main)/dashboard/layout.tsx (modificado, +2 −1)
+- src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/schema.ts (modificado, +1 −1)
+- src/app/(main)/dashboard/(legacy)/default-v1/_components/chart-area-interactive.tsx (modificado, +0 −2)
+- src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/schema.ts (modificado, +1 −1)
+- src/app/(main)/dashboard/crm/_components/opportunities-table/schema.ts (modificado, +1 −1)
+- src/app/(main)/mail/_components/mail-inbox.tsx (modificado, +1 −1)
+- src/app/(main)/mail/_components/mail-list.tsx (modificado, +1 −1)
+- src/components/ui/calendar.tsx (modificado, +1 −1)
+- src/components/ui/spinner.tsx (modificado, +1 −1)
+- src/app/(main)/chat/_components/chat-layout-config.ts (adicionado e removido, +1 −1)
+- src/app/(main)/chat/page.tsx (renomeado)
 
 ### Contribuidores
 - @mmdj04
@@ -115,6 +323,46 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Added **logistics dashboard** (#62)
 - Added **roles route** (#65)
 - Added **users route** (#63)
+- Added **invoice route** (#69)
+- Added **kanban route** (#68)
+- Added **calendar route** (#70)
+- Added **chat route** (#67)
+- Added **dashboard mail preview** (#60)
+- Moved **mail into standalone** layout (#60)
+- Added **mail sidebar shell** (#60)
+- Improved **mail page responsiveness** (#58)
+- Finalize academy dashboard layout and KPI cards (#57)
+- Promoted **analytics v2 route** (#54)
+- Added **analytics page performance** card (#54)
+- Added **analytics traffic sources** card (#54)
+- Refined **analytics v2 quality** charts (#54)
+- Added **analytics realtime and** quality cards (#54)
+
+### Manutenção
+- Atualiza dependências e componentes
+- Atualiza dependências
+- Updated **roles layout**
+- Atualizações de manutenção
+- Updated **filters**
+- Complete users design
+- Added **initial roles page**
+- Correção rápida
+- Removed **unwanted dependency**
+- Atualiza o README
+- Updated **mail sidebar defaults**
+- Atualiza dependências e componentes
+- Updated **collapsed responsiveness**
+- Updated **responsiveness**
+- Correções rápidas
+- Updated **KPI**
+- Reverte a versão do react-day-picker
+- Height fix
+- Align analytics source tab padding
+- Adjust analytics sources spacing
+- Updated **indicator**
+
+### Documentação
+- Added **analytics v1 to** readme (#54)
 
 ### Arquivos principais
 - public/features.json (adicionado e removido, +8.028 −8.028)
@@ -132,7 +380,96 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/kanban/page.tsx (adicionado, +726 −1)
 - src/app/(main)/dashboard/logistics/_components/data.ts (adicionado, +688 −31)
 - src/app/(main)/dashboard/users/_components/users-columns.tsx (adicionado, +665 −2)
-- +90 outros arquivos
+- src/app/(external)/test-chat/page.tsx (adicionado, +654 −0)
+- src/app/(main)/dashboard/users/_components/users.tsx (adicionado, +635 −17)
+- src/app/(main)/dashboard/mail/_components/mail-view.tsx (adicionado, +578 −42)
+- src/app/(main)/dashboard/ecommerce/_components/kpi-strip.tsx (adicionado, +614 −6)
+- src/app/(main)/dashboard/ecommerce/_components/recent-orders-table/data.json (adicionado, +616 −0)
+- src/app/(external)/test-chat-2/page.tsx (adicionado, +520 −0)
+- src/app/(main)/dashboard/academy/_components/performance-highlights.tsx (adicionado, +491 −2)
+- src/app/(main)/dashboard/mail-example/_components/app-sidebar.tsx (adicionado e removido, +246 −246)
+- src/app/(main)/dashboard/ecommerce/_components/recent-orders.tsx (adicionado, +467 −1)
+- src/app/(main)/dashboard/academy/_components/class-schedule.tsx (adicionado, +426 −27)
+- src/app/(main)/dashboard/logistics/_components/route-map.tsx (adicionado, +312 −92)
+- src/app/(main)/dashboard/mail/_components/mail-display.tsx (adicionado e removido, +199 −199)
+- src/app/(main)/dashboard/logistics/_components/main-panel.tsx (adicionado, +305 −90)
+- src/app/(main)/dashboard/ecommerce/_components/recent-orders-table/columns.tsx (adicionado, +388 −0)
+- src/app/(main)/dashboard/mail/_components/mail-list.tsx (adicionado, +284 −62)
+- src/app/(main)/dashboard/logistics/_components/logistics.tsx (adicionado, +311 −31)
+- src/app/(main)/dashboard/academy/_components/assignment-status.tsx (adicionado, +342 −0)
+- src/app/(main)/dashboard/mail/mail-sidebar.tsx (adicionado e removido, +167 −167)
+- src/app/(main)/dashboard/users/_components/users-data.ts (adicionado e removido, +165 −165)
+- src/app/(main)/dashboard/analytics-v2/_components/engagement-momentum-card.tsx (adicionado e removido, +152 −152)
+- src/app/(main)/dashboard/academy/_components/kpi-cards.tsx (adicionado, +264 −30)
+- src/app/(main)/dashboard/mail/_components/mail-nav.tsx (adicionado e removido, +106 −176)
+- src/app/(main)/dashboard/ecommerce/_components/inventory.tsx (adicionado, +260 −0)
+- src/app/(main)/dashboard/logistics/_components/shipments-panel.tsx (adicionado, +216 −31)
+- src/app/(main)/dashboard/users/_components/users-header.tsx (adicionado e removido, +121 −121)
+- src/app/(main)/dashboard/academy/_components/upcoming-events.tsx (adicionado, +237 −0)
+- src/app/(main)/dashboard/roles/_components/roles-data.ts (adicionado, +233 −0)
+- src/app/(main)/dashboard/mail/_components/mail-inbox.tsx (adicionado, +195 −33)
+- src/app/(main)/mail/_components/data.tsx (renomeado, +74 −152)
+- src/app/(main)/dashboard/ecommerce/_components/traffic-sources.tsx (adicionado, +221 −0)
+- src/app/(main)/dashboard/ecommerce/_components/store-traffic.tsx (adicionado, +218 −1)
+- src/app/(main)/dashboard/analytics-v2/page.tsx (removido, +95 −114)
+- src/app/(main)/dashboard/mail-example/_components/nav-user.tsx (adicionado e removido, +98 −98)
+- src/app/(main)/dashboard/analytics-v2/_components/traffic-quality.tsx (adicionado, +180 −1)
+- src/app/(main)/dashboard/analytics-v2/_components/visitor-coverage-card.tsx (adicionado e removido, +89 −89)
+- src/app/(main)/dashboard/analytics-v2/_components/traffic-trend-card.tsx (adicionado, +151 −6)
+- package.json (modificado, +85 −65)
+- src/app/(main)/dashboard/roles/_components/role-details-panel.tsx (adicionado, +140 −10)
+- src/app/(main)/dashboard/ecommerce/_components/customer-reviews.tsx (adicionado, +144 −2)
+- src/app/(main)/dashboard/analytics/_components/analytics-kpi-strip.tsx (adicionado, +142 −0)
+- src/app/(main)/dashboard/roles/_components/roles.tsx (adicionado, +136 −0)
+- src/app/(main)/dashboard/academy/page.tsx (adicionado, +127 −9)
+- src/app/(main)/dashboard/analytics-v2/_components/top-traffic-sources.tsx (adicionado, +132 −4)
+- src/app/(main)/dashboard/roles/_components/roles-table.tsx (adicionado, +119 −0)
+- src/app/(main)/dashboard/ecommerce/_components/top-products.tsx (adicionado, +105 −0)
+- src/app/(main)/dashboard/mail/page.tsx (adicionado, +72 −32)
+- src/app/(main)/dashboard/analytics-v2/_components/analytics-toolbar.tsx (modificado, +45 −58)
+- src/app/(main)/dashboard/mail-example/page.tsx (adicionado e removido, +49 −49)
+- src/app/(main)/dashboard/mail/_components/account-switcher.tsx (adicionado e removido, +48 −48)
+- src/app/(main)/dashboard/ecommerce/page.tsx (adicionado, +92 −4)
+- src/app/(main)/dashboard/roles/_components/roles-toolbar.tsx (adicionado e removido, +39 −39)
+- src/app/(main)/dashboard/mail/_components/nav.tsx (adicionado, +70 −0)
+- src/app/(main)/dashboard/roles/_components/roles-header.tsx (adicionado e removido, +34 −34)
+- src/app/(main)/dashboard/roles/_components/role-ui.tsx (adicionado, +63 −0)
+- src/app/(main)/dashboard/ecommerce/_components/recent-orders-table/formatters.ts (adicionado, +62 −0)
+- src/app/(main)/dashboard/logistics/page.tsx (adicionado, +38 −19)
+- src/app/(main)/dashboard/roles/_components/roles-tabs.tsx (adicionado e removido, +28 −28)
+- src/app/(main)/dashboard/roles/_components/roles-dashboard.tsx (adicionado e removido, +26 −26)
+- src/app/(main)/dashboard/analytics-v2/_components/top-pages.tsx (adicionado, +48 −0)
+- src/app/(main)/dashboard/mail/_components/mail-layout-config.ts (adicionado e removido, +23 −23)
+- src/app/(main)/dashboard/(legacy)/analytics-v1/page.tsx (adicionado, +46 −0)
+- src/navigation/sidebar/sidebar-items.ts (modificado, +14 −24)
+- src/app/(main)/dashboard/ecommerce/_components/recent-orders-table/schema.ts (adicionado, +26 −0)
+- src/app/(main)/dashboard/_components/sidebar/account-switcher.tsx (modificado, +19 −6)
+- src/app/(main)/dashboard/logistics/_components/status-badge.tsx (adicionado e removido, +12 −12)
+- src/app/(main)/dashboard/users/page.tsx (adicionado, +20 −2)
+- src/app/(main)/dashboard/analytics-v2/_components/analytics-kpi-strip.tsx (modificado, +11 −11)
+- src/app/(main)/dashboard/mail/_components/use-mail.ts (modificado, +16 −5)
+- src/app/(main)/dashboard/mail/layout.tsx (adicionado, +19 −0)
+- src/app/(main)/dashboard/analytics-v2/_components/realtime-visitors.tsx (renomeado, +10 −7)
+- src/app/(main)/mail/_components/mail-inbox.tsx (renomeado, +5 −11)
+- README.md (modificado, +7 −7)
+- src/app/(main)/dashboard/layout.tsx (modificado, +10 −2)
+- src/app/(main)/dashboard/roles/page.tsx (adicionado, +9 −2)
+- biome.json (modificado, +5 −5)
+- src/app/(main)/dashboard/finance/_components/overview-kpis.tsx (modificado, +4 −4)
+- src/app/(main)/mail/_components/mail-layout-config.ts (adicionado, +6 −0)
+- src/app/(main)/dashboard/finance/_components/income-breakdown.tsx (modificado, +3 −3)
+- src/components/ui/button.tsx (modificado, +2 −2)
+- src/components/ui/toggle-group.tsx (modificado, +2 −2)
+- src/app/(main)/dashboard/invoice/page.tsx (adicionado, +3 −0)
+- src/app/(main)/dashboard/calendar/page.tsx (adicionado, +3 −0)
+- src/app/(main)/dashboard/chat/page.tsx (adicionado, +3 −0)
+- src/components/ui/sidebar.tsx (modificado, +1 −1)
+- src/app/(main)/dashboard/finance/_components/balance-distribution-card.tsx (modificado, +1 −1)
+- src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-actions-manager-queue.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-actions-risk-ledger.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-drivers-coverage-triage.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-drivers-forecast-target.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-overview.tsx (renomeado)
 
 ### Contribuidores
 - @mmdj04
@@ -150,12 +487,57 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Refactored **upcoming transactions UI** (#49)
 - Added **search at sidebar** (#51)
 - Moved **crm v2 to** crm and legacy crm to crm-v1 (#47)
+- Refined **crm v2 opportunities** table (#47)
+- Added **crm v2 activity** sections (#47)
+- Added **crm v2 dashboard** (#47)
+- Swapped **default dashboard routes** (#46)
+- Refined **default v2 customer** table (#46)
+- Refined **default v2 dashboard** tables (#46)
+- Refined **default v2 performance** overview (#46)
+- Refined **default v2 chart** and dashboard styling (#46)
+- Refined **default v2 overview** charts (#46)
+- Refresh productivity dates dynamically (#46)
+- Added **productivity dashboard layout** (#46)
+- Added **default-v2 dashboard and** refresh ui primitives (#46)
 
 ### Correções
 - Added **use client directive** to upcoming transactions component (#49)
 - Added **missing tabs content** import and sort classes (#49)
 - Renamed **upcoming transactions component** to remove table suffix and fix import (#49)
 - Replaced custom search with built in search from cmdk (#51)
+- Resolve code review issues in search dialog (#51)
+- Adjust CRM opportunities footer spacing
+- Tightened **crm table filtering** and proposal progress (#47)
+- Correct default dashboard chart date parsing (#46)
+- Style native select options
+
+### Manutenção
+- Atualiza dependências
+- Atualiza o README
+- Reorganize finance routes to make v2 the default and move v1 to legacy
+- Correção rápida
+- Refresh biome and icon dependencies
+- Added **finance route**
+- Refresh ui dependencies
+- Atualiza as dependências shadcn
+- Correções rápidas
+- Hide productivity dashboard from sidebar
+- Apply generated ui updates
+- Updated **default font**
+- Refresh ui and tooling dependencies
+- Bump next and react
+- Refresh dependencies and update dashboard icon
+- Bump panels and tweak dashboard layout
+- Bump next to 16.2.2
+
+### Documentação
+- Moved **base ui note** in readme
+- Added **base ui repo** link to readme
+- Removed **analytics from README** coming soon
+- Updated **README screen names**
+
+### Estilo
+- Refined **default dashboard activity** chart (#46)
 
 ### Arquivos principais
 - package-lock.json (modificado, +1.401 −1.623)
@@ -173,7 +555,84 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/default-v2/_components/overview-panels.tsx (adicionado e removido, +135 −135)
 - src/app/(main)/dashboard/analytics-v2/_components/analytics-kpi-strip.tsx (adicionado, +203 −61)
 - src/app/(main)/dashboard/default-v2/_components/customer-flow-table/columns.tsx (adicionado e removido, +103 −103)
-- +78 outros arquivos
+- src/app/(main)/dashboard/finance-v2/_components/money-in-vs-out-chart.tsx (adicionado e removido, +96 −96)
+- src/app/(main)/dashboard/finance-v2/_components/balance-distribution-card.tsx (adicionado, +181 −0)
+- src/app/(main)/dashboard/crm-v2/_components/pipeline-activity.tsx (adicionado, +153 −2)
+- src/app/(main)/dashboard/finance-v2/_components/transactions-overview-card.tsx (adicionado, +149 −0)
+- src/app/(main)/dashboard/default-v2/_components/customer-flow-table/table.tsx (adicionado e removido, +73 −73)
+- src/app/(main)/dashboard/crm-v2/_components/kpi-cards.tsx (adicionado, +124 −4)
+- src/app/(main)/dashboard/crm-v2/_components/opportunities-table/columns.tsx (adicionado, +126 −0)
+- src/app/(main)/dashboard/finance-v2/_components/wallet.tsx (adicionado, +115 −0)
+- src/app/(main)/dashboard/productivity/_components/projects-section.tsx (adicionado, +105 −10)
+- src/app/(main)/dashboard/default-v2/_components/metric-cards.tsx (adicionado, +104 −10)
+- src/app/(main)/dashboard/finance/page.tsx (modificado, +61 −47)
+- package.json (modificado, +51 −52)
+- src/app/(main)/dashboard/crm-v2/_components/task-reminders.tsx (adicionado, +100 −0)
+- src/app/(main)/dashboard/finance-v2/_components/income-breakdown.tsx (adicionado, +76 −20)
+- src/app/(main)/dashboard/finance-v2/_components/quick-actions.tsx (adicionado, +94 −0)
+- src/app/(main)/dashboard/analytics-v2/_components/analytics-toolbar.tsx (adicionado, +85 −7)
+- src/app/(main)/dashboard/finance-v2/_components/upcoming-transactions-table.tsx (adicionado, +76 −0)
+- src/app/(main)/dashboard/productivity/_components/recent-notes-card.tsx (adicionado, +50 −4)
+- src/app/(main)/dashboard/productivity/_components/summary-cards.tsx (adicionado, +39 −0)
+- src/app/(main)/dashboard/default-v2/_components/customer-flow-table/schema.ts (adicionado e removido, +19 −19)
+- src/navigation/sidebar/sidebar-items.ts (modificado, +26 −10)
+- src/app/(main)/dashboard/finance-v2/_components/finance-notification.tsx (adicionado, +28 −5)
+- src/app/(main)/dashboard/(legacy)/crm-v1/page.tsx (adicionado, +32 −0)
+- src/app/(main)/dashboard/productivity/_components/calendar-panel.tsx (adicionado, +32 −0)
+- src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado, +14 −14)
+- src/app/(main)/dashboard/productivity/_components/focus-card.tsx (adicionado, +27 −0)
+- src/app/(main)/dashboard/productivity/_components/quick-actions.tsx (adicionado, +27 −0)
+- src/app/(main)/dashboard/default-v2/_components/proposal-sections-table/schema.ts (adicionado e removido, +13 −13)
+- README.md (modificado, +12 −9)
+- src/app/(main)/dashboard/_components/sidebar/sidebar-support-card.tsx (modificado, +19 −2)
+- biome.json (modificado, +14 −6)
+- src/app/(main)/dashboard/analytics-v2/page.tsx (adicionado, +19 −0)
+- src/app/(main)/dashboard/productivity/_components/quote-card.tsx (adicionado, +17 −0)
+- src/app/(main)/dashboard/crm-v2/page.tsx (adicionado, +15 −0)
+- src/components/ui/native-select.tsx (modificado, +12 −3)
+- src/app/(main)/dashboard/analytics/_components/analytics-overview.tsx (modificado, +7 −7)
+- src/app/(main)/dashboard/crm/_components/opportunities-section.tsx (modificado, +8 −6)
+- src/app/(main)/dashboard/crm-v2/_components/opportunities-table/schema.ts (adicionado, +14 −0)
+- src/app/(main)/dashboard/(legacy)/default-v1/page.tsx (adicionado, +14 −0)
+- src/app/(main)/dashboard/default-v2/page.tsx (adicionado, +11 −0)
+- src/app/(main)/dashboard/crm/_components/opportunities-table/columns.tsx (modificado, +2 −8)
+- src/lib/cookie.client.ts (modificado, +7 −2)
+- src/app/(main)/dashboard/analytics/_components/analytics-actions-risk-ledger.tsx (modificado, +4 −4)
+- components.json (modificado, +4 −4)
+- src/app/(main)/dashboard/default/_components/performance-overview.tsx (modificado, +4 −4)
+- src/app/(main)/dashboard/layout.tsx (modificado, +4 −2)
+- src/app/(main)/dashboard/crm/_components/task-reminders.tsx (modificado, +4 −1)
+- src/app/(main)/dashboard/finance/_components/upcoming-transactions.tsx (renomeado, +3 −1)
+- src/app/(main)/dashboard/page.tsx (modificado, +2 −2)
+- src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado, +1 −1)
+- src/components/ui/alert.tsx (modificado, +1 −1)
+- src/components/ui/button-group.tsx (modificado, +1 −1)
+- src/components/ui/field.tsx (modificado, +1 −1)
+- src/components/ui/item.tsx (modificado, +1 −1)
+- src/components/ui/popover.tsx (modificado, +1 −1)
+- src/app/globals.css (modificado, +1 −1)
+- src/lib/preferences/preferences-config.ts (modificado, +1 −1)
+- src/app/(main)/dashboard/_components/sidebar/account-switcher.tsx (modificado, +1 −1)
+- src/app/(main)/dashboard/(legacy)/finance-v1/_components/card-overview.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/finance-v1/_components/cash-flow-overview.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/finance-v1/_components/income-reliability.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/finance-v1/_components/kpis/monthly-cash-flow.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/finance-v1/_components/kpis/net-worth.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/finance-v1/_components/kpis/primary-account.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/finance-v1/_components/kpis/savings-rate.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/finance-v1/_components/spending-breakdown.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/crm-v1/_components/crm.config.ts (renomeado)
+- src/app/(main)/dashboard/(legacy)/crm-v1/_components/insight-cards.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/crm-v1/_components/operational-cards.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/crm-v1/_components/overview-cards.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/columns.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/schema.ts (renomeado)
+- src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/table.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/default-v1/_components/chart-area-interactive.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/columns.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/schema.ts (renomeado)
+- src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/table.tsx (renomeado)
+- src/app/(main)/dashboard/(legacy)/default-v1/_components/section-cards.tsx (renomeado)
 
 ### Contribuidores
 - @mmdj04
@@ -198,6 +657,28 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Refined **support card layout**
 - Align layout control selects
 - Minor dashboard and command palette fixes
+- Run biome via node to avoid Windows spawn issues (#41)
+- Make preset generation and lint-staged work cross-platform (#41)
+
+### Refatorações
+- Localize dashboard table implementations
+- Adopted **field-based rhf forms**
+- Finalize 3-row dashboard structure and naming cleanup (#35)
+
+### Manutenção
+- Updated **shadcn ui components**
+- Removed **preferences storage note**
+- Removed **unused deps**
+- Updated **deps and shadcn** components
+- Atualiza dependências
+- Updated **deps and shadcn** empty component
+- Atualiza os componentes shadcn
+- Refresh dashboard owner names
+- Atualiza dependências e componentes shadcn
+- Align static metrics across dashboard sections
+
+### Estilo
+- Split centered layout selectors
 
 ### Arquivos principais
 - package-lock.json (modificado, +4.654 −1.202)
@@ -215,7 +696,53 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/analytics/_components/analytics-actions-manager-queue.tsx (adicionado, +146 −7)
 - src/app/(main)/dashboard/analytics/_components/analytics-forecast-vs-target-card.tsx (adicionado, +144 −0)
 - src/app/(main)/dashboard/analytics/_components/analytics-manager-action-queue-card.tsx (adicionado, +139 −0)
-- +47 outros arquivos
+- src/app/(main)/auth/_components/login-form.tsx (modificado, +58 −52)
+- src/app/(main)/auth/_components/register-form.tsx (modificado, +55 −46)
+- src/app/(main)/dashboard/analytics/_components/analytics-drivers-coverage-triage.tsx (adicionado, +93 −2)
+- src/app/(main)/dashboard/default/_components/data-table.tsx (removido, +7 −87)
+- src/app/(main)/dashboard/analytics/_components/analytics-coverage-triage-card.tsx (adicionado, +91 −0)
+- package.json (modificado, +38 −39)
+- src/components/date-range-picker.tsx (adicionado, +71 −3)
+- src/components/ui/chart.tsx (modificado, +44 −27)
+- src/app/(main)/dashboard/crm/_components/recent-leads-table/columns.tsx (renomeado, +42 −24)
+- src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (modificado, +37 −24)
+- src/app/(main)/dashboard/crm/_components/insight-cards.tsx (modificado, +26 −30)
+- src/app/(main)/dashboard/analytics/page.tsx (adicionado, +46 −9)
+- src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado, +27 −26)
+- src/app/(main)/dashboard/crm/_components/table-cards.tsx (removido, +0 −48)
+- src/components/ui/alert-dialog.tsx (modificado, +25 −22)
+- src/app/(main)/dashboard/layout.tsx (modificado, +30 −6)
+- src/app/(main)/dashboard/default/_components/table-cell-viewer.tsx (modificado, +21 −15)
+- src/components/ui/accordion.tsx (modificado, +25 −10)
+- src/components/ui/alert.tsx (modificado, +18 −8)
+- src/scripts/generate-theme-presets.ts (modificado, +16 −10)
+- src/app/layout.tsx (modificado, +13 −10)
+- src/app/(main)/dashboard/default/_components/chart-area-interactive.tsx (modificado, +12 −10)
+- src/app/(main)/dashboard/_components/sidebar/sidebar-support-card.tsx (adicionado, +15 −3)
+- tsconfig.scripts.json (adicionado, +16 −0)
+- src/app/(main)/dashboard/finance/_components/cash-flow-overview.tsx (modificado, +8 −6)
+- src/components/data-table/data-table-pagination.tsx (modificado, +8 −6)
+- components.json (modificado, +6 −3)
+- src/components/ui/avatar.tsx (modificado, +4 −4)
+- src/components/ui/toggle.tsx (modificado, +4 −3)
+- src/components/ui/button.tsx (modificado, +3 −3)
+- src/components/ui/breadcrumb.tsx (modificado, +3 −3)
+- src/components/ui/empty.tsx (modificado, +4 −1)
+- src/app/(main)/dashboard/crm/page.tsx (modificado, +3 −2)
+- src/app/(main)/dashboard/crm/_components/recent-leads-table/schema.ts (renomeado, +3 −1)
+- .husky/pre-commit (modificado, +2 −2)
+- src/components/ui/badge.tsx (modificado, +2 −2)
+- src/navigation/sidebar/sidebar-items.ts (modificado, +1 −2)
+- src/components/ui/table.tsx (modificado, +1 −1)
+- src/components/ui/tabs.tsx (modificado, +1 −1)
+- src/components/ui/toggle-group.tsx (modificado, +1 −1)
+- src/components/ui/dialog.tsx (modificado, +1 −1)
+- src/components/ui/drawer.tsx (modificado, +1 −1)
+- src/components/ui/menubar.tsx (modificado, +1 −1)
+- src/components/ui/navigation-menu.tsx (modificado, +1 −1)
+- src/components/ui/sheet.tsx (modificado, +1 −1)
+- src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado, +2 −0)
+- src/app/(main)/dashboard/finance/page.tsx (modificado, +1 −1)
 
 ### Contribuidores
 - @mmdj04
@@ -225,6 +752,11 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 ## 2026-02
 
 **Resumo**: 3 commits • 9 arquivos • +154 −87 • 3 manutenção
+
+### Manutenção
+- Atualiza dependências
+- Atualiza dependências e componentes shadcn
+- Correções menores
 
 ### Arquivos principais
 - package-lock.json (modificado, +132 −66)
@@ -257,6 +789,24 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 ### Correções
 - Cycle through light/dark/system in theme-switcher (#32)
 
+### Manutenção
+- Atualiza dependências
+- Atualiza os componentes shadcn
+- Correção rápida
+- Correções menores
+- Updated **boot script**
+- Improved **theme switching logic**
+- Renamed **vars for better** understandability
+- Optimized **boot script**
+- Apply suggestions
+- Enabled **preload for all** fonts
+- Fixed **default font**
+- Updated **fonts**
+- Fixed **css layer order**
+- Refined **default theme and** minor UI tweaks
+- Updated **deps and minor** fixes
+- Renamed **components and small** fixes
+
 ### Arquivos principais
 - package-lock.json (modificado, +3.155 −3.155)
 - src/lib/fonts/registry.ts (adicionado, +365 −67)
@@ -273,7 +823,29 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/lib/preferences/theme-utils.ts (modificado, +81 −19)
 - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado, +54 −35)
 - src/components/ui/alert-dialog.tsx (modificado, +61 −22)
-- +23 outros arquivos
+- src/components/ui/avatar.tsx (modificado, +60 −4)
+- src/scripts/theme-boot.tsx (modificado, +38 −26)
+- src/app/(main)/dashboard/finance/_components/account-summary.tsx (removido, +0 −62)
+- package.json (modificado, +28 −26)
+- src/stores/preferences/preferences-store.ts (modificado, +33 −15)
+- src/components/ui/popover.tsx (modificado, +42 −1)
+- src/components/date-range-picker.tsx (adicionado, +42 −0)
+- src/app/(main)/dashboard/finance/_components/kpis/monthly-cash-flow.tsx (adicionado, +36 −0)
+- src/app/layout.tsx (modificado, +11 −13)
+- src/components/ui/dialog.tsx (modificado, +17 −2)
+- src/types/window.d.ts (removido, +2 −15)
+- src/components/ui/badge.tsx (modificado, +9 −7)
+- src/lib/preferences/preferences-config.ts (modificado, +11 −1)
+- src/lib/preferences/layout-utils.ts (modificado, +10 −0)
+- src/app/(main)/dashboard/analytics/page.tsx (adicionado, +9 −0)
+- src/app/(main)/dashboard/finance/page.tsx (modificado, +4 −4)
+- src/lib/preferences/theme.ts (modificado, +5 −2)
+- src/app/(main)/dashboard/default/_components/chart-area-interactive.tsx (modificado, +2 −2)
+- src/navigation/sidebar/sidebar-items.ts (modificado, +1 −2)
+- src/components/ui/button.tsx (modificado, +2 −0)
+- src/app/(main)/dashboard/default/_components/section-cards.tsx (modificado, +1 −1)
+- src/app/(main)/dashboard/finance/_components/income-reliability.tsx (renomeado, +1 −1)
+- src/app/(main)/dashboard/finance/_components/kpis/net-worth.tsx (renomeado, +1 −1)
 
 ### Contribuidores
 - @likui628
@@ -292,9 +864,41 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Improved **layout prefs handling** for instant sidebar render (#22)
 - Added **“use no memo”** to all table components to prevent React Compiler memoization and fix state issues (#21)
 - Added **window prefs bridge** + temporary flicker fix in provider (#20)
+- Completed preference persistence setup (#20)
+- Moved **sidebar config to** global store and wire it inside AppSidebar (#20)
+- Added **preference config** (#18)
+- Added **client side cookie** utils (#18)
 
 ### Correções
 - Align theme boot defaults and use shallow sidebar selector (#24)
+
+### Manutenção
+- Redesign my cards
+- Redesign cash flow overview chart
+- Updated **initial dashboard design**
+- Atualiza dependências
+- Minor updates
+- Use biome for formatting preset generated code
+- Atualiza os componentes shadcn
+- Updated **Biome commands and** clean up styles
+- Removed **next eslint config**
+- Lint and format codebase using Biome
+- Removed **ESLint and Prettier** configs and usage
+- Migrated **prettier & eslint** config to biome
+- Correção rápida
+- Updated **layout controls preferences** text
+- Simplified **preference logic**
+- Style fix and type correction
+- Updated **navbar style selectors** to use html data attributes
+- Updated **preference config and** style fix
+- Added **missing await in** persistPreference
+- Disabled **layout controls and** apply minor fixes
+- Added **preference config and** conditional server persistence
+- Minor changes
+- Updated **layout controls and** fix sidebar state logic
+
+### Estilo
+- Fixed **sidebar icon alignment**
 
 ### Arquivos principais
 - package-lock.json (modificado, +5.303 −14.564)
@@ -312,7 +916,53 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/finance/_components/financial-overview.tsx (modificado, +46 −51)
 - src/lib/layout-utils.ts (removido, +40 −47)
 - src/lib/preferences-config.ts (adicionado, +72 −14)
-- +47 outros arquivos
+- src/app/layout.tsx (modificado, +50 −18)
+- src/app/(main)/dashboard/finance/page.tsx (modificado, +32 −30)
+- src/app/(main)/dashboard/finance/_components/account-summary.tsx (adicionado, +62 −0)
+- src/app/(main)/dashboard/finance/_components/recent-payments.tsx (adicionado, +62 −0)
+- src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado, +36 −14)
+- src/lib/preferences-storage.ts (adicionado, +45 −5)
+- src/app/(main)/dashboard/finance/_components/assets-breakdown.tsx (adicionado, +42 −6)
+- src/app/(main)/dashboard/finance/_components/cash-flow-overview.tsx (adicionado, +39 −3)
+- src/lib/cookie.client.ts (adicionado, +40 −2)
+- src/app/(main)/dashboard/finance/_components/net-worth-summary.tsx (adicionado, +39 −2)
+- src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado, +13 −13)
+- .prettierignore (removido, +0 −24)
+- README.md (modificado, +18 −2)
+- src/stores/preferences/preferences-store.ts (modificado, +15 −4)
+- src/lib/local-storage.client.ts (adicionado, +19 −0)
+- .prettierrc (removido, +0 −18)
+- src/types/window.d.ts (adicionado, +16 −0)
+- src/app/(main)/auth/v2/layout.tsx (modificado, +7 −7)
+- src/app/(main)/auth/v1/login/page.tsx (modificado, +6 −6)
+- src/app/(main)/auth/v1/register/page.tsx (modificado, +6 −6)
+- src/scripts/generate-theme-presets.ts (modificado, +5 −6)
+- next.config.mjs (modificado, +4 −4)
+- src/components/ui/select.tsx (modificado, +5 −2)
+- src/lib/preferences/preferences-storage.ts (renomeado, +5 −2)
+- src/components/ui/button.tsx (modificado, +4 −2)
+- src/components/ui/calendar.tsx (modificado, +5 −1)
+- postcss.config.mjs (modificado, +3 −3)
+- src/app/(main)/dashboard/finance/_components/spending-overview.tsx (modificado, +1 −3)
+- src/app/(main)/dashboard/finance/_components/currency-exchange.tsx (modificado, +2 −2)
+- src/app/(main)/dashboard/crm/_components/crm.config.ts (modificado, +1 −3)
+- src/components/data-table/data-table-column-header.tsx (modificado, +4 −0)
+- src/components/data-table/data-table-pagination.tsx (modificado, +4 −0)
+- src/components/data-table/data-table.tsx (modificado, +4 −0)
+- src/components/data-table/drag-column.tsx (modificado, +4 −0)
+- src/components/data-table/draggable-row.tsx (modificado, +4 −0)
+- .husky/pre-commit (modificado, +2 −2)
+- src/lib/theme-utils.ts (modificado, +2 −2)
+- src/app/globals.css (modificado, +3 −0)
+- src/components/ui/dialog.tsx (modificado, +1 −1)
+- src/components/ui/form.tsx (modificado, +1 −1)
+- src/components/ui/pagination.tsx (modificado, +1 −1)
+- src/app/(main)/auth/_components/login-form.tsx (modificado, +1 −1)
+- src/app/(main)/dashboard/crm/_components/table-cards.tsx (modificado, +2 −0)
+- src/app/(main)/dashboard/default/_components/data-table.tsx (modificado, +2 −0)
+- src/components/data-table/data-table-view-options.tsx (modificado, +2 −0)
+- src/lib/preferences/layout.ts (renomeado, +1 −1)
+- src/lib/preferences/layout-utils.ts (renomeado)
 
 ### Contribuidores
 - @mmdj04
@@ -325,6 +975,24 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 
 ### Novidades
 - Added **theme boot script** and make root layout static (#18)
+
+### Manutenção
+- Simplified **layout controls handlers** and improve preferences provider initialization
+- Updated **preferences store logic** and apply minor fixes
+- Enabled **layout controls**
+- Removed **analytics**
+- Atualiza dependências
+- Updated **avatar to external** url
+- Disabled **prefetch on next** Link
+- Temporarily disable cookie logic in root layout to avoid rerendering bug
+- Disabled **layout controls**
+- Disabled **prefetch on sidebar** links to avoid unnecessary route requests
+- Added **vercel analytics**
+- Updated **layout control toggle** styles
+- Updated **deps & apply** uniform toggle item sizing and text classes
+
+### Estilo
+- Added **overscroll-behavior**
 
 ### Arquivos principais
 - package-lock.json (modificado, +1.848 −901)
@@ -342,7 +1010,8 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/auth/v2/login/page.tsx (modificado, +1 −1)
 - src/app/(main)/auth/v2/register/page.tsx (modificado, +1 −1)
 - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado, +1 −1)
-- +2 outros arquivos
+- src/app/not-found.tsx (modificado, +1 −1)
+- public/avatars/arhamkhnz.png (removido)
 
 ### Contribuidores
 - @mmdj04
@@ -358,6 +1027,19 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 
 ### Correções
 - Use Shadcn DropdownMenuTrigger instead of Radix UI in data-table-view-options.tsx
+
+### Refatorações
+- Renamed **middleware to proxy,** cleanup code, and update tsconfig
+
+### Manutenção
+- Atualiza dependências
+- Atualiza dependências e componentes shadcn
+- Updated **dependencies and remove** unused packages
+- Added **new shadcn components**
+
+### Documentação
+- Updated **Next.js version references** in docs and meta
+- Updated **dashboard image and** version in demo URL
 
 ### Arquivos principais
 - package-lock.json (modificado, +1.344 −1.066)
@@ -375,7 +1057,19 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/middleware/auth-middleware.ts (removido, +0 −16)
 - src/components/ui/calendar.tsx (modificado, +4 −1)
 - tsconfig.json (modificado, +2 −2)
-- +13 outros arquivos
+- components.json (modificado, +2 −1)
+- src/config/app-config.ts (modificado, +1 −1)
+- src/components/data-table/data-table-view-options.tsx (modificado, +1 −1)
+- src/components/ui/badge.tsx (modificado, +1 −1)
+- src/components/ui/sidebar.tsx (modificado, +1 −1)
+- src/components/ui/checkbox.tsx (modificado, +1 −1)
+- src/components/ui/input-group.tsx (modificado, +1 −1)
+- src/components/ui/button.tsx (modificado, +2 −0)
+- src/components/ui/card.tsx (modificado, +1 −1)
+- src/components/ui/context-menu.tsx (modificado, +1 −1)
+- src/components/ui/dropdown-menu.tsx (modificado, +1 −1)
+- next.config.mjs (modificado, +1 −0)
+- media/dashboard.png (modificado)
 
 ### Contribuidores
 - @mmdj04
@@ -388,6 +1082,19 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 
 ### Novidades
 - Updated **dashboard layout controls** and layout utils with sticky header (#10)
+
+### Manutenção
+- Added **contributing.md**
+- Code cleanup, minor fixes & update deps
+- Atualiza dependências
+- Atualiza dependências e componentes shadcn
+- Atualiza os componentes shadcn
+- Updated **dependencies and refresh** shadcn/ui components
+- Added **coming soon page** & update deps
+- Updated **non-existing routes to** /dashboard & update deps
+
+### Estilo
+- Refined **sticky navbar styles** for consistency
 
 ### Arquivos principais
 - package-lock.json (modificado, +885 −926)
@@ -405,7 +1112,8 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/components/ui/tooltip.tsx (modificado, +2 −2)
 - src/app/(external)/page.tsx (modificado, +1 −1)
 - src/components/ui/input.tsx (modificado, +1 −1)
-- +2 outros arquivos
+- public/next.svg (removido, +0 −1)
+- public/vercel.svg (removido, +0 −1)
 
 ### Contribuidores
 - @fiifiofosu
@@ -416,6 +1124,11 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 ## 2025-08
 
 **Resumo**: 11 commits • 6 arquivos • +1.133 −1.100 • 11 manutenção
+
+### Manutenção
+- Added **placeholder routes, deps** update & enable turbopack
+- Atualiza dependências
+- Added **not-found page and** code cleanup
 
 ### Arquivos principais
 - package-lock.json (modificado, +1.060 −1.046)
@@ -445,6 +1158,29 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 ### Correções
 - Override shadow utilities to respect theme presets & update deps
 
+### Manutenção
+- Atualiza dependências
+- Updated **media image**
+- Updated **media**
+- Eslint accessibility fix
+- Removed **unused dependencies &** minor improvements
+- Fixed **eslint warnings**
+- Fixed **type imports**
+- Updated **pre-commit hook to** auto stage theme presets
+- Updated **deps & remove** test logs
+- Added **test logs in** ThemeSwitcher for debugging
+- Moved **preferences store and** provider to stores/ directory
+- Added **layout and theme** utility functions, simplify layout & theme control logic
+- Optimized **content layout usage** & minor bug fixes
+- Temporarily disable middleware to avoid unnecessary edge function executions
+- Correções menores
+- Atualiza dependências e componentes shadcn
+- Color fixes & code cleanup
+- Fixed **CRM route**
+- Reverted **theme**
+- Updated **dependencies**
+- Updated **CRM charts**
+
 ### Arquivos principais
 - package-lock.json (modificado, +3.447 −2.106)
 - src/app/(main)/dashboard/finance/_components/card-details.tsx (adicionado e removido, +193 −193)
@@ -461,7 +1197,70 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/finance/_components/summary.tsx (adicionado, +163 −0)
 - src/app/(main)/dashboard/crm/_components/insight-cards.tsx (adicionado, +154 −0)
 - src/styles/presets/brutalist.css (modificado, +84 −63)
-- +64 outros arquivos
+- src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado, +103 −38)
+- src/scripts/generate-theme-presets.ts (adicionado, +132 −5)
+- src/app/(main)/dashboard/crm/_components/operational-cards.tsx (adicionado, +121 −6)
+- src/app/(main)/dashboard/finance/_components/currency-exchange.tsx (adicionado, +86 −5)
+- src/app/(main)/dashboard/crm/_components/columns.crm.tsx (adicionado, +83 −0)
+- src/app/(main)/dashboard/layout.tsx (modificado, +44 −27)
+- src/app/(main)/auth/v2/login/page.tsx (adicionado, +57 −12)
+- src/app/(main)/auth/v2/register/page.tsx (adicionado, +57 −12)
+- src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado, +37 −27)
+- src/app/(main)/dashboard/crm/_components/dummy-graph.tsx (modificado, +26 −28)
+- src/app/(main)/dashboard/finance/_components/pie-chart-flow.tsx (adicionado, +53 −0)
+- src/app/(main)/dashboard/default/_components/data-table.tsx (modificado, +4 −47)
+- src/components/data-table/data-table.tsx (modificado, +32 −10)
+- src/app/(main)/auth/v2/layout.tsx (adicionado, +37 −0)
+- src/app/(main)/dashboard/crm/_components/overview-cards-4.tsx (adicionado, +37 −0)
+- src/app/(main)/dashboard/_components/sidebar/nav-main.tsx (modificado, +27 −6)
+- src/components/preferences-store-provider.tsx (adicionado, +31 −0)
+- src/app/(main)/dashboard/finance/page.tsx (adicionado, +30 −0)
+- src/app/(main)/dashboard/crm/_components/crm-section-cards.tsx (removido, +0 −26)
+- src/app/(main)/dashboard/default/_components/table-cell-viewer.tsx (modificado, +12 −13)
+- src/lib/utils.ts (modificado, +18 −5)
+- src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (modificado, +12 −9)
+- src/components/preferences-store.ts (adicionado, +18 −0)
+- src/app/(main)/auth/v1/login/page.tsx (modificado, +7 −10)
+- src/app/(main)/auth/v1/register/page.tsx (modificado, +7 −10)
+- src/styles/presets/soft-pop.css (modificado, +16 −0)
+- src/styles/presets/tangerine.css (modificado, +16 −0)
+- src/app/layout.tsx (modificado, +9 −6)
+- src/app/(main)/auth/_components/social-auth/google-button.tsx (adicionado, +14 −0)
+- next.config.mjs (modificado, +6 −6)
+- src/lib/theme-utils.ts (adicionado, +12 −0)
+- src/app/(main)/dashboard/default/_components/schema.ts (adicionado, +11 −0)
+- src/middleware.disabled.ts (renomeado, +6 −4)
+- src/app/(main)/dashboard/finance/_components/expense-summary.tsx (modificado, +5 −5)
+- src/app/(main)/dashboard/[...not-found]/page.tsx (adicionado, +9 −1)
+- src/app/(main)/dashboard/crm/_components/schema.ts (adicionado, +10 −0)
+- src/app/(main)/dashboard/finance/_components/financial-overview.tsx (modificado, +4 −4)
+- src/navigation/sidebar/sidebar-items.ts (modificado, +5 −3)
+- src/lib/layout-utils.ts (adicionado, +6 −0)
+- src/types/preferences/theme.ts (modificado, +2 −3)
+- eslint.config.mjs (modificado, +4 −1)
+- src/components/ui/calendar.tsx (modificado, +4 −1)
+- src/app/(main)/dashboard/about/page.tsx (removido, +0 −5)
+- src/app/(main)/dashboard/default/_components/columns.tsx (modificado, +3 −1)
+- src/components/simple-icon.tsx (modificado, +2 −1)
+- src/server/server-actions.ts (modificado, +2 −1)
+- src/stores/preferences/preferences-store.ts (renomeado, +1 −1)
+- .husky/pre-commit (modificado, +2 −0)
+- src/app/(main)/unauthorized/page.tsx (modificado, +1 −1)
+- src/app/(main)/auth/_components/login-form.tsx (renomeado, +1 −1)
+- src/app/(main)/auth/_components/register-form.tsx (renomeado, +1 −1)
+- public/avatars/jd.svg (adicionado e removido, +1 −1)
+- public/flags/au.svg (adicionado e removido, +1 −1)
+- public/flags/br.svg (adicionado e removido, +1 −1)
+- public/flags/cn.svg (removido, +0 −1)
+- public/flags/fr.svg (removido, +0 −1)
+- media/dashboard.png (modificado)
+- media/dashboard.jpg (adicionado e removido)
+- src/stores/preferences/preferences-provider.tsx (renomeado)
+- public/cards/chip.jpg (adicionado e removido)
+- public/avatars/a1.jpg (adicionado e removido)
+- public/avatars/a2.jpg (adicionado e removido)
+- public/avatars/mt.png (adicionado e removido)
+- src/app/(main)/dashboard/crm/_components/crm-charts.config.ts (adicionado)
 
 ### Contribuidores
 - @mmdj04
@@ -475,6 +1274,23 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 ### Novidades
 - Added **v1 auth screens** and code cleanup
 - Added **content layout switcher** for full width and centered layouts
+
+### Manutenção
+- Limpeza de código
+- Replace static icons with simple icons package & code cleanup
+- Improved **data table rendering** logic for better readability
+- Improved **data table**
+- Atualiza dependências
+- Migrated **shadcn components to** radix-ui mono package
+- Refactored **default dashboard components,** data table restructure & update deps
+- Added **search dialog and** refactor code
+- Discard last commit and revert changes
+- Atualiza o README
+- Updated **shadcn components and** dependencies
+- Updated **responsive margin logic** for centered layout and inset sidebar
+- Code cleanup & improve data table
+- Code cleanup & modified data table
+- Updated **data table implementation,** code clean & update deps
 
 ### Arquivos principais
 - package-lock.json (modificado, +1.203 −986)
@@ -492,7 +1308,68 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/_components/data-table/data-table.tsx (adicionado, +89 −2)
 - src/app/(main)/dashboard/_components/data-table/data-table-pagination.tsx (adicionado, +88 −0)
 - src/app/(main)/dashboard/about/components/data-table-pagination.tsx (removido, +0 −82)
-- +62 outros arquivos
+- src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (adicionado, +76 −0)
+- src/app/(main)/dashboard/default/_components/data-table.tsx (renomeado, +15 −58)
+- src/app/(main)/dashboard/crm/_components/overview-cards.tsx (adicionado, +71 −0)
+- src/app/(main)/auth/login/_components/login-form.tsx (removido, +0 −70)
+- src/app/(main)/dashboard/about/components/data-table-row-actions.tsx (removido, +0 −64)
+- src/app/(main)/dashboard/finance/_components/pie-chart-flow.tsx (adicionado, +53 −0)
+- src/app/(main)/dashboard/_components/data-table/data-table-toolbar.tsx (removido, +3 −49)
+- src/app/(main)/dashboard/crm/_components/dummy-graph.tsx (adicionado, +48 −0)
+- src/app/(main)/dashboard/layout.tsx (modificado, +29 −19)
+- src/app/(main)/auth/v1/login/page.tsx (adicionado, +48 −0)
+- src/app/(main)/auth/v1/register/page.tsx (adicionado, +48 −0)
+- src/app/(main)/dashboard/crm/_components/statcard.tsx (modificado, +12 −28)
+- src/app/(main)/dashboard/default/data-table.tsx (modificado, +3 −34)
+- src/lib/layout-preferences.ts (modificado, +22 −13)
+- src/app/(main)/dashboard/_components/data-table/drag-column.tsx (adicionado, +32 −0)
+- src/app/(main)/dashboard/finance/page.tsx (adicionado, +30 −0)
+- src/app/(main)/dashboard/_components/data-table/draggable-row.tsx (adicionado, +27 −0)
+- src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado, +23 −3)
+- src/app/(main)/auth/login/page.tsx (removido, +0 −26)
+- src/app/(main)/dashboard/default/_components/table-cell-viewer.tsx (modificado, +12 −13)
+- src/app/(main)/auth/layout.tsx (removido, +0 −24)
+- src/app/(main)/dashboard/default/page.tsx (modificado, +8 −14)
+- src/app/(main)/dashboard/crm/_components/radar-chart-label.tsx (modificado, +13 −8)
+- src/app/(main)/dashboard/crm/_components/tab-triggers.tsx (modificado, +10 −11)
+- src/components/data-table/data-table-column-header.tsx (modificado, +12 −7)
+- src/app/(main)/dashboard/default/_components/columns.tsx (modificado, +13 −4)
+- src/app/(main)/dashboard/_components/data-table/data-table-column-header.tsx (renomeado, +9 −6)
+- src/app/(main)/dashboard/default/_components/schema.ts (adicionado, +11 −0)
+- src/app/(main)/dashboard/_components/data-table/table-utils.ts (adicionado, +7 −0)
+- src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado, +2 −3)
+- src/components/ui/drawer.tsx (modificado, +4 −1)
+- src/app/(main)/dashboard/crm/_components/crm-section-cards.tsx (modificado, +2 −2)
+- src/components/ui/badge.tsx (modificado, +2 −2)
+- src/components/ui/breadcrumb.tsx (modificado, +2 −2)
+- src/app/(main)/dashboard/crm/_components/transaction.tsx (modificado, +1 −2)
+- src/navigation/sidebar/sidebar-items.ts (modificado, +1 −1)
+- src/app/(main)/dashboard/crm/page.tsx (modificado, +2 −0)
+- src/components/ui/accordion.tsx (modificado, +1 −1)
+- src/components/ui/alert-dialog.tsx (modificado, +1 −1)
+- src/components/ui/aspect-ratio.tsx (modificado, +1 −1)
+- src/components/ui/avatar.tsx (modificado, +1 −1)
+- src/app/(main)/dashboard/default/_components/section-cards.tsx (renomeado, +1 −1)
+- src/app/(main)/dashboard/_components/sidebar/account-switcher.tsx (modificado, +1 −1)
+- src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado, +1 −1)
+- .gitignore (modificado, +1 −1)
+- README.md (modificado, +1 −1)
+- components.json (modificado, +1 −1)
+- public/icons/bootstrap.svg (removido, +0 −1)
+- public/icons/figma.svg (removido, +0 −1)
+- public/icons/laravel.svg (removido, +0 −1)
+- public/avatars/jd.svg (adicionado, +1 −0)
+- public/flags/au.svg (adicionado, +1 −0)
+- public/cards/chip.jpg (adicionado)
+- public/cards/ae.jpg (adicionado e removido)
+- public/cards/mc.jpg (adicionado e removido)
+- public/cards/visa.png (adicionado e removido)
+- public/avatars/a1.jpg (adicionado)
+- public/avatars/a2.jpg (adicionado)
+- public/avatars/mt.png (adicionado)
+- src/app/(main)/dashboard/default/_components/chart-area-interactive.tsx (renomeado)
+- src/app/(main)/dashboard/default/_components/data.json (renomeado)
+- src/app/(main)/dashboard/_components/data-table/data-table-view-options.tsx (renomeado)
 
 ### Contribuidores
 - @Manasa0424
@@ -514,6 +1391,22 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 ### Correções
 - Fallback to collapsible layout on mobile sidebar
 
+### Refatorações
+- Removed **unnecessary file** (#4)
+
+### Manutenção
+- Atualiza dependências
+- Updated **deps, app config,** and minor code quality fixes
+- Limpeza de código
+- Updated **media image**
+- Added **eslint-plugin-sonarjs for commented-out** code detection, clean up code, and update dependencies
+- Restructure project components to _components and update dependencies
+- Updated **project file structure** with (main) and (external) route groups
+- Uncommented redirect code
+- Code cleanup, optimize sidebar re-renders, add prettier-plugin-tailwindcss, and lint codebase
+- Updated **preview image &** readme
+- Updated **README and preview** image
+
 ### Arquivos principais
 - package-lock.json (modificado, +7.304 −5.560)
 - src/app/(main)/dashboard/_components/sidebar/data-table.tsx (removido, +0 −705)
@@ -530,7 +1423,46 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - eslint.config.mjs (modificado, +24 −30)
 - src/app/(main)/dashboard/_components/sidebar/site-header.tsx (removido, +17 −31)
 - src/app/(main)/dashboard/_components/sidebar/sidebar-breadcrumbs.tsx (removido, +0 −40)
-- +40 outros arquivos
+- src/components/icons/logo.tsx (removido, +0 −38)
+- src/app/(main)/dashboard/layout.tsx (modificado, +27 −10)
+- next.config.mjs (modificado, +18 −18)
+- src/app/dashboard/components/sidebar/sidebar-header.tsx (removido, +0 −32)
+- src/app/layout.tsx (modificado, +16 −13)
+- src/utils/roles.ts (removido, +0 −26)
+- src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (renomeado, +8 −14)
+- src/app/(main)/dashboard/_components/sidebar/nav-user.tsx (modificado, +11 −10)
+- src/data/users.ts (adicionado, +20 −0)
+- src/server/server-actions.ts (adicionado, +20 −0)
+- src/app/auth/login/components/login-form.tsx (modificado, +10 −10)
+- src/lib/layout-preferences.ts (adicionado, +19 −0)
+- src/components/ui/dialog.tsx (modificado, +13 −5)
+- src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (adicionado, +16 −0)
+- src/lib/utils.ts (modificado, +14 −0)
+- src/config/app-config.ts (adicionado, +11 −0)
+- src/components/ui/command.tsx (modificado, +8 −1)
+- src/app/(main)/dashboard/_components/sidebar/nav-documents.tsx (renomeado, +4 −4)
+- src/app/auth/login/page.tsx (modificado, +4 −4)
+- src/config/project-config.ts (removido, +0 −6)
+- src/app/(main)/auth/layout.tsx (renomeado, +1 −5)
+- src/app/(main)/auth/login/_components/login-form.tsx (renomeado, +0 −5)
+- src/app/auth/layout.tsx (modificado, +2 −2)
+- components.json (modificado, +2 −2)
+- postcss.config.mjs (modificado, +2 −2)
+- .prettierrc (modificado, +2 −1)
+- src/components/ui/resizable.tsx (modificado, +1 −1)
+- src/components/ui/separator.tsx (modificado, +1 −1)
+- src/components/ui/sidebar.tsx (modificado, +1 −1)
+- src/app/(main)/auth/login/page.tsx (renomeado, +1 −1)
+- src/utils/routes.ts (removido, +0 −1)
+- media/dashboard.png (renomeado)
+- public/avatars/arhamkhnz.png (adicionado)
+- src/app/(external)/page.tsx (renomeado)
+- src/app/(main)/auth/login/components/login-form.tsx (renomeado)
+- src/app/(main)/dashboard/about/page.tsx (renomeado)
+- src/app/(main)/dashboard/components/sidebar/app-sidebar.tsx (renomeado)
+- src/app/(main)/dashboard/components/sidebar/chart-area-interactive.tsx (renomeado)
+- src/app/(main)/dashboard/components/sidebar/data-table.tsx (renomeado)
+- media/dashboard-lg.png (modificado)
 
 ### Contribuidores
 - @mmdj04
@@ -540,6 +1472,9 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 ## 2025-04
 
 **Resumo**: 1 commits • 3 arquivos • +1.210 −2.109 • 1 manutenção
+
+### Manutenção
+- Updated **dependencies & shadcn** components
 
 ### Arquivos principais
 - package-lock.json (modificado, +1.163 −2.063)
@@ -558,6 +1493,14 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 ### Novidades
 - Redesign dashboard, cleanup code & update color scheme
 
+### Manutenção
+- Updated **dependencies & shadcn** components
+- Enabled **bracket spacing in** Prettier config
+- Enforce context value memoization eslint rule
+- Updated **project dependencies &** refresh shadcn components
+- Enforce no-duplicate-imports rule and lint code
+- Updated **dependencies**
+
 ### Arquivos principais
 - package-lock.json (modificado, +562 −318)
 - package.json (modificado, +17 −16)
@@ -574,7 +1517,13 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/middleware/auth-middleware.ts (modificado, +1 −2)
 - src/components/ui/hover-card.tsx (modificado, +1 −1)
 - src/components/ui/popover.tsx (modificado, +1 −1)
-- +7 outros arquivos
+- src/components/ui/select.tsx (modificado, +1 −1)
+- src/components/ui/chart.tsx (modificado, +1 −1)
+- README.md (modificado, +1 −1)
+- src/app/auth/layout.tsx (modificado, +1 −1)
+- src/app/dashboard/about/page.tsx (modificado, +0 −2)
+- src/components/ui/navigation-menu.tsx (modificado, +1 −1)
+- media/dashboard-lg.png (modificado)
 
 ### Contribuidores
 - @mmdj04
@@ -584,6 +1533,10 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 ## 2025-02
 
 **Resumo**: 2 commits • 7 arquivos • +677 −601 • 2 manutenção
+
+### Manutenção
+- Updated **eslint config**
+- Updated **shadcn components &** packages to latest version
 
 ### Arquivos principais
 - package-lock.json (modificado, +596 −543)
@@ -602,6 +1555,10 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 ## 2025-01
 
 **Resumo**: 2 commits • 9 arquivos • +881 −382 • 2 manutenção
+
+### Manutenção
+- Updated **eslint config for** file naming conventions and linting rules, linted codebase
+- Updated **dependencies & code** cleanup
 
 ### Arquivos principais
 - package-lock.json (modificado, +833 −319)
@@ -622,6 +1579,11 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 ## 2024-12
 
 **Resumo**: 3 commits • 8 arquivos • +1.815 −1.269 • 3 manutenção
+
+### Manutenção
+- Updated **dependencies**
+- Updated **ESLint configuration for** function spacing rules & lint code
+- Updated **dependencies, eslint &** prettier config, and lint code
 
 ### Arquivos principais
 - package-lock.json (modificado, +1.705 −1.172)
@@ -649,6 +1611,16 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 ### Correções
 - Removed **SonarJS configuration to** resolve ESLint compatibility issues
 
+### Manutenção
+- Updated **dependencies to latest** versions
+- Updated **package-lock and lint** code
+- Updated **dependencies**
+- Updated **eslint config**
+- Updated **Next.js config to** remove comments in production build
+- Updated **sidebar items, dashboard** layout, and style improvements
+- Refactored **code and update** Shadcn components
+- Updated **dependencies, refactor sidebar** code & update Shadcn components
+
 ### Arquivos principais
 - package-lock.json (modificado, +19.716 −15.998)
 - eslint.config.mjs (adicionado, +252 −15)
@@ -665,7 +1637,14 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - next.config.mjs (modificado, +5 −1)
 - src/app/dashboard/components/sidebar/sidebarNavigation.tsx (renomeado, +3 −3)
 - src/app/dashboard/components/sidebar/team-switcher.tsx (renomeado, +3 −3)
-- +8 outros arquivos
+- src/components/ui/accordion.tsx (modificado, +2 −3)
+- .prettierrc (modificado, +2 −2)
+- src/components/ui/calendar.tsx (modificado, +2 −2)
+- components.json (modificado, +2 −1)
+- src/components/ui/breadcrumb.tsx (modificado, +1 −2)
+- src/app/auth/login/components/LoginForm.tsx (modificado, +1 −1)
+- src/app/dashboard/layout.tsx (modificado, +1 −1)
+- .husky/pre-commit (adicionado, +1 −0)
 
 ### Contribuidores
 - @mmdj04
@@ -678,6 +1657,14 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 
 ### Novidades
 - Added **shadcn sidebar component,** update to new-york style, update dependencies, and remove custom sidebar
+
+### Manutenção
+- Limpeza de código
+- Updated **version**
+- Atualiza o README
+- Updated **dashboard preview image**
+- Updated **dependencies**
+- Updated **dependencies, UI components,** and app config
 
 ### Arquivos principais
 - package-lock.json (modificado, +1.206 −1.191)
@@ -695,7 +1682,8 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/components/ui/toaster.tsx (modificado, +1 −1)
 - .prettierignore (modificado, +0 −1)
 - .gitignore (modificado, +1 −0)
-- +2 outros arquivos
+- media/dashboard-lg.png (modificado)
+- media/dashboard-sm.gif (removido)
 
 ### Contribuidores
 - @mmdj04
@@ -716,6 +1704,17 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Improved **responsiveness of sidebar** headings in collapsed state
 - Root path redirect
 
+### Manutenção
+- Updated **ESLint config and** apply linting corrections
+- Updated **branding**
+- Updated **dashboard preview image** and README
+- Refactored **code & fix** sidebar styling issues
+- Fixed **root path redirect**
+- Code refactor & minor style adjustments
+- Removed **github workflow**
+- Minor changes
+- Added **project media**
+
 ### Arquivos principais
 - package-lock.json (adicionado, +7.921 −0)
 - .eslintrc.json (adicionado, +103 −2)
@@ -732,7 +1731,20 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/navigation/sidebar-items/sidebarItems.tsx (modificado, +10 −15)
 - LICENSE (adicionado, +21 −0)
 - components.json (adicionado, +17 −0)
-- +14 outros arquivos
+- src/app/dashboard/layout.tsx (modificado, +9 −6)
+- src/hooks/useVariantBasedOnRoute.ts (modificado, +12 −1)
+- .prettierignore (adicionado, +13 −0)
+- .prettierrc (adicionado, +7 −0)
+- .eslintignore (adicionado, +6 −0)
+- src/app/auth/layout.tsx (modificado, +2 −2)
+- src/app/dashboard/components/account-switcher.tsx (modificado, +2 −2)
+- src/app/page.tsx (modificado, +2 −2)
+- next.config.mjs (adicionado, +4 −0)
+- src/app/auth/login/components/LoginForm.tsx (modificado, +2 −1)
+- src/app/layout.tsx (modificado, +1 −1)
+- src/app/auth/login/page.tsx (modificado, +1 −0)
+- media/dashboard-lg.png (adicionado)
+- media/dashboard-sm.gif (adicionado)
 
 ### Contribuidores
 - @mmdj04
