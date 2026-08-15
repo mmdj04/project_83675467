@@ -26,6 +26,61 @@ jobs:
             const UPSTREAM_REPO = "next-shadcn-admin-dashboard";
             const changelogPath = "changelog.md";
 
+            const RECENT_LIMIT = 25;
+            const MAX_FILES = 8;
+
+            const STATUS_LABEL = {
+              added: "adicionado",
+              removed: "removido",
+              modified: "modificado",
+              renamed: "renomeado",
+              copied: "copiado",
+              changed: "alterado",
+              unchanged: "sem mudança",
+            };
+
+            const entryLine = (date, short, message) =>
+              `- ${date} — \`${short}\` — ${message}`;
+            const detailLines = (files) => {
+              const shown = (files || []).slice(0, MAX_FILES).map((f) => {
+                const st = STATUS_LABEL[f.status] || f.status;
+                const stats =
+                  f.additions > 0 || f.deletions > 0
+                    ? ` (+${f.additions} −${f.deletions})`
+                    : "";
+                return `    - ${f.filename} (${st}${stats})`;
+              });
+              if ((files || []).length > MAX_FILES) {
+                const rest = files.slice(MAX_FILES);
+                const a = rest.reduce((s, f) => s + f.additions, 0);
+                const d = rest.reduce((s, f) => s + f.deletions, 0);
+                shown.push(
+                  `    - +${files.length - MAX_FILES} outros arquivos (+${a} −${d})`,
+                );
+              }
+              return shown;
+            };
+
+            const current = fs.readFileSync(changelogPath, "utf8");
+
+            const known = new Map();
+            {
+              const lines = current.split("\n");
+              for (let i = 0; i < lines.length; i++) {
+                const m = lines[i].match(
+                  /^- (\d{4}-\d{2}-\d{2}) — `([a-f0-9]{7})` — (.+)$/,
+                );
+                if (!m) continue;
+                const details = [];
+                let j = i + 1;
+                while (j < lines.length && /^\s+\S/.test(lines[j])) {
+                  details.push(lines[j]);
+                  j++;
+                }
+                known.set(m[2], { date: m[1], message: m[3], details });
+              }
+            }
+
             const allCommits = [];
             for (let page = 1; page <= 50; page++) {
               const { data } = await github.rest.repos.listCommits({
@@ -39,16 +94,50 @@ jobs:
               if (data.length < 100) break;
             }
 
+            const recentShorts = allCommits
+              .slice(0, RECENT_LIMIT)
+              .map((c) => c.sha.slice(0, 7));
+            const needDetails = allCommits
+              .slice(0, RECENT_LIMIT)
+              .filter((c) => {
+                const k = known.get(c.sha.slice(0, 7));
+                return !k || k.details.length === 0;
+              });
+
+            const detailsMap = new Map();
+            for (let i = 0; i < needDetails.length; i += 10) {
+              const chunk = needDetails.slice(i, i + 10);
+              const results = await Promise.all(
+                chunk.map(async (c) => {
+                  const { data } = await github.rest.repos.getCommit({
+                    owner: UPSTREAM_OWNER,
+                    repo: UPSTREAM_REPO,
+                    sha: c.sha,
+                  });
+                  return data.files || [];
+                }),
+              );
+              results.forEach((files, j) =>
+                detailsMap.set(chunk[j].sha.slice(0, 7), files),
+              );
+            }
+
             const byMonth = new Map();
-            const dates = [];
             for (const c of allCommits) {
+              const short = c.sha.slice(0, 7);
               const date = c.commit.author.date.slice(0, 10);
               const month = date.slice(0, 7);
-              dates.push(date);
+              const message = c.commit.message.split("\n")[0];
+              const k = known.get(short);
+              const isRecent = recentShorts.includes(short);
+              const details = isRecent
+                ? k && k.details.length > 0
+                  ? k.details
+                  : detailLines(detailsMap.get(short))
+                : [];
+              const block = [entryLine(date, short, message), ...details];
               if (!byMonth.has(month)) byMonth.set(month, []);
-              byMonth
-                .get(month)
-                .push(`- ${date} — \`${c.sha.slice(0, 7)}\` — ${c.commit.message.split("\n")[0]}`);
+              byMonth.get(month).push(block.join("\n"));
             }
 
             const monthSet = [...byMonth.keys()].sort();
@@ -58,7 +147,9 @@ jobs:
             let [y, m] = minMonth.split("-").map(Number);
             const [maxY, maxM] = maxMonth.split("-").map(Number);
             while (y < maxY || (y === maxY && m <= maxM)) {
-              allMonths.push(`${String(y).padStart(4, "0")}-${String(m).padStart(2, "0")}`);
+              allMonths.push(
+                `${String(y).padStart(4, "0")}-${String(m).padStart(2, "0")}`,
+              );
               m++;
               if (m > 12) {
                 m = 1;
@@ -77,22 +168,20 @@ jobs:
             const content =
               "# Changelog\n\n" +
               "Histórico do projeto organizado por mês de commit, do mais recente ao mais antigo. " +
-              "Cada entrada representa um commit do projeto; commits de merge também são mantidos.\n\n" +
+              "Cada entrada representa um commit do projeto; commits de merge também são mantidos. " +
+              "Os 25 commits mais recentes listam os arquivos adicionados/removidos.\n\n" +
               sections.join("\n\n") +
               "\n";
-
-            const current = fs.readFileSync(changelogPath, "utf8");
 
             if (current === content) {
               core.notice("Changelog já está em dia com o upstream.");
               return;
             }
 
-            const diffLines = current.split("\n");
             const contentLines = content.split("\n");
-            let added = 0;
             const contentSet = new Set(contentLines);
-            for (const line of diffLines) {
+            let added = 0;
+            for (const line of current.split("\n")) {
               if (/^- \d{4}-\d{2}-\d{2} —/.test(line) && !contentSet.has(line)) {
                 added++;
               }
@@ -100,13 +189,25 @@ jobs:
 
             fs.writeFileSync(changelogPath, content);
 
-            await exec.exec("git", ["config", "user.name", "github-actions[bot]"]);
-            await exec.exec("git", ["config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com"]);
+            await exec.exec("git", [
+              "config",
+              "user.name",
+              "github-actions[bot]",
+            ]);
+            await exec.exec("git", [
+              "config",
+              "user.email",
+              "41898282+github-actions[bot]@users.noreply.github.com",
+            ]);
             await exec.exec("git", ["add", changelogPath]);
-            await exec.exec("git", ["commit", "-m", `docs: sync changelog with full upstream history (${added} new entries)`]);
+            await exec.exec("git", [
+              "commit",
+              "-m",
+              `docs: sync changelog with file changes (${added} new entries)`,
+            ]);
             await exec.exec("git", ["push"]);
 
-            const oldSet = new Set(diffLines);
+            const oldSet = new Set(current.split("\n"));
             const firstNew = contentLines.filter(
               (l) => /^- \d{4}-\d{2}-\d{2} —/.test(l) && !oldSet.has(l),
             ).slice(0, 50);
@@ -116,7 +217,9 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: `Upstream: changelog atualizado (${added} nova(s) entrada(s))`,
-              body: `Changelog sincronizado com o histórico completo de [${UPSTREAM_OWNER}/${UPSTREAM_REPO}](https://github.com/${UPSTREAM_OWNER}/${UPSTREAM_REPO}/commits/main/).\n\nÚltimo commit upstream: [\`${latest.sha.slice(0, 7)}\`](https://github.com/${UPSTREAM_OWNER}/${UPSTREAM_REPO}/commit/${latest.sha}) — ${latest.commit.author.date.slice(0, 10)} — ${latest.commit.message.split("\n")[0]}\n\n${
-                added > 0 ? `Entradas novas ou corrigidas (amostra):\n\n${firstNew.join("\n")}\n\n` : ""
+              body: `Changelog sincronizado com o histórico completo (incluindo arquivos adicionados/removidos de cada commit) de [${UPSTREAM_OWNER}/${UPSTREAM_REPO}](https://github.com/${UPSTREAM_OWNER}/${UPSTREAM_REPO}/commits/main/).\n\nÚltimo commit upstream: [\`${latest.sha.slice(0, 7)}\`](https://github.com/${UPSTREAM_OWNER}/${UPSTREAM_REPO}/commit/${latest.sha}) — ${latest.commit.author.date.slice(0, 10)} — ${latest.commit.message.split("\n")[0]}\n\n${
+                added > 0
+                  ? `Entradas novas (amostra):\n\n${firstNew.join("\n")}\n\n`
+                  : ""
               }Verifique se as dependências precisam ser atualizadas (\`npm install\`).`,
             });
