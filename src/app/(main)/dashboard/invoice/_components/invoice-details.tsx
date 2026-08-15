@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { format, parseISO } from "date-fns";
 import { CalendarIcon, Hash } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Controller, useFormContext } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
@@ -14,30 +15,31 @@ import type { InvoiceFormValues } from "./data";
 
 const dateFields: Array<{
   id: string;
-  label: string;
+  labelKey: "invoice.issuedDate" | "invoice.dueDate";
   name: "issuedDate" | "paymentDueDate";
 }> = [
   {
     id: "issued-date",
-    label: "Issued Date",
+    labelKey: "invoice.issuedDate",
     name: "issuedDate",
   },
   {
     id: "payment-due-date",
-    label: "Due Date",
+    labelKey: "invoice.dueDate",
     name: "paymentDueDate",
   },
 ];
 
 export function InvoiceDetails() {
   const { control, register } = useFormContext<InvoiceFormValues>();
+  const t = useTranslations();
 
   return (
     <section className="flex flex-col gap-3">
       <FieldGroup>
         <Field className="gap-1">
           <FieldLabel className="text-xs" htmlFor="reference-number">
-            Reference Number
+            {t("invoice.referenceNumber")}
           </FieldLabel>
           <InputGroup>
             <InputGroupInput id="reference-number" {...register("referenceNumber")} />
@@ -56,7 +58,7 @@ export function InvoiceDetails() {
               render={({ field }) => (
                 <Field className="gap-1">
                   <FieldLabel className="text-xs" htmlFor={dateField.id}>
-                    {dateField.label}
+                    {t(dateField.labelKey)}
                   </FieldLabel>
                   <DatePicker id={dateField.id} value={field.value} onChange={field.onChange} />
                 </Field>
@@ -70,6 +72,7 @@ export function InvoiceDetails() {
 }
 
 function DatePicker({ id, value, onChange }: { id: string; value: string; onChange: (value: string) => void }) {
+  const t = useTranslations();
   const [open, setOpen] = React.useState(false);
   const date = parseDateValue(value);
 
@@ -82,7 +85,7 @@ function DatePicker({ id, value, onChange }: { id: string; value: string; onChan
           data-empty={!date}
           className="w-full justify-between text-left font-normal data-[empty=true]:text-muted-foreground"
         >
-          {date ? format(date, "PPP") : <span>Pick a date</span>}
+          {date ? format(date, "PPP") : <span>{t("invoice.pickDate")}</span>}
           <CalendarIcon className="text-muted-foreground" />
         </Button>
       </PopoverTrigger>

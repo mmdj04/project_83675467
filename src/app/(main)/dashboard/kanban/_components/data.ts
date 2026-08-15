@@ -1,11 +1,11 @@
 import type { BoardState, Column, TaskOwnerProfile, TaskTeam } from "./types";
 
 export const columns = [
-  { id: "ideas", title: "Ideas" },
-  { id: "planned", title: "Planned" },
-  { id: "building", title: "Building" },
-  { id: "qa", title: "QA" },
-  { id: "shipped", title: "Shipped" },
+  { id: "ideas", title: "Ideas", labelKey: "kanban.columnTitleIdeas" },
+  { id: "planned", title: "Planned", labelKey: "kanban.columnTitlePlanned" },
+  { id: "building", title: "Building", labelKey: "kanban.columnTitleBuilding" },
+  { id: "qa", title: "QA", labelKey: "kanban.columnTitleQa" },
+  { id: "shipped", title: "Shipped", labelKey: "kanban.columnTitleShipped" },
 ] as const satisfies readonly Column[];
 
 export const columnIds = columns.map((column) => column.id);

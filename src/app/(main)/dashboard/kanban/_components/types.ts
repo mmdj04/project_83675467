@@ -3,6 +3,7 @@ export type ColumnId = "ideas" | "planned" | "building" | "qa" | "shipped";
 export type Column = {
   id: ColumnId;
   title: string;
+  labelKey: string;
 };
 
 export type TaskTeam =

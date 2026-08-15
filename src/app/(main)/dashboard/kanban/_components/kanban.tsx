@@ -24,6 +24,7 @@ import {
   Table2,
   Upload,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { ButtonGroup, ButtonGroupSeparator } from "@/components/ui/button-group";
@@ -70,6 +71,7 @@ function isTaskDragData(value: unknown): value is TaskDragData {
 }
 
 export function Kanban({ initialBoard }: KanbanProps) {
+  const t = useTranslations();
   const [board, setBoard] = React.useState<BoardState>(initialBoard);
   const [columnOrder, setColumnOrder] = React.useState<ColumnId[]>(columnIds);
   const boardBeforeDrag = React.useRef<BoardState>(initialBoard);
@@ -115,58 +117,58 @@ export function Kanban({ initialBoard }: KanbanProps) {
           <TabsList className="w-full *:data-[slot=tabs-trigger]:flex-1 sm:w-fit sm:*:data-[slot=tabs-trigger]:flex-none">
             <TabsTrigger value="board" className="gap-2">
               <KanbanIcon />
-              Board
+              {t("kanban.tabBoard")}
             </TabsTrigger>
             <TabsTrigger value="list" className="gap-2">
               <List />
-              List
+              {t("kanban.tabList")}
             </TabsTrigger>
             <TabsTrigger value="table" className="gap-2">
               <Table2 />
-              Table
+              {t("kanban.tabTable")}
             </TabsTrigger>
           </TabsList>
         </Tabs>
 
         <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center 2xl:justify-end">
           <InputGroup className="min-w-0 sm:w-64 2xl:w-48">
-            <InputGroupInput type="search" placeholder="Search tasks" />
+            <InputGroupInput type="search" placeholder={t("kanban.searchTasks")} />
             <InputGroupAddon>
               <Search />
             </InputGroupAddon>
           </InputGroup>
           <Button variant="outline" className="w-full sm:w-auto">
             <SlidersHorizontal data-icon="inline-start" />
-            Filter
+            {t("kanban.filter")}
           </Button>
           <Button variant="outline" className="w-full sm:w-auto">
             <ArrowUpDown data-icon="inline-start" />
-            Sort
+            {t("kanban.sort")}
           </Button>
           <ButtonGroup className="w-full sm:w-fit">
             <Button className="flex-1 sm:flex-none">
               <Plus data-icon="inline-start" />
-              Add task
+              {t("kanban.addTask")}
             </Button>
             <ButtonGroupSeparator />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button aria-label="Open add task menu">
+                <Button aria-label={t("kanban.openAddTaskMenu")}>
                   <ChevronDown />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
                 <DropdownMenuItem>
                   <Upload />
-                  Import CSV
+                  {t("kanban.importCsv")}
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <LayoutTemplate />
-                  Add from template
+                  {t("kanban.addFromTemplate")}
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Bot />
-                  Create automation
+                  {t("kanban.createAutomation")}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

@@ -1,4 +1,5 @@
 import { Download, FileText, LockKeyhole } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -6,28 +7,29 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 
 import type { ProfileDocument } from "./profile-data";
 
-export function ProfileDocuments({ documents }: { documents: ProfileDocument[] }) {
+export async function ProfileDocuments({ documents }: { documents: ProfileDocument[] }) {
+  const t = await getTranslations();
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between gap-4">
-        <h2 className="font-heading font-medium text-base">Documents</h2>
+        <h2 className="font-heading font-medium text-base">{t("profile.documentsTitle")}</h2>
         <Button size="sm">
           <FileText data-icon="inline-start" />
-          Add document
+          {t("profile.addDocument")}
         </Button>
       </div>
 
       <Table className="border-y">
-        <TableCaption className="sr-only">Documents attached to this contractor profile</TableCaption>
+        <TableCaption className="sr-only">{t("profile.documentsAria")}</TableCaption>
         <TableHeader className="[&_th]:h-8">
           <TableRow className="hover:bg-transparent">
             <TableHead className="w-2/5">
-              <span className="sr-only">Document</span>
+              <span className="sr-only">{t("profile.documentColumn")}</span>
             </TableHead>
-            <TableHead>Category</TableHead>
-            <TableHead>Updated</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead className="text-right">Access</TableHead>
+            <TableHead>{t("profile.categoryColumn")}</TableHead>
+            <TableHead>{t("profile.updatedColumn")}</TableHead>
+            <TableHead>{t("profile.statusColumn")}</TableHead>
+            <TableHead className="text-right">{t("profile.accessColumn")}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -43,12 +45,19 @@ export function ProfileDocuments({ documents }: { documents: ProfileDocument[] }
               </TableCell>
               <TableCell className="text-right">
                 {document.isRestricted ? (
-                  <span className="inline-flex items-center gap-1.5 text-muted-foreground text-xs" title="Restricted">
+                  <span
+                    className="inline-flex items-center gap-1.5 text-muted-foreground text-xs"
+                    title={t("profile.restricted")}
+                  >
                     <LockKeyhole aria-hidden="true" className="size-3.5" />
-                    Restricted
+                    {t("profile.restricted")}
                   </span>
                 ) : (
-                  <Button aria-label={`Download ${document.name}`} size="icon-sm" variant="ghost">
+                  <Button
+                    aria-label={t("profile.downloadDocument", { name: document.name })}
+                    size="icon-sm"
+                    variant="ghost"
+                  >
                     <Download />
                   </Button>
                 )}

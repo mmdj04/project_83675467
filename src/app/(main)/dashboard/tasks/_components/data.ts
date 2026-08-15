@@ -720,14 +720,17 @@ export const labels = [
   {
     value: "bug",
     label: "Bug",
+    labelKey: "tasks.labelBug",
   },
   {
     value: "feature",
     label: "Feature",
+    labelKey: "tasks.labelFeature",
   },
   {
     value: "documentation",
     label: "Documentation",
+    labelKey: "tasks.labelDocumentation",
   },
 ];
 
@@ -735,26 +738,31 @@ export const statuses = [
   {
     value: "backlog",
     label: "Backlog",
+    labelKey: "tasks.statusBacklog",
     icon: HelpCircle,
   },
   {
     value: "todo",
     label: "Todo",
+    labelKey: "tasks.statusTodo",
     icon: Circle,
   },
   {
     value: "in progress",
     label: "In Progress",
+    labelKey: "tasks.statusInProgress",
     icon: Timer,
   },
   {
     value: "done",
     label: "Done",
+    labelKey: "tasks.statusDone",
     icon: CheckCircle,
   },
   {
     value: "canceled",
     label: "Canceled",
+    labelKey: "tasks.statusCanceled",
     icon: CircleOff,
   },
 ];
@@ -763,16 +771,19 @@ export const priorities = [
   {
     label: "Low",
     value: "low",
+    labelKey: "tasks.priorityLow",
     icon: ArrowDown,
   },
   {
     label: "Medium",
     value: "medium",
+    labelKey: "tasks.priorityMedium",
     icon: ArrowRight,
   },
   {
     label: "High",
     value: "high",
+    labelKey: "tasks.priorityHigh",
     icon: ArrowUp,
   },
 ];

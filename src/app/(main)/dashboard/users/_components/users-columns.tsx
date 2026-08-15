@@ -3,6 +3,7 @@ import type { ColumnDef } from "@tanstack/react-table";
 import { Subscribe } from "@tanstack/react-table";
 import { parse } from "date-fns";
 import { Check, Clock, MoreHorizontal, X } from "lucide-react";
+import type { useTranslations } from "next-intl";
 
 import { Avatar, AvatarBadge, AvatarFallback, AvatarGroup, AvatarGroupCount } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -19,6 +20,8 @@ import type { DataTableFeatures } from "@/lib/data-table-features";
 import { cn, getInitials } from "@/lib/utils";
 
 import { statusMeta, type UserRow } from "./data";
+
+type Translator = ReturnType<typeof useTranslations>;
 
 function RoleCell({ role, team }: { role: string; team: string }) {
   return (
@@ -115,121 +118,123 @@ function WorkspaceCell({ workspaces }: { workspaces: string[] }) {
   );
 }
 
-export const usersColumns: ColumnDef<DataTableFeatures, UserRow>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <div className="flex items-center justify-center">
-        <Subscribe
-          source={table.atoms.rowSelection}
-          selector={() =>
-            table.getIsAllPageRowsSelected() ||
-            (table.getIsSomePageRowsSelected() && !table.getIsAllPageRowsSelected() && "indeterminate")
-          }
-        >
-          {(checked) => (
-            <Checkbox
-              aria-label="Select all users"
-              checked={checked}
-              onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-            />
-          )}
-        </Subscribe>
-      </div>
-    ),
-    cell: ({ row }) => (
-      <div className="flex items-center justify-center">
-        <Subscribe source={row.table.atoms.rowSelection} selector={(selection) => Boolean(selection?.[row.id])}>
-          {(checked) => (
-            <Checkbox
-              aria-label={`Select ${row.original.name}`}
-              checked={checked}
-              onCheckedChange={(value) => row.toggleSelected(!!value)}
-            />
-          )}
-        </Subscribe>
-      </div>
-    ),
-    enableHiding: false,
-    enableSorting: false,
-  },
-  {
-    id: "search",
-    accessorFn: (row) => `${row.name} ${row.email}`,
-    filterFn: "includesString",
-    enableHiding: true,
-  },
-  {
-    accessorKey: "name",
-    header: "User",
-    cell: ({ row }) => (
-      <div className="flex items-center gap-3">
-        <AvatarCell name={row.original.name} lastActive={row.original.lastActive} />
-        <div className="min-w-0">
-          <div className="truncate font-medium text-foreground text-sm">{row.original.name}</div>
-          <div className="truncate text-muted-foreground text-sm">{row.original.email}</div>
+export function createUsersColumns(t: Translator): ColumnDef<DataTableFeatures, UserRow>[] {
+  return [
+    {
+      id: "select",
+      header: ({ table }) => (
+        <div className="flex items-center justify-center">
+          <Subscribe
+            source={table.atoms.rowSelection}
+            selector={() =>
+              table.getIsAllPageRowsSelected() ||
+              (table.getIsSomePageRowsSelected() && !table.getIsAllPageRowsSelected() && "indeterminate")
+            }
+          >
+            {(checked) => (
+              <Checkbox
+                aria-label={t("users.selectAll")}
+                checked={checked}
+                onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+              />
+            )}
+          </Subscribe>
         </div>
-      </div>
-    ),
-  },
-  {
-    accessorKey: "role",
-    header: "Role / Team",
-    filterFn: "equalsString",
-    cell: ({ row }) => <RoleCell role={row.original.role} team={row.original.team} />,
-  },
-  {
-    accessorKey: "team",
-    header: "Team",
-    filterFn: "equalsString",
-    cell: ({ row }) => <div className="text-sm">{row.original.team}</div>,
-  },
-  {
-    accessorKey: "workspace",
-    header: "Workspace",
-    filterFn: "arrIncludes",
-    cell: ({ row }) => <WorkspaceCell workspaces={row.original.workspace} />,
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
-    filterFn: "equalsString",
-    cell: ({ row }) => <StatusBadge status={row.original.status} />,
-  },
-  {
-    id: "joinedDate",
-    accessorFn: (row) => parse(row.joinedDate, "dd MMM yyyy, h:mm a", new Date()).getTime(),
-    header: "Joined date",
-    cell: ({ row }) => <div className="text-foreground text-sm">{row.original.joinedDate}</div>,
-  },
-  {
-    id: "actions",
-    header: () => <div className="text-right">Actions</div>,
-    cell: ({ row }) => (
-      <div className="text-right">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              aria-label={`Open actions for ${row.original.name}`}
-              className="size-8 rounded-md text-muted-foreground hover:bg-muted/50"
-              size="icon-sm"
-              variant="ghost"
-            >
-              <MoreHorizontal className="size-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem>View profile</DropdownMenuItem>
-            <DropdownMenuItem>Edit user</DropdownMenuItem>
-            <DropdownMenuItem>Manage team</DropdownMenuItem>
-            <DropdownMenuItem>Resend invite</DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem variant="destructive">Deactivate user</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
-    ),
-    enableHiding: false,
-    enableSorting: false,
-  },
-];
+      ),
+      cell: ({ row }) => (
+        <div className="flex items-center justify-center">
+          <Subscribe source={row.table.atoms.rowSelection} selector={(selection) => Boolean(selection?.[row.id])}>
+            {(checked) => (
+              <Checkbox
+                aria-label={t("users.selectUser", { name: row.original.name })}
+                checked={checked}
+                onCheckedChange={(value) => row.toggleSelected(!!value)}
+              />
+            )}
+          </Subscribe>
+        </div>
+      ),
+      enableHiding: false,
+      enableSorting: false,
+    },
+    {
+      id: "search",
+      accessorFn: (row) => `${row.name} ${row.email}`,
+      filterFn: "includesString",
+      enableHiding: true,
+    },
+    {
+      accessorKey: "name",
+      header: t("users.columnUser"),
+      cell: ({ row }) => (
+        <div className="flex items-center gap-3">
+          <AvatarCell name={row.original.name} lastActive={row.original.lastActive} />
+          <div className="min-w-0">
+            <div className="truncate font-medium text-foreground text-sm">{row.original.name}</div>
+            <div className="truncate text-muted-foreground text-sm">{row.original.email}</div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      accessorKey: "role",
+      header: t("users.columnRoleTeam"),
+      filterFn: "equalsString",
+      cell: ({ row }) => <RoleCell role={row.original.role} team={row.original.team} />,
+    },
+    {
+      accessorKey: "team",
+      header: t("users.columnTeam"),
+      filterFn: "equalsString",
+      cell: ({ row }) => <div className="text-sm">{row.original.team}</div>,
+    },
+    {
+      accessorKey: "workspace",
+      header: t("users.columnWorkspace"),
+      filterFn: "arrIncludes",
+      cell: ({ row }) => <WorkspaceCell workspaces={row.original.workspace} />,
+    },
+    {
+      accessorKey: "status",
+      header: t("users.columnStatus"),
+      filterFn: "equalsString",
+      cell: ({ row }) => <StatusBadge status={row.original.status} />,
+    },
+    {
+      id: "joinedDate",
+      accessorFn: (row) => parse(row.joinedDate, "dd MMM yyyy, h:mm a", new Date()).getTime(),
+      header: t("users.columnJoinedDate"),
+      cell: ({ row }) => <div className="text-foreground text-sm">{row.original.joinedDate}</div>,
+    },
+    {
+      id: "actions",
+      header: () => <div className="text-right">{t("users.columnActions")}</div>,
+      cell: ({ row }) => (
+        <div className="text-right">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                aria-label={t("users.openActions", { name: row.original.name })}
+                className="size-8 rounded-md text-muted-foreground hover:bg-muted/50"
+                size="icon-sm"
+                variant="ghost"
+              >
+                <MoreHorizontal className="size-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>{t("users.actionViewProfile")}</DropdownMenuItem>
+              <DropdownMenuItem>{t("users.actionEditUser")}</DropdownMenuItem>
+              <DropdownMenuItem>{t("users.actionManageTeam")}</DropdownMenuItem>
+              <DropdownMenuItem>{t("users.actionResendInvite")}</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem variant="destructive">{t("users.actionDeactivateUser")}</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      ),
+      enableHiding: false,
+      enableSorting: false,
+    },
+  ];
+}

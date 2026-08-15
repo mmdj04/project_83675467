@@ -10,6 +10,7 @@ import multiMonthPlugin from "@fullcalendar/react/multimonth";
 import timeGridPlugin from "@fullcalendar/react/timegrid";
 import { differenceInCalendarDays, endOfMonth, format, startOfMonth } from "date-fns";
 import { Calendar as CalendarIcon, ChevronLeft, ChevronRight, Plus, XIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { EventCalendarViews } from "@/components/calendar/event-calendar-views";
 import { Button } from "@/components/ui/button";
@@ -19,22 +20,23 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { demoEvents } from "./events-data";
 
 const views = [
-  { key: "dayGridMonth", label: "Month" },
-  { key: "timeGridWeek", label: "Week" },
-  { key: "timeGridDay", label: "Day" },
+  { key: "dayGridMonth", labelKey: "calendar.viewMonth" },
+  { key: "timeGridWeek", labelKey: "calendar.viewWeek" },
+  { key: "timeGridDay", labelKey: "calendar.viewDay" },
 ];
 
 const calendars = [
-  { key: "all", label: "All calendars" },
-  { key: "work", label: "Work" },
-  { key: "personal", label: "Personal" },
-  { key: "team", label: "Team" },
-  { key: "focus", label: "Focus time" },
+  { key: "all", labelKey: "calendar.allCalendars" },
+  { key: "work", labelKey: "calendar.calendarWork" },
+  { key: "personal", labelKey: "calendar.calendarPersonal" },
+  { key: "team", labelKey: "calendar.calendarTeam" },
+  { key: "focus", labelKey: "calendar.calendarFocus" },
 ];
 
 const plugins = [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin, multiMonthPlugin];
 
 export function Calendar() {
+  const t = useTranslations();
   const controller = useCalendarController();
   const [eventCount, setEventCount] = React.useState(0);
   const [selectedCalendar, setSelectedCalendar] = React.useState(calendars[0].key);
@@ -54,9 +56,7 @@ export function Calendar() {
       <div className="flex flex-col gap-4 border-b bg-sidebar p-4 text-sidebar-foreground lg:flex-row lg:items-center lg:justify-between">
         <div className="flex min-w-0 shrink-0 flex-col gap-1">
           <div className="font-medium text-lg leading-none">{title}</div>
-          <p className="text-muted-foreground text-sm">
-            {days} days - {eventCount} events
-          </p>
+          <p className="text-muted-foreground text-sm">{t("calendar.summary", { days, events: eventCount })}</p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
@@ -69,7 +69,7 @@ export function Calendar() {
               <SelectGroup>
                 {calendars.map((calendar) => (
                   <SelectItem key={calendar.key} value={calendar.key}>
-                    {calendar.label}
+                    {t(calendar.labelKey)}
                   </SelectItem>
                 ))}
               </SelectGroup>
@@ -80,7 +80,7 @@ export function Calendar() {
               <ChevronLeft />
             </Button>
             <Button variant="outline" onClick={() => controller.today()}>
-              Today
+              {t("calendar.today")}
             </Button>
             <Button size="icon" variant="outline" onClick={() => controller.next()}>
               <ChevronRight />
@@ -99,7 +99,7 @@ export function Calendar() {
               <SelectGroup>
                 {views.map((v) => (
                   <SelectItem key={v.key} value={v.key}>
-                    {v.label}
+                    {t(v.labelKey)}
                   </SelectItem>
                 ))}
               </SelectGroup>
@@ -107,7 +107,7 @@ export function Calendar() {
           </Select>
           <Button>
             <Plus />
-            Add event
+            {t("calendar.addEvent")}
           </Button>
         </div>
       </div>

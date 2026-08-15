@@ -1,4 +1,5 @@
 import { BadgeCheck, Ellipsis, Eye, Mail, Pencil, UserRoundX } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -18,12 +19,15 @@ interface ProfileHeaderProps {
   profile: ProfileRecord;
 }
 
-export function ProfileHeader({ profile }: ProfileHeaderProps) {
+const PROFILE_COMPLETION = 92;
+
+export async function ProfileHeader({ profile }: ProfileHeaderProps) {
+  const t = await getTranslations();
   return (
     <div className="flex flex-col gap-5 px-4 lg:flex-row lg:items-end lg:justify-between">
       <div className="flex min-w-0 items-center gap-4">
         <div className="grid size-18 shrink-0 place-items-center sm:size-23">
-          <span className="sr-only">Profile 92% complete</span>
+          <span className="sr-only">{t("profile.completionAria", { percent: PROFILE_COMPLETION })}</span>
           <svg aria-hidden="true" className="col-start-1 row-start-1 size-full -rotate-90" viewBox="0 0 100 100">
             <circle
               className="fill-none stroke-green-500 dark:stroke-green-600"
@@ -31,7 +35,7 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
               cy="50"
               pathLength="100"
               r="46"
-              strokeDasharray="92 100"
+              strokeDasharray={`${PROFILE_COMPLETION} 100`}
               strokeLinecap="round"
               strokeWidth="2.5"
             />
@@ -56,11 +60,11 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
               className="rounded-sm border-amber-600/20 bg-amber-500/10 text-amber-700 dark:text-amber-300"
               variant="secondary"
             >
-              92% Complete
+              {t("profile.completionBadge", { percent: PROFILE_COMPLETION })}
             </Badge>
             <Badge className="rounded-sm bg-green-600 text-white" variant="default">
               <BadgeCheck data-icon="inline-start" />
-              Verified
+              {t("profile.verified")}
             </Badge>
             <Badge className="rounded-sm" variant="outline">
               {profile.employmentType}
@@ -79,16 +83,16 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
         <Button size="sm" asChild variant="outline">
           <a href={`mailto:${profile.workEmail}`}>
             <Mail data-icon="inline-start" />
-            Email
+            {t("profile.emailButton")}
           </a>
         </Button>
         <Button size="sm">
           <Pencil data-icon="inline-start" />
-          Edit profile
+          {t("profile.editProfile")}
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button aria-label="More profile actions" size="icon-sm" variant="outline">
+            <Button aria-label={t("profile.moreActions")} size="icon-sm" variant="outline">
               <Ellipsis />
             </Button>
           </DropdownMenuTrigger>
@@ -96,14 +100,14 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <Eye />
-                View as employee
+                {t("profile.viewAsEmployee")}
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem variant="destructive">
                 <UserRoundX />
-                Deactivate profile
+                {t("profile.deactivateProfile")}
               </DropdownMenuItem>
             </DropdownMenuGroup>
           </DropdownMenuContent>

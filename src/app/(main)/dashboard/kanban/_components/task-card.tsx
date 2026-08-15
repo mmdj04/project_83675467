@@ -11,6 +11,7 @@ import {
   Minus,
   Paperclip,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -29,22 +30,25 @@ const taskInsightIcons: Record<TaskInsightLabel, LucideIcon> = {
 
 const priorityBadgeConfig: Record<
   TaskPriority,
-  { icon: LucideIcon; variant: "destructive" | "secondary"; className: string }
+  { icon: LucideIcon; variant: "destructive" | "secondary"; className: string; labelKey: string }
 > = {
   High: {
     icon: Flame,
     variant: "destructive",
     className: "border-transparent",
+    labelKey: "kanban.priorityHigh",
   },
   Low: {
     icon: Minus,
     variant: "secondary",
     className: "bg-slate-500/10 text-slate-700 dark:bg-slate-500/15 dark:text-slate-300",
+    labelKey: "kanban.priorityLow",
   },
   Medium: {
     icon: ArrowUpRight,
     variant: "secondary",
     className: "bg-amber-500/10 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300",
+    labelKey: "kanban.priorityMedium",
   },
 };
 
@@ -57,6 +61,7 @@ export function TaskCard({
   columnId?: ColumnId;
   isOverlay?: boolean;
 }) {
+  const t = useTranslations();
   const isDone = columnId === "shipped";
   const showBuildingDetails = columnId === "building" && typeof task.progress === "number";
   const owner = task.owner;
@@ -80,7 +85,7 @@ export function TaskCard({
             )}
           >
             <PriorityIcon data-icon="inline-start" />
-            {task.priority}
+            {t(priorityBadgeConfig[task.priority].labelKey)}
           </Badge>
         </div>
         <p className="line-clamp-2 text-muted-foreground text-sm leading-5">{task.description}</p>
@@ -107,14 +112,14 @@ export function TaskCard({
         <div className="flex flex-col gap-3">
           <div className="space-y-1.5">
             <div className="flex items-center justify-between text-muted-foreground text-xs">
-              <span className="leading-none">Progress</span>
+              <span className="leading-none">{t("kanban.progress")}</span>
               <span className="tabular-nums leading-none">{task.progress}%</span>
             </div>
             <Progress value={task.progress} />
           </div>
           <div className="flex flex-col gap-1.5">
             <div className="flex items-center justify-between gap-3">
-              <span className="text-muted-foreground text-sm">Owner</span>
+              <span className="text-muted-foreground text-sm">{t("kanban.owner")}</span>
               <div className="flex items-center gap-1.5">
                 <span className="truncate text-muted-foreground text-sm">{owner.name}</span>
                 <Avatar className={cn("size-5 after:rounded-sm", owner.tone)}>
@@ -124,7 +129,7 @@ export function TaskCard({
             </div>
 
             <div className="flex items-center justify-between gap-3">
-              <span className="text-muted-foreground text-sm">Due date</span>
+              <span className="text-muted-foreground text-sm">{t("kanban.dueDate")}</span>
               <span className="flex items-center gap-1.5 text-muted-foreground">
                 <span className="truncate text-sm">{task.dueDate}</span>
                 <CalendarDays className="size-3" />
@@ -132,7 +137,7 @@ export function TaskCard({
             </div>
 
             <div className="flex items-center justify-between gap-3">
-              <span className="text-muted-foreground text-sm">Team</span>
+              <span className="text-muted-foreground text-sm">{t("kanban.team")}</span>
               <Badge
                 variant="secondary"
                 className={cn("rounded-md border-transparent px-2 font-medium", tagTones[task.team])}
@@ -150,7 +155,7 @@ export function TaskCard({
         {isDone ? (
           <div className="flex items-center gap-1 font-medium text-green-700 text-sm dark:text-green-600">
             <BadgeCheck className="size-4" />
-            Done
+            {t("kanban.done")}
           </div>
         ) : null}
 

@@ -4,6 +4,7 @@ import { CollisionPriority } from "@dnd-kit/abstract";
 import { useDroppable } from "@dnd-kit/react";
 import { useSortable } from "@dnd-kit/react/sortable";
 import { GripVertical, MoreVertical, Plus } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -18,6 +19,7 @@ interface KanbanColumnProps {
 }
 
 export function KanbanColumn({ column, index, tasks }: KanbanColumnProps) {
+  const t = useTranslations();
   const columnSortable = useSortable({
     id: `column:${column.id}`,
     index,
@@ -51,21 +53,25 @@ export function KanbanColumn({ column, index, tasks }: KanbanColumnProps) {
               variant="ghost"
               size="icon-xs"
               className="-ml-2 cursor-grab text-foreground/70 active:cursor-grabbing"
-              aria-label={`Drag ${column.title} column`}
+              aria-label={t("kanban.dragColumn", { title: t(column.labelKey) })}
             >
               <GripVertical />
             </Button>
-            <h2 className="truncate font-medium text-base leading-none">{column.title}</h2>
+            <h2 className="truncate font-medium text-base leading-none">{t(column.labelKey)}</h2>
           </div>
           <p className="text-muted-foreground text-sm tabular-nums leading-none">
-            {tasks.length} {tasks.length === 1 ? "task" : "tasks"}
+            {t("kanban.tasksCount", { count: tasks.length })}
           </p>
         </div>
         <div className="-mr-2 flex items-center gap-0.5 text-muted-foreground">
-          <Button variant="ghost" size="icon-sm" aria-label={`Add task to ${column.title}`}>
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            aria-label={t("kanban.addTaskToColumn", { title: t(column.labelKey) })}
+          >
             <Plus />
           </Button>
-          <Button variant="ghost" size="icon-sm" aria-label={`${column.title} column actions`}>
+          <Button variant="ghost" size="icon-sm" aria-label={t("kanban.columnActions", { title: t(column.labelKey) })}>
             <MoreVertical />
           </Button>
         </div>

@@ -9,6 +9,7 @@ import {
   useTable,
 } from "@tanstack/react-table";
 import { ChevronsLeft, ChevronsRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import {
   Pagination,
@@ -24,7 +25,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { dataTableFeatures } from "@/lib/data-table-features";
 import { cn } from "@/lib/utils";
 
-import { columns } from "./columns";
+import { createTaskColumns } from "./columns";
 import type { Task } from "./data";
 import { TasksToolbar } from "./tasks-toolbar";
 
@@ -48,6 +49,7 @@ function getPageNumbers(currentPage: number, pageCount: number) {
 }
 
 export function Tasks({ data }: TasksProps) {
+  const t = useTranslations();
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] = React.useState<ColumnVisibilityState>({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
@@ -56,6 +58,7 @@ export function Tasks({ data }: TasksProps) {
     pageIndex: 0,
     pageSize: 10,
   });
+  const columns = React.useMemo(() => createTaskColumns(t), [t]);
 
   const table = useTable({
     features: dataTableFeatures,
@@ -126,12 +129,14 @@ export function Tasks({ data }: TasksProps) {
       </Table>
       <div className="flex flex-col gap-3 border-t px-4 py-4 md:flex-row md:items-center md:justify-between">
         <div className="text-muted-foreground text-sm">
-          {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s)
-          selected.
+          {t("tasks.rowsSelected", {
+            count: table.getFilteredSelectedRowModel().rows.length,
+            total: table.getFilteredRowModel().rows.length,
+          })}
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end sm:gap-6 lg:gap-8">
           <div className="flex items-center gap-2">
-            <p className="font-medium text-muted-foreground text-sm">Rows per page</p>
+            <p className="font-medium text-muted-foreground text-sm">{t("tasks.rowsPerPage")}</p>
             <Select
               value={`${table.state.pagination.pageSize}`}
               onValueChange={(value) => {
@@ -153,14 +158,14 @@ export function Tasks({ data }: TasksProps) {
             </Select>
           </div>
           <div className="flex w-24 items-center justify-start font-medium text-sm sm:justify-center">
-            Page {currentPage} of {pageCount}
+            {t("tasks.pageOf", { current: currentPage, total: pageCount })}
           </div>
           <Pagination className="mx-0 w-auto justify-start sm:justify-end">
             <PaginationContent className="gap-1">
               <PaginationItem className="hidden lg:block">
                 <PaginationLink
                   href="#"
-                  aria-label="Go to first page"
+                  aria-label={t("tasks.goToFirstPage")}
                   aria-disabled={!canPreviousPage}
                   className={cn(!canPreviousPage && "pointer-events-none opacity-50")}
                   onClick={(event) => {
@@ -174,7 +179,7 @@ export function Tasks({ data }: TasksProps) {
               <PaginationItem>
                 <PaginationPrevious
                   href="#"
-                  text="Prev"
+                  text={t("tasks.prev")}
                   aria-disabled={!canPreviousPage}
                   className={cn(!canPreviousPage && "pointer-events-none opacity-50")}
                   onClick={(event) => {
@@ -221,7 +226,7 @@ export function Tasks({ data }: TasksProps) {
               <PaginationItem className="hidden lg:block">
                 <PaginationLink
                   href="#"
-                  aria-label="Go to last page"
+                  aria-label={t("tasks.goToLastPage")}
                   aria-disabled={!canNextPage}
                   className={cn(!canNextPage && "pointer-events-none opacity-50")}
                   onClick={(event) => {

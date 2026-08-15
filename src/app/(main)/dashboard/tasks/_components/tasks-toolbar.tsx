@@ -1,6 +1,7 @@
 "use client";
 import type { ReactTable, RowData } from "@tanstack/react-table";
 import { Settings2, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -24,6 +25,7 @@ interface TasksToolbarProps<TData extends RowData> {
 }
 
 export function TasksToolbar<TData extends RowData>({ table }: TasksToolbarProps<TData>) {
+  const t = useTranslations();
   const isFiltered = table.state.columnFilters.length > 0;
   const searchValue = (table.getColumn("title")?.getFilterValue() as string | undefined) ?? "";
   const hideableColumns = table
@@ -35,7 +37,7 @@ export function TasksToolbar<TData extends RowData>({ table }: TasksToolbarProps
     <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
       <div className="flex flex-1 flex-wrap items-center gap-2">
         <Input
-          placeholder="Filter tasks..."
+          placeholder={t("tasks.filterTasks")}
           value={searchValue}
           onChange={(event) => {
             table.getColumn("title")?.setFilterValue(event.target.value);
@@ -54,7 +56,7 @@ export function TasksToolbar<TData extends RowData>({ table }: TasksToolbarProps
             }}
           >
             <X data-icon="inline-start" />
-            Reset
+            {t("tasks.reset")}
           </Button>
         )}
       </div>
@@ -67,11 +69,11 @@ export function TasksToolbar<TData extends RowData>({ table }: TasksToolbarProps
               className={cn("ml-auto hidden lg:flex", hiddenColumns.length > 0 && "bg-muted text-foreground")}
             >
               <Settings2 data-icon="inline-start" />
-              View
+              {t("tasks.view")}
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-38">
-            <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
+            <DropdownMenuLabel>{t("tasks.toggleColumns")}</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               {hideableColumns.map((column) => (
