@@ -1,34 +1,136 @@
 # Changelog
 
-Histórico do projeto organizado por mês de commit, do mais recente ao mais antigo. Cada entrada representa um commit do projeto; commits de merge também são mantidos.
+Histórico do projeto organizado por mês de commit, do mais recente ao mais antigo. Cada entrada representa um commit do projeto; commits de merge também são mantidos. Os 25 commits mais recentes listam os arquivos adicionados/removidos.
 
 ## 2026-08
 
 - 2026-08-14 — `a53a7d7` — chore: update deps
+    - package-lock.json (modificado (+84 −72))
+    - package.json (modificado (+2 −2))
 - 2026-08-13 — `61c0a4c` — chore: update deps
+    - package-lock.json (modificado (+22 −22))
+    - package.json (modificado (+3 −3))
 - 2026-08-12 — `bfc7da4` — chore: update deps
+    - package-lock.json (modificado (+3 −3))
 - 2026-08-12 — `79ed371` — chore: update deps
+    - package-lock.json (modificado (+32 −7))
+    - package.json (modificado (+1 −1))
 - 2026-08-11 — `65bc9a1` — chore: update deps
+    - biome.json (modificado (+1 −1))
+    - package-lock.json (modificado (+51 −51))
+    - package.json (modificado (+1 −1))
 - 2026-08-09 — `8f107f0` — chore: update deps
+    - package-lock.json (modificado (+14 −8))
+    - package.json (modificado (+2 −2))
 - 2026-08-09 — `3cad027` — Merge pull request #80 from arhamkhnz/feat/profile
+    - README.md (modificado (+1 −0))
+    - src/app/(main)/dashboard/profile/_components/profile-data.ts (adicionado (+137 −0))
+    - src/app/(main)/dashboard/profile/_components/profile-documents.tsx (adicionado (+62 −0))
+    - src/app/(main)/dashboard/profile/_components/profile-employment-details.tsx (adicionado (+123 −0))
+    - src/app/(main)/dashboard/profile/_components/profile-header.tsx (adicionado (+114 −0))
+    - src/app/(main)/dashboard/profile/_components/profile-overview.tsx (adicionado (+94 −0))
+    - src/app/(main)/dashboard/profile/_components/profile-personal-details.tsx (adicionado (+90 −0))
+    - src/app/(main)/dashboard/profile/_components/profile-status-sidebar.tsx (adicionado (+48 −0))
+    - +3 outros arquivos (+196 −0)
 - 2026-08-09 — `09e8ecc` — chore: updates
+    - src/app/(main)/dashboard/profile/_components/profile-employment-details.tsx (modificado (+86 −62))
+    - src/app/(main)/dashboard/profile/_components/profile-personal-details.tsx (modificado (+48 −32))
+    - src/app/(main)/dashboard/profile/_components/profile-time-off-details.tsx (modificado (+52 −36))
 - 2026-08-09 — `54abf90` — chore: updates
+    - README.md (modificado (+1 −0))
+    - src/app/(main)/dashboard/profile/_components/profile-data.ts (modificado (+38 −58))
+    - src/app/(main)/dashboard/profile/_components/profile-documents.tsx (modificado (+35 −41))
+    - src/app/(main)/dashboard/profile/_components/profile-employment-details.tsx (modificado (+3 −3))
+    - src/app/(main)/dashboard/profile/_components/profile-header.tsx (modificado (+6 −4))
+    - src/app/(main)/dashboard/profile/_components/profile-overview.tsx (modificado (+6 −6))
+    - src/app/(main)/dashboard/profile/_components/profile-personal-details.tsx (modificado (+1 −1))
+    - src/app/(main)/dashboard/profile/_components/profile-time-off-details.tsx (modificado (+8 −8))
+    - +1 outros arquivos (+13 −11)
 - 2026-08-09 — `d16953b` — chore: updates
+    - src/app/(main)/dashboard/profile/_components/profile-data.ts (modificado (+31 −10))
+    - src/app/(main)/dashboard/profile/_components/profile-details.tsx (removido (+0 −91))
+    - src/app/(main)/dashboard/profile/_components/profile-documents.tsx (modificado (+49 −35))
+    - src/app/(main)/dashboard/profile/_components/profile-employment-details.tsx (adicionado (+99 −0))
+    - src/app/(main)/dashboard/profile/_components/profile-fields.tsx (removido (+0 −17))
+    - src/app/(main)/dashboard/profile/_components/profile-personal-details.tsx (adicionado (+74 −0))
+    - src/app/(main)/dashboard/profile/_components/profile-status-sidebar.tsx (modificado (+2 −2))
+    - src/app/(main)/dashboard/profile/_components/profile-time-off-details.tsx (adicionado (+63 −0))
+    - +1 outros arquivos (+8 −6)
 - 2026-08-09 — `5380869` — chore: updates
+    - src/app/(main)/dashboard/profile/_components/profile-data.ts (modificado (+17 −11))
+    - src/app/(main)/dashboard/profile/_components/profile-details.tsx (modificado (+24 −38))
+    - src/app/(main)/dashboard/profile/_components/profile-documents.tsx (modificado (+2 −3))
+    - src/app/(main)/dashboard/profile/_components/profile-fields.tsx (modificado (+1 −30))
+    - src/app/(main)/dashboard/profile/_components/profile-header.tsx (modificado (+1 −1))
+    - src/app/(main)/dashboard/profile/_components/profile-overview.tsx (modificado (+67 −73))
+    - src/app/(main)/dashboard/profile/_components/profile-status-sidebar.tsx (modificado (+28 −29))
+    - src/app/(main)/dashboard/profile/page.tsx (modificado (+27 −11))
 - 2026-08-09 — `cd59f3d` — chore: quick fix
+    - src/app/(main)/dashboard/profile/page.tsx (modificado (+2 −2))
 - 2026-08-09 — `ad309d5` — chore: update profile layout
+    - src/app/(main)/dashboard/profile/_components/profile-data.ts (modificado (+3 −3))
+    - src/app/(main)/dashboard/profile/_components/profile-details.tsx (adicionado (+105 −0))
+    - src/app/(main)/dashboard/profile/_components/profile-documents.tsx (adicionado (+55 −0))
+    - src/app/(main)/dashboard/profile/_components/profile-fields.tsx (adicionado (+46 −0))
+    - src/app/(main)/dashboard/profile/_components/profile-header.tsx (modificado (+6 −6))
+    - src/app/(main)/dashboard/profile/_components/profile-overview.tsx (modificado (+59 −325))
+    - src/app/(main)/dashboard/profile/_components/profile-status-sidebar.tsx (adicionado (+49 −0))
+    - src/app/(main)/dashboard/profile/page.tsx (modificado (+47 −1))
 - 2026-08-09 — `5afd104` — feat: add profile screen
+    - src/app/(main)/dashboard/profile/_components/profile-data.ts (adicionado (+130 −0))
+    - src/app/(main)/dashboard/profile/_components/profile-header.tsx (adicionado (+112 −0))
+    - src/app/(main)/dashboard/profile/_components/profile-overview.tsx (adicionado (+366 −0))
+    - src/app/(main)/dashboard/profile/page.tsx (adicionado (+43 −0))
+    - src/navigation/sidebar/sidebar-items.ts (modificado (+8 −0))
 - 2026-08-09 — `9c0e9cf` — chore: update deps
+    - package-lock.json (modificado (+11 −11))
+    - package.json (modificado (+1 −1))
 - 2026-08-08 — `ccb56a2` — chore: update deps
+    - package-lock.json (modificado (+22 −6))
+    - package.json (modificado (+1 −1))
 - 2026-08-08 — `e8577c1` — chore: update deps
+    - package-lock.json (modificado (+25 −41))
+    - package.json (modificado (+2 −2))
 - 2026-08-08 — `150bf4a` — feat: migrate dnd kit to latest implementation and packages
+    - package-lock.json (modificado (+72 −48))
+    - package.json (modificado (+3 −3))
+    - src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/columns.tsx (modificado (+15 −18))
+    - src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/table.tsx (modificado (+28 −37))
+    - src/app/(main)/dashboard/invoice/_components/invoice-items.tsx (modificado (+30 −59))
+    - src/app/(main)/dashboard/kanban/_components/kanban-column.tsx (modificado (+30 −20))
+    - src/app/(main)/dashboard/kanban/_components/kanban.tsx (modificado (+57 −120))
+    - src/app/(main)/dashboard/kanban/_components/sortable-task-card.tsx (modificado (+9 −14))
 - 2026-08-08 — `934daf7` — feat: migrate data table to use tanstack table v9
+    - package-lock.json (modificado (+43 −12))
+    - package.json (modificado (+1 −1))
+    - src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-actions-risk-ledger.tsx (modificado (+9 −14))
+    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/columns.tsx (modificado (+27 −13))
+    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/table.tsx (modificado (+14 −19))
+    - src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/columns.tsx (modificado (+69 −32))
+    - src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/table.tsx (modificado (+24 −29))
+    - src/app/(main)/dashboard/crm/_components/opportunities-section.tsx (modificado (+14 −19))
+    - +17 outros arquivos (+275 −198)
 - 2026-08-08 — `798b5db` — chore: update deps
+    - package-lock.json (modificado (+23 −23))
+    - package.json (modificado (+2 −2))
 - 2026-08-06 — `c4517b6` — chore: update deps & components
+    - package-lock.json (modificado (+25 −25))
+    - package.json (modificado (+3 −3))
+    - src/components/ui/questionnaire.tsx (modificado (+17 −3))
 - 2026-08-05 — `a70abdc` — chore: add shadcn questionnaire component
+    - package-lock.json (modificado (+4 −4))
+    - package.json (modificado (+1 −1))
+    - src/components/ui/questionnaire.tsx (adicionado (+310 −0))
 - 2026-08-04 — `e9c4365` — chore: update deps
+    - biome.json (modificado (+1 −1))
+    - package-lock.json (modificado (+53 −53))
+    - package.json (modificado (+2 −2))
 - 2026-08-04 — `b1a2da9` — chore: update next version
+    - package-lock.json (modificado (+232 −192))
+    - package.json (modificado (+1 −1))
 - 2026-08-03 — `0491c13` — chore: update deps
+    - package-lock.json (modificado (+33 −33))
+    - package.json (modificado (+4 −4))
 - 2026-08-03 — `8cf3956` — chore: quick fix
 - 2026-08-03 — `a1889cf` — Merge pull request #79 from arhamkhnz/feat/patient-monitoring
 - 2026-08-03 — `45f4e6c` — chore: updates
