@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
-import type { ProfileRecord } from "./profile-data";
+import { type ProfileRecord, profileValueLabelKeys } from "./profile-data";
 
 export async function PersonalDetails({ profile }: { profile: ProfileRecord }) {
   const t = await getTranslations();
@@ -26,7 +26,7 @@ export async function PersonalDetails({ profile }: { profile: ProfileRecord }) {
             </div>
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.dateOfBirth")}</dt>
-              <dd className="text-sm">{profile.dateOfBirth}</dd>
+              <dd className="text-sm">{t(profileValueLabelKeys[profile.dateOfBirth])}</dd>
             </div>
           </div>
 
@@ -44,7 +44,7 @@ export async function PersonalDetails({ profile }: { profile: ProfileRecord }) {
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.pronouns")}</dt>
-              <dd className="text-sm">{profile.pronouns}</dd>
+              <dd className="text-sm">{t(profileValueLabelKeys[profile.pronouns])}</dd>
             </div>
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.workPhone")}</dt>
@@ -75,7 +75,7 @@ export async function PersonalDetails({ profile }: { profile: ProfileRecord }) {
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.emergencyContact")}</dt>
-              <dd className="text-sm">{profile.emergencyContact}</dd>
+              <dd className="text-sm">{t(profileValueLabelKeys[profile.emergencyContact])}</dd>
             </div>
           </div>
 

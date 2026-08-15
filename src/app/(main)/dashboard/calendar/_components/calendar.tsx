@@ -56,6 +56,7 @@ export function Calendar() {
   });
   const title = dateInfo.title;
   const days = dateInfo.days;
+  const events = demoEvents.map((event) => ({ ...event, title: t(event.labelKey) }));
 
   return (
     <div className="flex flex-col overflow-hidden rounded-md border">
@@ -123,7 +124,7 @@ export function Calendar() {
         initialView={views[0].key}
         plugins={[...plugins]}
         popoverCloseContent={() => <XIcon className="size-5 text-muted-foreground group-hover:text-foreground" />}
-        events={demoEvents}
+        events={events}
         nowIndicator
         locale={locale === "pt-BR" ? "pt-br" : "en"}
         locales={[ptBrLocale]}

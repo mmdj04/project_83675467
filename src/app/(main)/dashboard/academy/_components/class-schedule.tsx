@@ -34,8 +34,10 @@ export async function ClassSchedule() {
             </div>
 
             <div className="flex min-w-0 flex-col gap-1">
-              <div className="truncate font-medium text-foreground text-sm leading-none">Pure Mathematics</div>
-              <div className="truncate text-muted-foreground text-xs leading-none">Grade 11A • Room 2.14</div>
+              <div className="truncate font-medium text-foreground text-sm leading-none">
+                {t("subjectPureMathematics")}
+              </div>
+              <div className="truncate text-muted-foreground text-xs leading-none">{t("classGrade11ARoom214")}</div>
             </div>
 
             <Badge
@@ -56,8 +58,12 @@ export async function ClassSchedule() {
             </div>
 
             <div className="flex min-w-0 flex-col gap-1">
-              <div className="truncate font-medium text-foreground text-sm leading-none">English Literature</div>
-              <div className="truncate text-muted-foreground text-xs leading-none">Grade 11B • Seminar Room 3</div>
+              <div className="truncate font-medium text-foreground text-sm leading-none">
+                {t("subjectEnglishLiterature")}
+              </div>
+              <div className="truncate text-muted-foreground text-xs leading-none">
+                {t("classGrade11BSeminarRoom3")}
+              </div>
             </div>
 
             <Badge
@@ -78,8 +84,8 @@ export async function ClassSchedule() {
             </div>
 
             <div className="flex min-w-0 flex-col gap-1">
-              <div className="truncate font-medium text-foreground text-sm leading-none">Physics</div>
-              <div className="truncate text-muted-foreground text-xs leading-none">Grade 11C • Physics Lab</div>
+              <div className="truncate font-medium text-foreground text-sm leading-none">{t("subjectPhysics")}</div>
+              <div className="truncate text-muted-foreground text-xs leading-none">{t("classGrade11CPhysicsLab")}</div>
             </div>
 
             <Badge
@@ -100,8 +106,10 @@ export async function ClassSchedule() {
             </div>
 
             <div className="flex min-w-0 flex-col gap-1">
-              <div className="truncate font-medium text-foreground text-sm leading-none">Modern European History</div>
-              <div className="truncate text-muted-foreground text-xs leading-none">Grade 11A • Room 1.08</div>
+              <div className="truncate font-medium text-foreground text-sm leading-none">
+                {t("subjectModernEuropeanHistory")}
+              </div>
+              <div className="truncate text-muted-foreground text-xs leading-none">{t("classGrade11ARoom108")}</div>
             </div>
 
             <Badge
@@ -122,8 +130,12 @@ export async function ClassSchedule() {
             </div>
 
             <div className="flex min-w-0 flex-col gap-1">
-              <div className="truncate font-medium text-foreground text-sm leading-none">Computer Science</div>
-              <div className="truncate text-muted-foreground text-xs leading-none">Grade 11B • Computing Lab</div>
+              <div className="truncate font-medium text-foreground text-sm leading-none">
+                {t("subjectComputerScience")}
+              </div>
+              <div className="truncate text-muted-foreground text-xs leading-none">
+                {t("classGrade11BComputingLab")}
+              </div>
             </div>
 
             <Badge

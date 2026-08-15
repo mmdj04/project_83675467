@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 
 import { Separator } from "@/components/ui/separator";
 
-import type { ProfileRecord } from "./profile-data";
+import { type ProfileRecord, profileValueLabelKeys } from "./profile-data";
 
 export async function EmploymentDetails({ profile }: { profile: ProfileRecord }) {
   const t = await getTranslations();
@@ -25,7 +25,7 @@ export async function EmploymentDetails({ profile }: { profile: ProfileRecord })
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.jobLevel")}</dt>
-              <dd className="text-sm">{profile.jobLevel}</dd>
+              <dd className="text-sm">{t(profileValueLabelKeys[profile.jobLevel])}</dd>
             </div>
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.manager")}</dt>
@@ -58,11 +58,11 @@ export async function EmploymentDetails({ profile }: { profile: ProfileRecord })
             </div>
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.engagementStatus")}</dt>
-              <dd className="text-sm">{profile.engagementStatus}</dd>
+              <dd className="text-sm">{t(profileValueLabelKeys[profile.engagementStatus])}</dd>
             </div>
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.employmentType")}</dt>
-              <dd className="text-sm">{profile.employmentType}</dd>
+              <dd className="text-sm">{t(profileValueLabelKeys[profile.employmentType])}</dd>
             </div>
           </div>
 
@@ -73,18 +73,18 @@ export async function EmploymentDetails({ profile }: { profile: ProfileRecord })
             </div>
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.startDate")}</dt>
-              <dd className="text-sm">{profile.startDate}</dd>
+              <dd className="text-sm">{t(profileValueLabelKeys[profile.startDate])}</dd>
             </div>
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.lastWorkingDay")}</dt>
-              <dd className="text-sm">{profile.lastWorkingDay}</dd>
+              <dd className="text-sm">{t(profileValueLabelKeys[profile.lastWorkingDay])}</dd>
             </div>
           </div>
 
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.noticePeriod")}</dt>
-              <dd className="text-sm">{profile.noticePeriod}</dd>
+              <dd className="text-sm">{t(profileValueLabelKeys[profile.noticePeriod])}</dd>
             </div>
           </div>
         </dl>
@@ -98,7 +98,7 @@ export async function EmploymentDetails({ profile }: { profile: ProfileRecord })
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.workplace")}</dt>
-              <dd className="text-sm">{profile.workplace}</dd>
+              <dd className="text-sm">{t(profileValueLabelKeys[profile.workplace])}</dd>
             </div>
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.timeZone")}</dt>
@@ -109,14 +109,14 @@ export async function EmploymentDetails({ profile }: { profile: ProfileRecord })
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.weeklyHours")}</dt>
-              <dd className="text-sm">{profile.weeklyHours}</dd>
+              <dd className="text-sm">{t(profileValueLabelKeys[profile.weeklyHours])}</dd>
             </div>
           </div>
 
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.schedule")}</dt>
-              <dd className="text-sm">{profile.schedule}</dd>
+              <dd className="text-sm">{t(profileValueLabelKeys[profile.schedule])}</dd>
             </div>
           </div>
         </dl>

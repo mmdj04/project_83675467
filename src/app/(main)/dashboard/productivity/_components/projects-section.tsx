@@ -11,25 +11,25 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 
 const projects = [
   {
-    title: "Q2 Roadmap",
+    titleKey: "projectQ2Roadmap",
     statusKey: "statusInProgress",
-    description: "Ship better, ship smarter.",
+    descriptionKey: "projectQ2RoadmapDesc",
     progress: 68,
     dueDays: 9,
     icon: Orbit,
   },
   {
-    title: "Website Redesign",
+    titleKey: "projectWebsiteRedesign",
     statusKey: "statusPlanning",
-    description: "Clean, modern, and fast.",
+    descriptionKey: "projectWebsiteRedesignDesc",
     progress: 42,
     dueDays: 21,
     icon: Globe,
   },
   {
-    title: "Onboarding",
+    titleKey: "projectOnboarding",
     statusKey: "statusPlanning",
-    description: "Trim first-run steps.",
+    descriptionKey: "projectOnboardingDesc",
     progress: 31,
     dueDays: 18,
     icon: ClipboardCheck,
@@ -68,12 +68,12 @@ export async function ProjectsSection() {
 
       <div className="grid gap-4 md:grid-cols-3">
         {projects.map((project) => (
-          <Card key={project.title} className="shadow-xs">
+          <Card key={project.titleKey} className="shadow-xs">
             <CardHeader>
               <CardTitle>
                 <div className="flex items-center gap-2">
                   <project.icon className="size-4 text-muted-foreground" />
-                  <span>{project.title}</span>
+                  <span>{t(project.titleKey)}</span>
                 </div>
               </CardTitle>
               <CardAction>
@@ -82,7 +82,7 @@ export async function ProjectsSection() {
             </CardHeader>
             <CardContent>
               <div className="flex flex-col gap-1">
-                <div className="text-sm leading-none">{project.description}</div>
+                <div className="text-sm leading-none">{t(project.descriptionKey)}</div>
                 <div className="flex items-center gap-3">
                   <Progress value={project.progress} className="h-2" />
                   <span className="shrink-0 text-sm">{project.progress}%</span>

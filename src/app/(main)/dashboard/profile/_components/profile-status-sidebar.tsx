@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 
 import { Separator } from "@/components/ui/separator";
 
-import type { ProfileRecord } from "./profile-data";
+import { type ProfileRecord, profileValueLabelKeys } from "./profile-data";
 
 export async function ProfileStatusSidebar({ profile }: { profile: ProfileRecord }) {
   const t = await getTranslations();
@@ -19,7 +19,7 @@ export async function ProfileStatusSidebar({ profile }: { profile: ProfileRecord
           </div>
         </div>
         <p className="text-muted-foreground text-xs">
-          {t("profile.updatedByLabel", { date: profile.updatedAt, user: profile.updatedBy })}
+          {t("profile.updatedByLabel", { date: t(profileValueLabelKeys[profile.updatedAt]), user: profile.updatedBy })}
         </p>
       </div>
 
@@ -32,7 +32,7 @@ export async function ProfileStatusSidebar({ profile }: { profile: ProfileRecord
             <CalendarDays aria-hidden="true" className="mt-0.5 size-4 text-muted-foreground" />
             <div>
               <p className="font-medium text-sm">{t("profile.timeOff")}</p>
-              <p className="text-muted-foreground text-xs">{profile.nextLeave}</p>
+              <p className="text-muted-foreground text-xs">{t(profileValueLabelKeys[profile.nextLeave])}</p>
             </div>
           </div>
           <Separator />
@@ -40,7 +40,7 @@ export async function ProfileStatusSidebar({ profile }: { profile: ProfileRecord
             <Clock3 aria-hidden="true" className="mt-0.5 size-4 text-muted-foreground" />
             <div>
               <p className="font-medium text-sm">{t("profile.lastWorkingDay")}</p>
-              <p className="text-muted-foreground text-xs">{profile.lastWorkingDay}</p>
+              <p className="text-muted-foreground text-xs">{t(profileValueLabelKeys[profile.lastWorkingDay])}</p>
             </div>
           </div>
         </div>

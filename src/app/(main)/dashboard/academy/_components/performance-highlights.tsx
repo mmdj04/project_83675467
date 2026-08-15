@@ -13,7 +13,7 @@ const performanceHighlights = [
     className: "G11A",
     start: 1.25,
     duration: 1.45,
-    subject: "Pure Math",
+    subjectKey: "highlightSubjectPureMath",
     score: 84,
     avatars: ["AM", "LS", "NK"],
   },
@@ -21,7 +21,7 @@ const performanceHighlights = [
     className: "G11B",
     start: 0.72,
     duration: 1.75,
-    subject: "Literature",
+    subjectKey: "highlightSubjectLiterature",
     score: 78,
     avatars: ["IR"],
   },
@@ -29,7 +29,7 @@ const performanceHighlights = [
     className: "G11C",
     start: 1.35,
     duration: 1.9,
-    subject: "Physics",
+    subjectKey: "highlightSubjectPhysics",
     score: 80,
     avatars: ["SK", "MJ", "AT"],
   },
@@ -37,7 +37,7 @@ const performanceHighlights = [
     className: "G11D",
     start: 2.22,
     duration: 1.66,
-    subject: "History",
+    subjectKey: "highlightSubjectHistory",
     score: 73,
     avatars: ["RP", "EH"],
   },
@@ -48,12 +48,14 @@ type PerformanceHighlight = (typeof performanceHighlights)[number];
 function PerformanceHighlightBar({
   height = 0,
   payload,
+  t,
   width = 0,
   x = 0,
   y = 0,
 }: {
   height?: number;
   payload?: PerformanceHighlight;
+  t: (key: string) => string;
   width?: number;
   x?: number;
   y?: number;
@@ -101,7 +103,7 @@ function PerformanceHighlightBar({
         y={barY + barHeight / 2 + 0.5}
         className="fill-primary-foreground font-medium text-xs"
       >
-        {payload.subject}
+        {t(payload.subjectKey)}
       </text>
 
       <text
@@ -159,7 +161,7 @@ export function PerformanceHighlights() {
             />
             <YAxis axisLine={false} dataKey="className" tickLine={false} tickMargin={10} type="category" width={45} />
             <Bar dataKey="start" fill="transparent" stackId="timeline" />
-            <Bar dataKey="duration" shape={<PerformanceHighlightBar />} stackId="timeline" />
+            <Bar dataKey="duration" shape={<PerformanceHighlightBar t={t} />} stackId="timeline" />
           </BarChart>
         </ChartContainer>
       </CardContent>

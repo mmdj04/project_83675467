@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import type { ProfileRecord } from "./profile-data";
+import { type ProfileRecord, profileValueLabelKeys } from "./profile-data";
 
 interface ProfileHeaderProps {
   profile: ProfileRecord;
@@ -67,10 +67,10 @@ export async function ProfileHeader({ profile }: ProfileHeaderProps) {
               {t("profile.verified")}
             </Badge>
             <Badge className="rounded-sm" variant="outline">
-              {profile.employmentType}
+              {t(profileValueLabelKeys[profile.employmentType])}
             </Badge>
             <Badge className="rounded-sm" variant="outline">
-              {profile.workplace}
+              {t(profileValueLabelKeys[profile.workplace])}
             </Badge>
             <Badge className="rounded-sm" variant="outline">
               {profile.timeZone}

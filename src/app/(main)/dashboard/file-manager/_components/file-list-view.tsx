@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 
-import { type FileManagerFile, fileIcons } from "./data";
+import { type FileManagerFile, fileIcons, modifiedAtLabelKeys } from "./data";
 import { FileActions } from "./file-actions";
 
 interface FileListViewProps {
@@ -66,7 +66,9 @@ export function FileListView({ files }: FileListViewProps) {
                   <span>{file.owner}</span>
                 </div>
               </TableCell>
-              <TableCell className="hidden text-muted-foreground lg:table-cell">{file.modifiedAt}</TableCell>
+              <TableCell className="hidden text-muted-foreground lg:table-cell">
+                {t(modifiedAtLabelKeys[file.modifiedAt])}
+              </TableCell>
               <TableCell className="hidden text-muted-foreground sm:table-cell">{file.size}</TableCell>
               <TableCell>
                 <div className="flex items-center justify-end">

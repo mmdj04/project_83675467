@@ -8,6 +8,13 @@ import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/componen
 
 type ProductivityTranslator = Awaited<ReturnType<typeof getTranslations<"productivity">>>;
 
+type RecentNote = {
+  titleKey: string;
+  date: string;
+  icon: typeof FileText;
+  params?: Record<string, string>;
+};
+
 function formatNoteDate(date: Date, t: ProductivityTranslator, locale: Locale) {
   if (isToday(date)) return t("todayDate");
   if (isYesterday(date)) return t("yesterdayDate");
@@ -21,16 +28,17 @@ export async function RecentNotesCard() {
   const dateFnsLocale = dateFnsLocales[locale] ?? enUS;
   const today = new Date();
 
-  const recentNotes = [
-    { title: "Design principles that scale", date: formatNoteDate(today, t, dateFnsLocale), icon: FileText },
+  const recentNotes: RecentNote[] = [
+    { titleKey: "noteDesignPrinciples", date: formatNoteDate(today, t, dateFnsLocale), icon: FileText },
     {
-      title: `Content ideas – ${format(today, "MMMM", { locale: dateFnsLocale })}`,
+      titleKey: "noteContentIdeas",
+      params: { month: format(today, "MMMM", { locale: dateFnsLocale }) },
       date: formatNoteDate(subDays(today, 1), t, dateFnsLocale),
       icon: FileText,
     },
-    { title: "Lessons from the week", date: formatNoteDate(subDays(today, 4), t, dateFnsLocale), icon: FileText },
-    { title: "Books I'm Reading", date: formatNoteDate(subDays(today, 5), t, dateFnsLocale), icon: BookOpen },
-  ] as const;
+    { titleKey: "noteLessonsFromWeek", date: formatNoteDate(subDays(today, 4), t, dateFnsLocale), icon: FileText },
+    { titleKey: "noteBooksReading", date: formatNoteDate(subDays(today, 5), t, dateFnsLocale), icon: BookOpen },
+  ];
 
   return (
     <Card className="shadow-xs">
@@ -44,10 +52,10 @@ export async function RecentNotesCard() {
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         {recentNotes.map((note) => (
-          <div key={note.title} className="flex items-start gap-4">
+          <div key={note.titleKey} className="flex items-start gap-4">
             <note.icon className="size-5 text-muted-foreground" />
             <div className="min-w-0">
-              <div className="truncate font-medium text-sm leading-none">{note.title}</div>
+              <div className="truncate font-medium text-sm leading-none">{t(note.titleKey, note.params)}</div>
               <div className="text-muted-foreground text-xs">{note.date}</div>
             </div>
           </div>

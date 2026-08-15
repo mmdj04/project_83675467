@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-import type { ProfileRecord } from "./profile-data";
+import { type ProfileRecord, profileValueLabelKeys } from "./profile-data";
 
 interface ProfileOverviewProps {
   profile: ProfileRecord;
@@ -32,11 +32,11 @@ export async function ProfileOverview({ profile }: ProfileOverviewProps) {
             </div>
             <div className="flex flex-col gap-1">
               <span className="text-muted-foreground text-xs">{t("profile.engagementStatus")}</span>
-              <span className="text-sm">{profile.engagementStatus}</span>
+              <span className="text-sm">{t(profileValueLabelKeys[profile.engagementStatus])}</span>
             </div>
             <div className="flex flex-col gap-1">
               <span className="text-muted-foreground text-xs">{t("profile.jobLevel")}</span>
-              <span className="text-sm">{profile.jobLevel}</span>
+              <span className="text-sm">{t(profileValueLabelKeys[profile.jobLevel])}</span>
             </div>
           </div>
 
@@ -58,11 +58,11 @@ export async function ProfileOverview({ profile }: ProfileOverviewProps) {
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-1">
               <span className="text-muted-foreground text-xs">{t("profile.startDate")}</span>
-              <span className="text-sm">{profile.startDate}</span>
+              <span className="text-sm">{t(profileValueLabelKeys[profile.startDate])}</span>
             </div>
             <div className="flex flex-col gap-1">
               <span className="text-muted-foreground text-xs">{t("profile.engagementLength")}</span>
-              <span className="text-sm">{profile.engagementLength}</span>
+              <span className="text-sm">{t(profileValueLabelKeys[profile.engagementLength])}</span>
             </div>
           </div>
         </div>

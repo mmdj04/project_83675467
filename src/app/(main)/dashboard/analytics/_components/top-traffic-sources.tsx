@@ -1,7 +1,7 @@
 "use client";
 
 import { Ellipsis } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Bar, BarChart, CartesianGrid, LabelList, type LabelProps, XAxis, YAxis } from "recharts";
 
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -59,6 +59,7 @@ function renderValueLabel(props: LabelProps) {
 
 function TrafficSourceBarChart({ data }: { data: TrafficSourceDatum[] }) {
   const t = useTranslations("analytics");
+  const locale = useLocale();
 
   const chartConfig = {
     visitors: {
@@ -81,7 +82,25 @@ function TrafficSourceBarChart({ data }: { data: TrafficSourceDatum[] }) {
         <CartesianGrid horizontal={false} vertical={false} />
         <YAxis dataKey="source" hide tickLine={false} tickMargin={10} type="category" />
         <XAxis dataKey="visitors" hide type="number" />
-        <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
+        <ChartTooltip
+          cursor={false}
+          content={
+            <ChartTooltipContent
+              hideLabel
+              indicator="line"
+              formatter={(value, _name, item) => (
+                <>
+                  <span className="font-medium font-mono text-foreground tabular-nums">
+                    {Number(value).toLocaleString(locale)}
+                  </span>{" "}
+                  <span className="text-muted-foreground">
+                    {item.payload?.sourceKey ? t(String(item.payload.sourceKey)) : String(item.payload?.source ?? "")}
+                  </span>
+                </>
+              )}
+            />
+          }
+        />
         <Bar barSize={40} dataKey="visitors" fill="var(--color-visitors)" fillOpacity={0.5} radius={8}>
           <LabelList
             className="fill-foreground"

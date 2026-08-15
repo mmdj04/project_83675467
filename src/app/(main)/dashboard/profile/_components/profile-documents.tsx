@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
-import type { ProfileDocument } from "./profile-data";
+import { type ProfileDocument, profileValueLabelKeys } from "./profile-data";
 
 export async function ProfileDocuments({ documents }: { documents: ProfileDocument[] }) {
   const t = await getTranslations();
@@ -36,11 +36,11 @@ export async function ProfileDocuments({ documents }: { documents: ProfileDocume
           {documents.map((document) => (
             <TableRow key={document.id}>
               <TableCell className="font-medium">{document.name}</TableCell>
-              <TableCell className="text-muted-foreground">{document.category}</TableCell>
-              <TableCell className="text-muted-foreground">{document.updatedAt}</TableCell>
+              <TableCell className="text-muted-foreground">{t(profileValueLabelKeys[document.category])}</TableCell>
+              <TableCell className="text-muted-foreground">{t(profileValueLabelKeys[document.updatedAt])}</TableCell>
               <TableCell>
                 <Badge className="rounded-sm" variant="outline">
-                  {document.status}
+                  {t(profileValueLabelKeys[document.status])}
                 </Badge>
               </TableCell>
               <TableCell className="text-right">

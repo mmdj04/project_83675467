@@ -19,7 +19,7 @@ import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { cn, getInitials } from "@/lib/utils";
 
-import { tagTones } from "./data";
+import { dueDateLabelKeys, tagTones } from "./data";
 import type { ColumnId, Task, TaskInsightLabel, TaskPriority } from "./types";
 
 const taskInsightIcons: Record<TaskInsightLabel, LucideIcon> = {
@@ -102,7 +102,7 @@ export function TaskCard({
           </div>
 
           <div className="flex min-w-0 items-center gap-1.5 text-muted-foreground">
-            <span className="truncate text-sm">{task.dueDate}</span>
+            <span className="truncate text-sm">{t(dueDateLabelKeys[task.dueDate])}</span>
             <CalendarDays className="size-3" />
           </div>
         </div>
@@ -131,7 +131,7 @@ export function TaskCard({
             <div className="flex items-center justify-between gap-3">
               <span className="text-muted-foreground text-sm">{t("kanban.dueDate")}</span>
               <span className="flex items-center gap-1.5 text-muted-foreground">
-                <span className="truncate text-sm">{task.dueDate}</span>
+                <span className="truncate text-sm">{t(dueDateLabelKeys[task.dueDate])}</span>
                 <CalendarDays className="size-3" />
               </span>
             </div>

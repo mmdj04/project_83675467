@@ -141,10 +141,16 @@ export function BalanceDistributionCard() {
                   formatter={(value, name, item) => {
                     const itemKey = (item?.payload as { key?: BalanceKey } | undefined)?.key;
 
-                    return [
-                      formatCurrency(Number(value), { currency, noDecimals: true }, locale),
-                      t(accountLabelKeys[itemKey ?? (name as BalanceKey)] ?? name),
-                    ];
+                    return (
+                      <>
+                        <span className="font-medium font-mono text-foreground tabular-nums">
+                          {formatCurrency(Number(value), { currency, noDecimals: true }, locale)}
+                        </span>{" "}
+                        <span className="text-muted-foreground">
+                          {t(accountLabelKeys[itemKey ?? (name as BalanceKey)] ?? name)}
+                        </span>
+                      </>
+                    );
                   }}
                 />
               }

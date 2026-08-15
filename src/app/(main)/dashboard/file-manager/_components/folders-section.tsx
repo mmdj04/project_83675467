@@ -13,6 +13,7 @@ import {
 import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty";
 
 import type { FileManagerFolder } from "./data";
+import { updatedAtLabelKeys } from "./data";
 
 interface FoldersSectionProps {
   folders: FileManagerFolder[];
@@ -61,7 +62,7 @@ export async function FoldersSection({ folders }: FoldersSectionProps) {
               <CardContent className="flex items-center justify-between gap-3 text-muted-foreground text-xs">
                 <div className="flex items-center gap-1.5">
                   <Clock className="size-3.5" />
-                  <span>{t("updated", { time: folder.updatedAt })}</span>
+                  <span>{t("updated", { time: t(updatedAtLabelKeys[folder.updatedAt]) })}</span>
                 </div>
                 <span>{folder.size}</span>
               </CardContent>
