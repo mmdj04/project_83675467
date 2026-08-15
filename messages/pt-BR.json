@@ -1,18 +1,20 @@
 {
-  "roles.title": "Funções e Permissões",
-  "roles.description": "Gerencie as funções de acesso e permissões em toda a organização.",
-  "roles.importJson": "Importar JSON",
-  "roles.createRole": "Criar função",
-  "roles.tabRoles": "Funções",
-  "roles.tabPermissionSets": "Conjuntos de permissões",
-  "roles.tabAccessReviews": "Revisões de acesso",
-  "roles.alertTitle": "Revisão necessária",
-  "roles.alertDescription": "3 funções têm mudanças de permissão não revisadas.",
-  "roles.reviewChanges": "Revisar mudanças",
-  "roles.searchPlaceholder": "Pesquisar funções...",
-  "roles.typeLabel": "Tipo:",
-  "roles.ownerLabel": "Proprietário:",
-  "roles.statusLabel": "Status:",
-  "roles.permissionSetsSoon": "Conjuntos de permissões em breve",
-  "roles.accessReviewsSoon": "Revisões de acesso em breve"
+  "roles": {
+    "title": "Funções e Permissões",
+    "description": "Gerencie as funções de acesso e permissões em toda a organização.",
+    "importJson": "Importar JSON",
+    "createRole": "Criar função",
+    "tabRoles": "Funções",
+    "tabPermissionSets": "Conjuntos de permissões",
+    "tabAccessReviews": "Revisões de acesso",
+    "alertTitle": "Revisão necessária",
+    "alertDescription": "3 funções têm mudanças de permissão não revisadas.",
+    "reviewChanges": "Revisar mudanças",
+    "searchPlaceholder": "Pesquisar funções...",
+    "typeLabel": "Tipo:",
+    "ownerLabel": "Proprietário:",
+    "statusLabel": "Status:",
+    "permissionSetsSoon": "Conjuntos de permissões em breve",
+    "accessReviewsSoon": "Revisões de acesso em breve"
+  }
 }

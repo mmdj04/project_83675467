@@ -1,18 +1,20 @@
 {
-  "roles.title": "Roles & Permissions",
-  "roles.description": "Manage access roles and permissions across your organization.",
-  "roles.importJson": "Import JSON",
-  "roles.createRole": "Create role",
-  "roles.tabRoles": "Roles",
-  "roles.tabPermissionSets": "Permission sets",
-  "roles.tabAccessReviews": "Access reviews",
-  "roles.alertTitle": "Review required",
-  "roles.alertDescription": "3 roles have unreviewed permission changes.",
-  "roles.reviewChanges": "Review changes",
-  "roles.searchPlaceholder": "Search roles...",
-  "roles.typeLabel": "Type:",
-  "roles.ownerLabel": "Owner:",
-  "roles.statusLabel": "Status:",
-  "roles.permissionSetsSoon": "Permission Sets Coming Soon",
-  "roles.accessReviewsSoon": "Access Reviews Coming Soon"
+  "roles": {
+    "title": "Roles & Permissions",
+    "description": "Manage access roles and permissions across your organization.",
+    "importJson": "Import JSON",
+    "createRole": "Create role",
+    "tabRoles": "Roles",
+    "tabPermissionSets": "Permission sets",
+    "tabAccessReviews": "Access reviews",
+    "alertTitle": "Review required",
+    "alertDescription": "3 roles have unreviewed permission changes.",
+    "reviewChanges": "Review changes",
+    "searchPlaceholder": "Search roles...",
+    "typeLabel": "Type:",
+    "ownerLabel": "Owner:",
+    "statusLabel": "Status:",
+    "permissionSetsSoon": "Permission Sets Coming Soon",
+    "accessReviewsSoon": "Access Reviews Coming Soon"
+  }
 }
