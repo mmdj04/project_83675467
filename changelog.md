@@ -7,21 +7,21 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 **Resumo**: 36 commits • 39 arquivos • +6.474 −2.543 • 30 manutenção, 2 merges, 4 novidades
 
 ### Novidades
-- Adiciona a tela de perfil (#80)
-- Migra o dnd kit para a implementação e os pacotes mais recentes
-- Migra a tabela de dados para o TanStack Table v9
-- Adiciona o dashboard de monitoramento de pacientes (#79)
+- Added **profile screen** (#80)
+- Migrated **dnd kit to** latest implementation and packages
+- Migrated **data table to** use tanstack table v9
+- Added **patient monitoring dashboard** (#79)
 
 ### Manutenção
-- Atualiza dependências
-- Atualizações de manutenção
-- Correção rápida
-- Atualiza o layout do perfil
-- Atualiza dependências e componentes
+- Updated **deps**
+- Updated
+- Quick fix
+- Updated **profile layout**
+- Updated **deps & components**
 - Added **shadcn questionnaire component**
-- Atualiza a versão do Next.js
-- Atualiza o README
-- Correções rápidas
+- Updated **next version**
+- Updated **readme**
+- Quick fixes
 
 ### Arquivos principais
 - package-lock.json (modificado, +749 −611)
@@ -74,25 +74,25 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 **Resumo**: 38 commits • 44 arquivos • +10.925 −9.515 • 30 manutenção, 2 merges, 2 novidades, 2 refatorações, 1 outros, 1 documentação
 
 ### Novidades
-- Adiciona o dashboard de gerenciador de arquivos (#78)
-- Adiciona seletor de versões do projeto no cabeçalho do dashboard
+- Added **file manager dashboard** (#78)
+- Added **project versions dropdown** to dashboard header
 
 ### Refatorações
-- Organiza os componentes do dashboard
-- Simplifica as atualizações de preferências (#76)
+- Organized **dashboard components**
+- Simplified **preference updates** (#76)
 
 ### Manutenção
-- Atualiza dependências
-- Correção rápida
-- Limpeza de código
-- Reverte a versão do Radix
-- Atualiza o README
-- Atualiza dependências e corrige lint
-- Atualizações de manutenção
-- Otimiza preferências
+- Updated **deps**
+- Quick fix
+- Code cleanup
+- Reverted **radix version**
+- Updated **readme**
+- Updated **deps & lint** fixes
+- Updated
+- Optimized **prefs**
 
 ### Documentação
-- Adiciona o link do dashboard React Aria
+- Added **React Aria dashboard** link
 
 ### Arquivos principais
 - package-lock.json (modificado, +9.130 −8.884)
@@ -150,45 +150,45 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 **Resumo**: 70 commits • 115 arquivos • +29.811 −16.791 • 6 refatorações, 31 manutenção, 2 documentação, 9 novidades, 11 merges, 1 correções, 10 outros
 
 ### Novidades
-- Adiciona novos componentes shadcn e atualiza dependências
-- Adiciona tarefas (#73)
-- Melhora os dados de saúde da infraestrutura (#71)
-- Refina o dashboard de infraestrutura (#71)
-- Adiciona o dashboard de infraestrutura (#71)
+- Added **new shadcn components** & update deps
+- Added **tasks** (#73)
+- Improved **infrastructure health data** (#71)
+- Refined **infrastructure dashboard** (#71)
+- Added **infrastructure dashboard** (#71)
 - Added **full calendar** (#70)
 - Added **calendar** (#70)
 - Refined **defaults and mobile** items (#69)
 - Refined **preview paper layout** (#69)
 
 ### Correções
-- Melhora a navegação da sidebar recolhida
+- Polished **collapsed sidebar navigation**
 
 ### Refatorações
-- Corrige os achados de manutenibilidade (react doctor)
-- Aperta o modelo de dados dos itens de navegação
-- Simplifica a renderização dos itens de navegação
+- Fixed **maintainability findings (by** react doctor)
+- Tightened **nav item data** model
+- Simplified **nav item rendering**
 - Clean up builder components (#69)
 - Break into components, fix drag cancel and won status (#68)
 
 ### Manutenção
-- Atualiza dependências
-- Atualiza dependências e componentes
-- Correções rápidas
+- Updated **deps**
+- Updated **deps & components**
+- Quick fixes
 - Added **scroll fade in** mail list
-- Usa componentes de chat do shadcn na tela de chat
+- Use shadcn chat components for chat screen
 - Added **nested ternary lint** rule and clean warnings
-- Configura o componente FullCalendar v7
-- Correção rápida
-- Atualiza o README
+- Added **FullCalendar v7 component** setup
+- Quick fix
+- Updated **readme**
 - Added **print invoice**
-- Atualizações de manutenção
+- Updated
 - Updated **deps and fix** lint warnings
 - Fixed **layout**
 - Chat update
 
 ### Documentação
-- Adiciona diretrizes ao AGENTS.md
-- Adiciona o dashboard de infraestrutura ao README (#71)
+- Added **AGENTS.md guidelines**
+- Added **infrastructure dashboard to** readme (#71)
 
 ### Arquivos principais
 - package-lock.json (modificado, +6.371 −11.145)
@@ -339,23 +339,23 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Added **analytics realtime and** quality cards (#54)
 
 ### Manutenção
-- Atualiza dependências e componentes
-- Atualiza dependências
+- Updated **deps & component**
+- Updated **deps**
 - Updated **roles layout**
-- Atualizações de manutenção
+- Updated
 - Updated **filters**
 - Complete users design
 - Added **initial roles page**
-- Correção rápida
+- Quick fix
 - Removed **unwanted dependency**
-- Atualiza o README
+- Updated **readme**
 - Updated **mail sidebar defaults**
-- Atualiza dependências e componentes
+- Updated **deps & components**
 - Updated **collapsed responsiveness**
 - Updated **responsiveness**
-- Correções rápidas
+- Quick fixes
 - Updated **KPI**
-- Reverte a versão do react-day-picker
+- Reverted **react-day-picker version**
 - Height fix
 - Align analytics source tab padding
 - Adjust analytics sources spacing
@@ -512,15 +512,15 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Style native select options
 
 ### Manutenção
-- Atualiza dependências
-- Atualiza o README
+- Updated **deps**
+- Updated **readme**
 - Reorganize finance routes to make v2 the default and move v1 to legacy
-- Correção rápida
+- Quick fix
 - Refresh biome and icon dependencies
 - Added **finance route**
 - Refresh ui dependencies
-- Atualiza as dependências shadcn
-- Correções rápidas
+- Refresh shadcn dependencies
+- Quick fixes
 - Hide productivity dashboard from sidebar
 - Apply generated ui updates
 - Updated **default font**
@@ -670,11 +670,11 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Removed **preferences storage note**
 - Removed **unused deps**
 - Updated **deps and shadcn** components
-- Atualiza dependências
+- Updated **deps**
 - Updated **deps and shadcn** empty component
-- Atualiza os componentes shadcn
+- Updated **shadcn components**
 - Refresh dashboard owner names
-- Atualiza dependências e componentes shadcn
+- Updated **deps & shadcn** component
 - Align static metrics across dashboard sections
 
 ### Estilo
@@ -754,9 +754,9 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 **Resumo**: 3 commits • 9 arquivos • +154 −87 • 3 manutenção
 
 ### Manutenção
-- Atualiza dependências
-- Atualiza dependências e componentes shadcn
-- Correções menores
+- Updated **deps**
+- Updated **deps & shadcn** components
+- Minor fixes
 
 ### Arquivos principais
 - package-lock.json (modificado, +132 −66)
@@ -790,10 +790,10 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Cycle through light/dark/system in theme-switcher (#32)
 
 ### Manutenção
-- Atualiza dependências
-- Atualiza os componentes shadcn
-- Correção rápida
-- Correções menores
+- Updated **deps**
+- Updated **shadcn components**
+- Quick fix
+- Minor fixes
 - Updated **boot script**
 - Improved **theme switching logic**
 - Renamed **vars for better** understandability
@@ -876,16 +876,16 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Redesign my cards
 - Redesign cash flow overview chart
 - Updated **initial dashboard design**
-- Atualiza dependências
+- Updated **deps**
 - Minor updates
 - Use biome for formatting preset generated code
-- Atualiza os componentes shadcn
+- Updated **shadcn components**
 - Updated **Biome commands and** clean up styles
 - Removed **next eslint config**
 - Lint and format codebase using Biome
 - Removed **ESLint and Prettier** configs and usage
 - Migrated **prettier & eslint** config to biome
-- Correção rápida
+- Quick fix
 - Updated **layout controls preferences** text
 - Simplified **preference logic**
 - Style fix and type correction
@@ -981,7 +981,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Updated **preferences store logic** and apply minor fixes
 - Enabled **layout controls**
 - Removed **analytics**
-- Atualiza dependências
+- Updated **deps**
 - Updated **avatar to external** url
 - Disabled **prefetch on next** Link
 - Temporarily disable cookie logic in root layout to avoid rerendering bug
@@ -1032,8 +1032,8 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Renamed **middleware to proxy,** cleanup code, and update tsconfig
 
 ### Manutenção
-- Atualiza dependências
-- Atualiza dependências e componentes shadcn
+- Updated **deps**
+- Updated **deps & shadcn** component
 - Updated **dependencies and remove** unused packages
 - Added **new shadcn components**
 
@@ -1086,9 +1086,9 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 ### Manutenção
 - Added **contributing.md**
 - Code cleanup, minor fixes & update deps
-- Atualiza dependências
-- Atualiza dependências e componentes shadcn
-- Atualiza os componentes shadcn
+- Updated **deps**
+- Updated **deps & shadcn** components
+- Updated **shadcn components**
 - Updated **dependencies and refresh** shadcn/ui components
 - Added **coming soon page** & update deps
 - Updated **non-existing routes to** /dashboard & update deps
@@ -1127,7 +1127,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 
 ### Manutenção
 - Added **placeholder routes, deps** update & enable turbopack
-- Atualiza dependências
+- Updated **deps**
 - Added **not-found page and** code cleanup
 
 ### Arquivos principais
@@ -1159,7 +1159,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Override shadow utilities to respect theme presets & update deps
 
 ### Manutenção
-- Atualiza dependências
+- Updated **deps**
 - Updated **media image**
 - Updated **media**
 - Eslint accessibility fix
@@ -1173,8 +1173,8 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Added **layout and theme** utility functions, simplify layout & theme control logic
 - Optimized **content layout usage** & minor bug fixes
 - Temporarily disable middleware to avoid unnecessary edge function executions
-- Correções menores
-- Atualiza dependências e componentes shadcn
+- Minor fixes
+- Updated **deps & shadcn** components
 - Color fixes & code cleanup
 - Fixed **CRM route**
 - Reverted **theme**
@@ -1276,16 +1276,16 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Added **content layout switcher** for full width and centered layouts
 
 ### Manutenção
-- Limpeza de código
+- Code cleanup
 - Replace static icons with simple icons package & code cleanup
 - Improved **data table rendering** logic for better readability
 - Improved **data table**
-- Atualiza dependências
+- Updated **deps**
 - Migrated **shadcn components to** radix-ui mono package
 - Refactored **default dashboard components,** data table restructure & update deps
 - Added **search dialog and** refactor code
 - Discard last commit and revert changes
-- Atualiza o README
+- Updated **readme**
 - Updated **shadcn components and** dependencies
 - Updated **responsive margin logic** for centered layout and inset sidebar
 - Code cleanup & improve data table
@@ -1395,9 +1395,9 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Removed **unnecessary file** (#4)
 
 ### Manutenção
-- Atualiza dependências
+- Updated **deps**
 - Updated **deps, app config,** and minor code quality fixes
-- Limpeza de código
+- Code cleanup
 - Updated **media image**
 - Added **eslint-plugin-sonarjs for commented-out** code detection, clean up code, and update dependencies
 - Restructure project components to _components and update dependencies
@@ -1659,9 +1659,9 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Added **shadcn sidebar component,** update to new-york style, update dependencies, and remove custom sidebar
 
 ### Manutenção
-- Limpeza de código
+- Code cleanup
 - Updated **version**
-- Atualiza o README
+- Updated **readme**
 - Updated **dashboard preview image**
 - Updated **dependencies**
 - Updated **dependencies, UI components,** and app config
