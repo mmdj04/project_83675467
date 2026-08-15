@@ -1,16 +1,17 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { siBarclays, siBitcoin, siEthereum, siHsbc, siRevolut } from "simple-icons";
 
 import { SimpleIcon } from "@/components/simple-icon";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { formatCurrency } from "@/lib/utils";
 
 const walletCards = [
   {
     id: 1,
     bank: "Revolut Premium",
     last4: "4182",
-    balance: "$12,450.60",
+    balance: 12450.6,
     icon: siRevolut,
     iconColor: "fill-foreground",
   },
@@ -18,7 +19,7 @@ const walletCards = [
     id: 2,
     bank: "HSBC Bank",
     last4: "1004",
-    balance: "$3,200.11",
+    balance: 3200.11,
     icon: siHsbc,
     iconColor: "fill-foreground",
   },
@@ -27,7 +28,7 @@ const walletCards = [
     id: 4,
     bank: "Barclays Bank",
     last4: "9912",
-    balance: "$1,450.00",
+    balance: 1450,
     icon: siBarclays,
     iconColor: "fill-foreground",
   },
@@ -39,7 +40,7 @@ const cryptoAssets = [
     name: "Bitcoin",
     vault: "Binance",
     balance: "0.42 BTC",
-    usdValue: "$24,150.00",
+    usdValue: 24150,
     icon: siBitcoin,
   },
   {
@@ -47,13 +48,14 @@ const cryptoAssets = [
     name: "Ethereum",
     vault: "MetaMask",
     balance: "4.85 ETH",
-    usdValue: "$12,420.10",
+    usdValue: 12420.1,
     icon: siEthereum,
   },
 ];
 
 export async function Wallet() {
   const t = await getTranslations("finance");
+  const locale = await getLocale();
 
   return (
     <Card>
@@ -70,7 +72,9 @@ export async function Wallet() {
                     {card.bank} • **** {card.last4}
                   </span>
                 </div>
-                <span className="font-normal text-muted-foreground text-xs">{card.balance}</span>
+                <span className="font-normal text-muted-foreground text-xs">
+                  {formatCurrency(card.balance, {}, locale)}
+                </span>
               </div>
               <div className="flex size-9 shrink-0 items-center justify-center rounded-md border bg-background">
                 <SimpleIcon icon={card.icon} />
@@ -91,7 +95,7 @@ export async function Wallet() {
                   </span>
                 </div>
                 <span className="font-normal text-muted-foreground text-xs">
-                  {asset.balance} • {asset.usdValue}
+                  {asset.balance} • {formatCurrency(asset.usdValue, {}, locale)}
                 </span>
               </div>
               <div className="flex size-9 shrink-0 items-center justify-center rounded-md border bg-background">

@@ -1,10 +1,12 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { formatCurrency } from "@/lib/utils";
 
 export async function OverviewKpis() {
   const t = await getTranslations("finance");
+  const locale = await getLocale();
 
   return (
     <div className="overflow-hidden rounded-xl bg-card ring-1 ring-foreground/10">
@@ -15,8 +17,10 @@ export async function OverviewKpis() {
           </CardHeader>
           <CardContent className="flex items-end justify-between">
             <div className="space-y-1">
-              <div className="text-3xl leading-none tracking-tight">$128.4K</div>
-              <p className="text-muted-foreground text-xs">{t("netWorthVsLastMonth", { amount: "$9.8K" })}</p>
+              <div className="text-3xl leading-none tracking-tight">{formatCurrency(128400, {}, locale)}</div>
+              <p className="text-muted-foreground text-xs">
+                {t("netWorthVsLastMonth", { amount: formatCurrency(9800, {}, locale) })}
+              </p>
             </div>
             <Badge className="bg-green-500/10 text-green-700 dark:bg-green-500/15 dark:text-green-300">+8.4%</Badge>
           </CardContent>
@@ -28,8 +32,10 @@ export async function OverviewKpis() {
           </CardHeader>
           <CardContent className="flex items-end justify-between">
             <div className="flex flex-col gap-1">
-              <div className="text-3xl leading-none tracking-tight">$12.8K</div>
-              <p className="text-muted-foreground text-xs">{t("aboveAverage", { amount: "$410" })}</p>
+              <div className="text-3xl leading-none tracking-tight">{formatCurrency(12800, {}, locale)}</div>
+              <p className="text-muted-foreground text-xs">
+                {t("aboveAverage", { amount: formatCurrency(410, {}, locale) })}
+              </p>
             </div>
             <Badge className="bg-green-500/10 text-green-700 dark:bg-green-500/15 dark:text-green-300">+3.2%</Badge>
           </CardContent>
@@ -41,8 +47,10 @@ export async function OverviewKpis() {
           </CardHeader>
           <CardContent className="flex items-end justify-between">
             <div className="flex flex-col gap-1">
-              <div className="text-3xl leading-none tracking-tight">$2,140</div>
-              <p className="text-muted-foreground text-xs">{t("moreThanLastMonth", { amount: "$124" })}</p>
+              <div className="text-3xl leading-none tracking-tight">{formatCurrency(2140, {}, locale)}</div>
+              <p className="text-muted-foreground text-xs">
+                {t("moreThanLastMonth", { amount: formatCurrency(124, {}, locale) })}
+              </p>
             </div>
             <Badge variant="destructive" className="bg-destructive/10 text-destructive">
               +6.1%

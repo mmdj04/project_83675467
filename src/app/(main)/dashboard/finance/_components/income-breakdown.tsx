@@ -1,10 +1,12 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { formatCurrency } from "@/lib/utils";
 
 export async function IncomeBreakdown() {
   const t = await getTranslations("finance");
+  const locale = await getLocale();
 
   return (
     <Card>
@@ -23,7 +25,7 @@ export async function IncomeBreakdown() {
               <p className="wrap-break-word text-muted-foreground text-xs leading-none">
                 {t("incomePrimarySalary")} · 68%
               </p>
-              <div className="text-lg leading-none tracking-tight">$4,560.00</div>
+              <div className="text-lg leading-none tracking-tight">{formatCurrency(4560, {}, locale)}</div>
             </div>
             <div className="-ml-0.5 h-5 rounded-sm bg-chart-3" />
           </div>
@@ -39,7 +41,7 @@ export async function IncomeBreakdown() {
               <p className="wrap-break-word text-muted-foreground text-xs leading-none">
                 {t("incomeFreelanceProjects")} · 21%
               </p>
-              <div className="text-lg leading-none tracking-tight">$1,412.00</div>
+              <div className="text-lg leading-none tracking-tight">{formatCurrency(1412, {}, locale)}</div>
             </div>
             <div className="-ml-0.5 h-5 rounded-sm bg-chart-3/75" />
           </div>
@@ -55,7 +57,7 @@ export async function IncomeBreakdown() {
               <p className="wrap-break-word text-muted-foreground text-xs leading-none">
                 {t("incomeDividendsInterest")} · 11%
               </p>
-              <div className="text-lg leading-none tracking-tight">$765.00</div>
+              <div className="text-lg leading-none tracking-tight">{formatCurrency(765, {}, locale)}</div>
             </div>
             <div className="-ml-0.5 h-5 rounded-sm bg-chart-3/50" />
           </div>

@@ -11,15 +11,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 type TrafficSourceDatum = {
   label: string;
   source: string;
+  sourceKey?: string;
   visitors: number;
 };
 
 const sourcesData: TrafficSourceDatum[] = [
-  { label: "89.4k", source: "Organic Search", visitors: 89_400 },
-  { label: "55.2k", source: "Direct", visitors: 55_200 },
-  { label: "38.1k", source: "Social", visitors: 38_100 },
-  { label: "30.4k", source: "Referral", visitors: 30_400 },
-  { label: "22.7k", source: "Paid", visitors: 22_700 },
+  { label: "89.4k", sourceKey: "sourceOrganicSearch", source: "Organic Search", visitors: 89_400 },
+  { label: "55.2k", sourceKey: "sourceDirect", source: "Direct", visitors: 55_200 },
+  { label: "38.1k", sourceKey: "sourceSocial", source: "Social", visitors: 38_100 },
+  { label: "30.4k", sourceKey: "sourceReferral", source: "Referral", visitors: 30_400 },
+  { label: "22.7k", sourceKey: "sourcePaid", source: "Paid", visitors: 22_700 },
 ];
 
 const campaignsData: TrafficSourceDatum[] = [
@@ -82,7 +83,14 @@ function TrafficSourceBarChart({ data }: { data: TrafficSourceDatum[] }) {
         <XAxis dataKey="visitors" hide type="number" />
         <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
         <Bar barSize={40} dataKey="visitors" fill="var(--color-visitors)" fillOpacity={0.5} radius={8}>
-          <LabelList className="fill-foreground" dataKey="source" fontSize={14} offset={12} position="insideLeft" />
+          <LabelList
+            className="fill-foreground"
+            dataKey={data[0]?.sourceKey ? "sourceKey" : "source"}
+            fontSize={14}
+            formatter={(value) => (data[0]?.sourceKey ? t(String(value)) : value)}
+            offset={12}
+            position="insideLeft"
+          />
           <LabelList content={renderValueLabel} dataKey="label" />
         </Bar>
       </BarChart>

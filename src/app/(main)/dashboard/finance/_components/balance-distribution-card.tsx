@@ -12,6 +12,13 @@ import { formatCurrency } from "@/lib/utils";
 
 type BalanceKey = "investment" | "main" | "reserve" | "savings";
 
+const accountLabelKeys: Record<BalanceKey, string> = {
+  main: "accountMain",
+  savings: "accountSavings",
+  investment: "accountInvestment",
+  reserve: "accountReserve",
+};
+
 const balanceData: {
   account: string;
   amount: number;
@@ -127,7 +134,16 @@ export function BalanceDistributionCard() {
           <PieChart>
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent hideLabel className="w-52" nameKey="account" />}
+              content={
+                <ChartTooltipContent
+                  hideLabel
+                  className="w-52"
+                  formatter={(value, name) => [
+                    formatCurrency(Number(value), { currency, noDecimals: true }, locale),
+                    t(accountLabelKeys[name as BalanceKey] ?? name),
+                  ]}
+                />
+              }
             />
             <Pie
               cornerRadius={6}
@@ -171,7 +187,7 @@ export function BalanceDistributionCard() {
               <div className="min-w-0">
                 <div className="flex min-w-0 items-center gap-1">
                   <span aria-hidden="true" className="h-2 w-1 rounded-full" style={{ backgroundColor: item.fill }} />
-                  <p className="truncate text-muted-foreground text-xs">{item.account}</p>
+                  <p className="truncate text-muted-foreground text-xs">{t(accountLabelKeys[item.key])}</p>
                 </div>
                 <p className="font-medium tabular-nums">
                   {formatCurrency(item.amount, { currency, noDecimals: true }, locale)}

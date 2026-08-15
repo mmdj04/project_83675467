@@ -8,7 +8,7 @@ import {
   useTable,
 } from "@tanstack/react-table";
 import { ChevronDownIcon, ListFilter } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -58,6 +58,7 @@ function preventPaginationNavigation(event: React.MouseEvent<HTMLAnchorElement>)
 
 export function OpportunitiesSection() {
   const t = useTranslations("crm");
+  const locale = useLocale();
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility] = React.useState<ColumnVisibilityState>({});
@@ -66,7 +67,7 @@ export function OpportunitiesSection() {
     pageIndex: 0,
     pageSize: 10,
   });
-  const columns = React.useMemo(() => createOpportunitiesColumns(t), [t]);
+  const columns = React.useMemo(() => createOpportunitiesColumns(t, locale), [t, locale]);
 
   const table = useTable({
     features: dataTableFeatures,
@@ -94,6 +95,7 @@ export function OpportunitiesSection() {
   const pageCount = table.getPageCount();
   const filteredOpportunityCount = table.getFilteredRowModel().rows.length;
   const visibleOpportunityCount = table.getRowModel().rows.length;
+  const opportunityCountFormatter = new Intl.NumberFormat(locale);
   const pageNumbers = React.useMemo(() => {
     if (pageCount <= 3) {
       return Array.from({ length: pageCount }, (_, index) => index + 1);
@@ -212,7 +214,7 @@ export function OpportunitiesSection() {
             <p className="text-muted-foreground text-sm">
               {t("viewingCount", {
                 visible: visibleOpportunityCount,
-                total: filteredOpportunityCount.toLocaleString(),
+                total: opportunityCountFormatter.format(filteredOpportunityCount),
               })}
             </p>
 

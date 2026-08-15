@@ -1,7 +1,8 @@
 "use client";
 
 import { addHours, endOfToday, format, parseISO, subHours } from "date-fns";
-import { useTranslations } from "next-intl";
+import { enUS, type Locale, ptBR } from "date-fns/locale";
+import { useLocale, useTranslations } from "next-intl";
 import { Area, CartesianGrid, ComposedChart, Line, XAxis } from "recharts";
 
 import { Button } from "@/components/ui/button";
@@ -217,6 +218,7 @@ const chartData = chartValues.map((point, index) => ({
 
 export function PerformanceOverview() {
   const t = useTranslations("default");
+  const dateFnsLocale = ({ "pt-BR": ptBR, en: enUS } as Record<string, Locale>)[useLocale()] ?? enUS;
 
   const chartConfig = {
     newCustomers: {
@@ -292,9 +294,8 @@ export function PerformanceOverview() {
               tickMargin={8}
               minTickGap={48}
               tickFormatter={(value) =>
-                parseISO(value).toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
+                format(parseISO(value), "MMM d", {
+                  locale: dateFnsLocale,
                 })
               }
             />
@@ -305,7 +306,7 @@ export function PerformanceOverview() {
                 <ChartTooltipContent
                   className="w-50"
                   indicator="line"
-                  labelFormatter={(value) => format(parseISO(value), "d MMMM yyyy")}
+                  labelFormatter={(value) => format(parseISO(value), "d MMMM yyyy", { locale: dateFnsLocale })}
                 />
               }
             />

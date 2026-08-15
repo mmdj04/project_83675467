@@ -541,7 +541,11 @@
     "shortcutMobile": "Mobile",
     "shortcutElectricity": "Electricity",
     "shortcutWater": "Water",
-    "shortcutMore": "More"
+    "shortcutMore": "More",
+    "accountMain": "Main Wallet",
+    "accountSavings": "Savings Account",
+    "accountInvestment": "Investment Account",
+    "accountReserve": "Reserve Account"
   },
   "analytics": {
     "greeting": "Hello, {name}",
@@ -592,7 +596,12 @@
     "trafficQuality": "Traffic Quality",
     "chartActualQuality": "Actual quality",
     "chartBaselineQuality": "Baseline quality",
-    "week": "Week {week}"
+    "week": "Week {week}",
+    "sourceOrganicSearch": "Organic Search",
+    "sourceDirect": "Direct",
+    "sourceSocial": "Social",
+    "sourceReferral": "Referral",
+    "sourcePaid": "Paid"
   },
   "productivity": {
     "greeting": "Good morning, {name}",
@@ -998,10 +1007,6 @@
     "inbox": "Inbox",
     "badgeNew": "New",
     "badgeSoon": "Soon",
-    "groupDashboards": "Dashboards",
-    "groupPages": "Pages",
-    "groupLegacy": "Legacy",
-    "groupMisc": "Misc",
     "titleDefault": "Default",
     "titleCrm": "CRM",
     "titleFinance": "Finance",
@@ -1168,6 +1173,10 @@
     "columnStatus": "Status",
     "columnBilling": "Billing",
     "columnPlan": "Plan",
+    "planStarter": "Starter",
+    "planGrowth": "Growth",
+    "planPro": "Pro",
+    "planEnterprise": "Enterprise",
     "columnJoined": "Joined",
     "atTime": "at {time}",
     "statusSubscribed": "Subscribed",

@@ -2,6 +2,7 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import { Subscribe } from "@tanstack/react-table";
 import { addMinutes, differenceInCalendarDays, endOfToday, format, parseISO } from "date-fns";
+import { enUS, type Locale, ptBR } from "date-fns/locale";
 import { CircleAlertIcon, CircleCheckIcon, Clock3Icon, LoaderIcon, UserRound } from "lucide-react";
 import type { useTranslations } from "next-intl";
 
@@ -26,6 +27,15 @@ const billingLabelKeys: Record<string, string> = {
   Trial: "billingTrial",
 };
 
+const planLabelKeys: Record<string, string> = {
+  Starter: "planStarter",
+  Growth: "planGrowth",
+  Pro: "planPro",
+  Enterprise: "planEnterprise",
+};
+
+const dateFnsLocales: Record<string, Locale> = { "pt-BR": ptBR, en: enUS };
+
 function billingIcon(billing: string) {
   switch (billing) {
     case "Paid":
@@ -41,7 +51,13 @@ function billingIcon(billing: string) {
   }
 }
 
-export function createRecentCustomersColumns(t: Translator): ColumnDef<DataTableFeatures, RecentCustomerRow>[] {
+export function createRecentCustomersColumns(
+  t: Translator,
+  locale: string,
+): ColumnDef<DataTableFeatures, RecentCustomerRow>[] {
+  const dateFnsLocale = dateFnsLocales[locale] ?? enUS;
+  const timePattern = dateFnsLocale === ptBR ? "HH:mm" : "h:mm a";
+
   return [
     {
       id: "select",
@@ -129,7 +145,7 @@ export function createRecentCustomersColumns(t: Translator): ColumnDef<DataTable
     {
       accessorKey: "plan",
       header: t("columnPlan"),
-      cell: ({ row }) => <span className="text-sm">{row.original.plan}</span>,
+      cell: ({ row }) => <span className="text-sm">{t(planLabelKeys[row.original.plan])}</span>,
     },
     {
       id: "joinedWindow",
@@ -152,8 +168,10 @@ export function createRecentCustomersColumns(t: Translator): ColumnDef<DataTable
 
         return (
           <div className="grid gap-0.5">
-            <span className="text-sm">{format(joinedAt, "do MMMM yyyy")}</span>
-            <span className="text-muted-foreground text-xs">{t("atTime", { time: format(joinedAt, "h:mm a") })}</span>
+            <span className="text-sm">{format(joinedAt, "do MMMM yyyy", { locale: dateFnsLocale })}</span>
+            <span className="text-muted-foreground text-xs">
+              {t("atTime", { time: format(joinedAt, timePattern) })}
+            </span>
           </div>
         );
       },

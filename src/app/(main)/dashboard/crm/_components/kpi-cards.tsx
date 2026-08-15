@@ -1,11 +1,13 @@
 import { ArrowUpRight, TrendingDown, TrendingUp } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardAction, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
+import { formatCurrency } from "@/lib/utils";
 
 export async function KpiCards() {
   const t = await getTranslations("crm");
+  const locale = await getLocale();
 
   return (
     <section className="space-y-5">
@@ -24,7 +26,7 @@ export async function KpiCards() {
           </CardHeader>
           <CardContent className="space-y-2">
             <div className="flex items-center gap-3">
-              <span className="text-3xl leading-none tracking-tight">$284,500</span>
+              <span className="text-3xl leading-none tracking-tight">{formatCurrency(284500, {}, locale)}</span>
 
               <Badge
                 variant="outline"
@@ -35,7 +37,7 @@ export async function KpiCards() {
               </Badge>
             </div>
             <p className="text-sm">
-              <span className="font-medium text-foreground">$254,200</span>{" "}
+              <span className="font-medium text-foreground">{formatCurrency(254200, {}, locale)}</span>{" "}
               <span className="text-muted-foreground">{t("lastMonth")}</span>
             </p>
           </CardContent>

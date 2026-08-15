@@ -541,7 +541,11 @@
     "shortcutMobile": "Celular",
     "shortcutElectricity": "Energia",
     "shortcutWater": "Água",
-    "shortcutMore": "Mais"
+    "shortcutMore": "Mais",
+    "accountMain": "Carteira principal",
+    "accountSavings": "Conta poupança",
+    "accountInvestment": "Conta de investimentos",
+    "accountReserve": "Conta reserva"
   },
   "analytics": {
     "greeting": "Olá, {name}",
@@ -592,7 +596,12 @@
     "trafficQuality": "Qualidade do tráfego",
     "chartActualQuality": "Qualidade real",
     "chartBaselineQuality": "Qualidade de referência",
-    "week": "Semana {week}"
+    "week": "Semana {week}",
+    "sourceOrganicSearch": "Pesquisa orgânica",
+    "sourceDirect": "Direto",
+    "sourceSocial": "Redes sociais",
+    "sourceReferral": "Indicação",
+    "sourcePaid": "Pago"
   },
   "productivity": {
     "greeting": "Bom dia, {name}",
@@ -998,10 +1007,6 @@
     "inbox": "Caixa de entrada",
     "badgeNew": "Novo",
     "badgeSoon": "Em breve",
-    "groupDashboards": "Painéis",
-    "groupPages": "Páginas",
-    "groupLegacy": "Legado",
-    "groupMisc": "Diversos",
     "titleDefault": "Padrão",
     "titleCrm": "CRM",
     "titleFinance": "Finanças",
@@ -1168,6 +1173,10 @@
     "columnStatus": "Status",
     "columnBilling": "Cobrança",
     "columnPlan": "Plano",
+    "planStarter": "Iniciante",
+    "planGrowth": "Crescimento",
+    "planPro": "Pro",
+    "planEnterprise": "Empresa",
     "columnJoined": "Entrou",
     "atTime": "às {time}",
     "statusSubscribed": "Inscrito",

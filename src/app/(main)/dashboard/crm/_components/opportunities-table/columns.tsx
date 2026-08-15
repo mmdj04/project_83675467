@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import type { DataTableFeatures } from "@/lib/data-table-features";
-import { cn } from "@/lib/utils";
+import { cn, formatCurrency } from "@/lib/utils";
 
 import type { OpportunityRow } from "./schema";
 
@@ -48,7 +48,7 @@ function getHealthScore(health: OpportunityRow["health"]) {
   }
 }
 
-export function createOpportunitiesColumns(t: Translator): ColumnDef<DataTableFeatures, OpportunityRow>[] {
+export function createOpportunitiesColumns(t: Translator, locale: string): ColumnDef<DataTableFeatures, OpportunityRow>[] {
   return [
     {
       id: "select",
@@ -130,7 +130,11 @@ export function createOpportunitiesColumns(t: Translator): ColumnDef<DataTableFe
     {
       accessorKey: "value",
       header: t("columnValue"),
-      cell: ({ row }) => <div className="font-medium text-sm tabular-nums">{row.original.value}</div>,
+      cell: ({ row }) => (
+        <div className="font-medium text-sm tabular-nums">
+          {formatCurrency(Number(row.original.value.replace(/[$,]/g, "")), {}, locale)}
+        </div>
+      ),
     },
     {
       id: "actions",

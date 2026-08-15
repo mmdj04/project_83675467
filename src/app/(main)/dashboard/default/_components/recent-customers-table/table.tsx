@@ -19,7 +19,7 @@ import {
   Search,
   UsersRound,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -71,6 +71,7 @@ const sortOptionState = {
 
 export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
   const t = useTranslations("default");
+  const locale = useLocale();
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = React.useState<SortingState>([{ id: "joined", desc: true }]);
@@ -82,7 +83,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
     pageIndex: 0,
     pageSize: 10,
   });
-  const columns = React.useMemo(() => createRecentCustomersColumns(t), [t]);
+  const columns = React.useMemo(() => createRecentCustomersColumns(t, locale), [t, locale]);
 
   const table = useTable({
     features: dataTableFeatures,
