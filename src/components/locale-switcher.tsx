@@ -12,13 +12,14 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { cn } from "@/lib/utils";
 
 const LOCALES = [
   { code: "pt-BR", label: "Português (Brasil)" },
   { code: "en", label: "English" },
 ] as const;
 
-export function LocaleSwitcher() {
+export function LocaleSwitcher({ className }: { className?: string }) {
   const locale = useLocale();
   const router = useRouter();
 
@@ -30,7 +31,7 @@ export function LocaleSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" aria-label="Idioma" className="gap-1 text-muted-foreground">
+        <Button variant="ghost" size="sm" aria-label="Idioma" className={cn("gap-1 text-muted-foreground", className)}>
           <Globe className="size-4" />
           {locale.toUpperCase()}
         </Button>

@@ -38,7 +38,7 @@ export default async function RegisterV2() {
 
       <div className="absolute bottom-5 flex w-full justify-between px-10">
         <div className="text-sm">{APP_CONFIG.copyright}</div>
-        <LocaleSwitcher />
+        <LocaleSwitcher className="h-5 px-1.5 text-sm [&>svg]:size-4" />
       </div>
     </>
   );
