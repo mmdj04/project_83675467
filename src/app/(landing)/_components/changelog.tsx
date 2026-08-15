@@ -41,7 +41,8 @@ function parseChangelog(content: string): ChangelogMonth[] {
       continue;
     }
 
-    const sectionMatch = line.match(/^\*\*(.+)\*\*$/);
+    const sectionMatch =
+      line.match(/^### (.+)$/) || line.match(/^\*\*(.+)\*\*$/);
     if (sectionMatch) {
       currentSection = { title: sectionMatch[1], items: [] };
       currentMonth.sections.push(currentSection);
@@ -91,6 +92,19 @@ export function Changelog({ content }: { content: string }) {
 
   const commitCount = (summary: string) =>
     summary.match(/(\d+) commits/)?.[1];
+
+  const renderItem = (item: string) => {
+    const parts = item.split("**");
+    return parts.map((part, i) =>
+      i % 2 === 1 ? (
+        <strong key={i} className="font-semibold text-foreground">
+          {part}
+        </strong>
+      ) : (
+        part
+      )
+    );
+  };
 
   return (
     <section className="bg-background px-8 py-24">
@@ -177,7 +191,9 @@ export function Changelog({ content }: { content: string }) {
                                     "font-mono text-xs"
                                 )}
                               >
-                                {item}
+                                {s.title === "Arquivos principais"
+                                  ? item
+                                  : renderItem(item)}
                               </li>
                             ))}
                           </ul>

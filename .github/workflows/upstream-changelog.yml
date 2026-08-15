@@ -56,6 +56,63 @@ jobs:
             };
 
             const fmt = (n) => Number(n).toLocaleString("pt-BR");
+            const VERBS = new Set([
+              "add", "added", "update", "updated", "updates", "fix", "fixed",
+              "fixes", "refactor", "refactored", "improve", "improved",
+              "remove", "removed", "migrate", "migrated", "implement",
+              "implemented", "organize", "organized", "rename", "renamed",
+              "optimize", "optimized", "swap", "swapped", "promote",
+              "promoted", "move", "moved", "adopt", "adopted", "expand",
+              "expanded", "create", "created", "change", "changed", "enable",
+              "enabled", "disable", "disabled", "refine", "refined",
+              "polish", "polished", "tighten", "tightened", "simplify",
+              "simplified", "revert", "reverted", "feat", "chore",
+            ]);
+            const VERB_CAP = {
+              add: "Added", added: "Added", update: "Updated",
+              updated: "Updated", updates: "Updated", fix: "Fixed",
+              fixed: "Fixed", fixes: "Fixed", refactor: "Refactored",
+              refactored: "Refactored", improve: "Improved",
+              improved: "Improved", remove: "Removed", removed: "Removed",
+              migrate: "Migrated", migrated: "Migrated",
+              implement: "Implemented", implemented: "Implemented",
+              organize: "Organized", organized: "Organized",
+              rename: "Renamed", renamed: "Renamed", optimize: "Optimized",
+              optimized: "Optimized", swap: "Swapped", swapped: "Swapped",
+              promote: "Promoted", promoted: "Promoted", move: "Moved",
+              moved: "Moved", adopt: "Adopted", adopted: "Adopted",
+              expand: "Expanded", expanded: "Expanded", create: "Created",
+              created: "Created", change: "Changed", changed: "Changed",
+              enable: "Enabled", enabled: "Enabled", disable: "Disabled",
+              disabled: "Disabled", refine: "Refined", refined: "Refined",
+              polish: "Polished", polished: "Polished",
+              tighten: "Tightened", tightened: "Tightened",
+              simplify: "Simplified", simplified: "Simplified",
+              revert: "Reverted", reverted: "Reverted", feat: "Added",
+              chore: "Maintained",
+            };
+            const prettyItem = (msg) => {
+              const clean = msg.replace(
+                /^(feat|fix|refactor|chore|docs|perf|style|test|build|ci|revert|deps)(\([^)]*\))?:\s*/,
+                "",
+              );
+              const words = clean.split(/\s+/).filter(Boolean);
+              if (words.length === 0) return msg;
+              const verb = words[0].toLowerCase();
+              if (VERBS.has(verb)) {
+                const cap =
+                  VERB_CAP[verb] || verb[0].toUpperCase() + verb.slice(1);
+                const rest = words.slice(1);
+                if (rest.length === 0) return cap;
+                const bold = rest.slice(0, 3).join(" ");
+                const tail = rest.slice(3).join(" ");
+                return `${cap} **${bold}**${tail ? ` ${tail}` : ""}`;
+              }
+              return (
+                words[0][0].toUpperCase() + words[0].slice(1) + " " +
+                words.slice(1).join(" ")
+              );
+            };
             const current = fs.readFileSync(changelogPath, "utf8");
 
             let cache = {};
@@ -137,7 +194,10 @@ jobs:
                 monthData.set(month, { commits: [], files: new Map() });
               }
               const md = monthData.get(month);
-              md.commits.push({ message });
+              md.commits.push({
+                message,
+                login: c.author && c.author.login,
+              });
               for (const f of cache[short] || []) {
                 const cur =
                   md.files.get(f.filename) || {
@@ -236,22 +296,32 @@ jobs:
               if (novidades.length) {
                 lines.push(
                   "",
-                  "**Novidades**",
-                  ...novidades.map((x) => `- ${x}`),
+                  "### Novidades",
+                  ...novidades.map((x) => `- ${prettyItem(x)}`),
                 );
               }
               if (correcoes.length) {
                 lines.push(
                   "",
-                  "**Correções**",
-                  ...correcoes.map((x) => `- ${x}`),
+                  "### Correções",
+                  ...correcoes.map((x) => `- ${prettyItem(x)}`),
                 );
               }
               if (shown.length) {
+                lines.push("", "### Arquivos principais", ...shown);
+              }
+              const contribs = [
+                ...new Set(
+                  md.commits
+                    .map((c) => c.login)
+                    .filter((l) => l && !l.includes("[bot]")),
+                ),
+              ].sort((a, b) => a.localeCompare(b));
+              if (contribs.length) {
                 lines.push(
                   "",
-                  "**Arquivos principais**",
-                  ...shown,
+                  "### Contribuidores",
+                  ...contribs.map((l) => `- @${l}`),
                 );
               }
               return lines.join("\n");
@@ -260,8 +330,8 @@ jobs:
             const content =
               "# Changelog\n\n" +
               "Histórico do projeto por mês — cada mês resume todos os commits como uma única atualização " +
-              "(novidades, correções e arquivos agregados sem duplicação).\n\n" +
-              sections.join("\n\n") +
+              "(novidades, correções, arquivos agregados e contribuidores).\n\n" +
+              sections.join("\n\n---\n\n") +
               "\n";
 
             if (current === content) {
