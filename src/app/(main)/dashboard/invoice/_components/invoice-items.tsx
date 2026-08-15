@@ -48,7 +48,7 @@ export function InvoiceItems() {
       <div className="flex flex-col gap-2">
         <div className="hidden items-center gap-2 px-1 font-medium text-muted-foreground text-xs md:grid md:grid-cols-[24px_minmax(0,1fr)_64px_112px_112px_32px]">
           <span />
-          <span>{t("invoice.description")}</span>
+          <span>{t("invoice.descriptionLabel")}</span>
           <span className="px-2">{t("invoice.units")}</span>
           <span className="px-2">{t("invoice.unitCost")}</span>
           <span className="text-right">{t("invoice.lineTotal")}</span>

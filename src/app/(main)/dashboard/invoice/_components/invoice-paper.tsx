@@ -77,7 +77,7 @@ export function InvoicePaper({ invoice }: { invoice: InvoiceFormValues }) {
       <div className="flex flex-col gap-5">
         <section className="text-sm">
           <div className="grid grid-cols-[1fr_74px_116px_116px] bg-stone-200 px-3 py-3 font-semibold uppercase">
-            <span>{t("invoice.description")}</span>
+            <span>{t("invoice.descriptionLabel")}</span>
             <span className="text-right">{t("invoice.units")}</span>
             <span className="text-right">{t("invoice.unitCost")}</span>
             <span className="text-right">{t("invoice.lineTotal")}</span>
