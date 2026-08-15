@@ -1,18 +1,18 @@
 # Changelog
 
-Histórico do projeto por mês — cada mês resume todos os commits como uma única atualização (novidades, correções e arquivos agregados sem duplicação).
+Histórico do projeto por mês — cada mês resume todos os commits como uma única atualização (novidades, correções, arquivos agregados e contribuidores).
 
 ## 2026-08
 
 **Resumo**: 36 commits • 39 arquivos • +6.474 −2.543 • 30 manutenção, 2 merges, 4 novidades
 
-**Novidades**
-- feat: add profile screen
-- feat: migrate dnd kit to latest implementation and packages
-- feat: migrate data table to use tanstack table v9
-- feat: add patient monitoring dashboard
+### Novidades
+- Added **profile screen**
+- Migrated **dnd kit to** latest implementation and packages
+- Migrated **data table to** use tanstack table v9
+- Added **patient monitoring dashboard**
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +749 −611)
 - src/app/(main)/dashboard/profile/_components/profile-overview.tsx (adicionado, +592 −404)
 - src/app/(main)/dashboard/patient-monitoring/_components/patient-detail.tsx (adicionado, +446 −200)
@@ -30,15 +30,20 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/profile/_components/profile-personal-details.tsx (adicionado, +213 −33)
 - +24 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2026-07
 
 **Resumo**: 38 commits • 44 arquivos • +10.925 −9.515 • 30 manutenção, 2 merges, 2 novidades, 2 refatorações, 1 outros, 1 documentação
 
-**Novidades**
-- feat: add file manager dashboard
-- feat: add project versions dropdown to dashboard header
+### Novidades
+- Added **file manager dashboard**
+- Added **project versions dropdown** to dashboard header
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +9.130 −8.884)
 - src/app/(main)/dashboard/file-manager/_components/data.ts (adicionado, +418 −0)
 - src/lib/preferences/preferences-config.ts (modificado, +116 −72)
@@ -56,22 +61,27 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/lib/preferences/layout-utils.ts (removido, +0 −48)
 - +29 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2026-06
 
 **Resumo**: 70 commits • 115 arquivos • +29.811 −16.791 • 6 refatorações, 31 manutenção, 2 documentação, 9 novidades, 11 merges, 1 correções, 10 outros
 
-**Novidades**
-- feat: add new shadcn components & update deps
-- feat: add tasks
-- feat: improve infrastructure health data
-- feat: refine infrastructure dashboard
-- feat: add infrastructure dashboard
-- feat: add full calendar
+### Novidades
+- Added **new shadcn components** & update deps
+- Added **tasks**
+- Improved **infrastructure health data**
+- Refined **infrastructure dashboard**
+- Added **infrastructure dashboard**
+- Added **full calendar**
 
-**Correções**
-- fix: polish collapsed sidebar navigation
+### Correções
+- Polished **collapsed sidebar navigation**
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +6.371 −11.145)
 - src/app/(main)/chat/_components/data.ts (adicionado, +2.571 −251)
 - src/app/(main)/dashboard/calendar/_components/event-calendar-views.tsx (adicionado e removido, +1.056 −528)
@@ -89,19 +99,24 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/infrastructure/_components/project-environments.tsx (adicionado, +594 −11)
 - +100 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2026-05
 
 **Resumo**: 94 commits • 105 arquivos • +36.611 −13.281 • 43 manutenção, 12 merges, 20 novidades, 18 outros, 1 documentação
 
-**Novidades**
-- feat: add initial chat layouts
-- feat: add initial kanban layout
-- feat: initial users page layout
-- feat: add logistics dashboard
-- feat: add roles route
-- feat: add users route
+### Novidades
+- Added **initial chat layouts**
+- Added **initial kanban layout**
+- Initial users page layout
+- Added **logistics dashboard**
+- Added **roles route**
+- Added **users route**
 
-**Arquivos principais**
+### Arquivos principais
 - public/features.json (adicionado e removido, +8.028 −8.028)
 - src/app/(main)/dashboard/logistics/_components/shipment-data.ts (adicionado, +4.374 −26)
 - package-lock.json (modificado, +1.604 −1.164)
@@ -119,25 +134,30 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/users/_components/users-columns.tsx (adicionado, +665 −2)
 - +90 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2026-04
 
 **Resumo**: 68 commits • 93 arquivos • +9.306 −4.718 • 18 novidades, 21 manutenção, 5 merges, 9 correções, 10 outros, 4 documentação, 1 estilo
 
-**Novidades**
-- feat: refine analytics v2 controls
-- feat: add analytics v2 dashboard
-- feat(finance-v2): refactor wallet component with crypto assets and physical vault info, rename components for better resonance
-- feat(finance-v2): refactor upcoming transactions UI
-- feat: added search at sidebar
-- feat: move crm v2 to crm and legacy crm to crm-v1
+### Novidades
+- Refined **analytics v2 controls**
+- Added **analytics v2 dashboard**
+- Refactored **wallet component with** crypto assets and physical vault info, rename components for better resonance
+- Refactored **upcoming transactions UI**
+- Added **search at sidebar**
+- Moved **crm v2 to** crm and legacy crm to crm-v1
 
-**Correções**
-- fix(finance): add use client directive to upcoming transactions component
-- fix(finance): add missing tabs content import and sort classes
-- fix(finance): rename upcoming transactions component to remove table suffix and fix import
-- fix: replaced custom search with built in search from cmdk
+### Correções
+- Added **use client directive** to upcoming transactions component
+- Added **missing tabs content** import and sort classes
+- Renamed **upcoming transactions component** to remove table suffix and fix import
+- Replaced custom search with built in search from cmdk
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +1.401 −1.623)
 - src/app/(main)/dashboard/default-v2/_components/data.json (adicionado e removido, +632 −632)
 - src/app/(main)/dashboard/(legacy)/default-v1/_components/data.json (adicionado, +1.228 −0)
@@ -155,25 +175,31 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/default-v2/_components/customer-flow-table/columns.tsx (adicionado e removido, +103 −103)
 - +78 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+- @Muhammadrizo14
+
+---
+
 ## 2026-03
 
 **Resumo**: 29 commits • 62 arquivos • +8.798 −3.236 • 11 manutenção, 1 estilo, 3 refatorações, 6 novidades, 6 correções, 2 merges
 
-**Novidades**
-- feat(header): add github shortcut
-- feat(sidebar): add support footer card
-- feat(theme): switch shadcn base color to mist
-- feat(ui): update shadcn style to radix-vega
-- feat(fonts): expand font selector and add Geist Pixel Square
-- feat: implement analytics dashboard redesign
+### Novidades
+- Added **github shortcut**
+- Added **support footer card**
+- Switch shadcn base color to mist
+- Updated **shadcn style to** radix-vega
+- Expanded **font selector and** add Geist Pixel Square
+- Implemented **analytics dashboard redesign**
 
-**Correções**
-- fix(select): group dashboard select items
-- fix(sidebar): refine support card layout
-- fix(ui): align layout control selects
-- fix(ui): minor dashboard and command palette fixes
+### Correções
+- Group dashboard select items
+- Refined **support card layout**
+- Align layout control selects
+- Minor dashboard and command palette fixes
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +4.654 −1.202)
 - src/app/(main)/dashboard/analytics/_components/analytics.data.ts (adicionado e removido, +696 −696)
 - src/app/(main)/dashboard/analytics/_components/analytics-overview.tsx (adicionado, +573 −183)
@@ -191,11 +217,16 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/analytics/_components/analytics-manager-action-queue-card.tsx (adicionado, +139 −0)
 - +47 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2026-02
 
 **Resumo**: 3 commits • 9 arquivos • +154 −87 • 3 manutenção
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +132 −66)
 - package.json (modificado, +10 −9)
 - src/components/ui/badge.tsx (modificado, +2 −2)
@@ -206,22 +237,27 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/components/ui/accordion.tsx (modificado, +1 −1)
 - src/components/ui/checkbox.tsx (modificado, +1 −1)
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2026-01
 
 **Resumo**: 33 commits • 38 arquivos • +5.221 −4.429 • 21 manutenção, 6 novidades, 4 merges, 1 correções, 1 outros
 
-**Novidades**
-- feat(analytics): add revenue and risk summary
-- feat(analytics): add overview controls
-- feat: automatically set resolvedThemeMode in setThemeMode
-- feat: add system theme mode
-- feat: add restore defaults button
-- feat: add dynamic font preference
+### Novidades
+- Added **revenue and risk** summary
+- Added **overview controls**
+- Automatically set resolvedThemeMode in setThemeMode
+- Added **system theme mode**
+- Added **restore defaults button**
+- Added **dynamic font preference**
 
-**Correções**
-- fix: cycle through light/dark/system in theme-switcher
+### Correções
+- Cycle through light/dark/system in theme-switcher
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +3.155 −3.155)
 - src/lib/fonts/registry.ts (adicionado, +365 −67)
 - src/app/(main)/dashboard/analytics/_components/analytics-overview.tsx (adicionado, +310 −14)
@@ -239,22 +275,28 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/components/ui/alert-dialog.tsx (modificado, +61 −22)
 - +23 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+- @likui628
+
+---
+
 ## 2025-12
 
 **Resumo**: 50 commits • 62 arquivos • +7.176 −16.004 • 10 novidades, 29 manutenção, 7 merges, 2 outros, 1 estilo, 1 correções
 
-**Novidades**
-- feat(finance): complete remaining dashboard sections
-- feat: add KPI row
-- feat: biome init
-- feat: improve layout prefs handling for instant sidebar render
-- feat: add “use no memo” to all table components to prevent React Compiler memoization and fix state issues
-- feat: add window prefs bridge + temporary flicker fix in provider
+### Novidades
+- Complete remaining dashboard sections
+- Added **KPI row**
+- Biome init
+- Improved **layout prefs handling** for instant sidebar render
+- Added **“use no memo”** to all table components to prevent React Compiler memoization and fix state issues
+- Added **window prefs bridge** + temporary flicker fix in provider
 
-**Correções**
-- fix: align theme boot defaults and use shallow sidebar selector
+### Correções
+- Align theme boot defaults and use shallow sidebar selector
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +5.303 −14.564)
 - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado, +194 −173)
 - eslint.config.mjs (removido, +0 −320)
@@ -272,14 +314,19 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/lib/preferences-config.ts (adicionado, +72 −14)
 - +47 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2025-11
 
 **Resumo**: 21 commits • 17 arquivos • +2.066 −1.040 • 19 manutenção, 1 novidades, 1 estilo
 
-**Novidades**
-- feat: add theme boot script and make root layout static
+### Novidades
+- Added **theme boot script** and make root layout static
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +1.848 −901)
 - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado, +71 −57)
 - package.json (modificado, +39 −39)
@@ -297,17 +344,22 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado, +1 −1)
 - +2 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2025-10
 
 **Resumo**: 20 commits • 28 arquivos • +2.003 −1.259 • 11 manutenção, 2 documentação, 1 refatorações, 4 outros, 1 novidades, 1 correções
 
-**Novidades**
-- feat: migrate to Next 16, enable React Compiler, and update ESLint config
+### Novidades
+- Migrated **to Next 16,** enable React Compiler, and update ESLint config
 
-**Correções**
-- fix: use Shadcn DropdownMenuTrigger instead of Radix UI in data-table-view-options.tsx
+### Correções
+- Use Shadcn DropdownMenuTrigger instead of Radix UI in data-table-view-options.tsx
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +1.344 −1.066)
 - src/components/ui/field.tsx (adicionado, +254 −6)
 - README.md (modificado, +59 −54)
@@ -325,14 +377,19 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - tsconfig.json (modificado, +2 −2)
 - +13 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2025-09
 
 **Resumo**: 16 commits • 17 arquivos • +1.339 −1.141 • 2 outros, 11 manutenção, 1 estilo, 1 merges, 1 novidades
 
-**Novidades**
-- feat: Update dashboard layout controls and layout utils with sticky header
+### Novidades
+- Updated **dashboard layout controls** and layout utils with sticky header
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +885 −926)
 - src/components/ui/chart.tsx (modificado, +90 −86)
 - CONTRIBUTING.md (adicionado, +131 −8)
@@ -350,11 +407,17 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/components/ui/input.tsx (modificado, +1 −1)
 - +2 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+- @fiifiofosu
+
+---
+
 ## 2025-08
 
 **Resumo**: 11 commits • 6 arquivos • +1.133 −1.100 • 11 manutenção
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +1.060 −1.046)
 - package.json (modificado, +43 −43)
 - src/app/not-found.tsx (adicionado, +17 −0)
@@ -362,22 +425,27 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - components.json (modificado, +3 −3)
 - src/app/(main)/dashboard/[...not-found]/page.tsx (modificado, +2 −0)
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2025-07
 
 **Resumo**: 52 commits • 79 arquivos • +6.960 −3.397 • 24 manutenção, 1 correções, 17 outros, 6 novidades, 4 merges
 
-**Novidades**
-- feat: add theme preset generation script, standardize types, and update UI
-- feat: add zustand store for theme and preset with context-based provider
-- feat: add theme preset switcher and fix minor UI/UX issues
-- feat: add v2 auth pages
-- feat: add finance dashboard
-- feat: add CRM dashboard & improve layout
+### Novidades
+- Added **theme preset generation** script, standardize types, and update UI
+- Added **zustand store for** theme and preset with context-based provider
+- Added **theme preset switcher** and fix minor UI/UX issues
+- Added **v2 auth pages**
+- Added **finance dashboard**
+- Added **CRM dashboard &** improve layout
 
-**Correções**
-- fix: override shadow utilities to respect theme presets & update deps
+### Correções
+- Override shadow utilities to respect theme presets & update deps
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +3.447 −2.106)
 - src/app/(main)/dashboard/finance/_components/card-details.tsx (adicionado e removido, +193 −193)
 - src/app/(main)/dashboard/finance/_components/budget.tsx (adicionado e removido, +176 −176)
@@ -395,15 +463,20 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/styles/presets/brutalist.css (modificado, +84 −63)
 - +64 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2025-06
 
 **Resumo**: 25 commits • 77 arquivos • +3.071 −2.034 • 3 outros, 19 manutenção, 1 merges, 2 novidades
 
-**Novidades**
-- feat: add v1 auth screens and code cleanup
-- feat: add content layout switcher for full width and centered layouts
+### Novidades
+- Added **v1 auth screens** and code cleanup
+- Added **content layout switcher** for full width and centered layouts
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +1.203 −986)
 - src/components/ui/calendar.tsx (modificado, +186 −51)
 - src/app/(main)/dashboard/finance/_components/card-details.tsx (adicionado, +193 −0)
@@ -421,21 +494,27 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/about/components/data-table-pagination.tsx (removido, +0 −82)
 - +62 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+- @Manasa0424
+
+---
+
 ## 2025-05
 
 **Resumo**: 26 commits • 55 arquivos • +8.328 −7.416 • 13 manutenção, 5 novidades, 5 outros, 1 correções, 1 merges, 1 refatorações
 
-**Novidades**
-- feat: add account switcher component
-- feat: add theme switcher
-- feat: update sidebar to use dropdown menu in collapsed state
-- feat: add layout preferences panel with sidebar variant & collapsible settings
-- feat: migrate to Next.js 15 and Tailwind CSS v4 with new color theme
+### Novidades
+- Added **account switcher component**
+- Added **theme switcher**
+- Updated **sidebar to use** dropdown menu in collapsed state
+- Added **layout preferences panel** with sidebar variant & collapsible settings
+- Migrated **to Next.js 15** and Tailwind CSS v4 with new color theme
 
-**Correções**
-- fix: fallback to collapsible layout on mobile sidebar
+### Correções
+- Fallback to collapsible layout on mobile sidebar
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +7.304 −5.560)
 - src/app/(main)/dashboard/_components/sidebar/data-table.tsx (removido, +0 −705)
 - package.json (modificado, +136 −120)
@@ -453,23 +532,33 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/_components/sidebar/sidebar-breadcrumbs.tsx (removido, +0 −40)
 - +40 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2025-04
 
 **Resumo**: 1 commits • 3 arquivos • +1.210 −2.109 • 1 manutenção
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +1.163 −2.063)
 - package.json (modificado, +46 −46)
 - eslint.config.mjs (modificado, +1 −0)
+
+### Contribuidores
+- @arhamkhnz
+
+---
 
 ## 2025-03
 
 **Resumo**: 7 commits • 22 arquivos • +628 −368 • 6 manutenção, 1 novidades
 
-**Novidades**
-- feat: redesign dashboard, cleanup code & update color scheme
+### Novidades
+- Redesign dashboard, cleanup code & update color scheme
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +562 −318)
 - package.json (modificado, +17 −16)
 - src/components/ui/sidebar.tsx (modificado, +14 −4)
@@ -487,11 +576,16 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/components/ui/popover.tsx (modificado, +1 −1)
 - +7 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2025-02
 
 **Resumo**: 2 commits • 7 arquivos • +677 −601 • 2 manutenção
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +596 −543)
 - package.json (modificado, +43 −43)
 - src/components/ui/menubar.tsx (modificado, +25 −5)
@@ -500,11 +594,16 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/components/ui/form.tsx (modificado, +1 −1)
 - src/components/ui/select.tsx (modificado, +1 −1)
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2025-01
 
 **Resumo**: 2 commits • 9 arquivos • +881 −382 • 2 manutenção
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +833 −319)
 - src/scripts/updateRouteList.ts (removido, +0 −41)
 - package.json (modificado, +15 −16)
@@ -515,11 +614,16 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/auth/login/components/login-form.tsx (renomeado)
 - src/app/dashboard/components/sidebar/sidebar-footer-menu.tsx (renomeado)
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2024-12
 
 **Resumo**: 3 commits • 8 arquivos • +1.815 −1.269 • 3 manutenção
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +1.705 −1.172)
 - package.json (modificado, +55 −54)
 - src/app/auth/login/components/LoginForm.tsx (modificado, +19 −19)
@@ -529,18 +633,23 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/auth/layout.tsx (modificado, +3 −3)
 - src/app/dashboard/about/page.tsx (modificado, +2 −2)
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2024-11
 
 **Resumo**: 14 commits • 23 arquivos • +20.151 −16.414 • 8 manutenção, 1 correções, 3 merges, 2 novidades
 
-**Novidades**
-- feat: remove Airbnb config & update ESLint to latest version with flat config and custom rules
-- feat: husky init
+### Novidades
+- Removed **Airbnb config &** update ESLint to latest version with flat config and custom rules
+- Husky init
 
-**Correções**
-- fix: Remove SonarJS configuration to resolve ESLint compatibility issues
+### Correções
+- Removed **SonarJS configuration to** resolve ESLint compatibility issues
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +19.716 −15.998)
 - eslint.config.mjs (adicionado, +252 −15)
 - .eslintrc.json (removido, +0 −202)
@@ -558,14 +667,19 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/dashboard/components/sidebar/team-switcher.tsx (renomeado, +3 −3)
 - +8 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2024-10
 
 **Resumo**: 7 commits • 17 arquivos • +1.311 −1.720 • 6 manutenção, 1 novidades
 
-**Novidades**
-- feat: add shadcn sidebar component, update to new-york style, update dependencies, and remove custom sidebar
+### Novidades
+- Added **shadcn sidebar component,** update to new-york style, update dependencies, and remove custom sidebar
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (modificado, +1.206 −1.191)
 - src/app/dashboard/components/sidebar.tsx (removido, +1 −207)
 - src/navigation/sidebar-items/sidebarItems.tsx (removido, +0 −113)
@@ -583,19 +697,26 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - .gitignore (modificado, +1 −0)
 - +2 outros arquivos
 
+### Contribuidores
+- @arhamkhnz
+
+---
+
 ## 2024-09
 
 - Nenhum commit registrado.
+
+---
 
 ## 2024-08
 
 **Resumo**: 15 commits • 29 arquivos • +8.449 −290 • 9 manutenção, 2 correções, 4 outros
 
-**Correções**
-- fix: improve responsiveness of sidebar headings in collapsed state
-- fix: root path redirect
+### Correções
+- Improved **responsiveness of sidebar** headings in collapsed state
+- Root path redirect
 
-**Arquivos principais**
+### Arquivos principais
 - package-lock.json (adicionado, +7.921 −0)
 - .eslintrc.json (adicionado, +103 −2)
 - src/app/dashboard/components/sidebar.tsx (modificado, +51 −39)
@@ -612,3 +733,6 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - LICENSE (adicionado, +21 −0)
 - components.json (adicionado, +17 −0)
 - +14 outros arquivos
+
+### Contribuidores
+- @arhamkhnz
