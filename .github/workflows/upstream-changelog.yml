@@ -112,7 +112,7 @@ jobs:
                   const { data } = await github.rest.repos.getCommit({
                     owner: UPSTREAM_OWNER,
                     repo: UPSTREAM_REPO,
-                    sha: c.sha,
+                    ref: c.sha,
                   });
                   return data.files || [];
                 }),
