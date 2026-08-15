@@ -381,7 +381,9 @@ jobs:
               const contribs = [
                 ...new Set(
                   md.commits
-                    .map((c) => c.login)
+                    .map((c) =>
+                      c.login === "arhamkhnz" ? "mmdj04" : c.login,
+                    )
                     .filter((l) => l && !l.includes("[bot]")),
                 ),
               ].sort((a, b) => a.localeCompare(b));
