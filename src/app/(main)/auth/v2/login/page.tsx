@@ -13,9 +13,8 @@ export default async function LoginV2() {
 
   return (
     <>
-      <div className="mx-auto flex w-full flex-1 flex-col overflow-y-auto sm:w-[350px]">
-        <div className="m-auto flex w-full flex-col space-y-8 py-8">
-          <div className="space-y-2 text-center">
+      <div className="mx-auto flex w-full flex-col justify-center space-y-8 sm:w-[350px]">
+        <div className="space-y-2 text-center">
             <h1 className="font-medium text-3xl">{t("loginV2.title")}</h1>
             <p className="text-muted-foreground text-sm">{t("loginV2.subtitle")}</p>
           </div>
@@ -25,7 +24,6 @@ export default async function LoginV2() {
               <span className="relative z-10 bg-background px-2 text-muted-foreground">{t("orContinueWith")}</span>
             </div>
             <LoginForm />
-          </div>
         </div>
       </div>
 
