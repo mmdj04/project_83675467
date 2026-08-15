@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { Globe } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
+import { LocaleSwitcher } from "@/components/locale-switcher";
 import { APP_CONFIG } from "@/config/app-config";
 
 import { LoginForm } from "../../_components/login-form";
@@ -38,10 +38,7 @@ export default async function LoginV2() {
 
       <div className="absolute bottom-5 flex w-full justify-between px-10">
         <div className="text-sm">{APP_CONFIG.copyright}</div>
-        <div className="flex items-center gap-1 text-sm">
-          <Globe className="size-4 text-muted-foreground" />
-          {t("languageLabel")}
-        </div>
+        <LocaleSwitcher />
       </div>
     </>
   );

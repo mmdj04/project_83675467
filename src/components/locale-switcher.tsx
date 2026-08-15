@@ -30,9 +30,9 @@ export function LocaleSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" aria-label="Idioma">
-          <Globe />
-          <span className="hidden lg:inline">{locale.toUpperCase()}</span>
+        <Button variant="ghost" size="sm" aria-label="Idioma" className="gap-1 text-muted-foreground">
+          <Globe className="size-4" />
+          {locale.toUpperCase()}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
