@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { AnalyticsKpiStrip } from "./_components/analytics-kpi-strip";
@@ -10,24 +12,24 @@ import { TrafficQuality } from "./_components/traffic-quality";
 // Import this stylesheet in any page or component that renders country flag classes.
 import "@/styles/flag-icons/flags.css";
 
-export default function Page() {
+export default async function Page() {
+  const t = await getTranslations("analytics");
+
   return (
     <div className="flex flex-col gap-4">
       <div className="space-y-1">
-        <h1 className="text-3xl tracking-tight">Hello, Aiy</h1>
-        <p className="text-muted-foreground text-sm">
-          Monitor traffic, engagement, and conversion performance in one view.
-        </p>
+        <h1 className="text-3xl tracking-tight">{t("greeting", { name: "Aiy" })}</h1>
+        <p className="text-muted-foreground text-sm">{t("subtitle")}</p>
       </div>
 
       <Tabs defaultValue="overview" className="flex flex-col gap-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <TabsList className="gap-1">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="audience">Audience</TabsTrigger>
-            <TabsTrigger value="acquisition">Acquisition</TabsTrigger>
-            <TabsTrigger value="engagement">Engagement</TabsTrigger>
-            <TabsTrigger value="conversions">Conversions</TabsTrigger>
+            <TabsTrigger value="overview">{t("tabOverview")}</TabsTrigger>
+            <TabsTrigger value="audience">{t("tabAudience")}</TabsTrigger>
+            <TabsTrigger value="acquisition">{t("tabAcquisition")}</TabsTrigger>
+            <TabsTrigger value="engagement">{t("tabEngagement")}</TabsTrigger>
+            <TabsTrigger value="conversions">{t("tabConversions")}</TabsTrigger>
           </TabsList>
 
           <AnalyticsToolbar />
@@ -57,25 +59,25 @@ export default function Page() {
 
         <TabsContent value="audience">
           <div className="flex h-64 items-center justify-center rounded-xl border border-border border-dashed text-muted-foreground">
-            Audience view coming soon.
+            {t("audienceComingSoon")}
           </div>
         </TabsContent>
 
         <TabsContent value="acquisition">
           <div className="flex h-64 items-center justify-center rounded-xl border border-border border-dashed text-muted-foreground">
-            Acquisition view coming soon.
+            {t("acquisitionComingSoon")}
           </div>
         </TabsContent>
 
         <TabsContent value="engagement">
           <div className="flex h-64 items-center justify-center rounded-xl border border-border border-dashed text-muted-foreground">
-            Engagement view coming soon.
+            {t("engagementComingSoon")}
           </div>
         </TabsContent>
 
         <TabsContent value="conversions">
           <div className="flex h-64 items-center justify-center rounded-xl border border-border border-dashed text-muted-foreground">
-            Conversions view coming soon.
+            {t("conversionsComingSoon")}
           </div>
         </TabsContent>
       </Tabs>

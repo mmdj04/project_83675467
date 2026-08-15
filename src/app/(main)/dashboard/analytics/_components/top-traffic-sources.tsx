@@ -1,18 +1,12 @@
 "use client";
 
 import { Ellipsis } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Bar, BarChart, CartesianGrid, LabelList, type LabelProps, XAxis, YAxis } from "recharts";
 
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-const chartConfig = {
-  visitors: {
-    color: "var(--chart-1)",
-    label: "Visitors",
-  },
-} satisfies ChartConfig;
 
 type TrafficSourceDatum = {
   label: string;
@@ -63,6 +57,15 @@ function renderValueLabel(props: LabelProps) {
 }
 
 function TrafficSourceBarChart({ data }: { data: TrafficSourceDatum[] }) {
+  const t = useTranslations("analytics");
+
+  const chartConfig = {
+    visitors: {
+      color: "var(--chart-1)",
+      label: t("chartVisitors"),
+    },
+  } satisfies ChartConfig;
+
   return (
     <ChartContainer config={chartConfig} className="h-64 w-full">
       <BarChart
@@ -88,10 +91,12 @@ function TrafficSourceBarChart({ data }: { data: TrafficSourceDatum[] }) {
 }
 
 export function TopTrafficSources() {
+  const t = useTranslations("analytics");
+
   return (
     <Card className="h-full gap-2">
       <CardHeader>
-        <CardTitle className="font-normal">Traffic Sources</CardTitle>
+        <CardTitle className="font-normal">{t("trafficSources")}</CardTitle>
         <CardAction>
           <Ellipsis className="size-4" />
         </CardAction>
@@ -101,13 +106,13 @@ export function TopTrafficSources() {
         <Tabs defaultValue="sources" className="flex flex-col gap-3">
           <TabsList className="w-full justify-start border-b px-2.5" variant="line">
             <TabsTrigger className="flex-none font-normal" value="sources">
-              Sources
+              {t("tabSources")}
             </TabsTrigger>
             <TabsTrigger className="flex-none font-normal" value="campaigns">
-              Campaigns
+              {t("tabCampaigns")}
             </TabsTrigger>
             <TabsTrigger className="flex-none font-normal" value="referrers">
-              Referrers
+              {t("tabReferrers")}
             </TabsTrigger>
           </TabsList>
 

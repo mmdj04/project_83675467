@@ -1,6 +1,7 @@
 "use client";
 
 import { Ellipsis } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { CartesianGrid, ComposedChart, Line, XAxis, YAxis } from "recharts";
 
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -93,17 +94,6 @@ const qualitySeries = [
   { date: "2026-04-28T16:00:00.000Z", actualQuality: 4.8, baselineQuality: 4.8 },
 ];
 
-const chartConfig = {
-  actualQuality: {
-    color: "var(--chart-3)",
-    label: "Actual quality",
-  },
-  baselineQuality: {
-    color: "var(--muted-foreground)",
-    label: "Baseline quality",
-  },
-} satisfies ChartConfig;
-
 const chartData = qualitySeries.map((item, index) => ({
   ...item,
   dayIndex: 1 + (index * 27) / (qualitySeries.length - 1),
@@ -111,17 +101,30 @@ const chartData = qualitySeries.map((item, index) => ({
 
 const weeklyTicks = [4, 11, 18, 25];
 
-function formatWeek(value: number) {
+function formatWeek(value: number, t: ReturnType<typeof useTranslations>) {
   const weekIndex = weeklyTicks.indexOf(value);
 
-  return weekIndex >= 0 ? `Week ${weekIndex + 1}` : "";
+  return weekIndex >= 0 ? t("week", { week: weekIndex + 1 }) : "";
 }
 
 export function TrafficQuality() {
+  const t = useTranslations("analytics");
+
+  const chartConfig = {
+    actualQuality: {
+      color: "var(--chart-3)",
+      label: t("chartActualQuality"),
+    },
+    baselineQuality: {
+      color: "var(--muted-foreground)",
+      label: t("chartBaselineQuality"),
+    },
+  } satisfies ChartConfig;
+
   return (
     <Card className="h-full">
       <CardHeader>
-        <CardTitle className="font-normal">Traffic Quality</CardTitle>
+        <CardTitle className="font-normal">{t("trafficQuality")}</CardTitle>
         <CardAction>
           <Ellipsis className="size-4" />
         </CardAction>
@@ -136,7 +139,7 @@ export function TrafficQuality() {
               axisLine={false}
               domain={[1, 28]}
               interval={0}
-              tickFormatter={formatWeek}
+              tickFormatter={(value) => formatWeek(value, t)}
               tickLine={false}
               tickMargin={14}
               ticks={weeklyTicks}
@@ -152,7 +155,7 @@ export function TrafficQuality() {
             />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent className="w-40" labelFormatter={() => "Traffic quality"} />}
+              content={<ChartTooltipContent className="w-40" labelFormatter={() => t("trafficQuality")} />}
             />
             <Line
               dataKey="baselineQuality"

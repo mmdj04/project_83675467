@@ -1,33 +1,46 @@
-import { ArrowRight, Clock3, Focus, TrendingUp } from "lucide-react";
+import { ArrowRight, Clock3, Focus, type LucideIcon, TrendingUp } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const summaryCards = [
-  { title: "Today", value: "4", description: "tasks scheduled", icon: Clock3 },
-  { title: "This Week", value: "68%", description: "progress", icon: TrendingUp },
-  { title: "Focus", value: "Deep Work", description: "2 hours remaining", icon: Focus },
-] as const;
+type SummaryCard = {
+  titleKey: string;
+  value?: string;
+  valueKey?: string;
+  descriptionKey: string;
+  icon: LucideIcon;
+};
 
-export function SummaryCards() {
+const summaryCards: SummaryCard[] = [
+  { titleKey: "sumToday", value: "4", descriptionKey: "sumTasksScheduled", icon: Clock3 },
+  { titleKey: "sumThisWeek", value: "68%", descriptionKey: "sumProgress", icon: TrendingUp },
+  { titleKey: "sumFocus", valueKey: "sumDeepWork", descriptionKey: "sumHoursRemaining", icon: Focus },
+];
+
+export async function SummaryCards() {
+  const t = await getTranslations("productivity");
+
   return (
     <div className="grid gap-4 md:grid-cols-3">
       {summaryCards.map((item) => (
-        <Card key={item.title} className="shadow-xs">
+        <Card key={item.titleKey} className="shadow-xs">
           <CardHeader>
             <CardTitle>
               <div className="flex items-center gap-2 text-muted-foreground text-sm">
                 <div className="grid size-7 place-items-center rounded-lg border bg-muted">
                   <item.icon className="size-4" />
                 </div>
-                {item.title}
+                {t(item.titleKey)}
               </div>
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex flex-col gap-2">
-              <div className="text-2xl leading-none tracking-tight">{item.value}</div>
+              <div className="text-2xl leading-none tracking-tight">
+                {item.valueKey ? t(item.valueKey) : item.value}
+              </div>
               <div className="flex items-center justify-between">
-                <p className="text-muted-foreground tabular-nums leading-none">{item.description}</p>
+                <p className="text-muted-foreground tabular-nums leading-none">{t(item.descriptionKey)}</p>
                 <ArrowRight className="size-4 text-muted-foreground" />
               </div>
             </div>

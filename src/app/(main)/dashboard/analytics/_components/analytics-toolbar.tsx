@@ -1,4 +1,5 @@
 import { Ellipsis, FileDown, FileUp, RefreshCw, Share2 } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -12,50 +13,52 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-export function AnalyticsToolbar() {
+export async function AnalyticsToolbar() {
+  const t = await getTranslations("analytics");
+
   return (
     <div className="flex items-center gap-2">
       <Select defaultValue="last-4-weeks">
         <SelectTrigger className="w-34">
-          <SelectValue placeholder="Select range" />
+          <SelectValue placeholder={t("rangePlaceholder")} />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
-            <SelectItem value="last-7-days">Last 7 days</SelectItem>
-            <SelectItem value="last-4-weeks">Last 4 weeks</SelectItem>
-            <SelectItem value="last-3-months">Last 3 months</SelectItem>
-            <SelectItem value="year-to-date">Year to date</SelectItem>
+            <SelectItem value="last-7-days">{t("rangeLast7Days")}</SelectItem>
+            <SelectItem value="last-4-weeks">{t("rangeLast4Weeks")}</SelectItem>
+            <SelectItem value="last-3-months">{t("rangeLast3Months")}</SelectItem>
+            <SelectItem value="year-to-date">{t("rangeYearToDate")}</SelectItem>
           </SelectGroup>
         </SelectContent>
       </Select>
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button size="icon" variant="outline" aria-label="More analytics actions">
+          <Button size="icon" variant="outline" aria-label={t("moreActions")}>
             <Ellipsis />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-48">
           <DropdownMenuGroup>
-            <DropdownMenuLabel>Analytics actions</DropdownMenuLabel>
+            <DropdownMenuLabel>{t("actionsLabel")}</DropdownMenuLabel>
             <DropdownMenuItem>
               <FileDown />
-              Export report
+              {t("exportReport")}
             </DropdownMenuItem>
             <DropdownMenuItem>
               <FileUp />
-              Import data
+              {t("importData")}
             </DropdownMenuItem>
             <DropdownMenuItem>
               <Share2 />
-              Share dashboard
+              {t("shareDashboard")}
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem>
               <RefreshCw />
-              Refresh metrics
+              {t("refreshMetrics")}
             </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>

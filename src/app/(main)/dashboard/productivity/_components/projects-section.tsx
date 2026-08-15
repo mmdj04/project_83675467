@@ -1,5 +1,6 @@
 import { addDays, format } from "date-fns";
 import { ClipboardCheck, Globe, Orbit, Plus } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -7,56 +8,57 @@ import { Card, CardAction, CardContent, CardFooter, CardHeader, CardTitle } from
 import { Progress } from "@/components/ui/progress";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-const today = new Date();
-
 const projects = [
   {
     title: "Q2 Roadmap",
-    status: "In Progress",
+    statusKey: "statusInProgress",
     description: "Ship better, ship smarter.",
     progress: 68,
-    due: `Due ${format(addDays(today, 9), "MMM d")}`,
+    dueDays: 9,
     icon: Orbit,
   },
   {
     title: "Website Redesign",
-    status: "Planning",
+    statusKey: "statusPlanning",
     description: "Clean, modern, and fast.",
     progress: 42,
-    due: `Due ${format(addDays(today, 21), "MMM d")}`,
+    dueDays: 21,
     icon: Globe,
   },
   {
     title: "Onboarding",
-    status: "Planning",
+    statusKey: "statusPlanning",
     description: "Trim first-run steps.",
     progress: 31,
-    due: `Due ${format(addDays(today, 18), "MMM d")}`,
+    dueDays: 18,
     icon: ClipboardCheck,
   },
 ] as const;
 
-export function ProjectsSection() {
+export async function ProjectsSection() {
+  const t = await getTranslations("productivity");
+  const today = new Date();
+
   return (
     <section className="flex flex-col gap-2">
       <div className="flex items-center justify-between gap-4">
-        <h2 className="text-xl tracking-tight">Projects</h2>
+        <h2 className="text-xl tracking-tight">{t("projects")}</h2>
         <div className="flex items-center gap-2">
           <Select defaultValue="active">
             <SelectTrigger className="w-28">
-              <SelectValue placeholder="Active" />
+              <SelectValue placeholder={t("filterActive")} />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectItem value="active">Active</SelectItem>
-                <SelectItem value="planning">Planning</SelectItem>
-                <SelectItem value="completed">Completed</SelectItem>
+                <SelectItem value="active">{t("filterActive")}</SelectItem>
+                <SelectItem value="planning">{t("filterPlanning")}</SelectItem>
+                <SelectItem value="completed">{t("filterCompleted")}</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
           <Button variant="outline">
             <Plus data-icon="inline-start" />
-            New
+            {t("newProject")}
           </Button>
         </div>
       </div>
@@ -72,7 +74,7 @@ export function ProjectsSection() {
                 </div>
               </CardTitle>
               <CardAction>
-                <Badge variant="outline">{project.status}</Badge>
+                <Badge variant="outline">{t(project.statusKey)}</Badge>
               </CardAction>
             </CardHeader>
             <CardContent>
@@ -85,7 +87,9 @@ export function ProjectsSection() {
               </div>
             </CardContent>
             <CardFooter className="py-2.5">
-              <span className="text-muted-foreground">{project.due}</span>
+              <span className="text-muted-foreground">
+                {t("dueDate", { date: format(addDays(today, project.dueDays), "MMM d") })}
+              </span>
             </CardFooter>
           </Card>
         ))}

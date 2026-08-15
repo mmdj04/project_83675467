@@ -1,4 +1,5 @@
 import { Ellipsis } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -11,11 +12,13 @@ const pages = [
   { bounce: "42%", path: "/contact", time: "1m 18s", views: "8.9k" },
 ];
 
-export function TopPages() {
+export async function TopPages() {
+  const t = await getTranslations("analytics");
+
   return (
     <Card className="h-full gap-2">
       <CardHeader>
-        <CardTitle className="font-normal">Page Performance</CardTitle>
+        <CardTitle className="font-normal">{t("pagePerformance")}</CardTitle>
         <CardAction>
           <Ellipsis className="size-4" />
         </CardAction>
@@ -26,9 +29,9 @@ export function TopPages() {
           <TableHeader className="[&_tr]:border-border/50">
             <TableRow className="hover:bg-transparent">
               <TableHead className="h-8" />
-              <TableHead className="h-8 w-24 text-right font-normal">Views</TableHead>
-              <TableHead className="h-8 w-24 text-right font-normal">Avg Time</TableHead>
-              <TableHead className="h-8 w-20 text-right font-normal">Bounce</TableHead>
+              <TableHead className="h-8 w-24 text-right font-normal">{t("views")}</TableHead>
+              <TableHead className="h-8 w-24 text-right font-normal">{t("avgTime")}</TableHead>
+              <TableHead className="h-8 w-20 text-right font-normal">{t("bounce")}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody className="[&_tr]:border-border/50">

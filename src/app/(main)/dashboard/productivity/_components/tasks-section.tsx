@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import { Calendar1, Plus } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -11,42 +12,43 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 
 type Task = {
   title: string;
-  tag: string;
+  tagKey: string;
   time: string;
   checked: boolean;
 };
 
 const tasks: Task[] = [
-  { title: "Finalize Q2 roadmap", tag: "Work", time: "10:00 AM", checked: false },
-  { title: "Review design system updates", tag: "Design", time: "11:30 AM", checked: true },
-  { title: "Reply to important emails", tag: "Admin", time: "2:00 PM", checked: false },
-  { title: "Plan creator content for this week", tag: "Content", time: "4:30 PM", checked: false },
-  { title: "Prepare weekly team sync notes", tag: "Planning", time: "6:00 PM", checked: false },
+  { title: "Finalize Q2 roadmap", tagKey: "tagWork", time: "10:00 AM", checked: false },
+  { title: "Review design system updates", tagKey: "tagDesign", time: "11:30 AM", checked: true },
+  { title: "Reply to important emails", tagKey: "tagAdmin", time: "2:00 PM", checked: false },
+  { title: "Plan creator content for this week", tagKey: "tagContent", time: "4:30 PM", checked: false },
+  { title: "Prepare weekly team sync notes", tagKey: "tagPlanning", time: "6:00 PM", checked: false },
 ];
 
 export function TasksSection() {
+  const t = useTranslations("productivity");
   const [items, setItems] = React.useState(tasks);
 
   return (
     <section className="flex flex-col gap-2">
       <div className="flex items-center justify-between gap-4">
-        <h2 className="text-xl tracking-tight">Tasks</h2>
+        <h2 className="text-xl tracking-tight">{t("tasks")}</h2>
         <div className="flex items-center gap-2">
           <Select defaultValue="today">
             <SelectTrigger className="w-30">
-              <SelectValue placeholder="Today" />
+              <SelectValue placeholder={t("rangeToday")} />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectItem value="today">Today</SelectItem>
-                <SelectItem value="tomorrow">Tomorrow</SelectItem>
-                <SelectItem value="this-week">This Week</SelectItem>
+                <SelectItem value="today">{t("rangeToday")}</SelectItem>
+                <SelectItem value="tomorrow">{t("rangeTomorrow")}</SelectItem>
+                <SelectItem value="this-week">{t("rangeThisWeek")}</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
           <Button>
             <Plus data-icon="inline-start" />
-            New Task
+            {t("newTask")}
           </Button>
         </div>
       </div>
@@ -69,7 +71,7 @@ export function TasksSection() {
                   <div className="flex min-w-0 flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
                     <span className="truncate text-sm">{task.title}</span>
                     <Badge variant="outline" className="px-3 py-1 font-normal">
-                      {task.tag}
+                      {t(task.tagKey)}
                     </Badge>
                   </div>
                   <div className="flex shrink-0 items-center gap-3 text-muted-foreground text-sm">
