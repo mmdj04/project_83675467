@@ -5,14 +5,17 @@ import { getTranslations } from "next-intl/server";
 
 import { Separator } from "@/components/ui/separator";
 import { APP_CONFIG } from "@/config/app-config";
-import { ScrollReset } from "../_components/scroll-reset";
 
 export default async function Layout({ children }: Readonly<{ children: ReactNode }>) {
   const t = await getTranslations("auth");
 
   return (
     <main className="h-dvh overflow-hidden">
-      <ScrollReset />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `window.scrollTo(0,0);if("scrollRestoration" in history)history.scrollRestoration="manual";`,
+        }}
+      />
       <div className="grid h-dvh justify-center p-2 lg:grid-cols-2">
         <div className="relative order-2 hidden h-full rounded-3xl bg-primary lg:flex">
           <div className="absolute top-10 space-y-1 px-10 text-primary-foreground">
