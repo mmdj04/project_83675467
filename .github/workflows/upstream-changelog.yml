@@ -27,6 +27,7 @@ jobs:
             const changelogPath = "changelog.md";
             const cachePath = ".github/commit-files.json";
             const prCachePath = ".github/commit-prs.json";
+            const translationsPath = ".github/translations.json";
 
             const MAX_FILES = 15;
             const STATUS_LABEL = {
@@ -192,6 +193,13 @@ jobs:
               );
             } catch {}
 
+            let translations = {};
+            try {
+              translations = JSON.parse(
+                fs.readFileSync(translationsPath, "utf8"),
+              );
+            } catch {}
+
             for (const c of allCommits) {
               const short = c.sha.slice(0, 7);
               if (prCache[short] !== undefined) continue;
@@ -283,27 +291,27 @@ jobs:
             }
             allMonths.reverse();
 
+            const pending = [];
             const sections = allMonths.map((month) => {
               const md = monthData.get(month);
               if (!md) return `## ${month}\n\n- Nenhum commit registrado.`;
 
               const types = {};
-              const featMap = new Map();
-              const fixMap = new Map();
+              const typeItems = new Map();
               for (const c of md.commits) {
                 const tm = c.message.match(TYPE_RE);
                 if (tm) {
                   const label = TYPE_LABEL[tm[1]];
                   types[label] = (types[label] || 0) + 1;
-                  const target =
-                    tm[1] === "feat"
-                      ? featMap
-                      : tm[1] === "fix"
-                        ? fixMap
-                        : null;
-                  if (target) {
-                    if (!target.has(c.message)) target.set(c.message, []);
-                    target.get(c.message).push(...c.prs);
+                  if (!typeItems.has(label)) typeItems.set(label, []);
+                  const arr = typeItems.get(label);
+                  const existing = arr.find(
+                    (x) => x.message === c.message,
+                  );
+                  if (existing) {
+                    existing.prs.push(...c.prs);
+                  } else {
+                    arr.push({ message: c.message, prs: [...c.prs] });
                   }
                 } else if (/^Merge/.test(c.message)) {
                   types["merges"] = (types["merges"] || 0) + 1;
@@ -311,18 +319,15 @@ jobs:
                   types["outros"] = (types["outros"] || 0) + 1;
                 }
               }
-              const novidades = [...featMap.entries()].slice(0, 6);
-              const correcoes = [...fixMap.entries()].slice(0, 4);
-              const withPrs = (msg, prs) => {
-                const uniqPrs = [...new Set(prs)].slice(0, 4);
-                return uniqPrs.length
-                  ? `${msg} (${uniqPrs.map((p) => `#${p}`).join(", ")})`
-                  : msg;
-              };
               const typeSummary = Object.entries(types)
                 .filter(([, n]) => n > 0)
                 .map(([k, n]) => `${n} ${k}`)
                 .join(", ");
+              const SECTION_ORDER = [
+                "novidades", "correções", "refatorações", "manutenção",
+                "documentação", "performance", "estilo", "testes",
+                "build", "ci", "reversões", "dependências",
+              ];
               const fileArr = [...md.files.entries()].sort(
                 (a, b) =>
                   b[1].add + b[1].del - (a[1].add + a[1].del),
@@ -335,18 +340,13 @@ jobs:
                 if (has("renamed")) return "renomeado";
                 return "modificado";
               };
-              const shown = fileArr.slice(0, MAX_FILES).map(([name, f]) => {
+              const shown = fileArr.map(([name, f]) => {
                 const stats =
                   f.add > 0 || f.del > 0
                     ? `, +${fmt(f.add)} −${fmt(f.del)}`
                     : "";
                 return `- ${name} (${statusOf(f.status)}${stats})`;
               });
-              if (fileArr.length > MAX_FILES) {
-                shown.push(
-                  `- +${fileArr.length - MAX_FILES} outros arquivos`,
-                );
-              }
               const totalAdd = fileArr.reduce((s, [, f]) => s + f.add, 0);
               const totalDel = fileArr.reduce((s, [, f]) => s + f.del, 0);
 
@@ -357,23 +357,26 @@ jobs:
                   typeSummary ? ` • ${typeSummary}` : ""
                 }`,
               ];
-              if (novidades.length) {
-                lines.push(
-                  "",
-                  "### Novidades",
-                  ...novidades.map(([msg, prs]) =>
-                    `- ${withPrs(prettyItem(msg), prs)}`,
-                  ),
-                );
-              }
-              if (correcoes.length) {
-                lines.push(
-                  "",
-                  "### Correções",
-                  ...correcoes.map(([msg, prs]) =>
-                    `- ${withPrs(prettyItem(msg), prs)}`,
-                  ),
-                );
+              for (const label of SECTION_ORDER) {
+                const items = typeItems.get(label);
+                if (!items || items.length === 0) continue;
+                lines.push("", `### ${label[0].toUpperCase()}${label.slice(1)}`);
+                for (const item of items) {
+                  const translated = translations[item.message];
+                  const text = translated || prettyItem(item.message);
+                  const uniqPrs = [...new Set(item.prs)].slice(0, 4);
+                  const suffix = uniqPrs.length
+                    ? ` (${uniqPrs.map((p) => `#${p}`).join(", ")})`
+                    : "";
+                  if (!translated) {
+                    pending.push({
+                      month,
+                      text: item.message,
+                      prs: uniqPrs,
+                    });
+                  }
+                  lines.push(`- ${text}${suffix}`);
+                }
               }
               if (shown.length) {
                 lines.push("", "### Arquivos principais", ...shown);
@@ -403,6 +406,59 @@ jobs:
               "(novidades, correções, arquivos agregados e contribuidores).\n\n" +
               sections.join("\n\n---\n\n") +
               "\n";
+
+            const { data: openIssues } =
+              await github.rest.issues.listForRepo({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: "open",
+                per_page: 100,
+              });
+            const tradIssue = openIssues.find((i) =>
+              i.title.startsWith("Traduções pendentes"),
+            );
+            if (pending.length > 0) {
+              const body =
+                `Itens do changelog ainda em inglês. Adicione a tradução em \`.github/translations.json\` (chave = mensagem original, valor = tradução em PT-BR):\n\n` +
+                pending
+                  .slice(0, 100)
+                  .map(
+                    (p) =>
+                      `- [ ] ${p.month} — \`${p.text}\`${
+                        p.prs.length
+                          ? ` (${p.prs.map((n) => `#${n}`).join(", ")})`
+                          : ""
+                      }`,
+                  )
+                  .join("\n") +
+                (pending.length > 100
+                  ? `\n\n… e mais ${pending.length - 100} itens.`
+                  : "");
+              if (tradIssue) {
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: tradIssue.number,
+                  title: `Traduções pendentes (${pending.length})`,
+                  body,
+                });
+              } else {
+                await github.rest.issues.create({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  title: `Traduções pendentes (${pending.length})`,
+                  body,
+                });
+              }
+            } else if (tradIssue) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: tradIssue.number,
+                state: "closed",
+                state_reason: "completed",
+              });
+            }
 
             if (current === content) {
               core.notice("Changelog já está em dia com o upstream.");
