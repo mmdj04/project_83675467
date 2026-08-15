@@ -1,109 +1,89 @@
-import {
-  DM_Sans,
-  Figtree,
-  Geist,
-  Geist_Mono,
-  Inter,
-  JetBrains_Mono,
-  Lora,
-  Merriweather,
-  Noto_Sans,
-  Noto_Serif,
-  Nunito_Sans,
-  Outfit,
-  Playfair_Display,
-  Public_Sans,
-  Raleway,
-  Roboto,
-  Roboto_Slab,
-} from "next/font/google";
+import localFont from "next/font/local";
 
 import { GeistPixelSquare } from "geist/font/pixel";
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: "./files/inter-latin-wght-normal.woff2",
   variable: "--font-inter",
 });
 
-const notoSans = Noto_Sans({
-  subsets: ["latin"],
+const notoSans = localFont({
+  src: "./files/noto-sans-latin-wght-normal.woff2",
   variable: "--font-noto-sans",
 });
 
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
+const roboto = localFont({
+  src: "./files/roboto-latin-wght-normal.woff2",
   variable: "--font-roboto",
 });
 
-const geist = Geist({
-  subsets: ["latin"],
+const geist = localFont({
+  src: "./files/geist-latin-wght-normal.woff2",
   variable: "--font-geist",
 });
 
-const outfit = Outfit({
-  subsets: ["latin"],
+const outfit = localFont({
+  src: "./files/outfit-latin-wght-normal.woff2",
   variable: "--font-outfit",
 });
 
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
+const geistMono = localFont({
+  src: "./files/geist-mono-latin-wght-normal.woff2",
   variable: "--font-geist-mono",
 });
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
+const dmSans = localFont({
+  src: "./files/dm-sans-latin-wght-normal.woff2",
   variable: "--font-dm-sans",
 });
 
-const nunitoSans = Nunito_Sans({
-  subsets: ["latin"],
+const nunitoSans = localFont({
+  src: "./files/nunito-sans-latin-wght-normal.woff2",
   variable: "--font-nunito-sans",
 });
 
-const figtree = Figtree({
-  subsets: ["latin"],
+const figtree = localFont({
+  src: "./files/figtree-latin-wght-normal.woff2",
   variable: "--font-figtree",
 });
 
-const raleway = Raleway({
-  subsets: ["latin"],
+const raleway = localFont({
+  src: "./files/raleway-latin-wght-normal.woff2",
   variable: "--font-raleway",
 });
 
-const publicSans = Public_Sans({
-  subsets: ["latin"],
+const publicSans = localFont({
+  src: "./files/public-sans-latin-wght-normal.woff2",
   variable: "--font-public-sans",
 });
 
-const jetBrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+const jetBrainsMono = localFont({
+  src: "./files/jetbrains-mono-latin-wght-normal.woff2",
   variable: "--font-jetbrains-mono",
 });
 
-const notoSerif = Noto_Serif({
-  subsets: ["latin"],
+const notoSerif = localFont({
+  src: "./files/noto-serif-latin-wght-normal.woff2",
   variable: "--font-noto-serif",
 });
 
-const robotoSlab = Roboto_Slab({
-  subsets: ["latin"],
+const robotoSlab = localFont({
+  src: "./files/roboto-slab-latin-wght-normal.woff2",
   variable: "--font-roboto-slab",
 });
 
-const merriweather = Merriweather({
-  subsets: ["latin"],
-  weight: ["400", "700"],
+const merriweather = localFont({
+  src: "./files/merriweather-latin-wght-normal.woff2",
   variable: "--font-merriweather",
 });
 
-const lora = Lora({
-  subsets: ["latin"],
+const lora = localFont({
+  src: "./files/lora-latin-wght-normal.woff2",
   variable: "--font-lora",
 });
 
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
+const playfairDisplay = localFont({
+  src: "./files/playfair-display-latin-wght-normal.woff2",
   variable: "--font-playfair-display",
 });
 
