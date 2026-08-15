@@ -2,6 +2,7 @@
 import { useMemo } from "react";
 
 import { FlexRender, type ReactTable } from "@tanstack/react-table";
+import { useTranslations } from "next-intl";
 
 import { Badge } from "@/components/ui/badge";
 import {
@@ -20,6 +21,7 @@ import { cn } from "@/lib/utils";
 import type { Role } from "./data";
 
 type RoleTableRow = ReturnType<ReactTable<DataTableFeatures, Role>["getRowModel"]>["rows"][number];
+type Translator = ReturnType<typeof useTranslations>;
 
 function groupRowsByRoleGroup(rows: RoleTableRow[]) {
   return rows.reduce(
@@ -40,6 +42,7 @@ function groupRowsByRoleGroup(rows: RoleTableRow[]) {
 }
 
 export function RolesTable({ table }: { table: ReactTable<DataTableFeatures, Role> }) {
+  const t = useTranslations();
   const { pageIndex, pageSize } = table.state.pagination;
   const pageRows = table.getRowModel().rows;
   const filteredRows = table.getFilteredRowModel().rows;
@@ -81,12 +84,13 @@ export function RolesTable({ table }: { table: ReactTable<DataTableFeatures, Rol
                 group={group}
                 totalCount={totalGroupCounts.get(group.label) ?? 0}
                 colCount={colCount}
+                t={t}
               />
             ))
           ) : (
             <TableRow>
               <TableCell colSpan={colCount} className="h-24 text-center text-muted-foreground">
-                No results.
+                {t("roles.noResults")}
               </TableCell>
             </TableRow>
           )}
@@ -95,7 +99,7 @@ export function RolesTable({ table }: { table: ReactTable<DataTableFeatures, Rol
 
       <div className="flex items-center border-border/70 border-t p-4">
         <div className="text-muted-foreground text-sm">
-          Showing {start} to {end} of {filteredRows.length} roles
+          {t("roles.showingResults", { start, end, total: filteredRows.length })}
         </div>
 
         <div className="mx-auto">
@@ -142,7 +146,7 @@ export function RolesTable({ table }: { table: ReactTable<DataTableFeatures, Rol
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-muted-foreground text-sm">Rows per page</span>
+          <span className="text-muted-foreground text-sm">{t("roles.rowsPerPage")}</span>
           <Select
             value={`${pageSize}`}
             onValueChange={(v) => {
@@ -170,10 +174,12 @@ function TableBodyGroup({
   group,
   totalCount,
   colCount,
+  t,
 }: {
   group: { label: string; rows: RoleTableRow[] };
   totalCount: number;
   colCount: number;
+  t: Translator;
 }) {
   return (
     <>
@@ -181,7 +187,7 @@ function TableBodyGroup({
         <TableCell className="px-4 text-foreground/60 text-sm" colSpan={colCount}>
           {group.label}{" "}
           <Badge variant="outline" className="ml-2 rounded-sm bg-transparent text-muted-foreground text-xs">
-            {group.rows.length} of {totalCount}
+            {t("roles.xOfY", { count: group.rows.length, total: totalCount })}
           </Badge>
         </TableCell>
       </TableRow>

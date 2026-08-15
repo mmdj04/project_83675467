@@ -15,6 +15,76 @@
     "ownerLabel": "Owner:",
     "statusLabel": "Status:",
     "permissionSetsSoon": "Permission Sets Coming Soon",
-    "accessReviewsSoon": "Access Reviews Coming Soon"
+    "accessReviewsSoon": "Access Reviews Coming Soon",
+    "all": "All",
+    "system": "System",
+    "custom": "Custom",
+    "active": "Active",
+    "needsReview": "Needs review",
+    "noResults": "No results.",
+    "showingResults": "Showing {start} to {end} of {total} roles",
+    "rowsPerPage": "Rows per page",
+    "xOfY": "{count} of {total}",
+    "columnRole": "Role",
+    "columnAccessLevel": "Access level",
+    "columnUsers": "Users",
+    "columnPermissionSets": "Permission sets",
+    "columnLastReview": "Last review",
+    "columnOwner": "Owner",
+    "columnStatus": "Status",
+    "actionReviewChanges": "Review changes",
+    "actionViewDetails": "View details",
+    "actionEditRole": "Edit role",
+    "actionDuplicateRole": "Duplicate role",
+    "actionReviewPermissions": "Review permissions",
+    "actionManageMembers": "Manage members",
+    "actionArchiveRole": "Archive role"
+  },
+  "auth": {
+    "loginV1": {
+      "panelTitle": "Hello again",
+      "panelSubtitle": "Login to continue",
+      "title": "Login",
+      "subtitle": "Welcome back. Enter your email and password, let's hope you remember them this time."
+    },
+    "loginV2": {
+      "title": "Login to your account",
+      "subtitle": "Please enter your details to login."
+    },
+    "registerV1": {
+      "panelTitle": "Welcome!",
+      "panelSubtitle": "You're in the right place.",
+      "title": "Register",
+      "subtitle": "Fill in your details below. We promise not to quiz you about your first pet's name (this time)."
+    },
+    "registerV2": {
+      "title": "Create your account",
+      "subtitle": "Please enter your details to register."
+    },
+    "login": "Login",
+    "register": "Register",
+    "noAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "orContinueWith": "Or continue with",
+    "languageLabel": "ENG",
+    "brandTagline": "Design. Build. Launch. Repeat.",
+    "readyToLaunch": "Ready to launch?",
+    "readyToLaunchDescription": "Clone the repo, install dependencies, and your dashboard is live in minutes.",
+    "needHelp": "Need help?",
+    "needHelpDescription": "Check out the docs or open an issue on GitHub, community support is just a click away.",
+    "form": {
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "rememberMe": "Remember me for 30 days",
+      "submit": "Login",
+      "emailInvalid": "Please enter a valid email address.",
+      "passwordTooShort": "Password must be at least 6 characters.",
+      "confirmPasswordLabel": "Confirm Password",
+      "confirmPasswordTooShort": "Confirm Password must be at least 6 characters.",
+      "passwordsDoNotMatch": "Passwords do not match.",
+      "submittedValues": "You submitted the following values",
+      "continueWithGoogle": "Continue with Google"
+    }
   }
 }

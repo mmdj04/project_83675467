@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import { type ColumnFiltersState, type PaginationState, useTable } from "@tanstack/react-table";
 import { AlertTriangle, ChevronRight, FileUp, Search } from "lucide-react";
@@ -12,7 +12,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { dataTableFeatures } from "@/lib/data-table-features";
 
-import { rolesColumns } from "./roles-table/columns";
+import { createRolesColumns } from "./roles-table/columns";
 import type { Role } from "./roles-table/data";
 import { RolesTable } from "./roles-table/table";
 
@@ -49,10 +49,12 @@ export function Roles({ roles }: { roles: Role[] }) {
     pageSize: 12,
   });
 
+  const columns = useMemo(() => createRolesColumns(t), [t]);
+
   const table = useTable({
     features: dataTableFeatures,
     data: roles,
-    columns: rolesColumns,
+    columns,
     defaultColumn: {
       size: 140,
       minSize: 80,
@@ -78,9 +80,7 @@ export function Roles({ roles }: { roles: Role[] }) {
       <div className="flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
         <div className="flex flex-col gap-1">
           <h1 className="text-3xl tracking-tight">{t("roles.title")}</h1>
-          <p className="text-muted-foreground text-sm">
-            {t("roles.description")}
-          </p>
+          <p className="text-muted-foreground text-sm">{t("roles.description")}</p>
         </div>
 
         <div className="flex items-center gap-2">
@@ -143,13 +143,13 @@ export function Roles({ roles }: { roles: Role[] }) {
                   >
                     <SelectTrigger size="sm">
                       <span className="text-muted-foreground">{t("roles.typeLabel")}</span>
-                      <SelectValue placeholder="All" />
+                      <SelectValue placeholder={t("roles.all")} />
                     </SelectTrigger>
                     <SelectContent position="popper" align="start">
                       <SelectGroup>
-                        <SelectItem value="All">All</SelectItem>
-                        <SelectItem value="System">System</SelectItem>
-                        <SelectItem value="Custom">Custom</SelectItem>
+                        <SelectItem value="All">{t("roles.all")}</SelectItem>
+                        <SelectItem value="System">{t("roles.system")}</SelectItem>
+                        <SelectItem value="Custom">{t("roles.custom")}</SelectItem>
                       </SelectGroup>
                     </SelectContent>
                   </Select>
@@ -163,12 +163,12 @@ export function Roles({ roles }: { roles: Role[] }) {
                   >
                     <SelectTrigger size="sm">
                       <span className="text-muted-foreground">{t("roles.ownerLabel")}</span>
-                      <SelectValue placeholder="All" />
+                      <SelectValue placeholder={t("roles.all")} />
                     </SelectTrigger>
                     <SelectContent position="popper" align="start">
                       <SelectGroup>
-                        <SelectItem value="All">All</SelectItem>
-                        <SelectItem value="System">System</SelectItem>
+                        <SelectItem value="All">{t("roles.all")}</SelectItem>
+                        <SelectItem value="System">{t("roles.system")}</SelectItem>
                         <SelectItem value="Jane Doe">Jane Doe</SelectItem>
                         <SelectItem value="Alex Kim">Alex Kim</SelectItem>
                         <SelectItem value="Chris Lee">Chris Lee</SelectItem>
@@ -185,13 +185,13 @@ export function Roles({ roles }: { roles: Role[] }) {
                   >
                     <SelectTrigger size="sm">
                       <span className="text-muted-foreground">{t("roles.statusLabel")}</span>
-                      <SelectValue placeholder="All" />
+                      <SelectValue placeholder={t("roles.all")} />
                     </SelectTrigger>
                     <SelectContent position="popper" align="start">
                       <SelectGroup>
-                        <SelectItem value="All">All</SelectItem>
-                        <SelectItem value="Active">Active</SelectItem>
-                        <SelectItem value="Needs review">Needs review</SelectItem>
+                        <SelectItem value="All">{t("roles.all")}</SelectItem>
+                        <SelectItem value="Active">{t("roles.active")}</SelectItem>
+                        <SelectItem value="Needs review">{t("roles.needsReview")}</SelectItem>
                       </SelectGroup>
                     </SelectContent>
                   </Select>

@@ -15,6 +15,76 @@
     "ownerLabel": "Proprietário:",
     "statusLabel": "Status:",
     "permissionSetsSoon": "Conjuntos de permissões em breve",
-    "accessReviewsSoon": "Revisões de acesso em breve"
+    "accessReviewsSoon": "Revisões de acesso em breve",
+    "all": "Todos",
+    "system": "Sistema",
+    "custom": "Personalizada",
+    "active": "Ativo",
+    "needsReview": "Necessita revisão",
+    "noResults": "Nenhum resultado.",
+    "showingResults": "Mostrando {start} a {end} de {total} funções",
+    "rowsPerPage": "Linhas por página",
+    "xOfY": "{count} de {total}",
+    "columnRole": "Função",
+    "columnAccessLevel": "Nível de acesso",
+    "columnUsers": "Usuários",
+    "columnPermissionSets": "Conjuntos de permissões",
+    "columnLastReview": "Última revisão",
+    "columnOwner": "Proprietário",
+    "columnStatus": "Status",
+    "actionReviewChanges": "Revisar mudanças",
+    "actionViewDetails": "Ver detalhes",
+    "actionEditRole": "Editar função",
+    "actionDuplicateRole": "Duplicar função",
+    "actionReviewPermissions": "Revisar permissões",
+    "actionManageMembers": "Gerenciar membros",
+    "actionArchiveRole": "Arquivar função"
+  },
+  "auth": {
+    "loginV1": {
+      "panelTitle": "Olá novamente",
+      "panelSubtitle": "Entre para continuar",
+      "title": "Entrar",
+      "subtitle": "Que bom te ver de volta. Informe seu e-mail e senha — e vamos torcer para que você lembre deles desta vez."
+    },
+    "loginV2": {
+      "title": "Entre na sua conta",
+      "subtitle": "Informe seus dados para entrar."
+    },
+    "registerV1": {
+      "panelTitle": "Bem-vindo(a)!",
+      "panelSubtitle": "Você está no lugar certo.",
+      "title": "Cadastrar",
+      "subtitle": "Preencha seus dados abaixo. Prometemos não te perguntar o nome do seu primeiro animal de estimação (desta vez)."
+    },
+    "registerV2": {
+      "title": "Crie sua conta",
+      "subtitle": "Informe seus dados para se cadastrar."
+    },
+    "login": "Entrar",
+    "register": "Cadastrar",
+    "noAccount": "Não tem uma conta?",
+    "alreadyHaveAccount": "Já tem uma conta?",
+    "orContinueWith": "Ou continue com",
+    "languageLabel": "PT-BR",
+    "brandTagline": "Crie. Construa. Lance. Repita.",
+    "readyToLaunch": "Pronto para lançar?",
+    "readyToLaunchDescription": "Clone o repositório, instale as dependências e seu painel estará no ar em minutos.",
+    "needHelp": "Precisa de ajuda?",
+    "needHelpDescription": "Confira a documentação ou abra uma issue no GitHub; o suporte da comunidade está a um clique de distância.",
+    "form": {
+      "emailLabel": "Endereço de e-mail",
+      "emailPlaceholder": "voce@exemplo.com",
+      "passwordLabel": "Senha",
+      "rememberMe": "Lembrar de mim por 30 dias",
+      "submit": "Entrar",
+      "emailInvalid": "Informe um endereço de e-mail válido.",
+      "passwordTooShort": "A senha deve ter pelo menos 6 caracteres.",
+      "confirmPasswordLabel": "Confirmar senha",
+      "confirmPasswordTooShort": "A confirmação de senha deve ter pelo menos 6 caracteres.",
+      "passwordsDoNotMatch": "As senhas não coincidem.",
+      "submittedValues": "Você enviou os seguintes valores",
+      "continueWithGoogle": "Continuar com o Google"
+    }
   }
 }
