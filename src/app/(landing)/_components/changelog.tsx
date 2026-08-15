@@ -9,51 +9,48 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-interface ChangelogEntry {
-  date: string;
-  hash: string;
-  message: string;
-  details: string[];
+interface ChangelogSection {
+  title: string;
+  items: string[];
 }
 
 interface ChangelogMonth {
   month: string;
-  entries: ChangelogEntry[];
+  summary: string;
+  sections: ChangelogSection[];
 }
 
 function parseChangelog(content: string): ChangelogMonth[] {
   const months: ChangelogMonth[] = [];
-  const lines = content.split("\n");
   let currentMonth: ChangelogMonth | null = null;
+  let currentSection: ChangelogSection | null = null;
 
-  for (const line of lines) {
+  for (const line of content.split("\n")) {
     const monthMatch = line.match(/^## (\d{4}-\d{2})$/);
     if (monthMatch) {
-      currentMonth = { month: monthMatch[1], entries: [] };
+      currentMonth = { month: monthMatch[1], summary: "", sections: [] };
       months.push(currentMonth);
+      currentSection = null;
+      continue;
+    }
+    if (!currentMonth) continue;
+
+    const summaryMatch = line.match(/^\*\*Resumo\*\*: (.+)$/);
+    if (summaryMatch) {
+      currentMonth.summary = summaryMatch[1];
       continue;
     }
 
-    const entryMatch = line.match(
-      /^- (\d{4}-\d{2}-\d{2}) — `([a-f0-9]{7})` — (.+)$/
-    );
-    if (entryMatch && currentMonth) {
-      currentMonth.entries.push({
-        date: entryMatch[1],
-        hash: entryMatch[2],
-        message: entryMatch[3],
-        details: [],
-      });
+    const sectionMatch = line.match(/^\*\*(.+)\*\*$/);
+    if (sectionMatch) {
+      currentSection = { title: sectionMatch[1], items: [] };
+      currentMonth.sections.push(currentSection);
       continue;
     }
 
-    if (
-      currentMonth &&
-      currentMonth.entries.length > 0 &&
-      /^\s+\S/.test(line)
-    ) {
-      const last = currentMonth.entries[currentMonth.entries.length - 1];
-      last.details.push(line.trim());
+    const itemMatch = line.match(/^- (.+)$/);
+    if (itemMatch && currentSection) {
+      currentSection.items.push(itemMatch[1]);
     }
   }
 
@@ -63,7 +60,6 @@ function parseChangelog(content: string): ChangelogMonth[] {
 export function Changelog({ content }: { content: string }) {
   const months = React.useMemo(() => parseChangelog(content), [content]);
   const [activeMonth, setActiveMonth] = React.useState(months[0]?.month || "");
-  const contentRef = React.useRef<HTMLDivElement>(null);
   const monthRefs = React.useRef<Map<string, HTMLDivElement>>(new Map());
 
   React.useEffect(() => {
@@ -93,14 +89,8 @@ export function Changelog({ content }: { content: string }) {
     }
   };
 
-  const formatDate = (dateStr: string) => {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString("pt-BR", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-    });
-  };
+  const commitCount = (summary: string) =>
+    summary.match(/(\d+) commits/)?.[1];
 
   return (
     <section className="bg-background px-8 py-24">
@@ -110,7 +100,7 @@ export function Changelog({ content }: { content: string }) {
             Changelog
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Histórico de atualizações do projeto.
+            Atualizações mensais do projeto.
           </p>
         </div>
 
@@ -142,7 +132,7 @@ export function Changelog({ content }: { content: string }) {
           </nav>
 
           {/* Content */}
-          <div ref={contentRef} className="flex-1 overflow-hidden">
+          <div className="flex-1 overflow-hidden">
             <Accordion
               type="multiple"
               defaultValue={months.slice(0, 1).map((m) => m.month)}
@@ -159,39 +149,38 @@ export function Changelog({ content }: { content: string }) {
                   <AccordionTrigger className="py-3 font-semibold text-xl text-foreground">
                     {m.month}
                     <span className="ml-2 rounded-full bg-muted px-2 py-0.5 font-mono text-xs text-muted-foreground">
-                      {m.entries.length}
+                      {commitCount(m.summary) ?? m.sections.length}
                     </span>
                   </AccordionTrigger>
                   <AccordionContent>
-                    <div className="space-y-3 pt-2">
-                      {m.entries.map((entry) => (
+                    <div className="space-y-4 pt-2">
+                      {m.summary && (
+                        <p className="text-sm text-muted-foreground">
+                          {m.summary}
+                        </p>
+                      )}
+                      {m.sections.map((s) => (
                         <div
-                          key={entry.hash}
+                          key={s.title}
                           className="rounded-lg border border-border bg-background p-4 transition-colors hover:bg-accent/50"
                         >
-                          <div className="flex items-start gap-3">
-                            <span className="whitespace-nowrap font-mono text-xs text-muted-foreground">
-                              {formatDate(entry.date)}
-                            </span>
-                            <span className="shrink-0 rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-muted-foreground">
-                              {entry.hash}
-                            </span>
-                            <span className="text-sm text-foreground">
-                              {entry.message}
-                            </span>
-                          </div>
-                          {entry.details.length > 0 && (
-                            <ul className="mt-2 space-y-1 border-l border-border pl-4">
-                              {entry.details.map((detail) => (
-                                <li
-                                  key={detail}
-                                  className="font-mono text-xs text-muted-foreground"
-                                >
-                                  {detail}
-                                </li>
-                              ))}
-                            </ul>
-                          )}
+                          <h4 className="mb-2 font-semibold text-sm text-foreground">
+                            {s.title}
+                          </h4>
+                          <ul className="space-y-1.5">
+                            {s.items.map((item) => (
+                              <li
+                                key={item}
+                                className={cn(
+                                  "text-sm text-muted-foreground",
+                                  s.title === "Arquivos principais" &&
+                                    "font-mono text-xs"
+                                )}
+                              >
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       ))}
                     </div>
