@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,13 +9,6 @@ import { Progress } from "@/components/ui/progress";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const pipelineChartValues = [34, 38, 31, 47, 42, 51, 44, 40, 58, 46, 43, 49] as const;
-
-const pipelineChartConfig = {
-  qualified: {
-    label: "Qualified",
-    color: "var(--chart-2)",
-  },
-} satisfies ChartConfig;
 
 const axisMonthFormatter = new Intl.DateTimeFormat("en-US", { month: "short" });
 const tooltipMonthFormatter = new Intl.DateTimeFormat("en-US", { month: "short", year: "2-digit" });
@@ -32,6 +26,15 @@ function getRollingMonthData(values: readonly number[]) {
 }
 
 export function PipelineActivity() {
+  const t = useTranslations("crm");
+
+  const pipelineChartConfig = {
+    qualified: {
+      label: t("qualified"),
+      color: "var(--chart-2)",
+    },
+  } satisfies ChartConfig;
+
   const pipelineChartData = getRollingMonthData(pipelineChartValues);
   const totalQualified = pipelineChartData.reduce((sum, item) => sum + item.qualified, 0);
   const discoveryCallsBooked = 184;
@@ -41,17 +44,17 @@ export function PipelineActivity() {
     <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
       <Card className="xl:col-span-12">
         <CardHeader>
-          <CardTitle>Qualified Lead Flow</CardTitle>
+          <CardTitle>{t("qualifiedLeadFlow")}</CardTitle>
           <CardAction>
             <Select defaultValue="last-12-months">
               <SelectTrigger size="sm" className="min-w-40">
-                <SelectValue placeholder="Select range" />
+                <SelectValue placeholder={t("selectRange")} />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem value="last-30-days">Last 30 days</SelectItem>
-                  <SelectItem value="last-quarter">Last quarter</SelectItem>
-                  <SelectItem value="last-12-months">Last 12 months</SelectItem>
+                  <SelectItem value="last-30-days">{t("last30Days")}</SelectItem>
+                  <SelectItem value="last-quarter">{t("lastQuarter")}</SelectItem>
+                  <SelectItem value="last-12-months">{t("last12Months")}</SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -112,22 +115,23 @@ export function PipelineActivity() {
             <div className="flex flex-col gap-5 rounded-lg p-4 lg:col-span-4">
               <div className="flex flex-col gap-1">
                 <div className="font-medium text-4xl tabular-nums leading-none">
-                  {totalQualified} <span className="font-normal text-lg text-muted-foreground">leads</span>
+                  {totalQualified} <span className="font-normal text-lg text-muted-foreground">{t("leads")}</span>
                 </div>
-                <p className="text-muted-foreground text-sm">Total qualified leads captured over the last 12 months.</p>
+                <p className="text-muted-foreground text-sm">{t("qualifiedLeadsDescription")}</p>
               </div>
 
               <div className="flex flex-col gap-3 rounded-lg border border-border/60 p-3">
                 <div className="text-[11px] text-muted-foreground uppercase tracking-widest">
-                  Discovery Calls Booked
+                  {t("discoveryCallsBooked")}
                 </div>
 
                 <div className="flex flex-col gap-1.5">
                   <div className="font-medium text-2xl tabular-nums leading-none">
-                    {discoveryCallsBooked} <span className="font-normal text-muted-foreground text-sm">meetings</span>
+                    {discoveryCallsBooked}{" "}
+                    <span className="font-normal text-muted-foreground text-sm">{t("meetings")}</span>
                   </div>
                   <p className="text-muted-foreground text-sm">
-                    {discoveryProgress}% of qualified leads booked a first call.
+                    {t("discoveryProgress", { progress: discoveryProgress })}
                   </p>
                 </div>
 
@@ -137,8 +141,10 @@ export function PipelineActivity() {
                     className="h-2.5 bg-chart-2/12 *:data-[slot='progress-indicator']:bg-chart-2"
                   />
                   <div className="flex items-center justify-between text-xs">
-                    <div className="font-medium tabular-nums">{discoveryCallsBooked} booked</div>
-                    <div className="text-muted-foreground tabular-nums">{totalQualified} qualified</div>
+                    <div className="font-medium tabular-nums">{t("bookedCount", { count: discoveryCallsBooked })}</div>
+                    <div className="text-muted-foreground tabular-nums">
+                      {t("qualifiedCount", { count: totalQualified })}
+                    </div>
                   </div>
                 </div>
               </div>

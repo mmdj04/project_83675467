@@ -19,6 +19,7 @@ import {
   Search,
   UsersRound,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -34,32 +35,32 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { dataTableFeatures } from "@/lib/data-table-features";
 
-import { recentCustomersColumns } from "./columns";
+import { createRecentCustomersColumns } from "./columns";
 import type { RecentCustomerRow } from "./schema";
 
 const statusOptions = [
-  { value: "all", label: "All" },
-  { value: "Subscribed", label: "Subscribed" },
-  { value: "Inactive", label: "Inactive" },
-  { value: "Unsubscribed", label: "Unsubscribed" },
+  { value: "all", labelKey: "all" },
+  { value: "Subscribed", labelKey: "statusSubscribed" },
+  { value: "Inactive", labelKey: "statusInactive" },
+  { value: "Unsubscribed", labelKey: "statusUnsubscribed" },
 ] as const;
 const billingOptions = [
-  { value: "all", label: "All" },
-  { value: "Paid", label: "Paid" },
-  { value: "Pending", label: "Pending" },
-  { value: "Overdue", label: "Overdue" },
-  { value: "Trial", label: "Trial" },
+  { value: "all", labelKey: "all" },
+  { value: "Paid", labelKey: "billingPaid" },
+  { value: "Pending", labelKey: "billingPending" },
+  { value: "Overdue", labelKey: "billingOverdue" },
+  { value: "Trial", labelKey: "billingTrial" },
 ] as const;
 const joinedDateOptions = [
-  { value: "all", label: "All time" },
-  { value: "30", label: "Last 30 days" },
-  { value: "90", label: "Last 90 days" },
+  { value: "all", labelKey: "allTime" },
+  { value: "30", labelKey: "last30Days" },
+  { value: "90", labelKey: "last90Days" },
 ] as const;
 const sortOptions = [
-  { value: "newest", label: "Newest first" },
-  { value: "oldest", label: "Oldest first" },
-  { value: "name-asc", label: "Name A-Z" },
-  { value: "name-desc", label: "Name Z-A" },
+  { value: "newest", labelKey: "sortNewest" },
+  { value: "oldest", labelKey: "sortOldest" },
+  { value: "name-asc", labelKey: "sortNameAsc" },
+  { value: "name-desc", labelKey: "sortNameDesc" },
 ] as const;
 const sortOptionState = {
   newest: [{ id: "joined", desc: true }],
@@ -69,6 +70,7 @@ const sortOptionState = {
 } satisfies Record<(typeof sortOptions)[number]["value"], SortingState>;
 
 export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
+  const t = useTranslations("default");
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = React.useState<SortingState>([{ id: "joined", desc: true }]);
@@ -80,11 +82,12 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
     pageIndex: 0,
     pageSize: 10,
   });
+  const columns = React.useMemo(() => createRecentCustomersColumns(t), [t]);
 
   const table = useTable({
     features: dataTableFeatures,
     data,
-    columns: recentCustomersColumns,
+    columns,
     state: {
       rowSelection,
       columnFilters,
@@ -124,7 +127,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
             <Search className="pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               className="h-7 rounded-[min(var(--radius-md),12px)] pl-8"
-              placeholder="Search customers..."
+              placeholder={t("searchCustomers")}
               value={searchQuery}
               onChange={(event) => {
                 table.getColumn("search")?.setFilterValue(event.target.value || undefined);
@@ -136,7 +139,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm">
                 <UsersRound />
-                Status
+                {t("columnStatus")}
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-35" align="start">
@@ -149,7 +152,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
               >
                 {statusOptions.map((status) => (
                   <DropdownMenuRadioItem key={status.value} value={status.value}>
-                    {status.label}
+                    {t(status.labelKey)}
                   </DropdownMenuRadioItem>
                 ))}
               </DropdownMenuRadioGroup>
@@ -159,7 +162,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm">
                 <CalendarDays />
-                Joined date
+                {t("columnJoined")}
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-40" align="start">
@@ -172,7 +175,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
               >
                 {joinedDateOptions.map((option) => (
                   <DropdownMenuRadioItem key={option.value} value={option.value}>
-                    {option.label}
+                    {t(option.labelKey)}
                   </DropdownMenuRadioItem>
                 ))}
               </DropdownMenuRadioGroup>
@@ -184,7 +187,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm">
                 <CreditCard />
-                Billing
+                {t("columnBilling")}
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -197,7 +200,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
               >
                 {billingOptions.map((billing) => (
                   <DropdownMenuRadioItem key={billing.value} value={billing.value}>
-                    {billing.label}
+                    {t(billing.labelKey)}
                   </DropdownMenuRadioItem>
                 ))}
               </DropdownMenuRadioGroup>
@@ -207,7 +210,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm">
                 <ArrowUpDown />
-                Sort
+                {t("sort")}
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -220,7 +223,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
               >
                 {sortOptions.map((option) => (
                   <DropdownMenuRadioItem key={option.value} value={option.value}>
-                    {option.label}
+                    {t(option.labelKey)}
                   </DropdownMenuRadioItem>
                 ))}
               </DropdownMenuRadioGroup>
@@ -256,7 +259,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
             ) : (
               <TableRow>
                 <TableCell colSpan={table.getVisibleLeafColumns().length} className="h-24 text-center">
-                  No results.
+                  {t("noResults")}
                 </TableCell>
               </TableRow>
             )}
@@ -266,13 +269,15 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
 
       <div className="flex items-center justify-between px-1">
         <div className="hidden flex-1 text-muted-foreground text-sm lg:flex">
-          {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s)
-          selected.
+          {t("rowsSelected", {
+            selected: table.getFilteredSelectedRowModel().rows.length,
+            total: table.getFilteredRowModel().rows.length,
+          })}
         </div>
         <div className="flex w-full items-center gap-8 lg:w-fit">
           <div className="hidden items-center gap-2 lg:flex">
             <Label htmlFor="recent-customers-rows-per-page" className="font-medium text-sm">
-              Rows per page
+              {t("rowsPerPage")}
             </Label>
             <Select
               value={`${table.state.pagination.pageSize}`}
@@ -295,7 +300,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
             </Select>
           </div>
           <div className="flex w-fit items-center justify-center font-medium text-sm">
-            Page {table.state.pagination.pageIndex + 1} of {table.getPageCount()}
+            {t("pageOf", { current: table.state.pagination.pageIndex + 1, total: table.getPageCount() })}
           </div>
           <div className="ml-auto flex items-center gap-2 lg:ml-0">
             <Button
@@ -305,7 +310,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
               onClick={() => table.setPageIndex(0)}
               disabled={!table.getCanPreviousPage()}
             >
-              <span className="sr-only">Go to first page</span>
+              <span className="sr-only">{t("goToFirstPage")}</span>
               <ChevronsLeft className="size-4" />
             </Button>
             <Button
@@ -315,7 +320,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
             >
-              <span className="sr-only">Go to previous page</span>
+              <span className="sr-only">{t("goToPreviousPage")}</span>
               <ChevronLeft className="size-4" />
             </Button>
             <Button
@@ -325,7 +330,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
             >
-              <span className="sr-only">Go to next page</span>
+              <span className="sr-only">{t("goToNextPage")}</span>
               <ChevronRight className="size-4" />
             </Button>
             <Button
@@ -335,7 +340,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
               onClick={() => table.setPageIndex(table.getPageCount() - 1)}
               disabled={!table.getCanNextPage()}
             >
-              <span className="sr-only">Go to last page</span>
+              <span className="sr-only">{t("goToLastPage")}</span>
               <ChevronsRight className="size-4" />
             </Button>
           </div>

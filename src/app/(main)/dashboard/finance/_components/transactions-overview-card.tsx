@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -60,22 +61,24 @@ const formatWeekday = (value: number) => weekdayFormatter.format(new Date(value)
 const chartDomain = [weekStart, weekStart + 7 * DAY_MS];
 const formatTooltipCurrency = (value: number | string) => formatCurrency(Number(value), { noDecimals: true });
 
-const chartConfig = {
-  expense: {
-    color: "var(--chart-4)",
-    label: "Expense",
-  },
-  income: {
-    color: "var(--chart-2)",
-    label: "Income",
-  },
-} satisfies ChartConfig;
-
 export function TransactionsOverviewCard() {
+  const t = useTranslations("finance");
+
+  const chartConfig = {
+    expense: {
+      color: "var(--chart-4)",
+      label: t("chartExpense"),
+    },
+    income: {
+      color: "var(--chart-2)",
+      label: t("chartIncome"),
+    },
+  } satisfies ChartConfig;
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-normal">Spending Overview</CardTitle>
+        <CardTitle className="font-normal">{t("spendingOverview")}</CardTitle>
         <CardAction>
           <Select defaultValue="weekly">
             <SelectTrigger className="w-28" size="sm">
@@ -83,9 +86,9 @@ export function TransactionsOverviewCard() {
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectItem value="weekly">Weekly</SelectItem>
-                <SelectItem value="monthly">Monthly</SelectItem>
-                <SelectItem value="yearly">Yearly</SelectItem>
+                <SelectItem value="weekly">{t("periodWeekly")}</SelectItem>
+                <SelectItem value="monthly">{t("periodMonthly")}</SelectItem>
+                <SelectItem value="yearly">{t("periodYearly")}</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>

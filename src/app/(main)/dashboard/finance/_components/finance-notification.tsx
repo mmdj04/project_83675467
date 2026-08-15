@@ -1,21 +1,24 @@
 import { TrendingUp } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Button } from "@/components/ui/button";
 import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item";
 
-export function FinanceNotification() {
+export async function FinanceNotification() {
+  const t = await getTranslations("finance");
+
   return (
     <Item className="rounded-xl" variant="outline">
       <ItemMedia variant="icon">
         <TrendingUp />
       </ItemMedia>
       <ItemContent>
-        <ItemTitle>Credit score updated</ItemTitle>
-        <ItemDescription>Your score increased by 14 points to 782.</ItemDescription>
+        <ItemTitle>{t("creditScoreUpdated")}</ItemTitle>
+        <ItemDescription>{t("creditScoreDescription", { points: 14, score: 782 })}</ItemDescription>
       </ItemContent>
       <ItemActions>
         <Button size="sm" variant="outline">
-          View details
+          {t("viewDetails")}
         </Button>
       </ItemActions>
     </Item>

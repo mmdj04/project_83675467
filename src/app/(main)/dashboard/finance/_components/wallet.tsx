@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { siBarclays, siBitcoin, siEthereum, siHsbc, siRevolut } from "simple-icons";
 
 import { SimpleIcon } from "@/components/simple-icon";
@@ -51,11 +52,13 @@ const cryptoAssets = [
   },
 ];
 
-export function Wallet() {
+export async function Wallet() {
+  const t = await getTranslations("finance");
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-normal">Wallet</CardTitle>
+        <CardTitle className="font-normal">{t("wallet")}</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="flex flex-col gap-4">
@@ -101,12 +104,12 @@ export function Wallet() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5">
             <span className="font-medium text-[10px] text-muted-foreground">
-              Physical Vault: <span className="text-foreground">Ledger Nano X</span>
+              {t("physicalVault")} <span className="text-foreground">Ledger Nano X</span>
             </span>
           </div>
           <div className="flex items-center gap-1.5">
             <div className="size-1 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]" />
-            <span className="font-bold text-[9px] text-green-500 uppercase tracking-widest">Air-Gapped</span>
+            <span className="font-bold text-[9px] text-green-500 uppercase tracking-widest">{t("airGapped")}</span>
           </div>
         </div>
       </CardContent>

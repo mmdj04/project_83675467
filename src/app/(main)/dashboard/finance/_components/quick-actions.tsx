@@ -9,6 +9,7 @@ import {
   SendHorizontal,
   Smartphone,
 } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -24,22 +25,24 @@ const contacts = [
 ];
 
 const shortcuts = [
-  { id: 1, label: "Scan QR", icon: QrCode },
-  { id: 2, label: "Transfer", icon: SendHorizontal },
-  { id: 3, label: "Pay Bills", icon: Banknote },
-  { id: 4, label: "History", icon: History },
-  { id: 5, label: "Mobile", icon: Smartphone },
-  { id: 6, label: "Electricity", icon: Lightbulb },
-  { id: 7, label: "Water", icon: Droplet },
-  { id: 8, label: "More", icon: MoreHorizontal },
+  { id: 1, labelKey: "shortcutScanQr", icon: QrCode },
+  { id: 2, labelKey: "shortcutTransfer", icon: SendHorizontal },
+  { id: 3, labelKey: "shortcutPayBills", icon: Banknote },
+  { id: 4, labelKey: "shortcutHistory", icon: History },
+  { id: 5, labelKey: "shortcutMobile", icon: Smartphone },
+  { id: 6, labelKey: "shortcutElectricity", icon: Lightbulb },
+  { id: 7, labelKey: "shortcutWater", icon: Droplet },
+  { id: 8, labelKey: "shortcutMore", icon: MoreHorizontal },
 ];
 
-export function QuickActions() {
+export async function QuickActions() {
+  const t = await getTranslations("finance");
+
   return (
     <div className="flex flex-col gap-4">
       <Card>
         <CardHeader>
-          <CardTitle className="font-normal">Quick Transfer</CardTitle>
+          <CardTitle className="font-normal">{t("quickTransfer")}</CardTitle>
           <CardAction>
             <div className="flex items-center gap-1">
               <div className="flex -space-x-2">
@@ -64,14 +67,14 @@ export function QuickActions() {
                 <InputGroupText>USD</InputGroupText>
               </InputGroupAddon>
             </InputGroup>
-            <Button>Send</Button>
+            <Button>{t("send")}</Button>
           </Field>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle className="font-normal">Shortcuts</CardTitle>
+          <CardTitle className="font-normal">{t("shortcuts")}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-4 gap-4">
@@ -82,7 +85,7 @@ export function QuickActions() {
                   <Button variant="outline" className="size-12 rounded-full">
                     <Icon className="size-5" />
                   </Button>
-                  <span className="text-center text-muted-foreground text-xs">{shortcut.label}</span>
+                  <span className="text-center text-muted-foreground text-xs">{t(shortcut.labelKey)}</span>
                 </div>
               );
             })}

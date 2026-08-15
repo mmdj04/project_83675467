@@ -1,4 +1,5 @@
 import { CalendarDays, CalendarRange } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,16 +16,18 @@ const proposalGoalBars = Array.from({ length: proposalGoalBarCount }, (_, index)
   active: index < activeProposalBars,
 }));
 
-export function TaskReminders() {
+export async function TaskReminders() {
+  const t = await getTranslations("crm");
+
   return (
     <section className="grid grid-cols-1 gap-4 xl:grid-cols-12">
       <Card className="xl:col-span-8">
         <CardHeader>
-          <CardTitle>Upcoming Meetings</CardTitle>
+          <CardTitle>{t("upcomingMeetings")}</CardTitle>
           <CardAction>
             <Button variant="outline" size="sm">
               <CalendarDays data-icon="inline-start" />
-              View Calendar
+              {t("viewCalendar")}
             </Button>
           </CardAction>
         </CardHeader>
@@ -72,14 +75,16 @@ export function TaskReminders() {
 
       <Card className="xl:col-span-4">
         <CardHeader>
-          <CardTitle>Monthly Proposal Goal</CardTitle>
+          <CardTitle>{t("monthlyProposalGoal")}</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-1">
           <div className="flex items-end justify-between gap-3">
             <div className="font-medium text-2xl tabular-nums leading-none">
-              {proposalSent} <span className="font-normal text-base text-muted-foreground">sent</span>
+              {proposalSent} <span className="font-normal text-base text-muted-foreground">{t("sent")}</span>
             </div>
-            <div className="text-muted-foreground text-sm tabular-nums">{proposalGoal} target</div>
+            <div className="text-muted-foreground text-sm tabular-nums">
+              {t("targetCount", { count: proposalGoal })}
+            </div>
           </div>
           <div className="flex h-10 w-full items-end gap-0.5">
             {proposalGoalBars.map((bar) => (
@@ -94,7 +99,7 @@ export function TaskReminders() {
             ))}
           </div>
           <p className="text-muted-foreground text-sm">
-            {proposalProgressPercentage}% of this month&apos;s proposal target reached.
+            {t("proposalProgress", { percentage: proposalProgressPercentage })}
           </p>
         </CardContent>
       </Card>

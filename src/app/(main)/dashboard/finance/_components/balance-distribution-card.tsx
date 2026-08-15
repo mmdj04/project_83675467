@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import { useTranslations } from "next-intl";
 import { Label, Pie, PieChart } from "recharts";
 
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -67,13 +68,13 @@ const chartConfig = {
 
 const currencies = {
   EUR: {
-    label: "Euro Balance",
+    labelKey: "currencyEuro",
   },
   GBP: {
-    label: "GBP Balance",
+    labelKey: "currencyGbp",
   },
   USD: {
-    label: "USD Balance",
+    labelKey: "currencyUsd",
   },
 } as const;
 
@@ -92,12 +93,13 @@ const chartData = balanceData.map((item) => ({
 const totalBalance = balanceData.reduce((total, item) => total + item.amount, 0);
 
 export function BalanceDistributionCard() {
+  const t = useTranslations("finance");
   const [currency, setCurrency] = React.useState<Currency>("USD");
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-normal">Account Allocation</CardTitle>
+        <CardTitle className="font-normal">{t("accountAllocation")}</CardTitle>
         <CardAction>
           <Select onValueChange={(value) => setCurrency(value as Currency)} value={currency}>
             <SelectTrigger className="w-36" size="sm">
@@ -107,7 +109,7 @@ export function BalanceDistributionCard() {
               <SelectGroup>
                 {Object.entries(currencies).map(([value, item]) => (
                   <SelectItem key={value} value={value}>
-                    {item.label}
+                    {t(item.labelKey)}
                   </SelectItem>
                 ))}
               </SelectGroup>
@@ -142,7 +144,7 @@ export function BalanceDistributionCard() {
                   return (
                     <text dominantBaseline="middle" textAnchor="middle" x={viewBox.cx} y={viewBox.cy}>
                       <tspan className="fill-muted-foreground text-xs" x={viewBox.cx} y={(viewBox.cy ?? 0) - 8}>
-                        Total
+                        {t("total")}
                       </tspan>
                       <tspan
                         className="fill-foreground font-medium text-lg tabular-nums"

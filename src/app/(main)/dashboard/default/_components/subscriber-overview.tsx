@@ -1,6 +1,7 @@
 "use client";
 
 import { Download } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,16 +12,18 @@ import { RecentCustomersTable } from "./recent-customers-table/table";
 
 const customers = customersData as RecentCustomerRow[];
 
-export function SubscriberOverview() {
+export async function SubscriberOverview() {
+  const t = await getTranslations("default");
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="leading-none">18,426 Customers</CardTitle>
-        <CardDescription>Recent customer records with plan, billing, status, and signup activity.</CardDescription>
+        <CardTitle className="leading-none">{t("customerCount", { count: 18426 })}</CardTitle>
+        <CardDescription>{t("subscriberDescription")}</CardDescription>
         <CardAction>
           <Button variant="outline" size="sm">
             <Download />
-            Export
+            {t("export")}
           </Button>
         </CardAction>
       </CardHeader>

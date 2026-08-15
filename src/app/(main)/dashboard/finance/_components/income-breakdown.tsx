@@ -1,11 +1,15 @@
+import { getTranslations } from "next-intl/server";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
-export function IncomeBreakdown() {
+export async function IncomeBreakdown() {
+  const t = await getTranslations("finance");
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-normal">Income sources</CardTitle>
+        <CardTitle className="font-normal">{t("incomeSources")}</CardTitle>
       </CardHeader>
 
       <CardContent className="grid grid-cols-1 gap-1 md:grid-cols-3">
@@ -16,7 +20,9 @@ export function IncomeBreakdown() {
           />
           <div className="flex min-h-24 flex-1 flex-col justify-between">
             <div className="flex min-w-0 flex-col gap-1 px-1">
-              <p className="wrap-break-word text-muted-foreground text-xs leading-none">Primary salary · 68%</p>
+              <p className="wrap-break-word text-muted-foreground text-xs leading-none">
+                {t("incomePrimarySalary")} · 68%
+              </p>
               <div className="text-lg leading-none tracking-tight">$4,560.00</div>
             </div>
             <div className="-ml-0.5 h-5 rounded-sm bg-chart-3" />
@@ -30,7 +36,9 @@ export function IncomeBreakdown() {
           />
           <div className="flex min-h-24 flex-1 flex-col justify-between">
             <div className="flex min-w-0 flex-col gap-1 px-1">
-              <p className="wrap-break-word text-muted-foreground text-xs leading-none">Freelance projects · 21%</p>
+              <p className="wrap-break-word text-muted-foreground text-xs leading-none">
+                {t("incomeFreelanceProjects")} · 21%
+              </p>
               <div className="text-lg leading-none tracking-tight">$1,412.00</div>
             </div>
             <div className="-ml-0.5 h-5 rounded-sm bg-chart-3/75" />
@@ -44,7 +52,9 @@ export function IncomeBreakdown() {
           />
           <div className="flex min-h-24 flex-1 flex-col justify-between">
             <div className="flex min-w-0 flex-col gap-1 px-1">
-              <p className="wrap-break-word text-muted-foreground text-xs leading-none">Dividends and interest · 11%</p>
+              <p className="wrap-break-word text-muted-foreground text-xs leading-none">
+                {t("incomeDividendsInterest")} · 11%
+              </p>
               <div className="text-lg leading-none tracking-tight">$765.00</div>
             </div>
             <div className="-ml-0.5 h-5 rounded-sm bg-chart-3/50" />

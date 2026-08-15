@@ -8,6 +8,7 @@ import {
   useTable,
 } from "@tanstack/react-table";
 import { ChevronDownIcon, ListFilter } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -31,12 +32,24 @@ import {
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { dataTableFeatures } from "@/lib/data-table-features";
 
-import { opportunitiesColumns } from "./opportunities-table/columns";
+import { createOpportunitiesColumns } from "./opportunities-table/columns";
 import opportunitiesData from "./opportunities-table/data.json";
 import { opportunitiesSchema } from "./opportunities-table/schema";
 
-const stageOptions = ["all", "Proposal Sent", "Discovery", "Negotiation", "Qualified"] as const;
-const healthOptions = ["all", "On Track", "Needs Review", "At Risk", "On Hold"] as const;
+const stageOptions = [
+  { value: "all", labelKey: "allStages" },
+  { value: "Proposal Sent", labelKey: "stageProposalSent" },
+  { value: "Discovery", labelKey: "stageDiscovery" },
+  { value: "Negotiation", labelKey: "stageNegotiation" },
+  { value: "Qualified", labelKey: "stageQualified" },
+] as const;
+const healthOptions = [
+  { value: "all", labelKey: "allHealth" },
+  { value: "On Track", labelKey: "healthOnTrack" },
+  { value: "Needs Review", labelKey: "healthNeedsReview" },
+  { value: "At Risk", labelKey: "healthAtRisk" },
+  { value: "On Hold", labelKey: "healthOnHold" },
+] as const;
 const opportunities = opportunitiesSchema.parse(opportunitiesData);
 
 function preventPaginationNavigation(event: React.MouseEvent<HTMLAnchorElement>) {
@@ -44,6 +57,7 @@ function preventPaginationNavigation(event: React.MouseEvent<HTMLAnchorElement>)
 }
 
 export function OpportunitiesSection() {
+  const t = useTranslations("crm");
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility] = React.useState<ColumnVisibilityState>({});
@@ -52,11 +66,12 @@ export function OpportunitiesSection() {
     pageIndex: 0,
     pageSize: 10,
   });
+  const columns = React.useMemo(() => createOpportunitiesColumns(t), [t]);
 
   const table = useTable({
     features: dataTableFeatures,
     data: opportunities,
-    columns: opportunitiesColumns,
+    columns,
     state: {
       rowSelection,
       columnFilters,
@@ -94,15 +109,13 @@ export function OpportunitiesSection() {
     <section>
       <Card>
         <CardHeader>
-          <CardTitle className="leading-none">Recent Opportunities</CardTitle>
-          <CardDescription>
-            Track qualified leads moving through discovery, proposal, and closing stages.
-          </CardDescription>
+          <CardTitle className="leading-none">{t("recentOpportunities")}</CardTitle>
+          <CardDescription>{t("recentOpportunitiesDescription")}</CardDescription>
           <CardAction>
             <div className="flex items-center gap-2">
               <Input
                 className="h-7 w-44 md:w-52"
-                placeholder="Search deals..."
+                placeholder={t("searchDeals")}
                 value={searchQuery}
                 onChange={(event) => {
                   table.setGlobalFilter(event.target.value || undefined);
@@ -113,7 +126,7 @@ export function OpportunitiesSection() {
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" size="sm">
                     <ListFilter data-icon="inline-start" />
-                    Stage
+                    {t("stage")}
                     <ChevronDownIcon data-icon="inline-end" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -126,8 +139,8 @@ export function OpportunitiesSection() {
                     }}
                   >
                     {stageOptions.map((option) => (
-                      <DropdownMenuRadioItem key={option} value={option}>
-                        {option === "all" ? "All stages" : option}
+                      <DropdownMenuRadioItem key={option.value} value={option.value}>
+                        {t(option.labelKey)}
                       </DropdownMenuRadioItem>
                     ))}
                   </DropdownMenuRadioGroup>
@@ -137,7 +150,7 @@ export function OpportunitiesSection() {
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" size="sm">
                     <ListFilter data-icon="inline-start" />
-                    Health
+                    {t("health")}
                     <ChevronDownIcon data-icon="inline-end" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -150,8 +163,8 @@ export function OpportunitiesSection() {
                     }}
                   >
                     {healthOptions.map((option) => (
-                      <DropdownMenuRadioItem key={option} value={option}>
-                        {option === "all" ? "All health" : option}
+                      <DropdownMenuRadioItem key={option.value} value={option.value}>
+                        {t(option.labelKey)}
                       </DropdownMenuRadioItem>
                     ))}
                   </DropdownMenuRadioGroup>
@@ -188,7 +201,7 @@ export function OpportunitiesSection() {
                 ) : (
                   <TableRow>
                     <TableCell colSpan={table.getVisibleLeafColumns().length} className="h-24 text-center">
-                      No results.
+                      {t("noResults")}
                     </TableCell>
                   </TableRow>
                 )}
@@ -197,7 +210,10 @@ export function OpportunitiesSection() {
           </div>
           <div className="flex items-center justify-between gap-4 px-4 pb-1">
             <p className="text-muted-foreground text-sm">
-              Viewing {visibleOpportunityCount} out of {filteredOpportunityCount.toLocaleString()} opportunities
+              {t("viewingCount", {
+                visible: visibleOpportunityCount,
+                total: filteredOpportunityCount.toLocaleString(),
+              })}
             </p>
 
             <Pagination className="mx-0 w-auto justify-end">
