@@ -7,10 +7,10 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 **Resumo**: 36 commits • 39 arquivos • +6.474 −2.543 • 30 manutenção, 2 merges, 4 novidades
 
 ### Novidades
-- Added **profile screen**
+- Added **profile screen** (#80)
 - Migrated **dnd kit to** latest implementation and packages
 - Migrated **data table to** use tanstack table v9
-- Added **patient monitoring dashboard**
+- Added **patient monitoring dashboard** (#79)
 
 ### Arquivos principais
 - package-lock.json (modificado, +749 −611)
@@ -40,7 +40,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 **Resumo**: 38 commits • 44 arquivos • +10.925 −9.515 • 30 manutenção, 2 merges, 2 novidades, 2 refatorações, 1 outros, 1 documentação
 
 ### Novidades
-- Added **file manager dashboard**
+- Added **file manager dashboard** (#78)
 - Added **project versions dropdown** to dashboard header
 
 ### Arquivos principais
@@ -72,11 +72,11 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 
 ### Novidades
 - Added **new shadcn components** & update deps
-- Added **tasks**
-- Improved **infrastructure health data**
-- Refined **infrastructure dashboard**
-- Added **infrastructure dashboard**
-- Added **full calendar**
+- Added **tasks** (#73)
+- Improved **infrastructure health data** (#71)
+- Refined **infrastructure dashboard** (#71)
+- Added **infrastructure dashboard** (#71)
+- Added **full calendar** (#70)
 
 ### Correções
 - Polished **collapsed sidebar navigation**
@@ -109,12 +109,12 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 **Resumo**: 94 commits • 105 arquivos • +36.611 −13.281 • 43 manutenção, 12 merges, 20 novidades, 18 outros, 1 documentação
 
 ### Novidades
-- Added **initial chat layouts**
-- Added **initial kanban layout**
-- Initial users page layout
-- Added **logistics dashboard**
-- Added **roles route**
-- Added **users route**
+- Added **initial chat layouts** (#67)
+- Added **initial kanban layout** (#68)
+- Initial users page layout (#63)
+- Added **logistics dashboard** (#62)
+- Added **roles route** (#65)
+- Added **users route** (#63)
 
 ### Arquivos principais
 - public/features.json (adicionado e removido, +8.028 −8.028)
@@ -144,18 +144,18 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 **Resumo**: 68 commits • 93 arquivos • +9.306 −4.718 • 18 novidades, 21 manutenção, 5 merges, 9 correções, 10 outros, 4 documentação, 1 estilo
 
 ### Novidades
-- Refined **analytics v2 controls**
-- Added **analytics v2 dashboard**
-- Refactored **wallet component with** crypto assets and physical vault info, rename components for better resonance
-- Refactored **upcoming transactions UI**
-- Added **search at sidebar**
-- Moved **crm v2 to** crm and legacy crm to crm-v1
+- Refined **analytics v2 controls** (#54)
+- Added **analytics v2 dashboard** (#54)
+- Refactored **wallet component with** crypto assets and physical vault info, rename components for better resonance (#49)
+- Refactored **upcoming transactions UI** (#49)
+- Added **search at sidebar** (#51)
+- Moved **crm v2 to** crm and legacy crm to crm-v1 (#47)
 
 ### Correções
-- Added **use client directive** to upcoming transactions component
-- Added **missing tabs content** import and sort classes
-- Renamed **upcoming transactions component** to remove table suffix and fix import
-- Replaced custom search with built in search from cmdk
+- Added **use client directive** to upcoming transactions component (#49)
+- Added **missing tabs content** import and sort classes (#49)
+- Renamed **upcoming transactions component** to remove table suffix and fix import (#49)
+- Replaced custom search with built in search from cmdk (#51)
 
 ### Arquivos principais
 - package-lock.json (modificado, +1.401 −1.623)
@@ -191,7 +191,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Switch shadcn base color to mist
 - Updated **shadcn style to** radix-vega
 - Expanded **font selector and** add Geist Pixel Square
-- Implemented **analytics dashboard redesign**
+- Implemented **analytics dashboard redesign** (#35)
 
 ### Correções
 - Group dashboard select items
@@ -247,15 +247,15 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 **Resumo**: 33 commits • 38 arquivos • +5.221 −4.429 • 21 manutenção, 6 novidades, 4 merges, 1 correções, 1 outros
 
 ### Novidades
-- Added **revenue and risk** summary
-- Added **overview controls**
-- Automatically set resolvedThemeMode in setThemeMode
-- Added **system theme mode**
-- Added **restore defaults button**
-- Added **dynamic font preference**
+- Added **revenue and risk** summary (#35)
+- Added **overview controls** (#35)
+- Automatically set resolvedThemeMode in setThemeMode (#32)
+- Added **system theme mode** (#32)
+- Added **restore defaults button** (#30)
+- Added **dynamic font preference** (#29)
 
 ### Correções
-- Cycle through light/dark/system in theme-switcher
+- Cycle through light/dark/system in theme-switcher (#32)
 
 ### Arquivos principais
 - package-lock.json (modificado, +3.155 −3.155)
@@ -286,15 +286,15 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 **Resumo**: 50 commits • 62 arquivos • +7.176 −16.004 • 10 novidades, 29 manutenção, 7 merges, 2 outros, 1 estilo, 1 correções
 
 ### Novidades
-- Complete remaining dashboard sections
-- Added **KPI row**
-- Biome init
-- Improved **layout prefs handling** for instant sidebar render
-- Added **“use no memo”** to all table components to prevent React Compiler memoization and fix state issues
-- Added **window prefs bridge** + temporary flicker fix in provider
+- Complete remaining dashboard sections (#27)
+- Added **KPI row** (#27)
+- Biome init (#25)
+- Improved **layout prefs handling** for instant sidebar render (#22)
+- Added **“use no memo”** to all table components to prevent React Compiler memoization and fix state issues (#21)
+- Added **window prefs bridge** + temporary flicker fix in provider (#20)
 
 ### Correções
-- Align theme boot defaults and use shallow sidebar selector
+- Align theme boot defaults and use shallow sidebar selector (#24)
 
 ### Arquivos principais
 - package-lock.json (modificado, +5.303 −14.564)
@@ -324,7 +324,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 **Resumo**: 21 commits • 17 arquivos • +2.066 −1.040 • 19 manutenção, 1 novidades, 1 estilo
 
 ### Novidades
-- Added **theme boot script** and make root layout static
+- Added **theme boot script** and make root layout static (#18)
 
 ### Arquivos principais
 - package-lock.json (modificado, +1.848 −901)
@@ -387,7 +387,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 **Resumo**: 16 commits • 17 arquivos • +1.339 −1.141 • 2 outros, 11 manutenção, 1 estilo, 1 merges, 1 novidades
 
 ### Novidades
-- Updated **dashboard layout controls** and layout utils with sticky header
+- Updated **dashboard layout controls** and layout utils with sticky header (#10)
 
 ### Arquivos principais
 - package-lock.json (modificado, +885 −926)
@@ -509,7 +509,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - Added **theme switcher**
 - Updated **sidebar to use** dropdown menu in collapsed state
 - Added **layout preferences panel** with sidebar variant & collapsible settings
-- Migrated **to Next.js 15** and Tailwind CSS v4 with new color theme
+- Migrated **to Next.js 15** and Tailwind CSS v4 with new color theme (#4)
 
 ### Correções
 - Fallback to collapsible layout on mobile sidebar
@@ -643,7 +643,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 **Resumo**: 14 commits • 23 arquivos • +20.151 −16.414 • 8 manutenção, 1 correções, 3 merges, 2 novidades
 
 ### Novidades
-- Removed **Airbnb config &** update ESLint to latest version with flat config and custom rules
+- Removed **Airbnb config &** update ESLint to latest version with flat config and custom rules (#2)
 - Husky init
 
 ### Correções
