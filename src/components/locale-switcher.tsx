@@ -38,7 +38,7 @@ export function LocaleSwitcher() {
       <DropdownMenuContent align="end">
         {LOCALES.map((option) => (
           <DropdownMenuItem key={option.code} onSelect={() => setLocale(option.code)}>
-            {locale === option.code && <Check />}
+            <span className="flex w-4 shrink-0 items-center justify-center">{locale === option.code && <Check />}</span>
             {option.label}
           </DropdownMenuItem>
         ))}

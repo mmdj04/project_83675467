@@ -161,9 +161,11 @@ export function Changelog({ content }: { content: string }) {
                   data-month={m.month}
                 >
                   <AccordionTrigger className="py-3 font-semibold text-xl text-foreground">
-                    {m.month}
-                    <span className="ml-2 rounded-full bg-muted px-2 py-0.5 font-mono text-xs text-muted-foreground">
-                      {commitCount(m.summary) ?? m.sections.length}
+                    <span className="flex items-center gap-2">
+                      {m.month}
+                      <span className="rounded-full bg-muted px-2 py-0.5 font-mono text-xs leading-none text-muted-foreground">
+                        {commitCount(m.summary) ?? m.sections.length}
+                      </span>
                     </span>
                   </AccordionTrigger>
                   <AccordionContent>
