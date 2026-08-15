@@ -1,4 +1,8 @@
+"use client";
+
 import { useMemo } from "react";
+
+import { useTranslations } from "next-intl";
 
 import type { CardiacRhythm, PatientRecord } from "./data";
 import {
@@ -167,12 +171,13 @@ function createTrendWindow(patient: PatientRecord, definition: TrendDefinition, 
 }
 
 export function usePatientTrendSeries({ kind, patient }: PatientTrendSeriesOptions) {
+  const t = useTranslations("patientMonitoring");
   const tick = useTrendTick();
   const definition = trendDefinitions[kind];
   const data = useMemo(() => createTrendWindow(patient, definition, tick), [definition, patient, tick]);
 
   return {
-    ariaLabel: `${patient.bed} ${kind} trend`,
+    ariaLabel: t("trendAria", { bed: patient.bed, kind }),
     data,
     domain: definition.domain,
     ticks: definition.ticks,
@@ -185,6 +190,7 @@ export function usePatientWaveformSeries({
   lead = "II",
   patient,
 }: PatientWaveformSeriesOptions) {
+  const t = useTranslations("patientMonitoring");
   const tick = useWaveformTick(compact);
   const tickInterval = compact ? COMPACT_WAVEFORM_TICK_INTERVAL_MS : DETAIL_WAVEFORM_TICK_INTERVAL_MS;
   const sampleCount = compact ? 160 : 400;
@@ -194,7 +200,7 @@ export function usePatientWaveformSeries({
   );
 
   return {
-    ariaLabel: `${patient.bed} ${lead} ${kind} waveform`,
+    ariaLabel: t("waveformAria", { bed: patient.bed, kind, lead }),
     data,
     domain: getSignalDomain(patient, kind),
   };

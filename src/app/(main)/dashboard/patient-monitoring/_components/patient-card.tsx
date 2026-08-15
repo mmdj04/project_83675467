@@ -1,3 +1,7 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
@@ -13,12 +17,13 @@ interface PatientCardProps {
 }
 
 export function PatientCard({ active, acknowledged, onSelect, patient }: PatientCardProps) {
+  const t = useTranslations("patientMonitoring");
   const hasActiveAlarm = patient.status === "alarm" && !acknowledged;
   const waveformSeries = usePatientWaveformSeries({ compact: true, kind: "ecg", patient });
 
   return (
     <button
-      aria-label={`Open ${patient.bed}, ${patient.name}`}
+      aria-label={t("openPatient", { bed: patient.bed, name: patient.name })}
       aria-pressed={active}
       className={cn(
         "flex min-h-36 min-w-0 flex-col bg-card p-2 text-left text-card-foreground",
@@ -38,7 +43,7 @@ export function PatientCard({ active, acknowledged, onSelect, patient }: Patient
             className="h-auto shrink-0 rounded-none border-amber-500 text-[10px] text-amber-700 dark:border-amber-400 dark:text-amber-300"
             variant="outline"
           >
-            HR HIGH {patient.heartRate}
+            HR HIGH {t("hrHigh", { value: patient.heartRate })}
           </Badge>
         )}
       </div>

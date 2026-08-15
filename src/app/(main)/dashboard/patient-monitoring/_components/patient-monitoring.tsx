@@ -2,6 +2,8 @@
 
 import { Fragment, useState } from "react";
 
+import { useTranslations } from "next-intl";
+
 import { Alert, AlertAction, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -19,6 +21,7 @@ interface PatientMonitoringProps {
 }
 
 export function PatientMonitoring({ patients }: PatientMonitoringProps) {
+  const t = useTranslations("patientMonitoring");
   const [selectedPatientId, setSelectedPatientId] = useState("cardiac-04");
   const [acknowledgedPatientIds, setAcknowledgedPatientIds] = useState<string[]>([]);
   const selectedPatient = patients.find((patient) => patient.id === selectedPatientId) ?? patients[0];
@@ -70,7 +73,7 @@ export function PatientMonitoring({ patients }: PatientMonitoringProps) {
             <AlertTitle>{selectedPatient.alarm}</AlertTitle>
             {selectedPatient.alarmDuration && (
               <AlertDescription className={cn(hasActiveAlarm && "text-amber-950")}>
-                Active for {selectedPatient.alarmDuration}
+                {t("activeFor", { time: selectedPatient.alarmDuration })}
               </AlertDescription>
             )}
             <AlertAction className="top-1/2 -translate-y-1/2">
@@ -81,7 +84,7 @@ export function PatientMonitoring({ patients }: PatientMonitoringProps) {
                 size="sm"
                 variant="secondary"
               >
-                {acknowledged ? "Acknowledged" : "Acknowledge"}
+                {acknowledged ? t("acknowledged") : t("acknowledge")}
               </Button>
             </AlertAction>
           </Alert>
@@ -94,24 +97,24 @@ export function PatientMonitoring({ patients }: PatientMonitoringProps) {
             className="w-full justify-start gap-0 border-b p-0 *:h-full *:max-w-32 *:rounded-none *:border-0 *:border-border *:border-r *:after:-bottom-px!"
             variant="line"
           >
-            <TabsTrigger value="real-time">Real time</TabsTrigger>
-            <TabsTrigger value="events">Event review</TabsTrigger>
-            <TabsTrigger value="trends">Trends</TabsTrigger>
-            <TabsTrigger value="disclosure">Full disclosure</TabsTrigger>
+            <TabsTrigger value="real-time">{t("realTime")}</TabsTrigger>
+            <TabsTrigger value="events">{t("eventReview")}</TabsTrigger>
+            <TabsTrigger value="trends">{t("trends")}</TabsTrigger>
+            <TabsTrigger value="disclosure">{t("fullDisclosure")}</TabsTrigger>
           </TabsList>
 
           <TabsContent
             className="m-0 flex flex-col items-center justify-center gap-1 px-4 text-center"
             value="real-time"
           >
-            <p className="font-medium text-sm">Live monitoring is active</p>
-            <p className="text-muted-foreground text-xs">Waveforms and vital signs update continuously above.</p>
+            <p className="font-medium text-sm">{t("liveActive")}</p>
+            <p className="text-muted-foreground text-xs">{t("liveActiveDescription")}</p>
           </TabsContent>
           <TabsContent className="m-0" value="events">
             <div className="min-h-44">
               <div className="grid grid-cols-[4rem_1fr] bg-muted/40 px-4 py-2 font-medium text-muted-foreground text-xs">
-                <span>Time</span>
-                <span>Event</span>
+                <span>{t("time")}</span>
+                <span>{t("event")}</span>
               </div>
               <Separator />
               {selectedPatient.recentEvents.map((event, index) => (
@@ -132,10 +135,8 @@ export function PatientMonitoring({ patients }: PatientMonitoringProps) {
             className="m-0 flex flex-col items-center justify-center gap-1 px-4 text-center"
             value="disclosure"
           >
-            <p className="font-medium text-sm">Full disclosure recording is active</p>
-            <p className="text-muted-foreground text-xs">
-              Continuous waveform history is available for the last 24 hours.
-            </p>
+            <p className="font-medium text-sm">{t("disclosureActive")}</p>
+            <p className="text-muted-foreground text-xs">{t("disclosureActiveDescription")}</p>
           </TabsContent>
         </Tabs>
       </div>

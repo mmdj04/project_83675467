@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { CartesianGrid, Line, LineChart, YAxis } from "recharts";
 
 import { type ChartConfig, ChartContainer } from "@/components/ui/chart";
@@ -110,6 +113,8 @@ function TrendStrip({
 }
 
 export function PatientTrends({ patient }: PatientTrendsProps) {
+  const t = useTranslations("patientMonitoring");
+
   return (
     <div className="grid h-full min-h-36 xl:grid-cols-[minmax(0,1fr)_13.5rem]">
       <div className="min-w-0 border-border xl:border-r">
@@ -128,7 +133,7 @@ export function PatientTrends({ patient }: PatientTrendsProps) {
         </div>
       </div>
       <div className="px-3 py-2">
-        <div className="mb-2 font-medium text-xs">Recent events</div>
+        <div className="mb-2 font-medium text-xs">{t("recentEvents")}</div>
         <div className="flex flex-col gap-2">
           {patient.recentEvents.map((event) => (
             <div className="grid grid-cols-[3rem_1fr] text-[11px]" key={`${event.time}-${event.label}`}>
