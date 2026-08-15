@@ -13,17 +13,19 @@ export default async function RegisterV2() {
 
   return (
     <>
-      <div className="mx-auto flex w-full flex-col justify-center space-y-8 sm:w-[350px]">
-        <div className="space-y-2 text-center">
-          <h1 className="font-medium text-3xl">{t("registerV2.title")}</h1>
-          <p className="text-muted-foreground text-sm">{t("registerV2.subtitle")}</p>
-        </div>
-        <div className="space-y-4">
-          <GoogleButton className="w-full" />
-          <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-border after:border-t">
-            <span className="relative z-10 bg-background px-2 text-muted-foreground">{t("orContinueWith")}</span>
+      <div className="mx-auto flex w-full flex-1 flex-col overflow-y-auto sm:w-[350px]">
+        <div className="m-auto flex w-full flex-col space-y-8 py-8">
+          <div className="space-y-2 text-center">
+            <h1 className="font-medium text-3xl">{t("registerV2.title")}</h1>
+            <p className="text-muted-foreground text-sm">{t("registerV2.subtitle")}</p>
           </div>
-          <RegisterForm />
+          <div className="space-y-4">
+            <GoogleButton className="w-full" />
+            <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-border after:border-t">
+              <span className="relative z-10 bg-background px-2 text-muted-foreground">{t("orContinueWith")}</span>
+            </div>
+            <RegisterForm />
+          </div>
         </div>
       </div>
 
