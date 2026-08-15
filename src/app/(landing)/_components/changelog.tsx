@@ -2,6 +2,12 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface ChangelogEntry {
   date: string;
@@ -137,52 +143,62 @@ export function Changelog({ content }: { content: string }) {
 
           {/* Content */}
           <div ref={contentRef} className="flex-1 overflow-hidden">
-            {months.map((m) => (
-              <div
-                key={m.month}
-                ref={(el) => {
-                  if (el) monthRefs.current.set(m.month, el);
-                }}
-                data-month={m.month}
-                className="mb-12"
-              >
-                <h3 className="mb-4 font-semibold text-xl text-foreground">
-                  {m.month}
-                </h3>
-                <div className="space-y-3">
-                  {m.entries.map((entry) => (
-                    <div
-                      key={entry.hash}
-                      className="rounded-lg border border-border bg-background p-4 transition-colors hover:bg-accent/50"
-                    >
-                      <div className="flex items-start gap-3">
-                        <span className="whitespace-nowrap font-mono text-xs text-muted-foreground">
-                          {formatDate(entry.date)}
-                        </span>
-                        <span className="shrink-0 rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-muted-foreground">
-                          {entry.hash}
-                        </span>
-                        <span className="text-sm text-foreground">
-                          {entry.message}
-                        </span>
-                      </div>
-                      {entry.details.length > 0 && (
-                        <ul className="mt-2 space-y-1 border-l border-border pl-4">
-                          {entry.details.map((detail) => (
-                            <li
-                              key={detail}
-                              className="font-mono text-xs text-muted-foreground"
-                            >
-                              {detail}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
+            <Accordion
+              type="multiple"
+              defaultValue={months.slice(0, 3).map((m) => m.month)}
+            >
+              {months.map((m) => (
+                <AccordionItem
+                  key={m.month}
+                  value={m.month}
+                  ref={(el) => {
+                    if (el) monthRefs.current.set(m.month, el);
+                  }}
+                  data-month={m.month}
+                >
+                  <AccordionTrigger className="py-3 font-semibold text-xl text-foreground">
+                    {m.month}
+                    <span className="ml-2 rounded-full bg-muted px-2 py-0.5 font-mono text-xs text-muted-foreground">
+                      {m.entries.length}
+                    </span>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <div className="space-y-3 pt-2">
+                      {m.entries.map((entry) => (
+                        <div
+                          key={entry.hash}
+                          className="rounded-lg border border-border bg-background p-4 transition-colors hover:bg-accent/50"
+                        >
+                          <div className="flex items-start gap-3">
+                            <span className="whitespace-nowrap font-mono text-xs text-muted-foreground">
+                              {formatDate(entry.date)}
+                            </span>
+                            <span className="shrink-0 rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-muted-foreground">
+                              {entry.hash}
+                            </span>
+                            <span className="text-sm text-foreground">
+                              {entry.message}
+                            </span>
+                          </div>
+                          {entry.details.length > 0 && (
+                            <ul className="mt-2 space-y-1 border-l border-border pl-4">
+                              {entry.details.map((detail) => (
+                                <li
+                                  key={detail}
+                                  className="font-mono text-xs text-muted-foreground"
+                                >
+                                  {detail}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </div>
       </div>

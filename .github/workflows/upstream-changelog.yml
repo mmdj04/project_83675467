@@ -26,7 +26,6 @@ jobs:
             const UPSTREAM_REPO = "next-shadcn-admin-dashboard";
             const changelogPath = "changelog.md";
 
-            const RECENT_LIMIT = 25;
             const MAX_FILES = 8;
 
             const STATUS_LABEL = {
@@ -94,15 +93,10 @@ jobs:
               if (data.length < 100) break;
             }
 
-            const recentShorts = allCommits
-              .slice(0, RECENT_LIMIT)
-              .map((c) => c.sha.slice(0, 7));
-            const needDetails = allCommits
-              .slice(0, RECENT_LIMIT)
-              .filter((c) => {
-                const k = known.get(c.sha.slice(0, 7));
-                return !k || k.details.length === 0;
-              });
+            const needDetails = allCommits.filter((c) => {
+              const k = known.get(c.sha.slice(0, 7));
+              return !k || k.details.length === 0;
+            });
 
             const detailsMap = new Map();
             for (let i = 0; i < needDetails.length; i += 10) {
@@ -129,12 +123,10 @@ jobs:
               const month = date.slice(0, 7);
               const message = c.commit.message.split("\n")[0];
               const k = known.get(short);
-              const isRecent = recentShorts.includes(short);
-              const details = isRecent
-                ? k && k.details.length > 0
+              const details =
+                k && k.details.length > 0
                   ? k.details
-                  : detailLines(detailsMap.get(short))
-                : [];
+                  : detailLines(detailsMap.get(short));
               const block = [entryLine(date, short, message), ...details];
               if (!byMonth.has(month)) byMonth.set(month, []);
               byMonth.get(month).push(block.join("\n"));
@@ -168,8 +160,8 @@ jobs:
             const content =
               "# Changelog\n\n" +
               "Histórico do projeto organizado por mês de commit, do mais recente ao mais antigo. " +
-              "Cada entrada representa um commit do projeto; commits de merge também são mantidos. " +
-              "Os 25 commits mais recentes listam os arquivos adicionados/removidos.\n\n" +
+              "Cada entrada representa um commit do projeto (com arquivos adicionados/removidos); " +
+              "commits de merge também são mantidos.\n\n" +
               sections.join("\n\n") +
               "\n";
 
