@@ -108,7 +108,7 @@ export function InvoicePaper({ invoice }: { invoice: InvoiceFormValues }) {
               </div>
               <div className="flex justify-between gap-8">
                 <span>
-                  {taxOption.name} {taxOption.rate}%
+                  {t(taxOption.labelKey)} {taxOption.rate}%
                 </span>
                 <span>{formatInvoiceCurrency(getInvoiceTax(invoice))}</span>
               </div>

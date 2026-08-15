@@ -32,6 +32,11 @@ export function TasksToolbar<TData extends RowData>({ table }: TasksToolbarProps
     .getAllColumns()
     .filter((column) => typeof column.accessorFn !== "undefined" && column.getCanHide());
   const hiddenColumns = hideableColumns.filter((column) => !column.getIsVisible());
+  const columnLabels: Record<string, string> = {
+    title: t("tasks.title"),
+    status: t("tasks.status"),
+    priority: t("tasks.priority"),
+  };
 
   return (
     <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
@@ -83,7 +88,7 @@ export function TasksToolbar<TData extends RowData>({ table }: TasksToolbarProps
                   checked={column.getIsVisible()}
                   onCheckedChange={(value) => column.toggleVisibility(!!value)}
                 >
-                  {column.id}
+                  {columnLabels[column.id] ?? column.id}
                 </DropdownMenuCheckboxItem>
               ))}
             </DropdownMenuGroup>

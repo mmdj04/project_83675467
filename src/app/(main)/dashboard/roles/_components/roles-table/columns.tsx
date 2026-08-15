@@ -19,6 +19,18 @@ import type { Role } from "./data";
 
 type Translator = ReturnType<typeof useTranslations>;
 
+const accessLevelLabelKeys: Record<string, string> = {
+  Full: "roles.accessFull",
+  Scoped: "roles.accessScoped",
+  "Read only": "roles.accessReadOnly",
+  "API access": "roles.accessApi",
+};
+
+const statusLabelKeys: Record<string, string> = {
+  Active: "roles.active",
+  "Needs review": "roles.needsReview",
+};
+
 export function createRolesColumns(t: Translator): ColumnDef<DataTableFeatures, Role>[] {
   return [
     {
@@ -48,7 +60,7 @@ export function createRolesColumns(t: Translator): ColumnDef<DataTableFeatures, 
       size: 120,
       cell: ({ row }) => (
         <Badge className="rounded-sm" variant="outline">
-          {row.original.accessLevel}
+          {t(accessLevelLabelKeys[row.original.accessLevel])}
         </Badge>
       ),
     },
@@ -100,7 +112,7 @@ export function createRolesColumns(t: Translator): ColumnDef<DataTableFeatures, 
       filterFn: "equalsString",
       cell: ({ row }) => (
         <Badge className="rounded-sm" variant="outline">
-          {row.original.status}
+          {t(statusLabelKeys[row.original.status])}
         </Badge>
       ),
     },

@@ -6,9 +6,6 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 
-import enMessages from "../../messages/en.json";
-import ptBRMessages from "../../messages/pt-BR.json";
-
 import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -16,6 +13,9 @@ import { APP_CONFIG } from "@/config/app-config";
 import { fontVars } from "@/lib/fonts/registry";
 import { PREFERENCE_DEFAULTS } from "@/lib/preferences/preferences-config";
 import { ThemeBootScript } from "@/scripts/theme-boot";
+
+import enMessages from "../../messages/en.json";
+import ptBRMessages from "../../messages/pt-BR.json";
 
 import "./globals.css";
 
@@ -49,7 +49,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       <body className={`${fontVars} min-h-screen antialiased`}>
         <Providers>
           <TooltipProvider>
-            <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+            <NextIntlClientProvider timeZone="America/Sao_Paulo" messages={messages}>
+              {children}
+            </NextIntlClientProvider>
             <Toaster />
           </TooltipProvider>
         </Providers>

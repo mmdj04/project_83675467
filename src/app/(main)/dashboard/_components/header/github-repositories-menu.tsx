@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 
+import { useTranslations } from "next-intl";
 import { siGithub } from "simple-icons";
 
 import { SimpleIcon } from "@/components/simple-icon";
@@ -35,16 +36,18 @@ const repositories = [
 ] as const;
 
 export function GitHubRepositoriesMenu() {
+  const t = useTranslations("shell");
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button size="icon" aria-label="Open project repositories on GitHub">
+        <Button size="icon" aria-label={t("openRepositories")}>
           <SimpleIcon icon={siGithub} className="fill-primary-foreground" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48">
         <DropdownMenuGroup>
-          <DropdownMenuLabel>Project versions</DropdownMenuLabel>
+          <DropdownMenuLabel>{t("projectVersions")}</DropdownMenuLabel>
           {repositories.map((repository) => (
             <DropdownMenuItem key={repository.href} asChild>
               <Link prefetch={false} href={repository.href} target="_blank" rel="noreferrer">

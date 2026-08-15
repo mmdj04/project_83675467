@@ -20,6 +20,12 @@ import { cn } from "@/lib/utils";
 
 import type { Role } from "./data";
 
+const groupLabelKeys: Record<string, string> = {
+  "Needs review": "roles.needsReview",
+  "System roles": "roles.system",
+  "Custom roles": "roles.custom",
+};
+
 type RoleTableRow = ReturnType<ReactTable<DataTableFeatures, Role>["getRowModel"]>["rows"][number];
 type Translator = ReturnType<typeof useTranslations>;
 
@@ -185,7 +191,7 @@ function TableBodyGroup({
     <>
       <TableRow className="h-10 bg-muted">
         <TableCell className="px-4 text-foreground/60 text-sm" colSpan={colCount}>
-          {group.label}{" "}
+          {groupLabelKeys[group.label] ? t(groupLabelKeys[group.label]) : group.label}{" "}
           <Badge variant="outline" className="ml-2 rounded-sm bg-transparent text-muted-foreground text-xs">
             {t("roles.xOfY", { count: group.rows.length, total: totalCount })}
           </Badge>

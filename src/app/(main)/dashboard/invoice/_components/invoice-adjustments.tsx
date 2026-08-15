@@ -31,7 +31,7 @@ export function InvoiceAdjustments() {
                   <SelectGroup>
                     {invoiceTaxOptions.map((taxOption) => (
                       <SelectItem key={taxOption.id} value={taxOption.id}>
-                        {taxOption.name} ({taxOption.rate}%)
+                        {t(taxOption.labelKey)} ({taxOption.rate}%)
                       </SelectItem>
                     ))}
                   </SelectGroup>

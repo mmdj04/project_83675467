@@ -9,8 +9,9 @@ import listPlugin from "@fullcalendar/react/list";
 import multiMonthPlugin from "@fullcalendar/react/multimonth";
 import timeGridPlugin from "@fullcalendar/react/timegrid";
 import { differenceInCalendarDays, endOfMonth, format, startOfMonth } from "date-fns";
+import { enUS, type Locale, ptBR } from "date-fns/locale";
 import { Calendar as CalendarIcon, ChevronLeft, ChevronRight, Plus, XIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { EventCalendarViews } from "@/components/calendar/event-calendar-views";
 import { Button } from "@/components/ui/button";
@@ -35,16 +36,20 @@ const calendars = [
 
 const plugins = [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin, multiMonthPlugin];
 
+const dateFnsLocales: Record<string, Locale> = { "pt-BR": ptBR, en: enUS };
+
 export function Calendar() {
+  const locale = useLocale();
   const t = useTranslations();
   const controller = useCalendarController();
+  const dateLocale = dateFnsLocales[locale] ?? enUS;
   const [eventCount, setEventCount] = React.useState(0);
   const [selectedCalendar, setSelectedCalendar] = React.useState(calendars[0].key);
   const [dateInfo, setDateInfo] = React.useState(() => {
     const now = new Date();
 
     return {
-      title: format(now, "MMMM yyyy"),
+      title: format(now, "MMMM yyyy", { locale: dateLocale }),
       days: differenceInCalendarDays(endOfMonth(now), startOfMonth(now)) + 1,
     };
   });

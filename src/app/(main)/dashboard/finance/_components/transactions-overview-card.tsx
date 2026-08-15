@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -51,18 +51,17 @@ const chartData = [
 
 const weekdayTicks = Array.from({ length: 7 }, (_, index) => weekStart + (index + 0.5) * DAY_MS);
 
-const weekdayFormatter = new Intl.DateTimeFormat("en-US", {
-  timeZone: "UTC",
-  weekday: "long",
-});
-
-const formatWeekday = (value: number) => weekdayFormatter.format(new Date(value));
-
 const chartDomain = [weekStart, weekStart + 7 * DAY_MS];
-const formatTooltipCurrency = (value: number | string) => formatCurrency(Number(value), { noDecimals: true });
 
 export function TransactionsOverviewCard() {
+  const locale = useLocale();
   const t = useTranslations("finance");
+  const formatWeekday = (value: number) =>
+    new Intl.DateTimeFormat(locale, {
+      timeZone: "UTC",
+      weekday: "long",
+    }).format(new Date(value));
+  const formatTooltipCurrency = (value: number | string) => formatCurrency(Number(value), { noDecimals: true }, locale);
 
   const chartConfig = {
     expense: {

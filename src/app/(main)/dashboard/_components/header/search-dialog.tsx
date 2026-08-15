@@ -5,6 +5,7 @@ import * as React from "react";
 import { useRouter } from "next/navigation";
 
 import { Search } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -23,17 +24,19 @@ import { sidebarItems } from "@/navigation/sidebar/sidebar-items";
 type SearchItem = {
   id: string;
   group: string;
+  groupKey?: string;
   label: string;
+  labelKey?: string;
   url: string;
   icon?: NavMainItem["icon"];
   disabled?: boolean;
   newTab?: boolean;
 };
 
-const sidebarGroupLabels = new Set(sidebarItems.flatMap((group) => (group.label ? [group.label] : [])));
+const sidebarGroupLabelKeys = new Set(sidebarItems.flatMap((group) => (group.labelKey ? [group.labelKey] : [])));
 
-function getSubItemGroup(groupLabel: string | undefined, itemTitle: string) {
-  return sidebarGroupLabels.has(itemTitle) ? (groupLabel ?? "Other") : itemTitle;
+function getSubItemGroup(groupLabelKey: string | undefined, itemTitleKey: string | undefined) {
+  return itemTitleKey && sidebarGroupLabelKeys.has(itemTitleKey) ? (groupLabelKey ?? "other") : itemTitleKey;
 }
 
 const searchItems: SearchItem[] = sidebarItems.flatMap((group) =>
@@ -41,8 +44,10 @@ const searchItems: SearchItem[] = sidebarItems.flatMap((group) =>
     if (item.subItems) {
       return item.subItems.map((sub) => ({
         id: sub.id,
-        group: getSubItemGroup(group.label, item.title),
+        group: getSubItemGroup(group.labelKey, item.titleKey) ?? "other",
+        groupKey: getSubItemGroup(group.labelKey, item.titleKey),
         label: sub.title,
+        labelKey: sub.titleKey,
         url: sub.url,
         icon: item.icon,
         disabled: sub.disabled,
@@ -52,8 +57,10 @@ const searchItems: SearchItem[] = sidebarItems.flatMap((group) =>
     return [
       {
         id: item.id,
-        group: group.label ?? "Other",
+        group: group.labelKey ?? "other",
+        groupKey: group.labelKey,
         label: item.title,
+        labelKey: item.titleKey,
         url: item.url,
         icon: item.icon,
         disabled: item.disabled,
@@ -78,6 +85,7 @@ function groupBy(items: SearchItem[]) {
 }
 
 export function SearchDialog() {
+  const t = useTranslations("shell");
   const [open, setOpen] = React.useState(false);
   const [query, setQuery] = React.useState("");
   const router = useRouter();
@@ -109,26 +117,32 @@ export function SearchDialog() {
   };
 
   const renderGroups = (items: SearchItem[]) =>
-    groupBy(items).map(({ group, items: groupItems }, index) => (
-      <React.Fragment key={group}>
-        {index > 0 && <CommandSeparator />}
-        <CommandGroup heading={group}>
-          {groupItems.map((item) => (
-            <CommandItem
-              disabled={item.disabled}
-              key={`${group}-${item.id}`}
-              value={`${item.group} ${item.label}`}
-              onSelect={() => handleSelect(item)}
-            >
-              <span className="flex min-w-0 items-center gap-2">
-                {item.icon && <item.icon />}
-                <span className="truncate">{item.label}</span>
-              </span>
-            </CommandItem>
-          ))}
-        </CommandGroup>
-      </React.Fragment>
-    ));
+    groupBy(items).map(({ group, items: groupItems }, index) => {
+      const groupHeading = t(group);
+      return (
+        <React.Fragment key={group}>
+          {index > 0 && <CommandSeparator />}
+          <CommandGroup heading={groupHeading}>
+            {groupItems.map((item) => {
+              const itemLabel = item.labelKey ? t(item.labelKey) : item.label;
+              return (
+                <CommandItem
+                  disabled={item.disabled}
+                  key={`${group}-${item.id}`}
+                  value={`${groupHeading} ${itemLabel}`}
+                  onSelect={() => handleSelect(item)}
+                >
+                  <span className="flex min-w-0 items-center gap-2">
+                    {item.icon && <item.icon />}
+                    <span className="truncate">{itemLabel}</span>
+                  </span>
+                </CommandItem>
+              );
+            })}
+          </CommandGroup>
+        </React.Fragment>
+      );
+    });
 
   return (
     <>
@@ -138,16 +152,16 @@ export function SearchDialog() {
         className="px-0! font-normal text-muted-foreground hover:no-underline"
       >
         <Search data-icon="inline-start" />
-        Search
+        {t("searchLabel")}
         <kbd className="inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-medium text-[10px]">
           <span className="text-xs">⌘</span>J
         </kbd>
       </Button>
       <CommandDialog open={open} onOpenChange={handleOpenChange}>
         <Command>
-          <CommandInput placeholder="Search dashboards, users, and more…" value={query} onValueChange={setQuery} />
+          <CommandInput placeholder={t("searchPlaceholder")} value={query} onValueChange={setQuery} />
           <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
+            <CommandEmpty>{t("noResults")}</CommandEmpty>
             {query ? renderGroups(searchItems) : renderGroups(recommendations)}
           </CommandList>
         </Command>

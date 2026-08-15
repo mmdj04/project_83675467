@@ -23,6 +23,14 @@ import { statusMeta, type UserRow } from "./data";
 
 type Translator = ReturnType<typeof useTranslations>;
 
+const statusLabelKeys: Record<UserRow["status"], string> = {
+  Active: "Active",
+  "Pending invite": "PendingInvite",
+  Deactivated: "Deactivated",
+  Locked: "Locked",
+  Suspended: "Suspended",
+};
+
 function RoleCell({ role, team }: { role: string; team: string }) {
   return (
     <div className="grid gap-0.5">
@@ -32,13 +40,13 @@ function RoleCell({ role, team }: { role: string; team: string }) {
   );
 }
 
-function StatusBadge({ status }: { status: UserRow["status"] }) {
+function StatusBadge({ status, label }: { status: UserRow["status"]; label: string }) {
   const meta = statusMeta[status];
 
   return (
     <Badge className={cn("gap-1.5 border px-2 py-1 font-medium", meta.badgeClass)} variant="outline">
       <span className={cn("size-1.5 rounded-full", meta.dotClass)} />
-      {status}
+      {label}
     </Badge>
   );
 }
@@ -198,7 +206,9 @@ export function createUsersColumns(t: Translator): ColumnDef<DataTableFeatures, 
       accessorKey: "status",
       header: t("users.columnStatus"),
       filterFn: "equalsString",
-      cell: ({ row }) => <StatusBadge status={row.original.status} />,
+      cell: ({ row }) => (
+        <StatusBadge status={row.original.status} label={t(`users.status${statusLabelKeys[row.original.status]}`)} />
+      ),
     },
     {
       id: "joinedDate",

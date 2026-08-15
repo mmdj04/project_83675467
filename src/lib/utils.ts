@@ -1,4 +1,4 @@
-import { clsx, type ClassValue } from "clsx";
+import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -9,11 +9,7 @@ type FormatCurrencyOptions = Intl.NumberFormatOptions & {
   noDecimals?: boolean;
 };
 
-export function formatCurrency(
-  value: number,
-  options: FormatCurrencyOptions = {},
-  locale: string = "en-US"
-): string {
+export function formatCurrency(value: number, options: FormatCurrencyOptions = {}, locale = "pt-BR"): string {
   const { noDecimals, ...rest } = options;
   if (noDecimals) {
     rest.maximumFractionDigits = 0;
@@ -21,7 +17,7 @@ export function formatCurrency(
   }
   return new Intl.NumberFormat(locale, {
     style: "currency",
-    currency: "USD",
+    currency: "BRL",
     ...rest,
   }).format(value);
 }

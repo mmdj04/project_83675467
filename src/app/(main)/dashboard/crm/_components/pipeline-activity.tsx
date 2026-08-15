@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,9 +9,6 @@ import { Progress } from "@/components/ui/progress";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const pipelineChartValues = [34, 38, 31, 47, 42, 51, 44, 40, 58, 46, 43, 49] as const;
-
-const axisMonthFormatter = new Intl.DateTimeFormat("en-US", { month: "short" });
-const tooltipMonthFormatter = new Intl.DateTimeFormat("en-US", { month: "short", year: "2-digit" });
 
 function getRollingMonthData(values: readonly number[]) {
   return values.map((qualified, index) => {
@@ -26,7 +23,10 @@ function getRollingMonthData(values: readonly number[]) {
 }
 
 export function PipelineActivity() {
+  const locale = useLocale();
   const t = useTranslations("crm");
+  const axisMonthFormatter = new Intl.DateTimeFormat(locale, { month: "short" });
+  const tooltipMonthFormatter = new Intl.DateTimeFormat(locale, { month: "short", year: "2-digit" });
 
   const pipelineChartConfig = {
     qualified: {

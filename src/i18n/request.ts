@@ -11,6 +11,7 @@ export default getRequestConfig(async () => {
 
   return {
     locale,
+    timeZone: "America/Sao_Paulo",
     messages: locale === "en" ? en.default : { ...en.default, ...ptBR.default },
     onError(error) {
       if (error.code !== IntlErrorCode.MISSING_MESSAGE) {

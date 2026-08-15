@@ -121,7 +121,7 @@ export function Tasks({ data }: TasksProps) {
           ) : (
             <TableRow>
               <TableCell colSpan={table.getVisibleLeafColumns().length} className="h-24 text-center">
-                No results.
+                {t("tasks.noResults")}
               </TableCell>
             </TableRow>
           )}

@@ -10,6 +10,7 @@ export interface InvoiceLineItem {
 export interface InvoiceTaxOption {
   id: string;
   name: string;
+  labelKey: string;
   rate: number;
 }
 
@@ -104,21 +105,25 @@ export const invoiceTaxOptions: InvoiceTaxOption[] = [
   {
     id: "gst",
     name: "GST",
+    labelKey: "invoice.taxGst",
     rate: 18,
   },
   {
     id: "vat",
     name: "VAT",
+    labelKey: "invoice.taxVat",
     rate: 12,
   },
   {
     id: "service-tax",
     name: "Service Tax",
+    labelKey: "invoice.taxServiceTax",
     rate: 10,
   },
   {
     id: "none",
     name: "No Tax",
+    labelKey: "invoice.taxNoTax",
     rate: 0,
   },
 ];

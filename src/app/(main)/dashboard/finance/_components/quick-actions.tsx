@@ -64,7 +64,7 @@ export async function QuickActions() {
               </InputGroupAddon>
               <InputGroupInput placeholder="0.00" />
               <InputGroupAddon align="inline-end">
-                <InputGroupText>USD</InputGroupText>
+                <InputGroupText>BRL</InputGroupText>
               </InputGroupAddon>
             </InputGroup>
             <Button>{t("send")}</Button>

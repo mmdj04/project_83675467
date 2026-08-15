@@ -1,6 +1,7 @@
 import { format } from "date-fns";
+import { enUS, type Locale, ptBR } from "date-fns/locale";
 import { Network, Printer, Volume2 } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -10,9 +11,13 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { patients } from "./_components/data";
 import { PatientMonitoring } from "./_components/patient-monitoring";
 
+const dateFnsLocales: Record<string, Locale> = { "pt-BR": ptBR, en: enUS };
+
 export default async function Page() {
+  const locale = await getLocale();
   const t = await getTranslations("patientMonitoring");
   const now = new Date();
+  const tzNow = new Date(now.toLocaleString("en-US", { timeZone: "America/Sao_Paulo" }));
 
   return (
     <div
@@ -24,7 +29,8 @@ export default async function Page() {
         <div className="whitespace-nowrap">{t("patientCount", { count: patients.length })}</div>
         <div className="col-span-2 flex items-center justify-between gap-5 text-muted-foreground lg:col-span-1 lg:justify-end">
           <span className="whitespace-nowrap tabular-nums">
-            {format(now, "dd MMM yyyy")}&nbsp;&nbsp;{format(now, "HH:mm:ss")}
+            {format(tzNow, "dd MMM yyyy", { locale: dateFnsLocales[locale] ?? enUS })}&nbsp;&nbsp;
+            {format(tzNow, "HH:mm:ss")}
           </span>
           <Tooltip>
             <TooltipTrigger aria-label={t("alarmAudio")} className="inline-flex" type="button">

@@ -1,12 +1,16 @@
 "use client";
 
+import * as React from "react";
+
 import { format, parse } from "date-fns";
+import { enUS, ptBR } from "date-fns/locale";
 import { ArrowUpRight, DollarSign, PackageCheck, ReceiptText, RotateCcw, ShoppingBag, Users } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Area, Bar, CartesianGrid, ComposedChart, XAxis, YAxis } from "recharts";
 
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { formatCurrency } from "@/lib/utils";
 
 const revenueBucketRanges = ["01-05", "06-10", "11-15", "16-20", "21-25", "26-31"] as const;
 const profitMultipliers = [0.24, 0.28, 0.26] as const;
@@ -26,9 +30,14 @@ const revenueBucketValues = [
   [6900, 7400, 8100, 8600, 8200, 9360],
 ] as const;
 
-const monthFormatter = new Intl.DateTimeFormat("en-US", { month: "short" });
+const dateFnsLocales = { "pt-BR": ptBR, en: enUS };
 
-function getRollingRevenueBuckets() {
+function getDateFnsLocale(locale: string) {
+  return dateFnsLocales[locale as keyof typeof dateFnsLocales] ?? enUS;
+}
+
+function getRollingRevenueBuckets(locale: string) {
+  const monthFormatter = new Intl.DateTimeFormat(locale, { month: "short" });
   const currentMonth = new Date();
   currentMonth.setDate(1);
 
@@ -43,13 +52,15 @@ function getRollingRevenueBuckets() {
   });
 }
 
-const revenueOverviewData = getRollingRevenueBuckets().flatMap(({ month, values }) =>
-  values.map((revenue, index) => ({
-    period: `${month} ${revenueBucketRanges[index]}`,
-    profit: Math.round(revenue * profitMultipliers[index % profitMultipliers.length]),
-    revenue,
-  })),
-);
+function getRevenueOverviewData(locale: string) {
+  return getRollingRevenueBuckets(locale).flatMap(({ month, values }) =>
+    values.map((revenue, index) => ({
+      period: `${month} ${revenueBucketRanges[index]}`,
+      profit: Math.round(revenue * profitMultipliers[index % profitMultipliers.length]),
+      revenue,
+    })),
+  );
+}
 
 function formatMonthTick(value: string) {
   const parts = value.split(" ");
@@ -59,24 +70,26 @@ function formatMonthTick(value: string) {
   return range === "11-15" ? month : "";
 }
 
-function formatTooltipLabel(value: string) {
+function formatTooltipLabel(value: string, locale: string) {
   const parts = value.split(" ");
   const range = parts.at(-1);
-  const month = parse(parts.slice(0, -1).join(" "), "MMM yy", new Date());
+  const month = parse(parts.slice(0, -1).join(" "), "MMM yy", new Date(), { locale: getDateFnsLocale(locale) });
   const [start, end] = String(range).split("-");
   const lastDayOfMonth = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate();
   const startDate = new Date(month.getFullYear(), month.getMonth(), Number(start));
   const endDate = new Date(month.getFullYear(), month.getMonth(), Math.min(Number(end), lastDayOfMonth));
 
-  return `${format(month, "MMM")} ${format(startDate, "do")} - ${format(endDate, "do")}, ${format(month, "yyyy")}`;
+  return `${format(month, "MMM", { locale: getDateFnsLocale(locale) })} ${format(startDate, "do", { locale: getDateFnsLocale(locale) })} - ${format(endDate, "do", { locale: getDateFnsLocale(locale) })}, ${format(month, "yyyy")}`;
 }
 
 function formatCurrencyTooltipValue(value: unknown) {
-  return typeof value === "number" ? `$${value.toLocaleString()}` : String(value ?? "");
+  return typeof value === "number" ? formatCurrency(value, { noDecimals: true }) : String(value ?? "");
 }
 
 export function KpiStrip() {
+  const locale = useLocale();
   const t = useTranslations("ecommerce");
+  const revenueOverviewData = React.useMemo(() => getRevenueOverviewData(locale), [locale]);
   const revenueOverviewConfig = {
     revenue: {
       label: t("chartRevenue"),
@@ -97,7 +110,7 @@ export function KpiStrip() {
               <CardHeader>
                 <CardTitle className="font-normal text-sm">{t("kpiTotalSales")}</CardTitle>
                 <CardDescription className="text-3xl text-foreground tabular-nums leading-none tracking-tight">
-                  $48,560.00
+                  {formatCurrency(48_560)}
                 </CardDescription>
                 <CardAction className="grid size-6 place-items-center rounded-sm bg-muted">
                   <DollarSign className="size-3 text-foreground" />
@@ -151,7 +164,7 @@ export function KpiStrip() {
               <CardHeader>
                 <CardTitle className="font-normal text-sm">{t("kpiAverageOrder")}</CardTitle>
                 <CardDescription className="text-3xl text-foreground tabular-nums leading-none tracking-tight">
-                  $128
+                  {formatCurrency(128, { noDecimals: true })}
                 </CardDescription>
                 <CardAction className="grid size-6 place-items-center rounded-sm bg-muted">
                   <ReceiptText className="size-3 text-foreground" />
@@ -159,7 +172,7 @@ export function KpiStrip() {
               </CardHeader>
               <CardContent>
                 <div className="text-sm">
-                  <span className="text-destructive">-$4.20</span>
+                  <span className="text-destructive">{formatCurrency(-4.2)}</span>
                   <span className="text-muted-foreground"> {t("vsLastWeek")}</span>
                 </div>
               </CardContent>
@@ -246,7 +259,7 @@ export function KpiStrip() {
                     content={
                       <ChartTooltipContent
                         className="w-40"
-                        labelFormatter={(value) => formatTooltipLabel(String(value))}
+                        labelFormatter={(value) => formatTooltipLabel(String(value), locale)}
                         formatter={(value, name, item) => (
                           <>
                             <div

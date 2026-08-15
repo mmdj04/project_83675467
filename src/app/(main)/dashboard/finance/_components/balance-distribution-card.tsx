@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Label, Pie, PieChart } from "recharts";
 
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -67,6 +67,9 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 const currencies = {
+  BRL: {
+    labelKey: "currencyBrl",
+  },
   EUR: {
     labelKey: "currencyEuro",
   },
@@ -93,8 +96,9 @@ const chartData = balanceData.map((item) => ({
 const totalBalance = balanceData.reduce((total, item) => total + item.amount, 0);
 
 export function BalanceDistributionCard() {
+  const locale = useLocale();
   const t = useTranslations("finance");
-  const [currency, setCurrency] = React.useState<Currency>("USD");
+  const [currency, setCurrency] = React.useState<Currency>("BRL");
 
   return (
     <Card>
@@ -151,7 +155,7 @@ export function BalanceDistributionCard() {
                         x={viewBox.cx}
                         y={(viewBox.cy ?? 0) + 14}
                       >
-                        {formatCurrency(totalBalance, { currency, noDecimals: true })}
+                        {formatCurrency(totalBalance, { currency, noDecimals: true }, locale)}
                       </tspan>
                     </text>
                   );
@@ -170,7 +174,7 @@ export function BalanceDistributionCard() {
                   <p className="truncate text-muted-foreground text-xs">{item.account}</p>
                 </div>
                 <p className="font-medium tabular-nums">
-                  {formatCurrency(item.amount, { currency, noDecimals: true })}
+                  {formatCurrency(item.amount, { currency, noDecimals: true }, locale)}
                 </p>
               </div>
               <div className="font-medium tabular-nums">{item.percentage}%</div>
