@@ -26,6 +26,7 @@ jobs:
             const UPSTREAM_REPO = "next-shadcn-admin-dashboard";
             const changelogPath = "changelog.md";
             const cachePath = ".github/commit-files.json";
+            const prCachePath = ".github/commit-prs.json";
 
             const MAX_FILES = 15;
             const STATUS_LABEL = {
@@ -184,6 +185,55 @@ jobs:
               });
             }
 
+            let prCache = {};
+            try {
+              prCache = JSON.parse(
+                fs.readFileSync(prCachePath, "utf8"),
+              );
+            } catch {}
+
+            for (const c of allCommits) {
+              const short = c.sha.slice(0, 7);
+              if (prCache[short] !== undefined) continue;
+              const refs = [
+                ...(c.commit.message || "").matchAll(/#(\d+)/g),
+              ].map((m) => Number(m[1]));
+              if (refs.length) {
+                prCache[short] = [...new Set(refs)];
+              }
+            }
+
+            const PR_FETCH_RE =
+              /^(feat|fix|refactor|perf|docs|style|test)(\([^)]*\))?:\s/;
+            const needPrs = allCommits.filter((c) => {
+              const short = c.sha.slice(0, 7);
+              if (prCache[short] !== undefined) return false;
+              return PR_FETCH_RE.test(c.commit.message.split("\n")[0]);
+            });
+            for (let i = 0; i < needPrs.length; i += 10) {
+              const chunk = needPrs.slice(i, i + 10);
+              const results = await Promise.all(
+                chunk.map(async (c) => {
+                  try {
+                    const { data } =
+                      await github.rest.repos.listPullRequestsAssociatedWithCommit(
+                        {
+                          owner: UPSTREAM_OWNER,
+                          repo: UPSTREAM_REPO,
+                          commit_sha: c.sha,
+                        },
+                      );
+                    return data.map((p) => p.number);
+                  } catch {
+                    return [];
+                  }
+                }),
+              );
+              results.forEach((prs, j) => {
+                prCache[chunk[j].sha.slice(0, 7)] = prs;
+              });
+            }
+
             const monthData = new Map();
             for (const c of allCommits) {
               const short = c.sha.slice(0, 7);
@@ -197,6 +247,7 @@ jobs:
               md.commits.push({
                 message,
                 login: c.author && c.author.login,
+                prs: prCache[short] || [],
               });
               for (const f of cache[short] || []) {
                 const cur =
@@ -237,24 +288,37 @@ jobs:
               if (!md) return `## ${month}\n\n- Nenhum commit registrado.`;
 
               const types = {};
-              const featList = [];
-              const fixList = [];
+              const featMap = new Map();
+              const fixMap = new Map();
               for (const c of md.commits) {
                 const tm = c.message.match(TYPE_RE);
                 if (tm) {
                   const label = TYPE_LABEL[tm[1]];
                   types[label] = (types[label] || 0) + 1;
-                  if (tm[1] === "feat") featList.push(c.message);
-                  else if (tm[1] === "fix") fixList.push(c.message);
+                  const target =
+                    tm[1] === "feat"
+                      ? featMap
+                      : tm[1] === "fix"
+                        ? fixMap
+                        : null;
+                  if (target) {
+                    if (!target.has(c.message)) target.set(c.message, []);
+                    target.get(c.message).push(...c.prs);
+                  }
                 } else if (/^Merge/.test(c.message)) {
                   types["merges"] = (types["merges"] || 0) + 1;
                 } else {
                   types["outros"] = (types["outros"] || 0) + 1;
                 }
               }
-              const uniq = (a) => [...new Set(a)];
-              const novidades = uniq(featList).slice(0, 6);
-              const correcoes = uniq(fixList).slice(0, 4);
+              const novidades = [...featMap.entries()].slice(0, 6);
+              const correcoes = [...fixMap.entries()].slice(0, 4);
+              const withPrs = (msg, prs) => {
+                const uniqPrs = [...new Set(prs)].slice(0, 4);
+                return uniqPrs.length
+                  ? `${msg} (${uniqPrs.map((p) => `#${p}`).join(", ")})`
+                  : msg;
+              };
               const typeSummary = Object.entries(types)
                 .filter(([, n]) => n > 0)
                 .map(([k, n]) => `${n} ${k}`)
@@ -297,14 +361,18 @@ jobs:
                 lines.push(
                   "",
                   "### Novidades",
-                  ...novidades.map((x) => `- ${prettyItem(x)}`),
+                  ...novidades.map(([msg, prs]) =>
+                    `- ${withPrs(prettyItem(msg), prs)}`,
+                  ),
                 );
               }
               if (correcoes.length) {
                 lines.push(
                   "",
                   "### Correções",
-                  ...correcoes.map((x) => `- ${prettyItem(x)}`),
+                  ...correcoes.map(([msg, prs]) =>
+                    `- ${withPrs(prettyItem(msg), prs)}`,
+                  ),
                 );
               }
               if (shown.length) {
@@ -356,6 +424,7 @@ jobs:
 
             fs.writeFileSync(changelogPath, content);
             fs.writeFileSync(cachePath, JSON.stringify(cache));
+            fs.writeFileSync(prCachePath, JSON.stringify(prCache));
 
             await exec.exec("git", [
               "config",
@@ -367,7 +436,12 @@ jobs:
               "user.email",
               "41898282+github-actions[bot]@users.noreply.github.com",
             ]);
-            await exec.exec("git", ["add", changelogPath, cachePath]);
+            await exec.exec("git", [
+              "add",
+              changelogPath,
+              cachePath,
+              prCachePath,
+            ]);
             await exec.exec("git", [
               "commit",
               "-m",
