@@ -1,0 +1,18 @@
+{
+  "Roles & Permissions": "Funções e Permissões",
+  "Manage access roles and permissions across your organization.": "Gerencie as funções de acesso e permissões em toda a organização.",
+  "Import JSON": "Importar JSON",
+  "Create role": "Criar função",
+  "Roles": "Funções",
+  "Permission sets": "Conjuntos de permissões",
+  "Access reviews": "Revisões de acesso",
+  "Review required": "Revisão necessária",
+  "3 roles have unreviewed permission changes.": "3 funções têm mudanças de permissão não revisadas.",
+  "Review changes": "Revisar mudanças",
+  "Search roles...": "Pesquisar funções...",
+  "Type:": "Tipo:",
+  "Owner:": "Proprietário:",
+  "Status:": "Status:",
+  "Permission Sets Coming Soon": "Conjuntos de permissões em breve",
+  "Access Reviews Coming Soon": "Revisões de acesso em breve"
+}

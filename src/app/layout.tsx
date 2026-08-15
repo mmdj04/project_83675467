@@ -1,7 +1,10 @@
 import type { ReactNode } from "react";
 
+import { cookies } from "next/headers";
+
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
 
 import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
@@ -18,12 +21,14 @@ export const metadata: Metadata = {
   description: APP_CONFIG.meta.description,
 };
 
-export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+  const store = await cookies();
+  const locale = store.get("locale")?.value === "en" ? "en" : "pt-BR";
   const { theme_mode, theme_preset, content_layout, navbar_style, sidebar_variant, sidebar_collapsible, font } =
     PREFERENCE_DEFAULTS;
   return (
     <html
-      lang="en"
+      lang={locale}
       data-theme-mode={theme_mode}
       data-theme-preset={theme_preset}
       data-content-layout={content_layout}
@@ -40,7 +45,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
       <body className={`${fontVars} min-h-screen antialiased`}>
         <Providers>
           <TooltipProvider>
-            {children}
+            <NextIntlClientProvider>{children}</NextIntlClientProvider>
             <Toaster />
           </TooltipProvider>
         </Providers>

@@ -1,0 +1,21 @@
+name: i18n Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sync check (en.json = chaves em inglês)
+        run: node scripts/i18n-sync.mjs --check
+
+      - name: Check Translations (en vs pt-BR)
+        uses: krzysztoff1/translation-check@v1.1.0
+        with:
+          main_translation_path: "messages/en.json"
+          translation_paths: "messages/pt-BR.json"

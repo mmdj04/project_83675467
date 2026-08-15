@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import { type ColumnFiltersState, type PaginationState, useTable } from "@tanstack/react-table";
 import { AlertTriangle, ChevronRight, FileUp, Search } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Alert, AlertAction, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -40,6 +41,8 @@ function getRoleGroupFilterValue(typeFilter: string) {
 }
 
 export function Roles({ roles }: { roles: Role[] }) {
+  const t = useTranslations();
+
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
@@ -74,16 +77,18 @@ export function Roles({ roles }: { roles: Role[] }) {
     <div className="flex h-full flex-col gap-4">
       <div className="flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
         <div className="flex flex-col gap-1">
-          <h1 className="text-3xl tracking-tight">Roles & Permissions</h1>
-          <p className="text-muted-foreground text-sm">Manage access roles and permissions across your organization.</p>
+          <h1 className="text-3xl tracking-tight">{t("Roles & Permissions")}</h1>
+          <p className="text-muted-foreground text-sm">
+            {t("Manage access roles and permissions across your organization.")}
+          </p>
         </div>
 
         <div className="flex items-center gap-2">
           <Button size="sm" variant="outline">
             <FileUp data-icon="inline-start" />
-            Import JSON
+            {t("Import JSON")}
           </Button>
-          <Button size="sm">Create role</Button>
+          <Button size="sm">{t("Create role")}</Button>
         </div>
       </div>
 
@@ -92,20 +97,20 @@ export function Roles({ roles }: { roles: Role[] }) {
           variant="line"
           className="w-full justify-start gap-2 border-b ps-0 *:data-[slot=tabs-trigger]:flex-none"
         >
-          <TabsTrigger value="roles">Roles</TabsTrigger>
-          <TabsTrigger value="permission-sets">Permission sets</TabsTrigger>
-          <TabsTrigger value="access-reviews">Access reviews</TabsTrigger>
+          <TabsTrigger value="roles">{t("Roles")}</TabsTrigger>
+          <TabsTrigger value="permission-sets">{t("Permission sets")}</TabsTrigger>
+          <TabsTrigger value="access-reviews">{t("Access reviews")}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="roles">
           <div className="flex flex-col gap-4">
             <Alert className="border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-50">
               <AlertTriangle className="size-4" />
-              <AlertTitle>Review required</AlertTitle>
-              <AlertDescription>3 roles have unreviewed permission changes.</AlertDescription>
+              <AlertTitle>{t("Review required")}</AlertTitle>
+              <AlertDescription>{t("3 roles have unreviewed permission changes.")}</AlertDescription>
               <AlertAction>
                 <Button size="sm" variant="link">
-                  Review changes
+                  {t("Review changes")}
                   <ChevronRight data-icon="inline-end" />
                 </Button>
               </AlertAction>
@@ -119,7 +124,7 @@ export function Roles({ roles }: { roles: Role[] }) {
                   </InputGroupAddon>
                   <InputGroupInput
                     className="h-7"
-                    placeholder="Search roles..."
+                    placeholder={t("Search roles...")}
                     value={search}
                     onChange={(e) => {
                       table.getColumn("search")?.setFilterValue(e.target.value || undefined);
@@ -137,7 +142,7 @@ export function Roles({ roles }: { roles: Role[] }) {
                     }}
                   >
                     <SelectTrigger size="sm">
-                      <span className="text-muted-foreground">Type:</span>
+                      <span className="text-muted-foreground">{t("Type:")}</span>
                       <SelectValue placeholder="All" />
                     </SelectTrigger>
                     <SelectContent position="popper" align="start">
@@ -157,7 +162,7 @@ export function Roles({ roles }: { roles: Role[] }) {
                     }}
                   >
                     <SelectTrigger size="sm">
-                      <span className="text-muted-foreground">Owner:</span>
+                      <span className="text-muted-foreground">{t("Owner:")}</span>
                       <SelectValue placeholder="All" />
                     </SelectTrigger>
                     <SelectContent position="popper" align="start">
@@ -179,7 +184,7 @@ export function Roles({ roles }: { roles: Role[] }) {
                     }}
                   >
                     <SelectTrigger size="sm">
-                      <span className="text-muted-foreground">Status:</span>
+                      <span className="text-muted-foreground">{t("Status:")}</span>
                       <SelectValue placeholder="All" />
                     </SelectTrigger>
                     <SelectContent position="popper" align="start">
@@ -199,12 +204,12 @@ export function Roles({ roles }: { roles: Role[] }) {
         </TabsContent>
         <TabsContent value="permission-sets">
           <div className="flex h-full items-center justify-center rounded-md border border-dashed text-muted-foreground text-sm">
-            Permission Sets Coming Soon
+            {t("Permission Sets Coming Soon")}
           </div>
         </TabsContent>
         <TabsContent value="access-reviews">
           <div className="flex h-full items-center justify-center rounded-md border border-dashed text-muted-foreground text-sm">
-            Access Reviews Coming Soon
+            {t("Access Reviews Coming Soon")}
           </div>
         </TabsContent>
       </Tabs>
