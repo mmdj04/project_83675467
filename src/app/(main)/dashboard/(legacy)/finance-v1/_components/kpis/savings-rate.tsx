@@ -1,11 +1,13 @@
 "use client";
 
 import { HandCoins } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
 export function SavingsRate() {
+  const t = useTranslations("financeV1");
   return (
     <Card>
       <CardHeader>
@@ -14,7 +16,7 @@ export function SavingsRate() {
             <span className="grid size-7 place-content-center rounded-sm bg-muted">
               <HandCoins className="size-5" />
             </span>
-            Savings Rate
+            {t("savingsRate")}
           </div>
         </CardTitle>
       </CardHeader>
@@ -24,12 +26,12 @@ export function SavingsRate() {
             <p className="font-medium text-xl tabular-nums">32%</p>
             <span className="text-xs">+3.5% MoM</span>
           </div>
-          <p className="text-muted-foreground text-xs">This month · After expenses</p>
+          <p className="text-muted-foreground text-xs">{t("thisMonthAfterExpenses")}</p>
         </div>
 
         <Separator />
 
-        <p className="text-muted-foreground text-xs">Above your average</p>
+        <p className="text-muted-foreground text-xs">{t("aboveAverage")}</p>
       </CardContent>
     </Card>
   );

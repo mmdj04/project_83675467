@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowDownLeft, ArrowUpRight } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { Bar, BarChart, CartesianGrid, ReferenceLine, XAxis, YAxis } from "recharts";
 
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,51 +10,56 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { Separator } from "@/components/ui/separator";
 import { formatCurrency } from "@/lib/utils";
 
-const chartData = [
-  { month: "Jan", income: 5900, expenses: -4200 },
-  { month: "Feb", income: 3800, expenses: -6100 },
-  { month: "Mar", income: 5200, expenses: -5600 },
-  { month: "Apr", income: 7100, expenses: -3200 },
-  { month: "May", income: 4500, expenses: -4400 },
-  { month: "Jun", income: 6100, expenses: -3600 },
-  { month: "Jul", income: 3300, expenses: -5200 },
-  { month: "Aug", income: 4300, expenses: -4000 },
-  { month: "Sep", income: 7200, expenses: -5800 },
-  { month: "Oct", income: 5600, expenses: -4600 },
-  { month: "Nov", income: 3600, expenses: -6400 },
-  { month: "Dec", income: 4700, expenses: -3400 },
+const monthValues = [
+  { income: 5900, expenses: -4200 },
+  { income: 3800, expenses: -6100 },
+  { income: 5200, expenses: -5600 },
+  { income: 7100, expenses: -3200 },
+  { income: 4500, expenses: -4400 },
+  { income: 6100, expenses: -3600 },
+  { income: 3300, expenses: -5200 },
+  { income: 4300, expenses: -4000 },
+  { income: 7200, expenses: -5800 },
+  { income: 5600, expenses: -4600 },
+  { income: 3600, expenses: -6400 },
+  { income: 4700, expenses: -3400 },
 ];
 
-const chartConfig = {
-  income: {
-    label: "Income",
-    color: "var(--chart-1)",
-  },
-  expenses: {
-    label: "Expenses",
-    color: "var(--chart-2)",
-  },
-} as ChartConfig;
-
 export function CashFlowOverview() {
+  const locale = useLocale();
+  const t = useTranslations("financeV1");
+  const chartData = monthValues.map((values, index) => ({
+    month: new Intl.DateTimeFormat(locale, { month: "short" }).format(new Date(2026, index, 1)),
+    ...values,
+  }));
+  const chartConfig = {
+    income: {
+      label: t("chartIncome"),
+      color: "var(--chart-1)",
+    },
+    expenses: {
+      label: t("chartExpenses"),
+      color: "var(--chart-2)",
+    },
+  } as ChartConfig;
   const totalIncome = chartData.reduce((acc, item) => acc + item.income, 0);
   const totalExpenses = chartData.reduce((acc, item) => acc + Math.abs(item.expenses), 0);
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Cash Flow Overview</CardTitle>
-        <CardDescription>Monthly income and expenses with net cash impact.</CardDescription>
+        <CardTitle>{t("cashFlowOverview")}</CardTitle>
+        <CardDescription>{t("cashFlowOverviewDescription")}</CardDescription>
         <CardAction>
           <Select defaultValue="this-year">
             <SelectTrigger size="sm" className="w-37">
-              <SelectValue placeholder="Select period" />
+              <SelectValue placeholder={t("selectPeriod")} />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectItem value="this-month">This Month</SelectItem>
-                <SelectItem value="last-6-months">Last 6 Months</SelectItem>
-                <SelectItem value="ytd">Year to Date</SelectItem>
-                <SelectItem value="this-year">This Year</SelectItem>
+                <SelectItem value="this-month">{t("periodThisMonth")}</SelectItem>
+                <SelectItem value="last-6-months">{t("periodLast6Months")}</SelectItem>
+                <SelectItem value="ytd">{t("periodYearToDate")}</SelectItem>
+                <SelectItem value="this-year">{t("periodThisYear")}</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -67,8 +73,8 @@ export function CashFlowOverview() {
               <ArrowDownLeft className="size-6 stroke-background" />
             </div>
             <div>
-              <p className="text-muted-foreground text-xs uppercase">Income</p>
-              <p className="font-medium tabular-nums">{formatCurrency(totalIncome, { noDecimals: true })}</p>
+              <p className="text-muted-foreground text-xs uppercase">{t("chartIncome")}</p>
+              <p className="font-medium tabular-nums">{formatCurrency(totalIncome, { noDecimals: true }, locale)}</p>
             </div>
           </div>
           <Separator orientation="vertical" className="h-auto! self-stretch" />
@@ -77,8 +83,8 @@ export function CashFlowOverview() {
               <ArrowUpRight className="size-6 stroke-background" />
             </div>
             <div>
-              <p className="text-muted-foreground text-xs uppercase">Expenses</p>
-              <p className="font-medium tabular-nums">{formatCurrency(totalExpenses, { noDecimals: true })}</p>
+              <p className="text-muted-foreground text-xs uppercase">{t("chartExpenses")}</p>
+              <p className="font-medium tabular-nums">{formatCurrency(totalExpenses, { noDecimals: true }, locale)}</p>
             </div>
           </div>
         </div>

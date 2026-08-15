@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { CardOverview } from "./_components/card-overview";
@@ -9,20 +11,22 @@ import { PrimaryAccount } from "./_components/kpis/primary-account";
 import { SavingsRate } from "./_components/kpis/savings-rate";
 import { SpendingBreakdown } from "./_components/spending-breakdown";
 
-export default function Page() {
+export default async function Page() {
+  const t = await getTranslations("financeV1");
+
   return (
     <div>
       <Tabs className="gap-4" defaultValue="overview">
         <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="overview">{t("tabOverview")}</TabsTrigger>
           <TabsTrigger disabled value="activity">
-            Activity
+            {t("tabActivity")}
           </TabsTrigger>
           <TabsTrigger disabled value="insights">
-            Insights
+            {t("tabInsights")}
           </TabsTrigger>
           <TabsTrigger disabled value="utilities">
-            Utilities
+            {t("tabUtilities")}
           </TabsTrigger>
         </TabsList>
 

@@ -20,6 +20,7 @@ import {
   PlusIcon,
   Settings2,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -37,18 +38,19 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { dataTableFeatures } from "@/lib/data-table-features";
 
-import { DraggableProposalSectionsRow, proposalSectionsColumns } from "./columns";
+import { createProposalSectionsColumns, DraggableProposalSectionsRow } from "./columns";
 import type { ProposalSectionsRow } from "./schema";
 
 const VIEW_OPTIONS = [
-  { value: "outline", label: "Outline" },
-  { value: "past-performance", label: "Past Performance" },
-  { value: "key-personnel", label: "Key Personnel" },
-  { value: "focus-documents", label: "Focus Documents" },
+  { value: "outline", labelKey: "defaultV1.viewOutline" },
+  { value: "past-performance", labelKey: "defaultV1.viewPastPerformance" },
+  { value: "key-personnel", labelKey: "defaultV1.viewKeyPersonnel" },
+  { value: "focus-documents", labelKey: "defaultV1.typeFocusDocuments" },
 ] as const;
 
 type ViewOption = (typeof VIEW_OPTIONS)[number]["value"];
 export function ProposalSectionsTable({ data: initialData }: { data: ProposalSectionsRow[] }) {
+  const t = useTranslations();
   const [data, setData] = React.useState(() => initialData);
   const [activeView, setActiveView] = React.useState<ViewOption>("outline");
   const [rowSelection, setRowSelection] = React.useState({});
@@ -59,10 +61,19 @@ export function ProposalSectionsTable({ data: initialData }: { data: ProposalSec
     pageIndex: 0,
     pageSize: 10,
   });
+  const columns = React.useMemo(() => createProposalSectionsColumns(t), [t]);
+  const columnLabels: Record<string, string> = {
+    header: t("defaultV1.columnHeader"),
+    type: t("defaultV1.labelType"),
+    status: t("default.columnStatus"),
+    target: t("defaultV1.columnTarget"),
+    limit: t("defaultV1.columnLimit"),
+    reviewer: t("defaultV1.columnReviewer"),
+  };
   const table = useTable({
     features: dataTableFeatures,
     data,
-    columns: proposalSectionsColumns,
+    columns,
     state: {
       sorting,
       columnVisibility,
@@ -113,43 +124,43 @@ export function ProposalSectionsTable({ data: initialData }: { data: ProposalSec
     >
       <div className="flex items-center justify-between">
         <Label htmlFor="view-selector" className="sr-only">
-          View
+          {t("tasks.view")}
         </Label>
         <Select value={activeView} onValueChange={(value) => setActiveView(value as ViewOption)}>
           <SelectTrigger className="flex @4xl/main:hidden w-fit" size="sm" id="view-selector">
-            <SelectValue placeholder="Select a view" />
+            <SelectValue placeholder={t("defaultV1.selectView")} />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               {VIEW_OPTIONS.map((option) => (
                 <SelectItem key={option.value} value={option.value}>
-                  {option.label}
+                  {t(option.labelKey)}
                 </SelectItem>
               ))}
             </SelectGroup>
           </SelectContent>
         </Select>
         <TabsList className="@4xl/main:flex hidden **:data-[slot=badge]:size-5 **:data-[slot=badge]:rounded-full **:data-[slot=badge]:bg-muted-foreground/30 **:data-[slot=badge]:px-1">
-          <TabsTrigger value="outline">Outline</TabsTrigger>
+          <TabsTrigger value="outline">{t("defaultV1.viewOutline")}</TabsTrigger>
           <TabsTrigger value="past-performance">
-            Past Performance <Badge variant="secondary">3</Badge>
+            {t("defaultV1.viewPastPerformance")} <Badge variant="secondary">3</Badge>
           </TabsTrigger>
           <TabsTrigger value="key-personnel">
-            Key Personnel <Badge variant="secondary">2</Badge>
+            {t("defaultV1.viewKeyPersonnel")} <Badge variant="secondary">2</Badge>
           </TabsTrigger>
-          <TabsTrigger value="focus-documents">Focus Documents</TabsTrigger>
+          <TabsTrigger value="focus-documents">{t("defaultV1.typeFocusDocuments")}</TabsTrigger>
         </TabsList>
         <div className="flex items-center gap-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm">
                 <Settings2 data-icon="inline-start" />
-                View
+                {t("tasks.view")}
                 <ChevronDownIcon data-icon="inline-end" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-35">
-              <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
+              <DropdownMenuLabel>{t("tasks.toggleColumns")}</DropdownMenuLabel>
               <DropdownMenuSeparator />
               {table
                 .getAllColumns()
@@ -161,14 +172,14 @@ export function ProposalSectionsTable({ data: initialData }: { data: ProposalSec
                     checked={column.getIsVisible()}
                     onCheckedChange={(value) => column.toggleVisibility(!!value)}
                   >
-                    {column.id}
+                    {columnLabels[column.id] ?? column.id}
                   </DropdownMenuCheckboxItem>
                 ))}
             </DropdownMenuContent>
           </DropdownMenu>
           <Button variant="outline" size="sm">
             <PlusIcon data-icon="inline-start" />
-            <span className="hidden lg:inline">Add Section</span>
+            <span className="hidden lg:inline">{t("defaultV1.addSection")}</span>
           </Button>
         </div>
       </div>
@@ -202,7 +213,7 @@ export function ProposalSectionsTable({ data: initialData }: { data: ProposalSec
                 ) : (
                   <TableRow>
                     <TableCell colSpan={table.getVisibleLeafColumns().length} className="h-24 text-center">
-                      No results.
+                      {t("default.noResults")}
                     </TableCell>
                   </TableRow>
                 )}
@@ -212,13 +223,15 @@ export function ProposalSectionsTable({ data: initialData }: { data: ProposalSec
         </div>
         <div className="flex items-center justify-between px-4">
           <div className="hidden flex-1 text-muted-foreground text-sm lg:flex">
-            {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s)
-            selected.
+            {t("default.rowsSelected", {
+              selected: table.getFilteredSelectedRowModel().rows.length,
+              total: table.getFilteredRowModel().rows.length,
+            })}
           </div>
           <div className="flex w-full items-center gap-8 lg:w-fit">
             <div className="hidden items-center gap-2 lg:flex">
               <Label htmlFor="rows-per-page" className="font-medium text-sm">
-                Rows per page
+                {t("default.rowsPerPage")}
               </Label>
               <Select
                 value={`${table.state.pagination.pageSize}`}
@@ -241,7 +254,10 @@ export function ProposalSectionsTable({ data: initialData }: { data: ProposalSec
               </Select>
             </div>
             <div className="flex w-fit items-center justify-center font-medium text-sm">
-              Page {table.state.pagination.pageIndex + 1} of {table.getPageCount()}
+              {t("default.pageOf", {
+                current: table.state.pagination.pageIndex + 1,
+                total: table.getPageCount(),
+              })}
             </div>
             <div className="ml-auto flex items-center gap-2 lg:ml-0">
               <Button
@@ -250,7 +266,7 @@ export function ProposalSectionsTable({ data: initialData }: { data: ProposalSec
                 onClick={() => table.setPageIndex(0)}
                 disabled={!table.getCanPreviousPage()}
               >
-                <span className="sr-only">Go to first page</span>
+                <span className="sr-only">{t("default.goToFirstPage")}</span>
                 <ChevronsLeftIcon />
               </Button>
               <Button
@@ -260,7 +276,7 @@ export function ProposalSectionsTable({ data: initialData }: { data: ProposalSec
                 onClick={() => table.previousPage()}
                 disabled={!table.getCanPreviousPage()}
               >
-                <span className="sr-only">Go to previous page</span>
+                <span className="sr-only">{t("default.goToPreviousPage")}</span>
                 <ChevronLeftIcon />
               </Button>
               <Button
@@ -270,7 +286,7 @@ export function ProposalSectionsTable({ data: initialData }: { data: ProposalSec
                 onClick={() => table.nextPage()}
                 disabled={!table.getCanNextPage()}
               >
-                <span className="sr-only">Go to next page</span>
+                <span className="sr-only">{t("default.goToNextPage")}</span>
                 <ChevronRightIcon />
               </Button>
               <Button
@@ -280,7 +296,7 @@ export function ProposalSectionsTable({ data: initialData }: { data: ProposalSec
                 onClick={() => table.setPageIndex(table.getPageCount() - 1)}
                 disabled={!table.getCanNextPage()}
               >
-                <span className="sr-only">Go to last page</span>
+                <span className="sr-only">{t("default.goToLastPage")}</span>
                 <ChevronsRightIcon />
               </Button>
             </div>

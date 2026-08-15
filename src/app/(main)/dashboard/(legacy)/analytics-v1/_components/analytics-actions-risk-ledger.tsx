@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import { type ColumnDef, type SortingState, useTable } from "@tanstack/react-table";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -166,93 +167,107 @@ const priorityTone: Record<Exclude<LedgerPriority, null>, string> = {
   Reforecast: "border-amber-500/35 bg-amber-500/10 text-amber-700",
 };
 
-const ledgerColumns: ColumnDef<DataTableFeatures, LedgerRow>[] = [
-  {
-    accessorKey: "account",
-    header: "Account",
-    cell: ({ row }) => (
-      <div className="flex flex-col gap-1">
-        <p className="font-medium text-sm">{row.original.account}</p>
-        <p className="text-muted-foreground text-xs">
-          {row.original.dealId} · {row.original.stage}
-        </p>
-      </div>
-    ),
-  },
-  {
-    accessorKey: "blocker",
-    header: "Blocker",
-    cell: ({ row }) => <div className="max-w-44 whitespace-normal text-xs">{row.original.blocker}</div>,
-  },
-  {
-    accessorKey: "owner",
-    header: "Owner",
-    cell: ({ row }) => <span className="text-xs">{row.original.owner}</span>,
-  },
-  {
-    accessorKey: "idleDays",
-    header: "Idle (days)",
-    cell: ({ row }) => <span className="text-xs tabular-nums">{row.original.idleDays}d</span>,
-  },
-  {
-    accessorKey: "closeVariance",
-    header: "Close variance",
-    cell: ({ row }) => <span className="text-xs tabular-nums">{row.original.closeVariance}</span>,
-  },
-  {
-    accessorKey: "nextAction",
-    header: "Next action",
-    cell: ({ row }) => (
-      <div className="flex max-w-64 flex-col gap-1 whitespace-normal">
-        {row.original.priority ? (
-          <Badge variant="outline" className={cn("text-[10px] uppercase", priorityTone[row.original.priority])}>
-            {row.original.priority}
+const priorityLabelKey: Record<Exclude<LedgerPriority, null>, string> = {
+  Escalate: "priorityEscalate",
+  Coach: "priorityCoach",
+  Reforecast: "priorityReforecast",
+};
+
+function buildLedgerColumns(
+  t: ReturnType<typeof useTranslations<"analyticsV1">>,
+): ColumnDef<DataTableFeatures, LedgerRow>[] {
+  return [
+    {
+      accessorKey: "account",
+      header: t("columnAccount"),
+      cell: ({ row }) => (
+        <div className="flex flex-col gap-1">
+          <p className="font-medium text-sm">{row.original.account}</p>
+          <p className="text-muted-foreground text-xs">
+            {row.original.dealId} · {row.original.stage}
+          </p>
+        </div>
+      ),
+    },
+    {
+      accessorKey: "blocker",
+      header: t("columnBlocker"),
+      cell: ({ row }) => <div className="max-w-44 whitespace-normal text-xs">{row.original.blocker}</div>,
+    },
+    {
+      accessorKey: "owner",
+      header: t("columnOwner"),
+      cell: ({ row }) => <span className="text-xs">{row.original.owner}</span>,
+    },
+    {
+      accessorKey: "idleDays",
+      header: t("columnIdleDays"),
+      cell: ({ row }) => (
+        <span className="text-xs tabular-nums">{t("idleDaysSuffix", { days: row.original.idleDays })}</span>
+      ),
+    },
+    {
+      accessorKey: "closeVariance",
+      header: t("columnCloseVariance"),
+      cell: ({ row }) => <span className="text-xs tabular-nums">{row.original.closeVariance}</span>,
+    },
+    {
+      accessorKey: "nextAction",
+      header: t("columnNextAction"),
+      cell: ({ row }) => (
+        <div className="flex max-w-64 flex-col gap-1 whitespace-normal">
+          {row.original.priority ? (
+            <Badge variant="outline" className={cn("text-[10px] uppercase", priorityTone[row.original.priority])}>
+              {t(priorityLabelKey[row.original.priority])}
+            </Badge>
+          ) : null}
+          <p className="text-xs">{row.original.nextAction}</p>
+        </div>
+      ),
+    },
+    {
+      accessorKey: "riskScore",
+      header: ({ column }) => (
+        <div className="flex justify-end">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="-mr-2 h-8 px-2 text-xs"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            {t("columnRiskLadder")}
+          </Button>
+        </div>
+      ),
+      cell: ({ row }) => (
+        <div className="flex justify-end">
+          <Badge
+            variant="outline"
+            className={cn(
+              "min-w-12 justify-center font-medium tabular-nums",
+              row.original.riskScore >= 80 && "border-destructive/35 bg-destructive/10 text-destructive",
+              row.original.riskScore >= 65 &&
+                row.original.riskScore < 80 &&
+                "border-amber-500/35 bg-amber-500/10 text-amber-700",
+            )}
+          >
+            {row.original.riskScore}
           </Badge>
-        ) : null}
-        <p className="text-xs">{row.original.nextAction}</p>
-      </div>
-    ),
-  },
-  {
-    accessorKey: "riskScore",
-    header: ({ column }) => (
-      <div className="flex justify-end">
-        <Button
-          variant="ghost"
-          size="sm"
-          className="-mr-2 h-8 px-2 text-xs"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Risk Ladder
-        </Button>
-      </div>
-    ),
-    cell: ({ row }) => (
-      <div className="flex justify-end">
-        <Badge
-          variant="outline"
-          className={cn(
-            "min-w-12 justify-center font-medium tabular-nums",
-            row.original.riskScore >= 80 && "border-destructive/35 bg-destructive/10 text-destructive",
-            row.original.riskScore >= 65 &&
-              row.original.riskScore < 80 &&
-              "border-amber-500/35 bg-amber-500/10 text-amber-700",
-          )}
-        >
-          {row.original.riskScore}
-        </Badge>
-      </div>
-    ),
-  },
-];
+        </div>
+      ),
+    },
+  ];
+}
 
 export function ActionsRiskLedger() {
+  const locale = useLocale();
+  const t = useTranslations("analyticsV1");
   const [sorting, setSorting] = React.useState<SortingState>([{ id: "riskScore", desc: true }]);
 
   const table = useTable({
     features: dataTableFeatures,
     data: LEDGER_ROWS,
-    columns: ledgerColumns,
+    columns: buildLedgerColumns(t),
     getRowId: (row) => String(row.id),
     state: { sorting },
     onSortingChange: setSorting,
@@ -261,24 +276,24 @@ export function ActionsRiskLedger() {
   return (
     <Card className="min-w-0 shadow-xs">
       <CardHeader>
-        <CardTitle>Revenue Risk Ledger</CardTitle>
-        <CardDescription>Accounts under pressure with blocker, next action, and owner responsibility.</CardDescription>
+        <CardTitle>{t("titleRiskLedger")}</CardTitle>
+        <CardDescription>{t("descriptionRiskLedger")}</CardDescription>
         <CardAction>
           <Badge variant="outline" className="font-medium tabular-nums">
-            {LEDGER_ROWS.length} Accounts
+            {t("accountsCount", { count: LEDGER_ROWS.length })}
           </Badge>
         </CardAction>
       </CardHeader>
 
       <CardContent className="space-y-4">
         <div className="grid gap-3 rounded-lg border bg-muted/20 p-3 text-sm sm:grid-cols-4 sm:divide-x sm:divide-border/60">
-          <LedgerStat label="Critical accounts" value="1" detail="Risk Ladder >= 80 (current window)" />
-          <LedgerStat label="Escalations due" value="1" detail="Next 7 days" />
-          <LedgerStat label="Median inactivity" value="31d" detail="Current filter window" />
+          <LedgerStat label={t("statCriticalAccounts")} value="1" detail={t("statCriticalAccountsDetail")} />
+          <LedgerStat label={t("statEscalationsDue")} value="1" detail={t("statEscalationsDueDetail")} />
+          <LedgerStat label={t("statMedianInactivity")} value="31d" detail={t("statMedianInactivityDetail")} />
           <LedgerStat
-            label="Overdue revenue"
-            value={formatCurrency(1084000, { noDecimals: true })}
-            detail="Close date already exceeded"
+            label={t("statOverdueRevenue")}
+            value={formatCurrency(1084000, { noDecimals: true }, locale)}
+            detail={t("statOverdueRevenueDetail")}
           />
         </div>
 

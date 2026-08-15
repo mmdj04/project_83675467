@@ -1,3 +1,5 @@
+import { getLocale, getTranslations } from "next-intl/server";
+
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatCurrency } from "@/lib/utils";
@@ -26,47 +28,72 @@ const NEXT_INTERVENTIONS = [
   },
 ] as const;
 
-export function ActionsManagerQueue() {
+const priorityLabelKey: Record<"Escalate" | "Coach" | "Reforecast", string> = {
+  Escalate: "priorityEscalate",
+  Coach: "priorityCoach",
+  Reforecast: "priorityReforecast",
+};
+
+export async function ActionsManagerQueue() {
+  const t = await getTranslations("analyticsV1");
+  const locale = await getLocale();
+
   return (
     <Card className="h-full shadow-xs">
       <CardHeader>
-        <CardTitle>Manager Action Queue</CardTitle>
-        <CardDescription>Escalate, coach, and reforecast before commit call</CardDescription>
+        <CardTitle>{t("title")}</CardTitle>
+        <CardDescription>{t("description")}</CardDescription>
       </CardHeader>
 
       <CardContent className="flex h-full flex-col gap-4">
         <div className="flex h-full flex-col gap-3">
           <div className="grid grid-cols-2 gap-2">
-            <StatCard label="Actionable deals" value="7" />
-            <StatCard label="Revenue in play" value={formatCurrency(811000, { noDecimals: true })} mono />
-            <StatCard label="Owners engaged" value="3" />
-            <StatCard label="Median risk" value="72" mono />
+            <StatCard label={t("statActionableDeals")} value="7" />
+            <StatCard
+              label={t("statRevenueInPlay")}
+              value={formatCurrency(811000, { noDecimals: true }, locale)}
+              mono
+            />
+            <StatCard label={t("statOwnersEngaged")} value="3" />
+            <StatCard label={t("statMedianRisk")} value="72" mono />
           </div>
 
           <div className="space-y-2 rounded-md border bg-muted/20 px-3 py-2">
             <div className="flex items-center justify-between gap-2">
-              <p className="text-muted-foreground text-xs">Intervention mix</p>
+              <p className="text-muted-foreground text-xs">{t("interventionMix")}</p>
               <Badge variant="outline" className="h-5 px-2 text-[11px] tabular-nums">
-                Escalate {formatCurrency(174000, { noDecimals: true })}
+                {t("priorityEscalate")} {formatCurrency(174000, { noDecimals: true }, locale)}
               </Badge>
             </div>
             <div className="space-y-1.5">
               <div className="flex items-center justify-between rounded-md border bg-background/70 px-2.5 py-1.5">
-                <span className="text-xs">Escalate</span>
+                <span className="text-xs">{t("priorityEscalate")}</span>
                 <span className="text-muted-foreground text-xs tabular-nums">
-                  1 deals · 14% · {formatCurrency(174000, { noDecimals: true })}
+                  {t("dealsPercentValue", {
+                    count: 1,
+                    percent: 14,
+                    value: formatCurrency(174000, { noDecimals: true }, locale),
+                  })}
                 </span>
               </div>
               <div className="flex items-center justify-between rounded-md border bg-background/70 px-2.5 py-1.5">
-                <span className="text-xs">Coach</span>
+                <span className="text-xs">{t("priorityCoach")}</span>
                 <span className="text-muted-foreground text-xs tabular-nums">
-                  4 deals · 57% · {formatCurrency(478000, { noDecimals: true })}
+                  {t("dealsPercentValue", {
+                    count: 4,
+                    percent: 57,
+                    value: formatCurrency(478000, { noDecimals: true }, locale),
+                  })}
                 </span>
               </div>
               <div className="flex items-center justify-between rounded-md border bg-background/70 px-2.5 py-1.5">
-                <span className="text-xs">Reforecast</span>
+                <span className="text-xs">{t("priorityReforecast")}</span>
                 <span className="text-muted-foreground text-xs tabular-nums">
-                  2 deals · 29% · {formatCurrency(159000, { noDecimals: true })}
+                  {t("dealsPercentValue", {
+                    count: 2,
+                    percent: 29,
+                    value: formatCurrency(159000, { noDecimals: true }, locale),
+                  })}
                 </span>
               </div>
             </div>
@@ -74,45 +101,47 @@ export function ActionsManagerQueue() {
 
           <div className="space-y-2 rounded-md border bg-muted/20 px-3 py-2">
             <div className="flex items-center justify-between gap-2">
-              <p className="text-muted-foreground text-xs">Manager focus</p>
-              <span className="text-muted-foreground text-xs tabular-nums">This forecast cycle</span>
+              <p className="text-muted-foreground text-xs">{t("managerFocus")}</p>
+              <span className="text-muted-foreground text-xs tabular-nums">{t("thisForecastCycle")}</span>
             </div>
 
             <div className="space-y-1.5 text-xs">
               <div className="flex items-center justify-between gap-2 rounded-md border bg-background/70 px-2.5 py-1.5">
-                <span>Coach queue</span>
+                <span>{t("coachQueue")}</span>
                 <span className="text-muted-foreground tabular-nums">
-                  4 deals · {formatCurrency(478000, { noDecimals: true })}
+                  {t("dealsValue", { count: 4, value: formatCurrency(478000, { noDecimals: true }, locale) })}
                 </span>
               </div>
 
               <div className="flex items-center justify-between gap-2 rounded-md border bg-background/70 px-2.5 py-1.5">
-                <span>Primary owner</span>
-                <span className="text-muted-foreground tabular-nums">Leila Zhang · 3 deals</span>
+                <span>{t("primaryOwner")}</span>
+                <span className="text-muted-foreground tabular-nums">
+                  {t("ownerDeals", { owner: "Leila Zhang", count: 3 })}
+                </span>
               </div>
 
               <div className="flex items-center justify-between gap-2 rounded-md border bg-background/70 px-2.5 py-1.5">
-                <span>Stale pipeline</span>
+                <span>{t("stalePipeline")}</span>
                 <span className="text-muted-foreground tabular-nums">
-                  8 deals · {formatCurrency(1151000, { noDecimals: true })}
+                  {t("dealsValue", { count: 8, value: formatCurrency(1151000, { noDecimals: true }, locale) })}
                 </span>
               </div>
             </div>
           </div>
 
           <div className="flex-1 space-y-2">
-            <p className="text-muted-foreground text-xs">Next interventions</p>
+            <p className="text-muted-foreground text-xs">{t("nextInterventions")}</p>
 
             {NEXT_INTERVENTIONS.map((item) => (
               <div key={`${item.priority}-${item.dealId}`} className="space-y-1 rounded-md border px-3 py-2">
                 <div className="flex items-center justify-between gap-2">
                   <span className="font-medium text-sm">{item.dealId}</span>
                   <Badge variant="outline" className="h-5 px-2 text-[11px]">
-                    {item.priority}
+                    {t(priorityLabelKey[item.priority])}
                   </Badge>
                 </div>
                 <p className="text-muted-foreground text-xs">
-                  {item.owner} · {item.risk} risk
+                  {item.owner} · {t("riskSuffix", { risk: item.risk })}
                 </p>
                 <p className="text-xs">{item.recommendation}</p>
               </div>
@@ -120,8 +149,8 @@ export function ActionsManagerQueue() {
           </div>
 
           <div className="flex items-center justify-between gap-2 rounded-md border bg-muted/20 px-3 py-2">
-            <span className="text-muted-foreground text-xs">No-action monitor</span>
-            <span className="font-medium text-xs tabular-nums">3 Deals</span>
+            <span className="text-muted-foreground text-xs">{t("noActionMonitor")}</span>
+            <span className="font-medium text-xs tabular-nums">{t("dealsCount", { count: 3 })}</span>
           </div>
         </div>
       </CardContent>

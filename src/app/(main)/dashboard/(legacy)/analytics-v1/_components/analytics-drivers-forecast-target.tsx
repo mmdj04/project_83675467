@@ -1,24 +1,10 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Bar, CartesianGrid, ComposedChart, Dot, LabelList, Line, ReferenceLine, XAxis, YAxis } from "recharts";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-
-const forecastChartConfig = {
-  closedWon: {
-    label: "Closed Won",
-    color: "var(--chart-1)",
-  },
-  weightedPipeline: {
-    label: "Weighted Pipeline",
-    color: "var(--chart-2)",
-  },
-  target: {
-    label: "Target",
-    color: "var(--muted-foreground)",
-  },
-} satisfies ChartConfig;
 
 type TrendPoint = {
   period: string;
@@ -44,6 +30,21 @@ const CHART_DATA: TrendPoint[] = [
 ];
 
 export function DriversForecastTarget() {
+  const t = useTranslations("analyticsV1");
+  const forecastChartConfig = {
+    closedWon: {
+      label: t("chartClosedWon"),
+      color: "var(--chart-1)",
+    },
+    weightedPipeline: {
+      label: t("weightedPipeline"),
+      color: "var(--chart-2)",
+    },
+    target: {
+      label: t("chartTarget"),
+      color: "var(--muted-foreground)",
+    },
+  } satisfies ChartConfig;
   const chartData = CHART_DATA;
   const pipelineMin = Math.min(...CHART_DATA.map((point) => point.weightedPipeline));
   const pipelineMax = Math.max(...CHART_DATA.map((point) => point.weightedPipeline));
@@ -51,14 +52,14 @@ export function DriversForecastTarget() {
   return (
     <Card className="shadow-xs">
       <CardHeader>
-        <CardTitle>Forecast vs Target</CardTitle>
-        <CardDescription>12-week trend with attainment context</CardDescription>
+        <CardTitle>{t("titleForecast")}</CardTitle>
+        <CardDescription>{t("descriptionForecast")}</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-          <MetricChip label="Attainment" value="72.4%" note="closed won / monthly target" />
-          <MetricChip label="Weighted Pipeline" value="$1,284,000" note="vs $668,000 remaining" />
-          <MetricChip label="Forecast Confidence" value="81.0%" note="volatility-adjusted confidence" />
+          <MetricChip label={t("attainment")} value="72.4%" note={t("attainmentNote")} />
+          <MetricChip label={t("weightedPipeline")} value="$1,284,000" note={t("remainingVs", { value: "$668,000" })} />
+          <MetricChip label={t("forecastConfidence")} value="81.0%" note={t("forecastConfidenceNote")} />
         </div>
         <ChartContainer config={forecastChartConfig} className="h-68 w-full">
           <ComposedChart data={chartData} margin={{ left: 4, right: 8, top: 8, bottom: 0 }}>
@@ -91,7 +92,7 @@ export function DriversForecastTarget() {
             <ReferenceLine y={100} stroke="var(--color-target)" strokeWidth={2} strokeDasharray="6 5" />
             <Bar
               dataKey="closedWon"
-              name="Closed won"
+              name={t("chartClosedWonBar")}
               fill="var(--color-closedWon)"
               fillOpacity={0.22}
               stroke="var(--color-closedWon)"
@@ -105,7 +106,7 @@ export function DriversForecastTarget() {
               type="monotone"
               yAxisId="pipeline"
               dataKey="weightedPipeline"
-              name="Pipeline vs target"
+              name={t("chartPipelineVsTarget")}
               strokeOpacity={0}
               strokeWidth={0}
               stroke="var(--color-weightedPipeline)"

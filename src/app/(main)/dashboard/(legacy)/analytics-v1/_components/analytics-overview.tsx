@@ -3,7 +3,9 @@
 import * as React from "react";
 
 import { eachDayOfInterval, format, startOfDay, subDays } from "date-fns";
+import { enUS, type Locale, ptBR } from "date-fns/locale";
 import { Check, ChevronsUpDown, Download } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import type { DateRange } from "react-day-picker";
 import { Area, ComposedChart, XAxis, YAxis } from "recharts";
 
@@ -21,69 +23,75 @@ import { cn } from "@/lib/utils";
 type RiskView = "risk-view" | "momentum" | "quality";
 type FilterToggleKey = "enterpriseOnly" | "stalledOnly" | "overdueOnly" | "includeRenewals";
 
-const FILTER_OPTIONS: Array<{ key: FilterToggleKey; label: string; summaryLabel: string }> = [
-  { key: "enterpriseOnly", label: "Enterprise only", summaryLabel: "Enterprise" },
-  { key: "stalledOnly", label: "Stalled deals (>14 days)", summaryLabel: "Stalled" },
-  { key: "overdueOnly", label: "Closing date exceeded", summaryLabel: "Overdue" },
-  { key: "includeRenewals", label: "Include renewals", summaryLabel: "Renewals" },
+const FILTER_OPTIONS: Array<{ key: FilterToggleKey; labelKey: string; summaryKey: string }> = [
+  { key: "enterpriseOnly", labelKey: "filtersEnterpriseOnly", summaryKey: "filtersEnterprise" },
+  { key: "stalledOnly", labelKey: "filtersStalledOnly", summaryKey: "filtersStalled" },
+  { key: "overdueOnly", labelKey: "filtersOverdueOnly", summaryKey: "filtersOverdue" },
+  { key: "includeRenewals", labelKey: "filtersIncludeRenewals", summaryKey: "filtersRenewals" },
 ];
+
+const dateFnsLocales: Record<string, Locale> = { "pt-BR": ptBR, en: enUS };
 
 const riskViews: Array<{
   value: RiskView;
-  label: string;
-  description: string;
+  labelKey: string;
+  descriptionKey: string;
 }> = [
   {
     value: "risk-view",
-    label: "Risk view",
-    description: "Early warnings",
+    labelKey: "viewRisk",
+    descriptionKey: "viewRiskDescription",
   },
   {
     value: "momentum",
-    label: "Momentum",
-    description: "Trend direction",
+    labelKey: "viewMomentum",
+    descriptionKey: "viewMomentumDescription",
   },
   {
     value: "quality",
-    label: "Quality",
-    description: "Pipeline hygiene",
+    labelKey: "viewQuality",
+    descriptionKey: "viewQualityDescription",
   },
 ];
 
 const RISK_SUMMARY_METRICS = [
   {
     key: "stalled",
-    label: "Stalled Deals",
+    labelKey: "metricStalledDeals",
     value: "8",
-    comparatorLabel: "vs previous period",
+    comparatorKey: "vsPreviousPeriod",
   },
   {
     key: "risk",
-    label: "Revenue at Risk",
+    labelKey: "metricRevenueAtRisk",
     value: "$1,151,000",
-    comparatorLabel: "vs previous period",
+    comparatorKey: "vsPreviousPeriod",
   },
   {
     key: "win-rate",
-    label: "Win Rate Trend",
+    labelKey: "metricWinRateTrend",
     value: "+8.3pp",
-    comparatorLabel: "vs previous period",
+    comparatorKey: "vsPreviousPeriod",
   },
   {
     key: "cycle",
-    label: "Sales Cycle Drift",
+    labelKey: "metricSalesCycleDrift",
     value: "+2.3 days",
-    comparatorLabel: "vs previous period",
+    comparatorKey: "vsPreviousPeriod",
   },
 ] as const;
 
 export function AnalyticsOverview() {
+  const locale = useLocale();
+  const t = useTranslations("analyticsV1");
   const [dateRange, setDateRange] = React.useState<{ from: Date; to: Date }>(() => {
     const to = startOfDay(new Date());
     return { from: subDays(to, 29), to };
   });
   const [selectedFilters, setSelectedFilters] = React.useState<FilterToggleKey[]>(["includeRenewals"]);
-  const [revenueSeries, setRevenueSeries] = React.useState(() => buildRevenueChartData(dateRange.from, dateRange.to));
+  const [revenueSeries, setRevenueSeries] = React.useState(() =>
+    buildRevenueChartData(dateRange.from, dateRange.to, locale),
+  );
 
   const handleFilterToggle = (key: FilterToggleKey, checked: boolean) => {
     setSelectedFilters((prev) => {
@@ -100,7 +108,7 @@ export function AnalyticsOverview() {
     }
     const nextDateRange = { from: value.from, to: value.to };
     setDateRange(nextDateRange);
-    setRevenueSeries(buildRevenueChartData(nextDateRange.from, nextDateRange.to));
+    setRevenueSeries(buildRevenueChartData(nextDateRange.from, nextDateRange.to, locale));
   };
   return (
     <div className="grid gap-4">
@@ -114,7 +122,7 @@ export function AnalyticsOverview() {
           <DateRangePicker value={dateRange} onChange={handleDateRangeChange} />
           <Button variant="secondary">
             <Download />
-            Export
+            {t("exportButton")}
           </Button>
         </div>
       </div>
@@ -124,27 +132,29 @@ export function AnalyticsOverview() {
   );
 }
 
-function buildRevenueChartData(from: Date, to: Date) {
+function buildRevenueChartData(from: Date, to: Date, locale: string) {
   const days = eachDayOfInterval({ start: from, end: to });
   const minRevenue = 22_000;
   const maxRevenue = 32_000;
   let currentRevenue = 27_500;
+  const dateFnsLocale = dateFnsLocales[locale] ?? enUS;
 
   return days.map((day) => {
     const nextRevenue = currentRevenue + Math.round((Math.random() - 0.45) * 4_000);
     currentRevenue = Math.max(minRevenue, Math.min(maxRevenue, nextRevenue));
 
     return {
-      day: format(day, "MMM d"),
+      day: format(day, "MMM d", { locale: dateFnsLocale }),
       revenue: currentRevenue,
     };
   });
 }
 
 function SummaryRow({ revenueSeries }: { revenueSeries: Array<{ day: string; revenue: number }> }) {
+  const t = useTranslations("analyticsV1");
   const revenueChartConfig = {
     revenue: {
-      label: "Revenue",
+      label: t("chartRevenue"),
       color: "var(--chart-1)",
     },
   } satisfies ChartConfig;
@@ -159,7 +169,7 @@ function SummaryRow({ revenueSeries }: { revenueSeries: Array<{ day: string; rev
     <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
       <div className="min-w-0 space-y-2">
         <div>
-          <div className="font-medium text-muted-foreground text-sm">Revenue</div>
+          <div className="font-medium text-muted-foreground text-sm">{t("sectionRevenue")}</div>
           <div className="font-semibold text-3xl tabular-nums tracking-tight sm:text-4xl">$1,248,000</div>
         </div>
         <div className="flex flex-wrap items-center gap-2">
@@ -168,9 +178,9 @@ function SummaryRow({ revenueSeries }: { revenueSeries: Array<{ day: string; rev
         </div>
 
         <div className="flex flex-wrap items-center gap-2 text-muted-foreground text-sm">
-          <span>Previous $1,141,000</span>
+          <span>{t("previousValue", { value: "$1,141,000" })}</span>
           <Badge variant="outline" className="font-medium text-xs">
-            Risk Ladder 30
+            {t("riskLadderScore", { score: 30 })}
           </Badge>
         </div>
         <div>
@@ -188,21 +198,21 @@ function SummaryRow({ revenueSeries }: { revenueSeries: Array<{ day: string; rev
               />
             </ComposedChart>
           </ChartContainer>
-          <span className="text-muted-foreground text-xs">Selected range</span>
+          <span className="text-muted-foreground text-xs">{t("selectedRange")}</span>
         </div>
       </div>
 
       <Card className="min-w-0 py-4 shadow-xs xl:col-span-2">
         <CardHeader className="px-4">
-          <CardTitle>Risk summary</CardTitle>
-          <CardDescription>Core risk signals vs previous period</CardDescription>
+          <CardTitle>{t("riskSummary")}</CardTitle>
+          <CardDescription>{t("riskSummaryDescription")}</CardDescription>
         </CardHeader>
         <CardContent className="grid grid-cols-1 gap-4 px-4 sm:grid-cols-2 xl:grid-cols-4 xl:gap-0 xl:divide-x xl:[&>div:first-child]:pl-0 xl:[&>div:last-child]:pr-0 xl:[&>div]:px-5">
           {RISK_SUMMARY_METRICS.map((item) => (
             <div key={item.key} className="min-w-0 space-y-1">
-              <div className="text-muted-foreground text-sm">{item.label}</div>
+              <div className="text-muted-foreground text-sm">{t(item.labelKey)}</div>
               <div className="font-semibold text-2xl tabular-nums leading-tight">{item.value}</div>
-              <div className="text-muted-foreground text-xs">{item.comparatorLabel}</div>
+              <div className="text-muted-foreground text-xs">{t(item.comparatorKey)}</div>
             </div>
           ))}
         </CardContent>
@@ -212,9 +222,11 @@ function SummaryRow({ revenueSeries }: { revenueSeries: Array<{ day: string; rev
 }
 
 function RiskViewSelect() {
+  const t = useTranslations("analyticsV1");
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("risk-view");
   const listId = React.useId();
+  const selectedView = riskViews.find((view) => view.value === value);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -233,7 +245,7 @@ function RiskViewSelect() {
                 boxShadow: "0 0 8px color-mix(in oklab, var(--primary) 50%, transparent)",
               }}
             />
-            {riskViews.find((view) => view.value === value)?.label}
+            {selectedView ? t(selectedView.labelKey) : null}
           </div>
           <ChevronsUpDown className="opacity-50" />
         </Button>
@@ -252,8 +264,8 @@ function RiskViewSelect() {
                   }}
                 >
                   <div className="flex flex-col">
-                    <span>{view.label}</span>
-                    <span className="text-muted-foreground text-xs">{view.description}</span>
+                    <span>{t(view.labelKey)}</span>
+                    <span className="text-muted-foreground text-xs">{t(view.descriptionKey)}</span>
                   </div>
                   <Check className={cn("ml-auto", value === view.value ? "opacity-100" : "opacity-0")} />
                 </CommandItem>
@@ -273,6 +285,7 @@ function FiltersPopover({
   selectedFilters: FilterToggleKey[];
   onToggle: (key: FilterToggleKey, checked: boolean) => void;
 }) {
+  const t = useTranslations("analyticsV1");
   const [open, setOpen] = React.useState(false);
   const activeCount = selectedFilters.length;
 
@@ -281,7 +294,7 @@ function FiltersPopover({
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button variant="outline" aria-expanded={open}>
-            Filters
+            {t("filters")}
             <Badge className="tabular-nums" variant="secondary">
               {activeCount}
             </Badge>
@@ -290,9 +303,9 @@ function FiltersPopover({
         <PopoverContent align="start" className="w-72">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="font-semibold text-sm">Filters</h3>
+              <h3 className="font-semibold text-sm">{t("filters")}</h3>
               <Badge variant="outline" className="font-medium text-xs tabular-nums">
-                Risk Ladder 30
+                {t("riskLadderScore", { score: 30 })}
               </Badge>
             </div>
             <div className="space-y-3">
@@ -300,7 +313,7 @@ function FiltersPopover({
                 <FilterToggle
                   key={item.key}
                   id={item.key}
-                  label={item.label}
+                  label={t(item.labelKey)}
                   checked={selectedFilters.includes(item.key)}
                   onCheckedChange={(checked) => onToggle(item.key, checked)}
                 />
@@ -311,7 +324,7 @@ function FiltersPopover({
       </Popover>
 
       <span className="text-muted-foreground text-sm">
-        Showing: <span className="font-medium">{summarizeFilterState(selectedFilters)}</span>
+        {t("showingSummary", { summary: summarizeFilterState(selectedFilters, t) })}
       </span>
     </div>
   );
@@ -338,11 +351,14 @@ function FilterToggle({
   );
 }
 
-function summarizeFilterState(selectedFilters: FilterToggleKey[]) {
+function summarizeFilterState(
+  selectedFilters: FilterToggleKey[],
+  t: ReturnType<typeof useTranslations<"analyticsV1">>,
+) {
   if (selectedFilters.length === 0) {
-    return "All deals";
+    return t("filtersAllDeals");
   }
   return FILTER_OPTIONS.filter((item) => selectedFilters.includes(item.key))
-    .map((item) => item.summaryLabel)
+    .map((item) => t(item.summaryKey))
     .join(" · ");
 }

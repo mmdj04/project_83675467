@@ -1,7 +1,9 @@
 "use client";
 
 import { addDays, format } from "date-fns";
+import { enUS, type Locale, ptBR } from "date-fns/locale";
 import { Home, Receipt, Sparkles, Zap } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { siApple, siMastercard } from "simple-icons";
 
 import { SimpleIcon } from "@/components/simple-icon";
@@ -12,43 +14,49 @@ import { formatCurrency } from "@/lib/utils";
 
 const now = new Date();
 
+const dateFnsLocales: Record<string, Locale> = { "pt-BR": ptBR, en: enUS };
+
 const upcomingPayments = [
   {
     id: 1,
     icon: Home,
     title: "Apartment Rent",
     amount: 1200,
-    date: `Due on ${format(addDays(now, 2), "do MMMM yyyy")}`,
+    dayOffset: 2,
   },
   {
     id: 2,
     icon: Zap,
     title: "Electricity Bill",
     amount: 75,
-    date: `Due on ${format(addDays(now, 2), "do MMMM yyyy")}`,
+    dayOffset: 2,
   },
   {
     id: 3,
     icon: Sparkles,
     title: "ChatGPT Plus",
     amount: 20,
-    date: `Due on ${format(addDays(now, 7), "do MMMM yyyy")}`,
+    dayOffset: 7,
   },
   {
     id: 4,
     icon: Receipt,
     title: "Credit Card Payment",
     amount: 420,
-    date: `Due on ${format(addDays(now, 9), "do MMMM yyyy")}`,
+    dayOffset: 9,
   },
 ];
 
 export function CardOverview() {
+  const locale = useLocale();
+  const t = useTranslations("financeV1");
+  const dateFnsLocale = dateFnsLocales[locale] ?? enUS;
+
   return (
     <Card className="shadow-xs">
       <CardHeader className="items-center">
-        <CardTitle>My Card</CardTitle>
-        <CardDescription>1 of 4 cards added · Overview of your primary card and upcoming payments</CardDescription>
+        <CardTitle>{t("myCard")}</CardTitle>
+        <CardDescription>{t("cardOverviewDescription", { total: 4 })}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
@@ -71,11 +79,13 @@ export function CardOverview() {
                   </p>
                   <div className="flex gap-6">
                     <div>
-                      <p className="text-[10px] text-primary-foreground/80 uppercase tracking-wider">Valid Thru</p>
+                      <p className="text-[10px] text-primary-foreground/80 uppercase tracking-wider">
+                        {t("validThru")}
+                      </p>
                       <p className="font-mono text-primary-foreground/80 text-xs">06/30</p>
                     </div>
                     <div>
-                      <p className="text-[10px] text-primary-foreground/80 uppercase tracking-wider">CVV</p>
+                      <p className="text-[10px] text-primary-foreground/80 uppercase tracking-wider">{t("cvv")}</p>
                       <p className="font-mono text-primary-foreground/80 text-xs">•••</p>
                     </div>
                   </div>
@@ -87,36 +97,36 @@ export function CardOverview() {
 
           <div className="space-y-2 text-sm">
             <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Card type</span>
+              <span className="text-muted-foreground">{t("cardType")}</span>
               <span className="font-medium tabular-nums">Virtual</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Billing cycle</span>
+              <span className="text-muted-foreground">{t("billingCycle")}</span>
               <span className="font-medium tabular-nums">21st monthly</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Card Limit</span>
-              <span className="font-medium tabular-nums">$62,000.00</span>
+              <span className="text-muted-foreground">{t("cardLimit")}</span>
+              <span className="font-medium tabular-nums">{formatCurrency(62_000, {}, locale)}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Available Balance</span>
-              <span className="font-medium tabular-nums">$13,100.06</span>
+              <span className="text-muted-foreground">{t("availableBalance")}</span>
+              <span className="font-medium tabular-nums">{formatCurrency(13_100.06, {}, locale)}</span>
             </div>
           </div>
 
           <div className="space-y-1">
             <Button className="w-full" size="sm">
-              Manage Card
+              {t("manageCard")}
             </Button>
 
             <Button className="w-full" variant="outline" size="sm">
-              Add Card
+              {t("addCard")}
             </Button>
           </div>
           <Separator />
 
           <div className="space-y-4">
-            <h6 className="text-muted-foreground text-sm uppercase">Upcoming Payments</h6>
+            <h6 className="text-muted-foreground text-sm uppercase">{t("upcomingPayments")}</h6>
 
             <div className="space-y-4">
               {upcomingPayments.map((transaction) => (
@@ -127,13 +137,17 @@ export function CardOverview() {
                   <div className="flex w-full items-end justify-between">
                     <div>
                       <p className="font-medium text-sm">{transaction.title}</p>
-                      <p className="text-muted-foreground text-xs">{transaction.date}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {t("dueOn", {
+                          date: format(addDays(now, transaction.dayOffset), "do MMMM yyyy", {
+                            locale: dateFnsLocale,
+                          }),
+                        })}
+                      </p>
                     </div>
                     <div>
                       <span className="font-medium text-destructive text-sm tabular-nums leading-none">
-                        {formatCurrency(transaction.amount, {
-                          noDecimals: true,
-                        })}
+                        {formatCurrency(transaction.amount, { noDecimals: true }, locale)}
                       </span>
                     </div>
                   </div>
@@ -142,7 +156,7 @@ export function CardOverview() {
             </div>
 
             <Button className="w-full" size="sm" variant="outline">
-              View All Payments
+              {t("viewAllPayments")}
             </Button>
           </div>
         </div>
