@@ -277,7 +277,7 @@ export function Changelog() {
         <div className="flex gap-12">
           {/* Sidebar */}
           <nav className="hidden w-48 flex-shrink-0 md:block">
-            <div className="sticky top-24">
+            <div className="sticky top-8 max-h-[calc(100vh-4rem)] overflow-y-auto">
               <p className="mb-4 font-medium text-sm text-foreground">
                 Meses
               </p>
@@ -319,7 +319,7 @@ export function Changelog() {
                   {m.entries.map((entry) => (
                     <div
                       key={entry.hash}
-                      className="flex items-start gap-3 rounded-lg border border-border bg-card p-4 transition-colors hover:bg-accent/50"
+                      className="flex items-start gap-3 rounded-lg border border-border bg-background p-4 transition-colors hover:bg-accent/50"
                     >
                       <span className="whitespace-nowrap font-mono text-xs text-muted-foreground">
                         {formatDate(entry.date)}
