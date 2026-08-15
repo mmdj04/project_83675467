@@ -5,7 +5,9 @@ import { cookies } from "next/headers";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+
+import enMessages from "../../messages/en.json";
+import ptBRMessages from "../../messages/pt-BR.json";
 
 import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
@@ -25,7 +27,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   const store = await cookies();
   const locale = store.get("locale")?.value === "en" ? "en" : "pt-BR";
-  const messages = await getMessages();
+  const messages = locale === "en" ? enMessages : { ...enMessages, ...ptBRMessages };
   const { theme_mode, theme_preset, content_layout, navbar_style, sidebar_variant, sidebar_collapsible, font } =
     PREFERENCE_DEFAULTS;
   return (
