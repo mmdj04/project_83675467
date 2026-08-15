@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { format, parse } from "date-fns";
+import { format } from "date-fns";
 import { enUS, ptBR } from "date-fns/locale";
 import { ArrowUpRight, DollarSign, PackageCheck, ReceiptText, RotateCcw, ShoppingBag, Users } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -47,15 +47,17 @@ function getRollingRevenueBuckets(locale: string) {
 
     return {
       month: `${monthFormatter.format(monthDate)} ${String(monthDate.getFullYear()).slice(-2)}`,
+      monthDate,
       values,
     };
   });
 }
 
 function getRevenueOverviewData(locale: string) {
-  return getRollingRevenueBuckets(locale).flatMap(({ month, values }) =>
+  return getRollingRevenueBuckets(locale).flatMap(({ month, monthDate, values }) =>
     values.map((revenue, index) => ({
       period: `${month} ${revenueBucketRanges[index]}`,
+      date: monthDate,
       profit: Math.round(revenue * profitMultipliers[index % profitMultipliers.length]),
       revenue,
     })),
@@ -70,16 +72,21 @@ function formatMonthTick(value: string) {
   return range === "11-15" ? month : "";
 }
 
-function formatTooltipLabel(value: string, locale: string) {
-  const parts = value.split(" ");
-  const range = parts.at(-1);
-  const month = parse(parts.slice(0, -1).join(" "), "MMM yy", new Date(), { locale: getDateFnsLocale(locale) });
-  const [start, end] = String(range).split("-");
-  const lastDayOfMonth = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate();
-  const startDate = new Date(month.getFullYear(), month.getMonth(), Number(start));
-  const endDate = new Date(month.getFullYear(), month.getMonth(), Math.min(Number(end), lastDayOfMonth));
+function formatTooltipLabel(value: string, locale: string, datesByPeriod: Map<string, Date>) {
+  const date = datesByPeriod.get(value);
 
-  return `${format(month, "MMM", { locale: getDateFnsLocale(locale) })} ${format(startDate, "do", { locale: getDateFnsLocale(locale) })} - ${format(endDate, "do", { locale: getDateFnsLocale(locale) })}, ${format(month, "yyyy")}`;
+  if (!date) {
+    return value;
+  }
+
+  const range = value.split(" ").at(-1);
+  const [start, end] = String(range).split("-");
+  const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+  const startDate = new Date(date.getFullYear(), date.getMonth(), Number(start));
+  const endDate = new Date(date.getFullYear(), date.getMonth(), Math.min(Number(end), lastDayOfMonth));
+  const dateFnsLocale = getDateFnsLocale(locale);
+
+  return `${format(date, "MMM", { locale: dateFnsLocale })} ${format(startDate, "do", { locale: dateFnsLocale })} - ${format(endDate, "do", { locale: dateFnsLocale })}, ${format(date, "yyyy")}`;
 }
 
 function formatCurrencyTooltipValue(value: unknown, locale: string) {
@@ -90,6 +97,10 @@ export function KpiStrip() {
   const locale = useLocale();
   const t = useTranslations("ecommerce");
   const revenueOverviewData = React.useMemo(() => getRevenueOverviewData(locale), [locale]);
+  const revenuePeriodDates = React.useMemo(
+    () => new Map(revenueOverviewData.map(({ period, date }) => [period, date])),
+    [revenueOverviewData]
+  );
   const revenueOverviewConfig = {
     revenue: {
       label: t("chartRevenue"),
@@ -259,7 +270,7 @@ export function KpiStrip() {
                     content={
                       <ChartTooltipContent
                         className="w-40"
-                        labelFormatter={(value) => formatTooltipLabel(String(value), locale)}
+                        labelFormatter={(value) => formatTooltipLabel(String(value), locale, revenuePeriodDates)}
                         formatter={(value, name, item) => (
                           <>
                             <div

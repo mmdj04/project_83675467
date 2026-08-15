@@ -62,6 +62,13 @@ export function TransactionsOverviewCard() {
       weekday: "long",
     }).format(new Date(value));
   const formatTooltipCurrency = (value: number | string) => formatCurrency(Number(value), { noDecimals: true }, locale);
+  const formatTooltipDate = (value: number) =>
+    new Intl.DateTimeFormat(locale, {
+      timeZone: "UTC",
+      weekday: "short",
+      day: "2-digit",
+      month: "short",
+    }).format(new Date(value));
 
   const chartConfig = {
     expense: {
@@ -116,8 +123,8 @@ export function TransactionsOverviewCard() {
               content={({ active, payload, label }) => (
                 <ChartTooltipContent
                   active={active}
-                  hideLabel
                   label={label}
+                  labelFormatter={() => (typeof label === "number" ? formatTooltipDate(label) : "")}
                   payload={payload?.map((item) => ({
                     ...item,
                     value: typeof item.value === "number" ? formatTooltipCurrency(item.value) : item.value,

@@ -7,6 +7,13 @@ import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle }
 
 const customerInitials = ["EM", "OW", "NO", "MM"] as const;
 
+const featuredReviews = [
+  {
+    name: "Melody Macy",
+    textKey: "reviewTextLinenOvershirt",
+  },
+] as const;
+
 export async function CustomerReviews() {
   const t = await getTranslations("ecommerce");
 
@@ -33,12 +40,12 @@ export async function CustomerReviews() {
                 <Star className="size-3.5 fill-current" />
                 <Star className="size-3.5 fill-current" />
               </div>
-              <div>
-                <div className="font-medium text-sm">Melody Macy</div>
-                <p className="mt-2 line-clamp-3 min-h-[4.5em] text-muted-foreground text-sm">
-                  The linen overshirt arrived faster than expected and the fit was exactly right.
-                </p>
-              </div>
+              {featuredReviews.map((review) => (
+                <div key={review.name}>
+                  <div className="font-medium text-sm">{review.name}</div>
+                  <p className="mt-2 line-clamp-3 min-h-[4.5em] text-muted-foreground text-sm">{t(review.textKey)}</p>
+                </div>
+              ))}
             </div>
 
             <div className="flex gap-1">
