@@ -1,3075 +1,587 @@
 # Changelog
 
-Histórico do projeto organizado por mês de commit, do mais recente ao mais antigo. Cada entrada representa um commit do projeto (com arquivos adicionados/removidos); commits de merge também são mantidos.
+Histórico do projeto por mês — cada mês resume todos os commits como uma única atualização (novidades, correções e arquivos agregados sem duplicação).
 
 ## 2026-08
 
-- 2026-08-14 — `a53a7d7` — chore: update deps
-    - package-lock.json (modificado (+84 −72))
-    - package.json (modificado (+2 −2))
-- 2026-08-13 — `61c0a4c` — chore: update deps
-    - package-lock.json (modificado (+22 −22))
-    - package.json (modificado (+3 −3))
-- 2026-08-12 — `bfc7da4` — chore: update deps
-    - package-lock.json (modificado (+3 −3))
-- 2026-08-12 — `79ed371` — chore: update deps
-    - package-lock.json (modificado (+32 −7))
-    - package.json (modificado (+1 −1))
-- 2026-08-11 — `65bc9a1` — chore: update deps
-    - biome.json (modificado (+1 −1))
-    - package-lock.json (modificado (+51 −51))
-    - package.json (modificado (+1 −1))
-- 2026-08-09 — `8f107f0` — chore: update deps
-    - package-lock.json (modificado (+14 −8))
-    - package.json (modificado (+2 −2))
-- 2026-08-09 — `3cad027` — Merge pull request #80 from arhamkhnz/feat/profile
-    - README.md (modificado (+1 −0))
-    - src/app/(main)/dashboard/profile/_components/profile-data.ts (adicionado (+137 −0))
-    - src/app/(main)/dashboard/profile/_components/profile-documents.tsx (adicionado (+62 −0))
-    - src/app/(main)/dashboard/profile/_components/profile-employment-details.tsx (adicionado (+123 −0))
-    - src/app/(main)/dashboard/profile/_components/profile-header.tsx (adicionado (+114 −0))
-    - src/app/(main)/dashboard/profile/_components/profile-overview.tsx (adicionado (+94 −0))
-    - src/app/(main)/dashboard/profile/_components/profile-personal-details.tsx (adicionado (+90 −0))
-    - src/app/(main)/dashboard/profile/_components/profile-status-sidebar.tsx (adicionado (+48 −0))
-    - +3 outros arquivos (+196 −0)
-- 2026-08-09 — `09e8ecc` — chore: updates
-    - src/app/(main)/dashboard/profile/_components/profile-employment-details.tsx (modificado (+86 −62))
-    - src/app/(main)/dashboard/profile/_components/profile-personal-details.tsx (modificado (+48 −32))
-    - src/app/(main)/dashboard/profile/_components/profile-time-off-details.tsx (modificado (+52 −36))
-- 2026-08-09 — `54abf90` — chore: updates
-    - README.md (modificado (+1 −0))
-    - src/app/(main)/dashboard/profile/_components/profile-data.ts (modificado (+38 −58))
-    - src/app/(main)/dashboard/profile/_components/profile-documents.tsx (modificado (+35 −41))
-    - src/app/(main)/dashboard/profile/_components/profile-employment-details.tsx (modificado (+3 −3))
-    - src/app/(main)/dashboard/profile/_components/profile-header.tsx (modificado (+6 −4))
-    - src/app/(main)/dashboard/profile/_components/profile-overview.tsx (modificado (+6 −6))
-    - src/app/(main)/dashboard/profile/_components/profile-personal-details.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/profile/_components/profile-time-off-details.tsx (modificado (+8 −8))
-    - +1 outros arquivos (+13 −11)
-- 2026-08-09 — `d16953b` — chore: updates
-    - src/app/(main)/dashboard/profile/_components/profile-data.ts (modificado (+31 −10))
-    - src/app/(main)/dashboard/profile/_components/profile-details.tsx (removido (+0 −91))
-    - src/app/(main)/dashboard/profile/_components/profile-documents.tsx (modificado (+49 −35))
-    - src/app/(main)/dashboard/profile/_components/profile-employment-details.tsx (adicionado (+99 −0))
-    - src/app/(main)/dashboard/profile/_components/profile-fields.tsx (removido (+0 −17))
-    - src/app/(main)/dashboard/profile/_components/profile-personal-details.tsx (adicionado (+74 −0))
-    - src/app/(main)/dashboard/profile/_components/profile-status-sidebar.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/profile/_components/profile-time-off-details.tsx (adicionado (+63 −0))
-    - +1 outros arquivos (+8 −6)
-- 2026-08-09 — `5380869` — chore: updates
-    - src/app/(main)/dashboard/profile/_components/profile-data.ts (modificado (+17 −11))
-    - src/app/(main)/dashboard/profile/_components/profile-details.tsx (modificado (+24 −38))
-    - src/app/(main)/dashboard/profile/_components/profile-documents.tsx (modificado (+2 −3))
-    - src/app/(main)/dashboard/profile/_components/profile-fields.tsx (modificado (+1 −30))
-    - src/app/(main)/dashboard/profile/_components/profile-header.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/profile/_components/profile-overview.tsx (modificado (+67 −73))
-    - src/app/(main)/dashboard/profile/_components/profile-status-sidebar.tsx (modificado (+28 −29))
-    - src/app/(main)/dashboard/profile/page.tsx (modificado (+27 −11))
-- 2026-08-09 — `cd59f3d` — chore: quick fix
-    - src/app/(main)/dashboard/profile/page.tsx (modificado (+2 −2))
-- 2026-08-09 — `ad309d5` — chore: update profile layout
-    - src/app/(main)/dashboard/profile/_components/profile-data.ts (modificado (+3 −3))
-    - src/app/(main)/dashboard/profile/_components/profile-details.tsx (adicionado (+105 −0))
-    - src/app/(main)/dashboard/profile/_components/profile-documents.tsx (adicionado (+55 −0))
-    - src/app/(main)/dashboard/profile/_components/profile-fields.tsx (adicionado (+46 −0))
-    - src/app/(main)/dashboard/profile/_components/profile-header.tsx (modificado (+6 −6))
-    - src/app/(main)/dashboard/profile/_components/profile-overview.tsx (modificado (+59 −325))
-    - src/app/(main)/dashboard/profile/_components/profile-status-sidebar.tsx (adicionado (+49 −0))
-    - src/app/(main)/dashboard/profile/page.tsx (modificado (+47 −1))
-- 2026-08-09 — `5afd104` — feat: add profile screen
-    - src/app/(main)/dashboard/profile/_components/profile-data.ts (adicionado (+130 −0))
-    - src/app/(main)/dashboard/profile/_components/profile-header.tsx (adicionado (+112 −0))
-    - src/app/(main)/dashboard/profile/_components/profile-overview.tsx (adicionado (+366 −0))
-    - src/app/(main)/dashboard/profile/page.tsx (adicionado (+43 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+8 −0))
-- 2026-08-09 — `9c0e9cf` — chore: update deps
-    - package-lock.json (modificado (+11 −11))
-    - package.json (modificado (+1 −1))
-- 2026-08-08 — `ccb56a2` — chore: update deps
-    - package-lock.json (modificado (+22 −6))
-    - package.json (modificado (+1 −1))
-- 2026-08-08 — `e8577c1` — chore: update deps
-    - package-lock.json (modificado (+25 −41))
-    - package.json (modificado (+2 −2))
-- 2026-08-08 — `150bf4a` — feat: migrate dnd kit to latest implementation and packages
-    - package-lock.json (modificado (+72 −48))
-    - package.json (modificado (+3 −3))
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/columns.tsx (modificado (+15 −18))
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/table.tsx (modificado (+28 −37))
-    - src/app/(main)/dashboard/invoice/_components/invoice-items.tsx (modificado (+30 −59))
-    - src/app/(main)/dashboard/kanban/_components/kanban-column.tsx (modificado (+30 −20))
-    - src/app/(main)/dashboard/kanban/_components/kanban.tsx (modificado (+57 −120))
-    - src/app/(main)/dashboard/kanban/_components/sortable-task-card.tsx (modificado (+9 −14))
-- 2026-08-08 — `934daf7` — feat: migrate data table to use tanstack table v9
-    - package-lock.json (modificado (+43 −12))
-    - package.json (modificado (+1 −1))
-    - src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-actions-risk-ledger.tsx (modificado (+9 −14))
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/columns.tsx (modificado (+27 −13))
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/table.tsx (modificado (+14 −19))
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/columns.tsx (modificado (+69 −32))
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/table.tsx (modificado (+24 −29))
-    - src/app/(main)/dashboard/crm/_components/opportunities-section.tsx (modificado (+14 −19))
-    - +17 outros arquivos (+275 −198)
-- 2026-08-08 — `798b5db` — chore: update deps
-    - package-lock.json (modificado (+23 −23))
-    - package.json (modificado (+2 −2))
-- 2026-08-06 — `c4517b6` — chore: update deps & components
-    - package-lock.json (modificado (+25 −25))
-    - package.json (modificado (+3 −3))
-    - src/components/ui/questionnaire.tsx (modificado (+17 −3))
-- 2026-08-05 — `a70abdc` — chore: add shadcn questionnaire component
-    - package-lock.json (modificado (+4 −4))
-    - package.json (modificado (+1 −1))
-    - src/components/ui/questionnaire.tsx (adicionado (+310 −0))
-- 2026-08-04 — `e9c4365` — chore: update deps
-    - biome.json (modificado (+1 −1))
-    - package-lock.json (modificado (+53 −53))
-    - package.json (modificado (+2 −2))
-- 2026-08-04 — `b1a2da9` — chore: update next version
-    - package-lock.json (modificado (+232 −192))
-    - package.json (modificado (+1 −1))
-- 2026-08-03 — `0491c13` — chore: update deps
-    - package-lock.json (modificado (+33 −33))
-    - package.json (modificado (+4 −4))
-- 2026-08-03 — `8cf3956` — chore: quick fix
-    - src/app/(main)/dashboard/patient-monitoring/page.tsx (modificado (+1 −1))
-- 2026-08-03 — `a1889cf` — Merge pull request #79 from arhamkhnz/feat/patient-monitoring
-    - README.md (modificado (+1 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/chart-grid.ts (adicionado (+15 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/data.ts (adicionado (+310 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/patient-card.tsx (adicionado (+71 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/patient-detail.tsx (adicionado (+123 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/patient-monitoring.tsx (adicionado (+144 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/patient-trends.tsx (adicionado (+143 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/realtime-utils.ts (adicionado (+32 −0))
-    - +6 outros arquivos (+440 −0)
-- 2026-08-03 — `45f4e6c` — chore: updates
-    - src/app/(main)/dashboard/patient-monitoring/page.tsx (modificado (+5 −0))
-- 2026-08-03 — `8a4037d` — chore: update readme
-    - README.md (modificado (+1 −0))
-- 2026-08-03 — `a7a2f4e` — chore: quick fix
-    - src/app/(main)/dashboard/patient-monitoring/page.tsx (modificado (+6 −1))
-- 2026-08-03 — `303bf89` — chore: updates
-    - src/app/(main)/dashboard/patient-monitoring/_components/chart-grid.ts (adicionado (+15 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/data.ts (modificado (+10 −10))
-    - src/app/(main)/dashboard/patient-monitoring/_components/patient-card.tsx (modificado (+3 −1))
-    - src/app/(main)/dashboard/patient-monitoring/_components/patient-detail.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/patient-monitoring/_components/patient-trends.tsx (modificado (+25 −9))
-    - src/app/(main)/dashboard/patient-monitoring/_components/vital-waveform.tsx (modificado (+19 −4))
-    - src/app/(main)/dashboard/patient-monitoring/page.tsx (modificado (+5 −5))
-- 2026-08-03 — `fb66296` — chore: quick fixes
-    - src/app/(main)/dashboard/patient-monitoring/_components/patient-detail.tsx (modificado (+51 −196))
-    - src/app/(main)/dashboard/patient-monitoring/_components/patient-monitoring.tsx (modificado (+107 −6))
-    - src/app/(main)/dashboard/patient-monitoring/_components/patient-trends.tsx (adicionado (+127 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/use-patient-vital-series.ts (modificado (+5 −1))
-    - src/app/(main)/dashboard/patient-monitoring/_components/vital-trend-chart.tsx (removido (+0 −64))
-    - src/app/(main)/dashboard/patient-monitoring/page.tsx (modificado (+1 −1))
-- 2026-08-03 — `e37ed9c` — chore: quick fix
-    - src/app/(main)/dashboard/patient-monitoring/_components/patient-monitoring.tsx (modificado (+17 −63))
-    - src/app/(main)/dashboard/patient-monitoring/_components/use-realtime-tick.ts (modificado (+1 −1))
-    - src/app/(main)/dashboard/patient-monitoring/page.tsx (modificado (+23 −1))
-- 2026-08-03 — `f51b777` — chore: updates
-    - src/app/(main)/dashboard/patient-monitoring/_components/patient-card.tsx (modificado (+3 −1))
-    - src/app/(main)/dashboard/patient-monitoring/_components/patient-detail.tsx (modificado (+7 −3))
-    - src/app/(main)/dashboard/patient-monitoring/_components/use-patient-vital-series.ts (adicionado (+197 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/vital-trend-chart.tsx (modificado (+9 −93))
-    - src/app/(main)/dashboard/patient-monitoring/_components/vital-waveform.tsx (modificado (+10 −102))
-- 2026-08-03 — `abffba2` — feat: add patient monitoring dashboard
-    - src/app/(main)/dashboard/patient-monitoring/_components/data.ts (adicionado (+310 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/patient-card.tsx (adicionado (+67 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/patient-detail.tsx (adicionado (+264 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/patient-monitoring.tsx (adicionado (+89 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/realtime-utils.ts (adicionado (+32 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/use-realtime-tick.ts (adicionado (+23 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/vital-trend-chart.tsx (adicionado (+148 −0))
-    - src/app/(main)/dashboard/patient-monitoring/_components/vital-waveform.tsx (adicionado (+149 −0))
-    - +3 outros arquivos (+112 −0)
-- 2026-08-01 — `4727cc7` — chore: update readme
-    - README.md (modificado (+1 −0))
+**Resumo**: 36 commits • 39 arquivos • +6.474 −2.543 • 30 manutenção, 2 merges, 4 novidades
+
+**Novidades**
+- feat: add profile screen
+- feat: migrate dnd kit to latest implementation and packages
+- feat: migrate data table to use tanstack table v9
+- feat: add patient monitoring dashboard
+
+**Arquivos principais**
+- package-lock.json (modificado, +749 −611)
+- src/app/(main)/dashboard/profile/_components/profile-overview.tsx (adicionado, +592 −404)
+- src/app/(main)/dashboard/patient-monitoring/_components/patient-detail.tsx (adicionado, +446 −200)
+- src/app/(main)/dashboard/patient-monitoring/_components/data.ts (adicionado, +630 −10)
+- src/app/(main)/dashboard/profile/_components/profile-data.ts (adicionado, +356 −82)
+- src/app/(main)/dashboard/patient-monitoring/_components/patient-monitoring.tsx (adicionado, +357 −69)
+- src/app/(main)/dashboard/profile/_components/profile-employment-details.tsx (adicionado, +311 −65)
+- src/components/ui/questionnaire.tsx (adicionado, +327 −3)
+- src/app/(main)/dashboard/patient-monitoring/_components/vital-trend-chart.tsx (adicionado e removido, +157 −157)
+- src/app/(main)/dashboard/patient-monitoring/_components/patient-trends.tsx (adicionado, +295 −9)
+- src/app/(main)/dashboard/patient-monitoring/_components/vital-waveform.tsx (adicionado, +178 −106)
+- src/app/(main)/dashboard/profile/_components/profile-documents.tsx (adicionado, +203 −79)
+- src/app/(main)/dashboard/profile/_components/profile-details.tsx (adicionado e removido, +129 −129)
+- src/app/(main)/dashboard/profile/_components/profile-header.tsx (adicionado, +239 −11)
+- src/app/(main)/dashboard/profile/_components/profile-personal-details.tsx (adicionado, +213 −33)
+- +24 outros arquivos
 
 ## 2026-07
 
-- 2026-07-31 — `3424936` — chore: update deps
-    - package-lock.json (modificado (+47 −47))
-    - package.json (modificado (+2 −2))
-- 2026-07-31 — `b0669e9` — Merge pull request #78 from arhamkhnz/feat/file-manager
-    - src/app/(main)/dashboard/file-manager/_components/data.ts (adicionado (+209 −0))
-    - src/app/(main)/dashboard/file-manager/_components/file-actions.tsx (adicionado (+53 −0))
-    - src/app/(main)/dashboard/file-manager/_components/file-grid-view.tsx (adicionado (+67 −0))
-    - src/app/(main)/dashboard/file-manager/_components/file-list-view.tsx (adicionado (+88 −0))
-    - src/app/(main)/dashboard/file-manager/_components/file-manager-toolbar.tsx (adicionado (+86 −0))
-    - src/app/(main)/dashboard/file-manager/_components/folders-section.tsx (adicionado (+81 −0))
-    - src/app/(main)/dashboard/file-manager/page.tsx (adicionado (+64 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+8 −0))
-- 2026-07-31 — `2b53622` — chore: quick fix
-    - src/app/(main)/dashboard/file-manager/page.tsx (modificado (+3 −5))
-- 2026-07-31 — `cc0675b` — feat: add file manager dashboard
-    - src/app/(main)/dashboard/file-manager/_components/data.ts (adicionado (+209 −0))
-    - src/app/(main)/dashboard/file-manager/_components/file-actions.tsx (adicionado (+53 −0))
-    - src/app/(main)/dashboard/file-manager/_components/file-grid-view.tsx (adicionado (+67 −0))
-    - src/app/(main)/dashboard/file-manager/_components/file-list-view.tsx (adicionado (+88 −0))
-    - src/app/(main)/dashboard/file-manager/_components/file-manager-toolbar.tsx (adicionado (+86 −0))
-    - src/app/(main)/dashboard/file-manager/_components/folders-section.tsx (adicionado (+81 −0))
-    - src/app/(main)/dashboard/file-manager/page.tsx (adicionado (+66 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+8 −0))
-- 2026-07-31 — `8236988` — refactor: organize dashboard components
-    - src/app/(main)/dashboard/_components/header/account-switcher.tsx (renomeado)
-    - src/app/(main)/dashboard/_components/header/github-repositories-menu.tsx (renomeado)
-    - src/app/(main)/dashboard/_components/header/layout-controls.tsx (renomeado)
-    - src/app/(main)/dashboard/_components/header/search-dialog.tsx (renomeado)
-    - src/app/(main)/dashboard/_components/header/theme-switcher.tsx (renomeado)
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/_components/sidebar/support-card.tsx (renomeado (+1 −1))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+5 −5))
-- 2026-07-31 — `1b4780a` — chore: code cleanup
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+1 −40))
-    - src/app/(main)/dashboard/_components/sidebar/nav-documents.tsx (removido (+0 −83))
-    - src/app/(main)/dashboard/_components/sidebar/nav-secondary.tsx (removido (+0 −43))
-- 2026-07-31 — `d673cae` — chore: update deps
-    - package-lock.json (modificado (+14 −14))
-    - package.json (modificado (+2 −2))
-- 2026-07-30 — `bf5714c` — chore: quick fix
-    - src/app/(main)/dashboard/kanban/_components/kanban.tsx (modificado (+5 −6))
-- 2026-07-30 — `b7457dc` — chore: update deps
-    - biome.json (modificado (+1 −1))
-    - package-lock.json (modificado (+77 −77))
-    - package.json (modificado (+4 −4))
-- 2026-07-30 — `4177da6` — feat: add project versions dropdown to dashboard header
-    - src/app/(main)/dashboard/_components/github-repositories-menu.tsx (adicionado (+59 −0))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+2 −16))
-- 2026-07-30 — `c710eb0` — chore:add analytics
-    - package-lock.json (modificado (+43 −0))
-    - package.json (modificado (+1 −0))
-    - src/app/layout.tsx (modificado (+3 −0))
-- 2026-07-27 — `2ec9b47` — chore: quick fix
-    - src/app/(main)/dashboard/_components/sidebar/sidebar-support-card.tsx (modificado (+13 −4))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+0 −2))
-- 2026-07-27 — `a5d645d` — chore: update deps
-    - package-lock.json (modificado (+21 −21))
-    - package.json (modificado (+1 −1))
-- 2026-07-26 — `ca3c4d4` — chore: update deps
-    - package-lock.json (modificado (+211 −108))
-    - package.json (modificado (+5 −5))
-- 2026-07-25 — `742353f` — chore: update deps
-    - package-lock.json (modificado (+762 −6235))
-    - package.json (modificado (+4 −4))
-- 2026-07-24 — `58c6645` — chore: revert radix version
-    - package-lock.json (modificado (+6171 −700))
-    - package.json (modificado (+1 −1))
-- 2026-07-23 — `0a00491` — chore: update deps
-    - package-lock.json (modificado (+586 −584))
-    - package.json (modificado (+3 −3))
-- 2026-07-22 — `cf132a3` — chore: update deps
-    - package-lock.json (modificado (+11 −11))
-    - package.json (modificado (+2 −2))
-- 2026-07-22 — `b484645` — chore: update deps
-    - biome.json (modificado (+1 −1))
-    - package-lock.json (modificado (+400 −399))
-    - package.json (modificado (+6 −6))
-    - src/stores/preferences/preferences-provider.tsx (modificado (+1 −1))
-- 2026-07-19 — `ba4978a` — chore: update deps
-    - package-lock.json (modificado (+36 −36))
-    - package.json (modificado (+4 −4))
-- 2026-07-18 — `d292e08` — docs: add React Aria dashboard link
-    - README.md (modificado (+2 −0))
-- 2026-07-17 — `60a000a` — chore: update deps
-    - package-lock.json (modificado (+18 −17))
-    - package.json (modificado (+2 −2))
-- 2026-07-16 — `17ac307` — chore: update deps
-    - biome.json (modificado (+1 −1))
-    - package-lock.json (modificado (+129 −129))
-    - package.json (modificado (+4 −4))
-- 2026-07-13 — `d0d2835` — chore: update readme
-    - README.md (modificado (+1 −1))
-- 2026-07-13 — `5c28b09` — chore: update readme
-    - README.md (modificado (+3 −1))
-- 2026-07-12 — `3191bf0` — chore: update deps
-    - package-lock.json (modificado (+55 −55))
-    - package.json (modificado (+3 −3))
-- 2026-07-08 — `95eaf90` — chore: update deps
-    - biome.json (modificado (+1 −1))
-    - package-lock.json (modificado (+324 −322))
-    - package.json (modificado (+3 −3))
-- 2026-07-05 — `3504473` — chore: update deps
-    - package-lock.json (modificado (+123 −27))
-    - package.json (modificado (+3 −3))
-- 2026-07-03 — `00b1a2e` — chore: update deps
-    - package-lock.json (modificado (+16 −16))
-    - package.json (modificado (+1 −1))
-- 2026-07-02 — `7cec408` — chore: update deps & lint fixes
-    - biome.json (modificado (+1 −1))
-    - package-lock.json (modificado (+86 −86))
-    - package.json (modificado (+3 −3))
-    - src/app/(main)/dashboard/crm/_components/opportunities-section.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/default/_components/recent-customers-table/table.tsx (modificado (+4 −4))
-    - src/app/(main)/dashboard/roles/_components/roles.tsx (modificado (+4 −4))
-    - src/app/(main)/dashboard/tasks/_components/tasks-toolbar.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/users/_components/users.tsx (modificado (+6 −5))
-- 2026-07-02 — `a9be558` — Merge pull request #76 from arhamkhnz/chore/optimize-prefs
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+28 −58))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+8 −5))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+3 −4))
-    - src/app/layout.tsx (modificado (+1 −7))
-    - src/lib/fonts/registry.ts (modificado (+8 −9))
-    - src/lib/preferences/layout-utils.ts (removido (+0 −24))
-    - src/lib/preferences/preference-runtime.ts (adicionado (+17 −0))
-    - +7 outros arquivos (+256 −249)
-- 2026-07-02 — `75eb9c8` — chore: quick fix
-    - src/app/(main)/dashboard/layout.tsx (modificado (+1 −1))
-- 2026-07-02 — `c73d4fd` — chore: updates
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+1 −2))
-    - src/lib/fonts/registry.ts (modificado (+8 −9))
-    - src/lib/preferences/preferences-config.ts (modificado (+10 −8))
-    - src/lib/preferences/preferences-storage.ts (modificado (+6 −4))
-    - src/lib/preferences/theme-utils.ts (modificado (+1 −1))
-    - src/scripts/theme-boot.tsx (modificado (+2 −3))
-    - src/server/server-actions.ts (modificado (+2 −2))
-    - src/stores/preferences/preferences-store.ts (modificado (+1 −2))
-- 2026-07-02 — `1227d0c` — chore: quick fix
-    - src/lib/preferences/theme-utils.ts (modificado (+2 −2))
-    - src/stores/preferences/preferences-store.ts (modificado (+11 −7))
-- 2026-07-02 — `7bd1fed` — chore: quick fix
-    - src/stores/preferences/preferences-provider.tsx (modificado (+2 −2))
-- 2026-07-02 — `948471f` — chore: optimize prefs
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+27 −49))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+8 −5))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+2 −3))
-    - src/app/layout.tsx (modificado (+1 −7))
-    - src/lib/preferences/preference-attributes.ts (removido (+0 −18))
-    - src/lib/preferences/preference-runtime.ts (adicionado (+17 −0))
-    - src/lib/preferences/preferences-config.ts (modificado (+106 −64))
-    - +5 outros arquivos (+135 −169)
-- 2026-07-02 — `cd10abd` — chore: quick fix
-    - src/lib/preferences/preferences-storage.ts (modificado (+2 −5))
-    - src/lib/preferences/theme-utils.ts (modificado (+0 −4))
-- 2026-07-02 — `1709bad` — refactor: simplify preference updates
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+7 −14))
-    - src/lib/preferences/layout-utils.ts (removido (+0 −24))
-    - src/lib/preferences/preference-attributes.ts (adicionado (+18 −0))
+**Resumo**: 38 commits • 44 arquivos • +10.925 −9.515 • 30 manutenção, 2 merges, 2 novidades, 2 refatorações, 1 outros, 1 documentação
+
+**Novidades**
+- feat: add file manager dashboard
+- feat: add project versions dropdown to dashboard header
+
+**Arquivos principais**
+- package-lock.json (modificado, +9.130 −8.884)
+- src/app/(main)/dashboard/file-manager/_components/data.ts (adicionado, +418 −0)
+- src/lib/preferences/preferences-config.ts (modificado, +116 −72)
+- src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado, +63 −123)
+- src/app/(main)/dashboard/file-manager/_components/file-list-view.tsx (adicionado, +176 −0)
+- src/app/(main)/dashboard/file-manager/_components/file-manager-toolbar.tsx (adicionado, +172 −0)
+- src/app/(main)/dashboard/file-manager/_components/folders-section.tsx (adicionado, +162 −0)
+- src/app/(main)/dashboard/file-manager/page.tsx (adicionado, +133 −5)
+- src/app/(main)/dashboard/file-manager/_components/file-grid-view.tsx (adicionado, +134 −0)
+- package.json (modificado, +54 −53)
+- src/app/(main)/dashboard/file-manager/_components/file-actions.tsx (adicionado, +106 −0)
+- src/app/(main)/dashboard/_components/sidebar/nav-documents.tsx (removido, +0 −83)
+- src/app/(main)/dashboard/_components/github-repositories-menu.tsx (adicionado, +59 −0)
+- src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado, +7 −46)
+- src/lib/preferences/layout-utils.ts (removido, +0 −48)
+- +29 outros arquivos
 
 ## 2026-06
 
-- 2026-06-30 — `43f47b8` — refactor: fix maintainability findings (by react doctor)
-    - src/app/(main)/auth/_components/login-form.tsx (modificado (+11 −11))
-    - src/app/(main)/auth/_components/register-form.tsx (modificado (+11 −11))
-    - src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-overview.tsx (modificado (+13 −8))
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/schema.ts (modificado (+1 −1))
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/chart-area-interactive.tsx (modificado (+0 −2))
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/schema.ts (modificado (+1 −1))
-    - src/app/(main)/dashboard/analytics/_components/top-traffic-sources.tsx (modificado (+17 −17))
-    - src/app/(main)/dashboard/crm/_components/opportunities-table/schema.ts (modificado (+1 −1))
-    - +15 outros arquivos (+71 −103)
-- 2026-06-30 — `6cd8312` — chore: update deps
-    - package-lock.json (modificado (+286 −286))
-    - package.json (modificado (+1 −1))
-- 2026-06-30 — `07078ce` — docs: add AGENTS.md guidelines
-    - AGENTS.md (adicionado (+96 −0))
-- 2026-06-30 — `af7bb15` — chore: update deps & components
-    - package-lock.json (modificado (+81 −110))
-    - package.json (modificado (+1 −1))
-    - src/components/ui/attachment.tsx (modificado (+1 −3))
-    - src/components/ui/message-scroller.tsx (modificado (+1 −1))
-- 2026-06-28 — `557c66c` — chore: update deps
-    - package-lock.json (modificado (+51 −22))
-    - package.json (modificado (+4 −4))
-- 2026-06-26 — `6be1585` — chore: quick fixes
-    - src/app/(main)/chat/_components/chat-thread.tsx (modificado (+8 −2))
-    - src/app/(main)/chat/_components/data.ts (modificado (+31 −3))
-- 2026-06-26 — `9dc0e89` — chore: add scroll fade in mail list
-    - src/app/(main)/mail/_components/mail-inbox.tsx (modificado (+1 −1))
-    - src/app/(main)/mail/_components/mail-list.tsx (modificado (+1 −1))
-- 2026-06-26 — `57faadc` — chore: use shadcn chat components for chat screen
-    - src/app/(main)/chat/_components/chat-conversation-list.tsx (modificado (+2 −2))
-    - src/app/(main)/chat/_components/chat-thread.tsx (modificado (+89 −72))
-    - src/app/(main)/chat/_components/data.ts (modificado (+97 −97))
-- 2026-06-26 — `4cbf771` — feat: add new shadcn components & update deps
-    - package-lock.json (modificado (+57 −144))
-    - package.json (modificado (+2 −1))
-    - src/components/ui/attachment.tsx (adicionado (+206 −0))
-    - src/components/ui/bubble.tsx (adicionado (+125 −0))
-    - src/components/ui/marker.tsx (adicionado (+69 −0))
-    - src/components/ui/message-scroller.tsx (adicionado (+131 −0))
-    - src/components/ui/message.tsx (adicionado (+92 −0))
-- 2026-06-26 — `baad672` — chore: add nested ternary lint rule and clean warnings
-    - biome.json (modificado (+1 −0))
-    - src/app/(main)/chat/_components/data.ts (modificado (+2 −6))
-    - src/app/(main)/dashboard/_components/sidebar/nav-main.tsx (modificado (+20 −3))
-    - src/app/(main)/dashboard/default/_components/recent-customers-table/table.tsx (modificado (+7 −10))
-    - src/app/(main)/dashboard/ecommerce/_components/inventory.tsx (modificado (+14 −3))
-    - src/app/(main)/dashboard/ecommerce/_components/kpi-strip.tsx (modificado (+2 −1))
-    - src/app/(main)/dashboard/ecommerce/_components/traffic-sources.tsx (modificado (+4 −1))
-    - src/app/(main)/dashboard/infrastructure/_components/project-environments.tsx (modificado (+17 −8))
-    - +3 outros arquivos (+49 −16)
-- 2026-06-24 — `369ca1d` — chore: update deps
-    - biome.json (modificado (+1 −1))
-    - package-lock.json (modificado (+58 −58))
-    - package.json (modificado (+1 −1))
-- 2026-06-24 — `cc90bbc` — Merge pull request #73 from arhamkhnz/feat/tasks
-    - README.md (modificado (+1 −0))
-    - src/app/(main)/dashboard/tasks/_components/columns.tsx (adicionado (+199 −0))
-    - src/app/(main)/dashboard/tasks/_components/data.ts (adicionado (+778 −0))
-    - src/app/(main)/dashboard/tasks/_components/task-priority-filter.tsx (adicionado (+95 −0))
-    - src/app/(main)/dashboard/tasks/_components/task-status-filter.tsx (adicionado (+95 −0))
-    - src/app/(main)/dashboard/tasks/_components/tasks-toolbar.tsx (adicionado (+94 −0))
-    - src/app/(main)/dashboard/tasks/_components/tasks.tsx (adicionado (+249 −0))
-    - src/app/(main)/dashboard/tasks/page.tsx (adicionado (+14 −0))
-    - +1 outros arquivos (+8 −0)
-- 2026-06-24 — `b4087b3` — chore: quick fixes
-    - src/app/(main)/dashboard/tasks/_components/columns.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/tasks/_components/data.ts (renomeado)
-- 2026-06-24 — `4f43f13` — feat: add tasks
-    - README.md (modificado (+1 −0))
-    - src/app/(main)/dashboard/tasks/_components/columns.tsx (adicionado (+199 −0))
-    - src/app/(main)/dashboard/tasks/_components/data.tsx (adicionado (+778 −0))
-    - src/app/(main)/dashboard/tasks/_components/task-priority-filter.tsx (adicionado (+95 −0))
-    - src/app/(main)/dashboard/tasks/_components/task-status-filter.tsx (adicionado (+95 −0))
-    - src/app/(main)/dashboard/tasks/_components/tasks-toolbar.tsx (adicionado (+94 −0))
-    - src/app/(main)/dashboard/tasks/_components/tasks.tsx (adicionado (+249 −0))
-    - src/app/(main)/dashboard/tasks/page.tsx (adicionado (+14 −0))
-    - +1 outros arquivos (+8 −0)
-- 2026-06-21 — `a0d1044` — chore: update deps & components
-    - package-lock.json (modificado (+50 −125))
-    - package.json (modificado (+4 −4))
-    - src/components/ui/calendar.tsx (modificado (+1 −1))
-- 2026-06-19 — `a37b9be` — chore(calendar): add FullCalendar v7 component setup
-    - biome.json (modificado (+1 −1))
-    - package-lock.json (modificado (+32 −25))
-    - package.json (modificado (+2 −2))
-    - src/app/(main)/dashboard/calendar/_components/calendar.tsx (modificado (+80 −86))
-    - src/app/(main)/dashboard/calendar/_components/event-calendar-views.tsx (removido (+0 −528))
-    - src/components/calendar/event-calendar-views.tsx (adicionado (+497 −0))
-- 2026-06-19 — `8d2b082` — refactor(sidebar): tighten nav item data model
-    - src/app/(main)/dashboard/_components/sidebar/nav-main.tsx (modificado (+48 −33))
-    - src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (modificado (+4 −1))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+44 −16))
-- 2026-06-19 — `5ebca71` — refactor(sidebar): simplify nav item rendering
-    - src/app/(main)/dashboard/_components/sidebar/nav-main.tsx (modificado (+40 −13))
-    - src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (modificado (+6 −11))
-    - src/app/(main)/dashboard/_components/sidebar/sidebar-support-card.tsx (modificado (+4 −4))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+9 −6))
-- 2026-06-19 — `6a9a4a2` — refactor(sidebar): simplify nav item rendering
-    - src/app/(main)/dashboard/_components/sidebar/nav-main.tsx (modificado (+164 −139))
-- 2026-06-18 — `2ae27c6` — fix: polish collapsed sidebar navigation
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+5 −0))
-    - src/app/(main)/dashboard/_components/sidebar/nav-main.tsx (modificado (+10 −2))
-- 2026-06-18 — `b3aaddb` — chore: update deps & components
-    - package-lock.json (modificado (+34 −34))
-    - package.json (modificado (+2 −2))
-    - src/components/ui/carousel.tsx (modificado (+2 −2))
-- 2026-06-18 — `df4898f` — Merge pull request #71 from arhamkhnz/feat/infra
-    - README.md (modificado (+1 −0))
-    - src/app/(main)/dashboard/infrastructure/_components/infrastructure-data.ts (adicionado (+114 −0))
-    - src/app/(main)/dashboard/infrastructure/_components/infrastructure-header.tsx (adicionado (+93 −0))
-    - src/app/(main)/dashboard/infrastructure/_components/project-environments.tsx (adicionado (+287 −0))
-    - src/app/(main)/dashboard/infrastructure/page.tsx (adicionado (+20 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+6 −0))
-- 2026-06-18 — `61c9d1b` — feat: improve infrastructure health data
-    - src/app/(main)/dashboard/infrastructure/_components/infrastructure-data.ts (modificado (+9 −9))
-    - src/app/(main)/dashboard/infrastructure/_components/project-environments.tsx (modificado (+11 −3))
-- 2026-06-18 — `02fe0af` — docs: add infrastructure dashboard to readme
-    - README.md (modificado (+1 −0))
-    - src/app/(main)/dashboard/infrastructure/_components/infrastructure-data.ts (modificado (+0 −5))
-- 2026-06-18 — `4d75100` — feat: refine infrastructure dashboard
-    - src/app/(main)/dashboard/infrastructure/_components/infrastructure-data.ts (modificado (+5 −5))
-    - src/app/(main)/dashboard/infrastructure/_components/infrastructure-header.tsx (modificado (+10 −8))
-    - src/app/(main)/dashboard/infrastructure/_components/infrastructure-project-group.tsx (removido (+0 −242))
-    - src/app/(main)/dashboard/infrastructure/_components/project-environments.tsx (adicionado (+279 −0))
-    - src/app/(main)/dashboard/infrastructure/_components/resource-meter.tsx (removido (+0 −26))
-    - src/app/(main)/dashboard/infrastructure/page.tsx (modificado (+5 −2))
-- 2026-06-18 — `927f156` — feat: add infrastructure dashboard
-    - src/app/(main)/dashboard/infrastructure/_components/infrastructure-data.ts (adicionado (+119 −0))
-    - src/app/(main)/dashboard/infrastructure/_components/infrastructure-header.tsx (adicionado (+91 −0))
-    - src/app/(main)/dashboard/infrastructure/_components/infrastructure-project-group.tsx (adicionado (+242 −0))
-    - src/app/(main)/dashboard/infrastructure/_components/resource-meter.tsx (adicionado (+26 −0))
-    - src/app/(main)/dashboard/infrastructure/page.tsx (adicionado (+17 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+6 −0))
-- 2026-06-16 — `361ac22` — chore: update deps & components
-    - package-lock.json (modificado (+640 −313))
-    - package.json (modificado (+1 −1))
-    - src/components/ui/spinner.tsx (modificado (+1 −1))
-- 2026-06-16 — `4b5a334` — Merge pull request #70 from arhamkhnz/feat/calendar
-    - README.md (modificado (+3 −2))
-    - biome.json (modificado (+11 −1))
-    - package-lock.json (modificado (+51 −0))
-    - package.json (modificado (+2 −0))
-    - src/app/(main)/dashboard/calendar/_components/calendar.tsx (adicionado (+144 −0))
-    - src/app/(main)/dashboard/calendar/_components/event-calendar-views.tsx (adicionado (+528 −0))
-    - src/app/(main)/dashboard/calendar/_components/events-data.ts (adicionado (+22 −0))
-    - src/app/(main)/dashboard/calendar/page.tsx (adicionado (+5 −0))
-    - +1 outros arquivos (+1 −2)
-- 2026-06-16 — `d622da2` — chore: quick fix
-    - src/app/(main)/dashboard/calendar/_components/calendar.tsx (modificado (+1 −1))
-- 2026-06-16 — `b6a5b44` — chore: update readme
-    - README.md (modificado (+3 −2))
-- 2026-06-16 — `4edb326` — feat: add full calendar
-    - biome.json (modificado (+11 −1))
-    - package-lock.json (modificado (+51 −0))
-    - package.json (modificado (+2 −0))
-    - src/app/(main)/dashboard/calendar/_components/calendar.tsx (adicionado (+144 −0))
-    - src/app/(main)/dashboard/calendar/_components/event-calendar-views.tsx (adicionado (+528 −0))
-    - src/app/(main)/dashboard/calendar/_components/events-data.ts (adicionado (+22 −0))
-    - src/app/(main)/dashboard/calendar/page.tsx (modificado (+2 −469))
-- 2026-06-15 — `1b483a3` — feat: add calendar
-    - src/app/(main)/dashboard/calendar/page.tsx (modificado (+470 −1))
-- 2026-06-15 — `8b6f1ff` — Merge branch 'main' into feat/calendar
-    - README.md (modificado (+6 −6))
-    - biome.json (modificado (+4 −4))
-    - package-lock.json (modificado (+1238 −2629))
-    - package.json (modificado (+23 −19))
-    - src/app/(main)/chat/_components/chat-conversation-list.tsx (adicionado (+171 −0))
-    - src/app/(main)/chat/_components/chat-header.tsx (adicionado (+33 −0))
-    - src/app/(main)/chat/_components/chat-profile-details.tsx (adicionado (+152 −0))
-    - src/app/(main)/chat/_components/chat-sidebar.tsx (adicionado (+154 −0))
-    - +50 outros arquivos (+7048 −21)
-- 2026-06-14 — `290f978` — chore: update readme
-    - README.md (modificado (+1 −1))
-- 2026-06-14 — `fcc9add` — chore: add print invoice
-    - src/app/(main)/dashboard/invoice/_components/invoice-paper.tsx (modificado (+7 −6))
-    - src/app/(main)/dashboard/invoice/_components/invoice-preview.tsx (modificado (+47 −32))
-    - src/app/(main)/dashboard/invoice/_components/print-invoice.tsx (adicionado (+25 −0))
-    - src/app/globals.css (modificado (+45 −0))
-- 2026-06-14 — `b9f907d` — Merge pull request #69 from arhamkhnz/feat/invoice
-    - src/app/(main)/dashboard/invoice/_components/client-selector.tsx (adicionado (+76 −0))
-    - src/app/(main)/dashboard/invoice/_components/data.ts (adicionado (+181 −0))
-    - src/app/(main)/dashboard/invoice/_components/invoice-adjustments.tsx (adicionado (+79 −0))
-    - src/app/(main)/dashboard/invoice/_components/invoice-details.tsx (adicionado (+111 −0))
-    - src/app/(main)/dashboard/invoice/_components/invoice-form.tsx (adicionado (+35 −0))
-    - src/app/(main)/dashboard/invoice/_components/invoice-items.tsx (adicionado (+186 −0))
-    - src/app/(main)/dashboard/invoice/_components/invoice-paper.tsx (adicionado (+139 −0))
-    - src/app/(main)/dashboard/invoice/_components/invoice-preview.tsx (adicionado (+62 −0))
-    - +4 outros arquivos (+126 −2)
-- 2026-06-14 — `c144309` — chore: quick fix
-    - src/app/(main)/dashboard/invoice/_components/data.ts (modificado (+3 −5))
-- 2026-06-14 — `81956cd` — feat(invoice): refine defaults and mobile items
-    - src/app/(main)/dashboard/invoice/_components/data.ts (modificado (+23 −26))
-    - src/app/(main)/dashboard/invoice/_components/invoice-items.tsx (modificado (+15 −7))
-- 2026-06-14 — `0129e3e` — refactor(invoice): clean up builder components
-    - src/app/(main)/dashboard/invoice/_components/address-block.tsx (removido (+0 −15))
-    - src/app/(main)/dashboard/invoice/_components/client-selector.tsx (modificado (+46 −34))
-    - src/app/(main)/dashboard/invoice/_components/invoice-adjustments.tsx (renomeado (+4 −4))
-    - src/app/(main)/dashboard/invoice/_components/invoice-details-fields.tsx (removido (+0 −114))
-    - src/app/(main)/dashboard/invoice/_components/invoice-details.tsx (adicionado (+111 −0))
-    - src/app/(main)/dashboard/invoice/_components/invoice-form.tsx (modificado (+8 −8))
-    - src/app/(main)/dashboard/invoice/_components/invoice-items.tsx (renomeado (+37 −35))
-    - src/app/(main)/dashboard/invoice/_components/invoice-preview.tsx (modificado (+18 −19))
-    - +1 outros arquivos (+38 −17)
-- 2026-06-14 — `bc7eea1` — chore: updates
-    - src/app/(main)/dashboard/invoice/_components/client-selector.tsx (modificado (+46 −23))
-    - src/app/(main)/dashboard/invoice/_components/data.ts (modificado (+89 −17))
-    - src/app/(main)/dashboard/invoice/_components/invoice-details-fields.tsx (modificado (+27 −11))
-    - src/app/(main)/dashboard/invoice/_components/invoice-items-editor.tsx (modificado (+11 −16))
-    - src/app/(main)/dashboard/invoice/_components/invoice-paper.tsx (modificado (+17 −5))
-    - src/app/(main)/dashboard/invoice/_components/tax-discount-fields.tsx (modificado (+67 −38))
-- 2026-06-13 — `198d77c` — feat(invoice): refine preview paper layout
-    - src/app/(main)/dashboard/invoice/_components/client-selector.tsx (modificado (+3 −4))
-    - src/app/(main)/dashboard/invoice/_components/data.ts (modificado (+69 −50))
-    - src/app/(main)/dashboard/invoice/_components/invoice-items-editor.tsx (modificado (+57 −72))
-    - src/app/(main)/dashboard/invoice/_components/invoice-paper.tsx (modificado (+72 −82))
-    - src/app/(main)/dashboard/invoice/_components/invoice-preview.tsx (modificado (+13 −41))
-    - src/app/(main)/dashboard/invoice/_components/use-visible-center-position.ts (adicionado (+48 −0))
-- 2026-06-13 — `992b375` — chore: update deps and fix lint warnings
-    - biome.json (modificado (+4 −4))
-    - package-lock.json (modificado (+144 −144))
-    - package.json (modificado (+5 −5))
-    - src/app/(main)/dashboard/kanban/_components/task-card.tsx (modificado (+6 −8))
-    - src/app/(main)/dashboard/logistics/_components/logistics.tsx (modificado (+2 −2))
-- 2026-06-13 — `527a778` — Create invoice builder screen
-    - src/app/(main)/dashboard/invoice/_components/address-block.tsx (adicionado (+15 −0))
-    - src/app/(main)/dashboard/invoice/_components/client-selector.tsx (adicionado (+42 −0))
-    - src/app/(main)/dashboard/invoice/_components/data.ts (adicionado (+95 −0))
-    - src/app/(main)/dashboard/invoice/_components/invoice-details-fields.tsx (adicionado (+98 −0))
-    - src/app/(main)/dashboard/invoice/_components/invoice-form.tsx (adicionado (+35 −0))
-    - src/app/(main)/dashboard/invoice/_components/invoice-items-editor.tsx (adicionado (+196 −0))
-    - src/app/(main)/dashboard/invoice/_components/invoice-paper.tsx (adicionado (+137 −0))
-    - src/app/(main)/dashboard/invoice/_components/invoice-preview.tsx (adicionado (+91 −0))
-    - +3 outros arquivos (+86 −397)
-- 2026-06-11 — `1e7ef04` — Create invoice screen
-    - src/app/(main)/dashboard/invoice/page.tsx (modificado (+415 −1))
-- 2026-06-11 — `730c0ac` — Merge branch 'main' into feat/invoice
-    - README.md (modificado (+5 −5))
-    - biome.json (modificado (+1 −1))
-    - package-lock.json (modificado (+1164 −2555))
-    - package.json (modificado (+22 −18))
-    - src/app/(main)/chat/_components/chat-conversation-list.tsx (adicionado (+171 −0))
-    - src/app/(main)/chat/_components/chat-header.tsx (adicionado (+33 −0))
-    - src/app/(main)/chat/_components/chat-profile-details.tsx (adicionado (+152 −0))
-    - src/app/(main)/chat/_components/chat-sidebar.tsx (adicionado (+154 −0))
-    - +37 outros arquivos (+5969 −19)
-- 2026-06-11 — `ca2b42b` — Merge pull request #68 from arhamkhnz/feat/kanban
-    - README.md (modificado (+1 −1))
-    - src/app/(main)/dashboard/kanban/_components/data.ts (adicionado (+307 −0))
-    - src/app/(main)/dashboard/kanban/_components/kanban-column.tsx (adicionado (+74 −0))
-    - src/app/(main)/dashboard/kanban/_components/kanban.tsx (adicionado (+263 −0))
-    - src/app/(main)/dashboard/kanban/_components/sortable-task-card.tsx (adicionado (+30 −0))
-    - src/app/(main)/dashboard/kanban/_components/task-card.tsx (adicionado (+176 −0))
-    - src/app/(main)/dashboard/kanban/_components/types.ts (adicionado (+45 −0))
-    - src/app/(main)/dashboard/kanban/_components/utils.ts (adicionado (+19 −0))
-    - +3 outros arquivos (+13 −3)
-- 2026-06-11 — `6ea0077` — chore: update readme
-    - README.md (modificado (+1 −1))
-- 2026-06-11 — `804d8e4` — Clean up kanban column data
-    - src/app/(main)/dashboard/kanban/_components/data.ts (modificado (+11 −1))
-    - src/app/(main)/dashboard/kanban/_components/kanban-column.tsx (modificado (+3 −3))
-    - src/app/(main)/dashboard/kanban/_components/kanban.tsx (modificado (+10 −10))
-    - src/app/(main)/dashboard/kanban/_components/types.ts (modificado (+6 −16))
-    - src/app/(main)/dashboard/kanban/_components/utils.ts (modificado (+1 −1))
-- 2026-06-11 — `003cef0` — Refine kanban task board
-    - src/app/(main)/dashboard/kanban/_components/data.ts (modificado (+282 −232))
-    - src/app/(main)/dashboard/kanban/_components/deal-card.tsx (removido (+0 −91))
-    - src/app/(main)/dashboard/kanban/_components/kanban-column.tsx (modificado (+35 −37))
-    - src/app/(main)/dashboard/kanban/_components/kanban.tsx (modificado (+67 −39))
-    - src/app/(main)/dashboard/kanban/_components/sortable-task-card.tsx (renomeado (+6 −6))
-    - src/app/(main)/dashboard/kanban/_components/task-card.tsx (adicionado (+176 −0))
-    - src/app/(main)/dashboard/kanban/_components/types.ts (modificado (+39 −37))
-    - src/app/(main)/dashboard/kanban/_components/utils.ts (modificado (+5 −9))
-- 2026-06-10 — `0412505` — chore: update deps
-    - package-lock.json (modificado (+80 −660))
-    - package.json (modificado (+2 −2))
-- 2026-06-10 — `fc53c8c` — chore: fix layout
-    - src/app/(main)/dashboard/kanban/_components/kanban-toolbar.tsx (removido (+0 −67))
-    - src/app/(main)/dashboard/kanban/_components/kanban.tsx (modificado (+106 −28))
-    - src/app/(main)/dashboard/kanban/_components/view-tabs.tsx (removido (+0 −33))
-    - src/app/(main)/dashboard/kanban/page.tsx (modificado (+5 −1))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+2 −1))
-- 2026-06-09 — `962cd6f` — refactor(kanban): break into components, fix drag cancel and won status
-    - src/app/(main)/dashboard/kanban/_components/data.ts (adicionado (+247 −0))
-    - src/app/(main)/dashboard/kanban/_components/deal-card.tsx (adicionado (+91 −0))
-    - src/app/(main)/dashboard/kanban/_components/kanban-column.tsx (adicionado (+76 −0))
-    - src/app/(main)/dashboard/kanban/_components/kanban-toolbar.tsx (adicionado (+67 −0))
-    - src/app/(main)/dashboard/kanban/_components/kanban.tsx (adicionado (+157 −0))
-    - src/app/(main)/dashboard/kanban/_components/sortable-deal-card.tsx (adicionado (+30 −0))
-    - src/app/(main)/dashboard/kanban/_components/types.ts (adicionado (+53 −0))
-    - src/app/(main)/dashboard/kanban/_components/utils.ts (adicionado (+23 −0))
-    - +2 outros arquivos (+36 −722)
-- 2026-06-08 — `25ae18f` — Merge branch 'main' into feat/kanban
-    - README.md (modificado (+4 −4))
-    - biome.json (modificado (+1 −1))
-    - package-lock.json (modificado (+1052 −1937))
-    - package.json (modificado (+16 −16))
-    - src/app/(main)/chat/_components/chat-conversation-list.tsx (adicionado (+171 −0))
-    - src/app/(main)/chat/_components/chat-header.tsx (adicionado (+33 −0))
-    - src/app/(main)/chat/_components/chat-profile-details.tsx (adicionado (+152 −0))
-    - src/app/(main)/chat/_components/chat-sidebar.tsx (adicionado (+154 −0))
-    - +21 outros arquivos (+3296 −12)
-- 2026-06-08 — `c869910` — chore: update deps & components
-    - README.md (modificado (+4 −4))
-    - package-lock.json (modificado (+691 −1633))
-    - package.json (modificado (+5 −5))
-    - src/components/ui/card.tsx (modificado (+4 −4))
-- 2026-06-08 — `3ed82f3` — Merge pull request #67 from arhamkhnz/feat/chat
-    - src/app/(main)/chat/_components/chat-conversation-list.tsx (adicionado (+171 −0))
-    - src/app/(main)/chat/_components/chat-header.tsx (adicionado (+33 −0))
-    - src/app/(main)/chat/_components/chat-profile-details.tsx (adicionado (+152 −0))
-    - src/app/(main)/chat/_components/chat-sidebar.tsx (adicionado (+154 −0))
-    - src/app/(main)/chat/_components/chat-thread.tsx (adicionado (+239 −0))
-    - src/app/(main)/chat/_components/chat.tsx (adicionado (+88 −0))
-    - src/app/(main)/chat/_components/data.ts (adicionado (+1238 −0))
-    - src/app/(main)/chat/_components/use-chat.ts (adicionado (+26 −0))
-    - +5 outros arquivos (+73 −2)
-- 2026-06-08 — `38058da` — chore: quick fix
-    - src/app/(main)/chat/_components/chat-thread.tsx (modificado (+1 −1))
-- 2026-06-08 — `d21f968` — Make chat responsive
-    - src/app/(main)/chat/_components/chat-conversation-list.tsx (modificado (+3 −2))
-    - src/app/(main)/chat/_components/chat-thread.tsx (modificado (+17 −2))
-    - src/app/(main)/chat/_components/chat.tsx (modificado (+57 −23))
-    - src/hooks/use-lg.ts (adicionado (+19 −0))
-- 2026-06-08 — `cd485a7` — Refine chat interface
-    - src/app/(main)/chat/_components/chat-contact.tsx (removido (+0 −113))
-    - src/app/(main)/chat/_components/chat-conversation-list.tsx (renomeado (+16 −8))
-    - src/app/(main)/chat/_components/chat-profile-details.tsx (adicionado (+152 −0))
-    - src/app/(main)/chat/_components/chat-sidebar.tsx (modificado (+53 −36))
-    - src/app/(main)/chat/_components/chat-thread.tsx (adicionado (+224 −0))
-    - src/app/(main)/chat/_components/chat-view.tsx (removido (+0 −155))
-    - src/app/(main)/chat/_components/chat.tsx (modificado (+18 −16))
-    - src/app/(main)/chat/_components/data.ts (modificado (+955 −87))
-    - +1 outros arquivos (+3 −3)
-- 2026-06-07 — `3ea8416` — Refine chat interface
-    - src/app/(main)/chat/_components/chat-contact.tsx (modificado (+12 −2))
-    - src/app/(main)/chat/_components/chat-conversations.tsx (modificado (+120 −85))
-    - src/app/(main)/chat/_components/chat-header.tsx (modificado (+2 −2))
-    - src/app/(main)/chat/_components/chat-layout-config.ts (removido (+0 −1))
-    - src/app/(main)/chat/_components/chat-view.tsx (modificado (+67 −40))
-    - src/app/(main)/chat/_components/chat.tsx (modificado (+3 −8))
-    - src/app/(main)/chat/_components/data.ts (modificado (+248 −58))
-    - src/app/(main)/chat/_components/use-chat.ts (modificado (+1 −1))
-- 2026-06-06 — `4bc95b4` — Refactor chat inbox layout
-    - src/app/(main)/chat/_components/chat-composer.tsx (removido (+0 −35))
-    - src/app/(main)/chat/_components/chat-contact.tsx (adicionado (+103 −0))
-    - src/app/(main)/chat/_components/chat-conversations.tsx (adicionado (+127 −0))
-    - src/app/(main)/chat/_components/chat-header.tsx (modificado (+24 −20))
-    - src/app/(main)/chat/_components/chat-layout-config.ts (adicionado (+1 −0))
-    - src/app/(main)/chat/_components/chat-messages.tsx (removido (+0 −131))
-    - src/app/(main)/chat/_components/chat-settings.tsx (removido (+0 −95))
-    - src/app/(main)/chat/_components/chat-sidebar.tsx (modificado (+101 −89))
-    - +7 outros arquivos (+370 −175)
-- 2026-06-03 — `014e48d` — chore: updates
-    - src/app/(main)/chat/_components/chat-sidebar.tsx (modificado (+11 −2))
-- 2026-06-03 — `c354474` — chore: quick fix
-    - src/app/(main)/chat/_components/chat-sidebar.tsx (modificado (+3 −1))
-- 2026-06-03 — `c819dbb` — Add standalone chat interface
-    - src/app/(main)/chat/_components/chat-composer.tsx (adicionado (+35 −0))
-    - src/app/(main)/chat/_components/chat-header.tsx (adicionado (+29 −0))
-    - src/app/(main)/chat/_components/chat-messages.tsx (adicionado (+131 −0))
-    - src/app/(main)/chat/_components/chat-settings.tsx (adicionado (+95 −0))
-    - src/app/(main)/chat/_components/chat-sidebar.tsx (adicionado (+114 −0))
-    - src/app/(main)/chat/_components/chat.tsx (adicionado (+40 −0))
-    - src/app/(main)/chat/_components/data.tsx (adicionado (+130 −0))
-    - src/app/(main)/chat/_components/use-chat.ts (adicionado (+27 −0))
-    - +2 outros arquivos (+20 −515)
-- 2026-06-03 — `0f899cd` — chore: chat update
-    - src/app/(external)/test-chat/page.tsx (removido (+0 −654))
-    - src/app/(main)/chat/page.tsx (renomeado)
-    - src/app/(main)/dashboard/chat/page.tsx (modificado (+25 −1))
-- 2026-06-03 — `2fcaf9e` — Merge branch 'main' into feat/chat
-    - biome.json (modificado (+1 −1))
-    - package-lock.json (modificado (+510 −379))
-    - package.json (modificado (+20 −16))
-    - src/app/(main)/dashboard/logistics/_components/logistics.tsx (adicionado (+56 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-data.ts (adicionado (+1001 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-details.tsx (adicionado (+273 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-list.tsx (adicionado (+185 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-route-map.tsx (adicionado (+220 −0))
-    - +14 outros arquivos (+1639 −10)
-- 2026-06-03 — `a4e5cf2` — Merge pull request #65 from arhamkhnz/feat/roles
-    - src/app/(main)/dashboard/roles/_components/roles-table/columns.tsx (adicionado (+143 −0))
-    - src/app/(main)/dashboard/roles/_components/roles-table/data.ts (adicionado (+133 −0))
-    - src/app/(main)/dashboard/roles/_components/roles-table/table.tsx (adicionado (+208 −0))
-    - src/app/(main)/dashboard/roles/_components/roles.tsx (adicionado (+201 −0))
-    - src/app/(main)/dashboard/roles/page.tsx (adicionado (+6 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+1 −2))
-- 2026-06-03 — `2764a7d` — chore: quick fix
-    - src/app/(main)/dashboard/roles/_components/roles.tsx (modificado (+1 −1))
-- 2026-06-03 — `8c956e8` — Refactor roles table
-    - src/app/(main)/dashboard/roles/_components/role-details-panel.tsx (removido (+0 −130))
-    - src/app/(main)/dashboard/roles/_components/role-ui.tsx (removido (+0 −63))
-    - src/app/(main)/dashboard/roles/_components/roles-data.ts (removido (+0 −233))
-    - src/app/(main)/dashboard/roles/_components/roles-table.tsx (removido (+0 −119))
-    - src/app/(main)/dashboard/roles/_components/roles-table/columns.tsx (adicionado (+143 −0))
-    - src/app/(main)/dashboard/roles/_components/roles-table/data.ts (adicionado (+133 −0))
-    - src/app/(main)/dashboard/roles/_components/roles-table/table.tsx (adicionado (+208 −0))
-    - src/app/(main)/dashboard/roles/_components/roles.tsx (modificado (+174 −109))
-    - +1 outros arquivos (+2 −5)
-- 2026-06-01 — `916ec2c` — chore: update deps
-    - package-lock.json (modificado (+67 −67))
-    - package.json (modificado (+6 −6))
-- 2026-06-01 — `36d0705` — chore: update deps
-    - package-lock.json (modificado (+34 −24))
-    - package.json (modificado (+3 −3))
+**Resumo**: 70 commits • 115 arquivos • +29.811 −16.791 • 6 refatorações, 31 manutenção, 2 documentação, 9 novidades, 11 merges, 1 correções, 10 outros
+
+**Novidades**
+- feat: add new shadcn components & update deps
+- feat: add tasks
+- feat: improve infrastructure health data
+- feat: refine infrastructure dashboard
+- feat: add infrastructure dashboard
+- feat: add full calendar
+
+**Correções**
+- fix: polish collapsed sidebar navigation
+
+**Arquivos principais**
+- package-lock.json (modificado, +6.371 −11.145)
+- src/app/(main)/chat/_components/data.ts (adicionado, +2.571 −251)
+- src/app/(main)/dashboard/calendar/_components/event-calendar-views.tsx (adicionado e removido, +1.056 −528)
+- src/app/(main)/dashboard/kanban/_components/data.ts (adicionado, +847 −233)
+- src/app/(main)/chat/_components/chat-sidebar.tsx (adicionado, +898 −128)
+- src/app/(main)/dashboard/logistics/_components/shipment-data.ts (adicionado, +1.001 −0)
+- src/app/(main)/dashboard/calendar/page.tsx (adicionado, +477 −470)
+- src/app/(main)/dashboard/tasks/_components/data.ts (adicionado, +778 −0)
+- src/app/(main)/dashboard/tasks/_components/data.tsx (adicionado, +778 −0)
+- src/app/(main)/chat/_components/chat-profile-details.tsx (adicionado, +760 −0)
+- src/app/(main)/chat/_components/chat-conversation-list.tsx (adicionado, +705 −12)
+- src/app/(main)/dashboard/kanban/_components/kanban.tsx (adicionado, +603 −77)
+- src/app/(main)/chat/_components/chat-thread.tsx (adicionado, +578 −77)
+- src/app/(external)/test-chat/page.tsx (removido, +0 −654)
+- src/app/(main)/dashboard/infrastructure/_components/project-environments.tsx (adicionado, +594 −11)
+- +100 outros arquivos
 
 ## 2026-05
 
-- 2026-05-30 — `fe1c38c` — chore: update deps & component
-    - biome.json (modificado (+1 −1))
-    - package-lock.json (modificado (+110 −110))
-    - package.json (modificado (+5 −5))
-    - src/components/ui/button.tsx (modificado (+2 −2))
-- 2026-05-27 — `65aa86a` — chore: update deps
-    - package-lock.json (modificado (+234 −234))
-    - package.json (modificado (+6 −6))
-- 2026-05-21 — `3e199b4` — chore: update deps
-    - package-lock.json (modificado (+71 −24))
-    - package.json (modificado (+2 −2))
-- 2026-05-21 — `1139a73` — chore: update roles layout
-    - src/app/(main)/dashboard/roles/_components/role-details-panel.tsx (modificado (+10 −10))
-    - src/app/(main)/dashboard/roles/_components/roles-dashboard.tsx (removido (+0 −26))
-    - src/app/(main)/dashboard/roles/_components/roles-header.tsx (removido (+0 −34))
-    - src/app/(main)/dashboard/roles/_components/roles-tabs.tsx (removido (+0 −28))
-    - src/app/(main)/dashboard/roles/_components/roles-toolbar.tsx (removido (+0 −39))
-    - src/app/(main)/dashboard/roles/_components/roles.tsx (adicionado (+136 −0))
-    - src/app/(main)/dashboard/roles/page.tsx (modificado (+6 −2))
-- 2026-05-21 — `1fc20d0` — Merge branch 'main' into feat/roles
-    - src/app/(main)/dashboard/users/_components/data.tsx (adicionado (+332 −0))
-    - src/app/(main)/dashboard/users/_components/users-columns.tsx (adicionado (+221 −0))
-    - src/app/(main)/dashboard/users/_components/users-table.tsx (adicionado (+168 −0))
-    - src/app/(main)/dashboard/users/_components/users.tsx (adicionado (+206 −0))
-    - src/app/(main)/dashboard/users/page.tsx (adicionado (+6 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+1 −2))
-- 2026-05-21 — `4ac4a91` — Merge pull request #63 from arhamkhnz/feat/users
-    - src/app/(main)/dashboard/users/_components/data.tsx (adicionado (+332 −0))
-    - src/app/(main)/dashboard/users/_components/users-columns.tsx (adicionado (+221 −0))
-    - src/app/(main)/dashboard/users/_components/users-table.tsx (adicionado (+168 −0))
-    - src/app/(main)/dashboard/users/_components/users.tsx (adicionado (+206 −0))
-    - src/app/(main)/dashboard/users/page.tsx (adicionado (+6 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+1 −2))
-- 2026-05-21 — `2f608a9` — chore: updates
-    - src/app/(main)/dashboard/users/_components/users-table.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/users/_components/users.tsx (modificado (+6 −4))
-- 2026-05-21 — `c093b24` — chore: updates
-    - src/app/(main)/dashboard/users/_components/users-table.tsx (modificado (+1 −1))
-- 2026-05-21 — `17d1069` — chore: update filters
-    - src/app/(main)/dashboard/users/_components/users-columns.tsx (modificado (+10 −2))
-    - src/app/(main)/dashboard/users/_components/users.tsx (modificado (+14 −4))
-- 2026-05-21 — `6391871` — chore: complete users design
-    - src/app/(main)/dashboard/users/_components/data.tsx (adicionado (+332 −0))
-    - src/app/(main)/dashboard/users/_components/users-columns.tsx (adicionado (+213 −0))
-    - src/app/(main)/dashboard/users/_components/users-data.ts (removido (+0 −165))
-    - src/app/(main)/dashboard/users/_components/users-header.tsx (removido (+0 −121))
-    - src/app/(main)/dashboard/users/_components/users-table.tsx (modificado (+119 −178))
-    - src/app/(main)/dashboard/users/_components/users.tsx (modificado (+189 −9))
-    - src/app/(main)/dashboard/users/page.tsx (modificado (+1 −1))
-- 2026-05-20 — `d9ad326` — feat: add initial chat layouts
-    - src/app/(external)/test-chat-2/page.tsx (adicionado (+520 −0))
-    - src/app/(external)/test-chat/page.tsx (adicionado (+654 −0))
-- 2026-05-20 — `b13977d` — feat: add initial kanban layout
-    - src/app/(main)/dashboard/kanban/page.tsx (modificado (+723 −1))
-- 2026-05-20 — `b59bee2` — Merge branch 'main' into feat/kanban
-    - package-lock.json (modificado (+120 −46))
-    - package.json (modificado (+9 −5))
-    - src/app/(main)/dashboard/logistics/_components/logistics.tsx (adicionado (+56 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-data.ts (adicionado (+1001 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-details.tsx (adicionado (+273 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-list.tsx (adicionado (+185 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-route-map.tsx (adicionado (+220 −0))
-    - src/app/(main)/dashboard/logistics/page.tsx (adicionado (+8 −0))
-    - +2 outros arquivos (+3 −4)
-- 2026-05-20 — `4f28abd` — chore: feat initial roles page
-    - src/app/(main)/dashboard/roles/_components/role-details-panel.tsx (adicionado (+130 −0))
-    - src/app/(main)/dashboard/roles/_components/role-ui.tsx (adicionado (+63 −0))
-    - src/app/(main)/dashboard/roles/_components/roles-dashboard.tsx (adicionado (+26 −0))
-    - src/app/(main)/dashboard/roles/_components/roles-data.ts (adicionado (+233 −0))
-    - src/app/(main)/dashboard/roles/_components/roles-header.tsx (adicionado (+34 −0))
-    - src/app/(main)/dashboard/roles/_components/roles-table.tsx (adicionado (+119 −0))
-    - src/app/(main)/dashboard/roles/_components/roles-tabs.tsx (adicionado (+28 −0))
-    - src/app/(main)/dashboard/roles/_components/roles-toolbar.tsx (adicionado (+39 −0))
-    - +1 outros arquivos (+3 −1)
-- 2026-05-20 — `e96e987` — Merge branch 'main' into feat/roles
-    - package-lock.json (modificado (+120 −46))
-    - package.json (modificado (+9 −5))
-    - src/app/(main)/dashboard/logistics/_components/logistics.tsx (adicionado (+56 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-data.ts (adicionado (+1001 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-details.tsx (adicionado (+273 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-list.tsx (adicionado (+185 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-route-map.tsx (adicionado (+220 −0))
-    - src/app/(main)/dashboard/logistics/page.tsx (adicionado (+8 −0))
-    - +2 outros arquivos (+3 −4)
-- 2026-05-20 — `9bea0ea` — feat: initial users page layout
-    - src/app/(main)/dashboard/users/_components/users-data.ts (adicionado (+165 −0))
-    - src/app/(main)/dashboard/users/_components/users-header.tsx (adicionado (+121 −0))
-    - src/app/(main)/dashboard/users/_components/users-table.tsx (adicionado (+227 −0))
-    - src/app/(main)/dashboard/users/_components/users.tsx (adicionado (+14 −0))
-    - src/app/(main)/dashboard/users/page.tsx (modificado (+4 −1))
-- 2026-05-20 — `9f58902` — Merge branch 'main' into feat/users
-    - package-lock.json (modificado (+120 −46))
-    - package.json (modificado (+9 −5))
-    - src/app/(main)/dashboard/logistics/_components/logistics.tsx (adicionado (+56 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-data.ts (adicionado (+1001 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-details.tsx (adicionado (+273 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-list.tsx (adicionado (+185 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-route-map.tsx (adicionado (+220 −0))
-    - src/app/(main)/dashboard/logistics/page.tsx (adicionado (+8 −0))
-    - +2 outros arquivos (+3 −4)
-- 2026-05-20 — `4d5a848` — chore: update deps & component
-    - package-lock.json (modificado (+46 −46))
-    - package.json (modificado (+5 −5))
-    - src/components/ui/toggle-group.tsx (modificado (+2 −2))
-- 2026-05-20 — `9a734de` — Merge pull request #62 from arhamkhnz/feat/logistics
-    - package-lock.json (modificado (+74 −0))
-    - package.json (modificado (+4 −0))
-    - src/app/(main)/dashboard/logistics/_components/logistics.tsx (adicionado (+56 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-data.ts (adicionado (+1001 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-details.tsx (adicionado (+273 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-list.tsx (adicionado (+185 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipment-route-map.tsx (adicionado (+220 −0))
-    - src/app/(main)/dashboard/logistics/page.tsx (adicionado (+8 −0))
-    - +1 outros arquivos (+1 −2)
-- 2026-05-20 — `75ba611` — chore: quick fix
-    - src/app/(main)/dashboard/logistics/_components/logistics.tsx (modificado (+1 −9))
-- 2026-05-20 — `582e6c3` — chore: remove unwanted dependency
-    - package-lock.json (modificado (+7 −7))
-    - package.json (modificado (+0 −1))
-- 2026-05-20 — `6b3ae2f` — chore: updates
-    - src/app/(main)/dashboard/logistics/_components/logistics.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/logistics/page.tsx (modificado (+2 −2))
-- 2026-05-20 — `808f7f8` — Make logistics details responsive
-    - src/app/(main)/dashboard/logistics/_components/logistics.tsx (modificado (+49 −15))
-    - src/app/(main)/dashboard/logistics/_components/shipment-details.tsx (modificado (+58 −46))
-- 2026-05-20 — `060c547` — Refine logistics shipment details
-    - src/app/(main)/dashboard/logistics/_components/logistics.tsx (modificado (+6 −6))
-    - src/app/(main)/dashboard/logistics/_components/shipment-data.ts (renomeado (+370 −26))
-    - src/app/(main)/dashboard/logistics/_components/shipment-details.tsx (renomeado (+71 −25))
-    - src/app/(main)/dashboard/logistics/_components/shipment-list.tsx (renomeado (+3 −3))
-    - src/app/(main)/dashboard/logistics/_components/shipment-route-map.tsx (renomeado (+3 −3))
-    - src/app/(main)/dashboard/logistics/page.tsx (modificado (+2 −2))
-- 2026-05-20 — `bc63c26` — chore: updates
-    - public/features.json (removido (+0 −8028))
-    - src/app/(main)/dashboard/logistics/_components/data.ts (modificado (+105 −4))
-    - src/app/(main)/dashboard/logistics/_components/logistics.tsx (adicionado (+30 −0))
-    - src/app/(main)/dashboard/logistics/_components/main-panel.tsx (modificado (+170 −90))
-    - src/app/(main)/dashboard/logistics/_components/route-map.tsx (modificado (+165 −92))
-    - src/app/(main)/dashboard/logistics/_components/shipments-panel.tsx (modificado (+41 −10))
-    - src/app/(main)/dashboard/logistics/_components/status-badge.tsx (removido (+0 −12))
-    - src/app/(main)/dashboard/logistics/page.tsx (modificado (+2 −15))
-- 2026-05-19 — `4777e2b` — chore: updates
-    - src/app/(main)/dashboard/logistics/_components/data.ts (modificado (+510 −27))
-    - src/app/(main)/dashboard/logistics/_components/shipments-panel.tsx (modificado (+42 −21))
-- 2026-05-19 — `824abfc` — feat: add logistics dashboard
-    - package-lock.json (modificado (+81 −7))
-    - package.json (modificado (+5 −0))
-    - public/features.json (adicionado (+8028 −0))
-    - src/app/(main)/dashboard/logistics/_components/data.ts (adicionado (+73 −0))
-    - src/app/(main)/dashboard/logistics/_components/main-panel.tsx (adicionado (+135 −0))
-    - src/app/(main)/dashboard/logistics/_components/route-map.tsx (adicionado (+147 −0))
-    - src/app/(main)/dashboard/logistics/_components/shipments-panel.tsx (adicionado (+133 −0))
-    - src/app/(main)/dashboard/logistics/_components/status-badge.tsx (adicionado (+12 −0))
-    - +2 outros arquivos (+22 −2)
-- 2026-05-18 — `5b6feff` — feat: add roles route
-    - src/app/(main)/dashboard/roles/page.tsx (adicionado (+3 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+1 −2))
-- 2026-05-18 — `1bac9e5` — feat: add users route
-    - src/app/(main)/dashboard/users/page.tsx (adicionado (+3 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+1 −2))
-- 2026-05-18 — `503e42c` — feat: add invoice route
-    - src/app/(main)/dashboard/invoice/page.tsx (adicionado (+3 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+1 −2))
-- 2026-05-18 — `a0f0d30` — feat: add kanban route
-    - src/app/(main)/dashboard/kanban/page.tsx (adicionado (+3 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+1 −2))
-- 2026-05-18 — `e21fd47` — feat: add calendar route
-    - src/app/(main)/dashboard/calendar/page.tsx (adicionado (+3 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+1 −2))
-- 2026-05-18 — `5fc2523` — feat: add chat route
-    - src/app/(main)/dashboard/chat/page.tsx (adicionado (+3 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+1 −2))
-- 2026-05-18 — `6013cce` — chore: update readme
-    - README.md (modificado (+1 −1))
-- 2026-05-18 — `2d5dcc0` — Merge pull request #60 from arhamkhnz/update-mail-sidebar
-    - src/app/(main)/dashboard/mail/_components/mail-layout-config.ts (removido (+0 −10))
-    - src/app/(main)/dashboard/mail/_components/mail-nav.tsx (removido (+0 −65))
-    - src/app/(main)/dashboard/mail/_components/mail-sidebar.tsx (removido (+0 −223))
-    - src/app/(main)/dashboard/mail/_components/mail.tsx (removido (+0 −130))
-    - src/app/(main)/dashboard/mail/page.tsx (modificado (+20 −24))
-    - src/app/(main)/mail/_components/data.tsx (renomeado (+74 −152))
-    - src/app/(main)/mail/_components/mail-inbox.tsx (renomeado (+5 −11))
-    - src/app/(main)/mail/_components/mail-layout-config.ts (adicionado (+6 −0))
-    - +7 outros arquivos (+360 −5)
-- 2026-05-18 — `46b059d` — feat: add dashboard mail preview
-    - src/app/(main)/dashboard/mail/page.tsx (adicionado (+27 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+1 −2))
-- 2026-05-18 — `973d300` — feat: move mail into standalone layout
-    - src/app/(main)/dashboard/mail-example/_components/app-sidebar.tsx (removido (+0 −246))
-    - src/app/(main)/dashboard/mail-example/_components/nav-user.tsx (removido (+0 −98))
-    - src/app/(main)/dashboard/mail-example/page.tsx (removido (+0 −49))
-    - src/app/(main)/dashboard/mail/_components/mail-layout-config.ts (removido (+0 −10))
-    - src/app/(main)/dashboard/mail/_components/mail-nav.tsx (removido (+0 −65))
-    - src/app/(main)/dashboard/mail/_components/mail-sidebar.tsx (removido (+0 −223))
-    - src/app/(main)/dashboard/mail/_components/mail.tsx (removido (+0 −130))
-    - src/app/(main)/dashboard/mail/mail-sidebar.tsx (removido (+0 −167))
-    - +12 outros arquivos (+433 −205)
-- 2026-05-17 — `5b68489` — feat: add mail sidebar shell
-    - src/app/(main)/dashboard/mail-example/_components/app-sidebar.tsx (adicionado (+246 −0))
-    - src/app/(main)/dashboard/mail-example/_components/nav-user.tsx (adicionado (+98 −0))
-    - src/app/(main)/dashboard/mail-example/page.tsx (adicionado (+49 −0))
-    - src/app/(main)/dashboard/mail/layout.tsx (adicionado (+19 −0))
-    - src/app/(main)/dashboard/mail/mail-sidebar.tsx (adicionado (+167 −0))
-- 2026-05-17 — `1119219` — chore: update mail sidebar defaults
-    - src/app/(main)/dashboard/mail/_components/mail-layout-config.ts (modificado (+2 −2))
-- 2026-05-16 — `288395a` — chore: update deps & components
-    - package-lock.json (modificado (+64 −41))
-    - package.json (modificado (+3 −3))
-    - src/components/ui/sidebar.tsx (modificado (+1 −1))
-- 2026-05-16 — `e3ae25a` — Merge pull request #58 from arhamkhnz/feat/mail
-    - src/app/(main)/dashboard/layout.tsx (modificado (+5 −1))
-    - src/app/(main)/dashboard/mail/_components/data.tsx (adicionado (+559 −0))
-    - src/app/(main)/dashboard/mail/_components/mail-inbox.tsx (adicionado (+81 −0))
-    - src/app/(main)/dashboard/mail/_components/mail-layout-config.ts (adicionado (+10 −0))
-    - src/app/(main)/dashboard/mail/_components/mail-list.tsx (adicionado (+111 −0))
-    - src/app/(main)/dashboard/mail/_components/mail-nav.tsx (adicionado (+65 −0))
-    - src/app/(main)/dashboard/mail/_components/mail-sidebar.tsx (adicionado (+223 −0))
-    - src/app/(main)/dashboard/mail/_components/mail-view.tsx (adicionado (+268 −0))
-    - +4 outros arquivos (+188 −2)
-- 2026-05-16 — `d2e6351` — feat: improve mail page responsiveness
-    - src/app/(main)/dashboard/mail/_components/mail-inbox.tsx (modificado (+16 −3))
-    - src/app/(main)/dashboard/mail/_components/mail-list.tsx (modificado (+6 −4))
-    - src/app/(main)/dashboard/mail/_components/mail-view.tsx (modificado (+11 −2))
-    - src/app/(main)/dashboard/mail/_components/mail.tsx (modificado (+49 −0))
-- 2026-05-16 — `a50e4d5` — chore: update collapsed responsiveness
-    - src/app/(main)/dashboard/mail/_components/mail-inbox.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/mail/_components/mail-nav.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/mail/_components/mail-sidebar.tsx (modificado (+158 −77))
-- 2026-05-16 — `4376ae9` — chore: update responsiveness
-    - src/app/(main)/dashboard/mail/_components/mail-nav.tsx (modificado (+23 −31))
-    - src/app/(main)/dashboard/mail/_components/mail-sidebar.tsx (modificado (+10 −3))
-- 2026-05-16 — `98a4242` — chore: quick fix
-    - src/app/(main)/dashboard/mail/_components/mail-list.tsx (modificado (+1 −1))
-- 2026-05-16 — `36e24da` — chore: quick fix
-    - src/app/(main)/dashboard/mail/_components/mail-inbox.tsx (modificado (+3 −1))
-- 2026-05-16 — `4b7ce10` — Enrich mail dataset with attachments and dynamic timestamps
-    - src/app/(main)/dashboard/mail/_components/data.tsx (modificado (+313 −95))
-    - src/app/(main)/dashboard/mail/_components/mail-inbox.tsx (modificado (+32 −27))
-    - src/app/(main)/dashboard/mail/_components/mail-list.tsx (modificado (+80 −54))
-    - src/app/(main)/dashboard/mail/_components/mail-view.tsx (modificado (+99 −40))
-- 2026-05-16 — `ce7589c` — build mail message view toolbar
-    - src/app/(main)/dashboard/mail/_components/mail-display.tsx (removido (+0 −199))
-    - src/app/(main)/dashboard/mail/_components/mail-view.tsx (modificado (+200 −0))
-    - src/app/(main)/dashboard/mail/_components/mail.tsx (modificado (+2 −2))
-- 2026-05-15 — `9beeb2b` — chore: updates
-    - src/app/(main)/dashboard/mail/_components/data.tsx (modificado (+1 −1))
-- 2026-05-15 — `957d0f3` — chore: quick fixes
-    - src/app/(main)/dashboard/mail/_components/mail-sidebar.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/mail/_components/mail.tsx (modificado (+1 −1))
-- 2026-05-15 — `6032c5e` — refactor mail sidebar and inbox layout
-    - src/app/(main)/dashboard/mail/_components/account-switcher.tsx (removido (+0 −48))
-    - src/app/(main)/dashboard/mail/_components/data.tsx (modificado (+75 −34))
-    - src/app/(main)/dashboard/mail/_components/mail-inbox.tsx (adicionado (+61 −0))
-    - src/app/(main)/dashboard/mail/_components/mail-layout-config.ts (modificado (+1 −1))
-    - src/app/(main)/dashboard/mail/_components/mail-list.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/mail/_components/mail-nav.tsx (renomeado (+17 −14))
-    - src/app/(main)/dashboard/mail/_components/mail-sidebar.tsx (adicionado (+135 −0))
-    - src/app/(main)/dashboard/mail/_components/mail-view.tsx (adicionado)
-    - +1 outros arquivos (+6 −131)
-- 2026-05-12 — `dc96d69` — Replace mail state with Zustand
-    - package-lock.json (modificado (+0 −30))
-    - package.json (modificado (+0 −1))
-    - src/app/(main)/dashboard/mail/_components/use-mail.ts (modificado (+16 −5))
-- 2026-05-12 — `bf0fb58` — Update mail layout persistence
-    - src/app/(main)/dashboard/layout.tsx (modificado (+5 −1))
-    - src/app/(main)/dashboard/mail/_components/mail-layout-config.ts (adicionado (+10 −0))
-    - src/app/(main)/dashboard/mail/_components/mail-list.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/mail/_components/mail.tsx (modificado (+150 −144))
-    - src/app/(main)/dashboard/mail/page.tsx (modificado (+25 −8))
-- 2026-05-12 — `0596c77` — Merge branch 'main' into feat/mail
-    - README.md (modificado (+2 −2))
-    - package-lock.json (modificado (+30 −30))
-    - package.json (modificado (+2 −2))
-    - src/app/(main)/dashboard/academy/_components/assignment-status.tsx (adicionado (+114 −0))
-    - src/app/(main)/dashboard/academy/_components/class-schedule.tsx (adicionado (+133 −0))
-    - src/app/(main)/dashboard/academy/_components/kpi-cards.tsx (adicionado (+78 −0))
-    - src/app/(main)/dashboard/academy/_components/performance-highlights.tsx (adicionado (+163 −0))
-    - src/app/(main)/dashboard/academy/_components/upcoming-events.tsx (adicionado (+79 −0))
-    - +5 outros arquivos (+69 −10)
-- 2026-05-12 — `02b4698` — Update dashboard availability
-    - README.md (modificado (+2 −2))
-    - package-lock.json (modificado (+30 −30))
-    - package.json (modificado (+2 −2))
-    - src/app/(main)/dashboard/finance/_components/balance-distribution-card.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/finance/_components/income-breakdown.tsx (modificado (+3 −3))
-    - src/app/(main)/dashboard/finance/_components/overview-kpis.tsx (modificado (+4 −4))
-- 2026-05-12 — `e6fedb8` — Merge pull request #57 from arhamkhnz/feat/academy
-    - src/app/(main)/dashboard/academy/_components/assignment-status.tsx (adicionado (+114 −0))
-    - src/app/(main)/dashboard/academy/_components/class-schedule.tsx (adicionado (+133 −0))
-    - src/app/(main)/dashboard/academy/_components/kpi-cards.tsx (adicionado (+78 −0))
-    - src/app/(main)/dashboard/academy/_components/performance-highlights.tsx (adicionado (+163 −0))
-    - src/app/(main)/dashboard/academy/_components/upcoming-events.tsx (adicionado (+79 −0))
-    - src/app/(main)/dashboard/academy/page.tsx (adicionado (+59 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+2 −2))
-- 2026-05-12 — `e6545ac` — chore: updates
-    - src/app/(main)/dashboard/academy/_components/performance-highlights.tsx (modificado (+1 −2))
-- 2026-05-12 — `0fbcb5a` — Refine academy teacher dashboard
-    - biome.json (modificado (+1 −1))
-    - src/app/(main)/dashboard/academy/_components/assignment-status.tsx (adicionado (+114 −0))
-    - src/app/(main)/dashboard/academy/_components/class-schedule.tsx (modificado (+8 −27))
-    - src/app/(main)/dashboard/academy/_components/kpi-cards.tsx (modificado (+7 −7))
-    - src/app/(main)/dashboard/academy/_components/performance-highlights.tsx (adicionado (+164 −0))
-    - src/app/(main)/dashboard/academy/_components/upcoming-events.tsx (adicionado (+79 −0))
-    - src/app/(main)/dashboard/academy/page.tsx (modificado (+22 −7))
-- 2026-05-11 — `c0f9f79` — chore: update KPI
-    - src/app/(main)/dashboard/academy/_components/kpi-cards.tsx (modificado (+2 −2))
-- 2026-05-11 — `5532e07` — Add academy teacher dashboard
-    - biome.json (modificado (+1 −1))
-    - src/app/(main)/dashboard/academy/_components/class-schedule.tsx (adicionado (+152 −0))
-    - src/app/(main)/dashboard/academy/_components/kpi-cards.tsx (modificado (+11 −21))
-    - src/app/(main)/dashboard/academy/page.tsx (modificado (+5 −2))
-- 2026-05-11 — `5f905a5` — feat(academy): finalize academy dashboard layout and KPI cards
-    - src/app/(main)/dashboard/academy/_components/kpi-cards.tsx (adicionado (+88 −0))
-    - src/app/(main)/dashboard/academy/page.tsx (adicionado (+41 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+2 −2))
-- 2026-05-10 — `3ed2930` — initial commit: shadcn mail example
-    - package-lock.json (modificado (+30 −0))
-    - package.json (modificado (+1 −0))
-    - src/app/(main)/dashboard/mail/_components/account-switcher.tsx (adicionado (+48 −0))
-    - src/app/(main)/dashboard/mail/_components/data.tsx (adicionado (+300 −0))
-    - src/app/(main)/dashboard/mail/_components/mail-display.tsx (adicionado (+199 −0))
-    - src/app/(main)/dashboard/mail/_components/mail-list.tsx (adicionado (+83 −0))
-    - src/app/(main)/dashboard/mail/_components/mail.tsx (adicionado (+200 −0))
-    - src/app/(main)/dashboard/mail/_components/nav.tsx (adicionado (+70 −0))
-    - +3 outros arquivos (+30 −2)
-- 2026-05-10 — `4b130a5` — chore: quick fix
-    - src/app/(main)/dashboard/ecommerce/_components/customer-reviews.tsx (modificado (+2 −2))
-- 2026-05-10 — `d1f4274` — chore: revert react-day-picker version
-    - package-lock.json (modificado (+22 −5))
-    - package.json (modificado (+1 −1))
-- 2026-05-10 — `7b623b9` — chore: update deps
-    - biome.json (modificado (+1 −1))
-    - package-lock.json (modificado (+48 −65))
-    - package.json (modificado (+3 −3))
-- 2026-05-10 — `29e6da7` — Merge pull request #55 from arhamkhnz/feat/ecommerce
-    - src/app/(main)/dashboard/ecommerce/_components/customer-reviews.tsx (adicionado (+71 −0))
-    - src/app/(main)/dashboard/ecommerce/_components/inventory.tsx (adicionado (+130 −0))
-    - src/app/(main)/dashboard/ecommerce/_components/kpi-strip.tsx (adicionado (+304 −0))
-    - src/app/(main)/dashboard/ecommerce/_components/recent-orders-table/columns.tsx (adicionado (+194 −0))
-    - src/app/(main)/dashboard/ecommerce/_components/recent-orders-table/data.json (adicionado (+308 −0))
-    - src/app/(main)/dashboard/ecommerce/_components/recent-orders-table/formatters.ts (adicionado (+31 −0))
-    - src/app/(main)/dashboard/ecommerce/_components/recent-orders-table/schema.ts (adicionado (+13 −0))
-    - src/app/(main)/dashboard/ecommerce/_components/recent-orders.tsx (adicionado (+233 −0))
-    - +5 outros arquivos (+632 −2)
-- 2026-05-10 — `8f5c37f` — Add ecommerce dashboard insights
-    - src/app/(main)/dashboard/ecommerce/_components/customer-reviews.tsx (adicionado (+71 −0))
-    - src/app/(main)/dashboard/ecommerce/_components/inventory.tsx (adicionado (+130 −0))
-    - src/app/(main)/dashboard/ecommerce/_components/recent-orders.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/ecommerce/_components/top-products.tsx (adicionado (+105 −0))
-    - src/app/(main)/dashboard/ecommerce/page.tsx (modificado (+12 −0))
-- 2026-05-09 — `9a3cb0e` — Add ecommerce recent orders table
-    - src/app/(main)/dashboard/ecommerce/_components/recent-orders-table/columns.tsx (adicionado (+194 −0))
-    - src/app/(main)/dashboard/ecommerce/_components/recent-orders-table/data.json (adicionado (+308 −0))
-    - src/app/(main)/dashboard/ecommerce/_components/recent-orders-table/formatters.ts (adicionado (+31 −0))
-    - src/app/(main)/dashboard/ecommerce/_components/recent-orders-table/schema.ts (adicionado (+13 −0))
-    - src/app/(main)/dashboard/ecommerce/_components/recent-orders.tsx (adicionado (+233 −0))
-    - src/app/(main)/dashboard/ecommerce/page.tsx (modificado (+4 −0))
-- 2026-05-09 — `1f5e18b` — chore: revert react-day-picker version
-    - package-lock.json (modificado (+22 −5))
-    - package.json (modificado (+1 −1))
-- 2026-05-09 — `e0802bf` — chore: update deps
-    - package-lock.json (modificado (+144 −161))
-    - package.json (modificado (+4 −4))
-- 2026-05-08 — `96fc15c` — Add ecommerce traffic sources card
-    - src/app/(main)/dashboard/ecommerce/_components/traffic-sources.tsx (adicionado (+221 −0))
-    - src/app/(main)/dashboard/ecommerce/page.tsx (modificado (+4 −0))
-- 2026-05-08 — `8693ee8` — chore: updates
-    - src/app/(main)/dashboard/ecommerce/_components/store-traffic.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/ecommerce/page.tsx (modificado (+3 −1))
-- 2026-05-07 — `9cc357e` — Add ecommerce store traffic chart
-    - src/app/(main)/dashboard/ecommerce/_components/store-traffic.tsx (adicionado (+217 −0))
-    - src/app/(main)/dashboard/ecommerce/page.tsx (modificado (+2 −0))
-- 2026-05-07 — `081277b` — chore: update deps
-    - package-lock.json (modificado (+86 −86))
-    - package.json (modificado (+3 −3))
-- 2026-05-07 — `09fc03d` — chore: quick fix
-    - src/app/(main)/dashboard/ecommerce/_components/kpi-strip.tsx (modificado (+2 −1))
-- 2026-05-07 — `10994ac` — Refine ecommerce dashboard filters
-    - src/app/(main)/dashboard/ecommerce/_components/kpi-strip.tsx (modificado (+32 −3))
-    - src/app/(main)/dashboard/ecommerce/page.tsx (modificado (+47 −3))
-- 2026-05-05 — `1024b22` — chore: height fix
-    - src/app/(main)/dashboard/ecommerce/_components/kpi-strip.tsx (modificado (+1 −1))
-- 2026-05-05 — `20f063c` — chore: quick fix
-    - src/app/(main)/dashboard/ecommerce/_components/kpi-strip.tsx (modificado (+1 −1))
-- 2026-05-05 — `0e1ef86` — chore: update deps
-    - package-lock.json (modificado (+41 −41))
-    - package.json (modificado (+4 −4))
-- 2026-05-05 — `8ae6ed5` — Add ecommerce dashboard overview
-    - src/app/(main)/dashboard/ecommerce/_components/kpi-strip.tsx (adicionado (+274 −0))
-    - src/app/(main)/dashboard/ecommerce/page.tsx (adicionado (+20 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+1 −2))
-- 2026-05-03 — `77e2487` — chore: update deps
-    - package-lock.json (modificado (+8 −8))
-    - package.json (modificado (+2 −2))
-- 2026-05-03 — `6b5e27b` — Refine account switcher active state
-    - src/app/(main)/dashboard/_components/sidebar/account-switcher.tsx (modificado (+19 −6))
-- 2026-05-03 — `c773d0f` — Merge pull request #54 from arhamkhnz/feat/analytics-v2
-    - README.md (modificado (+1 −1))
-    - src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-actions-manager-queue.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-actions-risk-ledger.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-drivers-coverage-triage.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-drivers-forecast-target.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-overview.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/analytics-v1/page.tsx (adicionado (+23 −0))
-    - src/app/(main)/dashboard/analytics/_components/analytics-kpi-strip.tsx (adicionado (+142 −0))
-    - +8 outros arquivos (+1712 −14)
-- 2026-05-03 — `d3e5e10` — docs: add analytics v1 to readme
-    - README.md (modificado (+1 −1))
-- 2026-05-02 — `1fecafa` — chore: update deps
-    - biome.json (modificado (+1 −1))
-    - package-lock.json (modificado (+96 −96))
-    - package.json (modificado (+5 −5))
-- 2026-05-02 — `5d5baa5` — feat: promote analytics v2 route
-    - src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-actions-manager-queue.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-actions-risk-ledger.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-drivers-coverage-triage.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-drivers-forecast-target.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/analytics-v1/_components/analytics-overview.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/analytics-v1/page.tsx (adicionado (+23 −0))
-    - src/app/(main)/dashboard/analytics-v2/page.tsx (removido (+0 −84))
-    - src/app/(main)/dashboard/analytics/_components/analytics-kpi-strip.tsx (renomeado)
-    - +7 outros arquivos (+76 −19)
-- 2026-05-02 — `b1c7e61` — feat: add analytics page performance card
-    - src/app/(main)/dashboard/analytics-v2/_components/top-pages.tsx (adicionado (+48 −0))
-    - src/app/(main)/dashboard/analytics-v2/_components/top-traffic-sources.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/analytics-v2/page.tsx (modificado (+5 −1))
-- 2026-05-02 — `9e2e09d` — chore: align analytics source tab padding
-    - src/app/(main)/dashboard/analytics-v2/_components/top-traffic-sources.tsx (modificado (+2 −2))
-- 2026-05-02 — `bb6cafb` — chore: adjust analytics sources spacing
-    - src/app/(main)/dashboard/analytics-v2/_components/top-traffic-sources.tsx (modificado (+1 −1))
-- 2026-05-02 — `10291eb` — feat: add analytics traffic sources card
-    - src/app/(main)/dashboard/analytics-v2/_components/realtime-visitors.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/analytics-v2/_components/top-traffic-sources.tsx (adicionado (+128 −0))
-    - src/app/(main)/dashboard/analytics-v2/_components/traffic-quality.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/analytics-v2/page.tsx (modificado (+7 −0))
-- 2026-05-02 — `019de60` — chore: update indicator
-    - src/app/(main)/dashboard/analytics-v2/_components/realtime-visitors.tsx (modificado (+7 −4))
-- 2026-05-02 — `8b98b5a` — feat: refine analytics v2 quality charts
-    - src/app/(main)/dashboard/analytics-v2/_components/analytics-kpi-strip.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/analytics-v2/_components/engagement-momentum-card.tsx (removido (+0 −151))
-    - src/app/(main)/dashboard/analytics-v2/_components/realtime-visitors.tsx (renomeado (+2 −2))
-    - src/app/(main)/dashboard/analytics-v2/_components/traffic-quality.tsx (adicionado (+179 −0))
-    - src/app/(main)/dashboard/analytics-v2/page.tsx (modificado (+13 −5))
-- 2026-05-01 — `71bdcc1` — chore: updates
-    - src/app/(main)/dashboard/analytics-v2/_components/engagement-momentum-card.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/analytics-v2/_components/traffic-trend-card.tsx (modificado (+6 −6))
-    - src/app/(main)/dashboard/analytics-v2/_components/visitor-coverage-card.tsx (removido (+0 −89))
-    - src/app/(main)/dashboard/analytics-v2/page.tsx (modificado (+13 −14))
-- 2026-05-01 — `175937a` — feat: add analytics realtime and quality cards
-    - src/app/(main)/dashboard/analytics-v2/_components/analytics-kpi-strip.tsx (modificado (+10 −10))
-    - src/app/(main)/dashboard/analytics-v2/_components/analytics-toolbar.tsx (modificado (+45 −58))
-    - src/app/(main)/dashboard/analytics-v2/_components/engagement-momentum-card.tsx (adicionado (+151 −0))
-    - src/app/(main)/dashboard/analytics-v2/_components/traffic-trend-card.tsx (adicionado (+145 −0))
-    - src/app/(main)/dashboard/analytics-v2/_components/visitor-coverage-card.tsx (adicionado (+89 −0))
-    - src/app/(main)/dashboard/analytics-v2/page.tsx (modificado (+57 −10))
-    - src/styles/flag-icons/flags.css (adicionado (+1068 −0))
+**Resumo**: 94 commits • 105 arquivos • +36.611 −13.281 • 43 manutenção, 12 merges, 20 novidades, 18 outros, 1 documentação
+
+**Novidades**
+- feat: add initial chat layouts
+- feat: add initial kanban layout
+- feat: initial users page layout
+- feat: add logistics dashboard
+- feat: add roles route
+- feat: add users route
+
+**Arquivos principais**
+- public/features.json (adicionado e removido, +8.028 −8.028)
+- src/app/(main)/dashboard/logistics/_components/shipment-data.ts (adicionado, +4.374 −26)
+- package-lock.json (modificado, +1.604 −1.164)
+- src/app/(main)/dashboard/mail/_components/data.tsx (adicionado, +1.248 −130)
+- src/app/(main)/dashboard/logistics/_components/shipment-details.tsx (adicionado, +1.221 −71)
+- src/styles/flag-icons/flags.css (adicionado, +1.068 −0)
+- src/app/(main)/dashboard/mail/_components/mail-sidebar.tsx (adicionado e removido, +527 −527)
+- src/app/(main)/dashboard/users/_components/data.tsx (adicionado, +996 −0)
+- src/app/(main)/dashboard/logistics/_components/shipment-route-map.tsx (adicionado, +883 −3)
+- src/app/(main)/dashboard/users/_components/users-table.tsx (adicionado, +684 −180)
+- src/app/(main)/dashboard/mail/_components/mail.tsx (adicionado e removido, +402 −407)
+- src/app/(main)/dashboard/logistics/_components/shipment-list.tsx (adicionado, +743 −3)
+- src/app/(main)/dashboard/kanban/page.tsx (adicionado, +726 −1)
+- src/app/(main)/dashboard/logistics/_components/data.ts (adicionado, +688 −31)
+- src/app/(main)/dashboard/users/_components/users-columns.tsx (adicionado, +665 −2)
+- +90 outros arquivos
 
 ## 2026-04
 
-- 2026-04-29 — `62d50ad` — feat: refine analytics v2 controls
-    - src/app/(main)/dashboard/analytics-v2/_components/analytics-kpi-strip.tsx (modificado (+130 −61))
-    - src/app/(main)/dashboard/analytics-v2/_components/analytics-toolbar.tsx (modificado (+43 −7))
-- 2026-04-29 — `0bcdcc5` — feat: add analytics v2 dashboard
-    - src/app/(main)/dashboard/analytics-v2/_components/analytics-kpi-strip.tsx (adicionado (+73 −0))
-    - src/app/(main)/dashboard/analytics-v2/_components/analytics-toolbar.tsx (adicionado (+42 −0))
-    - src/app/(main)/dashboard/analytics-v2/page.tsx (adicionado (+19 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+5 −0))
-- 2026-04-28 — `07128f3` — chore: update deps
-    - package-lock.json (modificado (+31 −31))
-    - package.json (modificado (+3 −3))
-- 2026-04-26 — `0626d5f` — chore: update deps
-    - package-lock.json (modificado (+14 −14))
-    - package.json (modificado (+2 −2))
-- 2026-04-26 — `6c19e7d` — chore: update readme
-    - README.md (modificado (+1 −3))
-- 2026-04-26 — `36369f2` — Merge pull request #49 from arhamkhnz/feat/finance-v2
-    - src/app/(main)/dashboard/(legacy)/finance-v1/_components/card-overview.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/finance-v1/_components/cash-flow-overview.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/finance-v1/_components/income-reliability.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/finance-v1/_components/kpis/monthly-cash-flow.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/finance-v1/_components/kpis/net-worth.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/finance-v1/_components/kpis/primary-account.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/finance-v1/_components/kpis/savings-rate.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/finance-v1/_components/spending-breakdown.tsx (renomeado)
-    - +11 outros arquivos (+902 −43)
-- 2026-04-26 — `db984b4` — fix(finance): add use client directive to upcoming transactions component
-    - src/app/(main)/dashboard/finance/_components/upcoming-transactions.tsx (modificado (+2 −0))
-- 2026-04-26 — `6845b89` — fix(finance): add missing tabs content import and sort classes
-    - src/app/(main)/dashboard/finance/page.tsx (modificado (+59 −45))
-- 2026-04-26 — `38cf3b2` — fix(finance): rename upcoming transactions component to remove table suffix and fix import
-    - src/app/(main)/dashboard/finance/_components/upcoming-transactions.tsx (renomeado (+1 −1))
-    - src/app/(main)/dashboard/finance/page.tsx (modificado (+2 −2))
-- 2026-04-26 — `2027ee6` — chore: reorganize finance routes to make v2 the default and move v1 to legacy
-    - src/app/(main)/dashboard/(legacy)/finance-v1/_components/card-overview.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/finance-v1/_components/cash-flow-overview.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/finance-v1/_components/income-reliability.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/finance-v1/_components/kpis/monthly-cash-flow.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/finance-v1/_components/kpis/net-worth.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/finance-v1/_components/kpis/primary-account.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/finance-v1/_components/kpis/savings-rate.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/finance-v1/_components/spending-breakdown.tsx (renomeado)
-    - +12 outros arquivos (+132 −136)
-- 2026-04-26 — `5bea7e5` — feat(finance-v2): refactor wallet component with crypto assets and physical vault info, rename components for better resonance
-    - src/app/(main)/dashboard/finance-v2/_components/finance-notification.tsx (modificado (+5 −5))
-    - src/app/(main)/dashboard/finance-v2/_components/quick-actions.tsx (adicionado (+94 −0))
-    - src/app/(main)/dashboard/finance-v2/_components/wallet.tsx (adicionado (+115 −0))
-    - src/app/(main)/dashboard/finance-v2/page.tsx (modificado (+7 −12))
-- 2026-04-26 — `58f051c` — feat(finance-v2): refactor upcoming transactions UI
-    - src/app/(main)/dashboard/finance-v2/_components/upcoming-transactions-table.tsx (adicionado (+76 −0))
-    - src/app/(main)/dashboard/finance-v2/page.tsx (modificado (+20 −0))
-- 2026-04-25 — `a676773` — Merge pull request #51 from Muhammadrizo14/feature/added-search
-    - src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (modificado (+108 −41))
-- 2026-04-25 — `b11292b` — Derive search dialog items from sidebar
-    - src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (modificado (+29 −69))
-- 2026-04-25 — `54850e9` — Add finance spending overview chart
-    - src/app/(main)/dashboard/finance-v2/_components/transactions-overview-card.tsx (adicionado (+149 −0))
-    - src/app/(main)/dashboard/finance-v2/page.tsx (modificado (+4 −2))
-- 2026-04-25 — `d9e9e32` — fix: replaced custom search with built in search from cmdk
-    - src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (modificado (+75 −46))
-- 2026-04-25 — `36bc8f4` — chore: update deps
-    - package-lock.json (modificado (+4 −4))
-    - package.json (modificado (+1 −1))
-- 2026-04-25 — `3838cb8` — Refine finance v2 dashboard layout
-    - src/app/(main)/dashboard/finance-v2/_components/balance-distribution-card.tsx (adicionado (+181 −0))
-    - src/app/(main)/dashboard/finance-v2/_components/expense-recap.tsx (removido (+0 −137))
-    - src/app/(main)/dashboard/finance-v2/_components/money-in-vs-out-chart.tsx (removido (+0 −96))
-    - src/app/(main)/dashboard/finance-v2/_components/overview-kpis.tsx (modificado (+52 −100))
-    - src/app/(main)/dashboard/finance-v2/page.tsx (modificado (+50 −1))
-- 2026-04-24 — `f172cbd` — chore: quick fix
-    - src/app/(main)/dashboard/_components/sidebar/sidebar-support-card.tsx (modificado (+1 −1))
-- 2026-04-24 — `0eb513a` — fix: resolve code review issues in search dialog
-    - src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (modificado (+11 −11))
-- 2026-04-24 — `88bb44f` — feat: added search at sidebar
-    - src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (modificado (+118 −40))
-- 2026-04-24 — `c821628` — Update sidebar support contact link
-    - package-lock.json (modificado (+22 −22))
-    - package.json (modificado (+1 −1))
-    - src/app/(main)/dashboard/_components/sidebar/sidebar-support-card.tsx (modificado (+18 −1))
-- 2026-04-23 — `aab3e7b` — chore: refresh biome and icon dependencies
-    - biome.json (modificado (+1 −1))
-    - package-lock.json (modificado (+62 −62))
-    - package.json (modificado (+2 −2))
-- 2026-04-23 — `fe92f92` — Refine finance v2 dashboard layout
-    - src/app/(main)/dashboard/finance-v2/_components/expense-recap.tsx (adicionado (+137 −0))
-    - src/app/(main)/dashboard/finance-v2/_components/finance-notification.tsx (adicionado (+23 −0))
-    - src/app/(main)/dashboard/finance-v2/_components/income-breakdown.tsx (modificado (+20 −20))
-    - src/app/(main)/dashboard/finance-v2/_components/money-in-vs-out-chart.tsx (adicionado (+96 −0))
-    - src/app/(main)/dashboard/finance-v2/_components/overview-kpis.tsx (modificado (+18 −9))
-- 2026-04-23 — `53343fe` — Add finance v2 dashboard overview
-    - src/app/(main)/dashboard/finance-v2/_components/income-breakdown.tsx (adicionado (+56 −0))
-    - src/app/(main)/dashboard/finance-v2/_components/overview-kpis.tsx (adicionado (+103 −0))
-    - src/app/(main)/dashboard/finance-v2/page.tsx (modificado (+9 −83))
-- 2026-04-22 — `99d936f` — Fix analytics dashboard overflow at mid-width
-    - src/app/(main)/dashboard/analytics/_components/analytics-actions-risk-ledger.tsx (modificado (+4 −4))
-    - src/app/(main)/dashboard/analytics/_components/analytics-overview.tsx (modificado (+7 −7))
-- 2026-04-22 — `1f98082` — Tighten Biome rules and update dashboard preferences
-    - biome.json (modificado (+13 −5))
-    - package-lock.json (modificado (+87 −87))
-    - package.json (modificado (+2 −2))
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+14 −14))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/page.tsx (modificado (+1 −1))
-    - src/lib/cookie.client.ts (modificado (+7 −2))
-- 2026-04-22 — `e2198a7` — chore: add finance route
-    - src/app/(main)/dashboard/finance-v2/page.tsx (adicionado (+92 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+5 −0))
-- 2026-04-21 — `316f796` — docs: move base ui note in readme
-    - README.md (modificado (+3 −2))
-- 2026-04-21 — `925b485` — docs: add base ui repo link to readme
-    - README.md (modificado (+2 −0))
-- 2026-04-21 — `1c6eb5d` — fix: adjust CRM opportunities footer spacing
-    - src/app/(main)/dashboard/crm/_components/opportunities-section.tsx (modificado (+1 −1))
-- 2026-04-21 — `e5fc7e5` — docs: remove analytics from README coming soon
-    - README.md (modificado (+0 −1))
-- 2026-04-21 — `b6f127c` — docs: update README screen names
-    - README.md (modificado (+6 −3))
-- 2026-04-21 — `94b3553` — Merge pull request #47 from arhamkhnz/feat/crm-v2
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/crm.config.ts (renomeado)
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/insight-cards.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/operational-cards.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/overview-cards.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/columns.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/schema.ts (renomeado)
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/table.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/crm-v1/page.tsx (adicionado (+16 −0))
-    - +9 outros arquivos (+1839 −10)
-- 2026-04-21 — `c0fff98` — chore: refresh ui dependencies
-    - package-lock.json (modificado (+86 −80))
-    - package.json (modificado (+3 −3))
-- 2026-04-20 — `8a0cc9a` — Tighten productivity project copy
-    - src/app/(main)/dashboard/productivity/_components/projects-section.tsx (modificado (+7 −7))
-- 2026-04-20 — `45ffea4` — Use a clearer productivity sidebar icon
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+6 −5))
-- 2026-04-20 — `05f3ac9` — chore: refresh shadcn dependencies
-    - package-lock.json (modificado (+34 −34))
-    - package.json (modificado (+2 −2))
-- 2026-04-20 — `9b0f50d` — fix: tighten crm table filtering and proposal progress
-    - src/app/(main)/dashboard/crm/_components/opportunities-section.tsx (modificado (+7 −5))
-    - src/app/(main)/dashboard/crm/_components/opportunities-table/columns.tsx (modificado (+2 −8))
-    - src/app/(main)/dashboard/crm/_components/task-reminders.tsx (modificado (+4 −1))
-- 2026-04-20 — `49945eb` — feat: move crm v2 to crm and legacy crm to crm-v1
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/crm.config.ts (renomeado)
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/insight-cards.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/operational-cards.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/overview-cards.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/columns.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/schema.ts (renomeado)
-    - src/app/(main)/dashboard/(legacy)/crm-v1/_components/recent-leads-table/table.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/crm-v1/page.tsx (adicionado (+16 −0))
-    - +10 outros arquivos (+12 −30)
-- 2026-04-20 — `1a491ef` — feat: refine crm v2 opportunities table
-    - src/app/(main)/dashboard/crm-v2/_components/opportunities-section.tsx (modificado (+226 −89))
-    - src/app/(main)/dashboard/crm-v2/_components/opportunities-table/columns.tsx (adicionado (+126 −0))
-    - src/app/(main)/dashboard/crm-v2/_components/opportunities-table/data.json (adicionado (+1058 −0))
-    - src/app/(main)/dashboard/crm-v2/_components/opportunities-table/schema.ts (adicionado (+14 −0))
-- 2026-04-20 — `ef641a4` — feat: add crm v2 activity sections
-    - src/app/(main)/dashboard/crm-v2/_components/opportunities-section.tsx (adicionado (+122 −0))
-    - src/app/(main)/dashboard/crm-v2/_components/task-reminders.tsx (adicionado (+100 −0))
-    - src/app/(main)/dashboard/crm-v2/page.tsx (modificado (+4 −0))
-- 2026-04-18 — `73ed88f` — chore: quick fixes
-    - src/app/(main)/dashboard/crm-v2/_components/kpi-cards.tsx (modificado (+4 −4))
-    - src/app/(main)/dashboard/crm-v2/_components/pipeline-activity.tsx (modificado (+3 −2))
-- 2026-04-18 — `ed2fa81` — feat: add crm v2 dashboard
-    - src/app/(main)/dashboard/crm-v2/_components/kpi-cards.tsx (adicionado (+120 −0))
-    - src/app/(main)/dashboard/crm-v2/_components/pipeline-activity.tsx (adicionado (+150 −0))
-    - src/app/(main)/dashboard/crm-v2/page.tsx (adicionado (+11 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+5 −0))
-- 2026-04-17 — `10eba8f` — Merge pull request #46 from arhamkhnz/3.0.0
-    - components.json (modificado (+2 −2))
-    - package-lock.json (modificado (+217 −261))
-    - package.json (modificado (+5 −5))
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/chart-area-interactive.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/data.json (adicionado (+614 −0))
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/columns.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/schema.ts (renomeado)
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/table.tsx (renomeado)
-    - +64 outros arquivos (+2176 −805)
-- 2026-04-17 — `d2bee0c` — fix: correct default dashboard chart date parsing
-    - src/app/(main)/dashboard/default/_components/performance-overview.tsx (modificado (+3 −3))
-- 2026-04-17 — `6c9e0d2` — Merge branch 'main' into 3.0.0
-- 2026-04-17 — `4707e6c` — chore: hide productivity dashboard from sidebar
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+5 −5))
-- 2026-04-17 — `563720d` — style: refine default dashboard activity chart
-    - src/app/(main)/dashboard/default/_components/performance-overview.tsx (modificado (+1 −1))
-- 2026-04-17 — `683b129` — feat: swap default dashboard routes
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/chart-area-interactive.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/data.json (adicionado (+614 −0))
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/columns.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/schema.ts (renomeado)
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/proposal-sections-table/table.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/default-v1/_components/section-cards.tsx (renomeado)
-    - src/app/(main)/dashboard/(legacy)/default-v1/page.tsx (adicionado (+14 −0))
-    - src/app/(main)/dashboard/default-v2/_components/data.json (removido (+0 −542))
-    - +10 outros arquivos (+555 −635)
-- 2026-04-17 — `12b4701` — chore: apply generated ui updates
-    - package-lock.json (modificado (+109 −148))
-    - package.json (modificado (+1 −1))
-    - src/components/ui/alert.tsx (modificado (+1 −1))
-    - src/components/ui/button-group.tsx (modificado (+1 −1))
-    - src/components/ui/field.tsx (modificado (+1 −1))
-    - src/components/ui/item.tsx (modificado (+1 −1))
-    - src/components/ui/popover.tsx (modificado (+1 −1))
-- 2026-04-17 — `157861c` — feat: refine default v2 customer table
-    - src/app/(main)/dashboard/default-v2/_components/customer-flow-table/columns.tsx (removido (+0 −103))
-    - src/app/(main)/dashboard/default-v2/_components/customer-flow-table/schema.ts (removido (+0 −19))
-    - src/app/(main)/dashboard/default-v2/_components/customer-flow-table/table.tsx (removido (+0 −73))
-    - src/app/(main)/dashboard/default-v2/_components/data.json (modificado (+495 −90))
-    - src/app/(main)/dashboard/default-v2/_components/overview-panels.tsx (removido (+0 −135))
-    - src/app/(main)/dashboard/default-v2/_components/proposal-sections-table/columns.tsx (removido (+0 −417))
-    - src/app/(main)/dashboard/default-v2/_components/proposal-sections-table/schema.ts (removido (+0 −13))
-    - src/app/(main)/dashboard/default-v2/_components/proposal-sections-table/table.tsx (removido (+0 −323))
-    - +4 outros arquivos (+509 −297)
-- 2026-04-17 — `355ccc8` — feat: refine default v2 dashboard tables
-    - src/app/(main)/dashboard/default-v2/_components/customer-flow-table/columns.tsx (adicionado (+103 −0))
-    - src/app/(main)/dashboard/default-v2/_components/customer-flow-table/schema.ts (adicionado (+19 −0))
-    - src/app/(main)/dashboard/default-v2/_components/customer-flow-table/table.tsx (adicionado (+73 −0))
-    - src/app/(main)/dashboard/default-v2/_components/data.json (adicionado (+137 −0))
-    - src/app/(main)/dashboard/default-v2/_components/overview-panels.tsx (adicionado (+135 −0))
-    - src/app/(main)/dashboard/default-v2/_components/performance-overview.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/default-v2/_components/proposal-sections-table/columns.tsx (adicionado (+417 −0))
-    - src/app/(main)/dashboard/default-v2/_components/proposal-sections-table/schema.ts (adicionado (+13 −0))
-    - +3 outros arquivos (+647 −0)
-- 2026-04-16 — `ad228d2` — feat: refine default v2 performance overview
-    - src/app/(main)/dashboard/default-v2/_components/performance-overview.tsx (modificado (+189 −24))
-- 2026-04-16 — `9c3e4c4` — feat: refine default v2 chart and dashboard styling
-    - package-lock.json (modificado (+102 −102))
-    - package.json (modificado (+3 −3))
-    - src/app/(main)/dashboard/default-v2/_components/metric-cards.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/default-v2/_components/performance-overview.tsx (modificado (+153 −131))
-    - src/app/globals.css (modificado (+1 −1))
-- 2026-04-15 — `61c70bc` — feat: refine default v2 overview charts
-    - src/app/(main)/dashboard/default-v2/_components/metric-cards.tsx (modificado (+9 −9))
-    - src/app/(main)/dashboard/default-v2/_components/performance-overview.tsx (modificado (+88 −170))
-- 2026-04-14 — `e90ab54` — chore: update default font
-    - src/lib/preferences/preferences-config.ts (modificado (+1 −1))
-- 2026-04-13 — `f69585c` — feat: refresh productivity dates dynamically
-    - src/app/(main)/dashboard/productivity/_components/projects-section.tsx (modificado (+6 −3))
-    - src/app/(main)/dashboard/productivity/_components/recent-notes-card.tsx (modificado (+13 −4))
-- 2026-04-13 — `dd3c6c0` — chore: update deps
-    - package-lock.json (modificado (+29 −34))
-    - package.json (modificado (+3 −3))
-- 2026-04-13 — `d8531f8` — feat: add productivity dashboard layout
-    - src/app/(main)/dashboard/default-v2/_components/performance-overview.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/productivity/_components/calendar-panel.tsx (adicionado (+32 −0))
-    - src/app/(main)/dashboard/productivity/_components/focus-card.tsx (adicionado (+27 −0))
-    - src/app/(main)/dashboard/productivity/_components/projects-section.tsx (adicionado (+92 −0))
-    - src/app/(main)/dashboard/productivity/_components/quick-actions.tsx (adicionado (+27 −0))
-    - src/app/(main)/dashboard/productivity/_components/quote-card.tsx (adicionado (+17 −0))
-    - src/app/(main)/dashboard/productivity/_components/recent-notes-card.tsx (adicionado (+37 −0))
-    - src/app/(main)/dashboard/productivity/_components/summary-cards.tsx (adicionado (+39 −0))
-    - +4 outros arquivos (+155 −0)
-- 2026-04-13 — `d4aa163` — chore: refresh ui and tooling dependencies
-    - package-lock.json (modificado (+60 −60))
-    - package.json (modificado (+4 −4))
-- 2026-04-13 — `0e587f2` — feat: add default-v2 dashboard and refresh ui primitives
-    - components.json (modificado (+2 −2))
-    - package-lock.json (modificado (+46 −46))
-    - package.json (modificado (+2 −2))
-    - src/app/(main)/dashboard/_components/sidebar/account-switcher.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/default-v2/_components/metric-cards.tsx (adicionado (+94 −0))
-    - src/app/(main)/dashboard/default-v2/_components/performance-overview.tsx (adicionado (+234 −0))
-    - src/app/(main)/dashboard/default-v2/page.tsx (adicionado (+11 −0))
-    - src/app/(main)/dashboard/page.tsx (modificado (+1 −1))
-    - +41 outros arquivos (+205 −186)
-- 2026-04-09 — `055861e` — chore: bump next and react
-    - package-lock.json (modificado (+68 −68))
-    - package.json (modificado (+3 −3))
-- 2026-04-08 — `0da0cdc` — chore: refresh shadcn dependencies
-    - package-lock.json (modificado (+66 −50))
-    - package.json (modificado (+3 −3))
-- 2026-04-04 — `ccf1de3` — fix: style native select options
-    - src/components/ui/native-select.tsx (modificado (+12 −3))
-- 2026-04-04 — `464345f` — chore: refresh dependencies and update dashboard icon
-    - package-lock.json (modificado (+320 −476))
-    - package.json (modificado (+9 −10))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+3 −2))
-- 2026-04-03 — `b7e735d` — chore: bump panels and tweak dashboard layout
-    - package-lock.json (modificado (+4 −4))
-    - package.json (modificado (+1 −1))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+1 −0))
-- 2026-04-01 — `a9eae56` — chore: bump next to 16.2.2
-    - package-lock.json (modificado (+40 −40))
-    - package.json (modificado (+1 −1))
+**Resumo**: 68 commits • 93 arquivos • +9.306 −4.718 • 18 novidades, 21 manutenção, 5 merges, 9 correções, 10 outros, 4 documentação, 1 estilo
+
+**Novidades**
+- feat: refine analytics v2 controls
+- feat: add analytics v2 dashboard
+- feat(finance-v2): refactor wallet component with crypto assets and physical vault info, rename components for better resonance
+- feat(finance-v2): refactor upcoming transactions UI
+- feat: added search at sidebar
+- feat: move crm v2 to crm and legacy crm to crm-v1
+
+**Correções**
+- fix(finance): add use client directive to upcoming transactions component
+- fix(finance): add missing tabs content import and sort classes
+- fix(finance): rename upcoming transactions component to remove table suffix and fix import
+- fix: replaced custom search with built in search from cmdk
+
+**Arquivos principais**
+- package-lock.json (modificado, +1.401 −1.623)
+- src/app/(main)/dashboard/default-v2/_components/data.json (adicionado e removido, +632 −632)
+- src/app/(main)/dashboard/(legacy)/default-v1/_components/data.json (adicionado, +1.228 −0)
+- src/app/(main)/dashboard/crm-v2/_components/opportunities-table/data.json (adicionado, +1.058 −0)
+- src/app/(main)/dashboard/default-v2/_components/performance-overview.tsx (adicionado, +667 −328)
+- src/app/(main)/dashboard/default-v2/_components/proposal-sections-table/columns.tsx (adicionado e removido, +417 −417)
+- src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (modificado, +341 −207)
+- src/app/(main)/dashboard/crm-v2/_components/opportunities-section.tsx (adicionado, +348 −89)
+- src/app/(main)/dashboard/default-v2/_components/proposal-sections-table/table.tsx (removido, +0 −323)
+- src/app/(main)/dashboard/finance-v2/_components/overview-kpis.tsx (adicionado, +173 −109)
+- src/app/(main)/dashboard/finance-v2/page.tsx (adicionado, +182 −98)
+- src/app/(main)/dashboard/finance-v2/_components/expense-recap.tsx (adicionado e removido, +137 −137)
+- src/app/(main)/dashboard/default-v2/_components/overview-panels.tsx (adicionado e removido, +135 −135)
+- src/app/(main)/dashboard/analytics-v2/_components/analytics-kpi-strip.tsx (adicionado, +203 −61)
+- src/app/(main)/dashboard/default-v2/_components/customer-flow-table/columns.tsx (adicionado e removido, +103 −103)
+- +78 outros arquivos
 
 ## 2026-03
 
-- 2026-03-31 — `7b33444` — chore: update shadcn ui components
-    - package-lock.json (modificado (+81 −156))
-    - package.json (modificado (+3 −3))
-    - src/components/ui/button.tsx (modificado (+1 −1))
-    - src/components/ui/table.tsx (modificado (+1 −1))
-    - src/components/ui/tabs.tsx (modificado (+1 −1))
-    - src/components/ui/toggle-group.tsx (modificado (+1 −1))
-    - src/components/ui/toggle.tsx (modificado (+4 −3))
-- 2026-03-26 — `21295f5` — chore: remove preferences storage note
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+0 −3))
-- 2026-03-26 — `231752d` — chore: remove unused deps
-    - package-lock.json (modificado (+0 −160))
-    - package.json (modificado (+0 −3))
-- 2026-03-26 — `1d09520` — chore: update deps and shadcn components
-    - package-lock.json (modificado (+179 −159))
-    - package.json (modificado (+4 −6))
-    - src/app/(main)/dashboard/crm/_components/insight-cards.tsx (modificado (+26 −30))
-    - src/components/ui/alert-dialog.tsx (modificado (+1 −1))
-    - src/components/ui/button.tsx (modificado (+1 −1))
-    - src/components/ui/chart.tsx (modificado (+44 −27))
-    - src/components/ui/dialog.tsx (modificado (+1 −1))
-    - src/components/ui/drawer.tsx (modificado (+1 −1))
-    - +2 outros arquivos (+3 −3)
-- 2026-03-26 — `3b5018b` — style(layout): split centered layout selectors
-    - src/app/(main)/dashboard/layout.tsx (modificado (+11 −5))
-- 2026-03-23 — `75f361c` — chore: update deps
-    - package-lock.json (modificado (+78 −78))
-    - package.json (modificado (+7 −5))
-- 2026-03-19 — `3be6f27` — chore: update deps and shadcn empty component
-    - package-lock.json (modificado (+253 −323))
-    - package.json (modificado (+5 −5))
-    - src/components/ui/empty.tsx (modificado (+4 −1))
-- 2026-03-16 — `7541627` — chore: update deps
-    - package-lock.json (modificado (+15 −15))
-    - package.json (modificado (+2 −2))
-- 2026-03-11 — `b2fe6c4` — chore: update shadcn components
-    - src/components/ui/button.tsx (modificado (+1 −1))
-    - src/components/ui/menubar.tsx (modificado (+1 −1))
-    - src/components/ui/navigation-menu.tsx (modificado (+1 −1))
-    - src/components/ui/sheet.tsx (modificado (+1 −1))
-- 2026-03-10 — `0341b27` — chore(analytics): refresh dashboard owner names
-    - src/app/(main)/dashboard/analytics/_components/analytics-actions-manager-queue.tsx (modificado (+4 −4))
-    - src/app/(main)/dashboard/analytics/_components/analytics-actions-risk-ledger.tsx (modificado (+10 −10))
-    - src/app/(main)/dashboard/analytics/_components/analytics-drivers-coverage-triage.tsx (modificado (+1 −1))
-- 2026-03-09 — `a7fdf1d` — refactor(tables): localize dashboard table implementations
-    - src/app/(main)/dashboard/crm/_components/recent-leads-table/columns.tsx (renomeado (+42 −24))
-    - src/app/(main)/dashboard/crm/_components/recent-leads-table/schema.ts (renomeado (+3 −1))
-    - src/app/(main)/dashboard/crm/_components/recent-leads-table/table.tsx (adicionado (+235 −0))
-    - src/app/(main)/dashboard/crm/_components/table-cards.tsx (removido (+0 −48))
-    - src/app/(main)/dashboard/crm/page.tsx (modificado (+3 −2))
-    - src/app/(main)/dashboard/default/_components/columns.tsx (removido (+0 −191))
-    - src/app/(main)/dashboard/default/_components/data-table.tsx (removido (+0 −82))
-    - src/app/(main)/dashboard/default/_components/proposal-sections-table/columns.tsx (renomeado (+223 −5))
-    - +11 outros arquivos (+320 −486)
-- 2026-03-09 — `68210a1` — refactor(auth): adopt field-based rhf forms
-    - src/app/(main)/auth/_components/login-form.tsx (modificado (+58 −52))
-    - src/app/(main)/auth/_components/register-form.tsx (modificado (+55 −46))
-    - src/components/ui/form.tsx (removido (+0 −167))
-- 2026-03-09 — `a5eea3b` — feat(header): add github shortcut
-    - src/app/(main)/dashboard/layout.tsx (modificado (+15 −0))
-- 2026-03-09 — `7401b5a` — fix(select): group dashboard select items
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+24 −20))
-    - src/app/(main)/dashboard/default/_components/chart-area-interactive.tsx (modificado (+12 −10))
-    - src/app/(main)/dashboard/default/_components/columns.tsx (modificado (+5 −3))
-    - src/app/(main)/dashboard/default/_components/data-table.tsx (modificado (+7 −5))
-    - src/app/(main)/dashboard/default/_components/table-cell-viewer.tsx (modificado (+21 −15))
-    - src/app/(main)/dashboard/finance/_components/cash-flow-overview.tsx (modificado (+8 −6))
-    - src/components/data-table/data-table-pagination.tsx (modificado (+8 −6))
-- 2026-03-09 — `4697682` — fix(sidebar): refine support card layout
-    - src/app/(main)/dashboard/_components/sidebar/sidebar-support-card.tsx (modificado (+3 −3))
-- 2026-03-09 — `395a6ab` — feat(sidebar): add support footer card
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+2 −0))
-    - src/app/(main)/dashboard/_components/sidebar/sidebar-support-card.tsx (adicionado (+12 −0))
-- 2026-03-09 — `4c7be9f` — feat(theme): switch shadcn base color to mist
-    - components.json (modificado (+1 −1))
-    - src/app/globals.css (modificado (+32 −32))
-- 2026-03-09 — `897c001` — fix(ui): align layout control selects
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+2 −2))
-    - src/app/globals.css (modificado (+1 −1))
-- 2026-03-09 — `15bef4d` — fix(ui): minor dashboard and command palette fixes
-    - src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (modificado (+37 −24))
-    - src/app/(main)/dashboard/finance/page.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+4 −1))
-- 2026-03-09 — `8e86098` — feat(ui): update shadcn style to radix-vega
-    - components.json (modificado (+5 −2))
-    - package-lock.json (modificado (+3822 −108))
-    - package.json (modificado (+2 −1))
-    - src/app/globals.css (modificado (+35 −34))
-    - src/app/layout.tsx (modificado (+13 −10))
-    - src/components/ui/accordion.tsx (modificado (+22 −7))
-    - src/components/ui/alert-dialog.tsx (modificado (+20 −17))
-    - src/components/ui/alert.tsx (modificado (+15 −5))
-    - +49 outros arquivos (+582 −566)
-- 2026-03-07 — `4fd115a` — Merge pull request #41 from arhamkhnz/codex/fix-windows-precommit-generate-presets
-    - .husky/pre-commit (modificado (+1 −1))
-    - package.json (modificado (+1 −1))
-    - src/scripts/generate-theme-presets.ts (modificado (+7 −4))
-    - tsconfig.scripts.json (adicionado (+8 −0))
-- 2026-03-07 — `847bd0f` — fix(scripts): run biome via node to avoid Windows spawn issues
-    - src/scripts/generate-theme-presets.ts (modificado (+7 −5))
-- 2026-03-07 — `f1ba49f` — fix(husky): make preset generation and lint-staged work cross-platform
-    - .husky/pre-commit (modificado (+1 −1))
-    - package.json (modificado (+1 −1))
-    - src/scripts/generate-theme-presets.ts (modificado (+2 −1))
-    - tsconfig.scripts.json (adicionado (+8 −0))
-- 2026-03-07 — `bf29717` — feat(fonts): expand font selector and add Geist Pixel Square
-    - package-lock.json (modificado (+10 −0))
-    - package.json (modificado (+2 −3))
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+1 −1))
-    - src/app/globals.css (modificado (+35 −17))
-    - src/lib/fonts/registry.ts (modificado (+105 −51))
-- 2026-03-07 — `e5d98fb` — chore: update deps & shadcn component
-    - package-lock.json (modificado (+216 −203))
-    - package.json (modificado (+11 −9))
-    - src/components/ui/accordion.tsx (modificado (+3 −3))
-    - src/components/ui/alert-dialog.tsx (modificado (+4 −4))
-    - src/components/ui/alert.tsx (modificado (+3 −3))
-    - src/components/ui/avatar.tsx (modificado (+4 −4))
-    - src/components/ui/badge.tsx (modificado (+2 −2))
-    - src/components/ui/breadcrumb.tsx (modificado (+3 −3))
-    - +41 outros arquivos (+195 −195)
-- 2026-03-07 — `8d65324` — Merge pull request #35 from arhamkhnz/feat/analytics-dashboard
-    - src/app/(main)/dashboard/analytics/_components/analytics-actions-manager-queue.tsx (adicionado (+139 −0))
-    - src/app/(main)/dashboard/analytics/_components/analytics-actions-risk-ledger.tsx (adicionado (+329 −0))
-    - src/app/(main)/dashboard/analytics/_components/analytics-drivers-coverage-triage.tsx (adicionado (+91 −0))
-    - src/app/(main)/dashboard/analytics/_components/analytics-drivers-forecast-target.tsx (adicionado (+142 −0))
-    - src/app/(main)/dashboard/analytics/_components/analytics-overview.tsx (adicionado (+343 −0))
-    - src/app/(main)/dashboard/analytics/page.tsx (adicionado (+23 −0))
-    - src/components/date-range-picker.tsx (adicionado (+55 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+1 −2))
-- 2026-03-07 — `079e8d9` — chore(analytics): align static metrics across dashboard sections
-    - src/app/(main)/dashboard/analytics/_components/analytics-actions-manager-queue.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/analytics/_components/analytics-actions-risk-ledger.tsx (modificado (+3 −3))
-    - src/app/(main)/dashboard/analytics/_components/analytics-drivers-forecast-target.tsx (modificado (+13 −13))
-    - src/app/(main)/dashboard/analytics/_components/analytics-overview.tsx (modificado (+4 −4))
-- 2026-03-07 — `d75489f` — refactor(analytics): finalize 3-row dashboard structure and naming cleanup
-    - src/app/(main)/dashboard/analytics/_components/analytics-actions-manager-queue.tsx (renomeado (+1 −1))
-    - src/app/(main)/dashboard/analytics/_components/analytics-actions-risk-ledger.tsx (renomeado (+2 −2))
-    - src/app/(main)/dashboard/analytics/_components/analytics-drivers-coverage-triage.tsx (renomeado (+1 −1))
-    - src/app/(main)/dashboard/analytics/_components/analytics-drivers-forecast-target.tsx (renomeado (+59 −61))
-    - src/app/(main)/dashboard/analytics/_components/analytics-overview.tsx (modificado (+31 −6))
-    - src/app/(main)/dashboard/analytics/_components/analytics.data.ts (removido (+0 −696))
-    - src/app/(main)/dashboard/analytics/page.tsx (modificado (+8 −8))
-- 2026-03-07 — `7b6b2e8` — feat: implement analytics dashboard redesign
-    - src/app/(main)/dashboard/analytics/_components/analytics-coverage-triage-card.tsx (adicionado (+91 −0))
-    - src/app/(main)/dashboard/analytics/_components/analytics-forecast-vs-target-card.tsx (adicionado (+144 −0))
-    - src/app/(main)/dashboard/analytics/_components/analytics-manager-action-queue-card.tsx (adicionado (+139 −0))
-    - src/app/(main)/dashboard/analytics/_components/analytics-overview.tsx (modificado (+195 −173))
-    - src/app/(main)/dashboard/analytics/_components/analytics-revenue-risk-ledger-card.tsx (adicionado (+329 −0))
-    - src/app/(main)/dashboard/analytics/_components/analytics.data.ts (adicionado (+696 −0))
-    - src/app/(main)/dashboard/analytics/page.tsx (modificado (+15 −1))
-    - src/components/date-range-picker.tsx (modificado (+16 −3))
+**Resumo**: 29 commits • 62 arquivos • +8.798 −3.236 • 11 manutenção, 1 estilo, 3 refatorações, 6 novidades, 6 correções, 2 merges
+
+**Novidades**
+- feat(header): add github shortcut
+- feat(sidebar): add support footer card
+- feat(theme): switch shadcn base color to mist
+- feat(ui): update shadcn style to radix-vega
+- feat(fonts): expand font selector and add Geist Pixel Square
+- feat: implement analytics dashboard redesign
+
+**Correções**
+- fix(select): group dashboard select items
+- fix(sidebar): refine support card layout
+- fix(ui): align layout control selects
+- fix(ui): minor dashboard and command palette fixes
+
+**Arquivos principais**
+- package-lock.json (modificado, +4.654 −1.202)
+- src/app/(main)/dashboard/analytics/_components/analytics.data.ts (adicionado e removido, +696 −696)
+- src/app/(main)/dashboard/analytics/_components/analytics-overview.tsx (adicionado, +573 −183)
+- src/app/(main)/dashboard/analytics/_components/analytics-actions-risk-ledger.tsx (adicionado, +344 −15)
+- src/app/(main)/dashboard/analytics/_components/analytics-revenue-risk-ledger-card.tsx (adicionado, +329 −0)
+- src/app/(main)/dashboard/analytics/_components/analytics-drivers-forecast-target.tsx (adicionado, +214 −74)
+- src/app/(main)/dashboard/crm/_components/recent-leads-table/table.tsx (adicionado, +235 −0)
+- src/app/(main)/dashboard/default/_components/proposal-sections-table/columns.tsx (renomeado, +223 −5)
+- src/app/(main)/dashboard/default/_components/columns.tsx (removido, +5 −194)
+- src/app/globals.css (modificado, +103 −84)
+- src/components/ui/form.tsx (removido, +0 −167)
+- src/lib/fonts/registry.ts (modificado, +105 −51)
+- src/app/(main)/dashboard/analytics/_components/analytics-actions-manager-queue.tsx (adicionado, +146 −7)
+- src/app/(main)/dashboard/analytics/_components/analytics-forecast-vs-target-card.tsx (adicionado, +144 −0)
+- src/app/(main)/dashboard/analytics/_components/analytics-manager-action-queue-card.tsx (adicionado, +139 −0)
+- +47 outros arquivos
 
 ## 2026-02
 
-- 2026-02-15 — `838ad0e` — chore: update deps
-    - package-lock.json (modificado (+14 −15))
-    - package.json (modificado (+2 −2))
-- 2026-02-11 — `d799d32` — chore: update deps & shadcn components
-    - package-lock.json (modificado (+118 −51))
-    - package.json (modificado (+8 −7))
-    - src/components/ui/accordion.tsx (modificado (+1 −1))
-    - src/components/ui/badge.tsx (modificado (+2 −2))
-    - src/components/ui/breadcrumb.tsx (modificado (+2 −2))
-    - src/components/ui/button-group.tsx (modificado (+2 −2))
-    - src/components/ui/button.tsx (modificado (+2 −2))
-    - src/components/ui/checkbox.tsx (modificado (+1 −1))
-    - +19 outros arquivos (+418 −40)
-- 2026-02-10 — `233cc7a` — chore: minor fixes
-    - src/app/(main)/dashboard/analytics/_components/analytics-overview.tsx (modificado (+2 −2))
+**Resumo**: 3 commits • 9 arquivos • +154 −87 • 3 manutenção
+
+**Arquivos principais**
+- package-lock.json (modificado, +132 −66)
+- package.json (modificado, +10 −9)
+- src/components/ui/badge.tsx (modificado, +2 −2)
+- src/components/ui/breadcrumb.tsx (modificado, +2 −2)
+- src/components/ui/button-group.tsx (modificado, +2 −2)
+- src/components/ui/button.tsx (modificado, +2 −2)
+- src/app/(main)/dashboard/analytics/_components/analytics-overview.tsx (modificado, +2 −2)
+- src/components/ui/accordion.tsx (modificado, +1 −1)
+- src/components/ui/checkbox.tsx (modificado, +1 −1)
 
 ## 2026-01
 
-- 2026-01-28 — `d679b2e` — chore: update deps
-    - package-lock.json (modificado (+310 −853))
-    - package.json (modificado (+6 −6))
-- 2026-01-28 — `e3b47ca` — chore: update shadcn components
-    - package-lock.json (modificado (+760 −217))
-    - package.json (modificado (+1 −3))
-    - src/components/ui/alert-dialog.tsx (modificado (+61 −22))
-    - src/components/ui/avatar.tsx (modificado (+60 −4))
-    - src/components/ui/badge.tsx (modificado (+9 −7))
-    - src/components/ui/button.tsx (modificado (+2 −0))
-    - src/components/ui/dialog.tsx (modificado (+17 −2))
-    - src/components/ui/popover.tsx (modificado (+42 −1))
-    - +3 outros arquivos (+48 −15)
-- 2026-01-22 — `36ada71` — chore: update deps
-    - package-lock.json (modificado (+319 −862))
-    - package.json (modificado (+9 −7))
-- 2026-01-08 — `a613c2d` — feat(analytics): add revenue and risk summary
-    - src/app/(main)/dashboard/analytics/_components/analytics-overview.tsx (modificado (+137 −13))
-- 2026-01-08 — `8047940` — chore: quick fix
-    - src/app/(main)/dashboard/analytics/_components/analytics-overview.tsx (modificado (+1 −1))
-- 2026-01-08 — `1c30052` — feat(analytics): add overview controls
-    - src/app/(main)/dashboard/analytics/_components/analytics-overview.tsx (adicionado (+172 −0))
-    - src/app/(main)/dashboard/analytics/page.tsx (adicionado (+9 −0))
-    - src/components/date-range-picker.tsx (adicionado (+42 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+1 −2))
-- 2026-01-08 — `c31f524` — chore: quick fix
-    - src/stores/preferences/preferences-provider.tsx (modificado (+5 −2))
-- 2026-01-08 — `b639e94` — chore: minor fixes
-    - src/lib/preferences/theme-utils.ts (modificado (+1 −3))
-    - src/lib/preferences/theme.ts (modificado (+1 −0))
-    - src/stores/preferences/preferences-store.ts (modificado (+5 −10))
-- 2026-01-07 — `e1fee72` — chore: quick fix
-    - src/stores/preferences/preferences-provider.tsx (modificado (+9 −2))
-- 2026-01-07 — `e01ebc7` — chore: update boot script
-    - src/scripts/theme-boot.tsx (modificado (+1 −2))
-- 2026-01-06 — `14f2c60` — chore: improve theme switching logic
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+10 −11))
-    - src/app/layout.tsx (modificado (+1 −1))
-    - src/lib/preferences/theme-utils.ts (modificado (+2 −2))
-    - src/stores/preferences/preferences-provider.tsx (modificado (+22 −23))
-- 2026-01-06 — `ea225fe` — chore: rename vars for better understandability
-    - src/stores/preferences/preferences-provider.tsx (modificado (+5 −5))
-- 2026-01-06 — `7e767fd` — chore: optimize boot script
-    - src/scripts/theme-boot.tsx (modificado (+7 −18))
-    - src/types/window.d.ts (removido (+0 −15))
-- 2026-01-06 — `4e00ee0` — chore: update deps
-    - package-lock.json (modificado (+4 −4))
-    - package.json (modificado (+1 −1))
-- 2026-01-06 — `3da75ed` — Merge pull request #32 from likui628/system-theme
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+9 −5))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+19 −9))
-    - src/lib/preferences/theme-utils.ts (modificado (+34 −2))
-    - src/lib/preferences/theme.ts (modificado (+1 −0))
-    - src/scripts/theme-boot.tsx (modificado (+9 −3))
-    - src/stores/preferences/preferences-provider.tsx (modificado (+40 −8))
-    - src/stores/preferences/preferences-store.ts (modificado (+10 −1))
-    - src/types/window.d.ts (modificado (+1 −0))
-- 2026-01-05 — `daf7b41` — feat: automatically set resolvedThemeMode in setThemeMode
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+1 −4))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+0 −2))
-    - src/stores/preferences/preferences-store.ts (modificado (+6 −4))
-- 2026-01-05 — `cd32748` — fix: cycle through light/dark/system in theme-switcher
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+20 −10))
-    - src/lib/preferences/theme-utils.ts (modificado (+2 −10))
-    - src/stores/preferences/preferences-provider.tsx (modificado (+4 −4))
-- 2026-01-05 — `4c0ea37` — feat: add system theme mode
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+11 −4))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+5 −3))
-    - src/lib/preferences/theme-utils.ts (modificado (+42 −2))
-    - src/lib/preferences/theme.ts (modificado (+1 −0))
-    - src/scripts/theme-boot.tsx (modificado (+9 −3))
-    - src/stores/preferences/preferences-provider.tsx (modificado (+40 −8))
-    - src/stores/preferences/preferences-store.ts (modificado (+7 −0))
-    - src/types/window.d.ts (modificado (+1 −0))
-- 2026-01-04 — `fea7eb2` — Merge pull request #30 from likui628/main
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+15 −0))
-- 2026-01-03 — `361d45c` — chore: apply suggestions
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+4 −6))
-- 2026-01-03 — `a65c42c` — feat: add restore defaults button
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+17 −0))
-- 2026-01-03 — `e1499dd` — chore: enable preload for all fonts
-    - src/lib/fonts/registry.ts (modificado (+0 −12))
-- 2026-01-03 — `eeb0b66` — chore: fix default font
-    - src/lib/preferences/preferences-config.ts (modificado (+1 −1))
-- 2026-01-03 — `bbd451a` — Merge pull request #29 from arhamkhnz/feat/font-preferences
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+27 −0))
-    - src/app/globals.css (modificado (+49 −7))
-    - src/app/layout.tsx (modificado (+5 −6))
-    - src/lib/fonts/registry.ts (adicionado (+155 −0))
-    - src/lib/preferences/layout-utils.ts (modificado (+5 −0))
-    - src/lib/preferences/preferences-config.ts (modificado (+5 −0))
-    - src/scripts/theme-boot.tsx (modificado (+6 −0))
-    - src/stores/preferences/preferences-provider.tsx (modificado (+7 −1))
-    - +1 outros arquivos (+5 −0)
-- 2026-01-03 — `41ce1c5` — chore: update fonts
-    - src/app/globals.css (modificado (+16 −16))
-    - src/lib/fonts/registry.ts (modificado (+49 −52))
-- 2026-01-03 — `53e0d34` — chore: fix css layer order
-    - src/app/globals.css (modificado (+11 −11))
-- 2026-01-03 — `7745f74` — chore: minor fixes
-    - src/app/globals.css (modificado (+3 −0))
-    - src/lib/fonts/registry.ts (modificado (+16 −3))
-    - src/scripts/theme-boot.tsx (modificado (+6 −0))
-- 2026-01-03 — `23d6dc9` — feat: add dynamic font preference
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+27 −0))
-    - src/app/globals.css (modificado (+39 −0))
-    - src/app/layout.tsx (modificado (+5 −6))
-    - src/lib/fonts/registry.ts (adicionado (+145 −0))
-    - src/lib/preferences/layout-utils.ts (modificado (+5 −0))
-    - src/lib/preferences/preferences-config.ts (modificado (+5 −0))
-    - src/stores/preferences/preferences-provider.tsx (modificado (+7 −1))
-    - src/stores/preferences/preferences-store.ts (modificado (+5 −0))
-- 2026-01-02 — `fd095a1` — chore: refine default theme and minor UI tweaks
-    - package-lock.json (modificado (+760 −217))
-    - src/app/(main)/dashboard/default/_components/chart-area-interactive.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/default/_components/section-cards.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/finance/_components/card-overview.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/finance/_components/cash-flow-overview.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/finance/page.tsx (modificado (+2 −2))
-    - src/app/globals.css (modificado (+75 −75))
-    - src/lib/preferences/theme.ts (modificado (+2 −2))
-- 2026-01-01 — `dde7c96` — chore: update deps and minor fixes
-    - package-lock.json (modificado (+231 −774))
-    - package.json (modificado (+2 −4))
-    - src/app/(main)/dashboard/finance/_components/card-overview.tsx (modificado (+25 −21))
-    - src/app/(main)/dashboard/finance/page.tsx (modificado (+2 −2))
-- 2026-01-01 — `ada1b56` — Merge pull request #27 from arhamkhnz/feat/finance-dashboard-redesign
-    - package-lock.json (modificado (+769 −226))
-    - package.json (modificado (+5 −3))
-    - src/app/(main)/dashboard/finance/_components/account-overview.tsx (removido (+0 −180))
-    - src/app/(main)/dashboard/finance/_components/card-overview.tsx (adicionado (+148 −0))
-    - src/app/(main)/dashboard/finance/_components/cash-flow-overview.tsx (adicionado (+113 −0))
-    - src/app/(main)/dashboard/finance/_components/currency-exchange.tsx (removido (+0 −81))
-    - src/app/(main)/dashboard/finance/_components/expense-summary.tsx (removido (+0 −132))
-    - src/app/(main)/dashboard/finance/_components/financial-overview.tsx (removido (+0 −118))
-    - +7 outros arquivos (+340 −17)
-- 2026-01-01 — `57294b7` — 2.2.0
-    - package-lock.json (modificado (+2 −2))
-    - package.json (modificado (+4 −2))
-- 2026-01-01 — `0f34d30` — chore(finance): rename components and small fixes
-    - src/app/(main)/dashboard/finance/_components/account-summary.tsx (removido (+0 −62))
-    - src/app/(main)/dashboard/finance/_components/card-overview.tsx (renomeado (+1 −1))
-    - src/app/(main)/dashboard/finance/_components/cash-flow-overview.tsx (modificado (+96 −19))
-    - src/app/(main)/dashboard/finance/_components/currency-exchange.tsx (removido (+0 −81))
-    - src/app/(main)/dashboard/finance/_components/financial-overview.tsx (removido (+0 −113))
-    - src/app/(main)/dashboard/finance/_components/income-reliability.tsx (renomeado (+1 −1))
-    - src/app/(main)/dashboard/finance/_components/kpis/monthly-cash-flow.tsx (adicionado (+36 −0))
-    - src/app/(main)/dashboard/finance/_components/kpis/net-worth.tsx (renomeado (+1 −1))
-    - +8 outros arquivos (+19 −237)
+**Resumo**: 33 commits • 38 arquivos • +5.221 −4.429 • 21 manutenção, 6 novidades, 4 merges, 1 correções, 1 outros
+
+**Novidades**
+- feat(analytics): add revenue and risk summary
+- feat(analytics): add overview controls
+- feat: automatically set resolvedThemeMode in setThemeMode
+- feat: add system theme mode
+- feat: add restore defaults button
+- feat: add dynamic font preference
+
+**Correções**
+- fix: cycle through light/dark/system in theme-switcher
+
+**Arquivos principais**
+- package-lock.json (modificado, +3.155 −3.155)
+- src/lib/fonts/registry.ts (adicionado, +365 −67)
+- src/app/(main)/dashboard/analytics/_components/analytics-overview.tsx (adicionado, +310 −14)
+- src/app/globals.css (modificado, +193 −109)
+- src/app/(main)/dashboard/finance/_components/cash-flow-overview.tsx (adicionado, +211 −21)
+- src/app/(main)/dashboard/finance/_components/financial-overview.tsx (removido, +0 −231)
+- src/app/(main)/dashboard/finance/_components/card-overview.tsx (adicionado, +176 −24)
+- src/stores/preferences/preferences-provider.tsx (modificado, +139 −54)
+- src/app/(main)/dashboard/finance/_components/account-overview.tsx (removido, +0 −180)
+- src/app/(main)/dashboard/finance/_components/currency-exchange.tsx (removido, +0 −162)
+- src/app/(main)/dashboard/finance/_components/expense-summary.tsx (removido, +0 −132)
+- src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado, +111 −19)
+- src/lib/preferences/theme-utils.ts (modificado, +81 −19)
+- src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado, +54 −35)
+- src/components/ui/alert-dialog.tsx (modificado, +61 −22)
+- +23 outros arquivos
 
 ## 2025-12
 
-- 2025-12-31 — `8ef6a27` — feat(finance): complete remaining dashboard sections
-    - src/app/(main)/dashboard/finance/_components/account-overview.tsx (modificado (+9 −1))
-    - src/app/(main)/dashboard/finance/_components/expense-summary.tsx (modificado (+74 −106))
-    - src/app/(main)/dashboard/finance/_components/financial-overview.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/finance/_components/recent-transactions.tsx (modificado (+21 −40))
-    - src/app/(main)/dashboard/finance/page.tsx (modificado (+5 −4))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+1 −1))
-- 2025-12-31 — `da0a44b` — chore: redesign my cards
-    - src/app/(main)/dashboard/finance/_components/account-overview.tsx (modificado (+96 −136))
-    - src/app/(main)/dashboard/finance/page.tsx (modificado (+7 −18))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+1 −1))
-- 2025-12-30 — `582fcbc` — chore: redesign cash flow overview chart
-    - src/app/(main)/dashboard/finance/_components/cash-flow-overview.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/finance/_components/financial-overview.tsx (modificado (+44 −49))
-    - src/app/(main)/dashboard/finance/page.tsx (modificado (+19 −7))
-- 2025-12-28 — `96a0532` — feat: add KPI row
-    - src/app/(main)/dashboard/finance/_components/assets-breakdown.tsx (modificado (+9 −6))
-    - src/app/(main)/dashboard/finance/_components/cash-flow-overview.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/finance/_components/net-worth-summary.tsx (modificado (+1 −2))
-    - src/app/(main)/dashboard/finance/_components/spending-overview.tsx (modificado (+1 −3))
-    - src/app/(main)/dashboard/finance/page.tsx (modificado (+1 −1))
-- 2025-12-28 — `5eb63a3` — chore: update initial dashboard design
-    - package-lock.json (modificado (+765 −222))
-    - package.json (modificado (+1 −1))
-    - src/app/(main)/dashboard/finance/_components/account-summary.tsx (adicionado (+62 −0))
-    - src/app/(main)/dashboard/finance/_components/assets-breakdown.tsx (adicionado (+33 −0))
-    - src/app/(main)/dashboard/finance/_components/cash-flow-overview.tsx (adicionado (+36 −0))
-    - src/app/(main)/dashboard/finance/_components/net-worth-summary.tsx (adicionado (+38 −0))
-    - src/app/(main)/dashboard/finance/_components/recent-payments.tsx (adicionado (+62 −0))
-    - src/app/(main)/dashboard/finance/_components/recent-transactions.tsx (adicionado (+62 −0))
-    - +5 outros arquivos (+245 −18)
-- 2025-12-23 — `1361a71` — chore: update deps
-    - package-lock.json (modificado (+47 −47))
-    - package.json (modificado (+2 −2))
-- 2025-12-19 — `4907c5d` — chore: update deps
-    - package-lock.json (modificado (+342 −948))
-    - package.json (modificado (+3 −3))
-- 2025-12-13 — `8841c0c` — chore: minor updates
-    - biome.json (modificado (+7 −1))
-    - src/app/globals.css (modificado (+3 −0))
-- 2025-12-12 — `6294c1b` — chore: use biome for formatting preset generated code
-    - package-lock.json (modificado (+0 −17))
-    - package.json (modificado (+0 −1))
-    - src/scripts/generate-theme-presets.ts (modificado (+5 −3))
-- 2025-12-12 — `e28277a` — chore: update shadcn components
-    - package-lock.json (modificado (+760 −217))
-    - package.json (modificado (+1 −1))
-    - src/components/ui/button.tsx (modificado (+4 −2))
-    - src/components/ui/calendar.tsx (modificado (+5 −1))
-    - src/components/ui/dialog.tsx (modificado (+1 −1))
-    - src/components/ui/form.tsx (modificado (+1 −1))
-    - src/components/ui/pagination.tsx (modificado (+1 −1))
-    - src/components/ui/select.tsx (modificado (+5 −2))
-- 2025-12-12 — `d06f62c` — Merge pull request #25 from arhamkhnz/chore/eslint-to-biome
-    - .prettierignore (removido (+0 −12))
-    - .prettierrc (removido (+0 −9))
-    - README.md (modificado (+9 −1))
-    - biome.json (adicionado (+105 −0))
-    - eslint.config.mjs (removido (+0 −160))
-    - next.config.mjs (modificado (+2 −2))
-    - package-lock.json (modificado (+811 −5672))
-    - package.json (modificado (+8 −20))
-    - +62 outros arquivos (+1056 −1064)
-- 2025-12-12 — `4b09fd2` — chore: update Biome commands and clean up styles
-    - package.json (modificado (+2 −1))
-    - src/app/(main)/dashboard/finance/_components/currency-exchange.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/finance/_components/expense-summary.tsx (modificado (+2 −2))
-- 2025-12-12 — `b704217` — Add formatting and linting instructions to README
-    - README.md (modificado (+8 −0))
-- 2025-12-12 — `3c98550` — chore: remove next eslint config
-    - package-lock.json (modificado (+704 −5140))
-    - package.json (modificado (+1 −4))
-- 2025-12-12 — `eba378a` — 2.1.0
-    - package-lock.json (modificado (+2 −2))
-    - package.json (modificado (+4 −2))
-- 2025-12-12 — `14b057e` — chore: lint and format codebase using Biome
-    - biome.json (modificado (+3 −0))
-    - next.config.mjs (modificado (+2 −2))
-    - package.json (modificado (+2 −4))
-    - postcss.config.mjs (modificado (+3 −3))
-    - src/app/(main)/auth/_components/login-form.tsx (modificado (+1 −1))
-    - src/app/(main)/auth/v1/login/page.tsx (modificado (+6 −6))
-    - src/app/(main)/auth/v1/register/page.tsx (modificado (+6 −6))
-    - src/app/(main)/auth/v2/layout.tsx (modificado (+7 −7))
-    - +55 outros arquivos (+1028 −1030)
-- 2025-12-12 — `b92f625` — chore: remove ESLint and Prettier configs and usage
-    - .prettierignore (removido (+0 −12))
-    - .prettierrc (removido (+0 −9))
-    - README.md (modificado (+1 −1))
-    - eslint.config.mjs (removido (+0 −160))
-    - package-lock.json (modificado (+177 −766))
-    - package.json (modificado (+6 −17))
-    - src/app/(main)/dashboard/crm/_components/crm.config.ts (modificado (+1 −3))
-    - src/scripts/generate-theme-presets.ts (modificado (+0 −3))
-    - +1 outros arquivos (+1 −2)
-- 2025-12-12 — `121edb0` — chore: migrate prettier & eslint config to biome
-    - biome.json (modificado (+100 −32))
-- 2025-12-12 — `094e38a` — feat: biome init
-    - biome.json (adicionado (+34 −0))
-    - package-lock.json (modificado (+164 −0))
-    - package.json (modificado (+1 −0))
-- 2025-12-12 — `2197d53` — chore: update deps
-    - package-lock.json (modificado (+292 −835))
-    - package.json (modificado (+4 −4))
-- 2025-12-11 — `c64b95a` — style: fix sidebar icon alignment
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+1 −1))
-- 2025-12-11 — `ddc866b` — Merge pull request #24 from arhamkhnz/chore/optimize-preference-store
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+8 −3))
-    - src/scripts/theme-boot.tsx (modificado (+3 −3))
-- 2025-12-11 — `a74f45a` — chore: update deps
-    - package-lock.json (modificado (+831 −288))
-    - package.json (modificado (+1 −1))
-- 2025-12-11 — `8a50c16` — fix: align theme boot defaults and use shallow sidebar selector
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+8 −3))
-    - src/scripts/theme-boot.tsx (modificado (+3 −3))
-- 2025-12-11 — `c096da6` — chore: quick fix
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+5 −1))
-    - src/stores/preferences/preferences-provider.tsx (modificado (+1 −0))
-    - src/stores/preferences/preferences-store.ts (modificado (+4 −0))
-- 2025-12-11 — `31a147c` — Merge pull request #22 from arhamkhnz/optimize-sidebar-pref
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+7 −1))
-    - src/lib/preferences/preferences-config.ts (modificado (+50 −12))
-    - src/scripts/theme-boot.tsx (modificado (+0 −6))
-    - src/stores/preferences/preferences-provider.tsx (modificado (+17 −43))
-    - src/stores/preferences/preferences-store.ts (modificado (+0 −2))
-- 2025-12-11 — `4c426b1` — feat: improve layout prefs handling for instant sidebar render
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+7 −1))
-    - src/lib/preferences/preferences-config.ts (modificado (+50 −12))
-    - src/scripts/theme-boot.tsx (modificado (+0 −6))
-    - src/stores/preferences/preferences-provider.tsx (modificado (+17 −43))
-    - src/stores/preferences/preferences-store.ts (modificado (+0 −2))
-- 2025-12-09 — `9f9a86b` — chore: update deps
-    - package-lock.json (modificado (+138 −146))
-    - package.json (modificado (+6 −6))
-- 2025-12-08 — `629937b` — Merge pull request #21 from arhamkhnz/fix/datatable
-    - src/app/(main)/dashboard/crm/_components/table-cards.tsx (modificado (+1 −0))
-    - src/app/(main)/dashboard/default/_components/data-table.tsx (modificado (+1 −0))
-    - src/components/data-table/data-table-column-header.tsx (modificado (+2 −0))
-    - src/components/data-table/data-table-pagination.tsx (modificado (+2 −0))
-    - src/components/data-table/data-table-view-options.tsx (modificado (+1 −0))
-    - src/components/data-table/data-table.tsx (modificado (+2 −0))
-    - src/components/data-table/drag-column.tsx (modificado (+2 −0))
-    - src/components/data-table/draggable-row.tsx (modificado (+2 −0))
-    - +2 outros arquivos (+3 −0)
-- 2025-12-08 — `322cb7b` — feat: add “use no memo” to all table components to prevent React Compiler memoization and fix state issues
-    - src/app/(main)/dashboard/crm/_components/table-cards.tsx (modificado (+1 −0))
-    - src/app/(main)/dashboard/default/_components/data-table.tsx (modificado (+1 −0))
-    - src/components/data-table/data-table-column-header.tsx (modificado (+2 −0))
-    - src/components/data-table/data-table-pagination.tsx (modificado (+2 −0))
-    - src/components/data-table/data-table-view-options.tsx (modificado (+1 −0))
-    - src/components/data-table/data-table.tsx (modificado (+2 −0))
-    - src/components/data-table/drag-column.tsx (modificado (+2 −0))
-    - src/components/data-table/draggable-row.tsx (modificado (+2 −0))
-    - +2 outros arquivos (+3 −0)
-- 2025-12-07 — `1898e64` — Merge pull request #20 from arhamkhnz/feature/prefs-and-style-fixes
-    - .husky/pre-commit (modificado (+1 −1))
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+6 −2))
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+29 −22))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+5 −32))
-    - src/app/layout.tsx (modificado (+20 −3))
-    - src/lib/cookie.client.ts (modificado (+1 −1))
-    - src/lib/layout-utils.ts (removido (+0 −27))
-    - +14 outros arquivos (+300 −56)
-- 2025-12-07 — `745b5ea` — chore: update layout controls preferences text
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+2 −3))
-- 2025-12-07 — `4d0c0b3` — feat: add window prefs bridge + temporary flicker fix in provider
-    - src/lib/preferences/preferences-config.ts (modificado (+1 −1))
-    - src/scripts/theme-boot.tsx (modificado (+17 −0))
-    - src/stores/preferences/preferences-provider.tsx (modificado (+7 −0))
-    - src/stores/preferences/preferences-store.ts (modificado (+2 −0))
-    - src/types/window.d.ts (adicionado (+16 −0))
-- 2025-12-07 — `bcce819` — feat: completed preference persistence setup
-    - src/lib/cookie.client.ts (modificado (+1 −1))
-    - src/lib/local-storage.client.ts (adicionado (+19 −0))
-    - src/lib/preferences/preferences-config.ts (modificado (+6 −6))
-    - src/lib/preferences/preferences-storage.ts (modificado (+5 −2))
-- 2025-12-07 — `2785e03` — chore: simplified preference logic
-    - .husky/pre-commit (modificado (+1 −1))
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+10 −5))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+2 −2))
-    - src/app/layout.tsx (modificado (+1 −1))
-    - src/lib/preferences/layout-utils.ts (renomeado)
-    - src/lib/preferences/layout.ts (renomeado (+1 −1))
-    - src/lib/preferences/preferences-config.ts (renomeado (+15 −15))
-    - src/lib/preferences/preferences-storage.ts (renomeado)
-    - +6 outros arquivos (+41 −50)
-- 2025-12-07 — `5ac5c93` — feat: move sidebar config to global store and wire it inside AppSidebar
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+5 −1))
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+7 −8))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+2 −19))
-    - src/app/layout.tsx (modificado (+4 −1))
-    - src/lib/layout-utils.ts (modificado (+4 −8))
-    - src/lib/preferences-config.ts (modificado (+2 −2))
-    - src/scripts/theme-boot.tsx (modificado (+10 −1))
-    - src/stores/preferences/preferences-provider.tsx (modificado (+23 −2))
-    - +1 outros arquivos (+10 −1)
-- 2025-12-07 — `785b1fb` — chore: style fix and type correction
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+1 −1))
-    - src/lib/preferences-config.ts (modificado (+2 −2))
-- 2025-12-06 — `b5770b5` — chore: update navbar style selectors to use html data attributes
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+7 −3))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+3 −13))
-    - src/app/layout.tsx (modificado (+17 −3))
-    - src/lib/layout-utils.ts (modificado (+4 −8))
-    - src/lib/preferences-config.ts (modificado (+18 −2))
-    - src/scripts/theme-boot.tsx (modificado (+59 −12))
-    - src/stores/preferences/preferences-provider.tsx (modificado (+22 −1))
-    - src/stores/preferences/preferences-store.ts (modificado (+9 −0))
-- 2025-12-06 — `5b2c81b` — chore: update preference config and style fix
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+4 −4))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+2 −2))
-    - src/lib/preferences-config.ts (modificado (+28 −8))
-    - src/lib/preferences-storage.ts (modificado (+21 −3))
-- 2025-12-06 — `e0fe285` — Merge pull request #18 from arhamkhnz/fix/layout-settings
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+69 −63))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+5 −5))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+1 −1))
-    - src/app/layout.tsx (modificado (+8 −10))
-    - src/lib/cookie.client.ts (adicionado (+19 −0))
-    - src/lib/layout-utils.ts (modificado (+16 −2))
-    - src/lib/preferences-config.ts (adicionado (+11 −0))
-    - src/lib/preferences-storage.ts (adicionado (+11 −0))
-    - +3 outros arquivos (+72 −6)
-- 2025-12-06 — `ddf5e21` — chore: add missing await in persistPreference
-    - src/lib/preferences-storage.ts (modificado (+2 −2))
-- 2025-12-06 — `c15ec5e` — chore: disable layout controls and apply minor fixes
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+8 −5))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+2 −2))
-- 2025-12-06 — `f8313e7` — chore: add preference config and conditional server persistence
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+3 −2))
-    - src/lib/preferences-storage.ts (adicionado (+11 −0))
-- 2025-12-04 — `6922089` — chore: update deps
-    - package-lock.json (modificado (+146 −146))
-    - package.json (modificado (+7 −7))
-- 2025-12-04 — `716e97f` — feat: add preference config
-    - src/lib/preferences-config.ts (adicionado (+11 −0))
-- 2025-12-01 — `27bd9ff` — Merge branch 'main' into fix/layout-settings
-    - package-lock.json (modificado (+62 −59))
-    - package.json (modificado (+4 −4))
-- 2025-12-01 — `1d00212` — chore: update deps
-    - package-lock.json (modificado (+62 −59))
-    - package.json (modificado (+4 −4))
-- 2025-12-01 — `ebb5a3d` — feat: add client side cookie utils
-    - src/lib/cookie.client.ts (adicionado (+19 −0))
-- 2025-12-01 — `66704bd` — chore: minor changes
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+8 −6))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+2 −2))
-    - src/lib/layout-utils.ts (modificado (+16 −2))
-    - src/lib/theme-utils.ts (modificado (+2 −2))
-- 2025-12-01 — `9272537` — chore: update layout controls and fix sidebar state logic
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+47 −52))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+1 −1))
+**Resumo**: 50 commits • 62 arquivos • +7.176 −16.004 • 10 novidades, 29 manutenção, 7 merges, 2 outros, 1 estilo, 1 correções
+
+**Novidades**
+- feat(finance): complete remaining dashboard sections
+- feat: add KPI row
+- feat: biome init
+- feat: improve layout prefs handling for instant sidebar render
+- feat: add “use no memo” to all table components to prevent React Compiler memoization and fix state issues
+- feat: add window prefs bridge + temporary flicker fix in provider
+
+**Correções**
+- fix: align theme boot defaults and use shallow sidebar selector
+
+**Arquivos principais**
+- package-lock.json (modificado, +5.303 −14.564)
+- src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado, +194 −173)
+- eslint.config.mjs (removido, +0 −320)
+- biome.json (adicionado, +249 −33)
+- src/app/(main)/dashboard/finance/_components/account-overview.tsx (modificado, +105 −137)
+- src/app/(main)/dashboard/finance/_components/expense-summary.tsx (modificado, +76 −108)
+- src/stores/preferences/preferences-provider.tsx (modificado, +87 −89)
+- src/lib/preferences/preferences-config.ts (renomeado, +122 −46)
+- package.json (modificado, +57 −82)
+- src/app/(main)/dashboard/finance/_components/recent-transactions.tsx (adicionado, +83 −40)
+- src/scripts/theme-boot.tsx (modificado, +92 −31)
+- src/app/(main)/dashboard/layout.tsx (modificado, +30 −72)
+- src/app/(main)/dashboard/finance/_components/financial-overview.tsx (modificado, +46 −51)
+- src/lib/layout-utils.ts (removido, +40 −47)
+- src/lib/preferences-config.ts (adicionado, +72 −14)
+- +47 outros arquivos
 
 ## 2025-11
 
-- 2025-11-30 — `cf0ce93` — chore: simplify layout controls handlers and improve preferences provider initialization
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+39 −25))
-    - src/stores/preferences/preferences-provider.tsx (modificado (+9 −2))
-- 2025-11-30 — `b986677` — chore: update preferences store logic and apply minor fixes
-    - src/app/layout.tsx (modificado (+1 −1))
-    - src/stores/preferences/preferences-provider.tsx (modificado (+18 −4))
-- 2025-11-30 — `d948542` — feat: add theme boot script and make root layout static
-    - src/app/layout.tsx (modificado (+7 −7))
-    - src/scripts/theme-boot.tsx (adicionado (+45 −0))
-- 2025-11-30 — `2a2a216` — chore: enable layout controls
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+1 −10))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+1 −1))
-    - src/app/layout.tsx (modificado (+2 −4))
-- 2025-11-29 — `809bdd6` — chore: remove analytics
-    - package-lock.json (modificado (+0 −39))
-    - package.json (modificado (+0 −1))
-    - src/app/layout.tsx (modificado (+0 −3))
-- 2025-11-29 — `9f11dbe` — chore: update deps
-    - package-lock.json (modificado (+23 −23))
-    - package.json (modificado (+4 −4))
-- 2025-11-29 — `47b9b36` — chore: update avatar to external url
-    - public/avatars/arhamkhnz.png (removido)
-    - src/data/users.ts (modificado (+1 −1))
-- 2025-11-29 — `23fbdd5` — chore: disable prefetch on next Link
-    - src/app/(main)/auth/v1/login/page.tsx (modificado (+1 −1))
-    - src/app/(main)/auth/v1/register/page.tsx (modificado (+1 −1))
-    - src/app/(main)/auth/v2/login/page.tsx (modificado (+1 −1))
-    - src/app/(main)/auth/v2/register/page.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+1 −1))
-    - src/app/not-found.tsx (modificado (+1 −1))
-- 2025-11-29 — `ae4b5e3` — chore: temporarily disable cookie logic in root layout to avoid rerendering bug
-    - src/app/layout.tsx (modificado (+5 −8))
-- 2025-11-28 — `aa004ab` — chore: disable layout controls
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+10 −1))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+1 −1))
-- 2025-11-28 — `2d0a558` — chore: update deps
-    - package-lock.json (modificado (+63 −63))
-    - package.json (modificado (+4 −4))
-- 2025-11-28 — `5e1a22e` — chore: disable prefetch on sidebar links to avoid unnecessary route requests
-    - src/app/(main)/dashboard/_components/sidebar/nav-main.tsx (modificado (+4 −4))
-- 2025-11-27 — `26ed6ad` — chore: add vercel analytics
-    - package-lock.json (modificado (+39 −0))
-    - package.json (modificado (+1 −0))
-    - src/app/layout.tsx (modificado (+3 −0))
-- 2025-11-25 — `d2a3bf6` — chore: update deps
-    - package-lock.json (modificado (+136 −167))
-    - package.json (modificado (+6 −6))
-- 2025-11-21 — `141e014` — chore: update deps
-    - package-lock.json (modificado (+108 −108))
-    - package.json (modificado (+5 −5))
-- 2025-11-14 — `4484a4e` — chore: update deps
-    - package-lock.json (modificado (+160 −160))
-    - package.json (modificado (+9 −9))
-- 2025-11-08 — `8f8a21c` — style: add overscroll-behavior
-    - src/app/globals.css (modificado (+5 −1))
-- 2025-11-08 — `b35aed9` — chore: update layout control toggle styles
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+5 −5))
-- 2025-11-08 — `b7a6b62` — chore: update deps & apply uniform toggle item sizing and text classes
-    - package-lock.json (modificado (+228 −188))
-    - package.json (modificado (+2 −2))
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+16 −16))
-- 2025-11-05 — `899e9c4` — chore: update deps
-    - package-lock.json (modificado (+1045 −107))
-    - package.json (modificado (+5 −5))
-- 2025-11-02 — `5fe592b` — chore: update deps
-    - package-lock.json (modificado (+46 −46))
-    - package.json (modificado (+3 −3))
+**Resumo**: 21 commits • 17 arquivos • +2.066 −1.040 • 19 manutenção, 1 novidades, 1 estilo
+
+**Novidades**
+- feat: add theme boot script and make root layout static
+
+**Arquivos principais**
+- package-lock.json (modificado, +1.848 −901)
+- src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado, +71 −57)
+- package.json (modificado, +39 −39)
+- src/scripts/theme-boot.tsx (adicionado, +45 −0)
+- src/app/layout.tsx (modificado, +18 −23)
+- src/stores/preferences/preferences-provider.tsx (modificado, +27 −6)
+- src/app/(main)/dashboard/_components/sidebar/nav-main.tsx (modificado, +4 −4)
+- src/app/globals.css (modificado, +5 −1)
+- src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado, +2 −2)
+- src/data/users.ts (modificado, +1 −1)
+- src/app/(main)/auth/v1/login/page.tsx (modificado, +1 −1)
+- src/app/(main)/auth/v1/register/page.tsx (modificado, +1 −1)
+- src/app/(main)/auth/v2/login/page.tsx (modificado, +1 −1)
+- src/app/(main)/auth/v2/register/page.tsx (modificado, +1 −1)
+- src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado, +1 −1)
+- +2 outros arquivos
 
 ## 2025-10
 
-- 2025-10-29 — `d363a90` — chore: update deps
-    - package-lock.json (modificado (+59 −59))
-    - package.json (modificado (+4 −4))
-- 2025-10-27 — `786b53e` — chore: update deps & shadcn component
-    - package-lock.json (modificado (+4 −4))
-    - package.json (modificado (+1 −1))
-    - src/components/ui/calendar.tsx (modificado (+4 −1))
-- 2025-10-24 — `d7b5500` — chore: update dependencies and remove unused packages
-    - package-lock.json (modificado (+94 −112))
-    - package.json (modificado (+1 −3))
-- 2025-10-24 — `f8b6935` — docs: update Next.js version references in docs and meta
-    - CONTRIBUTING.md (modificado (+1 −1))
-    - src/config/app-config.ts (modificado (+1 −1))
-- 2025-10-24 — `81f2338` — refactor: rename middleware to proxy, cleanup code, and update tsconfig
-    - src/middleware.disabled.ts (removido (+0 −19))
-    - src/middleware/auth-middleware.ts (removido (+0 −16))
-    - src/proxy.disabled.ts (adicionado (+25 −0))
-    - tsconfig.json (modificado (+2 −2))
-- 2025-10-24 — `9fedcf5` — docs(readme): update dashboard image and version in demo URL
-    - README.md (modificado (+1 −1))
-    - media/dashboard.png (modificado)
-- 2025-10-24 — `8554627` — Update README with Next.js 15 version link
-    - README.md (modificado (+5 −1))
-- 2025-10-24 — `c96a736` — Update README to reflect Next.js version change
-    - README.md (modificado (+2 −2))
-- 2025-10-24 — `f1c109c` — feat: migrate to Next 16, enable React Compiler, and update ESLint config
-    - eslint.config.mjs (modificado (+19 −18))
-    - next.config.mjs (modificado (+1 −0))
-    - package-lock.json (modificado (+413 −86))
-    - package.json (modificado (+7 −6))
-- 2025-10-23 — `e5e99ef` — fix: use Shadcn DropdownMenuTrigger instead of Radix UI in data-table-view-options.tsx
-    - src/components/data-table/data-table-view-options.tsx (modificado (+1 −1))
-- 2025-10-23 — `98e9838` — chore: update deps & shadcn component
-    - package-lock.json (modificado (+252 −298))
-    - package.json (modificado (+5 −5))
-    - src/components/ui/badge.tsx (modificado (+1 −1))
-    - src/components/ui/field.tsx (modificado (+7 −3))
-    - src/components/ui/toggle-group.tsx (modificado (+15 −5))
-- 2025-10-18 — `33c1cf9` — chore: update deps & shadcn component
-    - package-lock.json (modificado (+92 −93))
-    - package.json (modificado (+5 −5))
-    - src/components/ui/sidebar.tsx (modificado (+1 −1))
-    - src/components/ui/sonner.tsx (modificado (+1 −1))
-- 2025-10-14 — `7e76e82` — chore: update deps & shadcn component
-    - package-lock.json (modificado (+167 −154))
-    - package.json (modificado (+6 −6))
-    - src/components/ui/checkbox.tsx (modificado (+1 −1))
-    - src/components/ui/field.tsx (modificado (+3 −3))
-    - src/components/ui/sonner.tsx (modificado (+15 −0))
-- 2025-10-08 — `4e3e737` — chore: update deps
-    - package-lock.json (modificado (+4 −4))
-    - package.json (modificado (+1 −1))
-- 2025-10-06 — `ee0b215` — chore: update deps & shadcn component
-    - package-lock.json (modificado (+82 −82))
-    - package.json (modificado (+3 −3))
-    - src/components/ui/input-group.tsx (modificado (+1 −1))
-- 2025-10-04 — `1aafd38` — chore: update deps
-    - package-lock.json (modificado (+49 −46))
-    - package.json (modificado (+2 −2))
-- 2025-10-03 — `dd9d328` — chore: add new shadcn components
-    - components.json (modificado (+2 −1))
-    - src/components/ui/button-group.tsx (adicionado (+83 −0))
-    - src/components/ui/button.tsx (modificado (+2 −0))
-    - src/components/ui/card.tsx (modificado (+1 −1))
-    - src/components/ui/context-menu.tsx (modificado (+1 −1))
-    - src/components/ui/dropdown-menu.tsx (modificado (+1 −1))
-    - src/components/ui/empty.tsx (adicionado (+104 −0))
-    - src/components/ui/field.tsx (adicionado (+244 −0))
-    - +6 outros arquivos (+410 −1)
-- 2025-10-02 — `7a21380` — chore: update deps
-    - package-lock.json (modificado (+128 −128))
-    - package.json (modificado (+6 −6))
-- 2025-10-01 — `bb4b312` — Update README.md
-    - README.md (modificado (+51 −50))
-- 2025-10-01 — `17fc38b` — Update CONTRIBUTING.md
-    - CONTRIBUTING.md (modificado (+22 −18))
+**Resumo**: 20 commits • 28 arquivos • +2.003 −1.259 • 11 manutenção, 2 documentação, 1 refatorações, 4 outros, 1 novidades, 1 correções
+
+**Novidades**
+- feat: migrate to Next 16, enable React Compiler, and update ESLint config
+
+**Correções**
+- fix: use Shadcn DropdownMenuTrigger instead of Radix UI in data-table-view-options.tsx
+
+**Arquivos principais**
+- package-lock.json (modificado, +1.344 −1.066)
+- src/components/ui/field.tsx (adicionado, +254 −6)
+- README.md (modificado, +59 −54)
+- src/components/ui/empty.tsx (adicionado, +104 −0)
+- package.json (modificado, +41 −42)
+- src/components/ui/button-group.tsx (adicionado, +83 −0)
+- CONTRIBUTING.md (modificado, +23 −19)
+- eslint.config.mjs (modificado, +19 −18)
+- src/proxy.disabled.ts (adicionado, +25 −0)
+- src/components/ui/toggle-group.tsx (modificado, +15 −5)
+- src/middleware.disabled.ts (removido, +0 −19)
+- src/components/ui/sonner.tsx (modificado, +16 −1)
+- src/middleware/auth-middleware.ts (removido, +0 −16)
+- src/components/ui/calendar.tsx (modificado, +4 −1)
+- tsconfig.json (modificado, +2 −2)
+- +13 outros arquivos
 
 ## 2025-09
 
-- 2025-09-30 — `b943f7d` — Update CONTRIBUTING.md
-    - CONTRIBUTING.md (modificado (+16 −8))
-- 2025-09-30 — `61b8db7` — chore: add contributing.md
-    - CONTRIBUTING.md (adicionado (+115 −0))
-- 2025-09-29 — `158312e` — chore: code cleanup, minor fixes & update deps
-    - package-lock.json (modificado (+85 −74))
-    - package.json (modificado (+1 −1))
-    - public/next.svg (removido (+0 −1))
-    - public/vercel.svg (removido (+0 −1))
-    - src/app/(external)/page.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+4 −2))
-- 2025-09-26 — `f6c7cff` — chore: update deps
-    - package-lock.json (modificado (+78 −78))
-    - package.json (modificado (+4 −4))
-- 2025-09-23 — `1609c42` — chore: update deps & shadcn components
-    - package-lock.json (modificado (+83 −100))
-    - package.json (modificado (+2 −2))
-    - src/components/ui/tooltip.tsx (modificado (+2 −2))
-- 2025-09-21 — `5db804e` — chore: update deps
-    - package-lock.json (modificado (+143 −175))
-    - package.json (modificado (+5 −5))
-- 2025-09-19 — `a458ea4` — chore: update shadcn components
-    - src/components/ui/button.tsx (modificado (+3 −4))
-    - src/components/ui/input.tsx (modificado (+1 −1))
-- 2025-09-17 — `4ad2c58` — style(layout): refine sticky navbar styles for consistency
-    - src/app/(main)/dashboard/layout.tsx (modificado (+3 −8))
-- 2025-09-16 — `5bb59ad` — chore: update dependencies and refresh shadcn/ui components
-    - package-lock.json (modificado (+91 −91))
-    - package.json (modificado (+4 −4))
-    - src/components/ui/chart.tsx (modificado (+90 −86))
-- 2025-09-16 — `069354c` — Merge pull request #10 from fiifiofosu/main
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+27 −3))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+18 −2))
-    - src/lib/layout-utils.ts (modificado (+7 −0))
-    - src/types/preferences/layout.ts (modificado (+8 −0))
-- 2025-09-16 — `186480a` — Update navigation layout and preferences handling
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+25 −25))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+13 −6))
-    - src/lib/layout-utils.ts (modificado (+3 −7))
-    - src/types/preferences/layout.ts (modificado (+5 −5))
-- 2025-09-15 — `4bde1f1` — feat: Update dashboard layout controls and layout utils with sticky header
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+27 −3))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+11 −2))
-    - src/lib/layout-utils.ts (modificado (+11 −0))
-    - src/types/preferences/layout.ts (modificado (+8 −0))
-- 2025-09-14 — `71bc78d` — chore: update deps
-    - package-lock.json (modificado (+53 −43))
-    - package.json (modificado (+4 −4))
-- 2025-09-11 — `163c516` — chore: update deps
-    - package-lock.json (modificado (+175 −175))
-    - package.json (modificado (+5 −5))
-- 2025-09-05 — `ab53bd8` — chore: add coming soon page & update deps
-    - package-lock.json (modificado (+20 −20))
-    - package.json (modificado (+2 −2))
-    - src/app/(main)/dashboard/coming-soon/page.tsx (adicionado (+8 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+12 −12))
-- 2025-09-05 — `4672ac6` — chore: update non-existing routes to /dashboard & update deps
-    - package-lock.json (modificado (+157 −170))
-    - package.json (modificado (+5 −5))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+4 −4))
+**Resumo**: 16 commits • 17 arquivos • +1.339 −1.141 • 2 outros, 11 manutenção, 1 estilo, 1 merges, 1 novidades
+
+**Novidades**
+- feat: Update dashboard layout controls and layout utils with sticky header
+
+**Arquivos principais**
+- package-lock.json (modificado, +885 −926)
+- src/components/ui/chart.tsx (modificado, +90 −86)
+- CONTRIBUTING.md (adicionado, +131 −8)
+- src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado, +79 −31)
+- package.json (modificado, +32 −32)
+- src/app/(main)/dashboard/layout.tsx (modificado, +45 −18)
+- src/navigation/sidebar/sidebar-items.ts (modificado, +16 −16)
+- src/lib/layout-utils.ts (modificado, +21 −7)
+- src/types/preferences/layout.ts (modificado, +21 −5)
+- src/app/(main)/dashboard/coming-soon/page.tsx (adicionado, +8 −0)
+- src/components/ui/button.tsx (modificado, +3 −4)
+- src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado, +4 −2)
+- src/components/ui/tooltip.tsx (modificado, +2 −2)
+- src/app/(external)/page.tsx (modificado, +1 −1)
+- src/components/ui/input.tsx (modificado, +1 −1)
+- +2 outros arquivos
 
 ## 2025-08
 
-- 2025-08-31 — `430bafe` — chore: add placeholder routes, deps update & enable turbopack
-    - components.json (modificado (+3 −3))
-    - package-lock.json (modificado (+43 −43))
-    - package.json (modificado (+3 −3))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+8 −8))
-- 2025-08-28 — `0fa7058` — chore: update deps
-    - package-lock.json (modificado (+51 −51))
-    - package.json (modificado (+2 −2))
-- 2025-08-25 — `39e3589` — chore: update deps
-    - package-lock.json (modificado (+118 −104))
-    - package.json (modificado (+7 −7))
-- 2025-08-21 — `65951a1` — chore: update deps
-    - package-lock.json (modificado (+77 −77))
-    - package.json (modificado (+4 −4))
-- 2025-08-19 — `5318aa2` — chore: update deps
-    - package-lock.json (modificado (+130 −130))
-    - package.json (modificado (+5 −5))
-- 2025-08-17 — `4d330c5` — chore: update deps
-    - package-lock.json (modificado (+122 −122))
-    - package.json (modificado (+5 −5))
-- 2025-08-14 — `db4b024` — chore: update deps
-    - package-lock.json (modificado (+287 −287))
-    - package.json (modificado (+3 −3))
-- 2025-08-11 — `4ab4018` — chore: add not-found page and code cleanup
-    - src/app/(main)/dashboard/[...not-found]/page.tsx (modificado (+2 −0))
-    - src/app/not-found.tsx (adicionado (+17 −0))
-- 2025-08-10 — `ff06832` — chore: update deps
-    - package-lock.json (modificado (+185 −185))
-    - package.json (modificado (+9 −9))
-- 2025-08-04 — `2c114d4` — chore: update deps
-    - package-lock.json (modificado (+15 −15))
-    - package.json (modificado (+3 −3))
-- 2025-08-01 — `cd69a92` — chore: update deps
-    - package-lock.json (modificado (+32 −32))
-    - package.json (modificado (+2 −2))
+**Resumo**: 11 commits • 6 arquivos • +1.133 −1.100 • 11 manutenção
+
+**Arquivos principais**
+- package-lock.json (modificado, +1.060 −1.046)
+- package.json (modificado, +43 −43)
+- src/app/not-found.tsx (adicionado, +17 −0)
+- src/navigation/sidebar/sidebar-items.ts (modificado, +8 −8)
+- components.json (modificado, +3 −3)
+- src/app/(main)/dashboard/[...not-found]/page.tsx (modificado, +2 −0)
 
 ## 2025-07
 
-- 2025-07-30 — `0fe2d66` — chore: update deps
-    - package-lock.json (modificado (+71 −71))
-    - package.json (modificado (+6 −6))
-- 2025-07-27 — `2d3dbb3` — fix: override shadow utilities to respect theme presets & update deps
-    - package-lock.json (modificado (+90 −90))
-    - package.json (modificado (+8 −8))
-    - src/app/globals.css (modificado (+34 −0))
-    - src/styles/presets/brutalist.css (modificado (+79 −63))
-    - src/styles/presets/soft-pop.css (modificado (+16 −0))
-    - src/styles/presets/tangerine.css (modificado (+16 −0))
-- 2025-07-26 — `cec7ad1` — Update README.md
-    - README.md (modificado (+0 −4))
-- 2025-07-23 — `1077358` — chore: update deps
-    - package-lock.json (modificado (+120 −120))
-    - package.json (modificado (+4 −4))
-- 2025-07-22 — `1ef7199` — Update README.md
-    - README.md (modificado (+1 −1))
-- 2025-07-22 — `f17740d` — Update README.md
-    - README.md (modificado (+2 −2))
-- 2025-07-21 — `636b96b` — Update README.md
-    - README.md (modificado (+5 −1))
-- 2025-07-19 — `bd1b9e5` — chore: update deps
-    - package-lock.json (modificado (+82 −82))
-    - package.json (modificado (+4 −4))
-- 2025-07-19 — `d49c69d` — Update README.md
-    - README.md (modificado (+1 −1))
-- 2025-07-19 — `46e4049` — chore: update media image
-    - README.md (modificado (+1 −1))
-    - media/dashboard.png (modificado)
-- 2025-07-19 — `224b6f1` — chore: update media
-    - README.md (modificado (+1 −1))
-    - media/dashboard.jpg (removido)
-    - media/dashboard.png (modificado)
-- 2025-07-19 — `fad7c6a` — chore: update media image
-    - README.md (modificado (+1 −1))
-    - media/dashboard.jpg (adicionado)
-- 2025-07-17 — `d5aed9d` — chore: eslint accessibility fix
-    - src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (modificado (+5 −3))
-- 2025-07-17 — `47192ba` — chore: remove unused dependencies & minor improvements
-    - package-lock.json (modificado (+1 −28))
-    - package.json (modificado (+0 −4))
-    - src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (modificado (+7 −5))
-    - src/components/simple-icon.tsx (modificado (+0 −1))
-- 2025-07-17 — `7d106dd` — Update README.md
-    - README.md (modificado (+1 −1))
-- 2025-07-17 — `648e335` — Update README.md
-    - README.md (modificado (+1 −1))
-- 2025-07-17 — `6881cc9` — Update README.md
-    - README.md (modificado (+40 −28))
-- 2025-07-17 — `4a7388e` — Update README.md
-    - README.md (modificado (+1 −1))
-- 2025-07-17 — `f7c9754` — Update README.md
-    - README.md (modificado (+8 −18))
-- 2025-07-17 — `2b7ed0d` — Update README.md
-    - README.md (modificado (+6 −4))
-- 2025-07-17 — `ce53afe` — Update README.md
-    - README.md (modificado (+8 −1))
-- 2025-07-17 — `8c59f5b` — chore: fix eslint warnings
-    - src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (modificado (+0 −1))
-    - src/components/simple-icon.tsx (modificado (+2 −0))
-    - src/scripts/generate-theme-presets.ts (modificado (+5 −5))
-    - src/types/preferences/theme.ts (modificado (+0 −1))
-- 2025-07-16 — `c52db51` — chore: fix type imports
-    - src/stores/preferences/preferences-store.ts (modificado (+1 −1))
-    - src/types/preferences/theme.ts (modificado (+1 −1))
-- 2025-07-16 — `9b786f3` — chore: update pre-commit hook to auto stage theme presets
-    - .husky/pre-commit (modificado (+1 −0))
-    - src/types/preferences/theme.ts (modificado (+1 −1))
-- 2025-07-16 — `9e34fa5` — feat: add theme preset generation script, standardize types, and update UI
-    - .husky/pre-commit (modificado (+1 −0))
-    - package.json (modificado (+2 −1))
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+13 −13))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+10 −10))
-    - src/app/layout.tsx (modificado (+3 −3))
-    - src/scripts/generate-theme-presets.ts (adicionado (+127 −0))
-    - src/server/server-actions.ts (modificado (+2 −1))
-    - src/styles/presets/brutalist.css (modificado (+5 −0))
-    - +5 outros arquivos (+92 −14)
-- 2025-07-15 — `789fbb6` — chore: update deps & remove test logs
-    - next.config.mjs (modificado (+3 −3))
-    - package-lock.json (modificado (+272 −286))
-    - package.json (modificado (+7 −7))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+0 −1))
-- 2025-07-15 — `1f21a30` — chore: add test logs in ThemeSwitcher for debugging
-    - next.config.mjs (modificado (+3 −3))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+1 −0))
-- 2025-07-15 — `1bab15e` — chore: move preferences store and provider to stores/ directory
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+1 −1))
-    - src/app/layout.tsx (modificado (+1 −1))
-    - src/stores/preferences/preferences-provider.tsx (renomeado)
-    - src/stores/preferences/preferences-store.ts (renomeado)
-- 2025-07-14 — `5944a62` — feat: add zustand store for theme and preset with context-based provider
-    - package-lock.json (modificado (+31 −1))
-    - package.json (modificado (+2 −1))
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+10 −11))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+11 −11))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+2 −10))
-    - src/app/layout.tsx (modificado (+5 −2))
-    - src/components/preferences-store-provider.tsx (adicionado (+31 −0))
-    - src/components/preferences-store.ts (adicionado (+18 −0))
-- 2025-07-14 — `6e7b327` — chore: add layout and theme utility functions, simplify layout & theme control logic
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+6 −10))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+3 −8))
-    - src/lib/layout-utils.ts (adicionado (+6 −0))
-    - src/lib/theme-utils.ts (adicionado (+12 −0))
-- 2025-07-13 — `b506c95` — chore: optimize content layout usage & minor bug fixes
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+5 −0))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+2 −1))
-- 2025-07-12 — `5465097` — feat: add theme preset switcher and fix minor UI/UX issues
-    - eslint.config.mjs (modificado (+4 −1))
-    - package-lock.json (modificado (+2 −2))
-    - package.json (modificado (+1 −1))
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+68 −3))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+20 −5))
-    - src/app/(main)/dashboard/crm/_components/crm.config.ts (modificado (+3 −0))
-    - src/app/(main)/dashboard/crm/_components/operational-cards.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+30 −6))
-    - +8 outros arquivos (+311 −98)
-- 2025-07-11 — `30dd61f` — chore: temporarily disable middleware to avoid unnecessary edge function executions
-    - src/middleware.disabled.ts (renomeado (+6 −4))
-- 2025-07-10 — `68bf2aa` — chore: minor fixes
-    - src/app/(main)/dashboard/crm/_components/operational-cards.tsx (modificado (+8 −4))
-    - src/app/(main)/dashboard/finance/_components/account-overview.tsx (modificado (+3 −3))
-    - src/app/(main)/dashboard/finance/_components/currency-exchange.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/finance/_components/expense-summary.tsx (modificado (+5 −5))
-    - src/app/(main)/dashboard/finance/_components/financial-overview.tsx (modificado (+4 −4))
-    - src/lib/utils.ts (modificado (+18 −5))
-- 2025-07-09 — `ea390ca` — chore: update deps & shadcn components
-    - package-lock.json (modificado (+184 −176))
-    - package.json (modificado (+5 −5))
-    - src/components/ui/calendar.tsx (modificado (+4 −1))
-- 2025-07-09 — `2ea9f4a` — chore: color fixes & code cleanup
-    - src/app/(main)/auth/_components/social-auth/google-button.tsx (adicionado (+14 −0))
-    - src/app/(main)/auth/v1/login/page.tsx (modificado (+5 −8))
-    - src/app/(main)/auth/v1/register/page.tsx (modificado (+5 −8))
-    - src/app/(main)/auth/v2/login/page.tsx (modificado (+11 −12))
-    - src/app/(main)/auth/v2/register/page.tsx (modificado (+11 −12))
-    - src/app/(main)/dashboard/[...not-found]/page.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/finance/_components/currency-exchange.tsx (modificado (+4 −4))
-    - src/app/(main)/unauthorized/page.tsx (modificado (+1 −1))
-    - +1 outros arquivos (+3 −0)
-- 2025-07-09 — `966b143` — feat: add v2 auth pages
-    - src/app/(main)/auth/_components/login-form.tsx (renomeado (+1 −1))
-    - src/app/(main)/auth/_components/register-form.tsx (renomeado (+1 −1))
-    - src/app/(main)/auth/v1/login/page.tsx (modificado (+2 −2))
-    - src/app/(main)/auth/v1/register/page.tsx (modificado (+2 −2))
-    - src/app/(main)/auth/v2/layout.tsx (adicionado (+37 −0))
-    - src/app/(main)/auth/v2/login/page.tsx (adicionado (+46 −0))
-    - src/app/(main)/auth/v2/register/page.tsx (adicionado (+46 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+2 −0))
-- 2025-07-09 — `10aba02` — Update README.md
-    - README.md (modificado (+0 −4))
-- 2025-07-09 — `7dce8ee` — Update README.md
-    - README.md (modificado (+5 −9))
-- 2025-07-09 — `b1ab351` — Update README.md
-    - README.md (modificado (+10 −3))
-- 2025-07-09 — `a6aab1c` — Update README.md
-    - README.md (modificado (+3 −49))
-- 2025-07-09 — `8b9ba1d` — Update README.md
-    - README.md (modificado (+2 −1))
-- 2025-07-09 — `aac7533` — feat: add finance dashboard
-    - public/cards/chip.jpg (removido)
-    - src/app/(main)/dashboard/[...not-found]/page.tsx (adicionado (+8 −0))
-    - src/app/(main)/dashboard/_components/sidebar/nav-main.tsx (modificado (+27 −6))
-    - src/app/(main)/dashboard/about/page.tsx (removido (+0 −5))
-    - src/app/(main)/dashboard/finance/_components/account-overview.tsx (adicionado (+180 −0))
-    - src/app/(main)/dashboard/finance/_components/budget.tsx (removido (+0 −176))
-    - src/app/(main)/dashboard/finance/_components/card-details.tsx (removido (+0 −193))
-    - src/app/(main)/dashboard/finance/_components/currency-exchange.tsx (adicionado (+81 −0))
-    - +9 outros arquivos (+323 −267)
-- 2025-07-08 — `b277e16` — chore: fix CRM route
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+1 −1))
-- 2025-07-08 — `1f0d154` — Merge pull request #7 from Manasa0424/feat/update-dashboard
-    - public/cards/chip.jpg (adicionado)
-    - src/app/(main)/dashboard/finance/_components/budget.tsx (adicionado (+176 −0))
-    - src/app/(main)/dashboard/finance/_components/card-details.tsx (adicionado (+193 −0))
-    - src/app/(main)/dashboard/finance/_components/pie-chart-flow.tsx (adicionado (+53 −0))
-    - src/app/(main)/dashboard/finance/_components/summary.tsx (adicionado (+163 −0))
-    - src/app/(main)/dashboard/finance/page.tsx (adicionado (+30 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+2 −2))
-- 2025-07-08 — `56a4044` — Merge branch 'main' into feat/update-dashboard
-    - package-lock.json (modificado (+1184 −512))
-    - package.json (modificado (+20 −19))
-    - src/app/(main)/dashboard/crm/_components/columns.crm.tsx (adicionado (+83 −0))
-    - src/app/(main)/dashboard/crm/_components/crm.config.ts (adicionado (+330 −0))
-    - src/app/(main)/dashboard/crm/_components/insight-cards.tsx (adicionado (+154 −0))
-    - src/app/(main)/dashboard/crm/_components/operational-cards.tsx (adicionado (+111 −0))
-    - src/app/(main)/dashboard/crm/_components/overview-cards.tsx (adicionado (+151 −0))
-    - src/app/(main)/dashboard/crm/_components/schema.ts (adicionado (+10 −0))
-    - +10 outros arquivos (+164 −73)
-- 2025-07-08 — `6a1b1d2` — chore: revert theme
-    - src/app/globals.css (modificado (+62 −71))
-- 2025-07-08 — `9c2af48` — feat: add CRM dashboard & improve layout
-    - public/avatars/a1.jpg (removido)
-    - public/avatars/a2.jpg (removido)
-    - public/avatars/jd.svg (removido (+0 −1))
-    - public/avatars/mt.png (removido)
-    - public/flags/au.svg (removido (+0 −1))
-    - public/flags/br.svg (removido (+0 −1))
-    - public/flags/cn.svg (removido (+0 −1))
-    - public/flags/fr.svg (removido (+0 −1))
-    - +21 outros arquivos (+646 −1511)
-- 2025-07-07 — `6a251f7` — chore: update dependencies
-    - package-lock.json (modificado (+1140 −475))
-    - package.json (modificado (+17 −17))
-- 2025-07-07 — `f7c6125` — Merge pull request #6 from Manasa0424/feat/add-crm-dashboard
-    - package-lock.json (modificado (+20 −1))
-    - package.json (modificado (+2 −1))
-    - public/avatars/a1.jpg (adicionado)
-    - public/avatars/a2.jpg (adicionado)
-    - public/avatars/jd.svg (adicionado (+1 −0))
-    - public/avatars/mt.png (adicionado)
-    - public/flags/au.svg (adicionado (+1 −0))
-    - public/flags/br.svg (adicionado (+1 −0))
-    - +20 outros arquivos (+1816 −1)
-- 2025-07-07 — `e33ab6d` — Merge branch 'main' into feat/add-crm-dashboard
-    - package-lock.json (modificado (+250 −262))
-    - package.json (modificado (+12 −12))
-    - src/app/(main)/dashboard/default/_components/columns.tsx (modificado (+3 −1))
-    - src/app/(main)/dashboard/default/_components/data-table.tsx (modificado (+4 −47))
-    - src/app/(main)/dashboard/default/_components/schema.ts (adicionado (+11 −0))
-    - src/app/(main)/dashboard/default/_components/table-cell-viewer.tsx (modificado (+12 −13))
-    - src/components/data-table/data-table.tsx (modificado (+32 −10))
-- 2025-07-07 — `b4e6cd9` — chore: update CRM charts
-    - src/app/(main)/dashboard/crm/_components/crm-charts.config.ts (adicionado)
-    - src/app/(main)/dashboard/crm/_components/crm-section-cards.tsx (removido (+0 −26))
-    - src/app/(main)/dashboard/crm/_components/dummy-graph.tsx (modificado (+26 −28))
-    - src/app/(main)/dashboard/crm/_components/overview-cards-2.tsx (adicionado (+227 −0))
-    - src/app/(main)/dashboard/crm/_components/overview-cards-3.tsx (adicionado (+203 −0))
-    - src/app/(main)/dashboard/crm/_components/overview-cards-4.tsx (adicionado (+37 −0))
-    - src/app/(main)/dashboard/crm/_components/overview-cards.tsx (modificado (+137 −23))
-    - src/app/(main)/dashboard/crm/_components/statcard.tsx (removido (+0 −193))
-    - +4 outros arquivos (+16 −5)
+**Resumo**: 52 commits • 79 arquivos • +6.960 −3.397 • 24 manutenção, 1 correções, 17 outros, 6 novidades, 4 merges
+
+**Novidades**
+- feat: add theme preset generation script, standardize types, and update UI
+- feat: add zustand store for theme and preset with context-based provider
+- feat: add theme preset switcher and fix minor UI/UX issues
+- feat: add v2 auth pages
+- feat: add finance dashboard
+- feat: add CRM dashboard & improve layout
+
+**Correções**
+- fix: override shadow utilities to respect theme presets & update deps
+
+**Arquivos principais**
+- package-lock.json (modificado, +3.447 −2.106)
+- src/app/(main)/dashboard/finance/_components/card-details.tsx (adicionado e removido, +193 −193)
+- src/app/(main)/dashboard/finance/_components/budget.tsx (adicionado e removido, +176 −176)
+- src/app/(main)/dashboard/crm/_components/crm.config.ts (adicionado, +333 −0)
+- src/app/(main)/dashboard/crm/_components/overview-cards.tsx (adicionado, +288 −23)
+- README.md (modificado, +97 −132)
+- src/app/(main)/dashboard/crm/_components/overview-cards-2.tsx (adicionado, +227 −0)
+- src/app/(main)/dashboard/crm/_components/overview-cards-3.tsx (adicionado, +203 −0)
+- src/app/(main)/dashboard/crm/_components/statcard.tsx (removido, +0 −193)
+- src/app/(main)/dashboard/finance/_components/account-overview.tsx (adicionado, +183 −3)
+- package.json (modificado, +90 −90)
+- src/app/globals.css (modificado, +96 −71)
+- src/app/(main)/dashboard/finance/_components/summary.tsx (adicionado, +163 −0)
+- src/app/(main)/dashboard/crm/_components/insight-cards.tsx (adicionado, +154 −0)
+- src/styles/presets/brutalist.css (modificado, +84 −63)
+- +64 outros arquivos
 
 ## 2025-06
 
-- 2025-06-30 — `df4160a` — finance commit
-    - public/cards/chip.jpg (adicionado)
-    - src/app/(main)/dashboard/finance/_components/budget.tsx (adicionado (+176 −0))
-    - src/app/(main)/dashboard/finance/_components/card-details.tsx (adicionado (+193 −0))
-    - src/app/(main)/dashboard/finance/_components/pie-chart-flow.tsx (adicionado (+53 −0))
-    - src/app/(main)/dashboard/finance/_components/summary.tsx (adicionado (+163 −0))
-    - src/app/(main)/dashboard/finance/page.tsx (adicionado (+30 −0))
-    - src/navigation/sidebar/sidebar-items.ts (modificado (+1 −1))
-- 2025-06-30 — `c606a95` — chore: code cleanup
-    - src/app/(main)/dashboard/crm/_components/crm-section-cards.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/crm/_components/dummy-graph.tsx (adicionado (+48 −0))
-    - src/app/(main)/dashboard/crm/_components/overview-cards.tsx (adicionado (+71 −0))
-    - src/app/(main)/dashboard/crm/_components/radar-chart-label.tsx (modificado (+13 −8))
-    - src/app/(main)/dashboard/crm/_components/statcard.tsx (modificado (+12 −28))
-    - src/app/(main)/dashboard/crm/_components/tab-triggers.tsx (modificado (+10 −11))
-    - src/app/(main)/dashboard/crm/_components/transaction.tsx (modificado (+1 −2))
-    - src/app/(main)/dashboard/crm/page.tsx (modificado (+2 −0))
-- 2025-06-28 — `c02ea98` — chore: replace static icons with simple icons package & code cleanup
-    - package-lock.json (modificado (+19 −0))
-    - package.json (modificado (+1 −0))
-    - public/cards/ae.jpg (removido)
-    - public/cards/mc.jpg (removido)
-    - public/cards/visa.png (removido)
-    - public/icons/bootstrap.svg (removido (+0 −1))
-    - public/icons/figma.svg (removido (+0 −1))
-    - public/icons/laravel.svg (removido (+0 −1))
-    - +9 outros arquivos (+61 −41)
-- 2025-06-26 — `3b86598` — Merge branch 'feat/add-crm-dashboard' of github.com:Manasa0424/next-shadcn-admin-dashboard into feat/add-crm-dashboard
-- 2025-06-26 — `292ea91` — chore: improve data table rendering logic for better readability
-    - public/avatars/a1.jpg (adicionado)
-    - public/avatars/a2.jpg (adicionado)
-    - public/avatars/jd.svg (adicionado (+1 −0))
-    - public/avatars/mt.png (adicionado)
-    - public/cards/ae.jpg (adicionado)
-    - public/cards/mc.jpg (adicionado)
-    - public/cards/visa.png (adicionado)
-    - public/flags/au.svg (adicionado (+1 −0))
-    - +24 outros arquivos (+1372 −31)
-- 2025-06-22 — `51acde2` — chore: improve data table
-    - src/app/(main)/dashboard/default/_components/columns.tsx (modificado (+3 −1))
-    - src/app/(main)/dashboard/default/_components/data-table.tsx (modificado (+4 −15))
-    - src/app/(main)/dashboard/default/_components/schema.ts (adicionado (+11 −0))
-    - src/app/(main)/dashboard/default/_components/table-cell-viewer.tsx (modificado (+12 −13))
-- 2025-06-21 — `1b6519c` — chore: improve data table
-    - src/app/(main)/dashboard/default/_components/data-table.tsx (modificado (+1 −30))
-    - src/components/data-table/data-table.tsx (modificado (+17 −7))
-- 2025-06-21 — `f7c77e4` — chore: update deps
-    - package-lock.json (modificado (+251 −263))
-    - package.json (modificado (+13 −13))
-- 2025-06-21 — `b5d2878` — chore: improve data table
-    - src/app/(main)/dashboard/default/_components/data-table.tsx (modificado (+0 −3))
-    - src/components/data-table/data-table.tsx (modificado (+17 −5))
-- 2025-06-16 — `75f209e` — chore: improve data table rendering logic for better readability
-    - src/components/data-table/data-table-column-header.tsx (modificado (+12 −7))
-    - src/components/data-table/data-table.tsx (modificado (+39 −23))
-- 2025-06-16 — `2cedc85` — chore: migrate shadcn components to radix-ui mono package
-    - package-lock.json (modificado (+224 −34))
-    - package.json (modificado (+3 −28))
-    - src/components/ui/accordion.tsx (modificado (+1 −1))
-    - src/components/ui/alert-dialog.tsx (modificado (+1 −1))
-    - src/components/ui/aspect-ratio.tsx (modificado (+1 −1))
-    - src/components/ui/avatar.tsx (modificado (+1 −1))
-    - src/components/ui/badge.tsx (modificado (+2 −2))
-    - src/components/ui/breadcrumb.tsx (modificado (+2 −2))
-    - +25 outros arquivos (+34 −34)
-- 2025-06-15 — `52615c4` — chore: update deps
-    - package-lock.json (modificado (+223 −184))
-    - package.json (modificado (+6 −6))
-- 2025-06-11 — `12bbbd2` — chore: refactor default dashboard components, data table restructure & update deps
-    - package-lock.json (modificado (+255 −255))
-    - package.json (modificado (+6 −6))
-    - src/app/(main)/dashboard/default/_components/chart-area-interactive.tsx (renomeado)
-    - src/app/(main)/dashboard/default/_components/columns.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/default/_components/data-table.tsx (renomeado (+10 −10))
-    - src/app/(main)/dashboard/default/_components/data.json (renomeado)
-    - src/app/(main)/dashboard/default/_components/section-cards.tsx (renomeado (+1 −1))
-    - src/app/(main)/dashboard/default/page.tsx (modificado (+8 −14))
-    - +8 outros arquivos (+1 −1)
-- 2025-06-09 — `73a390e` — chore: add search dialog and refactor code
-    - src/app/(main)/dashboard/_components/sidebar/account-switcher.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/_components/sidebar/search-dialog.tsx (adicionado (+76 −0))
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+5 −4))
-- 2025-06-08 — `d550b19` — chore: discard last commit and revert changes
-    - .gitignore (modificado (+0 −1))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+4 −4))
-    - src/lib/layout-preferences.ts (modificado (+8 −5))
-- 2025-06-08 — `e52a8ce` — Fix cookies context error by passing cookieStore as parameter
-    - src/app/(main)/dashboard/layout.tsx (modificado (+4 −4))
-    - src/lib/layout-preferences.ts (modificado (+5 −8))
-- 2025-06-08 — `7d6717c` — Updated .gitignore
-    - .gitignore (modificado (+1 −0))
-- 2025-06-08 — `86d2807` — chore: update readme
-    - README.md (modificado (+1 −1))
-- 2025-06-08 — `6389e98` — feat: add v1 auth screens and code cleanup
-    - src/app/(main)/auth/layout.tsx (removido (+0 −24))
-    - src/app/(main)/auth/login/_components/login-form.tsx (removido (+0 −70))
-    - src/app/(main)/auth/login/page.tsx (removido (+0 −26))
-    - src/app/(main)/auth/v1/login/_components/login-form.tsx (adicionado (+99 −0))
-    - src/app/(main)/auth/v1/login/page.tsx (adicionado (+48 −0))
-    - src/app/(main)/auth/v1/register/_components/register-form.tsx (adicionado (+97 −0))
-    - src/app/(main)/auth/v1/register/page.tsx (adicionado (+48 −0))
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+2 −3))
-    - +3 outros arquivos (+20 −35)
-- 2025-06-06 — `d6d5136` — chore: update shadcn components and dependencies
-    - package-lock.json (modificado (+219 −213))
-    - package.json (modificado (+9 −9))
-    - src/components/ui/calendar.tsx (modificado (+186 −51))
-    - src/components/ui/drawer.tsx (modificado (+4 −1))
-- 2025-06-06 — `acdad92` — chore: update responsive margin logic for centered layout and inset sidebar
-    - src/app/(main)/dashboard/layout.tsx (modificado (+4 −4))
-- 2025-06-06 — `c0f84f5` — feat: add content layout switcher for full width and centered layouts
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+22 −2))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+12 −3))
-    - src/lib/layout-preferences.ts (modificado (+9 −0))
-- 2025-06-05 — `5fbfb91` — chore: code cleanup & improve data table
-    - src/app/(main)/dashboard/_components/data-table/data-table-faceted-filter.tsx (removido (+0 −128))
-    - src/app/(main)/dashboard/_components/data-table/data-table-toolbar.tsx (removido (+0 −46))
-    - src/app/(main)/dashboard/_components/data-table/data-table.tsx (modificado (+1 −2))
-    - src/app/(main)/dashboard/default/_components/columns.tsx (modificado (+9 −2))
-    - src/app/(main)/dashboard/default/data-table.tsx (modificado (+3 −34))
-- 2025-06-04 — `9f94418` — chore: code cleanup & modified data table
-    - src/app/(main)/dashboard/_components/data-table/data-table-column-header.tsx (renomeado (+9 −6))
-    - src/app/(main)/dashboard/_components/data-table/data-table-faceted-filter.tsx (renomeado)
-    - src/app/(main)/dashboard/_components/data-table/data-table-toolbar.tsx (renomeado (+3 −3))
-    - src/app/(main)/dashboard/_components/data-table/data-table-view-options.tsx (renomeado)
-    - src/app/(main)/dashboard/about/components/columns.tsx (removido (+0 −103))
-    - src/app/(main)/dashboard/about/components/data-table-pagination.tsx (removido (+0 −82))
-    - src/app/(main)/dashboard/about/components/data-table-row-actions.tsx (removido (+0 −64))
-    - src/app/(main)/dashboard/about/components/data-table.tsx (removido (+0 −104))
-    - +6 outros arquivos (+11 −904)
-- 2025-06-04 — `5739763` — chore: update data table implementation, code clean & update deps
-    - components.json (modificado (+1 −1))
-    - package-lock.json (modificado (+12 −37))
-    - package.json (modificado (+3 −4))
-    - src/app/(main)/dashboard/_components/data-table/data-table-pagination.tsx (adicionado (+88 −0))
-    - src/app/(main)/dashboard/_components/data-table/data-table.tsx (adicionado (+88 −0))
-    - src/app/(main)/dashboard/_components/data-table/drag-column.tsx (adicionado (+32 −0))
-    - src/app/(main)/dashboard/_components/data-table/draggable-row.tsx (adicionado (+27 −0))
-    - src/app/(main)/dashboard/_components/data-table/table-utils.ts (adicionado (+7 −0))
-    - +23 outros arquivos (+2049 −618)
+**Resumo**: 25 commits • 77 arquivos • +3.071 −2.034 • 3 outros, 19 manutenção, 1 merges, 2 novidades
+
+**Novidades**
+- feat: add v1 auth screens and code cleanup
+- feat: add content layout switcher for full width and centered layouts
+
+**Arquivos principais**
+- package-lock.json (modificado, +1.203 −986)
+- src/components/ui/calendar.tsx (modificado, +186 −51)
+- src/app/(main)/dashboard/finance/_components/card-details.tsx (adicionado, +193 −0)
+- src/app/(main)/dashboard/finance/_components/budget.tsx (adicionado, +176 −0)
+- src/app/(main)/dashboard/finance/_components/summary.tsx (adicionado, +163 −0)
+- src/app/(main)/dashboard/_components/data-table/data-table-faceted-filter.tsx (removido, +0 −128)
+- src/components/data-table/data-table.tsx (modificado, +73 −35)
+- package.json (modificado, +41 −66)
+- src/app/(main)/dashboard/about/components/data-table.tsx (removido, +0 −104)
+- src/app/(main)/dashboard/about/components/columns.tsx (removido, +0 −103)
+- src/app/(main)/auth/v1/login/_components/login-form.tsx (adicionado, +99 −0)
+- src/app/(main)/auth/v1/register/_components/register-form.tsx (adicionado, +97 −0)
+- src/app/(main)/dashboard/_components/data-table/data-table.tsx (adicionado, +89 −2)
+- src/app/(main)/dashboard/_components/data-table/data-table-pagination.tsx (adicionado, +88 −0)
+- src/app/(main)/dashboard/about/components/data-table-pagination.tsx (removido, +0 −82)
+- +62 outros arquivos
 
 ## 2025-05
 
-- 2025-05-30 — `06b1590` — chore: update deps
-    - package-lock.json (modificado (+767 −1940))
-    - package.json (modificado (+12 −12))
-    - src/components/ui/command.tsx (modificado (+8 −1))
-    - src/components/ui/dialog.tsx (modificado (+13 −5))
-    - src/components/ui/resizable.tsx (modificado (+1 −1))
-    - src/components/ui/separator.tsx (modificado (+1 −1))
-    - src/components/ui/sidebar.tsx (modificado (+1 −1))
-- 2025-05-25 — `6d43057` — chore: update deps, app config, and minor code quality fixes
-    - package-lock.json (modificado (+4 −4))
-    - package.json (modificado (+1 −1))
-    - src/app/(main)/dashboard/_components/sidebar/account-switcher.tsx (modificado (+7 −8))
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+2 −2))
-    - src/app/layout.tsx (modificado (+4 −4))
-    - src/config/app-config.ts (adicionado (+11 −0))
-    - src/config/project-config.ts (removido (+0 −6))
-- 2025-05-23 — `ef185da` — feat: add account switcher component
-    - src/app/(main)/dashboard/_components/sidebar/account-switcher.tsx (adicionado (+82 −0))
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+2 −6))
-    - src/app/(main)/dashboard/_components/sidebar/nav-user.tsx (modificado (+5 −4))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+3 −0))
-    - src/constants/dummy-data.ts (removido (+0 −78))
-    - src/data/users.ts (adicionado (+20 −0))
-    - src/lib/utils.ts (modificado (+14 −0))
-- 2025-05-22 — `e824e3a` — chore: update deps
-    - package-lock.json (modificado (+1626 −371))
-    - package.json (modificado (+27 −27))
-- 2025-05-22 — `f590c67` — chore: code cleanup
-    - src/app/(main)/dashboard/_components/sidebar/chart-area-interactive.tsx (removido (+0 −239))
-    - src/app/(main)/dashboard/_components/sidebar/data-table.tsx (removido (+0 −705))
-    - src/app/(main)/dashboard/_components/sidebar/section-cards.tsx (removido (+0 −83))
-    - src/app/(main)/dashboard/_components/sidebar/sidebar-breadcrumbs.tsx (removido (+0 −40))
-    - src/app/(main)/dashboard/_components/sidebar/site-header.tsx (removido (+0 −16))
-    - src/components/icons/logo.tsx (removido (+0 −38))
-- 2025-05-22 — `f55b9dd` — Update README.md
-    - README.md (modificado (+8 −0))
-- 2025-05-22 — `b2da8fd` — chore: update media image
-    - media/dashboard.png (modificado)
-- 2025-05-22 — `416860d` — chore: update media image
-    - media/dashboard.png (modificado)
-- 2025-05-22 — `99faf0e` — feat: add theme switcher
-    - src/app/(main)/dashboard/_components/sidebar/theme-switcher.tsx (adicionado (+16 −0))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+5 −1))
-    - src/app/layout.tsx (modificado (+7 −3))
-- 2025-05-21 — `1d0703b` — update: avatar, name & email
-    - public/avatars/arhamkhnz.png (adicionado)
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+3 −3))
-    - src/app/(main)/dashboard/_components/sidebar/nav-user.tsx (modificado (+2 −2))
-- 2025-05-21 — `e582c62` — fix: fallback to collapsible layout on mobile sidebar
-    - src/app/(main)/dashboard/_components/sidebar/nav-main.tsx (modificado (+2 −2))
-- 2025-05-21 — `6ff72f1` — feat: update sidebar to use dropdown menu in collapsed state
-    - src/app/(main)/dashboard/_components/sidebar/nav-main.tsx (modificado (+121 −59))
-- 2025-05-21 — `d09c505` — code style: readonly props update across components
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (modificado (+2 −2))
-    - src/app/(main)/dashboard/_components/sidebar/nav-documents.tsx (modificado (+4 −4))
-    - src/app/(main)/dashboard/_components/sidebar/nav-main.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/_components/sidebar/nav-user.tsx (modificado (+4 −4))
-    - src/app/(main)/dashboard/_components/sidebar/site-header.tsx (modificado (+1 −10))
-- 2025-05-20 — `871c848` — feat: add layout preferences panel with sidebar variant & collapsible settings
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (adicionado (+82 −0))
-    - src/app/(main)/dashboard/_components/sidebar/site-header.tsx (modificado (+16 −5))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+18 −4))
-    - src/lib/layout-preferences.ts (adicionado (+19 −0))
-    - src/server/server-actions.ts (adicionado (+20 −0))
-    - src/utils/roles.ts (removido (+0 −26))
-    - src/utils/routes.ts (removido (+0 −1))
-- 2025-05-18 — `d48b90e` — chore: add eslint-plugin-sonarjs for commented-out code detection, clean up code, and update dependencies
-    - eslint.config.mjs (modificado (+6 −1))
-    - package-lock.json (modificado (+289 −735))
-    - package.json (modificado (+7 −6))
-    - src/app/(main)/auth/layout.tsx (modificado (+1 −5))
-    - src/app/(main)/auth/login/_components/login-form.tsx (modificado (+0 −5))
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (modificado (+0 −2))
-    - src/app/(main)/dashboard/layout.tsx (modificado (+1 −5))
-    - src/app/layout.tsx (modificado (+5 −6))
-- 2025-05-14 — `16fbce8` — chore: restructure project components to _components and update dependencies
-    - package-lock.json (modificado (+623 −468))
-    - package.json (modificado (+40 −40))
-    - src/app/(main)/auth/login/_components/login-form.tsx (renomeado)
-    - src/app/(main)/auth/login/page.tsx (modificado (+1 −1))
-    - src/app/(main)/dashboard/_components/sidebar/app-sidebar.tsx (renomeado)
-    - src/app/(main)/dashboard/_components/sidebar/chart-area-interactive.tsx (renomeado)
-    - src/app/(main)/dashboard/_components/sidebar/data-table.tsx (renomeado)
-    - src/app/(main)/dashboard/_components/sidebar/nav-documents.tsx (renomeado)
-    - +7 outros arquivos (+2 −2)
-- 2025-05-04 — `cd09ec5` — chore: update project file structure with (main) and (external) route groups
-    - src/app/(external)/page.tsx (renomeado)
-    - src/app/(main)/auth/layout.tsx (renomeado)
-    - src/app/(main)/auth/login/components/login-form.tsx (renomeado)
-    - src/app/(main)/auth/login/page.tsx (renomeado)
-    - src/app/(main)/dashboard/about/page.tsx (renomeado)
-    - src/app/(main)/dashboard/components/sidebar/app-sidebar.tsx (renomeado)
-    - src/app/(main)/dashboard/components/sidebar/chart-area-interactive.tsx (renomeado)
-    - src/app/(main)/dashboard/components/sidebar/data-table.tsx (renomeado)
-    - +16 outros arquivos (+1 −615)
-- 2025-05-04 — `df5fb02` — Update README.md
-    - README.md (modificado (+132 −25))
-- 2025-05-04 — `d7291d6` — chore: uncommented redirect code
-    - next.config.mjs (modificado (+9 −9))
-- 2025-05-04 — `31fb055` — chore: code cleanup, optimize sidebar re-renders, add prettier-plugin-tailwindcss, and lint codebase
-    - .prettierrc (modificado (+2 −1))
-    - eslint.config.mjs (modificado (+0 −11))
-    - next.config.mjs (modificado (+9 −9))
-    - package-lock.json (modificado (+79 −0))
-    - package.json (modificado (+1 −0))
-    - src/app/auth/layout.tsx (modificado (+2 −2))
-    - src/app/auth/login/page.tsx (modificado (+4 −4))
-    - src/app/dashboard/components/sidebar/app-sidebar.tsx (modificado (+6 −7))
-    - +12 outros arquivos (+67 −87)
-- 2025-05-04 — `9912041` — chore: update preview image & readme
-    - README.md (modificado (+1 −1))
-    - media/dashboard.png (renomeado)
-- 2025-05-04 — `efb559a` — Update README.md
-    - README.md (modificado (+1 −1))
-- 2025-05-04 — `5a72e9c` — chore: update README and preview image
-    - README.md (modificado (+2 −2))
-    - media/dashboard-lg.png (modificado)
-- 2025-05-04 — `bd29bee` — Merge pull request #4 from arhamkhnz/migration/next15-tailwindv4
-    - components.json (modificado (+1 −1))
-    - eslint.config.mjs (modificado (+9 −9))
-    - package-lock.json (modificado (+1958 −1021))
-    - package.json (modificado (+24 −17))
-    - postcss.config.mjs (modificado (+1 −1))
-    - src/app/auth/login/components/login-form.tsx (modificado (+5 −5))
-    - src/app/dashboard/components/sidebar/app-sidebar.tsx (modificado (+84 −15))
-    - src/app/dashboard/components/sidebar/sidebar-header.tsx (removido (+0 −16))
-    - +78 outros arquivos (+7251 −4402)
-- 2025-05-04 — `48f4ae9` — refactor: remove unnecessary file
-    - src/components/app-sidebar.tsx (removido (+0 −179))
-- 2025-05-04 — `b2865a1` — feat: migrate to Next.js 15 and Tailwind CSS v4 with new color theme
-    - components.json (modificado (+1 −1))
-    - eslint.config.mjs (modificado (+9 −9))
-    - package-lock.json (modificado (+1958 −1021))
-    - package.json (modificado (+24 −17))
-    - postcss.config.mjs (modificado (+1 −1))
-    - src/app/auth/login/components/login-form.tsx (modificado (+5 −5))
-    - src/app/dashboard/components/sidebar/app-sidebar.tsx (modificado (+84 −15))
-    - src/app/dashboard/components/sidebar/sidebar-header.tsx (removido (+0 −16))
-    - +79 outros arquivos (+7430 −4402)
+**Resumo**: 26 commits • 55 arquivos • +8.328 −7.416 • 13 manutenção, 5 novidades, 5 outros, 1 correções, 1 merges, 1 refatorações
+
+**Novidades**
+- feat: add account switcher component
+- feat: add theme switcher
+- feat: update sidebar to use dropdown menu in collapsed state
+- feat: add layout preferences panel with sidebar variant & collapsible settings
+- feat: migrate to Next.js 15 and Tailwind CSS v4 with new color theme
+
+**Correções**
+- fix: fallback to collapsible layout on mobile sidebar
+
+**Arquivos principais**
+- package-lock.json (modificado, +7.304 −5.560)
+- src/app/(main)/dashboard/_components/sidebar/data-table.tsx (removido, +0 −705)
+- package.json (modificado, +136 −120)
+- src/app/(main)/dashboard/_components/sidebar/chart-area-interactive.tsx (removido, +0 −239)
+- src/app/dashboard/components/sidebar/app-sidebar.tsx (modificado, +174 −37)
+- src/app/(main)/dashboard/_components/sidebar/nav-main.tsx (modificado, +124 −62)
+- src/components/app-sidebar.tsx (removido, +0 −179)
+- README.md (modificado, +144 −29)
+- src/app/(main)/dashboard/_components/sidebar/account-switcher.tsx (adicionado, +89 −8)
+- src/app/(main)/dashboard/_components/sidebar/layout-controls.tsx (adicionado, +84 −2)
+- src/app/(main)/dashboard/_components/sidebar/section-cards.tsx (removido, +0 −83)
+- src/constants/dummy-data.ts (removido, +0 −78)
+- eslint.config.mjs (modificado, +24 −30)
+- src/app/(main)/dashboard/_components/sidebar/site-header.tsx (removido, +17 −31)
+- src/app/(main)/dashboard/_components/sidebar/sidebar-breadcrumbs.tsx (removido, +0 −40)
+- +40 outros arquivos
 
 ## 2025-04
 
-- 2025-04-28 — `880bcfc` — chore: update dependencies & shadcn components
-    - eslint.config.mjs (modificado (+1 −0))
-    - package-lock.json (modificado (+1163 −2063))
-    - package.json (modificado (+46 −46))
+**Resumo**: 1 commits • 3 arquivos • +1.210 −2.109 • 1 manutenção
+
+**Arquivos principais**
+- package-lock.json (modificado, +1.163 −2.063)
+- package.json (modificado, +46 −46)
+- eslint.config.mjs (modificado, +1 −0)
 
 ## 2025-03
 
-- 2025-03-19 — `72028c4` — chore: update dependencies & shadcn components
-    - package-lock.json (modificado (+398 −181))
-    - package.json (modificado (+5 −5))
-    - src/components/ui/context-menu.tsx (modificado (+2 −2))
-    - src/components/ui/dropdown-menu.tsx (modificado (+2 −2))
-    - src/components/ui/hover-card.tsx (modificado (+1 −1))
-    - src/components/ui/menubar.tsx (modificado (+2 −2))
-    - src/components/ui/popover.tsx (modificado (+1 −1))
-    - src/components/ui/select.tsx (modificado (+1 −1))
-    - +2 outros arquivos (+4 −4)
-- 2025-03-11 — `c877aa1` — chore: enable bracket spacing in Prettier config
-    - .prettierrc (modificado (+2 −1))
-- 2025-03-09 — `760c2c4` — chore(eslint): enforce context value memoization eslint rule
-    - eslint.config.mjs (modificado (+3 −0))
-- 2025-03-09 — `8483c1d` — chore: update project dependencies & refresh shadcn components
-    - package-lock.json (modificado (+65 −55))
-    - package.json (modificado (+4 −4))
-    - src/components/ui/chart.tsx (modificado (+1 −1))
-    - src/components/ui/dropdown-menu.tsx (modificado (+2 −2))
-    - src/components/ui/form.tsx (modificado (+3 −3))
-- 2025-03-08 — `d266494` — chore(eslint): enforce no-duplicate-imports rule and lint code
-    - eslint.config.mjs (modificado (+1 −0))
-    - src/app/dashboard/components/sidebar/sidebar-navigation.tsx (modificado (+1 −3))
-    - src/middleware/auth-middleware.ts (modificado (+1 −2))
-- 2025-03-05 — `04ec0ae` — feat: redesign dashboard, cleanup code & update color scheme
-    - README.md (modificado (+1 −1))
-    - media/dashboard-lg.png (modificado)
-    - next.config.mjs (modificado (+9 −0))
-    - package-lock.json (modificado (+19 −2))
-    - package.json (modificado (+2 −1))
-    - src/app/auth/layout.tsx (modificado (+1 −1))
-    - src/app/auth/login/page.tsx (modificado (+0 −4))
-    - src/app/dashboard/about/page.tsx (modificado (+0 −2))
-    - +16 outros arquivos (+436 −297)
-- 2025-03-04 — `71ecabf` — chore: update dependencies
-    - package-lock.json (modificado (+80 −80))
-    - package.json (modificado (+6 −6))
-    - src/components/ui/navigation-menu.tsx (modificado (+1 −1))
-    - src/components/ui/sidebar.tsx (modificado (+14 −4))
+**Resumo**: 7 commits • 22 arquivos • +628 −368 • 6 manutenção, 1 novidades
+
+**Novidades**
+- feat: redesign dashboard, cleanup code & update color scheme
+
+**Arquivos principais**
+- package-lock.json (modificado, +562 −318)
+- package.json (modificado, +17 −16)
+- src/components/ui/sidebar.tsx (modificado, +14 −4)
+- next.config.mjs (modificado, +9 −0)
+- src/components/ui/dropdown-menu.tsx (modificado, +4 −4)
+- src/components/ui/form.tsx (modificado, +3 −3)
+- src/components/ui/context-menu.tsx (modificado, +2 −2)
+- src/components/ui/menubar.tsx (modificado, +2 −2)
+- eslint.config.mjs (modificado, +4 −0)
+- src/app/dashboard/components/sidebar/sidebar-navigation.tsx (modificado, +1 −3)
+- src/app/auth/login/page.tsx (modificado, +0 −4)
+- .prettierrc (modificado, +2 −1)
+- src/middleware/auth-middleware.ts (modificado, +1 −2)
+- src/components/ui/hover-card.tsx (modificado, +1 −1)
+- src/components/ui/popover.tsx (modificado, +1 −1)
+- +7 outros arquivos
 
 ## 2025-02
 
-- 2025-02-27 — `0d15864` — chore: update eslint config
-    - eslint.config.mjs (modificado (+3 −0))
-- 2025-02-27 — `05d3178` — chore: update shadcn components & packages to latest version
-    - package-lock.json (modificado (+596 −543))
-    - package.json (modificado (+43 −43))
-    - src/components/ui/form.tsx (modificado (+1 −1))
-    - src/components/ui/menubar.tsx (modificado (+25 −5))
-    - src/components/ui/select.tsx (modificado (+1 −1))
-    - src/components/ui/sidebar.tsx (modificado (+8 −8))
+**Resumo**: 2 commits • 7 arquivos • +677 −601 • 2 manutenção
+
+**Arquivos principais**
+- package-lock.json (modificado, +596 −543)
+- package.json (modificado, +43 −43)
+- src/components/ui/menubar.tsx (modificado, +25 −5)
+- src/components/ui/sidebar.tsx (modificado, +8 −8)
+- eslint.config.mjs (modificado, +3 −0)
+- src/components/ui/form.tsx (modificado, +1 −1)
+- src/components/ui/select.tsx (modificado, +1 −1)
 
 ## 2025-01
 
-- 2025-01-16 — `ebcf6b2` — chore: update eslint config for file naming conventions and linting rules, linted codebase
-    - eslint.config.mjs (modificado (+27 −0))
-    - package-lock.json (modificado (+512 −75))
-    - package.json (modificado (+1 −0))
-    - src/app/auth/login/components/login-form.tsx (renomeado)
-    - src/app/auth/login/page.tsx (modificado (+1 −1))
-    - src/app/dashboard/components/sidebar/app-sidebar.tsx (modificado (+4 −4))
-    - src/app/dashboard/components/sidebar/sidebar-footer-menu.tsx (renomeado)
-    - src/app/dashboard/components/sidebar/sidebar-navigation.tsx (renomeado (+1 −1))
-    - +10 outros arquivos (+3 −71)
-- 2025-01-16 — `cf35a03` — chore: update dependencies & code cleanup
-    - package-lock.json (modificado (+321 −244))
-    - package.json (modificado (+14 −16))
-    - src/scripts/updateRouteList.ts (removido (+0 −41))
+**Resumo**: 2 commits • 9 arquivos • +881 −382 • 2 manutenção
+
+**Arquivos principais**
+- package-lock.json (modificado, +833 −319)
+- src/scripts/updateRouteList.ts (removido, +0 −41)
+- package.json (modificado, +15 −16)
+- eslint.config.mjs (modificado, +27 −0)
+- src/app/dashboard/components/sidebar/app-sidebar.tsx (modificado, +4 −4)
+- src/app/auth/login/page.tsx (modificado, +1 −1)
+- src/app/dashboard/components/sidebar/sidebar-navigation.tsx (renomeado, +1 −1)
+- src/app/auth/login/components/login-form.tsx (renomeado)
+- src/app/dashboard/components/sidebar/sidebar-footer-menu.tsx (renomeado)
 
 ## 2024-12
 
-- 2024-12-31 — `cbcba5c` — chore: update dependencies
-    - package-lock.json (modificado (+546 −139))
-    - package.json (modificado (+7 −7))
-- 2024-12-31 — `ef9b7e6` — chore: update ESLint configuration for function spacing rules & lint code
-    - eslint.config.mjs (modificado (+8 −1))
-    - src/app/auth/login/components/LoginForm.tsx (modificado (+1 −1))
-- 2024-12-23 — `c2ee29b` — chore: update dependencies, eslint & prettier config, and lint code
-    - eslint.config.mjs (modificado (+5 −0))
-    - package-lock.json (modificado (+1159 −1033))
-    - package.json (modificado (+48 −47))
-    - src/app/auth/layout.tsx (modificado (+3 −3))
-    - src/app/auth/login/components/LoginForm.tsx (modificado (+18 −18))
-    - src/app/auth/login/page.tsx (modificado (+5 −5))
-    - src/app/dashboard/about/page.tsx (modificado (+2 −2))
-    - src/app/dashboard/components/sidebar/app-sidebar.tsx (modificado (+13 −13))
-    - +26 outros arquivos (+265 −271)
+**Resumo**: 3 commits • 8 arquivos • +1.815 −1.269 • 3 manutenção
+
+**Arquivos principais**
+- package-lock.json (modificado, +1.705 −1.172)
+- package.json (modificado, +55 −54)
+- src/app/auth/login/components/LoginForm.tsx (modificado, +19 −19)
+- src/app/dashboard/components/sidebar/app-sidebar.tsx (modificado, +13 −13)
+- eslint.config.mjs (modificado, +13 −1)
+- src/app/auth/login/page.tsx (modificado, +5 −5)
+- src/app/auth/layout.tsx (modificado, +3 −3)
+- src/app/dashboard/about/page.tsx (modificado, +2 −2)
 
 ## 2024-11
 
-- 2024-11-27 — `a36c300` — chore: update dependencies to latest versions
-    - package-lock.json (modificado (+260 −123))
-    - package.json (modificado (+7 −7))
-- 2024-11-23 — `8456b52` — chore: update package-lock and lint code
-    - package-lock.json (modificado (+615 −1163))
-    - src/app/auth/login/components/LoginForm.tsx (modificado (+1 −1))
-- 2024-11-23 — `4435bfd` — fix: Remove SonarJS configuration to resolve ESLint compatibility issues
-    - eslint.config.mjs (modificado (+0 −7))
-    - package-lock.json (modificado (+3080 −6504))
-    - package.json (modificado (+0 −1))
-- 2024-11-23 — `f449f53` — Merge pull request #3 from arhamkhnz/chore/eslint-config-update
-    - eslint.config.mjs (modificado (+39 −4))
-    - package-lock.json (modificado (+6524 −3062))
-    - package.json (modificado (+3 −0))
-- 2024-11-23 — `b0c8a55` — Merge branch 'main' into chore/eslint-config-update
-    - package-lock.json (modificado (+211 −214))
-    - package.json (modificado (+14 −14))
-- 2024-11-23 — `8b01781` — chore: update dependencies
-    - package-lock.json (modificado (+211 −214))
-    - package.json (modificado (+14 −14))
-- 2024-11-23 — `c96dc5b` — chore: update eslint config
-    - eslint.config.mjs (modificado (+39 −4))
-    - package-lock.json (modificado (+6524 −3062))
-    - package.json (modificado (+3 −0))
-- 2024-11-11 — `599456f` — Merge pull request #2 from arhamkhnz/chore/eslint-config-update
-    - .eslintignore (removido (+0 −7))
-    - .eslintrc.json (removido (+0 −101))
-    - .prettierrc (modificado (+1 −1))
-    - eslint.config.mjs (adicionado (+87 −0))
-    - package-lock.json (modificado (+629 −673))
-    - package.json (modificado (+10 −20))
-- 2024-11-11 — `b493ed9` — feat: remove Airbnb config & update ESLint to latest version with flat config and custom rules
-    - .eslintignore (removido (+0 −7))
-    - .eslintrc.json (removido (+0 −101))
-    - .prettierrc (modificado (+1 −1))
-    - eslint.config.mjs (adicionado (+87 −0))
-    - package-lock.json (modificado (+629 −673))
-    - package.json (modificado (+10 −20))
-- 2024-11-10 — `fd016ff` — chore: update Next.js config to remove comments in production build
-    - next.config.mjs (modificado (+5 −1))
-- 2024-11-10 — `5c2c9b8` — chore: update sidebar items, dashboard layout, and style improvements
-    - src/app/dashboard/components/sidebar/sidebarNavigation.tsx (modificado (+1 −1))
-    - src/app/dashboard/layout.tsx (modificado (+1 −1))
-    - src/app/globals.css (modificado (+2 −2))
-    - src/navigation/sidebar/sidebarItems.tsx (modificado (+16 −16))
-- 2024-11-09 — `2e61794` — chore: refactor code and update Shadcn components
-    - components.json (modificado (+2 −1))
-    - package-lock.json (modificado (+7 −4))
-    - package.json (modificado (+2 −2))
-    - src/app/dashboard/components/sidebar/app-sidebar.tsx (renomeado (+8 −7))
-    - src/app/dashboard/components/sidebar/sidebarFooterMenu.tsx (renomeado (+5 −4))
-    - src/app/dashboard/components/sidebar/sidebarNavigation.tsx (renomeado (+2 −2))
-    - src/app/dashboard/components/sidebar/sidebarProjects.tsx (renomeado (+5 −4))
-    - src/app/dashboard/components/sidebar/team-switcher.tsx (renomeado (+3 −3))
-    - +21 outros arquivos (+75 −53)
-- 2024-11-08 — `89d445e` — feat: husky init
-    - .husky/pre-commit (adicionado (+1 −0))
-    - package-lock.json (modificado (+851 −69))
-    - package.json (modificado (+9 −1))
-- 2024-11-08 — `2a63756` — chore: update dependencies, refactor sidebar code & update Shadcn components
-    - package-lock.json (modificado (+175 −237))
-    - package.json (modificado (+15 −15))
-    - src/app/globals.css (modificado (+22 −23))
-    - src/components/app-sidebar.tsx (modificado (+3 −4))
-    - src/components/nav-main.tsx (modificado (+12 −12))
-    - src/components/ui/accordion.tsx (modificado (+2 −3))
-    - src/components/ui/breadcrumb.tsx (modificado (+1 −2))
-    - src/components/ui/calendar.tsx (modificado (+2 −2))
-    - +24 outros arquivos (+76 −169)
+**Resumo**: 14 commits • 23 arquivos • +20.151 −16.414 • 8 manutenção, 1 correções, 3 merges, 2 novidades
+
+**Novidades**
+- feat: remove Airbnb config & update ESLint to latest version with flat config and custom rules
+- feat: husky init
+
+**Correções**
+- fix: Remove SonarJS configuration to resolve ESLint compatibility issues
+
+**Arquivos principais**
+- package-lock.json (modificado, +19.716 −15.998)
+- eslint.config.mjs (adicionado, +252 −15)
+- .eslintrc.json (removido, +0 −202)
+- package.json (modificado, +87 −94)
+- src/app/globals.css (modificado, +24 −25)
+- src/navigation/sidebar/sidebarItems.tsx (modificado, +16 −16)
+- src/components/nav-main.tsx (modificado, +12 −12)
+- src/app/dashboard/components/sidebar/app-sidebar.tsx (renomeado, +8 −7)
+- .eslintignore (removido, +0 −14)
+- src/app/dashboard/components/sidebar/sidebarFooterMenu.tsx (renomeado, +5 −4)
+- src/app/dashboard/components/sidebar/sidebarProjects.tsx (renomeado, +5 −4)
+- src/components/app-sidebar.tsx (modificado, +3 −4)
+- next.config.mjs (modificado, +5 −1)
+- src/app/dashboard/components/sidebar/sidebarNavigation.tsx (renomeado, +3 −3)
+- src/app/dashboard/components/sidebar/team-switcher.tsx (renomeado, +3 −3)
+- +8 outros arquivos
 
 ## 2024-10
 
-- 2024-10-24 — `8d3d385` — chore: code cleanup
-    - src/app/dashboard/components/account-switcher.tsx (removido (+0 −63))
-    - src/app/dashboard/components/sidebar.tsx (removido (+0 −206))
-    - src/app/dashboard/components/user-nav.tsx (removido (+0 −59))
-    - src/navigation/sidebar-items/sidebarItems.tsx (removido (+0 −113))
-- 2024-10-24 — `69076b4` — feat: add shadcn sidebar component, update to new-york style, update dependencies, and remove custom sidebar
-    - .eslintignore (modificado (+2 −1))
-    - .prettierignore (modificado (+0 −1))
-    - README.md (modificado (+1 −1))
-    - components.json (modificado (+1 −1))
-    - media/dashboard-lg.png (modificado)
-    - package-lock.json (modificado (+39 −39))
-    - package.json (modificado (+9 −9))
-    - src/app/dashboard/components/sidebar.tsx (modificado (+1 −1))
-    - +48 outros arquivos (+1520 −252)
-- 2024-10-13 — `192f4bb` — chore: update version
-    - package.json (modificado (+1 −1))
-- 2024-10-13 — `b70404e` — chore: update readme
-    - README.md (modificado (+1 −1))
-- 2024-10-13 — `dd5739e` — chore: update dashboard preview image
-    - media/dashboard-lg.png (modificado)
-    - media/dashboard-sm.gif (removido)
-- 2024-10-12 — `f8aba09` — chore: update dependencies
-    - .gitignore (modificado (+1 −0))
-    - package-lock.json (modificado (+592 −754))
-    - package.json (modificado (+3 −3))
-- 2024-10-10 — `479db3a` — chore: update dependencies, UI components, and app config
-    - components.json (modificado (+5 −2))
-    - package-lock.json (modificado (+575 −398))
-    - package.json (modificado (+34 −33))
-    - src/app/dashboard/components/account-switcher.tsx (modificado (+5 −24))
-    - src/app/dashboard/layout.tsx (modificado (+38 −7))
-    - src/components/ui/command.tsx (modificado (+1 −1))
-    - src/components/ui/input.tsx (modificado (+1 −1))
-    - src/components/ui/toaster.tsx (modificado (+1 −1))
-    - +4 outros arquivos (+219 −11)
+**Resumo**: 7 commits • 17 arquivos • +1.311 −1.720 • 6 manutenção, 1 novidades
+
+**Novidades**
+- feat: add shadcn sidebar component, update to new-york style, update dependencies, and remove custom sidebar
+
+**Arquivos principais**
+- package-lock.json (modificado, +1.206 −1.191)
+- src/app/dashboard/components/sidebar.tsx (removido, +1 −207)
+- src/navigation/sidebar-items/sidebarItems.tsx (removido, +0 −113)
+- package.json (modificado, +47 −46)
+- src/app/dashboard/components/account-switcher.tsx (removido, +5 −87)
+- src/app/dashboard/components/user-nav.tsx (removido, +0 −59)
+- src/app/dashboard/layout.tsx (modificado, +38 −7)
+- components.json (modificado, +6 −3)
+- README.md (modificado, +2 −2)
+- .eslintignore (modificado, +2 −1)
+- src/components/ui/command.tsx (modificado, +1 −1)
+- src/components/ui/input.tsx (modificado, +1 −1)
+- src/components/ui/toaster.tsx (modificado, +1 −1)
+- .prettierignore (modificado, +0 −1)
+- .gitignore (modificado, +1 −0)
+- +2 outros arquivos
 
 ## 2024-09
 
@@ -3077,61 +589,26 @@ Histórico do projeto organizado por mês de commit, do mais recente ao mais ant
 
 ## 2024-08
 
-- 2024-08-23 — `033af77` — chore: update ESLint config and apply linting corrections
-    - .eslintrc.json (modificado (+41 −2))
-    - src/app/auth/layout.tsx (modificado (+1 −1))
-    - src/app/auth/login/components/LoginForm.tsx (modificado (+2 −1))
-    - src/app/auth/login/page.tsx (modificado (+1 −0))
-    - src/app/dashboard/components/account-switcher.tsx (modificado (+2 −2))
-    - src/app/dashboard/components/sidebar.tsx (modificado (+25 −22))
-    - src/app/dashboard/layout.tsx (modificado (+8 −5))
-    - src/app/dashboard/page.tsx (modificado (+7 −5))
-    - +7 outros arquivos (+17 −7)
-- 2024-08-20 — `1a01589` — chore: update branding
-    - src/app/auth/layout.tsx (modificado (+1 −1))
-    - src/app/layout.tsx (modificado (+1 −1))
-- 2024-08-14 — `7faee33` — chore: update dashboard preview image and README
-    - README.md (modificado (+1 −1))
-    - media/dashboard-lg.png (modificado)
-- 2024-08-14 — `17e3d10` — fix: improve responsiveness of sidebar headings in collapsed state
-    - src/app/dashboard/components/sidebar.tsx (modificado (+24 −8))
-- 2024-08-14 — `f9c7d7c` — chore: refactor code & fix sidebar styling issues
-    - src/app/dashboard/components/sidebar.tsx (modificado (+2 −9))
-    - src/hooks/useVariantBasedOnRoute.ts (modificado (+12 −1))
-    - src/navigation/sidebar-items/sidebarItems.tsx (modificado (+10 −15))
-- 2024-08-13 — `9a64a2f` — chore: fix root path redirect
-    - src/app/page.tsx (modificado (+1 −1))
-- 2024-08-12 — `f4634cc` — chore: code refactor & minor style adjustments
-    - src/app/dashboard/home/components/date-range-picker.tsx (removido (+0 −59))
-    - src/app/dashboard/home/components/recent-sales.tsx (removido (+0 −54))
-    - src/app/dashboard/layout.tsx (modificado (+1 −1))
-    - src/app/dashboard/page.tsx (renomeado (+38 −7))
-    - src/app/dashboard/unauthorized/page.tsx (removido (+0 −27))
-    - src/components/DateRangePicker.tsx (adicionado (+71 −0))
-    - src/constants/dummyData.ts (renomeado (+28 −22))
-- 2024-08-01 — `bf885ae` — fix: root path redirect
-    - src/app/page.tsx (modificado (+1 −1))
-- 2024-08-01 — `c6974dd` — chore: remove github workflow
-    - .github/workflows/sync-to-public.yml (removido (+0 −38))
-- 2024-08-01 — `82fae83` — chore: minor changes
-    - .github/workflows/sync-to-public.yml (adicionado (+38 −0))
-- 2024-08-01 — `e27fec7` — Update README.md
-    - README.md (modificado (+1 −4))
-- 2024-08-01 — `a7473eb` — Update README.md
-    - README.md (modificado (+43 −2))
-- 2024-08-01 — `1c0e45d` — chore: add project media
-    - media/dashboard-lg.png (adicionado)
-    - media/dashboard-sm.gif (adicionado)
-- 2024-08-01 — `9850627` — initial commit
-    - .eslintignore (adicionado (+6 −0))
-    - .eslintrc.json (adicionado (+62 −0))
-    - .gitignore (adicionado (+36 −0))
-    - .prettierignore (adicionado (+13 −0))
-    - .prettierrc (adicionado (+7 −0))
-    - components.json (adicionado (+17 −0))
-    - next.config.mjs (adicionado (+4 −0))
-    - package-lock.json (adicionado (+7921 −0))
-    - +84 outros arquivos (+5799 −0)
-- 2024-08-01 — `c70ba81` — Initial commit
-    - LICENSE (adicionado (+21 −0))
-    - README.md (adicionado (+2 −0))
+**Resumo**: 15 commits • 29 arquivos • +8.449 −290 • 9 manutenção, 2 correções, 4 outros
+
+**Correções**
+- fix: improve responsiveness of sidebar headings in collapsed state
+- fix: root path redirect
+
+**Arquivos principais**
+- package-lock.json (adicionado, +7.921 −0)
+- .eslintrc.json (adicionado, +103 −2)
+- src/app/dashboard/components/sidebar.tsx (modificado, +51 −39)
+- .github/workflows/sync-to-public.yml (adicionado e removido, +38 −38)
+- src/components/DateRangePicker.tsx (adicionado, +71 −0)
+- src/app/dashboard/home/components/date-range-picker.tsx (removido, +0 −59)
+- src/app/dashboard/page.tsx (renomeado, +45 −12)
+- README.md (adicionado, +47 −7)
+- src/app/dashboard/home/components/recent-sales.tsx (removido, +0 −54)
+- src/constants/dummyData.ts (renomeado, +28 −22)
+- .gitignore (adicionado, +36 −0)
+- src/app/dashboard/unauthorized/page.tsx (removido, +0 −27)
+- src/navigation/sidebar-items/sidebarItems.tsx (modificado, +10 −15)
+- LICENSE (adicionado, +21 −0)
+- components.json (adicionado, +17 −0)
+- +14 outros arquivos
