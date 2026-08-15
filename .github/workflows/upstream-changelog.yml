@@ -1,0 +1,122 @@
+name: Sync Upstream Changelog
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  sync-changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch upstream commits and update changelog
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require("fs");
+
+            const UPSTREAM_OWNER = "arhamkhnz";
+            const UPSTREAM_REPO = "next-shadcn-admin-dashboard";
+            const changelogPath = "changelog.md";
+            const changelog = fs.readFileSync(changelogPath, "utf8");
+            const existing = new Set(
+              [...changelog.matchAll(/`([a-f0-9]{7})`/g)].map((m) => m[1]),
+            );
+
+            const newCommits = [];
+            let stop = false;
+            for (let page = 1; page <= 20 && !stop; page++) {
+              const { data } = await github.rest.repos.listCommits({
+                owner: UPSTREAM_OWNER,
+                repo: UPSTREAM_REPO,
+                sha: "main",
+                per_page: 100,
+                page,
+              });
+              for (const c of data) {
+                const short = c.sha.slice(0, 7);
+                if (existing.has(short)) {
+                  stop = true;
+                  break;
+                }
+                newCommits.push({
+                  date: c.commit.author.date.slice(0, 10),
+                  short,
+                  sha: c.sha,
+                  message: c.commit.message.split("\n")[0],
+                });
+              }
+            }
+
+            if (newCommits.length === 0) {
+              core.notice("Nenhum commit novo no upstream.");
+              return;
+            }
+
+            const byMonth = new Map();
+            for (const c of newCommits) {
+              const month = c.date.slice(0, 7);
+              if (!byMonth.has(month)) byMonth.set(month, []);
+              byMonth
+                .get(month)
+                .push(`- ${c.date} — \`${c.short}\` — ${c.message}`);
+            }
+
+            let out = changelog;
+            for (const [month, lines] of byMonth) {
+              const heading = `## ${month}\n`;
+              if (out.includes(heading)) {
+                out = out.replace(
+                  heading,
+                  `${heading}\n${lines.join("\n")}\n`,
+                );
+              } else {
+                const idx = out.indexOf("\n## ");
+                const insertAt = idx === -1 ? out.length : idx + 1;
+                out =
+                  out.slice(0, insertAt) +
+                  `${heading}\n${lines.join("\n")}\n\n` +
+                  out.slice(insertAt);
+              }
+            }
+
+            fs.writeFileSync(changelogPath, out);
+
+            await exec.exec("git", [
+              "config",
+              "user.name",
+              "github-actions[bot]",
+            ]);
+            await exec.exec("git", [
+              "config",
+              "user.email",
+              "41898282+github-actions[bot]@users.noreply.github.com",
+            ]);
+            await exec.exec("git", ["add", changelogPath]);
+            await exec.exec("git", [
+              "commit",
+              "-m",
+              `docs: sync changelog with ${newCommits.length} new upstream commit(s)`,
+            ]);
+            await exec.exec("git", ["push"]);
+
+            const list = newCommits
+              .map(
+                (c) =>
+                  `- [\`${c.short}\`](https://github.com/${UPSTREAM_OWNER}/${UPSTREAM_REPO}/commit/${c.sha}) — ${c.date} — ${c.message}`,
+              )
+              .join("\n");
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Upstream: ${newCommits.length} novo(s) commit(s) detectado(s)`,
+              body: `Novos commits em [${UPSTREAM_OWNER}/${UPSTREAM_REPO}](https://github.com/${UPSTREAM_OWNER}/${UPSTREAM_REPO}/commits/main/):\n\n${list}\n\nVerifique se as dependências precisam ser atualizadas (\`npm install\`).`,
+            });
