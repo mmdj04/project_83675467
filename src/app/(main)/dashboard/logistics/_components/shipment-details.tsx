@@ -1,4 +1,5 @@
 import { AlertTriangleIcon, Copy, Plane, Ship, Star, Truck } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -8,13 +9,25 @@ import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 
-import type { Shipment } from "./shipment-data";
+import { type Shipment, statusLabelKeys, tierLabelKeys } from "./shipment-data";
 import { ShipmentRouteMap } from "./shipment-route-map";
 
 const modeIcons = {
   air: Plane,
   land: Truck,
   sea: Ship,
+} as const;
+
+const modeLabelKeys = {
+  air: "modeAir",
+  land: "modeLand",
+  sea: "modeSea",
+} as const;
+
+const routeTypeLabelKeys = {
+  road: "routeRoad",
+  flight: "routeFlight",
+  ship: "routeShip",
 } as const;
 
 const progressRingClasses: Record<Shipment["status"], string> = {
@@ -43,47 +56,50 @@ type ShipmentDetailsProps = {
 
 function getContactLabel(mode: Shipment["mode"]) {
   if (mode === "land") {
-    return "Call Driver";
+    return "callDriver";
   }
 
   if (mode === "air") {
-    return "Call Airline Support";
+    return "callAirlineSupport";
   }
 
-  return "Call Captain";
+  return "callCaptain";
 }
 
 function getTransportNumberLabel(mode: Shipment["mode"]) {
   if (mode === "land") {
-    return "Vehicle number";
+    return "vehicleNumber";
   }
 
   if (mode === "air") {
-    return "Flight number";
+    return "flightNumber";
   }
 
-  return "Vessel number";
+  return "vesselNumber";
 }
 
 function EmptyShipmentOverview() {
+  const t = useTranslations("logistics");
+
   return (
     <div className="grid min-h-48 place-items-center rounded-lg border border-dashed text-muted-foreground text-sm">
-      Select a shipment to view details.
+      {t("emptyState")}
     </div>
   );
 }
 
 function ShipmentOverview({ shipment }: { shipment: Shipment }) {
+  const t = useTranslations("logistics");
   const ContactIcon = modeIcons[shipment.mode];
-  const contactLabel = getContactLabel(shipment.mode);
-  const transportNumberLabel = getTransportNumberLabel(shipment.mode);
+  const contactLabel = t(getContactLabel(shipment.mode));
+  const transportNumberLabel = t(getTransportNumberLabel(shipment.mode));
 
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
         <div className="flex items-center gap-2">
           <h1 className="font-medium text-lg tabular-nums tracking-tight sm:text-xl">#{shipment.id}</h1>
-          <Button variant="ghost" size="icon-sm" aria-label="Copy shipment ID">
+          <Button variant="ghost" size="icon-sm" aria-label={t("copyShipmentId")}>
             <Copy />
           </Button>
         </div>
@@ -91,13 +107,13 @@ function ShipmentOverview({ shipment }: { shipment: Shipment }) {
         <div className="flex items-center gap-2 text-xs sm:text-sm">
           <Badge variant="outline" className={cn("gap-1.5", statusBadgeClasses[shipment.status])}>
             <span className={cn("size-1.5 rounded-full bg-current", progressRingClasses[shipment.status])} />
-            {shipment.status}
+            {t(statusLabelKeys[shipment.status])}
           </Badge>
           <span className="text-muted-foreground">·</span>
-          <span className="text-foreground tabular-nums">{shipment.progress}% complete</span>
+          <span className="text-foreground tabular-nums">{t("complete", { progress: shipment.progress })}</span>
           <span className="text-muted-foreground">·</span>
           <span className="text-foreground tabular-nums">
-            ETA: {shipment.eta} {shipment.etaMeta}
+            {t("etaLabel", { eta: shipment.eta, meta: shipment.etaMeta })}
           </span>
         </div>
       </div>
@@ -122,9 +138,9 @@ function ShipmentOverview({ shipment }: { shipment: Shipment }) {
         <div className="flex flex-col items-end gap-1">
           <Badge variant="secondary">
             <Star />
-            {shipment.customer.tier}
+            {t(tierLabelKeys[shipment.customer.tier])}
           </Badge>
-          <div className="text-muted-foreground text-xs leading-none">{shipment.customer.tierLabel}</div>
+          <div className="text-muted-foreground text-xs leading-none">{t(shipment.customer.tierLabelKey)}</div>
         </div>
       </div>
 
@@ -132,7 +148,7 @@ function ShipmentOverview({ shipment }: { shipment: Shipment }) {
 
       <div className="flex flex-col gap-8">
         <div className="flex items-start justify-between gap-4">
-          <h2 className="font-medium">Cargo details</h2>
+          <h2 className="font-medium">{t("cargoDetails")}</h2>
 
           <Button variant="outline" size="sm">
             <ContactIcon data-icon="inline-start" />
@@ -142,19 +158,19 @@ function ShipmentOverview({ shipment }: { shipment: Shipment }) {
 
         <div className="grid grid-cols-2 gap-x-4 gap-y-5 md:grid-cols-[1.35fr_1fr_1.1fr_1.15fr_1fr]">
           <div className="col-span-2 flex flex-col gap-1 md:col-span-1 md:gap-2">
-            <div className="text-muted-foreground text-xs leading-none md:invisible md:text-sm">Cargo</div>
+            <div className="text-muted-foreground text-xs leading-none md:invisible md:text-sm">{t("cargo")}</div>
             <div className="whitespace-nowrap text-sm leading-none">{shipment.cargo}</div>
           </div>
 
           <div className="flex flex-col gap-2">
-            <div className="text-muted-foreground text-xs leading-none md:text-sm">Total weight</div>
+            <div className="text-muted-foreground text-xs leading-none md:text-sm">{t("totalWeight")}</div>
             <div className="text-sm leading-none">{shipment.weight}</div>
           </div>
 
           <div className="flex flex-col gap-2">
-            <div className="text-muted-foreground text-xs leading-none md:text-sm">Transport mode</div>
+            <div className="text-muted-foreground text-xs leading-none md:text-sm">{t("transportMode")}</div>
             <div className="text-sm capitalize leading-none">
-              {shipment.mode} · {shipment.routeType}
+              {t(modeLabelKeys[shipment.mode])} · {t(routeTypeLabelKeys[shipment.routeType])}
             </div>
           </div>
 
@@ -164,8 +180,8 @@ function ShipmentOverview({ shipment }: { shipment: Shipment }) {
           </div>
 
           <div className="flex flex-col gap-2 md:text-right">
-            <div className="text-muted-foreground text-xs leading-none md:text-sm">Status</div>
-            <div className="text-sm leading-none">{shipment.progress}% complete</div>
+            <div className="text-muted-foreground text-xs leading-none md:text-sm">{t("status")}</div>
+            <div className="text-sm leading-none">{t("complete", { progress: shipment.progress })}</div>
           </div>
         </div>
       </div>
@@ -174,7 +190,7 @@ function ShipmentOverview({ shipment }: { shipment: Shipment }) {
 
       <Alert className="border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-50">
         <AlertTriangleIcon />
-        <AlertTitle>{shipment.handling.label}</AlertTitle>
+        <AlertTitle>{t(shipment.handling.labelKey)}</AlertTitle>
         <AlertDescription className="space-y-2">
           <div className="border-amber-900 text-amber-900 leading-none dark:border-amber-50 dark:text-amber-50">
             {shipment.handling.note}
@@ -183,14 +199,14 @@ function ShipmentOverview({ shipment }: { shipment: Shipment }) {
           <Separator className="bg-amber-800 dark:bg-amber-50" />
 
           <div className="flex flex-wrap gap-2">
-            {shipment.handling.tags.map(({ icon: TagIcon, label }) => (
+            {shipment.handling.tags.map(({ icon: TagIcon, labelKey }) => (
               <Badge
                 className="rounded-sm border-amber-200 bg-background/50 text-amber-900 dark:border-amber-900 dark:text-amber-50"
-                key={label}
+                key={labelKey}
                 variant="outline"
               >
                 <TagIcon data-icon="inline-start" />
-                {label}
+                {t(labelKey)}
               </Badge>
             ))}
           </div>
@@ -201,6 +217,8 @@ function ShipmentOverview({ shipment }: { shipment: Shipment }) {
 }
 
 export function ShipmentDetails({ shipment }: ShipmentDetailsProps) {
+  const t = useTranslations("logistics");
+
   if (!shipment) {
     return (
       <div className="grid h-full min-h-0 grid-rows-[320px_1fr] overflow-hidden lg:grid-rows-[420px_1fr]">
@@ -227,19 +245,19 @@ export function ShipmentDetails({ shipment }: ShipmentDetailsProps) {
               variant="line"
             >
               <TabsTrigger className="flex-none" value="overview">
-                Overview
+                {t("tabOverview")}
               </TabsTrigger>
               <TabsTrigger className="flex-none" value="route">
-                Route
+                {t("tabRoute")}
               </TabsTrigger>
               <TabsTrigger className="flex-none" value="cargo">
-                Cargo
+                {t("tabCargo")}
               </TabsTrigger>
               <TabsTrigger className="flex-none" value="documents">
-                Documents
+                {t("tabDocuments")}
               </TabsTrigger>
               <TabsTrigger className="flex-none" value="activity">
-                Activity
+                {t("tabActivity")}
               </TabsTrigger>
             </TabsList>
             <TabsContent className="min-h-0 overflow-auto p-4" value="overview">
@@ -247,22 +265,22 @@ export function ShipmentDetails({ shipment }: ShipmentDetailsProps) {
             </TabsContent>
             <TabsContent className="p-4" value="route">
               <div className="grid h-full place-items-center rounded-md border border-dashed text-muted-foreground text-sm">
-                Route view coming soon.
+                {t("comingSoon", { view: t("tabRoute") })}
               </div>
             </TabsContent>
             <TabsContent className="p-4" value="cargo">
               <div className="grid h-full place-items-center rounded-md border border-dashed text-muted-foreground text-sm">
-                Cargo view coming soon.
+                {t("comingSoon", { view: t("tabCargo") })}
               </div>
             </TabsContent>
             <TabsContent className="p-4" value="documents">
               <div className="grid h-full place-items-center rounded-md border border-dashed text-muted-foreground text-sm">
-                Documents view coming soon.
+                {t("comingSoon", { view: t("tabDocuments") })}
               </div>
             </TabsContent>
             <TabsContent className="p-4" value="activity">
               <div className="grid h-full place-items-center rounded-md border border-dashed text-muted-foreground text-sm">
-                Activity view coming soon.
+                {t("comingSoon", { view: t("tabActivity") })}
               </div>
             </TabsContent>
           </Tabs>

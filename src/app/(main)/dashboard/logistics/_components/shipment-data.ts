@@ -25,9 +25,25 @@ export type ShipmentStatus =
   | "On Hold"
   | "Customs Hold";
 
+export const statusLabelKeys: Record<ShipmentStatus, string> = {
+  Scheduled: "statusScheduled",
+  "In Transit": "statusInTransit",
+  "Out for Delivery": "statusOutForDelivery",
+  Delivered: "statusDelivered",
+  Delayed: "statusDelayed",
+  "On Hold": "statusOnHold",
+  "Customs Hold": "statusCustomsHold",
+};
+
 export type TransportMode = "land" | "air" | "sea";
 export type RouteType = "road" | "flight" | "ship";
 export type CustomerTier = "Priority" | "Standard" | "Non-priority";
+
+export const tierLabelKeys: Record<CustomerTier, string> = {
+  Priority: "tierPriority",
+  Standard: "tierStandard",
+  "Non-priority": "tierNonPriority",
+};
 
 export type GeoCoordinate = [longitude: number, latitude: number];
 
@@ -43,16 +59,16 @@ export type ShipmentCustomer = {
   initials: string;
   id: string;
   tier: CustomerTier;
-  tierLabel: string;
+  tierLabelKey: string;
 };
 
 export type HandlingTag = {
-  label: string;
+  labelKey: string;
   icon: LucideIcon;
 };
 
 export type ShipmentHandling = {
-  label: string;
+  labelKey: string;
   note: string;
   tags: HandlingTag[];
 };
@@ -80,84 +96,84 @@ const customerAccounts = {
     initials: "TC",
     id: "SDA-1001-2401-01",
     tier: "Priority",
-    tierLabel: "Top 1% by shipment volume",
+    tierLabelKey: "tierTopVolume",
   },
   regionalRoadExpress: {
     name: "Regional Road Express",
     initials: "RR",
     id: "SDA-1002-2402-02",
     tier: "Priority",
-    tierLabel: "Top 1% by shipment volume",
+    tierLabelKey: "tierTopVolume",
   },
   sendWell: {
     name: "SendWell B.V.",
     initials: "SW",
     id: "SDA-1003-2403-03",
     tier: "Priority",
-    tierLabel: "Top 1% by shipment volume",
+    tierLabelKey: "tierTopVolume",
   },
   sourceDay: {
     name: "SourceDay",
     initials: "SD",
     id: "SDA-1004-2404-04",
     tier: "Standard",
-    tierLabel: "Recurring shipment account",
+    tierLabelKey: "tierRecurring",
   },
   shippingEasy: {
     name: "ShippingEasy",
     initials: "SE",
     id: "SDA-1005-2405-05",
     tier: "Standard",
-    tierLabel: "Recurring shipment account",
+    tierLabelKey: "tierRecurring",
   },
   freightView: {
     name: "FreightView",
     initials: "FV",
     id: "SDA-1006-2406-06",
     tier: "Priority",
-    tierLabel: "Top 1% by shipment volume",
+    tierLabelKey: "tierTopVolume",
   },
   logisticsPlus: {
     name: "Logistics Plus",
     initials: "LP",
     id: "SDA-1007-2407-07",
     tier: "Standard",
-    tierLabel: "Managed freight account",
+    tierLabelKey: "tierManaged",
   },
   transvirtual: {
     name: "Transvirtual",
     initials: "TV",
     id: "SDA-1008-2408-08",
     tier: "Standard",
-    tierLabel: "Managed freight account",
+    tierLabelKey: "tierManaged",
   },
   skyTrack: {
     name: "SkyTrack",
     initials: "ST",
     id: "SDA-1009-2409-09",
     tier: "Non-priority",
-    tierLabel: "Occasional shipment account",
+    tierLabelKey: "tierOccasional",
   },
   maersk: {
     name: "Maersk",
     initials: "MK",
     id: "SDA-1010-2410-10",
     tier: "Priority",
-    tierLabel: "Top 1% by shipment volume",
+    tierLabelKey: "tierTopVolume",
   },
   flexport: {
     name: "Flexport",
     initials: "FX",
     id: "SDA-1011-2411-11",
     tier: "Priority",
-    tierLabel: "Top 1% by shipment volume",
+    tierLabelKey: "tierTopVolume",
   },
   piedPiper: {
     name: "Pied Piper",
     initials: "PP",
     id: "SDA-1012-2412-12",
     tier: "Non-priority",
-    tierLabel: "Occasional shipment account",
+    tierLabelKey: "tierOccasional",
   },
 } satisfies Record<string, ShipmentCustomer>;
 
@@ -179,12 +195,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Consumer Electronics",
     handling: {
-      label: "Fragile electronics",
+      labelKey: "handlingFragileElectronics",
       note: "Keep package sealed until handoff.",
       tags: [
-        { label: "Do not stack", icon: Ban },
-        { label: "Keep upright", icon: ArrowUp },
-        { label: "Signature required", icon: PenLine },
+        { labelKey: "tagDoNotStack", icon: Ban },
+        { labelKey: "tagKeepUpright", icon: ArrowUp },
+        { labelKey: "tagSignatureRequired", icon: PenLine },
       ],
     },
     weight: "2,450 kg",
@@ -213,12 +229,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Industrial Machinery",
     handling: {
-      label: "Heavy machinery",
+      labelKey: "handlingHeavyMachinery",
       note: "Secure machinery to pallet base before road dispatch.",
       tags: [
-        { label: "Forklift only", icon: Forklift },
-        { label: "Secure load", icon: ShieldCheck },
-        { label: "Do not tip", icon: Ban },
+        { labelKey: "tagForkliftOnly", icon: Forklift },
+        { labelKey: "tagSecureLoad", icon: ShieldCheck },
+        { labelKey: "tagDoNotTip", icon: Ban },
       ],
     },
     weight: "8,120 kg",
@@ -247,12 +263,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Frozen Seafood",
     handling: {
-      label: "Temperature controlled",
+      labelKey: "handlingTemperatureControlled",
       note: "Maintain frozen chain at or below -18°C until port handoff.",
       tags: [
-        { label: "Temperature log", icon: Thermometer },
-        { label: "Keep frozen", icon: Snowflake },
-        { label: "Seal intact", icon: ShieldCheck },
+        { labelKey: "tagTemperatureLog", icon: Thermometer },
+        { labelKey: "tagKeepFrozen", icon: Snowflake },
+        { labelKey: "tagSealIntact", icon: ShieldCheck },
       ],
     },
     weight: "19,800 kg",
@@ -281,12 +297,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Pharmaceutical Kits",
     handling: {
-      label: "Temperature controlled",
+      labelKey: "handlingTemperatureControlled",
       note: "Maintain controlled temperature and verify hold clearance before release.",
       tags: [
-        { label: "Temperature log", icon: Thermometer },
-        { label: "Keep upright", icon: ArrowUp },
-        { label: "Signature required", icon: PenLine },
+        { labelKey: "tagTemperatureLog", icon: Thermometer },
+        { labelKey: "tagKeepUpright", icon: ArrowUp },
+        { labelKey: "tagSignatureRequired", icon: PenLine },
       ],
     },
     weight: "540 kg",
@@ -315,12 +331,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Textiles",
     handling: {
-      label: "Standard freight",
+      labelKey: "handlingStandardFreight",
       note: "Keep cartons dry and away from direct sunlight.",
       tags: [
-        { label: "Keep dry", icon: Droplets },
-        { label: "Do not crush", icon: Ban },
-        { label: "Standard handoff", icon: PackageCheck },
+        { labelKey: "tagKeepDry", icon: Droplets },
+        { labelKey: "tagDoNotCrush", icon: Ban },
+        { labelKey: "tagStandardHandoff", icon: PackageCheck },
       ],
     },
     weight: "1,380 kg",
@@ -349,12 +365,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Construction Materials",
     handling: {
-      label: "Heavy bulk cargo",
+      labelKey: "handlingHeavyBulkCargo",
       note: "Load with heavy-lift equipment and secure against shifting.",
       tags: [
-        { label: "Heavy lift", icon: Forklift },
-        { label: "Secure load", icon: ShieldCheck },
-        { label: "Do not stack", icon: Ban },
+        { labelKey: "tagHeavyLift", icon: Forklift },
+        { labelKey: "tagSecureLoad", icon: ShieldCheck },
+        { labelKey: "tagDoNotStack", icon: Ban },
       ],
     },
     weight: "27,400 kg",
@@ -383,12 +399,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Medical Devices",
     handling: {
-      label: "Sensitive medical equipment",
+      labelKey: "handlingSensitiveMedicalEquipment",
       note: "Keep medical devices sealed until customs inspection is complete.",
       tags: [
-        { label: "Seal intact", icon: ShieldCheck },
-        { label: "Keep upright", icon: ArrowUp },
-        { label: "Signature required", icon: PenLine },
+        { labelKey: "tagSealIntact", icon: ShieldCheck },
+        { labelKey: "tagKeepUpright", icon: ArrowUp },
+        { labelKey: "tagSignatureRequired", icon: PenLine },
       ],
     },
     weight: "860 kg",
@@ -417,12 +433,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Retail Apparel",
     handling: {
-      label: "Standard freight",
+      labelKey: "handlingStandardFreight",
       note: "Keep cartons dry and call receiver before final delivery.",
       tags: [
-        { label: "Keep dry", icon: Droplets },
-        { label: "Call before delivery", icon: Truck },
-        { label: "Standard handoff", icon: PackageCheck },
+        { labelKey: "tagKeepDry", icon: Droplets },
+        { labelKey: "tagCallBeforeDelivery", icon: Truck },
+        { labelKey: "tagStandardHandoff", icon: PackageCheck },
       ],
     },
     weight: "620 kg",
@@ -451,12 +467,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Auto Parts",
     handling: {
-      label: "Industrial parts",
+      labelKey: "handlingIndustrialParts",
       note: "Secure pallets and protect machined surfaces from moisture.",
       tags: [
-        { label: "Secure load", icon: ShieldCheck },
-        { label: "Keep dry", icon: Droplets },
-        { label: "Forklift only", icon: Forklift },
+        { labelKey: "tagSecureLoad", icon: ShieldCheck },
+        { labelKey: "tagKeepDry", icon: Droplets },
+        { labelKey: "tagForkliftOnly", icon: Forklift },
       ],
     },
     weight: "12,200 kg",
@@ -485,12 +501,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Semiconductor Wafers",
     handling: {
-      label: "High-value fragile cargo",
+      labelKey: "handlingHighValueFragileCargo",
       note: "Keep wafers sealed in shock-protected packaging until signed handoff.",
       tags: [
-        { label: "Do not stack", icon: Ban },
-        { label: "Keep upright", icon: ArrowUp },
-        { label: "Signature required", icon: PenLine },
+        { labelKey: "tagDoNotStack", icon: Ban },
+        { labelKey: "tagKeepUpright", icon: ArrowUp },
+        { labelKey: "tagSignatureRequired", icon: PenLine },
       ],
     },
     weight: "320 kg",
@@ -519,12 +535,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Food Ingredients",
     handling: {
-      label: "Food-grade handling",
+      labelKey: "handlingFoodGrade",
       note: "Keep food-grade seals intact and avoid cross-contamination.",
       tags: [
-        { label: "Food grade", icon: PackageCheck },
-        { label: "Seal intact", icon: ShieldCheck },
-        { label: "Keep dry", icon: Droplets },
+        { labelKey: "tagFoodGrade", icon: PackageCheck },
+        { labelKey: "tagSealIntact", icon: ShieldCheck },
+        { labelKey: "tagKeepDry", icon: Droplets },
       ],
     },
     weight: "3,950 kg",
@@ -553,12 +569,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Agricultural Produce",
     handling: {
-      label: "Perishable goods",
+      labelKey: "handlingPerishableGoods",
       note: "Prioritize ventilation and inspect produce condition at port handoff.",
       tags: [
-        { label: "Perishable", icon: Thermometer },
-        { label: "Ventilated hold", icon: PackageCheck },
-        { label: "Inspect on arrival", icon: CheckCircle2 },
+        { labelKey: "tagPerishable", icon: Thermometer },
+        { labelKey: "tagVentilatedHold", icon: PackageCheck },
+        { labelKey: "tagInspectOnArrival", icon: CheckCircle2 },
       ],
     },
     weight: "6,700 kg",
@@ -587,12 +603,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Luxury Retail Goods",
     handling: {
-      label: "High-value cargo",
+      labelKey: "handlingHighValueCargo",
       note: "Keep cartons sealed; release only to authorized receiving contact.",
       tags: [
-        { label: "High value", icon: Star },
-        { label: "Do not stack", icon: Ban },
-        { label: "Signature required", icon: PenLine },
+        { labelKey: "tagHighValue", icon: Star },
+        { labelKey: "tagDoNotStack", icon: Ban },
+        { labelKey: "tagSignatureRequired", icon: PenLine },
       ],
     },
     weight: "210 kg",
@@ -621,12 +637,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Paper Rolls",
     handling: {
-      label: "Moisture-sensitive cargo",
+      labelKey: "handlingMoistureSensitiveCargo",
       note: "Keep rolls dry and avoid edge impact during unloading.",
       tags: [
-        { label: "Keep dry", icon: Droplets },
-        { label: "Do not tip", icon: Ban },
-        { label: "Forklift only", icon: Forklift },
+        { labelKey: "tagKeepDry", icon: Droplets },
+        { labelKey: "tagDoNotTip", icon: Ban },
+        { labelKey: "tagForkliftOnly", icon: Forklift },
       ],
     },
     weight: "15,900 kg",
@@ -655,12 +671,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Beverage Stock",
     handling: {
-      label: "Standard palletized freight",
+      labelKey: "handlingStandardPalletizedFreight",
       note: "Keep pallets upright and prevent carton crush during road transfer.",
       tags: [
-        { label: "Keep upright", icon: ArrowUp },
-        { label: "Do not stack", icon: Ban },
-        { label: "Standard handoff", icon: PackageCheck },
+        { labelKey: "tagKeepUpright", icon: ArrowUp },
+        { labelKey: "tagDoNotStack", icon: Ban },
+        { labelKey: "tagStandardHandoff", icon: PackageCheck },
       ],
     },
     weight: "4,500 kg",
@@ -689,12 +705,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Auto Components",
     handling: {
-      label: "Industrial parts",
+      labelKey: "handlingIndustrialParts",
       note: "Secure crates and inspect pallet straps before final handoff.",
       tags: [
-        { label: "Secure load", icon: ShieldCheck },
-        { label: "Forklift only", icon: Forklift },
-        { label: "Inspect on arrival", icon: CheckCircle2 },
+        { labelKey: "tagSecureLoad", icon: ShieldCheck },
+        { labelKey: "tagForkliftOnly", icon: Forklift },
+        { labelKey: "tagInspectOnArrival", icon: CheckCircle2 },
       ],
     },
     weight: "780 kg",
@@ -723,12 +739,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Packaging Materials",
     handling: {
-      label: "Standard freight",
+      labelKey: "handlingStandardFreight",
       note: "Keep pallets dry and verify pallet count at discharge.",
       tags: [
-        { label: "Keep dry", icon: Droplets },
-        { label: "Count on arrival", icon: CheckCircle2 },
-        { label: "Standard handoff", icon: PackageCheck },
+        { labelKey: "tagKeepDry", icon: Droplets },
+        { labelKey: "tagCountOnArrival", icon: CheckCircle2 },
+        { labelKey: "tagStandardHandoff", icon: PackageCheck },
       ],
     },
     weight: "21,300 kg",
@@ -757,12 +773,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Household Appliances",
     handling: {
-      label: "Fragile bulky goods",
+      labelKey: "handlingFragileBulkyGoods",
       note: "Use two-person handling and keep appliances upright until delivery.",
       tags: [
-        { label: "Keep upright", icon: ArrowUp },
-        { label: "Do not stack", icon: Ban },
-        { label: "Two-person lift", icon: Truck },
+        { labelKey: "tagKeepUpright", icon: ArrowUp },
+        { labelKey: "tagDoNotStack", icon: Ban },
+        { labelKey: "tagTwoPersonLift", icon: Truck },
       ],
     },
     weight: "2,060 kg",
@@ -791,12 +807,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Temperature Controlled Goods",
     handling: {
-      label: "Temperature controlled",
+      labelKey: "handlingTemperatureControlled",
       note: "Maintain temperature range and escalate delay exceptions immediately.",
       tags: [
-        { label: "Temperature log", icon: Thermometer },
-        { label: "Keep upright", icon: ArrowUp },
-        { label: "Escalate delay", icon: AlertTriangleIcon },
+        { labelKey: "tagTemperatureLog", icon: Thermometer },
+        { labelKey: "tagKeepUpright", icon: ArrowUp },
+        { labelKey: "tagEscalateDelay", icon: AlertTriangleIcon },
       ],
     },
     weight: "1,120 kg",
@@ -825,12 +841,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Steel Coils",
     handling: {
-      label: "Heavy bulk cargo",
+      labelKey: "handlingHeavyBulkCargo",
       note: "Use coil cradles and confirm lashings before release.",
       tags: [
-        { label: "Heavy lift", icon: Forklift },
-        { label: "Secure load", icon: ShieldCheck },
-        { label: "Do not tip", icon: Ban },
+        { labelKey: "tagHeavyLift", icon: Forklift },
+        { labelKey: "tagSecureLoad", icon: ShieldCheck },
+        { labelKey: "tagDoNotTip", icon: Ban },
       ],
     },
     weight: "31,800 kg",
@@ -859,12 +875,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Furniture",
     handling: {
-      label: "Fragile bulky goods",
+      labelKey: "handlingFragileBulkyGoods",
       note: "Use blanket wrap and avoid stacking on finished surfaces.",
       tags: [
-        { label: "Do not stack", icon: Ban },
-        { label: "Keep dry", icon: Droplets },
-        { label: "Two-person lift", icon: Truck },
+        { labelKey: "tagDoNotStack", icon: Ban },
+        { labelKey: "tagKeepDry", icon: Droplets },
+        { labelKey: "tagTwoPersonLift", icon: Truck },
       ],
     },
     weight: "5,240 kg",
@@ -893,12 +909,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Precision Tools",
     handling: {
-      label: "High-value precision cargo",
+      labelKey: "handlingHighValuePrecisionCargo",
       note: "Keep locked case sealed pending security clearance.",
       tags: [
-        { label: "Security hold", icon: ShieldCheck },
-        { label: "Seal intact", icon: ShieldCheck },
-        { label: "Signature required", icon: PenLine },
+        { labelKey: "tagSecurityHold", icon: ShieldCheck },
+        { labelKey: "tagSealIntact", icon: ShieldCheck },
+        { labelKey: "tagSignatureRequired", icon: PenLine },
       ],
     },
     weight: "430 kg",
@@ -927,12 +943,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Chemicals",
     handling: {
-      label: "Hazardous materials review",
+      labelKey: "handlingHazardousMaterialsReview",
       note: "Hold pending hazardous materials review and port clearance.",
       tags: [
-        { label: "Hazmat review", icon: Flame },
-        { label: "Keep upright", icon: ArrowUp },
-        { label: "Restricted handling", icon: ShieldCheck },
+        { labelKey: "tagHazmatReview", icon: Flame },
+        { labelKey: "tagKeepUpright", icon: ArrowUp },
+        { labelKey: "tagRestrictedHandling", icon: ShieldCheck },
       ],
     },
     weight: "18,600 kg",
@@ -961,12 +977,12 @@ export const shipments: Shipment[] = [
     },
     cargo: "Fresh Produce",
     handling: {
-      label: "Perishable goods",
+      labelKey: "handlingPerishableGoods",
       note: "Prioritize same-day handoff and keep produce ventilated.",
       tags: [
-        { label: "Perishable", icon: Thermometer },
-        { label: "Ventilated hold", icon: PackageCheck },
-        { label: "Inspect on arrival", icon: CheckCircle2 },
+        { labelKey: "tagPerishable", icon: Thermometer },
+        { labelKey: "tagVentilatedHold", icon: PackageCheck },
+        { labelKey: "tagInspectOnArrival", icon: CheckCircle2 },
       ],
     },
     weight: "970 kg",

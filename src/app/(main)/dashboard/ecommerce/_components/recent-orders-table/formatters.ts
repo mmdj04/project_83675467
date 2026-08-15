@@ -1,29 +1,29 @@
 import type React from "react";
 
-import type { OrderFilter } from "./schema";
+import type { useTranslations } from "next-intl";
 
-export function formatOrderCount(filter: OrderFilter, count: number) {
-  const orderLabel = count === 1 ? "order" : "orders";
+import { type OrderFilter, orderFilterLabelKeys } from "./schema";
 
+type EcommerceTranslator = ReturnType<typeof useTranslations<"ecommerce">>;
+
+export function formatOrderCount(filter: OrderFilter, count: number, t: EcommerceTranslator) {
   if (filter === "All") {
-    return `${count.toLocaleString()} ${orderLabel}`;
+    return t("orderCount", { count });
   }
 
   if (filter === "Needs action") {
-    return `${count.toLocaleString()} ${orderLabel} need action`;
+    return t("ordersNeedAction", { count });
   }
 
   if (filter === "Returns") {
-    return `${count.toLocaleString()} ${count === 1 ? "return" : "returns"}`;
+    return t("returnsCount", { count });
   }
 
-  return `${count.toLocaleString()} ${filter.toLowerCase()} ${orderLabel}`;
+  return t("ordersWithFilter", { count, filter: t(orderFilterLabelKeys[filter]) });
 }
 
-export function formatSelectedOrderCount(count: number) {
-  const orderLabel = count === 1 ? "order" : "orders";
-
-  return `${count.toLocaleString()} ${orderLabel} selected`;
+export function formatSelectedOrderCount(count: number, t: EcommerceTranslator) {
+  return t("selectedOrders", { count });
 }
 
 export function preventPaginationNavigation(event: React.MouseEvent<HTMLAnchorElement>) {

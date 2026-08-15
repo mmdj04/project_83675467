@@ -1,15 +1,18 @@
 import { ArrowUp, Info } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export function KpiCards() {
+export async function KpiCards() {
+  const t = await getTranslations("academy");
+
   return (
     <section className="space-y-5">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">Students Taught</CardTitle>
+            <CardTitle className="text-sm">{t("kpiStudentsTaught")}</CardTitle>
             <CardAction>
               <Info className="size-3 text-muted-foreground" />
             </CardAction>
@@ -22,13 +25,13 @@ export function KpiCards() {
                 2.8%
               </Badge>
             </div>
-            <div className="text-right text-muted-foreground text-xs">across 5 Grade 11 sections</div>
+            <div className="text-right text-muted-foreground text-xs">{t("acrossSections", { count: "5" })}</div>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">Avg. Attendance</CardTitle>
+            <CardTitle className="text-sm">{t("kpiAvgAttendance")}</CardTitle>
             <CardAction>
               <Info className="size-3 text-muted-foreground" />
             </CardAction>
@@ -41,13 +44,13 @@ export function KpiCards() {
                 1.1%
               </Badge>
             </div>
-            <div className="text-right text-muted-foreground text-xs">vs last month</div>
+            <div className="text-right text-muted-foreground text-xs">{t("vsLastMonth")}</div>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">Assignments</CardTitle>
+            <CardTitle className="text-sm">{t("kpiAssignments")}</CardTitle>
             <CardAction>
               <Info className="size-3 text-muted-foreground" />
             </CardAction>
@@ -55,13 +58,15 @@ export function KpiCards() {
           <CardContent className="flex flex-col">
             <div className="text-3xl text-foreground leading-none tracking-tight">81</div>
 
-            <div className="text-right text-muted-foreground text-xs">63 pending · 18 overdue</div>
+            <div className="text-right text-muted-foreground text-xs">
+              {t("assignmentsCount", { pending: "63", overdue: "18" })}
+            </div>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">Classes Today</CardTitle>
+            <CardTitle className="text-sm">{t("kpiClassesToday")}</CardTitle>
             <CardAction>
               <Info className="size-3 text-muted-foreground" />
             </CardAction>
@@ -69,7 +74,9 @@ export function KpiCards() {
           <CardContent className="flex flex-col">
             <div className="text-3xl text-foreground leading-none tracking-tight">5</div>
 
-            <div className="text-right text-muted-foreground text-xs">1 in progress · 3 upcoming · 1 cancelled</div>
+            <div className="text-right text-muted-foreground text-xs">
+              {t("classesCount", { inProgress: "1", upcoming: "3", cancelled: "1" })}
+            </div>
           </CardContent>
         </Card>
       </div>

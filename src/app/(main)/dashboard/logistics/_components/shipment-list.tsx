@@ -1,4 +1,5 @@
 import { Plane, Search, Ship, SlidersHorizontal, Truck } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,7 +8,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 
-import type { Shipment } from "./shipment-data";
+import { type Shipment, statusLabelKeys } from "./shipment-data";
 
 const modeIcons = {
   air: Plane,
@@ -45,6 +46,7 @@ type ShipmentListProps = {
 };
 
 function ShipmentCard({ shipment, active, onSelectShipment }: ShipmentCardProps) {
+  const t = useTranslations("logistics");
   const angle = (shipment.progress / 100) * 360;
   const Icon = modeIcons[shipment.mode];
 
@@ -74,7 +76,7 @@ function ShipmentCard({ shipment, active, onSelectShipment }: ShipmentCardProps)
               <div className="size-1 rounded-full bg-current" />
             </div>
           </div>
-          <div className="text-muted-foreground text-xs">{shipment.status}</div>
+          <div className="text-muted-foreground text-xs">{t(statusLabelKeys[shipment.status])}</div>
         </div>
       </div>
 
@@ -112,11 +114,11 @@ function ShipmentCard({ shipment, active, onSelectShipment }: ShipmentCardProps)
 
       <div className="flex items-center justify-between">
         <div>
-          <div className="text-muted-foreground text-xs leading-none">Cargo</div>
+          <div className="text-muted-foreground text-xs leading-none">{t("cargo")}</div>
           <div className="truncate text-sm tracking-tight">{shipment.cargo}</div>
         </div>
         <div className="text-right">
-          <div className="text-muted-foreground text-xs leading-none">ETA</div>
+          <div className="text-muted-foreground text-xs leading-none">{t("eta")}</div>
           <div className="text-sm tabular-nums tracking-tight">
             {shipment.eta}
             {shipment.etaMeta && (
@@ -130,10 +132,12 @@ function ShipmentCard({ shipment, active, onSelectShipment }: ShipmentCardProps)
 }
 
 export function ShipmentList({ shipments, selectedShipmentId, onSelectShipment }: ShipmentListProps) {
+  const t = useTranslations("logistics");
+
   return (
     <Card className="h-full rounded-none ring-0">
       <CardHeader>
-        <CardTitle className="font-normal text-xl">Shipments</CardTitle>
+        <CardTitle className="font-normal text-xl">{t("shipments")}</CardTitle>
         <CardAction>
           <Button size="icon-sm" variant="ghost">
             <SlidersHorizontal />
@@ -144,23 +148,23 @@ export function ShipmentList({ shipments, selectedShipmentId, onSelectShipment }
         <Tabs defaultValue="all">
           <TabsList className="w-full border-b px-4" variant="line">
             <TabsTrigger className="text-xs" value="all">
-              All (156)
+              {t("tabAll", { count: "156" })}
             </TabsTrigger>
             <TabsTrigger className="text-xs" value="in-transit">
-              In Transit (32)
+              {t("tabInTransit", { count: "32" })}
             </TabsTrigger>
             <TabsTrigger className="text-xs" value="delivered">
-              Delivered (98)
+              {t("tabDelivered", { count: "98" })}
             </TabsTrigger>
             <TabsTrigger className="text-xs" value="delayed">
-              Delayed (9)
+              {t("tabDelayed", { count: "9" })}
             </TabsTrigger>
           </TabsList>
         </Tabs>
 
         <div className="px-4">
           <InputGroup className="h-8">
-            <InputGroupInput className="h-8" aria-label="Search shipments" placeholder="Search shipments..." />
+            <InputGroupInput className="h-8" aria-label={t("searchAria")} placeholder={t("searchPlaceholder")} />
             <InputGroupAddon>
               <Search />
             </InputGroupAddon>

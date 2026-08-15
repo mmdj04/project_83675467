@@ -14,6 +14,7 @@ import {
   SquareTerminal,
   Terminal,
 } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { SimpleIcon } from "@/components/simple-icon";
 import { Badge } from "@/components/ui/badge";
@@ -30,9 +31,18 @@ import {
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 
-import type { InfrastructureEnvironment, InfrastructureGroup } from "./infrastructure-data";
+import {
+  environmentLabelKeys,
+  type InfrastructureEnvironment,
+  type InfrastructureGroup,
+  statusLabelKeys,
+} from "./infrastructure-data";
 
-export function ProjectEnvironments({ group }: { group: InfrastructureGroup }) {
+type InfrastructureTranslator = Awaited<ReturnType<typeof getTranslations<"infrastructure">>>;
+
+export async function ProjectEnvironments({ group }: { group: InfrastructureGroup }) {
+  const t = await getTranslations("infrastructure");
+
   return (
     <Collapsible
       defaultOpen
@@ -54,7 +64,7 @@ export function ProjectEnvironments({ group }: { group: InfrastructureGroup }) {
         <div className="flex w-full items-center justify-between gap-2 sm:ml-auto sm:w-auto sm:justify-end">
           <Button variant="ghost" size="sm" className="-ml-1.5 sm:ml-0">
             <Plus data-icon="inline-start" />
-            Add Environment
+            {t("addEnvironment")}
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -67,31 +77,31 @@ export function ProjectEnvironments({ group }: { group: InfrastructureGroup }) {
                 {group.rows.length > 0 ? (
                   <DropdownMenuItem>
                     <FileText />
-                    Activity Logs
+                    {t("activityLogs")}
                   </DropdownMenuItem>
                 ) : null}
                 <DropdownMenuItem>
                   <Terminal />
-                  Open Console
+                  {t("openConsole")}
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Settings />
-                  Project Settings
+                  {t("projectSettings")}
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <RefreshCw />
-                  Sync Status
+                  {t("syncStatus")}
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Bell />
-                  Manage Alerts
+                  {t("manageAlerts")}
                 </DropdownMenuItem>
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
                 <DropdownMenuItem>
                   <Copy />
-                  Copy Project ID
+                  {t("copyProjectId")}
                 </DropdownMenuItem>
               </DropdownMenuGroup>
             </DropdownMenuContent>
@@ -100,13 +110,13 @@ export function ProjectEnvironments({ group }: { group: InfrastructureGroup }) {
       </div>
 
       <CollapsibleContent>
-        {group.rows.length > 0 ? <EnvironmentTable rows={group.rows} /> : <EmptyProjectState />}
+        {group.rows.length > 0 ? <EnvironmentTable rows={group.rows} t={t} /> : <EmptyProjectState t={t} />}
       </CollapsibleContent>
     </Collapsible>
   );
 }
 
-function EnvironmentTable({ rows }: { rows: InfrastructureEnvironment[] }) {
+function EnvironmentTable({ rows, t }: { rows: InfrastructureEnvironment[]; t: InfrastructureTranslator }) {
   return (
     <div className="scrollbar-thin overflow-x-auto [scrollbar-color:var(--border)_transparent] **:data-[slot=table-container]:overflow-visible [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:h-1">
       <Table className="min-w-[1700px] table-fixed **:data-[slot='table-cell']:px-5 **:data-[slot='table-head']:px-5">
@@ -125,16 +135,16 @@ function EnvironmentTable({ rows }: { rows: InfrastructureEnvironment[] }) {
           <TableRow>
             <TableHead className="font-medium">
               <span className="inline-flex items-center gap-1">
-                Domain <ArrowUpDown className="size-4" />
+                {t("colDomain")} <ArrowUpDown className="size-4" />
               </span>
             </TableHead>
-            <TableHead>Platform</TableHead>
-            <TableHead>Environment</TableHead>
-            <TableHead>Health</TableHead>
-            <TableHead>Latency</TableHead>
-            <TableHead>Uptime</TableHead>
-            <TableHead>Resources</TableHead>
-            <TableHead>Server</TableHead>
+            <TableHead>{t("colPlatform")}</TableHead>
+            <TableHead>{t("colEnvironment")}</TableHead>
+            <TableHead>{t("colHealth")}</TableHead>
+            <TableHead>{t("colLatency")}</TableHead>
+            <TableHead>{t("colUptime")}</TableHead>
+            <TableHead>{t("colResources")}</TableHead>
+            <TableHead>{t("colServer")}</TableHead>
             <TableHead />
           </TableRow>
         </TableHeader>
@@ -161,7 +171,7 @@ function EnvironmentTable({ rows }: { rows: InfrastructureEnvironment[] }) {
                     row.environment === "Staging" && "bg-sky-500/10 text-sky-600 dark:text-sky-400",
                   )}
                 >
-                  {row.environment}
+                  {t(environmentLabelKeys[row.environment])}
                 </Badge>
               </TableCell>
               <TableCell>
@@ -178,7 +188,7 @@ function EnvironmentTable({ rows }: { rows: InfrastructureEnvironment[] }) {
                       row.status === "Online" ? "bg-emerald-500" : "bg-destructive",
                     )}
                   />
-                  {row.status}
+                  {t(statusLabelKeys[row.status])}
                 </Badge>
               </TableCell>
               <TableCell>
@@ -195,9 +205,9 @@ function EnvironmentTable({ rows }: { rows: InfrastructureEnvironment[] }) {
               </TableCell>
               <TableCell>
                 <div className="grid grid-cols-3 gap-4">
-                  <ResourceMeter label="CPU" value={row.resources.cpu} />
-                  <ResourceMeter label="RAM" value={row.resources.ram} />
-                  <ResourceMeter label="Disk" value={row.resources.disk} />
+                  <ResourceMeter labelKey="cpu" value={row.resources.cpu} t={t} />
+                  <ResourceMeter labelKey="ram" value={row.resources.ram} t={t} />
+                  <ResourceMeter labelKey="disk" value={row.resources.disk} t={t} />
                 </div>
               </TableCell>
               <TableCell>
@@ -223,22 +233,22 @@ function EnvironmentTable({ rows }: { rows: InfrastructureEnvironment[] }) {
                     <DropdownMenuGroup>
                       <DropdownMenuItem>
                         <FileText />
-                        View Logs
+                        {t("viewLogs")}
                       </DropdownMenuItem>
                       <DropdownMenuItem>
                         <Terminal />
-                        Open Console
+                        {t("openConsole")}
                       </DropdownMenuItem>
                       <DropdownMenuItem>
                         <RefreshCw />
-                        Restart
+                        {t("restart")}
                       </DropdownMenuItem>
                     </DropdownMenuGroup>
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
                       <DropdownMenuItem>
                         <Copy />
-                        Copy URL
+                        {t("copyUrl")}
                       </DropdownMenuItem>
                     </DropdownMenuGroup>
                   </DropdownMenuContent>
@@ -252,14 +262,14 @@ function EnvironmentTable({ rows }: { rows: InfrastructureEnvironment[] }) {
   );
 }
 
-function ResourceMeter({ label, value }: { label: string; value: number }) {
+function ResourceMeter({ labelKey, value, t }: { labelKey: string; value: number; t: InfrastructureTranslator }) {
   const isCritical = value >= 70;
   const isWarning = value >= 55;
 
   return (
     <span className="min-w-0 space-y-1">
       <span className="flex items-baseline justify-between gap-2 text-xs">
-        <span className="font-medium text-muted-foreground">{label}</span>
+        <span className="font-medium text-muted-foreground">{t(labelKey)}</span>
         <span
           className={cn(
             "font-medium text-emerald-600 tabular-nums dark:text-emerald-400",
@@ -284,12 +294,12 @@ function ResourceMeter({ label, value }: { label: string; value: number }) {
   );
 }
 
-function EmptyProjectState() {
+function EmptyProjectState({ t }: { t: InfrastructureTranslator }) {
   return (
     <div className="flex min-h-24 items-center justify-center border-t bg-muted/50 p-4">
       <div className="flex items-center gap-2">
         <CircleDashed className="size-4" />
-        <p className="font-medium text-sm">No environments in this project</p>
+        <p className="font-medium text-sm">{t("noEnvironments")}</p>
       </div>
     </div>
   );

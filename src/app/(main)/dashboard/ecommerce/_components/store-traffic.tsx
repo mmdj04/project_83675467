@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { format, subMinutes } from "date-fns";
 import { ArrowUpRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Area, AreaChart, CartesianGrid, Line, XAxis, YAxis } from "recharts";
 
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -126,40 +127,40 @@ function getTrafficData() {
   }));
 }
 
-const trafficConfig = {
-  visitors: {
-    label: "Visitors",
-    color: "var(--chart-3)",
-  },
-  anomalies: {
-    label: "Anomalies",
-    color: "var(--destructive)",
-  },
-} satisfies ChartConfig;
-
 function formatTrafficTooltipLabel(value: string) {
   return format(new Date(value), "h:mm a, do MMMM yyyy");
 }
 
 export function StoreTraffic() {
+  const t = useTranslations("ecommerce");
   const [trafficData] = useState(() => getTrafficData());
   const firstTrafficTimestamp = trafficData[0].timestamp;
   const lastTrafficTimestamp = trafficData.at(-1)?.timestamp ?? "";
+  const storeTrafficConfig = {
+    visitors: {
+      label: t("chartVisitors"),
+      color: "var(--chart-3)",
+    },
+    anomalies: {
+      label: t("chartAnomalies"),
+      color: "var(--destructive)",
+    },
+  } satisfies ChartConfig;
 
   function formatTrafficTick(value: string) {
     if (value === firstTrafficTimestamp) {
-      return "24h ago";
+      return t("hoursAgo");
     }
 
-    return value === lastTrafficTimestamp ? "now" : "";
+    return value === lastTrafficTimestamp ? t("now") : "";
   }
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-normal text-muted-foreground text-sm">Store Traffic</CardTitle>
+        <CardTitle className="font-normal text-muted-foreground text-sm">{t("storeTraffic")}</CardTitle>
         <CardDescription className="text-foreground text-xl tabular-nums leading-none tracking-tight">
-          12.9K visits
+          {t("visits", { count: "12.9K" })}
         </CardDescription>
         <CardAction>
           <ArrowUpRight className="size-4" />
@@ -167,7 +168,7 @@ export function StoreTraffic() {
       </CardHeader>
 
       <CardContent>
-        <ChartContainer config={trafficConfig} className="h-54 w-full">
+        <ChartContainer config={storeTrafficConfig} className="h-54 w-full">
           <AreaChart accessibilityLayer data={trafficData} margin={{ bottom: 0, left: 0, right: 0, top: 8 }}>
             <defs>
               <linearGradient id="fillVisitors" x1="0" x2="0" y1="0" y2="1">

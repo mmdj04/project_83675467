@@ -1,5 +1,6 @@
 import { addDays, format } from "date-fns";
 import { ArrowRight } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,43 +10,44 @@ const upcomingEvents = [
     dayOffset: 6,
     title: "Science Exhibition",
     time: "08:30 AM - 12:30 PM",
-    type: "On Campus",
+    typeKey: "eventOnCampus",
   },
   {
     dayOffset: 9,
     title: "Parents' Evening",
     time: "02:00 PM - 05:00 PM",
-    type: "Meeting",
+    typeKey: "eventMeeting",
   },
   {
     dayOffset: 12,
     title: "Inter-House Sports Day",
     time: "09:00 AM - 04:00 PM",
-    type: "Sports",
+    typeKey: "eventSports",
   },
   {
     dayOffset: 15,
     title: "Grade 11 Mock Exam",
     time: "09:00 AM - 12:00 PM",
-    type: "Exam",
+    typeKey: "eventExam",
   },
   {
     dayOffset: 18,
     title: "Department Planning",
     time: "03:30 PM - 04:30 PM",
-    type: "Meeting",
+    typeKey: "eventMeeting",
   },
 ];
 
-export function UpcomingEvents() {
+export async function UpcomingEvents() {
+  const t = await getTranslations("academy");
   const today = new Date();
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-sm">Upcoming Events</CardTitle>
+        <CardTitle className="text-sm">{t("upcomingEvents")}</CardTitle>
         <CardAction className="flex items-center gap-1 text-muted-foreground text-xs">
-          View Calendar <ArrowRight className="size-4" />
+          {t("viewCalendar")} <ArrowRight className="size-4" />
         </CardAction>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
@@ -68,7 +70,7 @@ export function UpcomingEvents() {
                 </div>
               </div>
               <Badge variant="outline" className="shrink-0 rounded-md px-2.5 py-1 font-medium text-[10px]">
-                {event.type}
+                {t(event.typeKey)}
               </Badge>
             </div>
           );

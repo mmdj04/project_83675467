@@ -11,12 +11,12 @@ export const fileIcons = {
   spreadsheet: FileChartColumn,
 } satisfies Record<FileKind, typeof File>;
 
-export const fileKindLabels: Record<FileKind, string> = {
-  archive: "Archive",
-  design: "Design",
-  document: "Document",
-  pdf: "PDF",
-  spreadsheet: "Spreadsheet",
+export const fileKindLabelKeys: Record<FileKind, string> = {
+  archive: "kindArchive",
+  design: "kindDesign",
+  document: "kindDocument",
+  pdf: "kindPdf",
+  spreadsheet: "kindSpreadsheet",
 };
 
 export interface FileManagerFolder {

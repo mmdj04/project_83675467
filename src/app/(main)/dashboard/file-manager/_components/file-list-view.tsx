@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { Star } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -18,6 +19,7 @@ interface FileListViewProps {
 }
 
 export function FileListView({ files }: FileListViewProps) {
+  const t = useTranslations("fileManager");
   const [listFiles, setListFiles] = useState(files);
 
   function toggleStar(fileId: string) {
@@ -28,12 +30,12 @@ export function FileListView({ files }: FileListViewProps) {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="pl-0">Name</TableHead>
-          <TableHead className="hidden md:table-cell">Owner</TableHead>
-          <TableHead className="hidden lg:table-cell">Modified</TableHead>
-          <TableHead className="hidden sm:table-cell">Size</TableHead>
+          <TableHead className="pl-0">{t("name")}</TableHead>
+          <TableHead className="hidden md:table-cell">{t("owner")}</TableHead>
+          <TableHead className="hidden lg:table-cell">{t("modified")}</TableHead>
+          <TableHead className="hidden sm:table-cell">{t("size")}</TableHead>
           <TableHead className="w-20">
-            <span className="sr-only">Actions</span>
+            <span className="sr-only">{t("actions")}</span>
           </TableHead>
         </TableRow>
       </TableHeader>
@@ -51,7 +53,7 @@ export function FileListView({ files }: FileListViewProps) {
                   </Button>
                   {file.shared && (
                     <Badge variant="outline" className="hidden xl:inline-flex">
-                      Shared
+                      {t("shared")}
                     </Badge>
                   )}
                 </div>
@@ -71,7 +73,9 @@ export function FileListView({ files }: FileListViewProps) {
                   <Button
                     variant="ghost"
                     size="icon-sm"
-                    aria-label={file.starred ? `Unstar ${file.name}` : `Star ${file.name}`}
+                    aria-label={
+                      file.starred ? t("unstarAria", { name: file.name }) : t("starAria", { name: file.name })
+                    }
                     onClick={() => toggleStar(file.id)}
                   >
                     <Star className={cn(file.starred && "fill-current")} />

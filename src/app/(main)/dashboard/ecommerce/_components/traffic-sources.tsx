@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Bar, BarChart, LabelList, type LabelProps, XAxis, YAxis } from "recharts";
 import { siEbay, siGoogle, siMeta, siShopify, siTiktok } from "simple-icons";
 
@@ -45,13 +46,6 @@ const trafficSources = [
     icon: siEbay,
   },
 ] as const;
-
-const trafficSourcesConfig = {
-  share: {
-    label: "Visits",
-    color: "var(--chart-1)",
-  },
-} satisfies ChartConfig;
 
 type IconLabelProps = {
   height?: number | string;
@@ -157,12 +151,20 @@ function TrafficSourceChangeLabel({ height, value, y }: SourceChangeLabelProps) 
 }
 
 export function TrafficSources() {
+  const t = useTranslations("ecommerce");
+  const trafficSourcesConfig = {
+    share: {
+      label: t("chartVisits"),
+      color: "var(--chart-1)",
+    },
+  } satisfies ChartConfig;
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-normal text-muted-foreground text-sm">Traffic Sources</CardTitle>
+        <CardTitle className="font-normal text-muted-foreground text-sm">{t("trafficSources")}</CardTitle>
         <CardDescription className="text-foreground text-xl tabular-nums leading-none tracking-tight">
-          14.8K visits
+          {t("visits", { count: "14.8K" })}
         </CardDescription>
         <CardAction>
           <ArrowUpRight className="size-4" />
@@ -206,7 +208,7 @@ export function TrafficSources() {
               dataKey="share"
               fill="var(--color-share)"
               fillOpacity={0.5}
-              name="Visits"
+              name={t("chartVisits")}
               radius={8}
               stroke="var(--color-share)"
               strokeOpacity={0.1}

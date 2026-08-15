@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowUpRight, PackageCheck, PackageX, TriangleAlert } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Label, Pie, PieChart } from "recharts";
 
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -38,43 +39,44 @@ const gaugeSegments = Array.from({ length: gaugeSegmentCount }, (_, index) => {
 const inventorySummary = [
   {
     icon: PackageCheck,
-    label: "In stock",
+    labelKey: "summaryInStock",
     value: chartData[0]["in-stock"],
   },
   {
     icon: TriangleAlert,
-    label: "Low stock",
+    labelKey: "summaryLowStock",
     value: chartData[0]["low-stock"],
   },
   {
     icon: PackageX,
-    label: "Out",
+    labelKey: "summaryOut",
     value: chartData[0]["out-of-stock"],
   },
 ] as const;
 
-const chartConfig = {
-  "in-stock": {
-    label: "In stock",
-    color: "var(--chart-2)",
-  },
-  "low-stock": {
-    label: "Low stock",
-    color: "var(--chart-1)",
-  },
-  "out-of-stock": {
-    label: "Out of stock",
-    color: "var(--destructive)",
-  },
-} satisfies ChartConfig;
-
 export function Inventory() {
+  const t = useTranslations("ecommerce");
+  const chartConfig = {
+    "in-stock": {
+      label: t("chartInStock"),
+      color: "var(--chart-2)",
+    },
+    "low-stock": {
+      label: t("chartLowStock"),
+      color: "var(--chart-1)",
+    },
+    "out-of-stock": {
+      label: t("chartOutOfStock"),
+      color: "var(--destructive)",
+    },
+  } satisfies ChartConfig;
+
   return (
     <Card className="h-full">
       <CardHeader>
-        <CardTitle className="font-normal text-muted-foreground text-sm">Inventory</CardTitle>
+        <CardTitle className="font-normal text-muted-foreground text-sm">{t("inventory")}</CardTitle>
         <CardDescription className="text-foreground text-xl tabular-nums leading-none tracking-tight">
-          {availablePercent}% available
+          {t("available", { percent: availablePercent })}
         </CardDescription>
         <CardAction>
           <ArrowUpRight className="size-4" />
@@ -110,7 +112,7 @@ export function Inventory() {
                           {availablePercent}%
                         </tspan>
                         <tspan className="fill-muted-foreground text-xs" x={viewBox.cx} y={(viewBox.cy || 0) + 38}>
-                          Available
+                          {t("availableLabel")}
                         </tspan>
                       </text>
                     );
@@ -124,12 +126,12 @@ export function Inventory() {
 
         <div className="grid grid-cols-3 divide-x">
           {inventorySummary.map((item, _index) => (
-            <div key={item.label} className="flex flex-col items-center gap-3 text-center">
+            <div key={item.labelKey} className="flex flex-col items-center gap-3 text-center">
               <div className="grid size-9 place-items-center rounded-full bg-muted">
                 <item.icon className="size-4 text-muted-foreground" />
               </div>
               <div>
-                <div className="text-muted-foreground text-xs leading-none">{item.label}</div>
+                <div className="text-muted-foreground text-xs leading-none">{t(item.labelKey)}</div>
                 <div className="font-medium text-sm tabular-nums">{item.value.toLocaleString()}</div>
               </div>
             </div>

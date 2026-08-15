@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -41,13 +42,6 @@ const performanceHighlights = [
     avatars: ["RP", "EH"],
   },
 ];
-
-const chartConfig = {
-  duration: {
-    label: "Score",
-    color: "var(--chart-3)",
-  },
-} satisfies ChartConfig;
 
 type PerformanceHighlight = (typeof performanceHighlights)[number];
 
@@ -126,12 +120,20 @@ function PerformanceHighlightBar({
 }
 
 export function PerformanceHighlights() {
+  const t = useTranslations("academy");
+  const chartConfig = {
+    duration: {
+      label: t("chartScore"),
+      color: "var(--chart-3)",
+    },
+  } satisfies ChartConfig;
+
   return (
     <Card className="h-full">
       <CardHeader>
-        <CardTitle className="text-sm">Performance Highlights</CardTitle>
+        <CardTitle className="text-sm">{t("performanceHighlights")}</CardTitle>
         <CardAction className="flex items-center gap-1 text-muted-foreground text-xs">
-          View Insights <ArrowRight className="size-4" />
+          {t("viewInsights")} <ArrowRight className="size-4" />
         </CardAction>
       </CardHeader>
       <CardContent>
@@ -146,7 +148,10 @@ export function PerformanceHighlights() {
             <XAxis
               axisLine={false}
               domain={[0, 4]}
-              tickFormatter={(value) => ["Mon", "Tue", "Wed", "Thu", "Fri"][Number(value)] ?? ""}
+              tickFormatter={(value) =>
+                [t("weekDayMon"), t("weekDayTue"), t("weekDayWed"), t("weekDayThu"), t("weekDayFri")][Number(value)] ??
+                ""
+              }
               tickLine={false}
               tickMargin={10}
               ticks={[0, 1, 2, 3, 4]}

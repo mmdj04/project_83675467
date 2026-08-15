@@ -3,6 +3,7 @@ import * as React from "react";
 
 import { type ColumnFiltersState, type PaginationState, type SortingState, useTable } from "@tanstack/react-table";
 import { ArrowUpDown, ArrowUpRight, Download, MoreHorizontal } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,18 +20,20 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { dataTableFeatures } from "@/lib/data-table-features";
 
-import { recentOrdersColumns } from "./recent-orders-table/columns";
+import { createRecentOrdersColumns } from "./recent-orders-table/columns";
 import recentOrdersData from "./recent-orders-table/data.json";
 import {
   formatOrderCount,
   formatSelectedOrderCount,
   preventPaginationNavigation,
 } from "./recent-orders-table/formatters";
-import { type OrderFilter, type OrderRow, orderFilters } from "./recent-orders-table/schema";
+import { type OrderFilter, type OrderRow, orderFilterLabelKeys, orderFilters } from "./recent-orders-table/schema";
 
 const recentOrders = recentOrdersData as OrderRow[];
 
 export function RecentOrders() {
+  const t = useTranslations("ecommerce");
+  const recentOrdersColumns = React.useMemo(() => createRecentOrdersColumns(t), [t]);
   const [rowSelection, setRowSelection] = React.useState({});
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
@@ -64,7 +67,9 @@ export function RecentOrders() {
   const currentPage = table.state.pagination.pageIndex + 1;
   const pageCount = table.getPageCount();
   const orderCountDescription =
-    selectedOrderCount > 0 ? formatSelectedOrderCount(selectedOrderCount) : formatOrderCount(activeFilter, orderCount);
+    selectedOrderCount > 0
+      ? formatSelectedOrderCount(selectedOrderCount, t)
+      : formatOrderCount(activeFilter, orderCount, t);
   const pageNumbers = React.useMemo(() => {
     if (pageCount <= 3) {
       return Array.from({ length: pageCount }, (_, index) => index + 1);
@@ -79,15 +84,15 @@ export function RecentOrders() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-normal text-muted-foreground text-sm">Recent Orders</CardTitle>
+        <CardTitle className="font-normal text-muted-foreground text-sm">{t("recentOrders")}</CardTitle>
         <CardDescription className="text-foreground text-xl tabular-nums leading-none tracking-tight">
           {orderCountDescription}
         </CardDescription>
         <CardAction className="flex items-center gap-1">
-          <Button aria-label="Open orders" size="icon-sm" variant="outline">
+          <Button aria-label={t("openOrders")} size="icon-sm" variant="outline">
             <ArrowUpRight />
           </Button>
-          <Button aria-label="Download orders" size="icon-sm" variant="outline">
+          <Button aria-label={t("downloadOrders")} size="icon-sm" variant="outline">
             <Download />
           </Button>
           <Button size="icon-sm" variant="outline">
@@ -112,7 +117,7 @@ export function RecentOrders() {
           >
             {orderFilters.map((filter) => (
               <ToggleGroupItem key={filter} value={filter}>
-                {filter}
+                {t(orderFilterLabelKeys[filter])}
               </ToggleGroupItem>
             ))}
           </ToggleGroup>
@@ -153,7 +158,7 @@ export function RecentOrders() {
               ) : (
                 <TableRow>
                   <TableCell className="h-24 text-center" colSpan={table.getVisibleLeafColumns().length}>
-                    No orders found.
+                    {t("noOrdersFound")}
                   </TableCell>
                 </TableRow>
               )}
@@ -163,7 +168,7 @@ export function RecentOrders() {
 
         <div className="flex items-center justify-between gap-4 px-4 pb-1">
           <p className="text-muted-foreground text-sm">
-            Viewing {visibleOrderCount} out of {orderCount.toLocaleString()} orders
+            {t("viewingOrders", { visible: visibleOrderCount, total: orderCount.toLocaleString() })}
           </p>
 
           <Pagination className="mx-0 w-auto justify-end">

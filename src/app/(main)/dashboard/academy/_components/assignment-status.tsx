@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -33,24 +34,6 @@ function OverdueLegendIcon() {
   return <span className="block size-2 rounded-[2px] bg-destructive" />;
 }
 
-const chartConfig = {
-  submitted: {
-    label: "Submitted",
-    color: "var(--chart-3)",
-    icon: SubmittedLegendIcon,
-  },
-  pending: {
-    label: "Pending",
-    color: "var(--chart-2)",
-    icon: PendingLegendIcon,
-  },
-  overdue: {
-    label: "Overdue",
-    color: "var(--destructive)",
-    icon: OverdueLegendIcon,
-  },
-} satisfies ChartConfig;
-
 function AssignmentDotPattern({ color, id }: { color: string; id: string }) {
   return (
     <pattern id={id} width="6" height="6" patternUnits="userSpaceOnUse">
@@ -62,12 +45,31 @@ function AssignmentDotPattern({ color, id }: { color: string; id: string }) {
 }
 
 export function AssignmentStatus() {
+  const t = useTranslations("academy");
+  const chartConfig = {
+    submitted: {
+      label: t("chartSubmitted"),
+      color: "var(--chart-3)",
+      icon: SubmittedLegendIcon,
+    },
+    pending: {
+      label: t("chartPending"),
+      color: "var(--chart-2)",
+      icon: PendingLegendIcon,
+    },
+    overdue: {
+      label: t("chartOverdue"),
+      color: "var(--destructive)",
+      icon: OverdueLegendIcon,
+    },
+  } satisfies ChartConfig;
+
   return (
     <Card className="h-full">
       <CardHeader>
-        <CardTitle className="text-sm">Assignment Status</CardTitle>
+        <CardTitle className="text-sm">{t("assignmentStatus")}</CardTitle>
         <CardAction className="flex items-center gap-1 text-muted-foreground text-xs">
-          View Report <ArrowRight className="size-4" />
+          {t("viewReport")} <ArrowRight className="size-4" />
         </CardAction>
       </CardHeader>
       <CardContent>

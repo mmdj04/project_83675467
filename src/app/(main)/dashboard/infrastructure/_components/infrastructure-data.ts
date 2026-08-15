@@ -21,6 +21,17 @@ export interface InfrastructureEnvironment {
   };
 }
 
+export const environmentLabelKeys: Record<InfrastructureEnvironment["environment"], string> = {
+  Expired: "envExpired",
+  Production: "envProduction",
+  Staging: "envStaging",
+};
+
+export const statusLabelKeys: Record<InfrastructureEnvironment["status"], string> = {
+  Online: "statusOnline",
+  Unhealthy: "statusUnhealthy",
+};
+
 export interface InfrastructureGroup {
   name: string;
   organization: string;

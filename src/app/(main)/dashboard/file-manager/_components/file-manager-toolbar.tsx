@@ -1,4 +1,5 @@
 import { ArrowUpDown, Search, SlidersHorizontal } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -16,11 +17,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 
-export function FileManagerToolbar() {
+import { fileKindLabelKeys } from "./data";
+
+export async function FileManagerToolbar() {
+  const t = await getTranslations("fileManager");
+
   return (
     <div className="flex flex-col gap-3 xl:flex-row xl:items-center">
       <InputGroup className="md:max-w-lg">
-        <InputGroupInput placeholder="Search files and folders..." aria-label="Search files and folders" />
+        <InputGroupInput placeholder={t("searchPlaceholder")} aria-label={t("searchAria")} />
         <InputGroupAddon>
           <Search />
         </InputGroupAddon>
@@ -30,16 +35,16 @@ export function FileManagerToolbar() {
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="sm">
               <SlidersHorizontal data-icon="inline-start" />
-              Filter & sort
+              {t("filterSort")}
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuGroup>
-              <DropdownMenuLabel>Show</DropdownMenuLabel>
+              <DropdownMenuLabel>{t("show")}</DropdownMenuLabel>
               <DropdownMenuRadioGroup value="all">
-                <DropdownMenuRadioItem value="all">All files</DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="starred">Starred</DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="shared">Shared</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="all">{t("allFiles")}</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="starred">{t("starred")}</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="shared">{t("shared")}</DropdownMenuRadioItem>
               </DropdownMenuRadioGroup>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
@@ -47,17 +52,19 @@ export function FileManagerToolbar() {
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>
                   <SlidersHorizontal />
-                  File type
+                  {t("fileType")}
                 </DropdownMenuSubTrigger>
                 <DropdownMenuSubContent sideOffset={8}>
                   <DropdownMenuGroup>
                     <DropdownMenuRadioGroup value="all">
-                      <DropdownMenuRadioItem value="all">All types</DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="archive">Archive</DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="design">Design</DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="document">Document</DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="pdf">PDF</DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="spreadsheet">Spreadsheet</DropdownMenuRadioItem>
+                      <DropdownMenuRadioItem value="all">{t("allTypes")}</DropdownMenuRadioItem>
+                      <DropdownMenuRadioItem value="archive">{t(fileKindLabelKeys.archive)}</DropdownMenuRadioItem>
+                      <DropdownMenuRadioItem value="design">{t(fileKindLabelKeys.design)}</DropdownMenuRadioItem>
+                      <DropdownMenuRadioItem value="document">{t(fileKindLabelKeys.document)}</DropdownMenuRadioItem>
+                      <DropdownMenuRadioItem value="pdf">{t(fileKindLabelKeys.pdf)}</DropdownMenuRadioItem>
+                      <DropdownMenuRadioItem value="spreadsheet">
+                        {t(fileKindLabelKeys.spreadsheet)}
+                      </DropdownMenuRadioItem>
                     </DropdownMenuRadioGroup>
                   </DropdownMenuGroup>
                 </DropdownMenuSubContent>
@@ -65,14 +72,14 @@ export function FileManagerToolbar() {
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>
                   <ArrowUpDown />
-                  Sort by
+                  {t("sortBy")}
                 </DropdownMenuSubTrigger>
                 <DropdownMenuSubContent sideOffset={8}>
                   <DropdownMenuGroup>
                     <DropdownMenuRadioGroup value="modified">
-                      <DropdownMenuRadioItem value="modified">Last modified</DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="name">Name</DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="size">File size</DropdownMenuRadioItem>
+                      <DropdownMenuRadioItem value="modified">{t("lastModified")}</DropdownMenuRadioItem>
+                      <DropdownMenuRadioItem value="name">{t("name")}</DropdownMenuRadioItem>
+                      <DropdownMenuRadioItem value="size">{t("fileSize")}</DropdownMenuRadioItem>
                     </DropdownMenuRadioGroup>
                   </DropdownMenuGroup>
                 </DropdownMenuSubContent>

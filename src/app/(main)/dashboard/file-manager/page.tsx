@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { FolderPlus, Grid2X2, List, Upload } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Button } from "@/components/ui/button";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
@@ -16,6 +17,7 @@ interface PageProps {
 }
 
 export default async function Page({ searchParams }: PageProps) {
+  const t = await getTranslations("fileManager");
   const { view } = await searchParams;
   const activeView: FileManagerView = view === "list" ? "list" : "grid";
 
@@ -23,17 +25,17 @@ export default async function Page({ searchParams }: PageProps) {
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div className="flex flex-col gap-1">
-          <h1 className="text-3xl leading-none tracking-tight">My files</h1>
-          <p className="text-muted-foreground text-sm">Organize, share, and find workspace files.</p>
+          <h1 className="text-3xl leading-none tracking-tight">{t("title")}</h1>
+          <p className="text-muted-foreground text-sm">{t("subtitle")}</p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline">
             <FolderPlus data-icon="inline-start" />
-            New folder
+            {t("newFolder")}
           </Button>
           <Button>
             <Upload data-icon="inline-start" />
-            Upload
+            {t("upload")}
           </Button>
         </div>
       </div>
@@ -41,18 +43,25 @@ export default async function Page({ searchParams }: PageProps) {
       <FoldersSection folders={folders} />
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between gap-4">
-          <h2 className="font-medium text-lg">All files</h2>
-          <ToggleGroup type="single" variant="outline" size="sm" spacing={0} value={activeView} aria-label="File view">
+          <h2 className="font-medium text-lg">{t("allFiles")}</h2>
+          <ToggleGroup
+            type="single"
+            variant="outline"
+            size="sm"
+            spacing={0}
+            value={activeView}
+            aria-label={t("viewAria")}
+          >
             <ToggleGroupItem value="grid" asChild>
               <Link href="?view=grid" replace scroll={false}>
                 <Grid2X2 />
-                Grid View
+                {t("gridView")}
               </Link>
             </ToggleGroupItem>
             <ToggleGroupItem value="list" asChild>
               <Link href="?view=list" replace scroll={false}>
                 <List />
-                List View
+                {t("listView")}
               </Link>
             </ToggleGroupItem>
           </ToggleGroup>

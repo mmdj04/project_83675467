@@ -1,18 +1,20 @@
 import { format } from "date-fns";
 import { ArrowRight } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export function ClassSchedule() {
+export async function ClassSchedule() {
+  const t = await getTranslations("academy");
   const today = format(new Date(), "EEEE, d MMMM");
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-sm">Class Schedule</CardTitle>
+        <CardTitle className="text-sm">{t("classSchedule")}</CardTitle>
         <CardAction className="flex items-center gap-1 text-muted-foreground text-xs">
-          View Full Schedule <ArrowRight className="size-4" />
+          {t("viewFullSchedule")} <ArrowRight className="size-4" />
         </CardAction>
       </CardHeader>
       <CardContent className="flex flex-col gap-0">
@@ -35,7 +37,7 @@ export function ClassSchedule() {
               variant="secondary"
               className="shrink-0 rounded-md border-green-600/50 bg-green-50 px-2.5 py-1 font-medium text-[10px] text-green-600 dark:border-green-800/50 dark:bg-green-500/10 dark:text-green-400"
             >
-              In Progress
+              {t("badgeInProgress")}
             </Badge>
           </div>
 
@@ -57,7 +59,7 @@ export function ClassSchedule() {
               variant="secondary"
               className="shrink-0 rounded-md border-yellow-600/50 bg-yellow-50 px-2.5 py-1 font-medium text-[10px] text-yellow-700 dark:border-yellow-800/50 dark:bg-yellow-500/10 dark:text-yellow-300"
             >
-              Upcoming
+              {t("badgeUpcoming")}
             </Badge>
           </div>
 
@@ -79,7 +81,7 @@ export function ClassSchedule() {
               variant="secondary"
               className="shrink-0 rounded-md border-yellow-600/50 bg-yellow-50 px-2.5 py-1 font-medium text-[10px] text-yellow-700 dark:border-yellow-800/50 dark:bg-yellow-500/10 dark:text-yellow-300"
             >
-              Upcoming
+              {t("badgeUpcoming")}
             </Badge>
           </div>
 
@@ -101,7 +103,7 @@ export function ClassSchedule() {
               variant="secondary"
               className="shrink-0 rounded-md border-destructive/50 bg-destructive/10 px-2.5 py-1 font-medium text-[10px] text-destructive dark:border-destructive/50 dark:bg-destructive/20"
             >
-              Cancelled
+              {t("badgeCancelled")}
             </Badge>
           </div>
 
@@ -123,7 +125,7 @@ export function ClassSchedule() {
               variant="secondary"
               className="shrink-0 rounded-md border-yellow-600/50 bg-yellow-50 px-2.5 py-1 font-medium text-[10px] text-yellow-700 dark:border-yellow-800/50 dark:bg-yellow-500/10 dark:text-yellow-300"
             >
-              Upcoming
+              {t("badgeUpcoming")}
             </Badge>
           </div>
         </div>

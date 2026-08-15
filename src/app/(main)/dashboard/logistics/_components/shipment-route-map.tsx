@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { type GeoPermissibleObjects, geoMercator, geoPath } from "d3-geo";
+import { useTranslations } from "next-intl";
 import { feature, mesh } from "topojson-client";
 
 import type { GeoCoordinate, Shipment } from "./shipment-data";
@@ -78,7 +79,7 @@ type ShipmentRouteMapProps = {
   shipment: Shipment | null;
 };
 
-function buildMapGeometry(shipment: Shipment | null) {
+function buildMapGeometry(shipment: Shipment | null, originLabel: string, destinationLabel: string) {
   const routeLine = shipment ? createRouteLine(shipment) : null;
   const projection = geoMercator();
 
@@ -116,12 +117,12 @@ function buildMapGeometry(shipment: Shipment | null) {
           projectPoint({
             coordinates: shipment.origin.coordinates,
             country: shipment.origin.country,
-            label: "Origin",
+            label: originLabel,
           }),
           projectPoint({
             coordinates: shipment.destination.coordinates,
             country: shipment.destination.country,
-            label: "Destination",
+            label: destinationLabel,
           }),
         ]
       : [],
@@ -129,6 +130,7 @@ function buildMapGeometry(shipment: Shipment | null) {
 }
 
 export function ShipmentRouteMap({ shipment }: ShipmentRouteMapProps) {
+  const t = useTranslations("logistics");
   const [borders, setBorders] = useState<GeoJSON.MultiLineString | null>(null);
   const [land, setLand] = useState<GeoJSON.FeatureCollection | null>(null);
 
@@ -170,12 +172,12 @@ export function ShipmentRouteMap({ shipment }: ShipmentRouteMapProps) {
     };
   }, []);
 
-  const { path, routePath, routePoints } = buildMapGeometry(shipment);
+  const { path, routePath, routePoints } = buildMapGeometry(shipment, t("origin"), t("destination"));
 
   return (
     <div className="size-full min-h-0 overflow-hidden bg-[#d4dadc] dark:bg-[#2C353C]">
       <svg
-        aria-label="Southeast Asia shipment region map"
+        aria-label={t("mapAria")}
         className="block size-full bg-[#d4dadc] dark:bg-[#2C353C]"
         role="img"
         viewBox={`0 0 ${WIDTH} ${HEIGHT}`}

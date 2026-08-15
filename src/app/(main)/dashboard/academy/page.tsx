@@ -1,4 +1,5 @@
 import { BookOpenCheck, Megaphone, Plus } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { Button } from "@/components/ui/button";
 
@@ -8,29 +9,29 @@ import { KpiCards } from "./_components/kpi-cards";
 import { PerformanceHighlights } from "./_components/performance-highlights";
 import { UpcomingEvents } from "./_components/upcoming-events";
 
-export default function Page() {
+export default async function Page() {
+  const t = await getTranslations("academy");
+
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div className="space-y-1">
-          <h1 className="text-3xl tracking-tight">Academy Dashboard</h1>
-          <p className="text-muted-foreground text-sm">
-            Good morning, Teacher. Here's a quick overview of today's activity.
-          </p>
+          <h1 className="text-3xl tracking-tight">{t("title")}</h1>
+          <p className="text-muted-foreground text-sm">{t("subtitle")}</p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2 lg:w-fit">
           <Button size="sm">
             <Megaphone />
-            New Announcement
+            {t("newAnnouncement")}
           </Button>
           <Button size="sm" variant="outline">
             <BookOpenCheck />
-            Gradebook
+            {t("gradebook")}
           </Button>
           <Button size="sm" variant="outline">
             <Plus />
-            Add Assignment
+            {t("addAssignment")}
           </Button>
         </div>
       </div>

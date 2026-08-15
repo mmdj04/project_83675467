@@ -1,4 +1,7 @@
+"use client";
+
 import { Download, MoreVertical, Share2, Star, Trash2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -18,10 +21,12 @@ interface FileActionsProps {
 }
 
 export function FileActions({ file, onToggleStar }: FileActionsProps) {
+  const t = useTranslations("fileManager");
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon-sm" aria-label={`Actions for ${file.name}`}>
+        <Button variant="ghost" size="icon-sm" aria-label={t("actionsFor", { name: file.name })}>
           <MoreVertical />
         </Button>
       </DropdownMenuTrigger>
@@ -29,22 +34,22 @@ export function FileActions({ file, onToggleStar }: FileActionsProps) {
         <DropdownMenuGroup>
           <DropdownMenuItem onSelect={onToggleStar}>
             <Star />
-            {file.starred ? "Remove from starred" : "Add to starred"}
+            {file.starred ? t("removeFromStarred") : t("addToStarred")}
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Download />
-            Download
+            {t("download")}
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Share2 />
-            Copy share link
+            {t("copyShareLink")}
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem variant="destructive">
             <Trash2 />
-            Move to trash
+            {t("moveToTrash")}
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
