@@ -145,7 +145,7 @@ export function Changelog({ content }: { content: string }) {
           <div ref={contentRef} className="flex-1 overflow-hidden">
             <Accordion
               type="multiple"
-              defaultValue={months.slice(0, 3).map((m) => m.month)}
+              defaultValue={months.slice(0, 1).map((m) => m.month)}
             >
               {months.map((m) => (
                 <AccordionItem
