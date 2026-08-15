@@ -48,6 +48,7 @@ export type Mail = {
 export type MailNavItem = {
   id: string;
   title: string;
+  labelKey: string;
   label?: string;
   icon: LucideIcon;
   isActive: boolean;
@@ -412,6 +413,7 @@ export const mailNavigation: MailNavigation = {
     {
       id: "inbox",
       title: "Inbox",
+      labelKey: "mail.navInbox",
       label: "18",
       icon: Inbox,
       isActive: true,
@@ -419,6 +421,7 @@ export const mailNavigation: MailNavigation = {
     {
       id: "priority",
       title: "Priority",
+      labelKey: "mail.navPriority",
       label: "3",
       icon: Star,
       isActive: false,
@@ -428,6 +431,7 @@ export const mailNavigation: MailNavigation = {
     {
       id: "drafts",
       title: "Drafts",
+      labelKey: "mail.navDrafts",
       label: "9",
       icon: File,
       isActive: false,
@@ -435,18 +439,21 @@ export const mailNavigation: MailNavigation = {
     {
       id: "sent",
       title: "Sent",
+      labelKey: "mail.navSent",
       icon: Send,
       isActive: false,
     },
     {
       id: "archive",
       title: "Archive",
+      labelKey: "mail.navArchive",
       icon: Archive,
       isActive: false,
     },
     {
       id: "trash",
       title: "Trash",
+      labelKey: "mail.navTrash",
       icon: Trash2,
       isActive: false,
     },
@@ -455,12 +462,14 @@ export const mailNavigation: MailNavigation = {
     {
       id: "help-feedback",
       title: "Help & feedback",
+      labelKey: "mail.navHelpFeedback",
       icon: CircleHelp,
       isActive: false,
     },
     {
       id: "keyboard-shortcuts",
       title: "Keyboard shortcuts",
+      labelKey: "mail.navKeyboardShortcuts",
       icon: Keyboard,
       isActive: false,
     },

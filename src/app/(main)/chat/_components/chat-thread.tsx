@@ -16,6 +16,7 @@ import {
   Type,
   UserRound,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Avatar, AvatarBadge, AvatarFallback } from "@/components/ui/avatar";
 import { Bubble, BubbleContent, BubbleGroup, BubbleReactions } from "@/components/ui/bubble";
@@ -56,6 +57,8 @@ interface ChatThreadProps {
 }
 
 export function ChatThread({ contact, messages, onOpenContact, onBack, showBackButton, className }: ChatThreadProps) {
+  const t = useTranslations();
+
   return (
     <div className={cn("flex h-full flex-col py-3", className)}>
       <div className="flex flex-col gap-3">
@@ -66,7 +69,7 @@ export function ChatThread({ contact, messages, onOpenContact, onBack, showBackB
                 variant="ghost"
                 size="icon-sm"
                 className="md:hidden"
-                aria-label="Back to conversations"
+                aria-label={t("chat.backToConversations")}
                 onClick={onBack}
               >
                 <ArrowLeft />
@@ -85,31 +88,31 @@ export function ChatThread({ contact, messages, onOpenContact, onBack, showBackB
           <div className="flex items-center gap-1">
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon-sm" aria-label="Call">
+                <Button variant="ghost" size="icon-sm" aria-label={t("chat.call")}>
                   <PhoneCall />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Call</TooltipContent>
+              <TooltipContent>{t("chat.call")}</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon-sm" aria-label="Tag">
+                <Button variant="ghost" size="icon-sm" aria-label={t("chat.tag")}>
                   <Tag />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Tag</TooltipContent>
+              <TooltipContent>{t("chat.tag")}</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon-sm" aria-label="Snooze">
+                <Button variant="ghost" size="icon-sm" aria-label={t("chat.snooze")}>
                   <AlarmClock />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Snooze</TooltipContent>
+              <TooltipContent>{t("chat.snooze")}</TooltipContent>
             </Tooltip>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon-sm" aria-label="More actions">
+                <Button variant="ghost" size="icon-sm" aria-label={t("chat.moreActions")}>
                   <MoreHorizontal />
                 </Button>
               </DropdownMenuTrigger>
@@ -117,20 +120,20 @@ export function ChatThread({ contact, messages, onOpenContact, onBack, showBackB
                 <DropdownMenuGroup>
                   <DropdownMenuItem onSelect={onOpenContact}>
                     <UserRound />
-                    View profile
+                    {t("chat.viewProfile")}
                   </DropdownMenuItem>
                   <DropdownMenuItem>
                     <Copy />
-                    Copy email
+                    {t("chat.copyEmail")}
                   </DropdownMenuItem>
                   <DropdownMenuItem>
                     <Flag />
-                    Mark priority
+                    {t("chat.markPriority")}
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                  <DropdownMenuItem variant="destructive">Block contact</DropdownMenuItem>
+                  <DropdownMenuItem variant="destructive">{t("chat.blockContact")}</DropdownMenuItem>
                 </DropdownMenuGroup>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -203,18 +206,18 @@ export function ChatThread({ contact, messages, onOpenContact, onBack, showBackB
             className="w-full justify-start gap-2 border-b px-3 **:data-[slot=tabs-trigger]:border-x-0 **:data-[slot=tabs-trigger]:px-6 group-data-horizontal/tabs:h-10"
           >
             <TabsTrigger value="reply" className="flex-none px-1">
-              Reply
+              {t("chat.reply")}
             </TabsTrigger>
             <TabsTrigger value="note" className="flex-none px-1">
-              Internal note
+              {t("chat.internalNote")}
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="reply" className="m-0">
-            <MessageComposer placeholder="Type your message..." />
+            <MessageComposer placeholder={t("chat.typeMessage")} />
           </TabsContent>
           <TabsContent value="note" className="m-0">
-            <MessageComposer placeholder="Write an internal note..." />
+            <MessageComposer placeholder={t("chat.writeInternalNote")} />
           </TabsContent>
         </Tabs>
       </div>
@@ -223,6 +226,8 @@ export function ChatThread({ contact, messages, onOpenContact, onBack, showBackB
 }
 
 function MessageComposer({ placeholder }: { placeholder: string }) {
+  const t = useTranslations();
+
   return (
     <form
       className="w-full"
@@ -236,24 +241,24 @@ function MessageComposer({ placeholder }: { placeholder: string }) {
           className="min-h-14 px-3 py-2.5 text-sm ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:aria-invalid:ring-0"
         />
         <InputGroupAddon align="block-end">
-          <InputGroupButton aria-label="Format" type="button" size="icon-sm">
+          <InputGroupButton aria-label={t("chat.format")} type="button" size="icon-sm">
             <Type />
           </InputGroupButton>
-          <InputGroupButton aria-label="Emoji" type="button" size="icon-sm">
+          <InputGroupButton aria-label={t("chat.emoji")} type="button" size="icon-sm">
             <Smile />
           </InputGroupButton>
-          <InputGroupButton aria-label="Attach file" type="button" size="icon-sm">
+          <InputGroupButton aria-label={t("chat.attachFile")} type="button" size="icon-sm">
             <Paperclip />
           </InputGroupButton>
-          <InputGroupButton aria-label="Insert link" type="button" size="icon-sm">
+          <InputGroupButton aria-label={t("chat.insertLink")} type="button" size="icon-sm">
             <Link />
           </InputGroupButton>
-          <InputGroupButton aria-label="AI assist" type="button" size="icon-sm" variant="outline">
+          <InputGroupButton aria-label={t("chat.aiAssist")} type="button" size="icon-sm" variant="outline">
             <Sparkles />
           </InputGroupButton>
           <InputGroupButton type="submit" variant="default" size="icon-sm" className="ml-auto">
             <Send />
-            <span className="sr-only">Send</span>
+            <span className="sr-only">{t("chat.send")}</span>
           </InputGroupButton>
         </InputGroupAddon>
       </InputGroup>

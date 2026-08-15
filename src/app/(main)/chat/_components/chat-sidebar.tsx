@@ -1,6 +1,7 @@
 "use client";
 
 import { EllipsisVertical, LogOut, Settings, UserRound } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { siFacebook, siInstagram, siWhatsapp } from "simple-icons";
 
 import { SimpleIcon } from "@/components/simple-icon";
@@ -39,6 +40,7 @@ const channelBrandIcons = {
 } as const;
 
 export function ChatSidebar() {
+  const t = useTranslations();
   const { state } = useSidebar();
   const visualViewportHeight = useVisualViewport();
   const _isCollapsed = state === "collapsed";
@@ -47,20 +49,21 @@ export function ChatSidebar() {
     <Sidebar
       collapsible="offcanvas"
       className="top-(--header-height) h-[calc(100dvh-var(--header-height))]! **:data-[sidebar=sidebar]:bg-background"
-      style={
-        visualViewportHeight
-          ? { height: `calc(${visualViewportHeight}px - var(--header-height))` }
-          : undefined
-      }
+      style={visualViewportHeight ? { height: `calc(${visualViewportHeight}px - var(--header-height))` } : undefined}
     >
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu className="gap-1">
             {navItems.map((item) => (
               <SidebarMenuItem key={item.id}>
-                <SidebarMenuButton className="[&_svg]:size-3.5" size="sm" isActive={item.isActive} tooltip={item.title}>
+                <SidebarMenuButton
+                  className="[&_svg]:size-3.5"
+                  size="sm"
+                  isActive={item.isActive}
+                  tooltip={t(item.labelKey)}
+                >
                   <item.icon />
-                  <span className="font-medium">{item.title}</span>
+                  <span className="font-medium">{t(item.labelKey)}</span>
                 </SidebarMenuButton>
                 {item.label && <SidebarMenuBadge className="font-medium">{item.label}</SidebarMenuBadge>}
               </SidebarMenuItem>
@@ -69,17 +72,22 @@ export function ChatSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel className="font-normal">Channels</SidebarGroupLabel>
+          <SidebarGroupLabel className="font-normal">{t("chat.channels")}</SidebarGroupLabel>
           <SidebarMenu className="gap-1">
             {channelItems.map((item) => (
               <SidebarMenuItem key={item.id}>
-                <SidebarMenuButton className="[&_svg]:size-3.5" size="sm" isActive={item.isActive} tooltip={item.title}>
+                <SidebarMenuButton
+                  className="[&_svg]:size-3.5"
+                  size="sm"
+                  isActive={item.isActive}
+                  tooltip={t(item.labelKey)}
+                >
                   {item.id in channelBrandIcons ? (
                     <SimpleIcon icon={channelBrandIcons[item.id as keyof typeof channelBrandIcons]} />
                   ) : (
                     <item.icon />
                   )}
-                  <span className="font-medium">{item.title}</span>
+                  <span className="font-medium">{t(item.labelKey)}</span>
                 </SidebarMenuButton>
                 {item.label && <SidebarMenuBadge className="font-medium">{item.label}</SidebarMenuBadge>}
               </SidebarMenuItem>
@@ -88,13 +96,18 @@ export function ChatSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel className="font-normal">Views</SidebarGroupLabel>
+          <SidebarGroupLabel className="font-normal">{t("chat.views")}</SidebarGroupLabel>
           <SidebarMenu className="gap-1">
             {viewItems.map((item) => (
               <SidebarMenuItem key={item.id}>
-                <SidebarMenuButton className="[&_svg]:size-3.5" size="sm" isActive={item.isActive} tooltip={item.title}>
+                <SidebarMenuButton
+                  className="[&_svg]:size-3.5"
+                  size="sm"
+                  isActive={item.isActive}
+                  tooltip={t(item.labelKey)}
+                >
                   <item.icon />
-                  <span className="font-medium">{item.title}</span>
+                  <span className="font-medium">{t(item.labelKey)}</span>
                 </SidebarMenuButton>
                 {item.label && <SidebarMenuBadge className="font-medium">{item.label}</SidebarMenuBadge>}
               </SidebarMenuItem>
@@ -139,17 +152,17 @@ export function ChatSidebar() {
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
                     <UserRound />
-                    Account
+                    {t("chat.account")}
                   </DropdownMenuItem>
                   <DropdownMenuItem>
                     <Settings />
-                    Settings
+                    {t("chat.settings")}
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <LogOut />
-                  Log out
+                  {t("chat.logOut")}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

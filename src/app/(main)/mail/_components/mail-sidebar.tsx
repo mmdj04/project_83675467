@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import { Check, EllipsisVertical, LogOut, PenLine, Settings2, UserPlus, UsersRound } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -36,6 +37,7 @@ import { cn, getInitials } from "@/lib/utils";
 import { accounts, type MailNavItem, mailNavigation } from "./data";
 
 export function MailSidebar() {
+  const t = useTranslations();
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
   const [selectedAccount, setSelectedAccount] = React.useState(accounts[0]);
@@ -92,7 +94,7 @@ export function MailSidebar() {
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon-sm" aria-label="Open account menu">
+                  <Button variant="ghost" size="icon-sm" aria-label={t("mail.openAccountMenu")}>
                     <EllipsisVertical />
                   </Button>
                 </DropdownMenuTrigger>
@@ -111,32 +113,32 @@ export function MailSidebar() {
 
         <Button size={isCollapsed ? "icon-sm" : "sm"} variant="outline" className="group-data-[state=expanded]:w-full">
           <PenLine data-icon="inline-start" />
-          <span className="group-data-[state=collapsed]:hidden">New email</span>
+          <span className="group-data-[state=collapsed]:hidden">{t("mail.newEmail")}</span>
         </Button>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarMenu className="gap-1">{mailNavigation.navMain.map(renderNavItem)}</SidebarMenu>
+          <SidebarMenu className="gap-1">{mailNavigation.navMain.map((item) => renderNavItem(item, t))}</SidebarMenu>
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel className="font-normal">Folders</SidebarGroupLabel>
-          <SidebarMenu className="gap-1">{mailNavigation.folders.map(renderNavItem)}</SidebarMenu>
+          <SidebarGroupLabel className="font-normal">{t("mail.folders")}</SidebarGroupLabel>
+          <SidebarMenu className="gap-1">{mailNavigation.folders.map((item) => renderNavItem(item, t))}</SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <SidebarMenu className="gap-1">{mailNavigation.navFooter.map(renderNavItem)}</SidebarMenu>
+        <SidebarMenu className="gap-1">{mailNavigation.navFooter.map((item) => renderNavItem(item, t))}</SidebarMenu>
       </SidebarFooter>
     </Sidebar>
   );
 }
 
-function renderNavItem(nav: MailNavItem) {
+function renderNavItem(nav: MailNavItem, t: ReturnType<typeof useTranslations>) {
   return (
     <SidebarMenuItem key={nav.id}>
-      <SidebarMenuButton className="[&_svg]:size-3.5" size="sm" isActive={nav.isActive} tooltip={nav.title}>
+      <SidebarMenuButton className="[&_svg]:size-3.5" size="sm" isActive={nav.isActive} tooltip={t(nav.labelKey)}>
         <nav.icon />
-        <span className="font-medium">{nav.title}</span>
+        <span className="font-medium">{t(nav.labelKey)}</span>
       </SidebarMenuButton>
       {nav.label && <SidebarMenuBadge className="font-medium">{nav.label}</SidebarMenuBadge>}
     </SidebarMenuItem>
@@ -179,11 +181,13 @@ function AccountMenuContent({
   onSelectAccount: (account: Account) => void;
   showAccounts?: boolean;
 } & Pick<React.ComponentProps<typeof DropdownMenuContent>, "align" | "side">) {
+  const t = useTranslations();
+
   return (
     <DropdownMenuContent className="w-56" {...props}>
       {showAccounts && (
         <>
-          <DropdownMenuLabel>Accounts</DropdownMenuLabel>
+          <DropdownMenuLabel>{t("mail.accounts")}</DropdownMenuLabel>
           <DropdownMenuGroup>
             <DropdownMenuRadioGroup
               value={String(selectedAccountId)}
@@ -211,22 +215,22 @@ function AccountMenuContent({
       <DropdownMenuGroup>
         <DropdownMenuItem>
           <UserPlus />
-          Add account
+          {t("mail.addAccount")}
         </DropdownMenuItem>
         <DropdownMenuItem>
           <UsersRound />
-          Manage accounts
+          {t("mail.manageAccounts")}
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Settings2 />
-          Account settings
+          {t("mail.accountSettings")}
         </DropdownMenuItem>
       </DropdownMenuGroup>
       <DropdownMenuSeparator />
       <DropdownMenuGroup>
         <DropdownMenuItem>
           <LogOut />
-          Sign out
+          {t("mail.signOut")}
         </DropdownMenuItem>
       </DropdownMenuGroup>
     </DropdownMenuContent>

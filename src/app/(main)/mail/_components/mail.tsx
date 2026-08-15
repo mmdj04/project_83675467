@@ -2,6 +2,8 @@
 
 import * as React from "react";
 
+import { useTranslations } from "next-intl";
+
 import { Drawer, DrawerContent, DrawerDescription, DrawerTitle } from "@/components/ui/drawer";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import { useSidebar } from "@/components/ui/sidebar";
@@ -24,6 +26,7 @@ interface MailProps {
 }
 
 export function MailComponent({ mails, defaultLayout = [...DEFAULT_MAIL_LAYOUT] }: MailProps) {
+  const t = useTranslations();
   const { isMobile } = useSidebar();
   const [isMounted, setIsMounted] = React.useState(false);
 
@@ -33,7 +36,9 @@ export function MailComponent({ mails, defaultLayout = [...DEFAULT_MAIL_LAYOUT] 
 
   if (!isMounted) {
     return (
-      <div className="flex size-full items-center justify-center text-muted-foreground text-sm">Loading mail...</div>
+      <div className="flex size-full items-center justify-center text-muted-foreground text-sm">
+        {t("mail.loadingMail")}
+      </div>
     );
   }
 
@@ -45,6 +50,7 @@ export function MailComponent({ mails, defaultLayout = [...DEFAULT_MAIL_LAYOUT] 
 }
 
 function MailMobileLayout({ mails }: Pick<MailProps, "mails">) {
+  const t = useTranslations();
   const [mail] = useMail();
   const [isMailOpen, setIsMailOpen] = React.useState(false);
   const selectedMail = mails.find((item) => item.id === mail.selected) || null;
@@ -55,8 +61,8 @@ function MailMobileLayout({ mails }: Pick<MailProps, "mails">) {
 
       <Drawer open={isMailOpen} onOpenChange={setIsMailOpen}>
         <DrawerContent>
-          <DrawerTitle className="sr-only">Mail message</DrawerTitle>
-          <DrawerDescription className="sr-only">Read the selected email message</DrawerDescription>
+          <DrawerTitle className="sr-only">{t("mail.mailMessage")}</DrawerTitle>
+          <DrawerDescription className="sr-only">{t("mail.readSelectedEmail")}</DrawerDescription>
           <MailView mail={selectedMail} onClose={() => setIsMailOpen(false)} />
         </DrawerContent>
       </Drawer>

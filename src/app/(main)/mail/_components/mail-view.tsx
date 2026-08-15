@@ -19,6 +19,7 @@ import {
   Trash2,
   X,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { SimpleIcon } from "@/components/simple-icon";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -46,6 +47,7 @@ interface MailDisplayProps {
 }
 
 export function MailView({ mail, onClose }: MailDisplayProps) {
+  const t = useTranslations();
   const [, setMail] = useMail();
 
   function handleClose() {
@@ -59,29 +61,29 @@ export function MailView({ mail, onClose }: MailDisplayProps) {
         <div className="flex items-center gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon-sm" aria-label="Close message" onClick={handleClose}>
+              <Button variant="ghost" size="icon-sm" aria-label={t("mail.closeMessage")} onClick={handleClose}>
                 <X />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Close message</TooltipContent>
+            <TooltipContent>{t("mail.closeMessage")}</TooltipContent>
           </Tooltip>
           <Separator className="h-4 data-vertical:self-center" orientation="vertical" />
           <div className="flex items-center gap-0">
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon-sm" aria-label="Previous message">
+                <Button variant="ghost" size="icon-sm" aria-label={t("mail.previousMessage")}>
                   <ChevronLeft />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Previous message</TooltipContent>
+              <TooltipContent>{t("mail.previousMessage")}</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon-sm" aria-label="Next message">
+                <Button variant="ghost" size="icon-sm" aria-label={t("mail.nextMessage")}>
                   <ChevronRight />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Next message</TooltipContent>
+              <TooltipContent>{t("mail.nextMessage")}</TooltipContent>
             </Tooltip>
           </div>
         </div>
@@ -89,33 +91,33 @@ export function MailView({ mail, onClose }: MailDisplayProps) {
         <div className="ml-auto flex items-center gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon-sm" aria-label="Pin thread">
+              <Button variant="ghost" size="icon-sm" aria-label={t("mail.pinThread")}>
                 <Pin />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Pin thread</TooltipContent>
+            <TooltipContent>{t("mail.pinThread")}</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon-sm" aria-label="Archive">
+              <Button variant="ghost" size="icon-sm" aria-label={t("mail.archive")}>
                 <Archive />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Archive</TooltipContent>
+            <TooltipContent>{t("mail.archive")}</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon-sm" aria-label="Reply">
+              <Button variant="ghost" size="icon-sm" aria-label={t("mail.reply")}>
                 <Reply />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Reply</TooltipContent>
+            <TooltipContent>{t("mail.reply")}</TooltipContent>
           </Tooltip>
           <Tooltip>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <TooltipTrigger asChild>
-                  <Button variant="ghost" size="icon-sm" aria-label="More actions">
+                  <Button variant="ghost" size="icon-sm" aria-label={t("mail.moreActions")}>
                     <EllipsisVertical />
                   </Button>
                 </TooltipTrigger>
@@ -124,36 +126,36 @@ export function MailView({ mail, onClose }: MailDisplayProps) {
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
                     <ReplyAll />
-                    Reply all
+                    {t("mail.replyAll")}
                   </DropdownMenuItem>
                   <DropdownMenuItem>
                     <Forward />
-                    Forward
+                    {t("mail.forward")}
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
                     <MailOpen />
-                    Mark as unread
+                    {t("mail.markAsUnread")}
                   </DropdownMenuItem>
                   <DropdownMenuItem>
                     <Tag />
-                    Add label
+                    {t("mail.addLabel")}
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
               </DropdownMenuContent>
             </DropdownMenu>
-            <TooltipContent>More actions</TooltipContent>
+            <TooltipContent>{t("mail.moreActions")}</TooltipContent>
           </Tooltip>
           <Separator className="h-4 data-vertical:self-center" orientation="vertical" />
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon-sm" aria-label="Move to trash">
+              <Button variant="ghost" size="icon-sm" aria-label={t("mail.moveToTrash")}>
                 <Trash2 className="text-destructive" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Move to trash</TooltipContent>
+            <TooltipContent>{t("mail.moveToTrash")}</TooltipContent>
           </Tooltip>
         </div>
       </div>
@@ -186,12 +188,13 @@ export function MailView({ mail, onClose }: MailDisplayProps) {
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="text-muted-foreground text-xs">
-                    To: <span className="text-foreground">{mail.to.map((recipient) => recipient.name).join(", ")}</span>
+                    {t("mail.to")}
+                    <span className="text-foreground">{mail.to.map((recipient) => recipient.name).join(", ")}</span>
                   </div>
 
                   {mail.cc?.length ? (
                     <div className="text-muted-foreground text-xs">
-                      Cc:{" "}
+                      {t("mail.cc")}
                       <span className="text-foreground">{mail.cc.map((recipient) => recipient.name).join(", ")}</span>
                     </div>
                   ) : null}
@@ -214,7 +217,7 @@ export function MailView({ mail, onClose }: MailDisplayProps) {
                         "data-[state=open]:bg-transparent data-[state=open]:text-muted-foreground",
                       )}
                     >
-                      Attachments ({mail.attachments.length})
+                      {t("mail.attachmentsCount", { count: mail.attachments.length })}
                       <ChevronDown className="group-data-[state=open]:rotate-180" />
                     </Button>
                   </CollapsibleTrigger>
@@ -244,7 +247,10 @@ export function MailView({ mail, onClose }: MailDisplayProps) {
                 <InputGroupAddon align="inline-start">
                   <Reply />
                 </InputGroupAddon>
-                <InputGroupInput className="text-xs" placeholder={`Reply ${mail.from.name}...`} />
+                <InputGroupInput
+                  className="text-xs"
+                  placeholder={t("mail.replyPlaceholder", { name: mail.from.name })}
+                />
                 <InputGroupAddon className="gap-1" align="inline-end">
                   <InputGroupButton variant="ghost">
                     <Smile />
@@ -260,7 +266,9 @@ export function MailView({ mail, onClose }: MailDisplayProps) {
             </div>
           </div>
         ) : (
-          <div className="grid h-full place-items-center text-muted-foreground text-sm">No email selected</div>
+          <div className="grid h-full place-items-center text-muted-foreground text-sm">
+            {t("mail.noEmailSelected")}
+          </div>
         )}
       </div>
     </div>

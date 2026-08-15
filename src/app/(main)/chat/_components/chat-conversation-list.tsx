@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronDown, Filter, PanelRightClose, PanelRightOpen, Pin } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Avatar, AvatarBadge, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -20,7 +21,14 @@ interface ChatConversationListProps {
   className?: string;
 }
 
+const groupLabelKeys: Record<Conversation["group"], string> = {
+  Pinned: "chat.groupPinned",
+  Today: "chat.groupToday",
+  Yesterday: "chat.groupYesterday",
+};
+
 export function ChatConversationList({ conversations, onSelectConversation, className }: ChatConversationListProps) {
+  const t = useTranslations();
   const [chat, setChat] = useChat();
   const { state, toggleSidebar } = useSidebar();
   const isCollapsed = state === "collapsed";
@@ -50,7 +58,7 @@ export function ChatConversationList({ conversations, onSelectConversation, clas
             {isCollapsed ? <PanelRightClose /> : <PanelRightOpen />}
           </Button>
           <Separator orientation="vertical" className="mr-1.5 h-4 data-vertical:self-center" />
-          <h1 className="font-medium text-xl leading-none">Inbox</h1>
+          <h1 className="font-medium text-xl leading-none">{t("chat.inbox")}</h1>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon-sm">
@@ -64,18 +72,18 @@ export function ChatConversationList({ conversations, onSelectConversation, clas
       <Tabs defaultValue="all">
         <TabsList variant="line" className="w-full border-b px-0 **:data-[slot=tabs-trigger]:border-x-0">
           <TabsTrigger value="all">
-            All
+            {t("chat.tabAll")}
             <span className="text-muted-foreground text-xs">(24)</span>
           </TabsTrigger>
           <TabsTrigger value="open">
-            Open
+            {t("chat.tabOpen")}
             <span className="text-muted-foreground text-xs">(18)</span>
           </TabsTrigger>
           <TabsTrigger value="snoozed">
-            Snoozed
+            {t("chat.tabSnoozed")}
             <span className="text-muted-foreground text-xs">(2)</span>
           </TabsTrigger>
-          <TabsTrigger value="closed">Closed</TabsTrigger>
+          <TabsTrigger value="closed">{t("chat.tabClosed")}</TabsTrigger>
         </TabsList>
       </Tabs>
 
@@ -88,7 +96,7 @@ export function ChatConversationList({ conversations, onSelectConversation, clas
             {conversationGroups.map(({ group, conversations }) => (
               <Collapsible key={group} defaultOpen>
                 <CollapsibleTrigger className="flex w-full items-center justify-between gap-1 px-3 py-2 font-medium text-muted-foreground text-xs hover:text-foreground [&[data-state=open]>svg]:rotate-180">
-                  {group}
+                  {t(groupLabelKeys[group])}
                   <ChevronDown className="size-3 transition-transform" />
                 </CollapsibleTrigger>
                 <CollapsibleContent>

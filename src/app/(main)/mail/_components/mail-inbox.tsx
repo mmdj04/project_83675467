@@ -1,6 +1,7 @@
 "use client";
 
 import { Ellipsis, RotateCcw, Search, SlidersHorizontal } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons/theme-toggler";
 import { Button } from "@/components/ui/button";
@@ -17,6 +18,7 @@ interface MailInboxProps {
 }
 
 export function MailInbox({ mails, onSelectMail }: MailInboxProps) {
+  const t = useTranslations();
   const pinnedMails = mails.filter((mail) => mail.isPinned);
   const unpinnedMails = mails.filter((mail) => !mail.isPinned);
 
@@ -26,7 +28,7 @@ export function MailInbox({ mails, onSelectMail }: MailInboxProps) {
         <div className="flex items-center">
           <SidebarTrigger />
           <Separator orientation="vertical" className="mr-2 ml-1 h-4 data-vertical:self-center" />
-          <h1 className="font-medium text-xl leading-none">Inbox</h1>
+          <h1 className="font-medium text-xl leading-none">{t("mail.inbox")}</h1>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon-sm">
@@ -48,7 +50,7 @@ export function MailInbox({ mails, onSelectMail }: MailInboxProps) {
 
       <div className="px-2">
         <InputGroup className="h-7 w-full rounded-md">
-          <InputGroupInput className="h-7" placeholder="Search..." />
+          <InputGroupInput className="h-7" placeholder={t("mail.searchMail")} />
           <InputGroupAddon>
             <Search />
           </InputGroupAddon>
@@ -60,12 +62,12 @@ export function MailInbox({ mails, onSelectMail }: MailInboxProps) {
           groups={[
             {
               id: "pinned",
-              title: "Pinned",
+              title: t("mail.pinned"),
               items: pinnedMails,
             },
             {
               id: "inbox",
-              title: "Inbox",
+              title: t("mail.inbox"),
               items: unpinnedMails,
             },
           ]}
