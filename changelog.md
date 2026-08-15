@@ -31,7 +31,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +24 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -62,7 +62,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +29 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -100,7 +100,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +100 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -135,7 +135,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +90 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -176,7 +176,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +78 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 - @Muhammadrizo14
 
 ---
@@ -218,7 +218,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +47 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -238,7 +238,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/components/ui/checkbox.tsx (modificado, +1 −1)
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -276,8 +276,8 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +23 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
 - @likui628
+- @mmdj04
 
 ---
 
@@ -315,7 +315,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +47 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -345,7 +345,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +2 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -378,7 +378,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +13 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -408,8 +408,8 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +2 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
 - @fiifiofosu
+- @mmdj04
 
 ---
 
@@ -426,7 +426,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/(main)/dashboard/[...not-found]/page.tsx (modificado, +2 −0)
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -464,7 +464,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +64 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -495,8 +495,8 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +62 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
 - @Manasa0424
+- @mmdj04
 
 ---
 
@@ -533,7 +533,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +40 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -547,7 +547,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - eslint.config.mjs (modificado, +1 −0)
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -577,7 +577,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +7 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -595,7 +595,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/components/ui/select.tsx (modificado, +1 −1)
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -615,7 +615,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/dashboard/components/sidebar/sidebar-footer-menu.tsx (renomeado)
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -634,7 +634,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - src/app/dashboard/about/page.tsx (modificado, +2 −2)
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -668,7 +668,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +8 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -698,7 +698,7 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +2 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
 
 ---
 
@@ -735,4 +735,4 @@ Histórico do projeto por mês — cada mês resume todos os commits como uma ú
 - +14 outros arquivos
 
 ### Contribuidores
-- @arhamkhnz
+- @mmdj04
