@@ -1,11 +1,12 @@
 import { DollarSign, TrendingDown, TrendingUp, UserPlus, Users, Waves } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatCurrency } from "@/lib/utils";
 
 export async function MetricCards() {
+  const locale = await getLocale();
   const t = await getTranslations("default");
 
   return (
@@ -21,7 +22,9 @@ export async function MetricCards() {
         </CardHeader>
         <CardContent className="flex flex-col gap-1">
           <div className="flex flex-wrap items-center gap-2">
-            <div className="font-medium text-3xl tabular-nums leading-none tracking-tight">{formatCurrency(1250)}</div>
+            <div className="font-medium text-3xl tabular-nums leading-none tracking-tight">
+              {formatCurrency(1250, {}, locale)}
+            </div>
             <Badge>
               <TrendingUp className="size-3" />
               +12.5%

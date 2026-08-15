@@ -1,18 +1,22 @@
 import { TrendingDown, TrendingUp } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { formatCurrency } from "@/lib/utils";
 
 export async function SectionCards() {
   const t = await getTranslations();
+  const locale = await getLocale();
 
   return (
     <div className="grid @5xl/main:grid-cols-4 @xl/main:grid-cols-2 grid-cols-1 gap-4 *:data-[slot=card]:bg-linear-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card *:data-[slot=card]:shadow-xs dark:*:data-[slot=card]:bg-card">
       <Card className="@container/card">
         <CardHeader>
           <CardDescription>{t("default.totalRevenue")}</CardDescription>
-          <CardTitle className="font-semibold @[250px]/card:text-3xl text-2xl tabular-nums">$1,250.00</CardTitle>
+          <CardTitle className="font-semibold @[250px]/card:text-3xl text-2xl tabular-nums">
+            {formatCurrency(1250, {}, locale)}
+          </CardTitle>
           <CardAction>
             <Badge variant="outline">
               <TrendingUp />

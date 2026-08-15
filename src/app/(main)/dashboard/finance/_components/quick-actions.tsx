@@ -62,7 +62,7 @@ export async function QuickActions() {
               <InputGroupAddon>
                 <InputGroupText>R$</InputGroupText>
               </InputGroupAddon>
-              <InputGroupInput placeholder="0.00" />
+              <InputGroupInput placeholder={t("quickAmountPlaceholder")} />
               <InputGroupAddon align="inline-end">
                 <InputGroupText>BRL</InputGroupText>
               </InputGroupAddon>

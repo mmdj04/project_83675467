@@ -24,7 +24,7 @@ export function SavingsRate() {
         <div className="space-y-0.5">
           <div className="flex items-center justify-between">
             <p className="font-medium text-xl tabular-nums">32%</p>
-            <span className="text-xs">+3.5% MoM</span>
+            <span className="text-xs">{t("savingsMomPercentChange")}</span>
           </div>
           <p className="text-muted-foreground text-xs">{t("thisMonthAfterExpenses")}</p>
         </div>

@@ -22,13 +22,6 @@ interface VitalTrendChartProps {
   ticks: number[];
 }
 
-const trendChartConfig = {
-  value: {
-    label: "Value",
-    color: "currentColor",
-  },
-} satisfies ChartConfig;
-
 const trendClasses: Record<TrendKind, string> = {
   "heart-rate": "text-lime-500 dark:text-lime-400",
   map: "text-red-500 dark:text-red-400",
@@ -36,6 +29,15 @@ const trendClasses: Record<TrendKind, string> = {
 };
 
 function VitalTrendChart({ ariaLabel, data, domain, kind, ticks }: VitalTrendChartProps) {
+  const t = useTranslations("patientMonitoring");
+
+  const trendChartConfig = {
+    value: {
+      label: t("chartValue"),
+      color: "currentColor",
+    },
+  } satisfies ChartConfig;
+
   return (
     <ChartContainer
       aria-label={ariaLabel}
@@ -118,9 +120,9 @@ export function PatientTrends({ patient }: PatientTrendsProps) {
   return (
     <div className="grid h-full min-h-36 xl:grid-cols-[minmax(0,1fr)_13.5rem]">
       <div className="min-w-0 border-border xl:border-r">
-        <TrendStrip kind="heart-rate" label="HR" patient={patient} unit="bpm" value={patient.heartRate} />
-        <TrendStrip kind="spo2" label="SpO₂" patient={patient} unit="%" value={patient.spo2} />
-        <TrendStrip kind="map" label="MAP" patient={patient} unit="mmHg" value={patient.arterialMap} />
+        <TrendStrip kind="heart-rate" label={t("vitalHr")} patient={patient} unit="bpm" value={patient.heartRate} />
+        <TrendStrip kind="spo2" label={t("vitalSpo2")} patient={patient} unit="%" value={patient.spo2} />
+        <TrendStrip kind="map" label={t("vitalMap")} patient={patient} unit="mmHg" value={patient.arterialMap} />
         <div className="grid grid-cols-[4rem_2rem_minmax(0,1fr)_2.5rem] gap-1 py-0.5">
           <div className="col-span-2" />
           <div className="flex justify-between text-[10px] text-muted-foreground tabular-nums">

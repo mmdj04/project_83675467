@@ -1,29 +1,32 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { formatCurrency } from "@/lib/utils";
 
 export async function DriversCoverageTriage() {
   const t = await getTranslations("analyticsV1");
+  const locale = await getLocale();
+  const cycleDaysLabel = t("cycleDays", { value: "-4" });
 
   const leverOptions = [
     {
       key: "deal",
       label: t("leverDeal"),
-      value: "+$72,133 weighted",
+      value: t("weightedValue", { value: formatCurrency(72_133, { noDecimals: true }, locale) }),
       context: t("percentOfGap", { percent: "32%" }),
     },
     {
       key: "conversion",
       label: t("leverConversion"),
-      value: "+$49,182/month",
+      value: t("monthlyValue", { value: formatCurrency(49_182, { noDecimals: true }, locale) }),
       context: t("percentOfGap", { percent: "22%" }),
     },
     {
       key: "cycle",
       label: t("leverCycle"),
-      value: "+$90,167/day",
+      value: t("dailyValue", { value: formatCurrency(90_167, { noDecimals: true }, locale) }),
       context: t("percentOfGap", { percent: "40%" }),
     },
   ] as const;
@@ -43,7 +46,7 @@ export async function DriversCoverageTriage() {
             1.9x / 3.0x
           </Badge>
           <Badge variant="outline" className="font-medium tabular-nums">
-            {t("gapValue", { value: "$222,930" })}
+            {t("gapValue", { value: formatCurrency(222_930, { noDecimals: true }, locale) })}
           </Badge>
           <Badge variant="outline" className="font-medium tabular-nums">
             {t("dealsEta", { count: 4, days: 10 })}
@@ -80,8 +83,8 @@ export async function DriversCoverageTriage() {
         </div>
 
         <div className="space-y-1 rounded-md border border-dashed bg-muted/10 px-3 py-2.5">
-          <p className="text-muted-foreground text-xs">{t("fastestPath", { lever: "-4d cycle", percent: "40%" })}</p>
-          <p className="text-muted-foreground text-xs">{t("prioritySequence", { driver: "cycle time" })}</p>
+          <p className="text-muted-foreground text-xs">{t("fastestPath", { lever: cycleDaysLabel, percent: "40%" })}</p>
+          <p className="text-muted-foreground text-xs">{t("prioritySequence", { driver: t("cycleTime") })}</p>
         </div>
       </CardContent>
     </Card>

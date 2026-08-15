@@ -82,8 +82,8 @@ function formatTooltipLabel(value: string, locale: string) {
   return `${format(month, "MMM", { locale: getDateFnsLocale(locale) })} ${format(startDate, "do", { locale: getDateFnsLocale(locale) })} - ${format(endDate, "do", { locale: getDateFnsLocale(locale) })}, ${format(month, "yyyy")}`;
 }
 
-function formatCurrencyTooltipValue(value: unknown) {
-  return typeof value === "number" ? formatCurrency(value, { noDecimals: true }) : String(value ?? "");
+function formatCurrencyTooltipValue(value: unknown, locale: string) {
+  return typeof value === "number" ? formatCurrency(value, { noDecimals: true }, locale) : String(value ?? "");
 }
 
 export function KpiStrip() {
@@ -110,7 +110,7 @@ export function KpiStrip() {
               <CardHeader>
                 <CardTitle className="font-normal text-sm">{t("kpiTotalSales")}</CardTitle>
                 <CardDescription className="text-3xl text-foreground tabular-nums leading-none tracking-tight">
-                  {formatCurrency(48_560)}
+                  {formatCurrency(48_560, {}, locale)}
                 </CardDescription>
                 <CardAction className="grid size-6 place-items-center rounded-sm bg-muted">
                   <DollarSign className="size-3 text-foreground" />
@@ -164,7 +164,7 @@ export function KpiStrip() {
               <CardHeader>
                 <CardTitle className="font-normal text-sm">{t("kpiAverageOrder")}</CardTitle>
                 <CardDescription className="text-3xl text-foreground tabular-nums leading-none tracking-tight">
-                  {formatCurrency(128, { noDecimals: true })}
+                  {formatCurrency(128, { noDecimals: true }, locale)}
                 </CardDescription>
                 <CardAction className="grid size-6 place-items-center rounded-sm bg-muted">
                   <ReceiptText className="size-3 text-foreground" />
@@ -172,7 +172,7 @@ export function KpiStrip() {
               </CardHeader>
               <CardContent>
                 <div className="text-sm">
-                  <span className="text-destructive">{formatCurrency(-4.2)}</span>
+                  <span className="text-destructive">{formatCurrency(-4.2, {}, locale)}</span>
                   <span className="text-muted-foreground"> {t("vsLastWeek")}</span>
                 </div>
               </CardContent>
@@ -271,7 +271,7 @@ export function KpiStrip() {
                             <div className="flex flex-1 items-center justify-between leading-none">
                               <span className="text-muted-foreground">{String(name ?? "")}</span>
                               <span className="font-medium font-mono text-foreground tabular-nums">
-                                {formatCurrencyTooltipValue(value)}
+                                {formatCurrencyTooltipValue(value, locale)}
                               </span>
                             </div>
                           </>

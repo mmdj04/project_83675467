@@ -8,7 +8,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 
-import { type Shipment, statusLabelKeys } from "./shipment-data";
+import { getEtaLabel, type Shipment, statusLabelKeys } from "./shipment-data";
 
 const modeIcons = {
   air: Plane,
@@ -120,9 +120,9 @@ function ShipmentCard({ shipment, active, onSelectShipment }: ShipmentCardProps)
         <div className="text-right">
           <div className="text-muted-foreground text-xs leading-none">{t("eta")}</div>
           <div className="text-sm tabular-nums tracking-tight">
-            {shipment.eta}
+            {getEtaLabel(shipment.eta, t)}
             {shipment.etaMeta && (
-              <span className="ml-1 font-normal text-muted-foreground text-xs">{shipment.etaMeta}</span>
+              <span className="ml-1 font-normal text-muted-foreground text-xs">{getEtaLabel(shipment.etaMeta, t)}</span>
             )}
           </div>
         </div>

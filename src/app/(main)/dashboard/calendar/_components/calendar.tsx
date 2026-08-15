@@ -6,6 +6,7 @@ import { useCalendarController } from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/react/daygrid";
 import interactionPlugin from "@fullcalendar/react/interaction";
 import listPlugin from "@fullcalendar/react/list";
+import ptBrLocale from "@fullcalendar/react/locales/pt-br";
 import multiMonthPlugin from "@fullcalendar/react/multimonth";
 import timeGridPlugin from "@fullcalendar/react/timegrid";
 import { differenceInCalendarDays, endOfMonth, format, startOfMonth } from "date-fns";
@@ -124,6 +125,8 @@ export function Calendar() {
         popoverCloseContent={() => <XIcon className="size-5 text-muted-foreground group-hover:text-foreground" />}
         events={demoEvents}
         nowIndicator
+        locale={locale === "pt-BR" ? "pt-br" : "en"}
+        locales={[ptBrLocale]}
         datesSet={(info) => {
           setDateInfo({
             title: info.view.title,

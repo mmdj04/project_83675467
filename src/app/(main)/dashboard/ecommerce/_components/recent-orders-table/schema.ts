@@ -15,7 +15,7 @@ export type OrderRow = {
   date: string;
   customer: string;
   payment: "Paid" | "Pending" | "Refunded";
-  total: string;
-  items: string;
+  total: number;
+  items: number;
   fulfillment: "Fulfilled" | "Returned" | "Unfulfilled";
 };

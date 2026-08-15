@@ -1,8 +1,9 @@
 import * as React from "react";
 
 import { format, parseISO } from "date-fns";
+import { enUS, type Locale, ptBR } from "date-fns/locale";
 import { CalendarIcon, Hash } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Controller, useFormContext } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,8 @@ import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/in
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 import type { InvoiceFormValues } from "./data";
+
+const dateFnsLocales: Record<string, Locale> = { "pt-BR": ptBR, en: enUS };
 
 const dateFields: Array<{
   id: string;
@@ -72,6 +75,8 @@ export function InvoiceDetails() {
 }
 
 function DatePicker({ id, value, onChange }: { id: string; value: string; onChange: (value: string) => void }) {
+  const locale = useLocale();
+  const dateLocale = dateFnsLocales[locale] ?? enUS;
   const t = useTranslations();
   const [open, setOpen] = React.useState(false);
   const date = parseDateValue(value);
@@ -85,7 +90,7 @@ function DatePicker({ id, value, onChange }: { id: string; value: string; onChan
           data-empty={!date}
           className="w-full justify-between text-left font-normal data-[empty=true]:text-muted-foreground"
         >
-          {date ? format(date, "PPP") : <span>{t("invoice.pickDate")}</span>}
+          {date ? format(date, "PPP", { locale: dateLocale }) : <span>{t("invoice.pickDate")}</span>}
           <CalendarIcon className="text-muted-foreground" />
         </Button>
       </PopoverTrigger>
@@ -93,6 +98,7 @@ function DatePicker({ id, value, onChange }: { id: string; value: string; onChan
         <Calendar
           className="w-full"
           mode="single"
+          locale={dateLocale}
           selected={date}
           onSelect={(selectedDate) => {
             if (!selectedDate) return;

@@ -18,7 +18,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Command, CommandGroup, CommandItem, CommandList } from "@/components/ui/command";
 import { Label } from "@/components/ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
+import { cn, formatCurrency } from "@/lib/utils";
 
 type RiskView = "risk-view" | "momentum" | "quality";
 type FilterToggleKey = "enterpriseOnly" | "stalledOnly" | "overdueOnly" | "includeRenewals";
@@ -64,7 +64,7 @@ const RISK_SUMMARY_METRICS = [
   {
     key: "risk",
     labelKey: "metricRevenueAtRisk",
-    value: "$1,151,000",
+    amount: 1_151_000,
     comparatorKey: "vsPreviousPeriod",
   },
   {
@@ -76,7 +76,7 @@ const RISK_SUMMARY_METRICS = [
   {
     key: "cycle",
     labelKey: "metricSalesCycleDrift",
-    value: "+2.3 days",
+    days: "2.3",
     comparatorKey: "vsPreviousPeriod",
   },
 ] as const;
@@ -150,7 +150,22 @@ function buildRevenueChartData(from: Date, to: Date, locale: string) {
   });
 }
 
+function formatRiskMetricValue(
+  item: (typeof RISK_SUMMARY_METRICS)[number],
+  locale: string,
+  t: ReturnType<typeof useTranslations<"analyticsV1">>,
+) {
+  if ("amount" in item) {
+    return formatCurrency(item.amount, { noDecimals: true }, locale);
+  }
+  if ("days" in item) {
+    return t("daysToAction", { value: item.days });
+  }
+  return item.value;
+}
+
 function SummaryRow({ revenueSeries }: { revenueSeries: Array<{ day: string; revenue: number }> }) {
+  const locale = useLocale();
   const t = useTranslations("analyticsV1");
   const revenueChartConfig = {
     revenue: {
@@ -170,15 +185,17 @@ function SummaryRow({ revenueSeries }: { revenueSeries: Array<{ day: string; rev
       <div className="min-w-0 space-y-2">
         <div>
           <div className="font-medium text-muted-foreground text-sm">{t("sectionRevenue")}</div>
-          <div className="font-semibold text-3xl tabular-nums tracking-tight sm:text-4xl">$1,248,000</div>
+          <div className="font-semibold text-3xl tabular-nums tracking-tight sm:text-4xl">
+            {formatCurrency(1_248_000, { noDecimals: true }, locale)}
+          </div>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <Badge variant="secondary">+9.4%</Badge>
-          <Badge variant="secondary">+$107,000</Badge>
+          <Badge variant="secondary">+{formatCurrency(107_000, { noDecimals: true }, locale)}</Badge>
         </div>
 
         <div className="flex flex-wrap items-center gap-2 text-muted-foreground text-sm">
-          <span>{t("previousValue", { value: "$1,141,000" })}</span>
+          <span>{t("previousValue", { value: formatCurrency(1_141_000, { noDecimals: true }, locale) })}</span>
           <Badge variant="outline" className="font-medium text-xs">
             {t("riskLadderScore", { score: 30 })}
           </Badge>
@@ -211,7 +228,9 @@ function SummaryRow({ revenueSeries }: { revenueSeries: Array<{ day: string; rev
           {RISK_SUMMARY_METRICS.map((item) => (
             <div key={item.key} className="min-w-0 space-y-1">
               <div className="text-muted-foreground text-sm">{t(item.labelKey)}</div>
-              <div className="font-semibold text-2xl tabular-nums leading-tight">{item.value}</div>
+              <div className="font-semibold text-2xl tabular-nums leading-tight">
+                {formatRiskMetricValue(item, locale, t)}
+              </div>
               <div className="text-muted-foreground text-xs">{t(item.comparatorKey)}</div>
             </div>
           ))}

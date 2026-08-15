@@ -1,6 +1,7 @@
 import { addDays, format } from "date-fns";
+import { enUS, type Locale, ptBR } from "date-fns/locale";
 import { ClipboardCheck, Globe, Orbit, Plus } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -37,6 +38,8 @@ const projects = [
 
 export async function ProjectsSection() {
   const t = await getTranslations("productivity");
+  const locale = await getLocale();
+  const dateFnsLocales: Record<string, Locale> = { "pt-BR": ptBR, en: enUS };
   const today = new Date();
 
   return (
@@ -88,7 +91,11 @@ export async function ProjectsSection() {
             </CardContent>
             <CardFooter className="py-2.5">
               <span className="text-muted-foreground">
-                {t("dueDate", { date: format(addDays(today, project.dueDays), "MMM d") })}
+                {t("dueDate", {
+                  date: format(addDays(today, project.dueDays), "MMM d", {
+                    locale: dateFnsLocales[locale] ?? enUS,
+                  }),
+                })}
               </span>
             </CardFooter>
           </Card>

@@ -98,11 +98,11 @@ export function CardOverview() {
           <div className="space-y-2 text-sm">
             <div className="flex items-center justify-between">
               <span className="text-muted-foreground">{t("cardType")}</span>
-              <span className="font-medium tabular-nums">Virtual</span>
+              <span className="font-medium tabular-nums">{t("cardVirtual")}</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-muted-foreground">{t("billingCycle")}</span>
-              <span className="font-medium tabular-nums">21st monthly</span>
+              <span className="font-medium tabular-nums">{t("cardBillingOrdinal")}</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-muted-foreground">{t("cardLimit")}</span>

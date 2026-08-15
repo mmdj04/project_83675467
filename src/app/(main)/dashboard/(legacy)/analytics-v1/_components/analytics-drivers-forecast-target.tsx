@@ -1,10 +1,11 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Bar, CartesianGrid, ComposedChart, Dot, LabelList, Line, ReferenceLine, XAxis, YAxis } from "recharts";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { formatCurrency } from "@/lib/utils";
 
 type TrendPoint = {
   period: string;
@@ -30,6 +31,7 @@ const CHART_DATA: TrendPoint[] = [
 ];
 
 export function DriversForecastTarget() {
+  const locale = useLocale();
   const t = useTranslations("analyticsV1");
   const forecastChartConfig = {
     closedWon: {
@@ -58,7 +60,11 @@ export function DriversForecastTarget() {
       <CardContent className="space-y-4">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           <MetricChip label={t("attainment")} value="72.4%" note={t("attainmentNote")} />
-          <MetricChip label={t("weightedPipeline")} value="$1,284,000" note={t("remainingVs", { value: "$668,000" })} />
+          <MetricChip
+            label={t("weightedPipeline")}
+            value={formatCurrency(1_284_000, { noDecimals: true }, locale)}
+            note={t("remainingVs", { value: formatCurrency(668_000, { noDecimals: true }, locale) })}
+          />
           <MetricChip label={t("forecastConfidence")} value="81.0%" note={t("forecastConfidenceNote")} />
         </div>
         <ChartContainer config={forecastChartConfig} className="h-68 w-full">

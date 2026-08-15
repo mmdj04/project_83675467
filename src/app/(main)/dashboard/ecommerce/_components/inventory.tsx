@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowUpRight, PackageCheck, PackageX, TriangleAlert } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Label, Pie, PieChart } from "recharts";
 
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -56,6 +56,7 @@ const inventorySummary = [
 
 export function Inventory() {
   const t = useTranslations("ecommerce");
+  const locale = useLocale();
   const chartConfig = {
     "in-stock": {
       label: t("chartInStock"),
@@ -132,7 +133,7 @@ export function Inventory() {
               </div>
               <div>
                 <div className="text-muted-foreground text-xs leading-none">{t(item.labelKey)}</div>
-                <div className="font-medium text-sm tabular-nums">{item.value.toLocaleString()}</div>
+                <div className="font-medium text-sm tabular-nums">{item.value.toLocaleString(locale)}</div>
               </div>
             </div>
           ))}

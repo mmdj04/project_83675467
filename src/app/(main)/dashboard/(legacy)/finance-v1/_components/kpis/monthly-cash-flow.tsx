@@ -31,7 +31,7 @@ export function MonthlyCashFlow() {
         <Separator />
         <p className="flex items-center text-muted-foreground text-xs">
           <TrendingUp className="size-4" />
-          &nbsp;4.1% MoM
+          &nbsp;{t("momPercentChange")}
         </p>
       </CardContent>
     </Card>

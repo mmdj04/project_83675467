@@ -2,7 +2,7 @@ import { RestrictToVerticalAxis } from "@dnd-kit/abstract/modifiers";
 import { DragDropProvider, type DragEndEvent } from "@dnd-kit/react";
 import { isSortable, useSortable } from "@dnd-kit/react/sortable";
 import { GripVertical, Plus, Trash2 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import type { UseFormRegister } from "react-hook-form";
 import { useFieldArray, useFormContext, useWatch } from "react-hook-form";
 
@@ -87,6 +87,7 @@ function SortableInvoiceItemRow({
   register: UseFormRegister<InvoiceFormValues>;
   onRemove: () => void;
 }) {
+  const locale = useLocale();
   const { handleRef, isDragging, ref } = useSortable({
     id,
     index,
@@ -136,7 +137,7 @@ function SortableInvoiceItemRow({
       />
       <div className="min-w-0 text-right font-medium text-sm max-md:col-span-3 max-md:col-start-2 max-md:row-start-3 max-md:flex max-md:items-center max-md:justify-between max-md:text-left">
         <span className="hidden text-muted-foreground max-md:inline">{t("invoice.lineTotal")}</span>
-        <span>{formatInvoiceCurrency(getLineAmount(item))}</span>
+        <span>{formatInvoiceCurrency(getLineAmount(item), locale)}</span>
       </div>
       <Button
         type="button"
@@ -152,9 +153,13 @@ function SortableInvoiceItemRow({
   );
 }
 
-function formatInvoiceCurrency(value: number) {
-  return formatCurrency(Number.isFinite(value) ? value : 0, {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
+function formatInvoiceCurrency(value: number, locale: string) {
+  return formatCurrency(
+    Number.isFinite(value) ? value : 0,
+    {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    },
+    locale,
+  );
 }

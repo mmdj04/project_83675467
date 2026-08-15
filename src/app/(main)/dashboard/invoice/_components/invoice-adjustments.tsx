@@ -71,7 +71,9 @@ export function InvoiceAdjustments() {
                 aria-label={t("invoice.discountValueAria")}
                 {...register("discountValue", { valueAsNumber: true })}
               />
-              <InputGroupAddon align="inline-end">{discountType === "fixed" ? "$" : "%"}</InputGroupAddon>
+              <InputGroupAddon align="inline-end">
+                {discountType === "fixed" ? t("invoice.currencySymbol") : "%"}
+              </InputGroupAddon>
             </InputGroup>
           </Field>
         </div>

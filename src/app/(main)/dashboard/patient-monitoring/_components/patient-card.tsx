@@ -43,7 +43,7 @@ export function PatientCard({ active, acknowledged, onSelect, patient }: Patient
             className="h-auto shrink-0 rounded-none border-amber-500 text-[10px] text-amber-700 dark:border-amber-400 dark:text-amber-300"
             variant="outline"
           >
-            HR HIGH {t("hrHigh", { value: patient.heartRate })}
+            {t("hrHigh", { value: patient.heartRate })}
           </Badge>
         )}
       </div>
@@ -54,7 +54,7 @@ export function PatientCard({ active, acknowledged, onSelect, patient }: Patient
 
       <dl className="mt-auto grid grid-cols-2 divide-x divide-border tabular-nums">
         <div className="pr-2">
-          <dt className="text-lime-500 text-xs dark:text-lime-400">HR</dt>
+          <dt className="text-lime-500 text-xs dark:text-lime-400">{t("vitalHr")}</dt>
           <dd
             className={cn(
               "text-right font-medium text-3xl text-lime-500 leading-none dark:text-lime-400",
@@ -65,7 +65,7 @@ export function PatientCard({ active, acknowledged, onSelect, patient }: Patient
           </dd>
         </div>
         <div className="pl-2">
-          <dt className="text-cyan-500 text-xs dark:text-cyan-400">SpO₂</dt>
+          <dt className="text-cyan-500 text-xs dark:text-cyan-400">{t("vitalSpo2")}</dt>
           <dd className="text-right font-medium text-3xl text-cyan-500 leading-none dark:text-cyan-400">
             {patient.spo2}
           </dd>

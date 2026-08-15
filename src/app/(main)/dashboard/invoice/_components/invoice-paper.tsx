@@ -1,4 +1,6 @@
-import { useTranslations } from "next-intl";
+import { format, parseISO } from "date-fns";
+import { enUS, type Locale, ptBR } from "date-fns/locale";
+import { useLocale, useTranslations } from "next-intl";
 
 import { formatCurrency } from "@/lib/utils";
 
@@ -15,7 +17,11 @@ import {
   type InvoiceFormValues,
 } from "./data";
 
+const dateFnsLocales: Record<string, Locale> = { "pt-BR": ptBR, en: enUS };
+
 export function InvoicePaper({ invoice }: { invoice: InvoiceFormValues }) {
+  const locale = useLocale();
+  const dateLocale = dateFnsLocales[locale] ?? enUS;
   const t = useTranslations();
   const taxOption = getInvoiceTaxOption(invoice);
   const discountValue = Number.isFinite(invoice.discountValue) ? invoice.discountValue : 0;
@@ -44,8 +50,12 @@ export function InvoicePaper({ invoice }: { invoice: InvoiceFormValues }) {
         <section className="grid grid-cols-2 gap-14 text-sm leading-relaxed">
           <div>
             <p>{t("invoice.reference", { reference: invoice.referenceNumber })}</p>
-            <p>{t("invoice.issued", { date: invoice.issuedDate })}</p>
-            <p>{t("invoice.paymentDue", { date: invoice.paymentDueDate })}</p>
+            <p>{t("invoice.issued", { date: format(parseISO(invoice.issuedDate), "PPP", { locale: dateLocale }) })}</p>
+            <p>
+              {t("invoice.paymentDue", {
+                date: format(parseISO(invoice.paymentDueDate), "PPP", { locale: dateLocale }),
+              })}
+            </p>
           </div>
           <div>
             <p>{t("invoice.paymentAccount")}</p>
@@ -89,8 +99,8 @@ export function InvoicePaper({ invoice }: { invoice: InvoiceFormValues }) {
             >
               <span>{item.description}</span>
               <span className="text-right">{item.quantity}</span>
-              <span className="text-right">{formatInvoiceCurrency(item.unitPrice)}</span>
-              <span className="text-right">{formatInvoiceCurrency(getLineAmount(item))}</span>
+              <span className="text-right">{formatInvoiceCurrency(item.unitPrice, locale)}</span>
+              <span className="text-right">{formatInvoiceCurrency(getLineAmount(item), locale)}</span>
             </div>
           ))}
         </section>
@@ -100,23 +110,23 @@ export function InvoicePaper({ invoice }: { invoice: InvoiceFormValues }) {
             <div>
               <div className="flex justify-between gap-8">
                 <span>{t("invoice.netAmount")}</span>
-                <span>{formatInvoiceCurrency(getInvoiceSubtotal(invoice))}</span>
+                <span>{formatInvoiceCurrency(getInvoiceSubtotal(invoice), locale)}</span>
               </div>
               <div className="flex justify-between gap-8">
                 <span>{discountLabel}</span>
-                <span>{formatInvoiceCurrency(getInvoiceDiscount(invoice))}</span>
+                <span>{formatInvoiceCurrency(getInvoiceDiscount(invoice), locale)}</span>
               </div>
               <div className="flex justify-between gap-8">
                 <span>
                   {t(taxOption.labelKey)} {taxOption.rate}%
                 </span>
-                <span>{formatInvoiceCurrency(getInvoiceTax(invoice))}</span>
+                <span>{formatInvoiceCurrency(getInvoiceTax(invoice), locale)}</span>
               </div>
             </div>
             <div className="border-current border-y-2 py-3">
               <div className="flex justify-between gap-8">
                 <span className="font-semibold uppercase">{t("invoice.balanceDue")}</span>
-                <span className="font-semibold">{formatInvoiceCurrency(getInvoiceTotal(invoice))}</span>
+                <span className="font-semibold">{formatInvoiceCurrency(getInvoiceTotal(invoice), locale)}</span>
               </div>
             </div>
           </section>
@@ -138,9 +148,13 @@ export function InvoicePaper({ invoice }: { invoice: InvoiceFormValues }) {
   );
 }
 
-function formatInvoiceCurrency(value: number) {
-  return formatCurrency(Number.isFinite(value) ? value : 0, {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
+function formatInvoiceCurrency(value: number, locale: string) {
+  return formatCurrency(
+    Number.isFinite(value) ? value : 0,
+    {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    },
+    locale,
+  );
 }

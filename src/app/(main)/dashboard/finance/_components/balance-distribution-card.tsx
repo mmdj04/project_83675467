@@ -138,10 +138,14 @@ export function BalanceDistributionCard() {
                 <ChartTooltipContent
                   hideLabel
                   className="w-52"
-                  formatter={(value, name) => [
-                    formatCurrency(Number(value), { currency, noDecimals: true }, locale),
-                    t(accountLabelKeys[name as BalanceKey] ?? name),
-                  ]}
+                  formatter={(value, name, item) => {
+                    const itemKey = (item?.payload as { key?: BalanceKey } | undefined)?.key;
+
+                    return [
+                      formatCurrency(Number(value), { currency, noDecimals: true }, locale),
+                      t(accountLabelKeys[itemKey ?? (name as BalanceKey)] ?? name),
+                    ];
+                  }}
                 />
               }
             />

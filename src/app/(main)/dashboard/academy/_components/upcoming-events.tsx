@@ -1,6 +1,7 @@
 import { addDays, format } from "date-fns";
+import { enUS, type Locale, ptBR } from "date-fns/locale";
 import { ArrowRight } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -40,6 +41,8 @@ const upcomingEvents = [
 
 export async function UpcomingEvents() {
   const t = await getTranslations("academy");
+  const locale = await getLocale();
+  const dateFnsLocales: Record<string, Locale> = { "pt-BR": ptBR, en: enUS };
   const today = new Date();
 
   return (
@@ -59,7 +62,7 @@ export async function UpcomingEvents() {
               <div className="flex items-center gap-2">
                 <div className="size-11 shrink-0 overflow-hidden rounded-sm border">
                   <div className="grid h-1/3 place-items-center border-b bg-muted font-medium text-[10px] uppercase leading-none">
-                    {format(eventDate, "MMM")}
+                    {format(eventDate, "MMM", { locale: dateFnsLocales[locale] ?? enUS })}
                   </div>
                   <div className="grid h-2/3 place-items-center text-lg leading-none">{format(eventDate, "d")}</div>
                 </div>

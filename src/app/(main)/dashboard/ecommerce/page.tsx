@@ -1,6 +1,7 @@
 import { format } from "date-fns";
+import { enUS, type Locale, ptBR } from "date-fns/locale";
 import { Settings2 } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -16,7 +17,11 @@ import { TrafficSources } from "./_components/traffic-sources";
 
 export default async function Page() {
   const t = await getTranslations("ecommerce");
-  const formattedDate = format(new Date(), "EEEE, do MMMM yyyy");
+  const locale = await getLocale();
+  const dateFnsLocales: Record<string, Locale> = { "pt-BR": ptBR, en: enUS };
+  const formattedDate = format(new Date(), "EEEE, do MMMM yyyy", {
+    locale: dateFnsLocales[locale] ?? enUS,
+  });
 
   return (
     <div className="flex flex-col gap-4">

@@ -1,27 +1,35 @@
 import { format, isToday, isYesterday, subDays } from "date-fns";
+import { enUS, type Locale, ptBR } from "date-fns/locale";
 import { BookOpen, FileText } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type ProductivityTranslator = Awaited<ReturnType<typeof getTranslations<"productivity">>>;
 
-function formatNoteDate(date: Date, t: ProductivityTranslator) {
+function formatNoteDate(date: Date, t: ProductivityTranslator, locale: Locale) {
   if (isToday(date)) return t("todayDate");
   if (isYesterday(date)) return t("yesterdayDate");
-  return format(date, "MMM d");
+  return format(date, "MMM d", { locale });
 }
 
 export async function RecentNotesCard() {
   const t = await getTranslations("productivity");
+  const locale = await getLocale();
+  const dateFnsLocales: Record<string, Locale> = { "pt-BR": ptBR, en: enUS };
+  const dateFnsLocale = dateFnsLocales[locale] ?? enUS;
   const today = new Date();
 
   const recentNotes = [
-    { title: "Design principles that scale", date: formatNoteDate(today, t), icon: FileText },
-    { title: `Content ideas – ${format(today, "MMMM")}`, date: formatNoteDate(subDays(today, 1), t), icon: FileText },
-    { title: "Lessons from the week", date: formatNoteDate(subDays(today, 4), t), icon: FileText },
-    { title: "Books I'm Reading", date: formatNoteDate(subDays(today, 5), t), icon: BookOpen },
+    { title: "Design principles that scale", date: formatNoteDate(today, t, dateFnsLocale), icon: FileText },
+    {
+      title: `Content ideas – ${format(today, "MMMM", { locale: dateFnsLocale })}`,
+      date: formatNoteDate(subDays(today, 1), t, dateFnsLocale),
+      icon: FileText,
+    },
+    { title: "Lessons from the week", date: formatNoteDate(subDays(today, 4), t, dateFnsLocale), icon: FileText },
+    { title: "Books I'm Reading", date: formatNoteDate(subDays(today, 5), t, dateFnsLocale), icon: BookOpen },
   ] as const;
 
   return (

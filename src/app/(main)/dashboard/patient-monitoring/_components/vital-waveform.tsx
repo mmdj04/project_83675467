@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { CartesianGrid, Line, LineChart, YAxis } from "recharts";
 
 import { type ChartConfig, ChartContainer } from "@/components/ui/chart";
@@ -20,13 +21,6 @@ interface VitalWaveformProps {
   showGrid: boolean;
 }
 
-const waveformChartConfig = {
-  signal: {
-    label: "Signal",
-    color: "currentColor",
-  },
-} satisfies ChartConfig;
-
 const waveformClasses: Record<WaveformKind, string> = {
   arterial: "text-red-500 dark:text-red-400",
   ecg: "text-lime-500 dark:text-lime-400",
@@ -35,7 +29,15 @@ const waveformClasses: Record<WaveformKind, string> = {
 };
 
 export function VitalWaveform({ ariaLabel, compact = false, data, domain, kind, showGrid }: VitalWaveformProps) {
+  const t = useTranslations("patientMonitoring");
   const horizontalCenter = (domain[0] + domain[1]) / 2;
+
+  const waveformChartConfig = {
+    signal: {
+      label: t("chartSignal"),
+      color: "currentColor",
+    },
+  } satisfies ChartConfig;
 
   return (
     <ChartContainer

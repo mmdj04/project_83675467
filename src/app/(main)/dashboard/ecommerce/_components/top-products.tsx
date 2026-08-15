@@ -1,8 +1,9 @@
 import { ArrowUpRight } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { formatCurrency } from "@/lib/utils";
 
 const categories = [
   {
@@ -27,24 +28,25 @@ const products = [
     name: "Linen Overshirt",
     categoryKey: "categoryApparel",
     share: "31%",
-    sales: "$14,820",
+    sales: 14820,
   },
   {
     name: "Everyday Tote",
     categoryKey: "categoryAccessories",
     share: "24%",
-    sales: "$11,460",
+    sales: 11460,
   },
   {
     name: "Ceramic Planter",
     categoryKey: "categoryHome",
     share: "18%",
-    sales: "$8,930",
+    sales: 8930,
   },
 ] as const;
 
 export async function TopProducts() {
   const t = await getTranslations("ecommerce");
+  const locale = await getLocale();
 
   return (
     <Card className="h-full">
@@ -98,7 +100,9 @@ export async function TopProducts() {
                 <div className="text-muted-foreground text-xs">{t(product.categoryKey)}</div>
               </div>
               <div className="self-center text-muted-foreground tabular-nums">{product.share}</div>
-              <div className="self-center font-medium tabular-nums">{product.sales}</div>
+              <div className="self-center font-medium tabular-nums">
+                {formatCurrency(product.sales, { noDecimals: true }, locale)}
+              </div>
             </div>
           ))}
         </div>

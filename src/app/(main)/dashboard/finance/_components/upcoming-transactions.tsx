@@ -45,6 +45,7 @@ export function UpcomingTransactions() {
   const t = useTranslations("finance");
   const dateFnsLocale = dateFnsLocales[locale] ?? enUS;
   const timePattern = dateFnsLocale === ptBR ? "HH.mm" : "hh.mm a";
+  const datePattern = dateFnsLocale === ptBR ? "d 'de' MMMM 'de' yyyy" : "MMMM dd, yyyy";
 
   return (
     <Card>
@@ -81,7 +82,7 @@ export function UpcomingTransactions() {
                       hours: transaction.hour,
                       minutes: transaction.minute,
                     }),
-                    `${timePattern} '•' MMMM dd, yyyy`,
+                    `${timePattern} '•' ${datePattern}`,
                     { locale: dateFnsLocale },
                   )}
                 </ItemDescription>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Bar, BarChart, CartesianGrid, Label, LabelList, Pie, PieChart, XAxis, YAxis } from "recharts";
 
 import { Button } from "@/components/ui/button";
@@ -16,6 +16,7 @@ import {
 } from "./crm.config";
 
 export function InsightCards() {
+  const locale = useLocale();
   const t = useTranslations("crmV1");
   const leadsBySourceConfig = resolveChartConfig(leadsBySourceChartConfig, t);
   const projectRevenueConfig = resolveChartConfig(projectRevenueChartConfig, t);
@@ -58,7 +59,7 @@ export function InsightCards() {
                             y={viewBox.cy}
                             className="fill-foreground font-bold text-3xl tabular-nums"
                           >
-                            {totalLeads.toLocaleString()}
+                            {totalLeads.toLocaleString(locale)}
                           </tspan>
                           <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 24} className="fill-muted-foreground">
                             {t("leads")}

@@ -1,6 +1,7 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import { Subscribe } from "@tanstack/react-table";
 import { format, parseISO } from "date-fns";
+import { enUS, type Locale, ptBR } from "date-fns/locale";
 import { MoreHorizontal } from "lucide-react";
 import type { useTranslations } from "next-intl";
 
@@ -16,13 +17,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import type { DataTableFeatures } from "@/lib/data-table-features";
+import { formatCurrency } from "@/lib/utils";
 
 import type { OrderRow } from "./schema";
 
 type EcommerceTranslator = ReturnType<typeof useTranslations<"ecommerce">>;
 
-function formatOrderDate(date: string) {
-  return format(parseISO(date), "h:mm a, d MMM yyyy");
+const dateFnsLocales: Record<string, Locale> = { "pt-BR": ptBR, en: enUS };
+
+function formatOrderDate(date: string, locale: string) {
+  return format(parseISO(date), "h:mm a, d MMM yyyy", { locale: dateFnsLocales[locale] ?? enUS });
 }
 
 function PaymentBadge({ status, t }: { status: OrderRow["payment"]; t: EcommerceTranslator }) {
@@ -88,7 +92,10 @@ function FulfillmentBadge({ status, t }: { status: OrderRow["fulfillment"]; t: E
   );
 }
 
-export function createRecentOrdersColumns(t: EcommerceTranslator): ColumnDef<DataTableFeatures, OrderRow>[] {
+export function createRecentOrdersColumns(
+  t: EcommerceTranslator,
+  locale: string,
+): ColumnDef<DataTableFeatures, OrderRow>[] {
   return [
     {
       id: "select",
@@ -133,7 +140,7 @@ export function createRecentOrdersColumns(t: EcommerceTranslator): ColumnDef<Dat
       cell: ({ row }) => (
         <div className="flex flex-col gap-0.5">
           <div className="font-medium leading-none">{row.original.id}</div>
-          <div className="text-muted-foreground text-xs">{row.original.items}</div>
+          <div className="text-muted-foreground text-xs">{t("itemsCount", { count: row.original.items })}</div>
         </div>
       ),
       enableHiding: false,
@@ -179,12 +186,12 @@ export function createRecentOrdersColumns(t: EcommerceTranslator): ColumnDef<Dat
     {
       accessorKey: "total",
       header: () => <div className="w-28">{t("colTotal")}</div>,
-      cell: ({ row }) => <div className="w-28 tabular-nums">{row.original.total}</div>,
+      cell: ({ row }) => <div className="w-28 tabular-nums">{formatCurrency(row.original.total, {}, locale)}</div>,
     },
     {
       accessorKey: "date",
       header: () => <div className="w-44">{t("colDate")}</div>,
-      cell: ({ row }) => <div className="w-44 text-muted-foreground">{formatOrderDate(row.original.date)}</div>,
+      cell: ({ row }) => <div className="w-44 text-muted-foreground">{formatOrderDate(row.original.date, locale)}</div>,
     },
     {
       id: "actions",

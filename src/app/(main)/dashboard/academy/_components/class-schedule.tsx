@@ -1,13 +1,18 @@
 import { format } from "date-fns";
+import { enUS, type Locale, ptBR } from "date-fns/locale";
 import { ArrowRight } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export async function ClassSchedule() {
   const t = await getTranslations("academy");
-  const today = format(new Date(), "EEEE, d MMMM");
+  const locale = await getLocale();
+  const dateFnsLocales: Record<string, Locale> = { "pt-BR": ptBR, en: enUS };
+  const today = format(new Date(), "EEEE, d MMMM", {
+    locale: dateFnsLocales[locale] ?? enUS,
+  });
 
   return (
     <Card>

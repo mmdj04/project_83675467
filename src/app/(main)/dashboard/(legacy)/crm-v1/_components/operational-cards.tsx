@@ -1,7 +1,7 @@
 "use client";
 
 import { Clock } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Funnel, FunnelChart, LabelList } from "recharts";
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,6 +19,7 @@ import {
 } from "./crm.config";
 
 export function OperationalCards() {
+  const locale = useLocale();
   const t = useTranslations("crmV1");
   const totalSales = regionSalesData.reduce((sum, region) => sum + region.sales, 0);
   const pipelineConfig = resolveChartConfig(salesPipelineChartConfig, t);
@@ -51,7 +52,7 @@ export function OperationalCards() {
         <CardHeader>
           <CardTitle>{t("salesByRegion")}</CardTitle>
           <CardDescription className="font-medium tabular-nums">
-            {formatCurrency(totalSales, { noDecimals: true })}
+            {formatCurrency(totalSales, { noDecimals: true }, locale)}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -62,7 +63,7 @@ export function OperationalCards() {
                   <span className="font-medium text-sm">{t(region.labelKey)}</span>
                   <div className="flex items-baseline gap-1">
                     <span className="font-semibold text-sm tabular-nums">
-                      {formatCurrency(region.sales, { noDecimals: true })}
+                      {formatCurrency(region.sales, { noDecimals: true }, locale)}
                     </span>
                     <span
                       className={cn(

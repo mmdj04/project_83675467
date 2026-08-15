@@ -3,7 +3,7 @@ import * as React from "react";
 
 import { type ColumnFiltersState, type PaginationState, type SortingState, useTable } from "@tanstack/react-table";
 import { ArrowUpDown, ArrowUpRight, Download, MoreHorizontal } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -33,7 +33,8 @@ const recentOrders = recentOrdersData as OrderRow[];
 
 export function RecentOrders() {
   const t = useTranslations("ecommerce");
-  const recentOrdersColumns = React.useMemo(() => createRecentOrdersColumns(t), [t]);
+  const locale = useLocale();
+  const recentOrdersColumns = React.useMemo(() => createRecentOrdersColumns(t, locale), [locale, t]);
   const [rowSelection, setRowSelection] = React.useState({});
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
@@ -168,7 +169,7 @@ export function RecentOrders() {
 
         <div className="flex items-center justify-between gap-4 px-4 pb-1">
           <p className="text-muted-foreground text-sm">
-            {t("viewingOrders", { visible: visibleOrderCount, total: orderCount.toLocaleString() })}
+            {t("viewingOrders", { visible: visibleOrderCount, total: orderCount.toLocaleString(locale) })}
           </p>
 
           <Pagination className="mx-0 w-auto justify-end">

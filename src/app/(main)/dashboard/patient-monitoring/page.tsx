@@ -17,7 +17,23 @@ export default async function Page() {
   const locale = await getLocale();
   const t = await getTranslations("patientMonitoring");
   const now = new Date();
-  const tzNow = new Date(now.toLocaleString("en-US", { timeZone: "America/Sao_Paulo" }));
+  const tzFormatter = new Intl.DateTimeFormat(locale, {
+    day: "2-digit",
+    hour: "2-digit",
+    hour12: false,
+    minute: "2-digit",
+    month: "2-digit",
+    second: "2-digit",
+    timeZone: "America/Sao_Paulo",
+    year: "numeric",
+  });
+  const tzParts = Object.fromEntries(
+    tzFormatter
+      .formatToParts(now)
+      .filter(({ type }) => type !== "literal")
+      .map(({ type, value }) => [type, Number(value)] as const),
+  );
+  const tzNow = new Date(tzParts.year, tzParts.month - 1, tzParts.day, tzParts.hour, tzParts.minute, tzParts.second);
 
   return (
     <div

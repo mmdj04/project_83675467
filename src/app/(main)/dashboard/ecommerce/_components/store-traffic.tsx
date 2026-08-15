@@ -3,8 +3,9 @@
 import { useState } from "react";
 
 import { format, subMinutes } from "date-fns";
+import { enUS, type Locale, ptBR } from "date-fns/locale";
 import { ArrowUpRight } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Area, AreaChart, CartesianGrid, Line, XAxis, YAxis } from "recharts";
 
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -127,12 +128,15 @@ function getTrafficData() {
   }));
 }
 
-function formatTrafficTooltipLabel(value: string) {
-  return format(new Date(value), "h:mm a, do MMMM yyyy");
+const dateFnsLocales: Record<string, Locale> = { "pt-BR": ptBR, en: enUS };
+
+function formatTrafficTooltipLabel(value: string, locale: string) {
+  return format(new Date(value), "h:mm a, do MMMM yyyy", { locale: dateFnsLocales[locale] ?? enUS });
 }
 
 export function StoreTraffic() {
   const t = useTranslations("ecommerce");
+  const locale = useLocale();
   const [trafficData] = useState(() => getTrafficData());
   const firstTrafficTimestamp = trafficData[0].timestamp;
   const lastTrafficTimestamp = trafficData.at(-1)?.timestamp ?? "";
@@ -188,7 +192,9 @@ export function StoreTraffic() {
             />
             <YAxis axisLine={false} domain={[0, 650]} tickLine={false} tickMargin={6} width={36} yAxisId="traffic" />
             <ChartTooltip
-              content={<ChartTooltipContent labelFormatter={(value) => formatTrafficTooltipLabel(String(value))} />}
+              content={
+                <ChartTooltipContent labelFormatter={(value) => formatTrafficTooltipLabel(String(value), locale)} />
+              }
               cursor={{ stroke: "var(--border)", strokeDasharray: "4 4" }}
             />
             <ChartLegend align="right" verticalAlign="top" className="justify-end" content={<ChartLegendContent />} />

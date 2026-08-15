@@ -9,7 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 
-import { type Shipment, statusLabelKeys, tierLabelKeys } from "./shipment-data";
+import { getEtaLabel, type Shipment, statusLabelKeys, tierLabelKeys } from "./shipment-data";
 import { ShipmentRouteMap } from "./shipment-route-map";
 
 const modeIcons = {
@@ -113,7 +113,7 @@ function ShipmentOverview({ shipment }: { shipment: Shipment }) {
           <span className="text-foreground tabular-nums">{t("complete", { progress: shipment.progress })}</span>
           <span className="text-muted-foreground">·</span>
           <span className="text-foreground tabular-nums">
-            {t("etaLabel", { eta: shipment.eta, meta: shipment.etaMeta })}
+            {t("etaLabel", { eta: getEtaLabel(shipment.eta, t), meta: getEtaLabel(shipment.etaMeta, t) })}
           </span>
         </div>
       </div>
