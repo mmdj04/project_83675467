@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { ExternalLink } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Button } from "@/components/ui/button";
 
@@ -22,7 +22,12 @@ export default async function Page() {
         </Button>
       </div>
 
-      <iframe src="/mail" title={t("mail.mailPreview")} className="min-h-0 flex-1 rounded-lg border bg-background" />
+      <iframe
+        key={await getLocale()}
+        src="/mail"
+        title={t("mail.mailPreview")}
+        className="min-h-0 flex-1 rounded-lg border bg-background"
+      />
     </div>
   );
 }
