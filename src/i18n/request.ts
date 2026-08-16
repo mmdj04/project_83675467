@@ -5,7 +5,7 @@ import { getRequestConfig } from "next-intl/server";
 
 export default getRequestConfig(async () => {
   const store = await cookies();
-  const locale = store.get("locale")?.value === "pt-BR" ? "pt-BR" : "en";
+  const locale = store.get("locale")?.value === "en" ? "en" : "pt-BR";
 
   const [en, ptBR] = await Promise.all([import("../../messages/en.json"), import("../../messages/pt-BR.json")]);
 
