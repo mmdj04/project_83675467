@@ -39,12 +39,16 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { columnIds, columns } from "./data";
 import { KanbanColumn } from "./kanban-column";
+import { KanbanListView } from "./kanban-list-view";
+import { KanbanTableView } from "./kanban-table-view";
 import { TaskCard } from "./task-card";
 import type { BoardState, ColumnId, Task } from "./types";
 
 interface KanbanProps {
   initialBoard: BoardState;
 }
+
+type KanbanView = "board" | "list" | "table";
 
 type TaskDragData = {
   type: "task";
@@ -74,6 +78,7 @@ export function Kanban({ initialBoard }: KanbanProps) {
   const t = useTranslations();
   const [board, setBoard] = React.useState<BoardState>(initialBoard);
   const [columnOrder, setColumnOrder] = React.useState<ColumnId[]>(columnIds);
+  const [view, setView] = React.useState<KanbanView>("board");
   const boardBeforeDrag = React.useRef<BoardState>(initialBoard);
   const orderedColumns = columnOrder.flatMap((columnId) => columns.find((column) => column.id === columnId) ?? []);
 
@@ -113,7 +118,7 @@ export function Kanban({ initialBoard }: KanbanProps) {
   return (
     <div className="flex h-[calc(100dvh-var(--dashboard-header-height))] min-h-0 min-w-0 flex-col overflow-hidden">
       <div className="flex shrink-0 flex-col gap-3 border-b px-4 py-3 lg:flex-row lg:items-center lg:justify-between lg:px-6">
-        <Tabs defaultValue="board" className="min-w-0">
+        <Tabs value={view} onValueChange={(value) => setView(value as KanbanView)} className="min-w-0">
           <TabsList className="w-full *:data-[slot=tabs-trigger]:flex-1 sm:w-fit sm:*:data-[slot=tabs-trigger]:flex-none">
             <TabsTrigger value="board" className="gap-2">
               <KanbanIcon />
@@ -176,26 +181,32 @@ export function Kanban({ initialBoard }: KanbanProps) {
         </div>
       </div>
 
-      <DragDropProvider onDragStart={handleDragStart} onDragOver={handleDragOver} onDragEnd={handleDragEnd}>
-        <div className="scrollbar-thin min-h-0 min-w-0 flex-1 overflow-x-auto overflow-y-hidden bg-muted/25 px-4 pt-4 pb-0 [scrollbar-color:var(--border)_transparent] lg:px-5 lg:pt-5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:h-1">
-          <div className="inline-grid h-full min-w-full grid-cols-[repeat(5,minmax(20rem,1fr))] grid-rows-[minmax(0,1fr)] gap-4">
-            {orderedColumns.map((column, index) => (
-              <KanbanColumn key={column.id} column={column} index={index} tasks={board[column.id]} />
-            ))}
+      {view === "board" ? (
+        <DragDropProvider onDragStart={handleDragStart} onDragOver={handleDragOver} onDragEnd={handleDragEnd}>
+          <div className="scrollbar-thin min-h-0 min-w-0 flex-1 overflow-x-auto overflow-y-hidden bg-muted/25 px-4 pt-4 pb-0 [scrollbar-color:var(--border)_transparent] lg:px-5 lg:pt-5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:h-1">
+            <div className="inline-grid h-full min-w-full grid-cols-[repeat(5,minmax(20rem,1fr))] grid-rows-[minmax(0,1fr)] gap-4">
+              {orderedColumns.map((column, index) => (
+                <KanbanColumn key={column.id} column={column} index={index} tasks={board[column.id]} />
+              ))}
+            </div>
           </div>
-        </div>
-        <DragOverlay dropAnimation={null}>
-          {(source) => {
-            if (source.type !== "task" || !isTaskDragData(source.data)) {
-              return null;
-            }
+          <DragOverlay dropAnimation={null}>
+            {(source) => {
+              if (source.type !== "task" || !isTaskDragData(source.data)) {
+                return null;
+              }
 
-            const columnId = isSortable(source) && isColumnId(source.group) ? source.group : source.data.columnId;
+              const columnId = isSortable(source) && isColumnId(source.group) ? source.group : source.data.columnId;
 
-            return <TaskCard task={source.data.task} columnId={columnId} isOverlay />;
-          }}
-        </DragOverlay>
-      </DragDropProvider>
+              return <TaskCard task={source.data.task} columnId={columnId} isOverlay />;
+            }}
+          </DragOverlay>
+        </DragDropProvider>
+      ) : view === "list" ? (
+        <KanbanListView orderedColumns={orderedColumns} tasks={board} />
+      ) : (
+        <KanbanTableView orderedColumns={orderedColumns} tasks={board} />
+      )}
     </div>
   );
 }

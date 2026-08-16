@@ -20,36 +20,13 @@ import { Separator } from "@/components/ui/separator";
 import { cn, getInitials } from "@/lib/utils";
 
 import { dueDateLabelKeys, tagTones, teamLabelKeys } from "./data";
-import type { ColumnId, Task, TaskInsightLabel, TaskPriority } from "./types";
+import { TaskPriorityBadge } from "./task-priority-badge";
+import type { ColumnId, Task, TaskInsightLabel } from "./types";
 
 const taskInsightIcons: Record<TaskInsightLabel, LucideIcon> = {
   Attachments: Paperclip,
   Comments: MessageSquare,
   Documents: FileText,
-};
-
-const priorityBadgeConfig: Record<
-  TaskPriority,
-  { icon: LucideIcon; variant: "destructive" | "secondary"; className: string; labelKey: string }
-> = {
-  High: {
-    icon: Flame,
-    variant: "destructive",
-    className: "border-transparent",
-    labelKey: "kanban.priorityHigh",
-  },
-  Low: {
-    icon: Minus,
-    variant: "secondary",
-    className: "bg-slate-500/10 text-slate-700 dark:bg-slate-500/15 dark:text-slate-300",
-    labelKey: "kanban.priorityLow",
-  },
-  Medium: {
-    icon: ArrowUpRight,
-    variant: "secondary",
-    className: "bg-amber-500/10 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300",
-    labelKey: "kanban.priorityMedium",
-  },
 };
 
 export function TaskCard({
@@ -65,7 +42,6 @@ export function TaskCard({
   const isDone = columnId === "shipped";
   const showBuildingDetails = columnId === "building" && typeof task.progress === "number";
   const owner = task.owner;
-  const PriorityIcon = priorityBadgeConfig[task.priority].icon;
 
   return (
     <article
@@ -77,16 +53,7 @@ export function TaskCard({
       <div className="min-w-0 space-y-1.5">
         <div className="flex items-center justify-between gap-3">
           <h3 className="min-w-0 truncate font-medium text-sm leading-none">{t(task.titleKey)}</h3>
-          <Badge
-            variant={priorityBadgeConfig[task.priority].variant}
-            className={cn(
-              "shrink-0 rounded-md border-transparent px-2 font-medium",
-              priorityBadgeConfig[task.priority].className,
-            )}
-          >
-            <PriorityIcon data-icon="inline-start" />
-            {t(priorityBadgeConfig[task.priority].labelKey)}
-          </Badge>
+          <TaskPriorityBadge priority={task.priority} />
         </div>
         <p className="line-clamp-2 text-muted-foreground text-sm leading-5">{t(task.descriptionKey)}</p>
       </div>
