@@ -55,8 +55,8 @@ export const teamLabelKeys: Record<TaskTeam, string> = {
 };
 
 const taskOwners = {
-  arham: {
-    name: "Arham Khan",
+  matheus: {
+    name: "Matheus Moraes",
     tone: "[&_[data-slot=avatar-fallback]]:bg-zinc-100 [&_[data-slot=avatar-fallback]]:text-zinc-700 after:border-zinc-200 dark:[&_[data-slot=avatar-fallback]]:bg-zinc-500/15 dark:[&_[data-slot=avatar-fallback]]:text-zinc-300 dark:after:border-zinc-500/20",
   },
   junaid: {
@@ -96,7 +96,7 @@ export const initialBoard: BoardState = {
       priority: "High",
       dueDate: "jun14",
       progress: 10,
-      owner: taskOwners.arham,
+      owner: taskOwners.matheus,
       team: "Product",
       insights: [
         { label: "Comments", count: 7 },
@@ -160,7 +160,7 @@ export const initialBoard: BoardState = {
       priority: "Low",
       dueDate: "jun21",
       progress: 0,
-      owner: taskOwners.arham,
+      owner: taskOwners.matheus,
       team: "Platform",
       insights: [{ label: "Comments", count: 2 }],
     },
@@ -175,7 +175,7 @@ export const initialBoard: BoardState = {
       priority: "High",
       dueDate: "jun20",
       progress: 25,
-      owner: taskOwners.arham,
+      owner: taskOwners.matheus,
       team: "Platform",
       insights: [
         { label: "Attachments", count: 4 },
@@ -243,7 +243,7 @@ export const initialBoard: BoardState = {
       priority: "High",
       dueDate: "jun26",
       progress: 65,
-      owner: taskOwners.arham,
+      owner: taskOwners.matheus,
       team: "Data",
       insights: [
         { label: "Attachments", count: 5 },
@@ -330,7 +330,7 @@ export const initialBoard: BoardState = {
       priority: "High",
       dueDate: "jun8",
       progress: 100,
-      owner: taskOwners.arham,
+      owner: taskOwners.matheus,
       team: "Backend",
       insights: [
         { label: "Comments", count: 6 },

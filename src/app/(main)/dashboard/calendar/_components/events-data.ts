@@ -25,8 +25,8 @@ export const demoEvents = [
   { title: "Quarterly report due", labelKey: "calendar.eventQuarterlyReportDue", start: d(24), allDay: true },
   { title: "Reset day", labelKey: "calendar.eventResetDay", start: d(28), allDay: true },
   {
-    title: "Arham Khan Birthday",
-    labelKey: "calendar.eventArhamKhanBirthday",
+    title: "Matheus Moraes Birthday",
+    labelKey: "calendar.eventMatheusMoraesBirthday",
     start: new Date(currentYear, 8, 6),
     allDay: true,
   },

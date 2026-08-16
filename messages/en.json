@@ -220,7 +220,7 @@
     "profileValueMar182022": "March 18, 2022",
     "profileValueSep91993": "September 9, 1993",
     "profileValueLeavePolicy": "Contract leave allowance",
-    "profileValueEmergencyContact": "Ammar K. · Brother",
+    "profileValueEmergencyContact": "Ana Paula · Sister",
     "profileValueDocCategoryContract": "Contract",
     "profileValueDocCategoryCompliance": "Compliance",
     "profileValueDocCategoryPolicy": "Policy",
@@ -237,7 +237,7 @@
     "profileValueTeamProduct": "Product",
     "profileValueDepartmentProduct": "Product",
     "profileValueProjectAutonomousBidAgent": "Autonomous Bid Agent",
-    "profileValueBio": "Arham is a software engineer on the product team, building bids and tender management software, including autonomous bid agents that streamline opportunity discovery, requirement analysis, document preparation, compliance checks, pricing, and submission. He focuses on turning complex tender workflows into reliable, easy-to-use products that help teams work faster and make better bidding decisions.",
+    "profileValueBio": "Matheus is a software engineer on the product team, building bids and tender management software, including autonomous bid agents that streamline opportunity discovery, requirement analysis, document preparation, compliance checks, pricing, and submission. He focuses on turning complex tender workflows into reliable, easy-to-use products that help teams work faster and make better bidding decisions.",
     "profileValueDocNameContractorAgreement": "Contractor agreement",
     "profileValueDocNameConfidentialityAgreement": "Confidentiality agreement",
     "profileValueDocNameInfoSecurityPolicy": "Information security policy acknowledgement"
@@ -560,7 +560,7 @@
     "eventOpsHandoff": "Ops handoff",
     "eventQuarterlyReportDue": "Quarterly report due",
     "eventResetDay": "Reset day",
-    "eventArhamKhanBirthday": "Arham Khan Birthday"
+    "eventMatheusMoraesBirthday": "Matheus Moraes Birthday"
   },
   "chat": {
     "contactProfile": "Contact profile",
@@ -1772,7 +1772,11 @@
     "languageDialogTitle": "Language",
     "languageDialogDescription": "Choose your preferred language.",
     "languageDialogWarning": "In development — some translations may contain errors or be incomplete.",
-    "language": "Language"
+    "language": "Language",
+    "accountRole": {
+      "administrator": "Administrator",
+      "admin": "Admin"
+    }
   },
   "auth": {
     "loginV1": {

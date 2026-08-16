@@ -80,7 +80,7 @@ export function AccountSwitcher({
               </Avatar>
               <div className="grid min-w-0 flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">{user.name}</span>
-                <span className="truncate text-xs capitalize">{user.role}</span>
+                <span className="truncate text-xs">{t(`accountRole.${user.role}`)}</span>
               </div>
               <span
                 className={cn(

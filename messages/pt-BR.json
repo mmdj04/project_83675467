@@ -220,7 +220,7 @@
     "profileValueMar182022": "18 de março de 2022",
     "profileValueSep91993": "9 de setembro de 1993",
     "profileValueLeavePolicy": "Adicional de férias contratual",
-    "profileValueEmergencyContact": "Ammar K. · Irmão",
+    "profileValueEmergencyContact": "Ana Paula · Irmã",
     "profileValueDocCategoryContract": "Contrato",
     "profileValueDocCategoryCompliance": "Conformidade",
     "profileValueDocCategoryPolicy": "Política",
@@ -237,7 +237,7 @@
     "profileValueTeamProduct": "Produto",
     "profileValueDepartmentProduct": "Produto",
     "profileValueProjectAutonomousBidAgent": "Agente Autônomo de Licitações",
-    "profileValueBio": "Arham é engenheiro de software no time de produto, desenvolvendo software de gestão de licitações e propostas, incluindo agentes autônomos de licitação que agilizam a descoberta de oportunidades, a análise de requisitos, a preparação de documentos, verificações de conformidade, precificação e submissão. Ele se concentra em transformar fluxos de licitação complexos em produtos confiáveis e fáceis de usar, que ajudam as equipes a trabalhar mais rápido e tomar melhores decisões de licitação.",
+    "profileValueBio": "Matheus é engenheiro de software no time de produto, desenvolvendo software de gestão de licitações e propostas, incluindo agentes autônomos de licitação que agilizam a descoberta de oportunidades, a análise de requisitos, a preparação de documentos, verificações de conformidade, precificação e submissão. Ele se concentra em transformar fluxos de licitação complexos em produtos confiáveis e fáceis de usar, que ajudam as equipes a trabalhar mais rápido e tomar melhores decisões de licitação.",
     "profileValueDocNameContractorAgreement": "Contrato de prestação de serviços",
     "profileValueDocNameConfidentialityAgreement": "Acordo de confidencialidade",
     "profileValueDocNameInfoSecurityPolicy": "Reconhecimento da política de segurança da informação"
@@ -560,7 +560,7 @@
     "eventOpsHandoff": "Repasse de operações",
     "eventQuarterlyReportDue": "Prazo do relatório trimestral",
     "eventResetDay": "Dia de reset",
-    "eventArhamKhanBirthday": "Aniversário do Arham Khan"
+    "eventMatheusMoraesBirthday": "Aniversário do Matheus Moraes"
   },
   "chat": {
     "contactProfile": "Perfil do contato",
@@ -1772,7 +1772,11 @@
     "languageDialogTitle": "Idioma",
     "languageDialogDescription": "Escolha o idioma de preferência.",
     "languageDialogWarning": "Em desenvolvimento — algumas traduções podem conter erros ou estar incompletas.",
-    "language": "Idioma"
+    "language": "Idioma",
+    "accountRole": {
+      "administrator": "Administrador",
+      "admin": "Administrador"
+    }
   },
   "auth": {
     "loginV1": {
