@@ -21,6 +21,7 @@ import { dataTableFeatures } from "@/lib/data-table-features";
 
 import { filters, type UserRow } from "./data";
 import { createUsersColumns, roleLabelKeys, teamLabelKeys } from "./users-columns";
+import { UsersGridView } from "./users-grid-view";
 import { UsersTable } from "./users-table";
 
 const STATUS_LABELS = {
@@ -31,9 +32,12 @@ const STATUS_LABELS = {
   Suspended: "users.statusSuspended",
 } as const;
 
+type UsersView = "list" | "grid";
+
 export function Users({ users }: { users: UserRow[] }) {
   const locale = useLocale();
   const t = useTranslations();
+  const [view, setView] = React.useState<UsersView>("list");
   const [rowSelection, setRowSelection] = React.useState({});
   const [sorting, setSorting] = React.useState<SortingState>([{ id: "joinedDate", desc: true }]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
@@ -207,7 +211,7 @@ export function Users({ users }: { users: UserRow[] }) {
             {t("users.selected", { count: selectedCount })}
           </div>
 
-          <Tabs defaultValue="list">
+          <Tabs value={view} onValueChange={(value) => setView(value as UsersView)}>
             <TabsList>
               <TabsTrigger value="list" aria-label={t("users.listView")}>
                 <Rows3 />
@@ -219,7 +223,11 @@ export function Users({ users }: { users: UserRow[] }) {
           </Tabs>
         </div>
 
-        <UsersTable table={table} />
+        {view === "list" ? (
+          <UsersTable table={table} />
+        ) : (
+          <UsersGridView users={table.getFilteredRowModel().rows.map((row) => row.original)} t={t} />
+        )}
       </CardContent>
     </Card>
   );
