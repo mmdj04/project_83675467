@@ -38,14 +38,14 @@ export async function FoldersSection({ folders }: FoldersSectionProps) {
                     <Folder className="size-4.5" />
                   </div>
                   <div className="flex min-w-0 flex-col gap-1">
-                    <CardTitle className="truncate leading-none">{folder.name}</CardTitle>
+                    <CardTitle className="truncate leading-none">{t(folder.nameKey)}</CardTitle>
                     <CardDescription className="text-xs">{t("fileCount", { count: folder.fileCount })}</CardDescription>
                   </div>
                 </div>
                 <CardAction>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="icon-sm" aria-label={t("actionsFor", { name: folder.name })}>
+                      <Button variant="ghost" size="icon-sm" aria-label={t("actionsFor", { name: t(folder.nameKey) })}>
                         <MoreVertical />
                       </Button>
                     </DropdownMenuTrigger>

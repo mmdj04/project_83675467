@@ -57,7 +57,7 @@ export async function ProjectEnvironments({ group }: { group: InfrastructureGrou
             <ChevronDown className="group-data-[state=open]:rotate-180" />
             <div className="flex min-w-0 items-baseline gap-1.5 text-left">
               <span className="shrink-0 font-medium leading-none">{group.organization}</span>
-              <span className="min-w-0 truncate text-muted-foreground text-sm">({group.name})</span>
+              <span className="min-w-0 truncate text-muted-foreground text-sm">({t(group.nameKey)})</span>
             </div>
           </Button>
         </CollapsibleTrigger>

@@ -26,7 +26,7 @@ export function FileActions({ file, onToggleStar }: FileActionsProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon-sm" aria-label={t("actionsFor", { name: file.name })}>
+        <Button variant="ghost" size="icon-sm" aria-label={t("actionsFor", { name: t(file.nameKey) })}>
           <MoreVertical />
         </Button>
       </DropdownMenuTrigger>

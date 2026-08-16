@@ -61,9 +61,9 @@ export async function TaskReminders() {
                   </div>
                   <div className="min-w-0">
                     <div className="truncate font-medium text-primary-foreground text-xs leading-none">
-                      Product demo with Tim
+                      {t("meetingTitle")}
                     </div>
-                    <div className="truncate text-[10px] text-primary-foreground/75">Weblabs Studio</div>
+                    <div className="truncate text-[10px] text-primary-foreground/75">{t("meetingCompany")}</div>
                   </div>
                 </div>
               </div>

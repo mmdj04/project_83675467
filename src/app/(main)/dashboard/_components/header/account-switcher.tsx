@@ -8,6 +8,7 @@ import { BadgeCheck, Bell, Check, CreditCard, Globe, LogOut } from "lucide-react
 import { useLocale, useTranslations } from "next-intl";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
   DialogContent,
@@ -111,6 +112,9 @@ export function AccountSwitcher({
               <DropdownMenuItem onSelect={(event) => event.preventDefault()}>
                 <Globe />
                 {t("language")}
+                <Badge className="ml-auto border-green-600 text-green-600" variant="outline">
+                  {t("badgeNew")}
+                </Badge>
               </DropdownMenuItem>
             </DialogTrigger>
             <DialogContent className="sm:max-w-xs">
@@ -126,7 +130,14 @@ export function AccountSwitcher({
                     onClick={() => setLocale(option.code)}
                   >
                     {option.label}
-                    {locale === option.code && <Check className="size-4" />}
+                    <span className="flex items-center gap-2">
+                      {option.code === "pt-BR" && (
+                        <Badge className="border-green-600 text-green-600" variant="outline">
+                          {t("badgeNew")}
+                        </Badge>
+                      )}
+                      {locale === option.code && <Check className="size-4" />}
+                    </span>
                   </DropdownMenuItem>
                 ))}
               </div>

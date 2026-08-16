@@ -96,6 +96,7 @@ export type HandlingTag = {
 
 export type ShipmentHandling = {
   labelKey: string;
+  noteKey: string;
   note: string;
   tags: HandlingTag[];
 };
@@ -106,6 +107,7 @@ export type Shipment = {
   origin: ShipmentLocation;
   destination: ShipmentLocation;
   cargo: string;
+  cargoKey: string;
   handling: ShipmentHandling;
   weight: string;
   eta: string;
@@ -220,9 +222,11 @@ export const shipments: Shipment[] = [
       countryCode: "SG",
       coordinates: [103.9949824, 1.3510921],
     },
+    cargoKey: "cargoConsumerElectronics",
     cargo: "Consumer Electronics",
     handling: {
       labelKey: "handlingFragileElectronics",
+      noteKey: "notePackageSealedHandoff",
       note: "Keep package sealed until handoff.",
       tags: [
         { labelKey: "tagDoNotStack", icon: Ban },
@@ -254,9 +258,11 @@ export const shipments: Shipment[] = [
       countryCode: "ID",
       coordinates: [110.4229104, -6.9903988],
     },
+    cargoKey: "cargoIndustrialMachinery",
     cargo: "Industrial Machinery",
     handling: {
       labelKey: "handlingHeavyMachinery",
+      noteKey: "noteSecureMachineryPallet",
       note: "Secure machinery to pallet base before road dispatch.",
       tags: [
         { labelKey: "tagForkliftOnly", icon: Forklift },
@@ -288,9 +294,11 @@ export const shipments: Shipment[] = [
       countryCode: "SG",
       coordinates: [103.7566, 1.2788],
     },
+    cargoKey: "cargoFrozenSeafood",
     cargo: "Frozen Seafood",
     handling: {
       labelKey: "handlingTemperatureControlled",
+      noteKey: "noteFrozenChain",
       note: "Maintain frozen chain at or below -18°C until port handoff.",
       tags: [
         { labelKey: "tagTemperatureLog", icon: Thermometer },
@@ -322,9 +330,11 @@ export const shipments: Shipment[] = [
       countryCode: "TH",
       coordinates: [100.7485803, 13.6818767],
     },
+    cargoKey: "cargoPharmaceuticalKits",
     cargo: "Pharmaceutical Kits",
     handling: {
       labelKey: "handlingTemperatureControlled",
+      noteKey: "noteControlledTemp",
       note: "Maintain controlled temperature and verify hold clearance before release.",
       tags: [
         { labelKey: "tagTemperatureLog", icon: Thermometer },
@@ -356,9 +366,11 @@ export const shipments: Shipment[] = [
       countryCode: "ID",
       coordinates: [110.3672845, -7.7953473],
     },
+    cargoKey: "cargoTextiles",
     cargo: "Textiles",
     handling: {
       labelKey: "handlingStandardFreight",
+      noteKey: "noteCartonsDrySunlight",
       note: "Keep cartons dry and away from direct sunlight.",
       tags: [
         { labelKey: "tagKeepDry", icon: Droplets },
@@ -390,9 +402,11 @@ export const shipments: Shipment[] = [
       countryCode: "TH",
       coordinates: [100.8994177, 13.0734119],
     },
+    cargoKey: "cargoConstructionMaterials",
     cargo: "Construction Materials",
     handling: {
       labelKey: "handlingHeavyBulkCargo",
+      noteKey: "noteHeavyLiftEquipment",
       note: "Load with heavy-lift equipment and secure against shifting.",
       tags: [
         { labelKey: "tagHeavyLift", icon: Forklift },
@@ -424,9 +438,11 @@ export const shipments: Shipment[] = [
       countryCode: "PH",
       coordinates: [121.0219223, 14.5122467],
     },
+    cargoKey: "cargoMedicalDevices",
     cargo: "Medical Devices",
     handling: {
       labelKey: "handlingSensitiveMedicalEquipment",
+      noteKey: "noteMedicalDevicesSealed",
       note: "Keep medical devices sealed until customs inspection is complete.",
       tags: [
         { labelKey: "tagSealIntact", icon: ShieldCheck },
@@ -458,9 +474,11 @@ export const shipments: Shipment[] = [
       countryCode: "ID",
       coordinates: [107.6070833, -6.9218457],
     },
+    cargoKey: "cargoRetailApparel",
     cargo: "Retail Apparel",
     handling: {
       labelKey: "handlingStandardFreight",
+      noteKey: "noteCartonsDryCallReceiver",
       note: "Keep cartons dry and call receiver before final delivery.",
       tags: [
         { labelKey: "tagKeepDry", icon: Droplets },
@@ -492,9 +510,11 @@ export const shipments: Shipment[] = [
       countryCode: "KR",
       coordinates: [129.0492086, 35.1177052],
     },
+    cargoKey: "cargoAutoParts",
     cargo: "Auto Parts",
     handling: {
       labelKey: "handlingIndustrialParts",
+      noteKey: "noteSecurePalletsMoisture",
       note: "Secure pallets and protect machined surfaces from moisture.",
       tags: [
         { labelKey: "tagSecureLoad", icon: ShieldCheck },
@@ -526,9 +546,11 @@ export const shipments: Shipment[] = [
       countryCode: "KR",
       coordinates: [126.4417093, 37.4634593],
     },
+    cargoKey: "cargoSemiconductorWafers",
     cargo: "Semiconductor Wafers",
     handling: {
       labelKey: "handlingHighValueFragileCargo",
+      noteKey: "noteWafersSealed",
       note: "Keep wafers sealed in shock-protected packaging until signed handoff.",
       tags: [
         { labelKey: "tagDoNotStack", icon: Ban },
@@ -560,9 +582,11 @@ export const shipments: Shipment[] = [
       countryCode: "MY",
       coordinates: [100.3287352, 5.4141619],
     },
+    cargoKey: "cargoFoodIngredients",
     cargo: "Food Ingredients",
     handling: {
       labelKey: "handlingFoodGrade",
+      noteKey: "noteFoodGradeSeals",
       note: "Keep food-grade seals intact and avoid cross-contamination.",
       tags: [
         { labelKey: "tagFoodGrade", icon: PackageCheck },
@@ -594,9 +618,11 @@ export const shipments: Shipment[] = [
       countryCode: "PH",
       coordinates: [125.6627111, 7.1265272],
     },
+    cargoKey: "cargoAgriculturalProduce",
     cargo: "Agricultural Produce",
     handling: {
       labelKey: "handlingPerishableGoods",
+      noteKey: "noteVentilationProduce",
       note: "Prioritize ventilation and inspect produce condition at port handoff.",
       tags: [
         { labelKey: "tagPerishable", icon: Thermometer },
@@ -628,9 +654,11 @@ export const shipments: Shipment[] = [
       countryCode: "ID",
       coordinates: [115.1673704, -8.746515],
     },
+    cargoKey: "cargoLuxuryRetailGoods",
     cargo: "Luxury Retail Goods",
     handling: {
       labelKey: "handlingHighValueCargo",
+      noteKey: "noteCartonsSealedAuthorized",
       note: "Keep cartons sealed; release only to authorized receiving contact.",
       tags: [
         { labelKey: "tagHighValue", icon: Star },
@@ -662,9 +690,11 @@ export const shipments: Shipment[] = [
       countryCode: "ID",
       coordinates: [106.8805674, -6.1045642],
     },
+    cargoKey: "cargoPaperRolls",
     cargo: "Paper Rolls",
     handling: {
       labelKey: "handlingMoistureSensitiveCargo",
+      noteKey: "noteRollsDryEdgeImpact",
       note: "Keep rolls dry and avoid edge impact during unloading.",
       tags: [
         { labelKey: "tagKeepDry", icon: Droplets },
@@ -696,9 +726,11 @@ export const shipments: Shipment[] = [
       countryCode: "ID",
       coordinates: [101.4515727, 0.5262455],
     },
+    cargoKey: "cargoBeverageStock",
     cargo: "Beverage Stock",
     handling: {
       labelKey: "handlingStandardPalletizedFreight",
+      noteKey: "notePalletsUpright",
       note: "Keep pallets upright and prevent carton crush during road transfer.",
       tags: [
         { labelKey: "tagKeepUpright", icon: ArrowUp },
@@ -730,9 +762,11 @@ export const shipments: Shipment[] = [
       countryCode: "IN",
       coordinates: [77.0847985, 28.5553942],
     },
+    cargoKey: "cargoAutoComponents",
     cargo: "Auto Components",
     handling: {
       labelKey: "handlingIndustrialParts",
+      noteKey: "noteSecureCratesStraps",
       note: "Secure crates and inspect pallet straps before final handoff.",
       tags: [
         { labelKey: "tagSecureLoad", icon: ShieldCheck },
@@ -764,9 +798,11 @@ export const shipments: Shipment[] = [
       countryCode: "DE",
       coordinates: [9.9118353, 53.5279971],
     },
+    cargoKey: "cargoPackagingMaterials",
     cargo: "Packaging Materials",
     handling: {
       labelKey: "handlingStandardFreight",
+      noteKey: "notePalletsDryCount",
       note: "Keep pallets dry and verify pallet count at discharge.",
       tags: [
         { labelKey: "tagKeepDry", icon: Droplets },
@@ -798,9 +834,11 @@ export const shipments: Shipment[] = [
       countryCode: "VN",
       coordinates: [108.212, 16.068],
     },
+    cargoKey: "cargoHouseholdAppliances",
     cargo: "Household Appliances",
     handling: {
       labelKey: "handlingFragileBulkyGoods",
+      noteKey: "noteTwoPersonHandling",
       note: "Use two-person handling and keep appliances upright until delivery.",
       tags: [
         { labelKey: "tagKeepUpright", icon: ArrowUp },
@@ -832,9 +870,11 @@ export const shipments: Shipment[] = [
       countryCode: "SA",
       coordinates: [39.1634852, 21.6839754],
     },
+    cargoKey: "cargoTemperatureControlled",
     cargo: "Temperature Controlled Goods",
     handling: {
       labelKey: "handlingTemperatureControlled",
+      noteKey: "noteTempRangeEscalate",
       note: "Maintain temperature range and escalate delay exceptions immediately.",
       tags: [
         { labelKey: "tagTemperatureLog", icon: Thermometer },
@@ -866,9 +906,11 @@ export const shipments: Shipment[] = [
       countryCode: "LK",
       coordinates: [79.8564409, 6.9646289],
     },
+    cargoKey: "cargoSteelCoils",
     cargo: "Steel Coils",
     handling: {
       labelKey: "handlingHeavyBulkCargo",
+      noteKey: "noteCoilCradles",
       note: "Use coil cradles and confirm lashings before release.",
       tags: [
         { labelKey: "tagHeavyLift", icon: Forklift },
@@ -900,9 +942,11 @@ export const shipments: Shipment[] = [
       countryCode: "TH",
       coordinates: [100.4935089, 13.7524938],
     },
+    cargoKey: "cargoFurniture",
     cargo: "Furniture",
     handling: {
       labelKey: "handlingFragileBulkyGoods",
+      noteKey: "noteBlanketWrap",
       note: "Use blanket wrap and avoid stacking on finished surfaces.",
       tags: [
         { labelKey: "tagDoNotStack", icon: Ban },
@@ -934,9 +978,11 @@ export const shipments: Shipment[] = [
       countryCode: "TW",
       coordinates: [121.2345977, 25.0793174],
     },
+    cargoKey: "cargoPrecisionTools",
     cargo: "Precision Tools",
     handling: {
       labelKey: "handlingHighValuePrecisionCargo",
+      noteKey: "noteLockedCaseSealed",
       note: "Keep locked case sealed pending security clearance.",
       tags: [
         { labelKey: "tagSecurityHold", icon: ShieldCheck },
@@ -968,9 +1014,11 @@ export const shipments: Shipment[] = [
       countryCode: "MY",
       coordinates: [101.3913589, 2.9996963],
     },
+    cargoKey: "cargoChemicals",
     cargo: "Chemicals",
     handling: {
       labelKey: "handlingHazardousMaterialsReview",
+      noteKey: "noteHazardousMaterials",
       note: "Hold pending hazardous materials review and port clearance.",
       tags: [
         { labelKey: "tagHazmatReview", icon: Flame },
@@ -1002,9 +1050,11 @@ export const shipments: Shipment[] = [
       countryCode: "ID",
       coordinates: [106.827168, -6.1754049],
     },
+    cargoKey: "cargoFreshProduce",
     cargo: "Fresh Produce",
     handling: {
       labelKey: "handlingPerishableGoods",
+      noteKey: "noteSameDayHandoffProduce",
       note: "Prioritize same-day handoff and keep produce ventilated.",
       tags: [
         { labelKey: "tagPerishable", icon: Thermometer },

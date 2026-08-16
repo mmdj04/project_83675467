@@ -129,6 +129,14 @@ export function TransactionsOverviewCard() {
                     ...item,
                     value: typeof item.value === "number" ? formatTooltipCurrency(item.value) : item.value,
                   }))}
+                  formatter={(value, name) => (
+                    <>
+                      <span className="text-muted-foreground">
+                        {name === "expense" ? t("chartExpense") : t("chartIncome")}
+                      </span>{" "}
+                      <span className="font-medium font-mono text-foreground tabular-nums">{String(value)}</span>
+                    </>
+                  )}
                 />
               )}
             />

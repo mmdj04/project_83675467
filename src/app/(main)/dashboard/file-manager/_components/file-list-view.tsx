@@ -49,7 +49,7 @@ export function FileListView({ files }: FileListViewProps) {
                 <div className="flex min-w-0 items-center gap-3">
                   <FileIcon className="size-5 shrink-0 text-muted-foreground" />
                   <Button variant="link" size="sm" className="h-auto max-w-72 justify-start px-0">
-                    <span className="truncate">{file.name}</span>
+                    <span className="truncate">{t(file.nameKey)}</span>
                   </Button>
                   {file.shared && (
                     <Badge variant="outline" className="hidden xl:inline-flex">
@@ -76,7 +76,9 @@ export function FileListView({ files }: FileListViewProps) {
                     variant="ghost"
                     size="icon-sm"
                     aria-label={
-                      file.starred ? t("unstarAria", { name: file.name }) : t("starAria", { name: file.name })
+                      file.starred
+                        ? t("unstarAria", { name: t(file.nameKey) })
+                        : t("starAria", { name: t(file.nameKey) })
                     }
                     onClick={() => toggleStar(file.id)}
                   >

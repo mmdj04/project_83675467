@@ -34,6 +34,7 @@ export const statusLabelKeys: Record<InfrastructureEnvironment["status"], string
 
 export interface InfrastructureGroup {
   name: string;
+  nameKey: string;
   organization: string;
   rows: InfrastructureEnvironment[];
 }
@@ -41,6 +42,7 @@ export interface InfrastructureGroup {
 export const infrastructureGroups: InfrastructureGroup[] = [
   {
     name: "Admin Console",
+    nameKey: "groupAdminConsole",
     organization: "Weblabs Studio",
     rows: [
       {
@@ -62,6 +64,7 @@ export const infrastructureGroups: InfrastructureGroup[] = [
   },
   {
     name: "Analytics",
+    nameKey: "groupAnalytics",
     organization: "Aiy Cap",
     rows: [
       {
@@ -98,6 +101,7 @@ export const infrastructureGroups: InfrastructureGroup[] = [
   },
   {
     name: "Kanban",
+    nameKey: "groupKanban",
     organization: "Storeframe",
     rows: [
       {
@@ -119,6 +123,7 @@ export const infrastructureGroups: InfrastructureGroup[] = [
   },
   {
     name: "Inbox",
+    nameKey: "groupInbox",
     organization: "Acme Corp",
     rows: [],
   },

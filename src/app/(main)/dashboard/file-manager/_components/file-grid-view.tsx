@@ -41,7 +41,9 @@ export function FileGridView({ files }: FileGridViewProps) {
                     "absolute top-2 right-2 opacity-0 focus-visible:opacity-100 group-hover/file:opacity-100",
                     file.starred && "opacity-100",
                   )}
-                  aria-label={file.starred ? t("unstarAria", { name: file.name }) : t("starAria", { name: file.name })}
+                  aria-label={
+                    file.starred ? t("unstarAria", { name: t(file.nameKey) }) : t("starAria", { name: t(file.nameKey) })
+                  }
                   onClick={() => toggleStar(file.id)}
                 >
                   <Star className={cn(file.starred && "fill-current")} />
@@ -53,7 +55,7 @@ export function FileGridView({ files }: FileGridViewProps) {
               </div>
             </CardContent>
             <CardHeader>
-              <CardTitle className="truncate">{file.name}</CardTitle>
+              <CardTitle className="truncate">{t(file.nameKey)}</CardTitle>
               <CardDescription className="truncate">
                 {t("modifiedBy", { time: t(modifiedAtLabelKeys[file.modifiedAt]), owner: file.owner })}
               </CardDescription>

@@ -159,7 +159,7 @@ function ShipmentOverview({ shipment }: { shipment: Shipment }) {
         <div className="grid grid-cols-2 gap-x-4 gap-y-5 md:grid-cols-[1.35fr_1fr_1.1fr_1.15fr_1fr]">
           <div className="col-span-2 flex flex-col gap-1 md:col-span-1 md:gap-2">
             <div className="text-muted-foreground text-xs leading-none md:invisible md:text-sm">{t("cargo")}</div>
-            <div className="whitespace-nowrap text-sm leading-none">{shipment.cargo}</div>
+            <div className="whitespace-nowrap text-sm leading-none">{t(shipment.cargoKey)}</div>
           </div>
 
           <div className="flex flex-col gap-2">
@@ -193,7 +193,7 @@ function ShipmentOverview({ shipment }: { shipment: Shipment }) {
         <AlertTitle>{t(shipment.handling.labelKey)}</AlertTitle>
         <AlertDescription className="space-y-2">
           <div className="border-amber-900 text-amber-900 leading-none dark:border-amber-50 dark:text-amber-50">
-            {shipment.handling.note}
+            {t(shipment.handling.noteKey)}
           </div>
 
           <Separator className="bg-amber-800 dark:bg-amber-50" />

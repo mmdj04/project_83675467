@@ -115,7 +115,7 @@ function ShipmentCard({ shipment, active, onSelectShipment }: ShipmentCardProps)
       <div className="flex items-center justify-between">
         <div>
           <div className="text-muted-foreground text-xs leading-none">{t("cargo")}</div>
-          <div className="truncate text-sm tracking-tight">{shipment.cargo}</div>
+          <div className="truncate text-sm tracking-tight">{t(shipment.cargoKey)}</div>
         </div>
         <div className="text-right">
           <div className="text-muted-foreground text-xs leading-none">{t("eta")}</div>

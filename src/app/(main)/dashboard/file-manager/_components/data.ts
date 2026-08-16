@@ -45,6 +45,7 @@ export const modifiedAtLabelKeys: Record<string, string> = {
 export interface FileManagerFolder {
   id: string;
   name: string;
+  nameKey: string;
   fileCount: number;
   size: string;
   updatedAt: string;
@@ -53,6 +54,7 @@ export interface FileManagerFolder {
 export interface FileManagerFile {
   id: string;
   name: string;
+  nameKey: string;
   kind: FileKind;
   size: string;
   owner: string;
@@ -65,6 +67,7 @@ export interface FileManagerFile {
 export const folders: FileManagerFolder[] = [
   {
     id: "brand-assets",
+    nameKey: "nameBrandAssets",
     name: "Brand assets",
     fileCount: 24,
     size: "1.8 GB",
@@ -72,6 +75,7 @@ export const folders: FileManagerFolder[] = [
   },
   {
     id: "product-design",
+    nameKey: "nameProductDesign",
     name: "Product design",
     fileCount: 38,
     size: "4.6 GB",
@@ -79,6 +83,7 @@ export const folders: FileManagerFolder[] = [
   },
   {
     id: "legal-documents",
+    nameKey: "nameLegalDocuments",
     name: "Legal documents",
     fileCount: 16,
     size: "840 MB",
@@ -86,6 +91,7 @@ export const folders: FileManagerFolder[] = [
   },
   {
     id: "research",
+    nameKey: "nameResearch",
     name: "Research",
     fileCount: 11,
     size: "620 MB",
@@ -93,6 +99,7 @@ export const folders: FileManagerFolder[] = [
   },
   {
     id: "marketing",
+    nameKey: "nameMarketing",
     name: "Marketing",
     fileCount: 29,
     size: "2.3 GB",
@@ -100,6 +107,7 @@ export const folders: FileManagerFolder[] = [
   },
   {
     id: "team-resources",
+    nameKey: "nameTeamResources",
     name: "Team resources",
     fileCount: 18,
     size: "1.2 GB",
@@ -110,6 +118,7 @@ export const folders: FileManagerFolder[] = [
 export const files: FileManagerFile[] = [
   {
     id: "product-roadmap",
+    nameKey: "nameProductRoadmap2027",
     name: "Product roadmap 2027.pdf",
     kind: "pdf",
     size: "8.4 MB",
@@ -121,6 +130,7 @@ export const files: FileManagerFile[] = [
   },
   {
     id: "design-system",
+    nameKey: "nameDesignSystemFoundations",
     name: "Design system foundations.fig",
     kind: "design",
     size: "24.1 MB",
@@ -132,6 +142,7 @@ export const files: FileManagerFile[] = [
   },
   {
     id: "campaign-performance",
+    nameKey: "nameCampaignPerformance",
     name: "Campaign performance.xlsx",
     kind: "spreadsheet",
     size: "2.7 MB",
@@ -143,6 +154,7 @@ export const files: FileManagerFile[] = [
   },
   {
     id: "research-notes",
+    nameKey: "nameCustomerResearchNotes",
     name: "Customer research notes.docx",
     kind: "document",
     size: "1.2 MB",
@@ -154,6 +166,7 @@ export const files: FileManagerFile[] = [
   },
   {
     id: "release-assets",
+    nameKey: "nameReleaseAssets",
     name: "Release assets.zip",
     kind: "archive",
     size: "186 MB",
@@ -165,6 +178,7 @@ export const files: FileManagerFile[] = [
   },
   {
     id: "handoff-checklist",
+    nameKey: "nameHandoffChecklist",
     name: "Handoff checklist.pdf",
     kind: "pdf",
     size: "940 KB",
@@ -176,6 +190,7 @@ export const files: FileManagerFile[] = [
   },
   {
     id: "quarterly-budget",
+    nameKey: "nameQuarterlyBudgetForecast",
     name: "Quarterly budget forecast.xlsx",
     kind: "spreadsheet",
     size: "3.8 MB",
@@ -187,6 +202,7 @@ export const files: FileManagerFile[] = [
   },
   {
     id: "mobile-app-prototype",
+    nameKey: "nameMobileAppPrototype",
     name: "Mobile app prototype.fig",
     kind: "design",
     size: "18.6 MB",
@@ -198,6 +214,7 @@ export const files: FileManagerFile[] = [
   },
   {
     id: "partnership-agreement",
+    nameKey: "namePartnershipAgreement",
     name: "Partnership agreement.docx",
     kind: "document",
     size: "620 KB",
@@ -209,6 +226,7 @@ export const files: FileManagerFile[] = [
   },
   {
     id: "product-launch-brief",
+    nameKey: "nameProductLaunchBrief",
     name: "Product launch brief.pdf",
     kind: "pdf",
     size: "4.2 MB",
@@ -220,6 +238,7 @@ export const files: FileManagerFile[] = [
   },
   {
     id: "brand-exports",
+    nameKey: "nameBrandExports",
     name: "Brand exports.zip",
     kind: "archive",
     size: "72 MB",
