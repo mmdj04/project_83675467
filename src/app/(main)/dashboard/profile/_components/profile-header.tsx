@@ -52,7 +52,7 @@ export async function ProfileHeader({ profile }: ProfileHeaderProps) {
               {profile.name}
             </h1>
             <p className="truncate text-muted-foreground text-sm leading-5">
-              {profile.workEmail} · {profile.jobTitle}
+              {profile.workEmail} · {t(profileValueLabelKeys[profile.jobTitle])}
             </p>
           </div>
           <div className="flex flex-wrap gap-2">

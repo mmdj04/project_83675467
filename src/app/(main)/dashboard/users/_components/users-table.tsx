@@ -117,6 +117,7 @@ export function UsersTable({ table }: { table: ReactTable<DataTableFeatures, Use
               <PaginationPrevious
                 href="#"
                 text=""
+                aria-label={t("users.previousPage")}
                 className={!table.getCanPreviousPage() ? "pointer-events-none opacity-50" : undefined}
                 onClick={(event) => {
                   preventPaginationNavigation(event);
@@ -152,6 +153,7 @@ export function UsersTable({ table }: { table: ReactTable<DataTableFeatures, Use
               <PaginationNext
                 href="#"
                 text=""
+                aria-label={t("users.nextPage")}
                 className={!table.getCanNextPage() ? "pointer-events-none opacity-50" : undefined}
                 onClick={(event) => {
                   preventPaginationNavigation(event);

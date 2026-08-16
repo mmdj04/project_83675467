@@ -9,7 +9,7 @@ import {
   useTable,
 } from "@tanstack/react-table";
 import { Cog, Download, Grid, Plus, Rows3, Search, SlidersHorizontal } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,7 +20,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { dataTableFeatures } from "@/lib/data-table-features";
 
 import { filters, type UserRow } from "./data";
-import { createUsersColumns } from "./users-columns";
+import { createUsersColumns, roleLabelKeys, teamLabelKeys } from "./users-columns";
 import { UsersTable } from "./users-table";
 
 const STATUS_LABELS = {
@@ -32,6 +32,7 @@ const STATUS_LABELS = {
 } as const;
 
 export function Users({ users }: { users: UserRow[] }) {
+  const locale = useLocale();
   const t = useTranslations();
   const [rowSelection, setRowSelection] = React.useState({});
   const [sorting, setSorting] = React.useState<SortingState>([{ id: "joinedDate", desc: true }]);
@@ -48,7 +49,7 @@ export function Users({ users }: { users: UserRow[] }) {
   const table = useTable({
     features: dataTableFeatures,
     data: users,
-    columns: React.useMemo(() => createUsersColumns(t), [t]),
+    columns: React.useMemo(() => createUsersColumns(t, locale), [t, locale]),
     state: {
       rowSelection,
       sorting,
@@ -81,6 +82,14 @@ export function Users({ users }: { users: UserRow[] }) {
 
   function statusLabel(option: string) {
     return option === "All" ? t("users.all") : t(STATUS_LABELS[option as keyof typeof STATUS_LABELS]);
+  }
+
+  function roleLabel(option: string) {
+    return option === "All" ? t("users.all") : t(roleLabelKeys[option]);
+  }
+
+  function teamLabel(option: string) {
+    return option === "All" ? t("users.all") : t(teamLabelKeys[option]);
   }
 
   function optionLabel(option: string) {
@@ -136,7 +145,7 @@ export function Users({ users }: { users: UserRow[] }) {
                 <SelectGroup>
                   {filters.role.map((option) => (
                     <SelectItem key={option} value={option}>
-                      {optionLabel(option)}
+                      {roleLabel(option)}
                     </SelectItem>
                   ))}
                 </SelectGroup>
@@ -152,7 +161,7 @@ export function Users({ users }: { users: UserRow[] }) {
                 <SelectGroup>
                   {filters.team.map((option) => (
                     <SelectItem key={option} value={option}>
-                      {optionLabel(option)}
+                      {teamLabel(option)}
                     </SelectItem>
                   ))}
                 </SelectGroup>

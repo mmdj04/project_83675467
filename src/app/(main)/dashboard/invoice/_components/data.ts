@@ -1,4 +1,7 @@
 import { addDays, format } from "date-fns";
+import type { useTranslations } from "next-intl";
+
+type InvoiceTranslator = ReturnType<typeof useTranslations<"invoice">>;
 
 export interface InvoiceLineItem {
   id: string;
@@ -52,54 +55,58 @@ export interface InvoiceFormValues {
   items: InvoiceLineItem[];
 }
 
-const today = new Date();
-
-export const defaultInvoiceValues: InvoiceFormValues = {
-  referenceNumber: "FL-0425",
-  issuedDate: format(today, "yyyy-MM-dd"),
-  paymentDueDate: format(addDays(today, 14), "yyyy-MM-dd"),
-  from: {
-    name: "Weblabs Studio",
-    email: "hello@weblabs.studio",
-    phone: "+1-512-555-0184",
-    website: "weblabs.studio",
-    addressLines: ["214 Pixel Avenue", "Austin, TX 78701"],
-    taxId: "WS-1029384756",
-    paymentAccountName: "Mercury Business",
-    routingNumber: "084009519",
-    issuerName: "Arham Khan",
-  },
-  to: {
-    id: "aiy-cap",
-    name: "AIY Cap",
-    email: "finance@aiycap.com",
-    addressLines: ["One BKC, Bandra Kurla Complex", "Mumbai, Maharashtra 400051"],
-    taxId: "GSTIN-27AAICA9102K1Z7",
-  },
-  taxId: "vat",
-  discountType: "fixed",
-  discountValue: 40,
-  items: [
-    {
-      id: "hosting",
-      description: "Cloud hosting services",
-      quantity: 1,
-      unitPrice: 3500,
-    },
-    {
-      id: "analytics",
-      description: "Data analytics report",
-      quantity: 2,
-      unitPrice: 750,
-    },
-    {
-      id: "support",
-      description: "Technical support retainer",
-      quantity: 1,
-      unitPrice: 400,
-    },
-  ],
+const aiyCap: InvoiceToDetails = {
+  id: "aiy-cap",
+  name: "AIY Cap",
+  email: "finance@aiycap.com",
+  addressLines: ["One BKC, Bandra Kurla Complex", "Mumbai, Maharashtra 400051"],
+  taxId: "GSTIN-27AAICA9102K1Z7",
 };
+
+export function getDefaultInvoiceValues(t: InvoiceTranslator): InvoiceFormValues {
+  const today = new Date();
+
+  return {
+    referenceNumber: "FL-0425",
+    issuedDate: format(today, "yyyy-MM-dd"),
+    paymentDueDate: format(addDays(today, 14), "yyyy-MM-dd"),
+    from: {
+      name: "Weblabs Studio",
+      email: "hello@weblabs.studio",
+      phone: "+1-512-555-0184",
+      website: "weblabs.studio",
+      addressLines: ["214 Pixel Avenue", "Austin, TX 78701"],
+      taxId: "WS-1029384756",
+      paymentAccountName: "Mercury Business",
+      routingNumber: "084009519",
+      issuerName: "Arham Khan",
+    },
+    to: aiyCap,
+    taxId: "vat",
+    discountType: "fixed",
+    discountValue: 40,
+    items: [
+      {
+        id: "hosting",
+        description: t("itemCloudHosting"),
+        quantity: 1,
+        unitPrice: 3500,
+      },
+      {
+        id: "analytics",
+        description: t("itemDataAnalytics"),
+        quantity: 2,
+        unitPrice: 750,
+      },
+      {
+        id: "support",
+        description: t("itemSupportRetainer"),
+        quantity: 1,
+        unitPrice: 400,
+      },
+    ],
+  };
+}
 
 export const invoiceTaxOptions: InvoiceTaxOption[] = [
   {
@@ -136,7 +143,7 @@ export const invoiceClients: InvoiceToDetails[] = [
     addressLines: ["450 Park Avenue South", "New York, NY 10016", "United States"],
     taxId: "US-EIN-84-2938475",
   },
-  defaultInvoiceValues.to,
+  aiyCap,
   {
     id: "northline-gmbh",
     name: "Northline GmbH",

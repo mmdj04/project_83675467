@@ -116,6 +116,7 @@ export function RolesTable({ table }: { table: ReactTable<DataTableFeatures, Rol
                   size="sm"
                   href="#"
                   text=""
+                  aria-label={t("roles.previousPage")}
                   className={!table.getCanPreviousPage() ? "pointer-events-none opacity-50" : ""}
                   onClick={(e) => {
                     e.preventDefault();
@@ -140,6 +141,7 @@ export function RolesTable({ table }: { table: ReactTable<DataTableFeatures, Rol
                   size="sm"
                   href="#"
                   text=""
+                  aria-label={t("roles.nextPage")}
                   className={!table.getCanNextPage() ? "pointer-events-none opacity-50" : ""}
                   onClick={(e) => {
                     e.preventDefault();

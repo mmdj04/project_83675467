@@ -15,7 +15,10 @@ export interface ProfileDocument {
 
 export const profileValueLabelKeys: Record<string, string> = {
   active: "profile.profileValueEngagementActive",
+  Active: "profile.profileValueEngagementActive",
   senior: "profile.profileValueJobLevelSenior",
+  jobTitleSoftwareEngineer: "profile.profileValueJobTitleSoftwareEngineer",
+  headOfProduct: "profile.profileValueManagerRoleHeadOfProduct",
   contractor: "profile.profileValueEmploymentContractor",
   remote: "profile.profileValueWorkplaceRemote",
   heHim: "profile.profileValuePronounsHeHim",
@@ -100,7 +103,7 @@ export const profile: ProfileRecord = {
   initials: "AK",
   avatar: "https://avatars.githubusercontent.com/u/43849669",
   engagementStatus: "Active",
-  jobTitle: "Software Engineer",
+  jobTitle: "jobTitleSoftwareEngineer",
   jobLevel: "senior",
   department: "Product",
   team: "Product",
@@ -124,7 +127,7 @@ export const profile: ProfileRecord = {
   emergencyPhone: "+1 (510) 555-0177",
   manager: {
     name: "Pravi K.",
-    role: "Head of Product",
+    role: "headOfProduct",
     initials: "PK",
   },
   bio: "Arham is a software engineer on the product team, building bids and tender management software, including autonomous bid agents that streamline opportunity discovery, requirement analysis, document preparation, compliance checks, pricing, and submission. He focuses on turning complex tender workflows into reliable, easy-to-use products that help teams work faster and make better bidding decisions.",

@@ -1,14 +1,16 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { FormProvider, useForm, useWatch } from "react-hook-form";
 
-import { defaultInvoiceValues, type InvoiceFormValues } from "./data";
+import { getDefaultInvoiceValues, type InvoiceFormValues } from "./data";
 import { InvoiceForm } from "./invoice-form";
 import { InvoicePreview } from "./invoice-preview";
 
 export function Invoice() {
+  const t = useTranslations("invoice");
   const form = useForm<InvoiceFormValues>({
-    defaultValues: defaultInvoiceValues,
+    defaultValues: getDefaultInvoiceValues(t),
   });
   const invoice = useWatch({ control: form.control }) as InvoiceFormValues;
 

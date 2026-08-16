@@ -87,7 +87,7 @@ export async function ProfileOverview({ profile }: ProfileOverviewProps) {
           </Avatar>
           <div>
             <p className="font-medium text-sm">{profile.manager.name}</p>
-            <p className="text-muted-foreground text-xs">{profile.manager.role}</p>
+            <p className="text-muted-foreground text-xs">{t(profileValueLabelKeys[profile.manager.role])}</p>
           </div>
         </div>
       </div>

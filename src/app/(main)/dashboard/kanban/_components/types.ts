@@ -34,7 +34,9 @@ export type TaskOwnerProfile = {
 export type Task = {
   id: string;
   title: string;
+  titleKey: string;
   description: string;
+  descriptionKey: string;
   priority: TaskPriority;
   dueDate: string;
   progress: number;

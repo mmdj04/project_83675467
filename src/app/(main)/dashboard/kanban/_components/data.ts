@@ -42,6 +42,18 @@ export const tagTones: Record<TaskTeam, string> = {
   Security: "bg-violet-500/10 text-violet-700 dark:text-violet-300",
 };
 
+export const teamLabelKeys: Record<TaskTeam, string> = {
+  Backend: "kanban.teamBackend",
+  Data: "kanban.teamData",
+  Design: "kanban.teamDesign",
+  Docs: "kanban.teamDocs",
+  "Finance Ops": "kanban.teamFinanceOps",
+  Platform: "kanban.teamPlatform",
+  Product: "kanban.teamProduct",
+  QA: "kanban.teamQa",
+  Security: "kanban.teamSecurity",
+};
+
 const taskOwners = {
   arham: {
     name: "Arham Khan",
@@ -78,7 +90,9 @@ export const initialBoard: BoardState = {
     {
       id: "tender-workflow-map",
       title: "Tender workflow map",
+      titleKey: "kanban.taskTitleTenderWorkflowMap",
       description: "Model Tender, Award/L1, Work Order, allocation, salary, and documents.",
+      descriptionKey: "kanban.taskDescriptionTenderWorkflowMap",
       priority: "High",
       dueDate: "jun14",
       progress: 10,
@@ -92,7 +106,9 @@ export const initialBoard: BoardState = {
     {
       id: "license-strategy-research",
       title: "License strategy research",
+      titleKey: "kanban.taskTitleLicenseStrategyResearch",
       description: "Compare private MVP, open core, GPL, AGPL, and commercial modules.",
+      descriptionKey: "kanban.taskDescriptionLicenseStrategyResearch",
       priority: "Medium",
       dueDate: "jun16",
       progress: 20,
@@ -106,7 +122,9 @@ export const initialBoard: BoardState = {
     {
       id: "backup-restore-plan",
       title: "Backup and restore plan",
+      titleKey: "kanban.taskTitleBackupRestorePlan",
       description: "Define local database backup, restore, and exported document recovery.",
+      descriptionKey: "kanban.taskDescriptionBackupRestorePlan",
       priority: "Medium",
       dueDate: "jun18",
       progress: 15,
@@ -120,7 +138,9 @@ export const initialBoard: BoardState = {
     {
       id: "work-order-allocation-model",
       title: "Work order allocation model",
+      titleKey: "kanban.taskTitleWorkOrderAllocationModel",
       description: "Sketch how awarded work orders connect to employee allocations and salary months.",
+      descriptionKey: "kanban.taskDescriptionWorkOrderAllocationModel",
       priority: "Medium",
       dueDate: "jun19",
       progress: 5,
@@ -134,7 +154,9 @@ export const initialBoard: BoardState = {
     {
       id: "future-sync-notes",
       title: "Future sync notes",
+      titleKey: "kanban.taskTitleFutureSyncNotes",
       description: "Capture local-first sync assumptions before deciding on cloud PostgreSQL and file storage.",
+      descriptionKey: "kanban.taskDescriptionFutureSyncNotes",
       priority: "Low",
       dueDate: "jun21",
       progress: 0,
@@ -147,7 +169,9 @@ export const initialBoard: BoardState = {
     {
       id: "electron-app-shell",
       title: "Electron app shell",
+      titleKey: "kanban.taskTitleElectronAppShell",
       description: "Create local-first desktop shell with React, Tailwind, and shadcn/ui.",
+      descriptionKey: "kanban.taskDescriptionElectronAppShell",
       priority: "High",
       dueDate: "jun20",
       progress: 25,
@@ -162,7 +186,9 @@ export const initialBoard: BoardState = {
     {
       id: "secure-preload-api",
       title: "Secure preload API",
+      titleKey: "kanban.taskTitleSecurePreloadApi",
       description: "Expose renderer-safe methods for imports, records, PDFs, and backups.",
+      descriptionKey: "kanban.taskDescriptionSecurePreloadApi",
       priority: "High",
       dueDate: "jun22",
       progress: 20,
@@ -177,7 +203,9 @@ export const initialBoard: BoardState = {
     {
       id: "party-employee-records",
       title: "Party and employee records",
+      titleKey: "kanban.taskTitlePartyEmployeeRecords",
       description: "Create local records for clients, contractors, employees, and identifiers.",
+      descriptionKey: "kanban.taskDescriptionPartyEmployeeRecords",
       priority: "Medium",
       dueDate: "jun24",
       progress: 15,
@@ -191,7 +219,9 @@ export const initialBoard: BoardState = {
     {
       id: "generated-documents-index",
       title: "Generated documents index",
+      titleKey: "kanban.taskTitleGeneratedDocumentsIndex",
       description: "Plan filters for generated PDFs by party, salary month, employee, and import batch.",
+      descriptionKey: "kanban.taskDescriptionGeneratedDocumentsIndex",
       priority: "Medium",
       dueDate: "jun25",
       progress: 10,
@@ -207,7 +237,9 @@ export const initialBoard: BoardState = {
     {
       id: "sqlite-drizzle-schema",
       title: "SQLite and Drizzle schema",
+      titleKey: "kanban.taskTitleSqliteDrizzleSchema",
       description: "Model parties, employees, tenders, work orders, salary imports, and documents.",
+      descriptionKey: "kanban.taskDescriptionSqliteDrizzleSchema",
       priority: "High",
       dueDate: "jun26",
       progress: 65,
@@ -222,7 +254,9 @@ export const initialBoard: BoardState = {
     {
       id: "salary-excel-import",
       title: "Salary Excel import",
+      titleKey: "kanban.taskTitleSalaryExcelImport",
       description: "Read salary sheets with SheetJS and persist import batches locally.",
+      descriptionKey: "kanban.taskDescriptionSalaryExcelImport",
       priority: "High",
       dueDate: "jun28",
       progress: 45,
@@ -237,7 +271,9 @@ export const initialBoard: BoardState = {
     {
       id: "column-mapping-builder",
       title: "Column mapping builder",
+      titleKey: "kanban.taskTitleColumnMappingBuilder",
       description: "Map Excel columns to salary fields with reusable templates per party.",
+      descriptionKey: "kanban.taskDescriptionColumnMappingBuilder",
       priority: "Medium",
       dueDate: "jul1",
       progress: 30,
@@ -253,7 +289,9 @@ export const initialBoard: BoardState = {
     {
       id: "salary-row-validation",
       title: "Salary row validation",
+      titleKey: "kanban.taskTitleSalaryRowValidation",
       description: "Flag missing employee IDs, invalid amounts, duplicate rows, and unmapped fields.",
+      descriptionKey: "kanban.taskDescriptionSalaryRowValidation",
       priority: "High",
       dueDate: "jul4",
       progress: 75,
@@ -267,7 +305,9 @@ export const initialBoard: BoardState = {
     {
       id: "payslip-preview",
       title: "Payslip preview",
+      titleKey: "kanban.taskTitlePayslipPreview",
       description: "Preview generated payslips before bulk PDF export and document history.",
+      descriptionKey: "kanban.taskDescriptionPayslipPreview",
       priority: "Medium",
       dueDate: "jul6",
       progress: 60,
@@ -284,7 +324,9 @@ export const initialBoard: BoardState = {
     {
       id: "architecture-rule",
       title: "Architecture rule locked",
+      titleKey: "kanban.taskTitleArchitectureRuleLocked",
       description: "Renderer stays UI-only; preload, IPC, services, and database stay separated.",
+      descriptionKey: "kanban.taskDescriptionArchitectureRuleLocked",
       priority: "High",
       dueDate: "jun8",
       progress: 100,
@@ -298,7 +340,9 @@ export const initialBoard: BoardState = {
     {
       id: "private-mvp-scope",
       title: "Private MVP scope",
+      titleKey: "kanban.taskTitlePrivateMvpScope",
       description: "Start private source first, then revisit open-core after workflow validation.",
+      descriptionKey: "kanban.taskDescriptionPrivateMvpScope",
       priority: "Medium",
       dueDate: "jun10",
       progress: 100,
@@ -312,7 +356,9 @@ export const initialBoard: BoardState = {
     {
       id: "mvp-module-priorities",
       title: "MVP module priorities",
+      titleKey: "kanban.taskTitleMvpModulePriorities",
       description: "Payslip generation is first, but data model supports wider tender operations.",
+      descriptionKey: "kanban.taskDescriptionMvpModulePriorities",
       priority: "Medium",
       dueDate: "jun12",
       progress: 100,

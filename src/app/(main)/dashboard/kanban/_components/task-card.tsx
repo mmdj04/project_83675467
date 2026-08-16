@@ -19,7 +19,7 @@ import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { cn, getInitials } from "@/lib/utils";
 
-import { dueDateLabelKeys, tagTones } from "./data";
+import { dueDateLabelKeys, tagTones, teamLabelKeys } from "./data";
 import type { ColumnId, Task, TaskInsightLabel, TaskPriority } from "./types";
 
 const taskInsightIcons: Record<TaskInsightLabel, LucideIcon> = {
@@ -76,7 +76,7 @@ export function TaskCard({
     >
       <div className="min-w-0 space-y-1.5">
         <div className="flex items-center justify-between gap-3">
-          <h3 className="min-w-0 truncate font-medium text-sm leading-none">{task.title}</h3>
+          <h3 className="min-w-0 truncate font-medium text-sm leading-none">{t(task.titleKey)}</h3>
           <Badge
             variant={priorityBadgeConfig[task.priority].variant}
             className={cn(
@@ -88,7 +88,7 @@ export function TaskCard({
             {t(priorityBadgeConfig[task.priority].labelKey)}
           </Badge>
         </div>
-        <p className="line-clamp-2 text-muted-foreground text-sm leading-5">{task.description}</p>
+        <p className="line-clamp-2 text-muted-foreground text-sm leading-5">{t(task.descriptionKey)}</p>
       </div>
 
       {!showBuildingDetails ? (
@@ -142,7 +142,7 @@ export function TaskCard({
                 variant="secondary"
                 className={cn("rounded-md border-transparent px-2 font-medium", tagTones[task.team])}
               >
-                {task.team}
+                {t(teamLabelKeys[task.team])}
               </Badge>
             </div>
           </div>

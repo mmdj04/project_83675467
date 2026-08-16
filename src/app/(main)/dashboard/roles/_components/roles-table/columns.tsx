@@ -26,12 +26,42 @@ const accessLevelLabelKeys: Record<string, string> = {
   "API access": "roles.accessApi",
 };
 
+const roleLabelKeys: Record<string, string> = {
+  Owner: "roles.roleOwner",
+  Admin: "roles.roleAdmin",
+  Manager: "roles.roleManager",
+  Support: "roles.roleSupport",
+  Analyst: "roles.roleAnalyst",
+  Guest: "roles.roleGuest",
+  Service: "roles.roleService",
+  Billing: "roles.roleBilling",
+  Marketing: "roles.roleMarketing",
+  Developer: "roles.roleDeveloper",
+  "Project Lead": "roles.roleProjectLead",
+  "Finance Viewer": "roles.roleFinanceViewer",
+};
+
+const ownerLabelKeys: Record<string, string> = {
+  System: "roles.system",
+};
+
 const statusLabelKeys: Record<string, string> = {
   Active: "roles.active",
   "Needs review": "roles.needsReview",
 };
 
-export function createRolesColumns(t: Translator): ColumnDef<DataTableFeatures, Role>[] {
+function parseLastReviewDate(value: string) {
+  return new Date(`${value} 12:00:00`);
+}
+
+export function createRolesColumns(t: Translator, locale: string): ColumnDef<DataTableFeatures, Role>[] {
+  const lastReviewFormatter = new Intl.DateTimeFormat(locale === "pt-BR" ? "pt-BR" : "en-US", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    timeZone: "America/Sao_Paulo",
+  });
+
   return [
     {
       id: "group",
@@ -51,7 +81,7 @@ export function createRolesColumns(t: Translator): ColumnDef<DataTableFeatures, 
       header: t("roles.columnRole"),
       size: 180,
       minSize: 180,
-      cell: ({ row }) => <span className="font-medium text-sm">{row.original.role}</span>,
+      cell: ({ row }) => <span className="font-medium text-sm">{t(roleLabelKeys[row.original.role])}</span>,
     },
     {
       id: "accessLevel",
@@ -94,7 +124,9 @@ export function createRolesColumns(t: Translator): ColumnDef<DataTableFeatures, 
       accessorKey: "lastReview",
       header: t("roles.columnLastReview"),
       size: 120,
-      cell: ({ row }) => <span className="text-sm">{row.original.lastReview}</span>,
+      cell: ({ row }) => (
+        <span className="text-sm">{lastReviewFormatter.format(parseLastReviewDate(row.original.lastReview))}</span>
+      ),
     },
     {
       id: "owner",
@@ -102,7 +134,11 @@ export function createRolesColumns(t: Translator): ColumnDef<DataTableFeatures, 
       header: t("roles.columnOwner"),
       size: 110,
       filterFn: "equalsString",
-      cell: ({ row }) => <span className="text-sm">{row.original.owner}</span>,
+      cell: ({ row }) => (
+        <span className="text-sm">
+          {ownerLabelKeys[row.original.owner] ? t(ownerLabelKeys[row.original.owner]) : row.original.owner}
+        </span>
+      ),
     },
     {
       id: "status",

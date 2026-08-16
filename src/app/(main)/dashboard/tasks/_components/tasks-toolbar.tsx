@@ -27,13 +27,13 @@ interface TasksToolbarProps<TData extends RowData> {
 export function TasksToolbar<TData extends RowData>({ table }: TasksToolbarProps<TData>) {
   const t = useTranslations();
   const isFiltered = table.state.columnFilters.length > 0;
-  const searchValue = (table.getColumn("title")?.getFilterValue() as string | undefined) ?? "";
+  const searchValue = (table.getColumn("titleKey")?.getFilterValue() as string | undefined) ?? "";
   const hideableColumns = table
     .getAllColumns()
     .filter((column) => typeof column.accessorFn !== "undefined" && column.getCanHide());
   const hiddenColumns = hideableColumns.filter((column) => !column.getIsVisible());
   const columnLabels: Record<string, string> = {
-    title: t("tasks.title"),
+    titleKey: t("tasks.title"),
     status: t("tasks.status"),
     priority: t("tasks.priority"),
   };
@@ -45,7 +45,7 @@ export function TasksToolbar<TData extends RowData>({ table }: TasksToolbarProps
           placeholder={t("tasks.filterTasks")}
           value={searchValue}
           onChange={(event) => {
-            table.getColumn("title")?.setFilterValue(event.target.value);
+            table.getColumn("titleKey")?.setFilterValue(event.target.value);
             table.setPageIndex(0);
           }}
           className="w-full bg-background text-foreground placeholder:text-muted-foreground sm:w-64"

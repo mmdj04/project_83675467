@@ -31,11 +31,33 @@ const statusLabelKeys: Record<UserRow["status"], string> = {
   Suspended: "Suspended",
 };
 
-function RoleCell({ role, team }: { role: string; team: string }) {
+export const roleLabelKeys: Record<string, string> = {
+  "Workspace Owner": "users.roleWorkspaceOwner",
+  Admin: "users.roleAdmin",
+  "Billing Admin": "users.roleBillingAdmin",
+  "Security Admin": "users.roleSecurityAdmin",
+  "Team Lead": "users.roleTeamLead",
+  Contributor: "users.roleContributor",
+  Guest: "users.roleGuest",
+  "Read-only": "users.roleReadOnly",
+};
+
+export const teamLabelKeys: Record<string, string> = {
+  Platform: "users.teamPlatform",
+  Growth: "users.teamGrowth",
+  Revenue: "users.teamRevenue",
+  "Customer Ops": "users.teamCustomerOps",
+  "Internal Tools": "users.teamInternalTools",
+  Compliance: "users.teamCompliance",
+  "People Ops": "users.teamPeopleOps",
+  Finance: "users.teamFinance",
+};
+
+function RoleCell({ role, team, t }: { role: string; team: string; t: Translator }) {
   return (
     <div className="grid gap-0.5">
-      <span className="whitespace-nowrap">{role}</span>
-      <span className="text-muted-foreground text-xs">{team}</span>
+      <span className="whitespace-nowrap">{t(roleLabelKeys[role])}</span>
+      <span className="text-muted-foreground text-xs">{t(teamLabelKeys[team])}</span>
     </div>
   );
 }
@@ -126,7 +148,15 @@ function WorkspaceCell({ workspaces }: { workspaces: string[] }) {
   );
 }
 
-export function createUsersColumns(t: Translator): ColumnDef<DataTableFeatures, UserRow>[] {
+const joinedDateFormatter = (locale: string) =>
+  new Intl.DateTimeFormat(locale === "pt-BR" ? "pt-BR" : "en-US", {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+    timeZone: "America/Sao_Paulo",
+  });
+
+export function createUsersColumns(t: Translator, locale: string): ColumnDef<DataTableFeatures, UserRow>[] {
   return [
     {
       id: "select",
@@ -188,13 +218,13 @@ export function createUsersColumns(t: Translator): ColumnDef<DataTableFeatures, 
       accessorKey: "role",
       header: t("users.columnRoleTeam"),
       filterFn: "equalsString",
-      cell: ({ row }) => <RoleCell role={row.original.role} team={row.original.team} />,
+      cell: ({ row }) => <RoleCell role={row.original.role} team={row.original.team} t={t} />,
     },
     {
       accessorKey: "team",
       header: t("users.columnTeam"),
       filterFn: "equalsString",
-      cell: ({ row }) => <div className="text-sm">{row.original.team}</div>,
+      cell: ({ row }) => <div className="text-sm">{t(teamLabelKeys[row.original.team])}</div>,
     },
     {
       accessorKey: "workspace",
@@ -214,7 +244,10 @@ export function createUsersColumns(t: Translator): ColumnDef<DataTableFeatures, 
       id: "joinedDate",
       accessorFn: (row) => parse(row.joinedDate, "dd MMM yyyy, h:mm a", new Date()).getTime(),
       header: t("users.columnJoinedDate"),
-      cell: ({ row }) => <div className="text-foreground text-sm">{row.original.joinedDate}</div>,
+      cell: ({ row }) => {
+        const joined = parse(row.original.joinedDate, "dd MMM yyyy, h:mm a", new Date());
+        return <div className="text-foreground text-sm">{joinedDateFormatter(locale).format(joined)}</div>;
+      },
     },
     {
       id: "actions",

@@ -122,7 +122,7 @@ export function createTaskColumns(t: Translator): ColumnDef<DataTableFeatures, T
       enableHiding: false,
     },
     {
-      accessorKey: "title",
+      accessorKey: "titleKey",
       header: ({ column }) => <TitleColumnHeader column={column} />,
       cell: ({ row }) => {
         const label = labels.find((label) => label.value === row.original.label);
@@ -134,9 +134,14 @@ export function createTaskColumns(t: Translator): ColumnDef<DataTableFeatures, T
                 {t(label.labelKey)}
               </Badge>
             )}
-            <span className="max-w-lg truncate font-medium text-sm">{row.getValue("title")}</span>
+            <span className="max-w-lg truncate font-medium text-sm">{t(row.getValue("titleKey") as string)}</span>
           </div>
         );
+      },
+      filterFn: (row, _columnId, filterValue) => {
+        const title = t(row.getValue("titleKey") as string);
+
+        return title.toLowerCase().includes(String(filterValue).toLowerCase());
       },
     },
     {

@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 
 import { type ColumnFiltersState, type PaginationState, useTable } from "@tanstack/react-table";
 import { AlertTriangle, ChevronRight, FileUp, Search } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Alert, AlertAction, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -42,6 +42,7 @@ function getRoleGroupFilterValue(typeFilter: string) {
 
 export function Roles({ roles }: { roles: Role[] }) {
   const t = useTranslations();
+  const locale = useLocale();
 
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [pagination, setPagination] = useState<PaginationState>({
@@ -49,7 +50,7 @@ export function Roles({ roles }: { roles: Role[] }) {
     pageSize: 12,
   });
 
-  const columns = useMemo(() => createRolesColumns(t), [t]);
+  const columns = useMemo(() => createRolesColumns(t, locale), [t, locale]);
 
   const table = useTable({
     features: dataTableFeatures,
