@@ -1,34 +1,38 @@
 "use client";
 
 import { Monitor, Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useShallow } from "zustand/react/shallow";
 
-import {
-  type Resolved,
-  type ThemeSelection,
-  ThemeToggler,
-} from "@/components/animate-ui/primitives/effects/theme-toggler";
 import { Button } from "@/components/ui/button";
+import { usePreferencesStore } from "@/stores/preferences/preferences-provider";
 
 const THEME_CYCLE = ["light", "dark", "system"] as const;
 
 export function ThemeSwitcher() {
-  const { theme, resolvedTheme, setTheme } = useTheme();
+  const { themeMode, setPreference } = usePreferencesStore(
+    useShallow((state) => ({
+      themeMode: state.values.theme_mode,
+      setPreference: state.setPreference,
+    })),
+  );
+
+  const cycleTheme = () => {
+    const currentIndex = THEME_CYCLE.indexOf(themeMode);
+    const nextTheme = THEME_CYCLE[(currentIndex + 1) % THEME_CYCLE.length];
+
+    setPreference("theme_mode", nextTheme);
+  };
 
   return (
-    <ThemeToggler theme={theme as ThemeSelection} resolvedTheme={resolvedTheme as Resolved} setTheme={setTheme}>
-      {({ effective, resolved, toggleTheme }) => (
-        <Button
-          size="icon"
-          aria-label="Theme"
-          onClick={() => {
-            const currentIndex = THEME_CYCLE.indexOf(effective);
-            toggleTheme(THEME_CYCLE[(currentIndex + 1) % THEME_CYCLE.length]);
-          }}
-        >
-          {effective === "system" ? <Monitor /> : resolved === "dark" ? <Moon /> : <Sun />}
-        </Button>
-      )}
-    </ThemeToggler>
+    <Button size="icon" onClick={cycleTheme} aria-label={`Current theme: ${themeMode}. Click to cycle themes`}>
+      {/* SYSTEM */}
+      <Monitor className="hidden [html[data-theme-mode=system]_&]:block" />
+
+      {/* DARK (resolved) */}
+      <Sun className="hidden dark:block [html[data-theme-mode=system]_&]:hidden" />
+
+      {/* LIGHT (resolved) */}
+      <Moon className="block dark:hidden [html[data-theme-mode=system]_&]:hidden" />
+    </Button>
   );
 }

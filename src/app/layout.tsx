@@ -6,13 +6,13 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 
-import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { APP_CONFIG } from "@/config/app-config";
 import { fontVars } from "@/lib/fonts/registry";
 import { PREFERENCE_DEFAULTS } from "@/lib/preferences/preferences-config";
 import { ThemeBootScript } from "@/scripts/theme-boot";
+import { PreferencesStoreProvider } from "@/stores/preferences/preferences-provider";
 
 import enMessages from "../../messages/en.json";
 import ptBRMessages from "../../messages/pt-BR.json";
@@ -47,14 +47,14 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <ThemeBootScript />
       </head>
       <body className={`${fontVars} min-h-screen antialiased`}>
-        <Providers>
+        <PreferencesStoreProvider initialValues={PREFERENCE_DEFAULTS}>
           <TooltipProvider>
             <NextIntlClientProvider timeZone="America/Sao_Paulo" messages={messages}>
               {children}
             </NextIntlClientProvider>
             <Toaster />
           </TooltipProvider>
-        </Providers>
+        </PreferencesStoreProvider>
         {/* Used for this project's hosted demo. Feel free to remove it; it is not required for template functionality. */}
         <Analytics />
       </body>
