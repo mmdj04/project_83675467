@@ -94,14 +94,16 @@ export function Roles({ roles }: { roles: Role[] }) {
       </div>
 
       <Tabs className="h-full gap-4" defaultValue="roles">
-        <TabsList
-          variant="line"
-          className="w-full justify-start gap-2 border-b ps-0 *:data-[slot=tabs-trigger]:flex-none"
-        >
-          <TabsTrigger value="roles">{t("roles.tabRoles")}</TabsTrigger>
-          <TabsTrigger value="permission-sets">{t("roles.tabPermissionSets")}</TabsTrigger>
-          <TabsTrigger value="access-reviews">{t("roles.tabAccessReviews")}</TabsTrigger>
-        </TabsList>
+        <div className="scrollbar-thin overflow-x-auto [scrollbar-color:var(--border)_transparent] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:h-1">
+          <TabsList
+            variant="line"
+            className="w-full justify-start gap-2 border-b ps-0 *:data-[slot=tabs-trigger]:flex-none"
+          >
+            <TabsTrigger value="roles">{t("roles.tabRoles")}</TabsTrigger>
+            <TabsTrigger value="permission-sets">{t("roles.tabPermissionSets")}</TabsTrigger>
+            <TabsTrigger value="access-reviews">{t("roles.tabAccessReviews")}</TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="roles">
           <div className="flex flex-col gap-4">

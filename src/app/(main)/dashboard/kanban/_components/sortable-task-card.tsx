@@ -18,7 +18,7 @@ export function SortableTaskCard({ task, columnId, index }: { task: Task; column
   });
 
   return (
-    <div ref={ref} className={cn("touch-none", isDragging && "opacity-30")}>
+    <div ref={ref} className={cn(isDragging && "opacity-30")}>
       <TaskCard task={task} columnId={columnId} />
     </div>
   );
