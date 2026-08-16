@@ -3,15 +3,17 @@
 import { useRouter } from "next/navigation";
 
 import { Check, Globe } from "lucide-react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 
 const LOCALES = [
@@ -21,6 +23,7 @@ const LOCALES = [
 
 export function LocaleSwitcher({ className }: { className?: string }) {
   const locale = useLocale();
+  const t = useTranslations("shell");
   const router = useRouter();
 
   function setLocale(code: string) {
@@ -29,21 +32,42 @@ export function LocaleSwitcher({ className }: { className?: string }) {
   }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" aria-label="Idioma" className={cn("gap-1 text-muted-foreground", className)}>
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button
+          variant="ghost"
+          size="sm"
+          aria-label={t("languageDialogTitle")}
+          className={cn("gap-1 text-muted-foreground", className)}
+        >
           <Globe className="size-4" />
           {locale.toUpperCase()}
         </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        {LOCALES.map((option) => (
-          <DropdownMenuItem key={option.code} onSelect={() => setLocale(option.code)}>
-            <span className="flex w-4 shrink-0 items-center justify-center">{locale === option.code && <Check />}</span>
-            {option.label}
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-xs">
+        <DialogHeader>
+          <DialogTitle>{t("languageDialogTitle")}</DialogTitle>
+          <DialogDescription>{t("languageDialogDescription")}</DialogDescription>
+        </DialogHeader>
+        <div className="flex flex-col gap-1">
+          {LOCALES.map((option) => (
+            <Button
+              key={option.code}
+              type="button"
+              variant={locale === option.code ? "secondary" : "ghost"}
+              className="justify-between px-2.5"
+              onClick={() => setLocale(option.code)}
+            >
+              {option.label}
+              {locale === option.code && <Check className="size-4" />}
+            </Button>
+          ))}
+        </div>
+        <p className="flex items-start gap-1.5 rounded-lg bg-muted/50 px-2.5 py-2 text-xs text-muted-foreground">
+          <span aria-hidden>⚠</span>
+          {t("languageDialogWarning")}
+        </p>
+      </DialogContent>
+    </Dialog>
   );
 }

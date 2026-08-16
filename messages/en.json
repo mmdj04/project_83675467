@@ -1242,7 +1242,11 @@
     "unauthorizedDescription": "You do not have permission to view the requested content. Please contact the site administrator if you believe this is an error.",
     "goToHomepage": "Go to Homepage",
     "comingSoonTitle": "Coming soon",
-    "comingSoonDescription": "This page is under construction."
+    "comingSoonDescription": "This page is under construction.",
+    "languageDialogTitle": "Language",
+    "languageDialogDescription": "Choose your preferred language.",
+    "languageDialogWarning": "In development — some translations may contain errors or be incomplete.",
+    "language": "Language"
   },
   "auth": {
     "loginV1": {

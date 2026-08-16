@@ -1242,7 +1242,11 @@
     "unauthorizedDescription": "Você não tem permissão para visualizar o conteúdo solicitado. Entre em contato com o administrador do site se acreditar que isso é um erro.",
     "goToHomepage": "Ir para a página inicial",
     "comingSoonTitle": "Em breve",
-    "comingSoonDescription": "Esta página está em construção."
+    "comingSoonDescription": "Esta página está em construção.",
+    "languageDialogTitle": "Idioma",
+    "languageDialogDescription": "Escolha o idioma de preferência.",
+    "languageDialogWarning": "Em desenvolvimento — algumas traduções podem conter erros ou estar incompletas.",
+    "language": "Idioma"
   },
   "auth": {
     "loginV1": {

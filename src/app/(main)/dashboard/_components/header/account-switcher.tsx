@@ -2,10 +2,20 @@
 
 import { useState } from "react";
 
-import { BadgeCheck, Bell, Check, CreditCard, LogOut } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+
+import { BadgeCheck, Bell, Check, CreditCard, Globe, LogOut } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,6 +25,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn, getInitials } from "@/lib/utils";
+
+const LOCALES = [
+  { code: "pt-BR", label: "Português (Brasil)" },
+  { code: "en", label: "English" },
+] as const;
 
 export function AccountSwitcher({
   users,
@@ -28,10 +43,17 @@ export function AccountSwitcher({
   }>;
 }) {
   const t = useTranslations("shell");
+  const locale = useLocale();
+  const router = useRouter();
   const [activeUser, setActiveUser] = useState(users[0]);
 
   if (!activeUser) {
     return null;
+  }
+
+  function setLocale(code: string) {
+    document.cookie = `locale=${code}; path=/; max-age=31536000; samesite=lax`;
+    router.refresh();
   }
 
   return (
@@ -84,6 +106,36 @@ export function AccountSwitcher({
             <Bell />
             {t("notifications")}
           </DropdownMenuItem>
+          <Dialog>
+            <DialogTrigger asChild>
+              <DropdownMenuItem onSelect={(event) => event.preventDefault()}>
+                <Globe />
+                {t("language")}
+              </DropdownMenuItem>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-xs">
+              <DialogHeader>
+                <DialogTitle>{t("languageDialogTitle")}</DialogTitle>
+                <DialogDescription>{t("languageDialogDescription")}</DialogDescription>
+              </DialogHeader>
+              <div className="flex flex-col gap-1">
+                {LOCALES.map((option) => (
+                  <DropdownMenuItem
+                    key={option.code}
+                    className="justify-between"
+                    onClick={() => setLocale(option.code)}
+                  >
+                    {option.label}
+                    {locale === option.code && <Check className="size-4" />}
+                  </DropdownMenuItem>
+                ))}
+              </div>
+              <p className="flex items-start gap-1.5 rounded-lg bg-muted/50 px-2.5 py-2 text-xs text-muted-foreground">
+                <span aria-hidden>⚠</span>
+                {t("languageDialogWarning")}
+              </p>
+            </DialogContent>
+          </Dialog>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
