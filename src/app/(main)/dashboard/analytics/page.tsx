@@ -24,13 +24,15 @@ export default async function Page() {
 
       <Tabs defaultValue="overview" className="flex flex-col gap-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <TabsList className="gap-1">
-            <TabsTrigger value="overview">{t("tabOverview")}</TabsTrigger>
-            <TabsTrigger value="audience">{t("tabAudience")}</TabsTrigger>
-            <TabsTrigger value="acquisition">{t("tabAcquisition")}</TabsTrigger>
-            <TabsTrigger value="engagement">{t("tabEngagement")}</TabsTrigger>
-            <TabsTrigger value="conversions">{t("tabConversions")}</TabsTrigger>
-          </TabsList>
+          <div className="scrollbar-thin min-w-0 overflow-x-auto [scrollbar-color:var(--border)_transparent] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:h-1">
+            <TabsList className="gap-1">
+              <TabsTrigger value="overview">{t("tabOverview")}</TabsTrigger>
+              <TabsTrigger value="audience">{t("tabAudience")}</TabsTrigger>
+              <TabsTrigger value="acquisition">{t("tabAcquisition")}</TabsTrigger>
+              <TabsTrigger value="engagement">{t("tabEngagement")}</TabsTrigger>
+              <TabsTrigger value="conversions">{t("tabConversions")}</TabsTrigger>
+            </TabsList>
+          </div>
 
           <AnalyticsToolbar />
         </div>
