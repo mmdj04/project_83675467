@@ -103,25 +103,27 @@ export function RecentOrders() {
       </CardHeader>
 
       <CardContent className="flex flex-col gap-4 px-0">
-        <div className="flex items-center justify-between px-4">
-          <ToggleGroup
-            className="bg-muted p-0.75 text-muted-foreground **:data-[slot=toggle-group-item]:rounded-md **:data-[slot=toggle-group-item]:border **:data-[slot=toggle-group-item]:border-transparent **:data-[slot=toggle-group-item]:text-foreground/60 **:data-[slot=toggle-group-item]:hover:text-foreground [&_[data-slot=toggle-group-item][data-state=on]]:bg-background [&_[data-slot=toggle-group-item][data-state=on]]:text-foreground [&_[data-slot=toggle-group-item][data-state=on]]:shadow-sm dark:[&_[data-slot=toggle-group-item][data-state=on]]:border-input dark:[&_[data-slot=toggle-group-item][data-state=on]]:bg-input/30"
-            onValueChange={(value) => {
-              if (!value) return;
-              table.getColumn("statusSummary")?.setFilterValue(value === "All" ? undefined : value);
-              table.setPageIndex(0);
-            }}
-            size="sm"
-            spacing={1}
-            type="single"
-            value={activeFilter}
-          >
-            {orderFilters.map((filter) => (
-              <ToggleGroupItem key={filter} value={filter}>
-                {t(orderFilterLabelKeys[filter])}
-              </ToggleGroupItem>
-            ))}
-          </ToggleGroup>
+        <div className="flex flex-col gap-3 px-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="scrollbar-thin min-w-0 overflow-x-auto [scrollbar-color:var(--border)_transparent] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:h-1">
+            <ToggleGroup
+              className="inline-flex w-max bg-muted p-0.75 text-muted-foreground **:data-[slot=toggle-group-item]:rounded-md **:data-[slot=toggle-group-item]:border **:data-[slot=toggle-group-item]:border-transparent **:data-[slot=toggle-group-item]:text-foreground/60 **:data-[slot=toggle-group-item]:hover:text-foreground [&_[data-slot=toggle-group-item][data-state=on]]:bg-background [&_[data-slot=toggle-group-item][data-state=on]]:text-foreground [&_[data-slot=toggle-group-item][data-state=on]]:shadow-sm dark:[&_[data-slot=toggle-group-item][data-state=on]]:border-input dark:[&_[data-slot=toggle-group-item][data-state=on]]:bg-input/30"
+              onValueChange={(value) => {
+                if (!value) return;
+                table.getColumn("statusSummary")?.setFilterValue(value === "All" ? undefined : value);
+                table.setPageIndex(0);
+              }}
+              size="sm"
+              spacing={1}
+              type="single"
+              value={activeFilter}
+            >
+              {orderFilters.map((filter) => (
+                <ToggleGroupItem key={filter} value={filter}>
+                  {t(orderFilterLabelKeys[filter])}
+                </ToggleGroupItem>
+              ))}
+            </ToggleGroup>
+          </div>
 
           <Button
             size="icon-sm"
@@ -167,7 +169,7 @@ export function RecentOrders() {
           </Table>
         </div>
 
-        <div className="flex items-center justify-between gap-4 px-4 pb-1">
+        <div className="flex flex-col gap-3 px-4 pb-1 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-muted-foreground text-sm">
             {t("viewingOrders", { visible: visibleOrderCount, total: orderCount.toLocaleString(locale) })}
           </p>
