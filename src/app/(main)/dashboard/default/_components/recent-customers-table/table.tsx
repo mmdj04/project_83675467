@@ -233,8 +233,8 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-lg border bg-card">
-        <Table>
+      <div className="rounded-lg border bg-card">
+        <Table className="min-w-[640px]">
           <TableHeader className="bg-muted/15">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
