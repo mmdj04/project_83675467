@@ -119,6 +119,7 @@ export function Search() {
   return (
     <>
       <button
+        type="button"
         onClick={() => setOpen(true)}
         className="hidden items-center gap-2 rounded-md border border-border/50 bg-muted/50 px-3 py-1.5 text-muted-foreground text-sm transition-colors hover:border-foreground/25 hover:text-foreground sm:flex"
       >
@@ -132,7 +133,10 @@ export function Search() {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          role="img"
+          aria-label="Search icon"
         >
+          <title>Search</title>
           <circle cx="11" cy="11" r="8" />
           <path d="m21 21-4.3-4.3" />
         </svg>
@@ -143,6 +147,7 @@ export function Search() {
       </button>
 
       <button
+        type="button"
         onClick={() => setOpen(true)}
         className="flex items-center text-muted-foreground transition-colors hover:text-foreground sm:hidden"
         aria-label="Search docs"
@@ -157,7 +162,10 @@ export function Search() {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          role="img"
+          aria-label="Search icon"
         >
+          <title>Search</title>
           <circle cx="11" cy="11" r="8" />
           <path d="m21 21-4.3-4.3" />
         </svg>
@@ -178,7 +186,10 @@ export function Search() {
               strokeLinecap="round"
               strokeLinejoin="round"
               className="shrink-0 text-muted-foreground"
+              role="img"
+              aria-label="Search icon"
             >
+              <title>Search</title>
               <circle cx="11" cy="11" r="8" />
               <path d="m21 21-4.3-4.3" />
             </svg>
@@ -191,7 +202,12 @@ export function Search() {
               className="flex-1 bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground"
             />
             {query && (
-              <button onClick={() => setQuery("")} className="text-muted-foreground hover:text-foreground">
+              <button
+                type="button"
+                onClick={() => setQuery("")}
+                className="text-muted-foreground hover:text-foreground"
+                aria-label="Clear search"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="14"
@@ -202,7 +218,10 @@ export function Search() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                  role="img"
+                  aria-label="Clear"
                 >
+                  <title>Clear</title>
                   <path d="M18 6 6 18" />
                   <path d="m6 6 12 12" />
                 </svg>
@@ -215,32 +234,36 @@ export function Search() {
               <div className="flex items-center justify-center py-6">
                 <div className="h-4 w-4 animate-spin rounded-full border-2 border-muted-foreground border-t-transparent" />
               </div>
-            ) : hasQuery && results.length === 0 ? (
+            ) : null}
+            {!loading && hasQuery && results.length === 0 ? (
               <p className="py-6 text-center text-muted-foreground text-sm">No results found.</p>
-            ) : !hasQuery ? (
+            ) : null}
+            {!loading && !hasQuery ? (
               <p className="py-6 text-center text-muted-foreground text-sm">Type to search documentation...</p>
-            ) : (
-              results.map((item, i) => (
-                <button
-                  key={item.href}
-                  data-active={i === activeIndex}
-                  onClick={() => navigate(item.href)}
-                  onMouseEnter={() => setActiveIndex(i)}
-                  className={cn(
-                    "flex w-full flex-col gap-1 rounded-md px-3 py-2 text-left transition-colors",
-                    i === activeIndex ? "bg-muted text-foreground" : "text-foreground",
-                  )}
-                >
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="font-medium text-sm">{item.title}</span>
-                    {item.section && <span className="shrink-0 text-muted-foreground text-xs">{item.section}</span>}
-                  </div>
-                  {item.snippet && (
-                    <span className="line-clamp-2 text-muted-foreground text-xs leading-relaxed">{item.snippet}</span>
-                  )}
-                </button>
-              ))
-            )}
+            ) : null}
+            {!loading && hasQuery && results.length > 0
+              ? results.map((item, i) => (
+                  <button
+                    key={item.href}
+                    type="button"
+                    data-active={i === activeIndex}
+                    onClick={() => navigate(item.href)}
+                    onMouseEnter={() => setActiveIndex(i)}
+                    className={cn(
+                      "flex w-full flex-col gap-1 rounded-md px-3 py-2 text-left transition-colors",
+                      i === activeIndex ? "bg-muted text-foreground" : "text-foreground",
+                    )}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-medium text-sm">{item.title}</span>
+                      {item.section && <span className="shrink-0 text-muted-foreground text-xs">{item.section}</span>}
+                    </div>
+                    {item.snippet && (
+                      <span className="line-clamp-2 text-muted-foreground text-xs leading-relaxed">{item.snippet}</span>
+                    )}
+                  </button>
+                ))
+              : null}
           </div>
         </DialogContent>
       </Dialog>

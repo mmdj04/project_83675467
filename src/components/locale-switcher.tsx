@@ -14,6 +14,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { setClientCookie } from "@/lib/cookie.client";
 import { cn } from "@/lib/utils";
 
 const LOCALES = [
@@ -27,7 +28,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
   const router = useRouter();
 
   function setLocale(code: string) {
-    document.cookie = `locale=${code}; path=/; max-age=31536000; samesite=lax`;
+    setClientCookie("locale", code, 365);
     router.refresh();
   }
 
@@ -63,7 +64,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
             </Button>
           ))}
         </div>
-        <p className="flex items-start gap-1.5 rounded-lg bg-muted/50 px-2.5 py-2 text-xs text-muted-foreground">
+        <p className="flex items-start gap-1.5 rounded-lg bg-muted/50 px-2.5 py-2 text-muted-foreground text-xs">
           <span aria-hidden>⚠</span>
           {t("languageDialogWarning")}
         </p>

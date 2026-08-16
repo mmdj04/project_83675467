@@ -11,7 +11,7 @@ const teamValues = [
   "Finance",
 ] as const;
 
-export type UserTeam = (typeof teamValues)[number];
+type UserTeam = (typeof teamValues)[number];
 
 export type UserRow = {
   email: string;

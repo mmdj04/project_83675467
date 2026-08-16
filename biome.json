@@ -39,6 +39,8 @@
       "!.next",
       "!dist",
       "!out",
+      "!docs/agent-browser",
+      "!src/components/animate-ui",
       "!src/components/ui",
       "!src/components/calendar"
     ]

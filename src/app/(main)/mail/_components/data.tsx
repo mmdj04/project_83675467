@@ -15,12 +15,12 @@ const minutesAgo = (minutes: number) => new Date(Date.now() - minutes * 60_000).
 const hoursAgo = (hours: number) => minutesAgo(hours * 60);
 const daysAgo = (days: number) => hoursAgo(days * 24);
 
-export type Recipient = {
+type Recipient = {
   name: string;
   email: string;
 };
 
-export type Attachment = {
+type Attachment = {
   id: string;
   name: string;
   nameKey: string;

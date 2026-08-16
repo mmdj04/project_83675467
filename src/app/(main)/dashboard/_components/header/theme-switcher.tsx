@@ -17,18 +17,25 @@ export function ThemeSwitcher() {
 
   return (
     <ThemeToggler theme={theme as ThemeSelection} resolvedTheme={resolvedTheme as Resolved} setTheme={setTheme}>
-      {({ effective, resolved, toggleTheme }) => (
-        <Button
-          size="icon"
-          aria-label="Theme"
-          onClick={() => {
-            const currentIndex = THEME_CYCLE.indexOf(effective);
-            toggleTheme(THEME_CYCLE[(currentIndex + 1) % THEME_CYCLE.length]);
-          }}
-        >
-          {effective === "system" ? <Monitor /> : resolved === "dark" ? <Moon /> : <Sun />}
-        </Button>
-      )}
+      {({ effective, resolved, toggleTheme }) => {
+        const getIcon = () => {
+          if (effective === "system") return <Monitor />;
+          return resolved === "dark" ? <Moon /> : <Sun />;
+        };
+
+        return (
+          <Button
+            size="icon"
+            aria-label="Theme"
+            onClick={() => {
+              const currentIndex = THEME_CYCLE.indexOf(effective);
+              toggleTheme(THEME_CYCLE[(currentIndex + 1) % THEME_CYCLE.length]);
+            }}
+          >
+            {getIcon()}
+          </Button>
+        );
+      }}
     </ThemeToggler>
   );
 }

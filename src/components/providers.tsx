@@ -1,10 +1,10 @@
 "use client";
 
-import { ThemeProvider } from "next-themes";
 import type { ReactNode } from "react";
 
-import { PREFERENCE_DEFAULTS } from "@/lib/preferences/preferences-config";
+import { ThemeProvider } from "next-themes";
 
+import { PREFERENCE_DEFAULTS } from "@/lib/preferences/preferences-config";
 import { PreferencesStoreProvider } from "@/stores/preferences/preferences-provider";
 
 export function Providers({ children }: { children: ReactNode }) {

@@ -25,6 +25,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { setClientCookie } from "@/lib/cookie.client";
 import { cn, getInitials } from "@/lib/utils";
 
 const LOCALES = [
@@ -53,7 +54,7 @@ export function AccountSwitcher({
   }
 
   function setLocale(code: string) {
-    document.cookie = `locale=${code}; path=/; max-age=31536000; samesite=lax`;
+    setClientCookie("locale", code, 365);
     router.refresh();
   }
 
@@ -141,7 +142,7 @@ export function AccountSwitcher({
                   </DropdownMenuItem>
                 ))}
               </div>
-              <p className="flex items-start gap-1.5 rounded-lg bg-muted/50 px-2.5 py-2 text-xs text-muted-foreground">
+              <p className="flex items-start gap-1.5 rounded-lg bg-muted/50 px-2.5 py-2 text-muted-foreground text-xs">
                 <span aria-hidden>⚠</span>
                 {t("languageDialogWarning")}
               </p>

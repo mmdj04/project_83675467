@@ -1,55 +1,43 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { useTheme } from 'next-themes';
-import { Monitor, Moon, Sun } from 'lucide-react';
-import { VariantProps } from 'class-variance-authority';
+import type * as React from "react";
 
+import type { VariantProps } from "class-variance-authority";
+import { Monitor, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+
+import { buttonVariants } from "@/components/animate-ui/components/buttons/icon";
 import {
+  type Resolved,
+  type ThemeSelection,
   ThemeToggler as ThemeTogglerPrimitive,
   type ThemeTogglerProps as ThemeTogglerPrimitiveProps,
-  type ThemeSelection,
-  type Resolved,
-} from '@/components/animate-ui/primitives/effects/theme-toggler';
-import { buttonVariants } from '@/components/animate-ui/components/buttons/icon';
-import { cn } from '@/lib/utils';
+} from "@/components/animate-ui/primitives/effects/theme-toggler";
+import { cn } from "@/lib/utils";
 
-const getIcon = (
-  effective: ThemeSelection,
-  resolved: Resolved,
-  modes: ThemeSelection[],
-) => {
-  const theme = modes.includes('system') ? effective : resolved;
-  return theme === 'system' ? (
-    <Monitor />
-  ) : theme === 'dark' ? (
-    <Moon />
-  ) : (
-    <Sun />
-  );
+const getIcon = (effective: ThemeSelection, resolved: Resolved, modes: ThemeSelection[]) => {
+  const theme = modes.includes("system") ? effective : resolved;
+  return theme === "system" ? <Monitor /> : theme === "dark" ? <Moon /> : <Sun />;
 };
 
-const getNextTheme = (
-  effective: ThemeSelection,
-  modes: ThemeSelection[],
-): ThemeSelection => {
+const getNextTheme = (effective: ThemeSelection, modes: ThemeSelection[]): ThemeSelection => {
   const i = modes.indexOf(effective);
   if (i === -1) return modes[0];
   return modes[(i + 1) % modes.length];
 };
 
-type ThemeTogglerButtonProps = React.ComponentProps<'button'> &
+type ThemeTogglerButtonProps = React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     modes?: ThemeSelection[];
-    onImmediateChange?: ThemeTogglerPrimitiveProps['onImmediateChange'];
-    direction?: ThemeTogglerPrimitiveProps['direction'];
+    onImmediateChange?: ThemeTogglerPrimitiveProps["onImmediateChange"];
+    direction?: ThemeTogglerPrimitiveProps["direction"];
   };
 
 function ThemeTogglerButton({
-  variant = 'default',
-  size = 'default',
-  modes = ['light', 'dark', 'system'],
-  direction = 'ltr',
+  variant = "default",
+  size = "default",
+  modes = ["light", "dark", "system"],
+  direction = "ltr",
   onImmediateChange,
   onClick,
   className,

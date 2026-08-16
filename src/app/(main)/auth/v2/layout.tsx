@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server";
 
 import { Separator } from "@/components/ui/separator";
 import { APP_CONFIG } from "@/config/app-config";
+
 import { ScrollReset } from "../_components/scroll-reset";
 
 export default async function Layout({ children }: Readonly<{ children: ReactNode }>) {

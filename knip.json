@@ -1,0 +1,10 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "ignore": [
+    "docs/agent-browser/**",
+    "src/components/animate-ui/**",
+    "src/components/ui/**",
+    "src/hooks/use-controlled-state.tsx"
+  ],
+  "ignoreDependencies": ["@base-ui/react", "@floating-ui/react", "embla-carousel-react", "input-otp"]
+}

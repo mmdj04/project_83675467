@@ -87,7 +87,7 @@ const playfairDisplay = localFont({
   variable: "--font-playfair-display",
 });
 
-export const fontRegistry = {
+const fontRegistry = {
   geist: {
     label: "Geist",
     font: geist,

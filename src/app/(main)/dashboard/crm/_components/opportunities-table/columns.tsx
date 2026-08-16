@@ -48,7 +48,10 @@ function getHealthScore(health: OpportunityRow["health"]) {
   }
 }
 
-export function createOpportunitiesColumns(t: Translator, locale: string): ColumnDef<DataTableFeatures, OpportunityRow>[] {
+export function createOpportunitiesColumns(
+  t: Translator,
+  locale: string,
+): ColumnDef<DataTableFeatures, OpportunityRow>[] {
   return [
     {
       id: "select",

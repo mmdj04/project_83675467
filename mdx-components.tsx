@@ -1,5 +1,7 @@
-import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
+
+import type { MDXComponents } from "mdx/types";
+
 import { CodeBlock } from "@/components/code-block";
 
 function slugify(text: string): string {
@@ -32,7 +34,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return (
         <h1 id={id} className="heading-anchor">
           {children}
-          <a href={`#${id}`} aria-label="Link to this section">#</a>
+          <a href={`#${id}`} aria-label="Link to this section">
+            #
+          </a>
         </h1>
       );
     },
@@ -41,7 +45,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return (
         <h2 id={id} className="heading-anchor">
           {children}
-          <a href={`#${id}`} aria-label="Link to this section">#</a>
+          <a href={`#${id}`} aria-label="Link to this section">
+            #
+          </a>
         </h2>
       );
     },
@@ -50,17 +56,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return (
         <h3 id={id} className="heading-anchor">
           {children}
-          <a href={`#${id}`} aria-label="Link to this section">#</a>
+          <a href={`#${id}`} aria-label="Link to this section">
+            #
+          </a>
         </h3>
       );
     },
-    a: ({
-      href,
-      children,
-    }: {
-      href?: string;
-      children?: React.ReactNode;
-    }) => {
+    a: ({ href, children }: { href?: string; children?: React.ReactNode }) => {
       if (href?.startsWith("/")) {
         return <Link href={href}>{children}</Link>;
       }
@@ -70,13 +72,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </a>
       );
     },
-    code: ({
-      children,
-      className,
-    }: {
-      children?: React.ReactNode;
-      className?: string;
-    }) => {
+    code: ({ children, className }: { children?: React.ReactNode; className?: string }) => {
       if (className) {
         return <code className={className}>{children}</code>;
       }
@@ -91,12 +87,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       const lang = className.replace("language-", "") || "bash";
       const code = codeElement?.props?.children || "";
 
-      return (
-        <CodeBlock
-          code={typeof code === "string" ? code : String(code)}
-          lang={lang}
-        />
-      );
+      return <CodeBlock code={typeof code === "string" ? code : String(code)} lang={lang} />;
     },
   };
 }

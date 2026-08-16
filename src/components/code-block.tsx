@@ -170,6 +170,7 @@ export async function CodeBlock({ code, lang = "bash" }: CodeBlockProps) {
   return (
     <div className="code-block group relative">
       <CopyButton code={trimmedCode} />
+      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: shiki output is escaped and generated at build time. */}
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   );

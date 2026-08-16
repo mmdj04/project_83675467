@@ -37,7 +37,3 @@ export const PAGE_TITLES: Record<string, string> = {
   "providers/remote-agent-browser": "Remote Agent Browser",
   changelog: "Changelog",
 };
-
-export function getPageTitle(slug: string): string | null {
-  return slug in PAGE_TITLES ? PAGE_TITLES[slug]! : null;
-}

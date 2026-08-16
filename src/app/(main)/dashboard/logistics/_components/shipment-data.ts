@@ -35,8 +35,10 @@ export const statusLabelKeys: Record<ShipmentStatus, string> = {
   "Customs Hold": "statusCustomsHold",
 };
 
-export type TransportMode = "land" | "air" | "sea";
-export type RouteType = "road" | "flight" | "ship";
+type TransportMode = "land" | "air" | "sea";
+
+type RouteType = "road" | "flight" | "ship";
+
 export type CustomerTier = "Priority" | "Standard" | "Non-priority";
 
 export const tierLabelKeys: Record<CustomerTier, string> = {
@@ -45,7 +47,7 @@ export const tierLabelKeys: Record<CustomerTier, string> = {
   "Non-priority": "tierNonPriority",
 };
 
-export const etaLabelKeys: Record<string, string> = {
+const etaLabelKeys: Record<string, string> = {
   today: "etaToday",
   tomorrow: "etaTomorrow",
   tonight: "etaTonight",
@@ -74,14 +76,14 @@ export function getEtaLabel(value: string, t: (key: string) => string): string {
 
 export type GeoCoordinate = [longitude: number, latitude: number];
 
-export type ShipmentLocation = {
+type ShipmentLocation = {
   coordinates: GeoCoordinate;
   display: string;
   country: string;
   countryCode: string;
 };
 
-export type ShipmentCustomer = {
+type ShipmentCustomer = {
   name: string;
   initials: string;
   id: string;
@@ -89,12 +91,12 @@ export type ShipmentCustomer = {
   tierLabelKey: string;
 };
 
-export type HandlingTag = {
+type HandlingTag = {
   labelKey: string;
   icon: LucideIcon;
 };
 
-export type ShipmentHandling = {
+type ShipmentHandling = {
   labelKey: string;
   noteKey: string;
   note: string;

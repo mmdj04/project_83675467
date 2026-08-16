@@ -99,7 +99,7 @@ export function KpiStrip() {
   const revenueOverviewData = React.useMemo(() => getRevenueOverviewData(locale), [locale]);
   const revenuePeriodDates = React.useMemo(
     () => new Map(revenueOverviewData.map(({ period, date }) => [period, date])),
-    [revenueOverviewData]
+    [revenueOverviewData],
   );
   const revenueOverviewConfig = {
     revenue: {

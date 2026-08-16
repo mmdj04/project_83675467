@@ -1,33 +1,33 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { useTheme } from 'next-themes';
-import { Monitor, Moon, Sun } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import * as React from "react";
 
-type ThemeSelection = 'light' | 'dark' | 'system';
-type Resolved = 'light' | 'dark';
-type Direction = 'btt' | 'ttb' | 'ltr' | 'rtl';
+import { Monitor, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+
+import { Button } from "@/components/ui/button";
+
+type ThemeSelection = "light" | "dark" | "system";
+type Resolved = "light" | "dark";
+type Direction = "btt" | "ttb" | "ltr" | "rtl";
 
 function getSystemEffective(): Resolved {
-  if (typeof window === 'undefined') return 'light';
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light';
+  if (typeof window === "undefined") return "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 function getClipKeyframes(direction: Direction): [string, string] {
   switch (direction) {
-    case 'ltr':
-      return ['inset(0 100% 0 0)', 'inset(0 0 0 0)'];
-    case 'rtl':
-      return ['inset(0 0 0 100%)', 'inset(0 0 0 0)'];
-    case 'ttb':
-      return ['inset(0 0 100% 0)', 'inset(0 0 0 0)'];
-    case 'btt':
-      return ['inset(100% 0 0 0)', 'inset(0 0 0 0)'];
+    case "ltr":
+      return ["inset(0 100% 0 0)", "inset(0 0 0 0)"];
+    case "rtl":
+      return ["inset(0 0 0 100%)", "inset(0 0 0 0)"];
+    case "ttb":
+      return ["inset(0 0 100% 0)", "inset(0 0 0 0)"];
+    case "btt":
+      return ["inset(100% 0 0 0)", "inset(0 0 0 0)"];
     default:
-      return ['inset(0 100% 0 0)', 'inset(0 0 0 0)'];
+      return ["inset(0 100% 0 0)", "inset(0 0 0 0)"];
   }
 }
 
@@ -36,18 +36,18 @@ function flushSync(fn: () => void) {
 }
 
 interface ThemeTogglerButtonProps {
-  variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
-  size?: 'default' | 'sm' | 'lg' | 'icon';
+  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
+  size?: "default" | "sm" | "lg" | "icon";
   modes?: ThemeSelection[];
   direction?: Direction;
   className?: string;
 }
 
 export function ThemeTogglerButton({
-  variant = 'ghost',
-  size = 'icon',
-  modes = ['light', 'dark', 'system'],
-  direction = 'ltr',
+  variant = "ghost",
+  size = "icon",
+  modes = ["light", "dark", "system"],
+  direction = "ltr",
   className,
 }: ThemeTogglerButtonProps) {
   const { theme, resolvedTheme, setTheme } = useTheme();
@@ -55,14 +55,14 @@ export function ThemeTogglerButton({
     effective: ThemeSelection;
     resolved: Resolved;
   }>({
-    effective: (theme as ThemeSelection) || 'system',
-    resolved: (resolvedTheme as Resolved) || 'light',
+    effective: (theme as ThemeSelection) || "system",
+    resolved: (resolvedTheme as Resolved) || "light",
   });
 
   React.useEffect(() => {
     setCurrent({
-      effective: (theme as ThemeSelection) || 'system',
-      resolved: (resolvedTheme as Resolved) || 'light',
+      effective: (theme as ThemeSelection) || "system",
+      resolved: (resolvedTheme as Resolved) || "light",
     });
   }, [theme, resolvedTheme]);
 
@@ -70,18 +70,18 @@ export function ThemeTogglerButton({
 
   const toggleTheme = React.useCallback(
     async (nextTheme: ThemeSelection) => {
-      const resolved = nextTheme === 'system' ? getSystemEffective() : nextTheme;
+      const resolved = nextTheme === "system" ? getSystemEffective() : nextTheme;
 
       setCurrent({ effective: nextTheme, resolved });
 
-      if (nextTheme === 'system' && resolved === resolvedTheme) {
+      if (nextTheme === "system" && resolved === resolvedTheme) {
         setTheme(nextTheme);
         return;
       }
 
       if (!document.startViewTransition) {
         flushSync(() => {
-          document.documentElement.classList.toggle('dark', resolved === 'dark');
+          document.documentElement.classList.toggle("dark", resolved === "dark");
         });
         setTheme(nextTheme);
         return;
@@ -89,7 +89,7 @@ export function ThemeTogglerButton({
 
       await document.startViewTransition(() => {
         flushSync(() => {
-          document.documentElement.classList.toggle('dark', resolved === 'dark');
+          document.documentElement.classList.toggle("dark", resolved === "dark");
         });
       }).ready;
 
@@ -98,8 +98,8 @@ export function ThemeTogglerButton({
           { clipPath: [fromClip, toClip] },
           {
             duration: 700,
-            easing: 'ease-in-out',
-            pseudoElement: '::view-transition-new(root)',
+            easing: "ease-in-out",
+            pseudoElement: "::view-transition-new(root)",
           },
         )
         .finished.finally(() => {
@@ -116,14 +116,10 @@ export function ThemeTogglerButton({
   };
 
   const getIcon = (effective: ThemeSelection, resolved: Resolved) => {
-    const themeToShow = modes.includes('system') ? effective : resolved;
-    return themeToShow === 'system' ? (
-      <Monitor className="h-5 w-5" />
-    ) : themeToShow === 'dark' ? (
-      <Moon className="h-5 w-5" />
-    ) : (
-      <Sun className="h-5 w-5" />
-    );
+    const themeToShow = modes.includes("system") ? effective : resolved;
+    if (themeToShow === "system") return <Monitor className="h-5 w-5" />;
+    if (themeToShow === "dark") return <Moon className="h-5 w-5" />;
+    return <Sun className="h-5 w-5" />;
   };
 
   return (

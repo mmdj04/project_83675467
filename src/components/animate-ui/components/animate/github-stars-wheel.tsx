@@ -1,20 +1,18 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { StarIcon } from 'lucide-react';
+import * as React from "react";
 
+import { StarIcon } from "lucide-react";
+
+import { Particles, ParticlesEffect } from "@/components/animate-ui/primitives/effects/particles";
 import {
-  ScrollingNumber as ScrollingNumberPrimitive,
   ScrollingNumberContainer as ScrollingNumberContainerPrimitive,
-  ScrollingNumberItems as ScrollingNumberItemsPrimitive,
-  ScrollingNumberHighlight as ScrollingNumberHighlightPrimitive,
   type ScrollingNumberContainerProps as ScrollingNumberContainerPrimitiveProps,
-} from '@/components/animate-ui/primitives/texts/scrolling-number';
-import { cn } from '@/lib/utils';
-import {
-  Particles,
-  ParticlesEffect,
-} from '@/components/animate-ui/primitives/effects/particles';
+  ScrollingNumberHighlight as ScrollingNumberHighlightPrimitive,
+  ScrollingNumberItems as ScrollingNumberItemsPrimitive,
+  ScrollingNumber as ScrollingNumberPrimitive,
+} from "@/components/animate-ui/primitives/texts/scrolling-number";
+import { cn } from "@/lib/utils";
 
 function percentageBetween(value: number, min: number, max: number): number {
   return ((value - min) / (max - min)) * 100;
@@ -23,19 +21,16 @@ function percentageBetween(value: number, min: number, max: number): number {
 type GitHubStarsWheelProps = {
   username?: string;
   repo?: string;
-  direction?: 'btt' | 'ttb';
+  direction?: "btt" | "ttb";
   delay?: number;
   value?: number;
   step?: number;
-} & Omit<
-  ScrollingNumberContainerPrimitiveProps,
-  'direction' | 'number' | 'step'
->;
+} & Omit<ScrollingNumberContainerPrimitiveProps, "direction" | "number" | "step">;
 
 function GitHubStarsWheel({
   username,
   repo,
-  direction = 'btt',
+  direction = "btt",
   itemsSize = 35,
   sideItemsCount = 2,
   delay = 0,
@@ -47,14 +42,8 @@ function GitHubStarsWheel({
   const [stars, setStars] = React.useState(value ?? 0);
   const [currentStars, setCurrentStars] = React.useState(0);
   const [isLoading, setIsLoading] = React.useState(true);
-  const roundedStars = React.useMemo(
-    () => Math.round(stars / step) * step,
-    [stars, step],
-  );
-  const isCompleted = React.useMemo(
-    () => currentStars === roundedStars,
-    [currentStars, roundedStars],
-  );
+  const roundedStars = React.useMemo(() => Math.round(stars / step) * step, [stars, step]);
+  const isCompleted = React.useMemo(() => currentStars === roundedStars, [currentStars, roundedStars]);
   const fillPercentage = React.useMemo(
     () => percentageBetween(currentStars, 0, roundedStars),
     [currentStars, roundedStars],
@@ -67,7 +56,7 @@ function GitHubStarsWheel({
       fetch(`https://api.github.com/repos/${username}/${repo}`)
         .then((response) => response.json())
         .then((data) => {
-          if (data && typeof data.stargazers_count === 'number') {
+          if (data && typeof data.stargazers_count === "number") {
             setStars(data.stargazers_count);
           }
         })
@@ -82,7 +71,7 @@ function GitHubStarsWheel({
     !isLoading && (
       <ScrollingNumberContainerPrimitive
         key={direction}
-        className={cn('w-28', className)}
+        className={cn("w-28", className)}
         direction={direction}
         number={roundedStars}
         step={step}
@@ -91,13 +80,13 @@ function GitHubStarsWheel({
         {...props}
       >
         <div
-          className="absolute top-0 left-0 w-full bg-gradient-to-t from-transparent to-background z-10"
+          className="absolute top-0 left-0 z-10 w-full bg-gradient-to-t from-transparent to-background"
           style={{
             height: `${itemsSize * sideItemsCount}px`,
           }}
         />
         <div
-          className="absolute bottom-0 left-0 w-full bg-gradient-to-b from-transparent to-background z-10"
+          className="absolute bottom-0 left-0 z-10 w-full bg-gradient-to-b from-transparent to-background"
           style={{
             height: `${itemsSize * sideItemsCount}px`,
           }}
@@ -105,11 +94,11 @@ function GitHubStarsWheel({
         <ScrollingNumberPrimitive delay={delay}>
           <ScrollingNumberItemsPrimitive className="flex items-center justify-start pl-8" />
         </ScrollingNumberPrimitive>
-        <ScrollingNumberHighlightPrimitive className="bg-accent/40 border rounded-md size-full flex items-center pl-2">
+        <ScrollingNumberHighlightPrimitive className="flex size-full items-center rounded-md border bg-accent/40 pl-2">
           <Particles animate={isCompleted}>
             <StarIcon
               aria-hidden="true"
-              className="fill-neutral-300 stroke-neutral-300 dark:fill-neutral-700 dark:stroke-neutral-700 size-4"
+              className="size-4 fill-neutral-300 stroke-neutral-300 dark:fill-neutral-700 dark:stroke-neutral-700"
             />
             <StarIcon
               aria-hidden="true"
@@ -118,10 +107,7 @@ function GitHubStarsWheel({
                 clipPath: `inset(${100 - (isCompleted ? fillPercentage : fillPercentage - 10)}% 0 0 0)`,
               }}
             />
-            <ParticlesEffect
-              delay={0.5}
-              className="size-1 rounded-full bg-yellow-500"
-            />
+            <ParticlesEffect delay={0.5} className="size-1 rounded-full bg-yellow-500" />
           </Particles>
         </ScrollingNumberHighlightPrimitive>
       </ScrollingNumberContainerPrimitive>

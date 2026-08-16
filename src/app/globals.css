@@ -130,11 +130,7 @@ html {
   position: absolute;
   width: 200%;
   aspect-ratio: inherit;
-  background-image: radial-gradient(
-    circle at 0.5px 0.5px,
-    var(--background) 0.5px,
-    transparent 0
-  );
+  background-image: radial-gradient(circle at 0.5px 0.5px, var(--background) 0.5px, transparent 0);
   background-size: var(--_background-size) var(--_background-size);
   z-index: -1;
   mix-blend-mode: screen;
@@ -261,6 +257,7 @@ These serve as the fallback; there is no separate default.css file. */
 }
 
 @layer base {
+  /* biome-ignore lint/style/noDescendingSpecificity: intentional universal base reset before component rules. */
   * {
     @apply border-border outline-ring/50;
   }

@@ -21,7 +21,7 @@ export type TaskPriority = "High" | "Medium" | "Low";
 
 export type TaskInsightLabel = "Attachments" | "Comments" | "Documents";
 
-export type TaskInsight = {
+type TaskInsight = {
   label: TaskInsightLabel;
   count: number;
 };
