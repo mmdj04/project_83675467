@@ -35,7 +35,7 @@ export async function ProfileDocuments({ documents }: { documents: ProfileDocume
         <TableBody>
           {documents.map((document) => (
             <TableRow key={document.id}>
-              <TableCell className="font-medium">{document.name}</TableCell>
+              <TableCell className="font-medium">{t(profileValueLabelKeys[document.name])}</TableCell>
               <TableCell className="text-muted-foreground">{t(profileValueLabelKeys[document.category])}</TableCell>
               <TableCell className="text-muted-foreground">{t(profileValueLabelKeys[document.updatedAt])}</TableCell>
               <TableCell>
@@ -54,7 +54,7 @@ export async function ProfileDocuments({ documents }: { documents: ProfileDocume
                   </span>
                 ) : (
                   <Button
-                    aria-label={t("profile.downloadDocument", { name: document.name })}
+                    aria-label={t("profile.downloadDocument", { name: t(profileValueLabelKeys[document.name]) })}
                     size="icon-sm"
                     variant="ghost"
                   >

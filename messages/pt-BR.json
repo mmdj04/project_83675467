@@ -233,7 +233,14 @@
     "breadcrumbDirectory": "Diretório de funcionários",
     "breadcrumbProfileDetails": "Detalhes do perfil",
     "profileValueJobTitleSoftwareEngineer": "Engenheiro de Software",
-    "profileValueManagerRoleHeadOfProduct": "Chefe de Produto"
+    "profileValueManagerRoleHeadOfProduct": "Chefe de Produto",
+    "profileValueTeamProduct": "Produto",
+    "profileValueDepartmentProduct": "Produto",
+    "profileValueProjectAutonomousBidAgent": "Agente Autônomo de Licitações",
+    "profileValueBio": "Arham é engenheiro de software no time de produto, desenvolvendo software de gestão de licitações e propostas, incluindo agentes autônomos de licitação que agilizam a descoberta de oportunidades, a análise de requisitos, a preparação de documentos, verificações de conformidade, precificação e submissão. Ele se concentra em transformar fluxos de licitação complexos em produtos confiáveis e fáceis de usar, que ajudam as equipes a trabalhar mais rápido e tomar melhores decisões de licitação.",
+    "profileValueDocNameContractorAgreement": "Contrato de prestação de serviços",
+    "profileValueDocNameConfidentialityAgreement": "Acordo de confidencialidade",
+    "profileValueDocNameInfoSecurityPolicy": "Reconhecimento da política de segurança da informação"
   },
   "invoice": {
     "title": "Criar Nova Fatura",

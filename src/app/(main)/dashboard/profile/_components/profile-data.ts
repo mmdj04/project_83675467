@@ -46,6 +46,13 @@ export const profileValueLabelKeys: Record<string, string> = {
   current: "profile.profileValueDocStatusCurrent",
   dateMar18_2022Short: "profile.profileValueMar182022Short",
   dateJan8_2026Short: "profile.profileValueJan82026Short",
+  bioArham: "profile.profileValueBio",
+  teamProduct: "profile.profileValueTeamProduct",
+  departmentProduct: "profile.profileValueDepartmentProduct",
+  projectAutonomousBidAgent: "profile.profileValueProjectAutonomousBidAgent",
+  docNameContractorAgreement: "profile.profileValueDocNameContractorAgreement",
+  docNameConfidentialityAgreement: "profile.profileValueDocNameConfidentialityAgreement",
+  docNameInfoSecurityPolicy: "profile.profileValueDocNameInfoSecurityPolicy",
 };
 
 export interface ProfileRecord {
@@ -105,9 +112,9 @@ export const profile: ProfileRecord = {
   engagementStatus: "Active",
   jobTitle: "jobTitleSoftwareEngineer",
   jobLevel: "senior",
-  department: "Product",
-  team: "Product",
-  currentProject: "Autonomous Bid Agent",
+  department: "departmentProduct",
+  team: "teamProduct",
+  currentProject: "projectAutonomousBidAgent",
   workEmail: "hello@arhamkhnz.com",
   personalEmail: "arhamkhnz@gmail.com",
   workPhone: "+1 (415) 555-0148",
@@ -130,7 +137,7 @@ export const profile: ProfileRecord = {
     role: "headOfProduct",
     initials: "PK",
   },
-  bio: "Arham is a software engineer on the product team, building bids and tender management software, including autonomous bid agents that streamline opportunity discovery, requirement analysis, document preparation, compliance checks, pricing, and submission. He focuses on turning complex tender workflows into reliable, easy-to-use products that help teams work faster and make better bidding decisions.",
+  bio: "bioArham",
   leavePolicy: "contractLeaveAllowance",
   annualLeaveAllowance: "days25",
   remainingLeave: "days18",
@@ -146,7 +153,7 @@ export const profile: ProfileRecord = {
   documents: [
     {
       id: "doc-1",
-      name: "Contractor agreement",
+      name: "docNameContractorAgreement",
       category: "contract",
       updatedAt: "dateMar18_2022Short",
       status: "signed",
@@ -154,7 +161,7 @@ export const profile: ProfileRecord = {
     },
     {
       id: "doc-2",
-      name: "Confidentiality agreement",
+      name: "docNameConfidentialityAgreement",
       category: "compliance",
       updatedAt: "dateMar18_2022Short",
       status: "signed",
@@ -162,7 +169,7 @@ export const profile: ProfileRecord = {
     },
     {
       id: "doc-4",
-      name: "Information security policy acknowledgement",
+      name: "docNameInfoSecurityPolicy",
       category: "policy",
       updatedAt: "dateJan8_2026Short",
       status: "current",

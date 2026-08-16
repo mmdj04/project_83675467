@@ -17,7 +17,7 @@ export async function ProfileOverview({ profile }: ProfileOverviewProps) {
     <>
       <div className="flex flex-col gap-2">
         <h2 className="font-heading font-medium text-base">{t("profile.about")}</h2>
-        <p className="text-muted-foreground text-sm">{profile.bio}</p>
+        <p className="text-muted-foreground text-sm">{t(profileValueLabelKeys[profile.bio])}</p>
       </div>
 
       <Separator className="my-4" />
@@ -43,15 +43,15 @@ export async function ProfileOverview({ profile }: ProfileOverviewProps) {
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-1">
               <span className="text-muted-foreground text-xs">{t("profile.department")}</span>
-              <span className="text-sm">{profile.department}</span>
+              <span className="text-sm">{t(profileValueLabelKeys[profile.department])}</span>
             </div>
             <div className="flex flex-col gap-1">
               <span className="text-muted-foreground text-xs">{t("profile.team")}</span>
-              <span className="text-sm">{profile.team}</span>
+              <span className="text-sm">{t(profileValueLabelKeys[profile.team])}</span>
             </div>
             <div className="flex flex-col gap-1">
               <span className="text-muted-foreground text-xs">{t("profile.currentProject")}</span>
-              <span className="text-sm">{profile.currentProject}</span>
+              <span className="text-sm">{t(profileValueLabelKeys[profile.currentProject])}</span>
             </div>
           </div>
 

@@ -18,7 +18,7 @@ export async function EmploymentDetails({ profile }: { profile: ProfileRecord })
             </div>
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.team")}</dt>
-              <dd className="text-sm">{profile.team}</dd>
+              <dd className="text-sm">{t(profileValueLabelKeys[profile.team])}</dd>
             </div>
           </div>
 
@@ -36,11 +36,11 @@ export async function EmploymentDetails({ profile }: { profile: ProfileRecord })
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.department")}</dt>
-              <dd className="text-sm">{profile.department}</dd>
+              <dd className="text-sm">{t(profileValueLabelKeys[profile.department])}</dd>
             </div>
             <div className="flex flex-col gap-1">
               <dt className="text-muted-foreground text-xs">{t("profile.currentProject")}</dt>
-              <dd className="text-sm">{profile.currentProject}</dd>
+              <dd className="text-sm">{t(profileValueLabelKeys[profile.currentProject])}</dd>
             </div>
           </div>
         </dl>

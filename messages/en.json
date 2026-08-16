@@ -233,7 +233,14 @@
     "breadcrumbDirectory": "Employee directory",
     "breadcrumbProfileDetails": "Profile details",
     "profileValueJobTitleSoftwareEngineer": "Software Engineer",
-    "profileValueManagerRoleHeadOfProduct": "Head of Product"
+    "profileValueManagerRoleHeadOfProduct": "Head of Product",
+    "profileValueTeamProduct": "Product",
+    "profileValueDepartmentProduct": "Product",
+    "profileValueProjectAutonomousBidAgent": "Autonomous Bid Agent",
+    "profileValueBio": "Arham is a software engineer on the product team, building bids and tender management software, including autonomous bid agents that streamline opportunity discovery, requirement analysis, document preparation, compliance checks, pricing, and submission. He focuses on turning complex tender workflows into reliable, easy-to-use products that help teams work faster and make better bidding decisions.",
+    "profileValueDocNameContractorAgreement": "Contractor agreement",
+    "profileValueDocNameConfidentialityAgreement": "Confidentiality agreement",
+    "profileValueDocNameInfoSecurityPolicy": "Information security policy acknowledgement"
   },
   "invoice": {
     "title": "Create New Invoice",
