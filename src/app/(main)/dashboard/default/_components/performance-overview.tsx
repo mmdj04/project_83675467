@@ -237,13 +237,13 @@ export function PerformanceOverview() {
 
   return (
     <Card className="@container/card">
-      <CardHeader>
+      <CardHeader className="has-data-[slot=card-action]:grid-cols-1! @[560px]/card:has-data-[slot=card-action]:grid-cols-[1fr_auto]!">
         <CardTitle className="leading-none">{t("customerActivity")}</CardTitle>
         <CardDescription>
           <span className="@[540px]/card:block hidden">{t("customerActivityLast3Months")}</span>
           <span className="@[540px]/card:hidden">{t("last3Months")}</span>
         </CardDescription>
-        <CardAction className="flex items-center gap-2">
+        <CardAction className="col-start-1! row-span-auto! row-start-auto! justify-self-stretch! flex flex-wrap items-center gap-2 @[560px]/card:col-start-2! @[560px]/card:row-span-2! @[560px]/card:row-start-1! @[560px]/card:justify-self-end! @[560px]/card:justify-end">
           <Select defaultValue="quarter">
             <SelectTrigger size="sm" className="w-28">
               <SelectValue placeholder={t("threeMonths")} />

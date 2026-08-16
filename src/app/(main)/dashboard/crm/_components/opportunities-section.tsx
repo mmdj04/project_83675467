@@ -109,14 +109,14 @@ export function OpportunitiesSection() {
 
   return (
     <section>
-      <Card>
-        <CardHeader>
+      <Card className="@container/card">
+        <CardHeader className="has-data-[slot=card-action]:grid-cols-1! @[560px]/card:has-data-[slot=card-action]:grid-cols-[1fr_auto]!">
           <CardTitle className="leading-none">{t("recentOpportunities")}</CardTitle>
           <CardDescription>{t("recentOpportunitiesDescription")}</CardDescription>
-          <CardAction>
-            <div className="flex items-center gap-2">
+          <CardAction className="col-start-1! row-span-auto! row-start-auto! justify-self-stretch! @[560px]/card:col-start-2! @[560px]/card:row-span-2! @[560px]/card:row-start-1! @[560px]/card:justify-self-end!">
+            <div className="flex flex-wrap items-center gap-2">
               <Input
-                className="h-7 w-44 md:w-52"
+                className="h-7 min-w-40 flex-1 @[560px]/card:w-52 @[560px]/card:flex-none"
                 placeholder={t("searchDeals")}
                 value={searchQuery}
                 onChange={(event) => {
