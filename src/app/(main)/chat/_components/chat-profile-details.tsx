@@ -16,7 +16,7 @@ import {
   UserRound,
   X,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -25,6 +25,7 @@ import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getInitials } from "@/lib/utils";
 
+import { formatChatFullDate } from "./chat-time";
 import type { Contact } from "./data";
 
 interface ChatProfileDetailsProps {
@@ -34,6 +35,7 @@ interface ChatProfileDetailsProps {
 
 export function ChatProfileDetails({ contact, onClose }: ChatProfileDetailsProps) {
   const t = useTranslations();
+  const locale = useLocale();
 
   return (
     <div className="flex h-full min-h-0 flex-col gap-4 overflow-y-auto p-4">
@@ -44,7 +46,7 @@ export function ChatProfileDetails({ contact, onClose }: ChatProfileDetailsProps
 
         <div className="min-w-0 flex-1">
           <div className="truncate font-medium leading-5">{contact.name}</div>
-          <div className="truncate text-muted-foreground text-xs">{contact.role}</div>
+          <div className="truncate text-muted-foreground text-xs">{t(contact.roleKey)}</div>
         </div>
 
         <Button variant="ghost" size="icon-sm" aria-label={t("chat.closeProfile")} onClick={onClose}>
@@ -108,19 +110,19 @@ export function ChatProfileDetails({ contact, onClose }: ChatProfileDetailsProps
           <div className="flex items-center gap-2">
             <UserRound className="size-4 shrink-0 text-muted-foreground" />
             <span className="text-muted-foreground text-sm">{t("chat.role")}</span>
-            <span className="ml-auto truncate text-sm">{contact.role}</span>
+            <span className="ml-auto truncate text-sm">{t(contact.roleKey)}</span>
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle2 className="size-4 shrink-0 text-muted-foreground" />
             <span className="text-muted-foreground text-sm">{t("chat.stage")}</span>
             <Badge variant="secondary" className="ml-auto">
-              {contact.status}
+              {t(contact.statusKey)}
             </Badge>
           </div>
           <div className="flex items-center gap-2">
             <Calendar className="size-4 shrink-0 text-muted-foreground" />
             <span className="text-muted-foreground text-sm">{t("chat.qualifiedSince")}</span>
-            <span className="ml-auto truncate text-sm">{contact.qualifiedAt}</span>
+            <span className="ml-auto truncate text-sm">{formatChatFullDate(contact.qualifiedAt, locale)}</span>
           </div>
           <div className="flex items-center gap-2">
             <Monitor className="size-4 shrink-0 text-muted-foreground" />
@@ -141,9 +143,9 @@ export function ChatProfileDetails({ contact, onClose }: ChatProfileDetailsProps
             <Tag className="size-4 shrink-0 text-muted-foreground" />
             <span className="text-muted-foreground text-sm">{t("chat.tags")}</span>
             <div className="ml-auto flex flex-wrap justify-end gap-1">
-              {contact.tags.map((tag) => (
-                <Badge key={tag} variant="outline">
-                  {tag}
+              {contact.tagKeys.map((tagKey) => (
+                <Badge key={tagKey} variant="outline">
+                  {t(tagKey)}
                 </Badge>
               ))}
             </div>

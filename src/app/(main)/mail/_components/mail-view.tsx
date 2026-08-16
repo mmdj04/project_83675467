@@ -1,6 +1,5 @@
 "use client";
 
-import { format } from "date-fns/format";
 import {
   Archive,
   ChevronDown,
@@ -19,7 +18,7 @@ import {
   Trash2,
   X,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { SimpleIcon } from "@/components/simple-icon";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -48,7 +47,18 @@ interface MailDisplayProps {
 
 export function MailView({ mail, onClose }: MailDisplayProps) {
   const t = useTranslations();
+  const locale = useLocale();
   const [, setMail] = useMail();
+
+  const dateTimeFormatter = new Intl.DateTimeFormat(locale === "pt-BR" ? "pt-BR" : "en-US", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    timeZone: "America/Sao_Paulo",
+  });
 
   function handleClose() {
     setMail({ selected: null });
@@ -166,10 +176,10 @@ export function MailView({ mail, onClose }: MailDisplayProps) {
         {mail ? (
           <div className="flex min-h-0 flex-1 flex-col gap-3">
             <div className="space-y-1.5">
-              <div className="font-medium leading-none">{mail.subject}</div>
+              <div className="font-medium leading-none">{t(mail.subjectKey)}</div>
 
               <div className="text-muted-foreground text-xs leading-none">
-                {format(new Date(mail.receivedAt), "EEE, d MMM yyyy, h:mm a")}
+                {dateTimeFormatter.format(new Date(mail.receivedAt))}
               </div>
             </div>
 
@@ -227,7 +237,7 @@ export function MailView({ mail, onClose }: MailDisplayProps) {
                       {mail.attachments.map((attachment) => (
                         <Button size="xs" variant="secondary" key={attachment.id}>
                           <SimpleIcon icon={attachment.icon} className="size-3 fill-current" />
-                          <span className="font-normal">{attachment.name}</span>
+                          <span className="font-normal">{t(attachment.nameKey)}</span>
                           <span className="font-normal text-muted-foreground">{attachment.size}</span>
                         </Button>
                       ))}
@@ -239,7 +249,9 @@ export function MailView({ mail, onClose }: MailDisplayProps) {
               </>
             ) : null}
 
-            <div className="scrollbar-none min-h-0 flex-1 overflow-y-auto whitespace-pre-wrap text-sm">{mail.body}</div>
+            <div className="scrollbar-none min-h-0 flex-1 overflow-y-auto whitespace-pre-wrap text-sm">
+              {t(mail.bodyKey)}
+            </div>
 
             <div className="mt-auto flex flex-col gap-3">
               <Separator />

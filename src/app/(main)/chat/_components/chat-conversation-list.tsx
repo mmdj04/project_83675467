@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronDown, Filter, PanelRightClose, PanelRightOpen, Pin } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Avatar, AvatarBadge, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,7 @@ import { useSidebar } from "@/components/ui/sidebar";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn, getInitials } from "@/lib/utils";
 
+import { formatChatTime } from "./chat-time";
 import type { Conversation } from "./data";
 import { useChat } from "./use-chat";
 
@@ -29,6 +30,7 @@ const groupLabelKeys: Record<Conversation["group"], string> = {
 
 export function ChatConversationList({ conversations, onSelectConversation, className }: ChatConversationListProps) {
   const t = useTranslations();
+  const locale = useLocale();
   const [chat, setChat] = useChat();
   const { state, toggleSidebar } = useSidebar();
   const isCollapsed = state === "collapsed";
@@ -135,16 +137,16 @@ export function ChatConversationList({ conversations, onSelectConversation, clas
                               <div className="flex w-full items-center justify-between gap-2">
                                 <div className="truncate font-medium text-sm leading-5">{conversation.name}</div>
                                 <span className="text-nowrap text-muted-foreground text-xs leading-5">
-                                  {conversation.time}
+                                  {formatChatTime(conversation.time, locale, t)}
                                 </span>
                               </div>
                               <div className="flex min-w-0 items-end gap-2">
                                 <div className="w-0 flex-1 overflow-hidden">
                                   <div className="truncate font-medium text-foreground/90 text-xs leading-4">
-                                    {conversation.subject}
+                                    {t(conversation.subjectKey)}
                                   </div>
                                   <div className="truncate text-muted-foreground text-xs leading-4">
-                                    {conversation.preview}
+                                    {t(conversation.previewKey)}
                                   </div>
                                 </div>
 

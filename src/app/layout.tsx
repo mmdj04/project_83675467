@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   const store = await cookies();
-  const locale = store.get("locale")?.value === "en" ? "en" : "pt-BR";
+  const locale = store.get("locale")?.value === "pt-BR" ? "pt-BR" : "en";
   const messages = locale === "en" ? enMessages : { ...enMessages, ...ptBRMessages };
   const { theme_mode, theme_preset, content_layout, navbar_style, sidebar_variant, sidebar_collapsible, font } =
     PREFERENCE_DEFAULTS;

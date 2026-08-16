@@ -1,6 +1,8 @@
 import { differenceInDays } from "date-fns/differenceInDays";
 import { format } from "date-fns/format";
 import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
+import { enUS, ptBR } from "date-fns/locale";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -22,6 +24,8 @@ interface MailListProps {
 
 export function MailList({ groups, onSelectMail }: MailListProps) {
   const [mail, setMail] = useMail();
+  const locale = useLocale();
+  const t = useTranslations();
 
   return (
     <ScrollArea className="**:data-[slot=scroll-area-viewport]:scroll-fade min-h-0 flex-1">
@@ -75,7 +79,7 @@ export function MailList({ groups, onSelectMail }: MailListProps) {
                               item.isRead && "font-normal text-muted-foreground",
                             )}
                           >
-                            {item.subject}
+                            {t(item.subjectKey)}
                           </div>
                         </div>
 
@@ -85,11 +89,11 @@ export function MailList({ groups, onSelectMail }: MailListProps) {
                             mail.selected === item.id && "text-foreground",
                           )}
                         >
-                          {formatMailDate(item.receivedAt)}
+                          {formatMailDate(item.receivedAt, locale)}
                         </div>
                       </div>
 
-                      <p className="mt-2 line-clamp-2 text-muted-foreground text-xs leading-5">{item.body}</p>
+                      <p className="mt-2 line-clamp-2 text-muted-foreground text-xs leading-5">{t(item.bodyKey)}</p>
                     </div>
                   </div>
                 </button>
@@ -102,12 +106,13 @@ export function MailList({ groups, onSelectMail }: MailListProps) {
   );
 }
 
-function formatMailDate(date: string) {
+function formatMailDate(date: string, locale: string) {
   const mailDate = new Date(date);
+  const dateFnsLocale = locale === "pt-BR" ? ptBR : enUS;
 
   if (differenceInDays(new Date(), mailDate) <= 3) {
-    return formatDistanceToNow(mailDate, { addSuffix: true });
+    return formatDistanceToNow(mailDate, { addSuffix: true, locale: dateFnsLocale });
   }
 
-  return format(mailDate, "d MMM yyyy");
+  return format(mailDate, "d MMM yyyy", { locale: dateFnsLocale });
 }

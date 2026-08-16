@@ -38,9 +38,7 @@ export function Chat({ conversations }: ChatProps) {
         style={
           {
             "--profile-width": showContact ? "20rem" : "0rem",
-            ...(visualViewportHeight
-              ? { height: `calc(${visualViewportHeight}px - var(--header-height))` }
-              : {}),
+            ...(visualViewportHeight ? { height: `calc(${visualViewportHeight}px - var(--header-height))` } : {}),
           } as CSSProperties
         }
       >

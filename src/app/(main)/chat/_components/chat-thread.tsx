@@ -16,7 +16,7 @@ import {
   Type,
   UserRound,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Avatar, AvatarBadge, AvatarFallback } from "@/components/ui/avatar";
 import { Bubble, BubbleContent, BubbleGroup, BubbleReactions } from "@/components/ui/bubble";
@@ -45,6 +45,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn, getInitials } from "@/lib/utils";
 
+import { formatChatFullDate, formatChatTime } from "./chat-time";
 import { type Message as ChatMessage, type Contact, currentUser } from "./data";
 
 interface ChatThreadProps {
@@ -58,6 +59,7 @@ interface ChatThreadProps {
 
 export function ChatThread({ contact, messages, onOpenContact, onBack, showBackButton, className }: ChatThreadProps) {
   const t = useTranslations();
+  const locale = useLocale();
 
   return (
     <div className={cn("flex h-full flex-col py-3", className)}>
@@ -148,7 +150,7 @@ export function ChatThread({ contact, messages, onOpenContact, onBack, showBackB
           <MessageScrollerViewport>
             <MessageScrollerContent className="gap-6 px-2 py-8">
               <Marker variant="separator">
-                <MarkerContent>May 6, 2026</MarkerContent>
+                <MarkerContent>{formatChatFullDate(messages[0].time, locale)}</MarkerContent>
               </Marker>
 
               {messages.map((message) => {
@@ -179,15 +181,18 @@ export function ChatThread({ contact, messages, onOpenContact, onBack, showBackB
                       <MessageContent>
                         <BubbleGroup>
                           <Bubble variant={isOutbound ? "default" : "muted"} align={message.align}>
-                            <BubbleContent>{message.text}</BubbleContent>
+                            <BubbleContent>{t(message.textKey)}</BubbleContent>
                             {message.reaction ? (
-                              <BubbleReactions aria-label={`Reaction: ${message.reaction}`} align={reactionAlign}>
+                              <BubbleReactions
+                                aria-label={t("chat.reactionAria", { reaction: message.reaction })}
+                                align={reactionAlign}
+                              >
                                 <span>{message.reaction}</span>
                               </BubbleReactions>
                             ) : null}
                           </Bubble>
                         </BubbleGroup>
-                        <MessageFooter>{message.time}</MessageFooter>
+                        <MessageFooter>{formatChatTime(message.time, locale, t)}</MessageFooter>
                       </MessageContent>
                     </Message>
                   </MessageScrollerItem>

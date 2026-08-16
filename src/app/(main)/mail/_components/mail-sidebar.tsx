@@ -53,7 +53,7 @@ export function MailSidebar() {
                   variant="ghost"
                   size="icon-sm"
                   className={accountTriggerClassName}
-                  aria-label={`Open ${selectedAccount.label} menu`}
+                  aria-label={t("mail.openAccountMenuLabel", { name: selectedAccount.label })}
                 >
                   <AccountMarker account={selectedAccount} isSelected />
                 </Button>
@@ -85,7 +85,7 @@ export function MailSidebar() {
                     key={account.id}
                     className={accountTriggerClassName}
                     value={String(account.id)}
-                    aria-label={`Select ${account.label}`}
+                    aria-label={t("mail.selectAccountLabel", { name: account.label })}
                   >
                     <AccountMarker account={account} />
                   </ToggleGroupItem>
