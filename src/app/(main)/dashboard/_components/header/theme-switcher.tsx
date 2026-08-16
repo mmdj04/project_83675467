@@ -1,7 +1,34 @@
 "use client";
 
-import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons/theme-toggler";
+import { Monitor, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+
+import {
+  type Resolved,
+  type ThemeSelection,
+  ThemeToggler,
+} from "@/components/animate-ui/primitives/effects/theme-toggler";
+import { Button } from "@/components/ui/button";
+
+const THEME_CYCLE = ["light", "dark", "system"] as const;
 
 export function ThemeSwitcher() {
-  return <ThemeTogglerButton variant="default" size="sm" />;
+  const { theme, resolvedTheme, setTheme } = useTheme();
+
+  return (
+    <ThemeToggler theme={theme as ThemeSelection} resolvedTheme={resolvedTheme as Resolved} setTheme={setTheme}>
+      {({ effective, resolved, toggleTheme }) => (
+        <Button
+          size="icon"
+          aria-label="Theme"
+          onClick={() => {
+            const currentIndex = THEME_CYCLE.indexOf(effective);
+            toggleTheme(THEME_CYCLE[(currentIndex + 1) % THEME_CYCLE.length]);
+          }}
+        >
+          {effective === "system" ? <Monitor /> : resolved === "dark" ? <Moon /> : <Sun />}
+        </Button>
+      )}
+    </ThemeToggler>
+  );
 }
