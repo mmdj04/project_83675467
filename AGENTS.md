@@ -4,6 +4,10 @@
 
 Studio Admin is a responsive admin dashboard built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, and shadcn/ui.
 
+## CRITICAL: never run a local server
+
+NEVER run the local dev server (`npm run dev`) or any local server in this environment. The user verifies all changes on their own site after pushing to GitHub. Validate changes statically instead: `npm run ci:local` (biome, tsc, knip, npm audit) and, when needed, `npm run build`.
+
 This repository uses the shadcn `radix-nova` style. The shadcn CLI reports `base: "radix"`, which refers to Radix UI. Always inspect the local components in `src/components/ui/` because individual wrappers may use different primitives.
 
 <!-- BEGIN:nextjs-agent-rules -->
