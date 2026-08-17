@@ -591,3 +591,10 @@ html {
   padding: 0 !important;
   font-size: 0.8125rem !important;
 }
+
+/* Full-screen sidebar sheet on mobile/tablet (below md breakpoint). */
+[data-slot="sidebar"][data-mobile="true"] {
+  width: 100%;
+  max-width: 100%;
+  border: none;
+}
