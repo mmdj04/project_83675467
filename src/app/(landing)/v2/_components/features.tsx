@@ -41,7 +41,7 @@ export function Features() {
       <h2 className="mx-auto max-w-xl text-center text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
         Impulsione sua estratégia com recursos inteligentes
       </h2>
-      <div className="mx-auto mt-8 grid w-full gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-3 lg:mt-14">
+      <div className="mx-auto mt-8 grid w-full gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3 lg:mt-14">
         {features.map((feature) => (
           <Card key={feature.title} className="flex flex-col overflow-hidden rounded-xl border shadow-none">
             <CardHeader>
