@@ -6,7 +6,7 @@ export function Hero() {
       <div className="fixed top-6 right-6 z-50">
         <ThemeTogglerButton />
       </div>
-      <div className="relative z-10 w-full text-left">
+      <div className="relative z-10 w-full max-w-[60rem] text-left">
         <h1 className="font-semibold text-4xl text-foreground tracking-tight md:text-6xl">Studio Admin</h1>
         <p className="mt-3 text-lg text-muted-foreground">Multi-sistema, multi-equipe, tudo em um só lugar.</p>
       </div>
