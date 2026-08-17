@@ -23,6 +23,8 @@ import {
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { countries } from "@/data/countries";
+import { timeZones } from "@/data/timezones";
 import { setClientCookie } from "@/lib/cookie.client";
 import { cn } from "@/lib/utils";
 
@@ -38,6 +40,14 @@ const DATE_STYLES = ["full", "long", "medium", "short"] as const;
 type TimezoneOption = { value: string; label: string };
 
 type TimezoneGroup = { value: string; items: TimezoneOption[] };
+
+type CountryOption = { value: string; label: string; iso2: string };
+
+type CountryGroup = { value: string; items: CountryOption[] };
+
+type PhoneCodeOption = { value: string; label: string };
+
+type CurrencyOption = { value: string; label: string; symbol: string };
 
 function FormatCell({ last = false, children }: { last?: boolean; children: ReactNode }) {
   return (
@@ -106,6 +116,9 @@ export function ExperienceSettings() {
   const [numberFormat, setNumberFormat] = useState("1.234,56");
   const [timezone, setTimezone] = useState("America/Sao_Paulo");
   const [calendar, setCalendar] = useState("gregory");
+  const [country, setCountry] = useState("BR");
+  const [phoneCode, setPhoneCode] = useState("55");
+  const [currency, setCurrency] = useState("BRL");
 
   function handleLocaleChange(code: string) {
     setClientCookie("locale", code, 365);
@@ -145,8 +158,8 @@ export function ExperienceSettings() {
       label: `${zone} (${formatOffset(zone)})`,
     });
     const groups = new Map<string, TimezoneOption[]>();
-    for (const zone of Intl.supportedValuesOf("timeZone")) {
-      const region = zone.split("/")[0];
+    for (const zone of timeZones) {
+      const region = zone === "UTC" ? "UTC" : zone.split("/")[0];
       const group = groups.get(region);
       if (group) {
         group.push(toOption(zone));
@@ -154,11 +167,10 @@ export function ExperienceSettings() {
         groups.set(region, [toOption(zone)]);
       }
     }
+    const entries = [...groups.entries()].sort(([a], [b]) => a.localeCompare(b));
     return [
-      { value: "UTC", items: [toOption("UTC")] },
-      ...[...groups.entries()]
-        .sort(([a], [b]) => a.localeCompare(b))
-        .map(([region, items]) => ({ value: region, items })),
+      ...entries.filter(([region]) => region === "UTC").map(([region, items]) => ({ value: region, items })),
+      ...entries.filter(([region]) => region !== "UTC").map(([region, items]) => ({ value: region, items })),
     ];
   }, [locale]);
 
@@ -166,6 +178,68 @@ export function ExperienceSettings() {
     () => timezoneGroups.flatMap((group) => group.items).find((option) => option.value === timezone) ?? null,
     [timezone, timezoneGroups],
   );
+
+  const countryGroups = useMemo<CountryGroup[]>(() => {
+    const regionNames = new Intl.DisplayNames(locale, { type: "region" });
+    const groups = new Map<string, CountryOption[]>();
+    for (const data of countries) {
+      const option: CountryOption = {
+        value: data.iso2,
+        label: regionNames.of(data.iso2) ?? data.name,
+        iso2: data.iso2,
+      };
+      const group = groups.get(data.region);
+      if (group) {
+        group.push(option);
+      } else {
+        groups.set(data.region, [option]);
+      }
+    }
+    return [...groups.entries()]
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([region, items]) => ({ value: region, items }));
+  }, [locale]);
+
+  const selectedCountry = useMemo(
+    () => countryGroups.flatMap((group) => group.items).find((option) => option.value === country) ?? null,
+    [country, countryGroups],
+  );
+
+  const phoneCodeOptions = useMemo<PhoneCodeOption[]>(() => {
+    const regionNames = new Intl.DisplayNames(locale, { type: "region" });
+    const byCode = new Map<string, string[]>();
+    for (const data of countries) {
+      const code = data.phone_code.replace(/^0+/, "");
+      const names = byCode.get(code);
+      if (names) {
+        names.push(regionNames.of(data.iso2) ?? data.name);
+      } else {
+        byCode.set(code, [regionNames.of(data.iso2) ?? data.name]);
+      }
+    }
+    return [...byCode.entries()]
+      .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
+      .map(([code, names]) => ({ value: code, label: `+${code} (${names.join(", ")})` }));
+  }, [locale]);
+
+  const selectedPhoneCode = phoneCodeOptions.find((option) => option.value === phoneCode) ?? null;
+
+  const currencyOptions = useMemo<CurrencyOption[]>(() => {
+    const currencyNames = new Intl.DisplayNames(locale, { type: "currency" });
+    return Intl.supportedValuesOf("currency")
+      .filter((code) => countries.some((data) => data.currency === code))
+      .map((code) => ({
+        value: code,
+        label: `${currencyNames.of(code) ?? code} (${code})`,
+        symbol:
+          new Intl.NumberFormat(locale, { style: "currency", currency: code, currencyDisplay: "narrowSymbol" })
+            .formatToParts(1234.56)
+            .find((part) => part.type === "currency")?.value ?? code,
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label, locale));
+  }, [locale]);
+
+  const selectedCurrency = currencyOptions.find((option) => option.value === currency) ?? null;
 
   return (
     <div className="flex flex-col gap-6 pb-8">
@@ -356,6 +430,111 @@ export function ExperienceSettings() {
                   ))}
                 </SelectContent>
               </Select>
+            </FormatCell>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 className="mb-1 font-semibold text-base">{t("regional")}</h3>
+        <p className="mb-3 text-muted-foreground text-sm">{t("regionalDescription")}</p>
+        <div className="rounded-lg border">
+          <div className="grid gap-0 sm:grid-cols-2">
+            <FormatCell>
+              <Label htmlFor="format-country">{t("country")}</Label>
+              <Combobox
+                items={countryGroups}
+                value={selectedCountry}
+                onValueChange={(option) => setCountry(option?.value ?? "")}
+                autoHighlight
+              >
+                <ComboboxInput
+                  id="format-country"
+                  placeholder={t("countrySearchPlaceholder")}
+                  showTrigger
+                  showClear
+                  className="w-full"
+                />
+                <ComboboxContent>
+                  <ComboboxEmpty>{t("countryNoResults")}</ComboboxEmpty>
+                  <ComboboxList>
+                    {(group) => (
+                      <ComboboxGroup key={group.value} items={group.items}>
+                        <ComboboxLabel>{group.value}</ComboboxLabel>
+                        <ComboboxCollection>
+                          {(option) => (
+                            <ComboboxItem key={option.value} value={option}>
+                              <span
+                                aria-hidden="true"
+                                className={cn(
+                                  "shrink-0 rounded-xs text-sm ring-1 ring-foreground/10",
+                                  `flag:${option.iso2}`,
+                                )}
+                              />
+                              <span className="min-w-0 flex-1 truncate">{option.label}</span>
+                            </ComboboxItem>
+                          )}
+                        </ComboboxCollection>
+                      </ComboboxGroup>
+                    )}
+                  </ComboboxList>
+                </ComboboxContent>
+              </Combobox>
+            </FormatCell>
+            <FormatCell>
+              <Label htmlFor="format-phone">{t("phoneCode")}</Label>
+              <Combobox
+                items={phoneCodeOptions}
+                value={selectedPhoneCode}
+                onValueChange={(option) => setPhoneCode(option?.value ?? "")}
+                autoHighlight
+              >
+                <ComboboxInput
+                  id="format-phone"
+                  placeholder={t("phoneCodeSearchPlaceholder")}
+                  showTrigger
+                  showClear
+                  className="w-full"
+                />
+                <ComboboxContent>
+                  <ComboboxEmpty>{t("phoneCodeNoResults")}</ComboboxEmpty>
+                  <ComboboxList>
+                    {(option) => (
+                      <ComboboxItem key={option.value} value={option}>
+                        {option.label}
+                      </ComboboxItem>
+                    )}
+                  </ComboboxList>
+                </ComboboxContent>
+              </Combobox>
+            </FormatCell>
+            <FormatCell last>
+              <Label htmlFor="format-currency">{t("currency")}</Label>
+              <Combobox
+                items={currencyOptions}
+                value={selectedCurrency}
+                onValueChange={(option) => setCurrency(option?.value ?? "")}
+                autoHighlight
+              >
+                <ComboboxInput
+                  id="format-currency"
+                  placeholder={t("currencySearchPlaceholder")}
+                  showTrigger
+                  showClear
+                  className="w-full"
+                />
+                <ComboboxContent>
+                  <ComboboxEmpty>{t("currencyNoResults")}</ComboboxEmpty>
+                  <ComboboxList>
+                    {(option) => (
+                      <ComboboxItem key={option.value} value={option}>
+                        {option.label}
+                        <span className="text-muted-foreground">{option.symbol}</span>
+                      </ComboboxItem>
+                    )}
+                  </ComboboxList>
+                </ComboboxContent>
+              </Combobox>
             </FormatCell>
           </div>
         </div>
