@@ -1,4 +1,9 @@
+import Link from "next/link";
+
+import { ArrowUpRight } from "lucide-react";
+
 import { ThemeTogglerButton } from "@/components/theme-toggler-button";
+import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
@@ -9,6 +14,11 @@ export function Hero() {
       <div className="relative z-10 w-full max-w-[60rem] text-left">
         <h1 className="font-semibold text-4xl text-foreground tracking-tight md:text-6xl">Studio Admin</h1>
         <p className="mt-3 text-lg text-muted-foreground">Multi-sistema, multi-equipe, tudo em um só lugar.</p>
+        <Button className="mt-8 rounded-full" size="lg" asChild>
+          <Link href="/v2">
+            Landing Page V2 <ArrowUpRight />
+          </Link>
+        </Button>
       </div>
       <div className="huly-glow w-full max-w-[60rem]">
         <div className="huly-glow__back" aria-hidden>
