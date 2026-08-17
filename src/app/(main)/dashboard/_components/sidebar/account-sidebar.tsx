@@ -54,7 +54,7 @@ export function AccountSidebar({ ...props }: React.ComponentProps<typeof Sidebar
           <Button
             asChild
             aria-label={t("exitAccount")}
-            className="group-data-[collapsible=icon]:hidden hidden md:inline-flex"
+            className="group-data-[collapsible=icon]:hidden"
             size="icon-sm"
             variant="ghost"
           >

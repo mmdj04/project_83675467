@@ -1,6 +1,6 @@
 "use client";
 
-import { X } from "lucide-react";
+import { PanelLeftClose } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,7 @@ export function MobileSidebarClose() {
       className="md:hidden"
       onClick={() => setOpenMobile(false)}
     >
-      <X aria-hidden="true" />
+      <PanelLeftClose aria-hidden="true" />
     </Button>
   );
 }
