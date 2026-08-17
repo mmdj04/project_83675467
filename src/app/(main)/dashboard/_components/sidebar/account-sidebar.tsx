@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 
-import { Command, X } from "lucide-react";
+import { Command, Home } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useShallow } from "zustand/react/shallow";
 
-import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -40,29 +39,30 @@ export function AccountSidebar({ ...props }: React.ComponentProps<typeof Sidebar
   return (
     <Sidebar {...props} variant={variant} collapsible={collapsible}>
       <SidebarHeader>
-        <div className="flex items-center gap-1">
-          <SidebarMenu className="flex-1">
+        <div className="flex w-full flex-col gap-1">
+          <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild tooltip={t("breadcrumbAccount")}>
-                <Link prefetch={false} href="/dashboard/account">
-                  <Command />
-                  <span className="font-semibold text-base">{t("breadcrumbAccount")}</span>
+              <SidebarMenuButton asChild tooltip={t("home")}>
+                <Link prefetch={false} href="/dashboard/default">
+                  <Home />
+                  <span>{t("home")}</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
-          <Button
-            asChild
-            aria-label={t("exitAccount")}
-            className="group-data-[collapsible=icon]:hidden"
-            size="icon-sm"
-            variant="ghost"
-          >
-            <Link prefetch={false} href="/dashboard/default">
-              <X />
-            </Link>
-          </Button>
-          <MobileSidebarClose />
+          <div className="flex items-center gap-1">
+            <SidebarMenu className="flex-1">
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild tooltip={t("breadcrumbAccount")}>
+                  <Link prefetch={false} href="/dashboard/account">
+                    <Command />
+                    <span className="font-semibold text-base">{t("breadcrumbAccount")}</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+            <MobileSidebarClose />
+          </div>
         </div>
       </SidebarHeader>
       <SidebarContent>
