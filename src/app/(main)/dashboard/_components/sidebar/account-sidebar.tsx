@@ -20,6 +20,7 @@ import { rootUser } from "@/data/users";
 import { usePreferencesStore } from "@/stores/preferences/preferences-provider";
 
 import { AccountNav } from "./account-navigation";
+import { MobileSidebarClose } from "./mobile-sidebar-close";
 import { NavUser } from "./nav-user";
 import { SupportCard } from "./support-card";
 
@@ -53,7 +54,7 @@ export function AccountSidebar({ ...props }: React.ComponentProps<typeof Sidebar
           <Button
             asChild
             aria-label={t("exitAccount")}
-            className="group-data-[collapsible=icon]:hidden"
+            className="group-data-[collapsible=icon]:hidden hidden md:inline-flex"
             size="icon-sm"
             variant="ghost"
           >
@@ -61,6 +62,7 @@ export function AccountSidebar({ ...props }: React.ComponentProps<typeof Sidebar
               <X />
             </Link>
           </Button>
+          <MobileSidebarClose />
         </div>
       </SidebarHeader>
       <SidebarContent>

@@ -19,6 +19,7 @@ import { rootUser } from "@/data/users";
 import { sidebarItems } from "@/navigation/sidebar/sidebar-items";
 import { usePreferencesStore } from "@/stores/preferences/preferences-provider";
 
+import { MobileSidebarClose } from "./mobile-sidebar-close";
 import { NavMain } from "./nav-main";
 import { NavUser } from "./nav-user";
 import { SupportCard } from "./support-card";
@@ -38,16 +39,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props} variant={variant} collapsible={collapsible}>
       <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link prefetch={false} href="/dashboard/default">
-                <Command />
-                <span className="font-semibold text-base">{APP_CONFIG.name}</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
+        <div className="flex items-center gap-1">
+          <SidebarMenu className="flex-1">
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild>
+                <Link prefetch={false} href="/dashboard/default">
+                  <Command />
+                  <span className="font-semibold text-base">{APP_CONFIG.name}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+          <MobileSidebarClose />
+        </div>
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={sidebarItems} />
