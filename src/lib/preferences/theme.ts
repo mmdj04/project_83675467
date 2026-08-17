@@ -28,6 +28,14 @@ export const THEME_PRESET_OPTIONS = [
     },
   },
   {
+    label: "OpenCode",
+    value: "opencode",
+    primary: {
+      light: "oklch(0.55 0.232 268.114)",
+      dark: "oklch(0.55 0.232 268.114)",
+    },
+  },
+  {
     label: "Soft Pop",
     value: "soft-pop",
     primary: {
@@ -41,6 +49,14 @@ export const THEME_PRESET_OPTIONS = [
     primary: {
       light: "oklch(0.64 0.17 36.44)",
       dark: "oklch(0.64 0.17 36.44)",
+    },
+  },
+  {
+    label: "Twenty",
+    value: "twenty",
+    primary: {
+      light: "oklch(0.544 0.191 267.005)",
+      dark: "oklch(0.544 0.191 267.005)",
     },
   },
 ] as const;

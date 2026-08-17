@@ -6,6 +6,8 @@
 @import "../styles/presets/brutalist.css";
 @import "../styles/presets/soft-pop.css";
 @import "../styles/presets/tangerine.css";
+@import "../styles/presets/twenty.css";
+@import "../styles/presets/opencode.css";
 
 html {
   scroll-behavior: smooth;
