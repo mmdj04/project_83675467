@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { Command, Home } from "lucide-react";
+import { Command } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useShallow } from "zustand/react/shallow";
 
@@ -39,30 +39,18 @@ export function AccountSidebar({ ...props }: React.ComponentProps<typeof Sidebar
   return (
     <Sidebar {...props} variant={variant} collapsible={collapsible}>
       <SidebarHeader>
-        <div className="flex w-full flex-col gap-1">
-          <SidebarMenu>
+        <div className="flex items-center gap-1">
+          <SidebarMenu className="flex-1">
             <SidebarMenuItem>
-              <SidebarMenuButton asChild tooltip={t("home")}>
-                <Link prefetch={false} href="/dashboard/default">
-                  <Home />
-                  <span>{t("home")}</span>
+              <SidebarMenuButton asChild tooltip={t("breadcrumbAccount")}>
+                <Link prefetch={false} href="/dashboard/account">
+                  <Command />
+                  <span className="font-semibold text-base">{t("breadcrumbAccount")}</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
-          <div className="flex items-center gap-1">
-            <SidebarMenu className="flex-1">
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild tooltip={t("breadcrumbAccount")}>
-                  <Link prefetch={false} href="/dashboard/account">
-                    <Command />
-                    <span className="font-semibold text-base">{t("breadcrumbAccount")}</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-            <MobileSidebarClose />
-          </div>
+          <MobileSidebarClose />
         </div>
       </SidebarHeader>
       <SidebarContent>
