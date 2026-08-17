@@ -8,12 +8,12 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-import { AccountSettings } from "./_components/account-settings";
+import { AccountContent } from "./_components/account-content";
 
 export default async function Page() {
   const t = await getTranslations("account");
   return (
-    <div className="flex flex-col gap-4 py-4" data-content-padding="false">
+    <div className="flex min-h-0 flex-1 flex-col gap-4 py-4" data-content-padding="false">
       <Breadcrumb className="px-4">
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -25,7 +25,7 @@ export default async function Page() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <AccountSettings />
+      <AccountContent />
     </div>
   );
 }
