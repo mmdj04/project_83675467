@@ -1,6 +1,6 @@
 "use client";
 
-import { SaudiRiyal } from "lucide-react";
+import { Coins } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,7 +16,7 @@ export function NetWorth() {
         <CardTitle>
           <div className="flex items-center gap-2">
             <span className="grid size-7 place-content-center rounded-sm bg-muted">
-              <SaudiRiyal className="size-5" />
+              <Coins className="size-5" />
             </span>
             {t("netWorth")}
           </div>

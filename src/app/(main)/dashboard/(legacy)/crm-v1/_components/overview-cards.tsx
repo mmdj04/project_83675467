@@ -140,8 +140,14 @@ export function OverviewCards() {
                 bottom: 0,
               }}
             >
-              <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} hide />
-              <ChartTooltip content={<ChartTooltipContent />} />
+              <XAxis dataKey="date" tickLine={false} tickMargin={10} axisLine={false} hide />
+              <ChartTooltip
+                content={
+                  <ChartTooltipContent
+                    labelFormatter={(label) => format(new Date(label), "MMM yyyy", { locale: dateFnsLocale })}
+                  />
+                }
+              />
               <Line
                 type="monotone"
                 strokeWidth={2}

@@ -6,7 +6,8 @@ const recentLeadsSchema = z.object({
   company: z.string(),
   status: z.string(),
   source: z.string(),
-  lastActivity: z.string(),
+  lastActivityValue: z.number(),
+  lastActivityUnit: z.enum(["minutes", "hours", "days"]),
 });
 
 export type RecentLeadRow = z.infer<typeof recentLeadsSchema>;

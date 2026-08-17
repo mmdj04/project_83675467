@@ -102,7 +102,7 @@ export function OperationalCards() {
               <li key={item.id} className="space-y-2 rounded-md border px-3 py-2">
                 <div className="flex items-center gap-2">
                   <Checkbox defaultChecked={item.checked} />
-                  <span className="font-medium text-sm">{item.title}</span>
+                  <span className="font-medium text-sm">{t(item.titleKey)}</span>
                   <span
                     className={cn(
                       "w-fit rounded-md px-2 py-1 font-medium text-xs",
@@ -114,7 +114,7 @@ export function OperationalCards() {
                     {t(item.priorityLabelKey)}
                   </span>
                 </div>
-                <div className="font-medium text-muted-foreground text-xs">{item.desc}</div>
+                <div className="font-medium text-muted-foreground text-xs">{t(item.descKey)}</div>
                 <div className="flex items-center gap-1">
                   <Clock className="size-3 text-muted-foreground" />
                   <span className="font-medium text-muted-foreground text-xs">{t(item.dueLabelKey)}</span>

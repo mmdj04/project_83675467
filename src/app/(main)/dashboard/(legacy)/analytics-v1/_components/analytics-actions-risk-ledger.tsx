@@ -19,12 +19,13 @@ type LedgerRow = {
   account: string;
   dealId: string;
   stage: string;
-  blocker: string;
+  stageLabelKey: string;
+  blockerDays: number;
   owner: string;
   idleDays: number;
-  closeVariance: string;
+  closeVarianceDays: number;
   priority: LedgerPriority;
-  nextAction: string;
+  nextActionKey: string;
   riskScore: number;
 };
 
@@ -34,12 +35,13 @@ const LEDGER_ROWS: LedgerRow[] = [
     account: "Oscorp Labs",
     dealId: "OPP-489",
     stage: "Legal",
-    blocker: "Close date overdue by 35 days",
+    stageLabelKey: "stageLegal",
+    blockerDays: 35,
     owner: "Leila Zhang",
     idleDays: 36,
-    closeVariance: "35d overdue",
+    closeVarianceDays: 35,
     priority: "Escalate",
-    nextAction: "Join next customer call and reset close plan.",
+    nextActionKey: "actionJoinCall",
     riskScore: 81,
   },
   {
@@ -47,12 +49,13 @@ const LEDGER_ROWS: LedgerRow[] = [
     account: "Hooli AI",
     dealId: "OPP-475",
     stage: "Qualification",
-    blocker: "Close date overdue by 28 days",
+    stageLabelKey: "stageQualification",
+    blockerDays: 28,
     owner: "Omar Ali",
     idleDays: 33,
-    closeVariance: "28d overdue",
+    closeVarianceDays: 28,
     priority: "Coach",
-    nextAction: "Review deal strategy and unblock stage exit.",
+    nextActionKey: "actionReviewStrategy",
     riskScore: 76,
   },
   {
@@ -60,12 +63,13 @@ const LEDGER_ROWS: LedgerRow[] = [
     account: "Globex Systems",
     dealId: "OPP-447",
     stage: "Qualification",
-    blocker: "Close date overdue by 37 days",
+    stageLabelKey: "stageQualification",
+    blockerDays: 37,
     owner: "Sofia Bautista",
     idleDays: 34,
-    closeVariance: "37d overdue",
+    closeVarianceDays: 37,
     priority: "Coach",
-    nextAction: "Review deal strategy and unblock stage exit.",
+    nextActionKey: "actionReviewStrategy",
     riskScore: 75,
   },
   {
@@ -73,12 +77,13 @@ const LEDGER_ROWS: LedgerRow[] = [
     account: "Umbrella Corp",
     dealId: "OPP-459",
     stage: "Legal",
-    blocker: "Close date overdue by 24 days",
+    stageLabelKey: "stageLegal",
+    blockerDays: 24,
     owner: "Leila Zhang",
     idleDays: 29,
-    closeVariance: "24d overdue",
+    closeVarianceDays: 24,
     priority: "Coach",
-    nextAction: "Review deal strategy and unblock stage exit.",
+    nextActionKey: "actionReviewStrategy",
     riskScore: 72,
   },
   {
@@ -86,12 +91,13 @@ const LEDGER_ROWS: LedgerRow[] = [
     account: "Acme Industries",
     dealId: "OPP-421",
     stage: "Negotiation",
-    blocker: "Close date overdue by 32 days",
+    stageLabelKey: "stageNegotiation",
+    blockerDays: 32,
     owner: "Leila Zhang",
     idleDays: 31,
-    closeVariance: "32d overdue",
+    closeVarianceDays: 32,
     priority: "Coach",
-    nextAction: "Review deal strategy and unblock stage exit.",
+    nextActionKey: "actionReviewStrategy",
     riskScore: 69,
   },
   {
@@ -99,12 +105,13 @@ const LEDGER_ROWS: LedgerRow[] = [
     account: "Wayne Devices",
     dealId: "OPP-471",
     stage: "Proposal",
-    blocker: "Close date overdue by 22 days",
+    stageLabelKey: "stageProposal",
+    blockerDays: 22,
     owner: "Sofia Bautista",
     idleDays: 32,
-    closeVariance: "22d overdue",
+    closeVarianceDays: 22,
     priority: "Reforecast",
-    nextAction: "Adjust forecast category and expected close.",
+    nextActionKey: "actionAdjustForecast",
     riskScore: 56,
   },
   {
@@ -112,12 +119,13 @@ const LEDGER_ROWS: LedgerRow[] = [
     account: "Aperture Health",
     dealId: "OPP-497",
     stage: "Proposal",
-    blocker: "Close date overdue by 20 days",
+    stageLabelKey: "stageProposal",
+    blockerDays: 20,
     owner: "Omar Ali",
     idleDays: 30,
-    closeVariance: "20d overdue",
+    closeVarianceDays: 20,
     priority: "Reforecast",
-    nextAction: "Adjust forecast category and expected close.",
+    nextActionKey: "actionAdjustForecast",
     riskScore: 50,
   },
   {
@@ -125,12 +133,13 @@ const LEDGER_ROWS: LedgerRow[] = [
     account: "Northwind Labs",
     dealId: "OPP-438",
     stage: "Proposal",
-    blocker: "Close date overdue by 14 days",
+    stageLabelKey: "stageProposal",
+    blockerDays: 14,
     owner: "Julian Singh",
     idleDays: 23,
-    closeVariance: "14d overdue",
+    closeVarianceDays: 14,
     priority: null,
-    nextAction: "No immediate intervention required.",
+    nextActionKey: "actionNoIntervention",
     riskScore: 42,
   },
   {
@@ -138,12 +147,13 @@ const LEDGER_ROWS: LedgerRow[] = [
     account: "Stark Logistics",
     dealId: "OPP-463",
     stage: "Negotiation",
-    blocker: "Close date overdue by 10 days",
+    stageLabelKey: "stageNegotiation",
+    blockerDays: 10,
     owner: "Julian Singh",
     idleDays: 21,
-    closeVariance: "10d overdue",
+    closeVarianceDays: 10,
     priority: null,
-    nextAction: "No immediate intervention required.",
+    nextActionKey: "actionNoIntervention",
     riskScore: 39,
   },
   {
@@ -151,12 +161,13 @@ const LEDGER_ROWS: LedgerRow[] = [
     account: "Soylent Foods",
     dealId: "OPP-482",
     stage: "Negotiation",
-    blocker: "Close date overdue by 5 days",
+    stageLabelKey: "stageNegotiation",
+    blockerDays: 5,
     owner: "Julian Singh",
     idleDays: 24,
-    closeVariance: "5d overdue",
+    closeVarianceDays: 5,
     priority: null,
-    nextAction: "No immediate intervention required.",
+    nextActionKey: "actionNoIntervention",
     riskScore: 31,
   },
 ];
@@ -184,7 +195,7 @@ function buildLedgerColumns(
         <div className="flex flex-col gap-1">
           <p className="font-medium text-sm">{row.original.account}</p>
           <p className="text-muted-foreground text-xs">
-            {row.original.dealId} · {row.original.stage}
+            {row.original.dealId} · {t(row.original.stageLabelKey)}
           </p>
         </div>
       ),
@@ -192,7 +203,11 @@ function buildLedgerColumns(
     {
       accessorKey: "blocker",
       header: t("columnBlocker"),
-      cell: ({ row }) => <div className="max-w-44 whitespace-normal text-xs">{row.original.blocker}</div>,
+      cell: ({ row }) => (
+        <div className="max-w-44 whitespace-normal text-xs">
+          {t("blockerOverdue", { days: row.original.blockerDays })}
+        </div>
+      ),
     },
     {
       accessorKey: "owner",
@@ -209,7 +224,11 @@ function buildLedgerColumns(
     {
       accessorKey: "closeVariance",
       header: t("columnCloseVariance"),
-      cell: ({ row }) => <span className="text-xs tabular-nums">{row.original.closeVariance}</span>,
+      cell: ({ row }) => (
+        <span className="text-xs tabular-nums">
+          {t("closeVarianceOverdue", { days: row.original.closeVarianceDays })}
+        </span>
+      ),
     },
     {
       accessorKey: "nextAction",
@@ -221,7 +240,7 @@ function buildLedgerColumns(
               {t(priorityLabelKey[row.original.priority])}
             </Badge>
           ) : null}
-          <p className="text-xs">{row.original.nextAction}</p>
+          <p className="text-xs">{t(row.original.nextActionKey)}</p>
         </div>
       ),
     },

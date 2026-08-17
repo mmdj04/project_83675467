@@ -20,6 +20,7 @@ export function InsightCards() {
   const t = useTranslations("crmV1");
   const leadsBySourceConfig = resolveChartConfig(leadsBySourceChartConfig, t);
   const projectRevenueConfig = resolveChartConfig(projectRevenueChartConfig, t);
+  const projectRevenueData = projectRevenueChartData.map((row) => ({ ...row, name: t(row.labelKey) }));
   const totalLeads = leadsBySourceChartData.reduce((acc, curr) => acc + curr.leads, 0);
 
   return (
@@ -109,7 +110,7 @@ export function InsightCards() {
         </CardHeader>
         <CardContent className="size-full max-h-52">
           <ChartContainer config={projectRevenueConfig} className="size-full">
-            <BarChart accessibilityLayer data={projectRevenueChartData} layout="vertical">
+            <BarChart accessibilityLayer data={projectRevenueData} layout="vertical">
               <CartesianGrid horizontal={false} />
               <YAxis
                 dataKey="name"

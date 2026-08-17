@@ -36,6 +36,12 @@ const sourceLabelKeys: Record<string, string> = {
   Other: "sourceOther",
 };
 
+const lastActivityLabelKeys = {
+  minutes: "lastActivityMinutes",
+  hours: "lastActivityHours",
+  days: "lastActivityDays",
+} as const;
+
 type Translator = ReturnType<typeof useTranslations>;
 
 export function createRecentLeadsColumns(t: Translator): ColumnDef<DataTableFeatures, RecentLeadRow>[] {
@@ -114,7 +120,15 @@ export function createRecentLeadsColumns(t: Translator): ColumnDef<DataTableFeat
     {
       accessorKey: "lastActivity",
       header: t("columnLastActivity"),
-      cell: ({ row }) => <span className="text-muted-foreground tabular-nums">{row.original.lastActivity}</span>,
+      cell: ({ row }) => {
+        const { lastActivityValue, lastActivityUnit } = row.original;
+
+        return (
+          <span className="text-muted-foreground tabular-nums">
+            {t(lastActivityLabelKeys[lastActivityUnit], { value: lastActivityValue })}
+          </span>
+        );
+      },
     },
     {
       id: "actions",

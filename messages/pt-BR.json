@@ -1932,7 +1932,14 @@
     "viewPastPerformance": "Desempenho anterior",
     "viewKeyPersonnel": "Pessoal-chave",
     "selectView": "Selecione uma visualização",
-    "addSection": "Adicionar seção"
+    "addSection": "Adicionar seção",
+    "typeFinancial": "Financeiro",
+    "typeLegal": "Jurídico",
+    "typePlainLanguage": "Linguagem simples",
+    "typePlanning": "Planejamento",
+    "typeResearch": "Pesquisa",
+    "typeTechnicalContent": "Conteúdo técnico",
+    "typeVisual": "Visual"
   },
   "crmV1": {
     "newLeads": "Novos leads",
@@ -2008,7 +2015,22 @@
     "goToPreviousPage": "Ir para a página anterior",
     "goToNextPage": "Ir para a próxima página",
     "goToLastPage": "Ir para a última página",
-    "export": "Exportar"
+    "export": "Exportar",
+    "lastActivityMinutes": "há {value} min",
+    "lastActivityHours": "há {value} h",
+    "lastActivityDays": "há {value} d",
+    "actionKickoffTitle": "Enviar documentos de kickoff",
+    "actionKickoffDesc": "Enviar documentos de onboarding e cronograma",
+    "actionDemoTitle": "Chamada de demonstração do SaaS MVP",
+    "actionDemoDesc": "Agendar chamada Zoom com o cliente",
+    "actionCaseStudyTitle": "Atualizar estudo de caso",
+    "actionCaseStudyDesc": "Adicionar projeto de LLM mais recente",
+    "projectMvpDevelopment": "Desenvolvimento de MVP",
+    "projectConsultation": "Consultoria",
+    "projectFramerSites": "Sites Framer",
+    "projectDevOpsSupport": "Suporte DevOps",
+    "projectLlmTraining": "Treinamento de LLM",
+    "projectProductLaunch": "Lançamento de produto"
   },
   "financeV1": {
     "tabOverview": "Visão geral",
@@ -2071,7 +2093,11 @@
     "savingsRate": "Taxa de poupança",
     "savingsMomPercentChange": "+3,5% m/m",
     "thisMonthAfterExpenses": "Este mês · Após despesas",
-    "aboveAverage": "Acima da sua média"
+    "aboveAverage": "Acima da sua média",
+    "paymentRent": "Aluguel do apartamento",
+    "paymentElectricity": "Conta de luz",
+    "paymentChatGpt": "ChatGPT Plus",
+    "paymentCreditCard": "Pagamento do cartão de crédito"
   },
   "analyticsV1": {
     "filtersEnterpriseOnly": "Somente enterprise",
@@ -2180,6 +2206,17 @@
     "chartTarget": "Meta",
     "chartClosedWonBar": "Ganhos fechados",
     "chartPipelineVsTarget": "Funil vs meta",
-    "filters": "Filtros"
+    "filters": "Filtros",
+    "selectDate": "Selecione uma data",
+    "stageLegal": "Jurídico",
+    "stageQualification": "Qualificação",
+    "stageNegotiation": "Negociação",
+    "stageProposal": "Proposta",
+    "blockerOverdue": "Data de fechamento excedida em {days} dias",
+    "closeVarianceOverdue": "atrasado em {days} dias",
+    "actionJoinCall": "Entrar na próxima chamada com o cliente e redefinir o plano de fechamento.",
+    "actionReviewStrategy": "Revisar a estratégia do negócio e desbloquear a saída da etapa.",
+    "actionAdjustForecast": "Ajustar a categoria da previsão e o fechamento esperado.",
+    "actionNoIntervention": "Nenhuma intervenção imediata necessária."
   }
 }

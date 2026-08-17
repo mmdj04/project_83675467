@@ -10,21 +10,21 @@ const NEXT_INTERVENTIONS = [
     priority: "Escalate",
     owner: "Leila Zhang",
     risk: 81,
-    recommendation: "Join next customer call and reset close plan.",
+    recommendationKey: "actionJoinCall",
   },
   {
     dealId: "OPP-475",
     priority: "Coach",
     owner: "Omar Ali",
     risk: 76,
-    recommendation: "Review deal strategy and unblock stage exit.",
+    recommendationKey: "actionReviewStrategy",
   },
   {
     dealId: "OPP-447",
     priority: "Coach",
     owner: "Sofia Bautista",
     risk: 75,
-    recommendation: "Review deal strategy and unblock stage exit.",
+    recommendationKey: "actionReviewStrategy",
   },
 ] as const;
 
@@ -143,7 +143,7 @@ export async function ActionsManagerQueue() {
                 <p className="text-muted-foreground text-xs">
                   {item.owner} · {t("riskSuffix", { risk: item.risk })}
                 </p>
-                <p className="text-xs">{item.recommendation}</p>
+                <p className="text-xs">{t(item.recommendationKey)}</p>
               </div>
             ))}
           </div>

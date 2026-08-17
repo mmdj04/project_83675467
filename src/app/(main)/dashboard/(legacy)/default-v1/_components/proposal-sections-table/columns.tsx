@@ -49,6 +49,24 @@ const statusLabelKeys: Record<string, string> = {
   "Not Started": "statusNotStarted",
 };
 
+const typeLabelKeys: Record<string, string> = {
+  "Cover page": "typeCoverPage",
+  "Table of contents": "typeTableOfContents",
+  "Executive Summary": "typeExecutiveSummary",
+  "Technical Approach": "typeTechnicalApproach",
+  Design: "typeDesign",
+  Capabilities: "typeCapabilities",
+  "Focus Documents": "typeFocusDocuments",
+  Narrative: "typeNarrative",
+  Financial: "typeFinancial",
+  Legal: "typeLegal",
+  "Plain language": "typePlainLanguage",
+  Planning: "typePlanning",
+  Research: "typeResearch",
+  "Technical content": "typeTechnicalContent",
+  Visual: "typeVisual",
+};
+
 type Translator = ReturnType<typeof useTranslations>;
 
 const chartData = [
@@ -305,13 +323,17 @@ export function createProposalSectionsColumns(t: Translator): ColumnDef<DataTabl
     {
       accessorKey: "type",
       header: t("defaultV1.columnSectionType"),
-      cell: ({ row }) => (
-        <div className="w-32">
-          <Badge variant="outline" className="px-1.5 text-muted-foreground">
-            {row.original.type}
-          </Badge>
-        </div>
-      ),
+      cell: ({ row }) => {
+        const typeLabelKey = typeLabelKeys[row.original.type];
+
+        return (
+          <div className="w-32">
+            <Badge variant="outline" className="px-1.5 text-muted-foreground">
+              {typeLabelKey ? t(`defaultV1.${typeLabelKey}`) : row.original.type}
+            </Badge>
+          </div>
+        );
+      },
     },
     {
       accessorKey: "status",

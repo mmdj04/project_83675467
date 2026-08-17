@@ -3,11 +3,15 @@
 import * as React from "react";
 
 import { format, subDays } from "date-fns";
+import { enUS, type Locale, ptBR } from "date-fns/locale";
+import { useLocale, useTranslations } from "next-intl";
 import type { DateRange } from "react-day-picker";
 
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+
+const dateFnsLocales: Record<string, Locale> = { "pt-BR": ptBR, en: enUS };
 
 interface DateRangePickerProps {
   value?: DateRange;
@@ -15,6 +19,9 @@ interface DateRangePickerProps {
 }
 
 export function DateRangePicker({ value, onChange }: DateRangePickerProps) {
+  const t = useTranslations("analyticsV1");
+  const locale = useLocale();
+  const dateFnsLocale = dateFnsLocales[locale] ?? enUS;
   const [open, setOpen] = React.useState(false);
   const [internalDateRange, setInternalDateRange] = React.useState<DateRange | undefined>(() => {
     const to = new Date();
@@ -22,14 +29,14 @@ export function DateRangePicker({ value, onChange }: DateRangePickerProps) {
     return { from, to };
   });
   const dateRange = value ?? internalDateRange;
-  let dateRangeLabel = "Select date";
+  let dateRangeLabel = t("selectDate");
 
   if (dateRange?.from) {
-    dateRangeLabel = format(dateRange.from, "d MMM yyyy");
+    dateRangeLabel = format(dateRange.from, "d MMM yyyy", { locale: dateFnsLocale });
   }
 
   if (dateRange?.from && dateRange.to) {
-    dateRangeLabel = `${format(dateRange.from, "d MMM yyyy")} - ${format(dateRange.to, "d MMM yyyy")}`;
+    dateRangeLabel = `${format(dateRange.from, "d MMM yyyy", { locale: dateFnsLocale })} - ${format(dateRange.to, "d MMM yyyy", { locale: dateFnsLocale })}`;
   }
 
   const handleDateChange = (nextValue: DateRange | undefined) => {
@@ -53,6 +60,7 @@ export function DateRangePicker({ value, onChange }: DateRangePickerProps) {
           selected={dateRange}
           onSelect={handleDateChange}
           numberOfMonths={2}
+          locale={dateFnsLocale}
         />
       </PopoverContent>
     </Popover>

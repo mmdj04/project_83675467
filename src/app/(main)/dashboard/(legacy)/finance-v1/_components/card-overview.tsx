@@ -20,28 +20,28 @@ const upcomingPayments = [
   {
     id: 1,
     icon: Home,
-    title: "Apartment Rent",
+    titleKey: "paymentRent",
     amount: 1200,
     dayOffset: 2,
   },
   {
     id: 2,
     icon: Zap,
-    title: "Electricity Bill",
+    titleKey: "paymentElectricity",
     amount: 75,
     dayOffset: 2,
   },
   {
     id: 3,
     icon: Sparkles,
-    title: "ChatGPT Plus",
+    titleKey: "paymentChatGpt",
     amount: 20,
     dayOffset: 7,
   },
   {
     id: 4,
     icon: Receipt,
-    title: "Credit Card Payment",
+    titleKey: "paymentCreditCard",
     amount: 420,
     dayOffset: 9,
   },
@@ -136,7 +136,7 @@ export function CardOverview() {
                   </div>
                   <div className="flex w-full items-end justify-between">
                     <div>
-                      <p className="font-medium text-sm">{transaction.title}</p>
+                      <p className="font-medium text-sm">{t(transaction.titleKey)}</p>
                       <p className="text-muted-foreground text-xs">
                         {t("dueOn", {
                           date: format(addDays(now, transaction.dayOffset), "do MMMM yyyy", {

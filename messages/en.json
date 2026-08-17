@@ -1932,7 +1932,14 @@
     "viewPastPerformance": "Past Performance",
     "viewKeyPersonnel": "Key Personnel",
     "selectView": "Select a view",
-    "addSection": "Add Section"
+    "addSection": "Add Section",
+    "typeFinancial": "Financial",
+    "typeLegal": "Legal",
+    "typePlainLanguage": "Plain language",
+    "typePlanning": "Planning",
+    "typeResearch": "Research",
+    "typeTechnicalContent": "Technical content",
+    "typeVisual": "Visual"
   },
   "crmV1": {
     "newLeads": "New Leads",
@@ -2008,7 +2015,22 @@
     "goToPreviousPage": "Go to previous page",
     "goToNextPage": "Go to next page",
     "goToLastPage": "Go to last page",
-    "export": "Export"
+    "export": "Export",
+    "lastActivityMinutes": "{value}m ago",
+    "lastActivityHours": "{value}h ago",
+    "lastActivityDays": "{value}d ago",
+    "actionKickoffTitle": "Send kickoff docs",
+    "actionKickoffDesc": "Send onboarding documents and timeline",
+    "actionDemoTitle": "Demo call for SaaS MVP",
+    "actionDemoDesc": "Book Zoom call with client",
+    "actionCaseStudyTitle": "Update case study",
+    "actionCaseStudyDesc": "Add latest LLM project",
+    "projectMvpDevelopment": "MVP Development",
+    "projectConsultation": "Consultation",
+    "projectFramerSites": "Framer Sites",
+    "projectDevOpsSupport": "DevOps Support",
+    "projectLlmTraining": "LLM Training",
+    "projectProductLaunch": "Product Launch"
   },
   "financeV1": {
     "tabOverview": "Overview",
@@ -2071,7 +2093,11 @@
     "savingsRate": "Savings Rate",
     "savingsMomPercentChange": "+3.5% MoM",
     "thisMonthAfterExpenses": "This month · After expenses",
-    "aboveAverage": "Above your average"
+    "aboveAverage": "Above your average",
+    "paymentRent": "Apartment Rent",
+    "paymentElectricity": "Electricity Bill",
+    "paymentChatGpt": "ChatGPT Plus",
+    "paymentCreditCard": "Credit Card Payment"
   },
   "analyticsV1": {
     "filtersEnterpriseOnly": "Enterprise only",
@@ -2180,6 +2206,17 @@
     "chartTarget": "Target",
     "chartClosedWonBar": "Closed won",
     "chartPipelineVsTarget": "Pipeline vs target",
-    "filters": "Filters"
+    "filters": "Filters",
+    "selectDate": "Select date",
+    "stageLegal": "Legal",
+    "stageQualification": "Qualification",
+    "stageNegotiation": "Negotiation",
+    "stageProposal": "Proposal",
+    "blockerOverdue": "Close date overdue by {days} days",
+    "closeVarianceOverdue": "{days}d overdue",
+    "actionJoinCall": "Join next customer call and reset close plan.",
+    "actionReviewStrategy": "Review deal strategy and unblock stage exit.",
+    "actionAdjustForecast": "Adjust forecast category and expected close.",
+    "actionNoIntervention": "No immediate intervention required."
   }
 }
