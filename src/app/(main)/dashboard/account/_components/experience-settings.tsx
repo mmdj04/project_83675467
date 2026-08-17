@@ -22,49 +22,28 @@ const LOCALES: readonly { code: string; label: string; isNew?: boolean }[] = [
 
 type ThemeOption = "light" | "dark" | "system";
 
-function ThemeMockup({ variant }: { variant: Exclude<ThemeOption, "system"> }) {
+function ThemeMockup({ variant }: { variant: ThemeOption }) {
+  if (variant === "system") {
+    return (
+      <div className="w-32 overflow-hidden rounded-lg border border-neutral-400 bg-white shadow-sm">
+        <div className="relative flex h-20 items-center justify-center">
+          <div className="absolute inset-y-0 left-0 w-1/2 bg-neutral-100" />
+          <div className="absolute inset-y-0 right-0 w-1/2 bg-neutral-900" />
+          <span className="relative z-10 font-semibold text-base text-neutral-500">Aa</span>
+        </div>
+      </div>
+    );
+  }
   const dark = variant === "dark";
   return (
     <div
       className={cn(
-        "w-24 overflow-hidden rounded-md border shadow-sm",
+        "w-32 overflow-hidden rounded-lg border shadow-sm",
         dark ? "border-neutral-700 bg-neutral-950" : "border-neutral-200 bg-white",
       )}
     >
-      <div
-        className={cn(
-          "flex items-center gap-1 border-b px-2 py-1.5",
-          dark ? "border-neutral-700 bg-neutral-900" : "border-neutral-200 bg-neutral-50",
-        )}
-      >
-        <span className={cn("size-1.5 rounded-full", dark ? "bg-neutral-600" : "bg-neutral-300")} />
-        <span className={cn("size-1.5 rounded-full", dark ? "bg-neutral-600" : "bg-neutral-300")} />
-        <span className={cn("size-1.5 rounded-full", dark ? "bg-neutral-600" : "bg-neutral-300")} />
-      </div>
-      <div className="flex gap-1.5 p-2">
-        <div className={cn("w-1/3 rounded-sm", dark ? "bg-neutral-800" : "bg-neutral-100")} />
-        <div className="flex flex-1 flex-col gap-1">
-          <div className={cn("h-1.5 w-full rounded-sm", dark ? "bg-neutral-700" : "bg-neutral-200")} />
-          <div className={cn("h-1.5 w-2/3 rounded-sm", dark ? "bg-neutral-700" : "bg-neutral-200")} />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function SystemThemeMockup() {
-  return (
-    <div className="w-24 overflow-hidden rounded-md border border-neutral-400 shadow-sm">
-      <div className="h-1.5 bg-neutral-300" />
-      <div className="flex">
-        <div className="flex w-1/2 flex-col gap-1 bg-white p-2">
-          <div className="h-1 w-full rounded-sm bg-neutral-200" />
-          <div className="h-1 w-2/3 rounded-sm bg-neutral-200" />
-        </div>
-        <div className="flex w-1/2 flex-col gap-1 bg-neutral-950 p-2">
-          <div className="h-1 w-full rounded-sm bg-neutral-700" />
-          <div className="h-1 w-2/3 rounded-sm bg-neutral-700" />
-        </div>
+      <div className={cn("flex h-20 items-center justify-center", dark ? "text-white" : "text-neutral-950")}>
+        <span className="font-semibold text-base">Aa</span>
       </div>
     </div>
   );
@@ -74,24 +53,24 @@ function ThemeOptionPreview({ variant, selected }: { variant: ThemeOption; selec
   return (
     <div
       className={cn(
-        "relative flex h-24 w-full overflow-hidden rounded-t-[calc(var(--radius-lg)-2px)]",
+        "relative h-24 w-full rounded-t-[calc(var(--radius-lg)-2px)]",
         variant === "light" && "bg-neutral-100",
         variant === "dark" && "bg-neutral-900",
       )}
     >
       {variant === "system" && (
         <>
-          <div className="w-1/2 bg-neutral-100" />
-          <div className="w-1/2 bg-neutral-900" />
+          <div className="absolute inset-y-0 left-0 w-1/2 bg-neutral-100" />
+          <div className="absolute inset-y-0 right-0 w-1/2 bg-neutral-900" />
         </>
       )}
       {selected && (
-        <span className="absolute top-2 right-2 flex size-6 items-center justify-center rounded-full bg-primary text-primary-foreground">
+        <span className="absolute top-2 right-2 z-10 flex size-6 items-center justify-center rounded-full bg-primary text-primary-foreground">
           <Check aria-hidden="true" className="size-3.5" />
         </span>
       )}
-      <span className="absolute right-3 bottom-3">
-        {variant === "system" ? <SystemThemeMockup /> : <ThemeMockup variant={variant} />}
+      <span className="absolute -right-2 -bottom-2">
+        <ThemeMockup variant={variant} />
       </span>
     </div>
   );
