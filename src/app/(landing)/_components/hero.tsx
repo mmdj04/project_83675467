@@ -2,7 +2,7 @@ import { ThemeTogglerButton } from "@/components/theme-toggler-button";
 
 export function Hero() {
   return (
-    <section className="flex h-[1000px] flex-col items-center justify-center gap-10 overflow-hidden bg-background px-8">
+    <section className="flex h-[900px] flex-col items-center justify-center gap-10 overflow-hidden bg-background px-8">
       <div className="fixed top-6 right-6 z-50">
         <ThemeTogglerButton />
       </div>
