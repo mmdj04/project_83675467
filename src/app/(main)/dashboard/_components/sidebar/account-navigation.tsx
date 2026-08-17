@@ -56,13 +56,13 @@ interface AccountSection extends AccountItem {
   readonly subItems?: readonly AccountItem[];
 }
 
-export interface AccountCategory {
+interface AccountCategory {
   readonly id: string;
   readonly labelKey: string;
   readonly sections: readonly AccountSection[];
 }
 
-export const accountCategories: readonly AccountCategory[] = [
+const accountCategories: readonly AccountCategory[] = [
   {
     id: "user",
     labelKey: "categoryUser",
