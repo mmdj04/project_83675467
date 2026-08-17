@@ -21,6 +21,8 @@ export default function LandingV2() {
             <Faq />
             <Testimonials />
             <Pricing />
+          </div>
+          <div className="mt-8 w-full overflow-hidden rounded-2xl border bg-background shadow-2xl [filter:invert(1)_hue-rotate(180deg)]">
             <Footer />
           </div>
         </main>

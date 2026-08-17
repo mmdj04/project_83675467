@@ -45,7 +45,7 @@ const footerSections = [
 
 export function Footer() {
   return (
-    <footer className="bg-background mt-12 border-t lg:mt-20">
+    <footer className="bg-background">
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-8 gap-y-10 px-6 py-12 sm:grid-cols-3 lg:grid-cols-5">
         <div className="col-span-full lg:col-span-1">
           <p className="font-semibold tracking-tight">Studio Admin</p>
