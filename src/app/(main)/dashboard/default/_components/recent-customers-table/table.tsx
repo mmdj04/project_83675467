@@ -122,9 +122,9 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
-        <div className="flex flex-wrap items-center gap-2">
-          <div className="relative w-full lg:w-80">
+      <div className="flex flex-wrap items-center gap-2">
+        <div className="min-w-0 flex-1 sm:w-80 sm:flex-none">
+          <div className="relative">
             <Search className="pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               className="h-7 rounded-[min(var(--radius-md),12px)] pl-8"
@@ -136,101 +136,99 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
               }}
             />
           </div>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm">
-                <UsersRound />
-                {t("columnStatus")}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-35" align="start">
-              <DropdownMenuRadioGroup
-                value={statusFilter}
-                onValueChange={(value) => {
-                  table.getColumn("status")?.setFilterValue(value === "all" ? undefined : value);
-                  table.setPageIndex(0);
-                }}
-              >
-                {statusOptions.map((status) => (
-                  <DropdownMenuRadioItem key={status.value} value={status.value}>
-                    {t(status.labelKey)}
-                  </DropdownMenuRadioItem>
-                ))}
-              </DropdownMenuRadioGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm">
-                <CalendarDays />
-                {t("columnJoined")}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-40" align="start">
-              <DropdownMenuRadioGroup
-                value={joinedDateFilter}
-                onValueChange={(value) => {
-                  table.getColumn("joinedWindow")?.setFilterValue(value === "all" ? undefined : value);
-                  table.setPageIndex(0);
-                }}
-              >
-                {joinedDateOptions.map((option) => (
-                  <DropdownMenuRadioItem key={option.value} value={option.value}>
-                    {t(option.labelKey)}
-                  </DropdownMenuRadioItem>
-                ))}
-              </DropdownMenuRadioGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
         </div>
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center xl:w-auto">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm">
-                <CreditCard />
-                {t("columnBilling")}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuRadioGroup
-                value={billingFilter}
-                onValueChange={(value) => {
-                  table.getColumn("billing")?.setFilterValue(value === "all" ? undefined : value);
-                  table.setPageIndex(0);
-                }}
-              >
-                {billingOptions.map((billing) => (
-                  <DropdownMenuRadioItem key={billing.value} value={billing.value}>
-                    {t(billing.labelKey)}
-                  </DropdownMenuRadioItem>
-                ))}
-              </DropdownMenuRadioGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm">
-                <ArrowUpDown />
-                {t("sort")}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuRadioGroup
-                value={sortValue}
-                onValueChange={(value) => {
-                  table.setSorting(sortOptionState[value as keyof typeof sortOptionState] ?? sortOptionState.newest);
-                  table.setPageIndex(0);
-                }}
-              >
-                {sortOptions.map((option) => (
-                  <DropdownMenuRadioItem key={option.value} value={option.value}>
-                    {t(option.labelKey)}
-                  </DropdownMenuRadioItem>
-                ))}
-              </DropdownMenuRadioGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" size="sm">
+              <UsersRound />
+              {t("columnStatus")}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-35" align="start">
+            <DropdownMenuRadioGroup
+              value={statusFilter}
+              onValueChange={(value) => {
+                table.getColumn("status")?.setFilterValue(value === "all" ? undefined : value);
+                table.setPageIndex(0);
+              }}
+            >
+              {statusOptions.map((status) => (
+                <DropdownMenuRadioItem key={status.value} value={status.value}>
+                  {t(status.labelKey)}
+                </DropdownMenuRadioItem>
+              ))}
+            </DropdownMenuRadioGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" size="sm">
+              <CalendarDays />
+              {t("columnJoined")}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-40" align="start">
+            <DropdownMenuRadioGroup
+              value={joinedDateFilter}
+              onValueChange={(value) => {
+                table.getColumn("joinedWindow")?.setFilterValue(value === "all" ? undefined : value);
+                table.setPageIndex(0);
+              }}
+            >
+              {joinedDateOptions.map((option) => (
+                <DropdownMenuRadioItem key={option.value} value={option.value}>
+                  {t(option.labelKey)}
+                </DropdownMenuRadioItem>
+              ))}
+            </DropdownMenuRadioGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" size="sm">
+              <CreditCard />
+              {t("columnBilling")}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuRadioGroup
+              value={billingFilter}
+              onValueChange={(value) => {
+                table.getColumn("billing")?.setFilterValue(value === "all" ? undefined : value);
+                table.setPageIndex(0);
+              }}
+            >
+              {billingOptions.map((billing) => (
+                <DropdownMenuRadioItem key={billing.value} value={billing.value}>
+                  {t(billing.labelKey)}
+                </DropdownMenuRadioItem>
+              ))}
+            </DropdownMenuRadioGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" size="sm">
+              <ArrowUpDown />
+              {t("sort")}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuRadioGroup
+              value={sortValue}
+              onValueChange={(value) => {
+                table.setSorting(sortOptionState[value as keyof typeof sortOptionState] ?? sortOptionState.newest);
+                table.setPageIndex(0);
+              }}
+            >
+              {sortOptions.map((option) => (
+                <DropdownMenuRadioItem key={option.value} value={option.value}>
+                  {t(option.labelKey)}
+                </DropdownMenuRadioItem>
+              ))}
+            </DropdownMenuRadioGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
 
       <div className="rounded-lg border bg-card">
