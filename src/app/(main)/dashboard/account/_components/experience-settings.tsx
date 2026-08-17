@@ -25,7 +25,7 @@ type ThemeOption = "light" | "dark" | "system";
 function ThemeMockup({ variant }: { variant: ThemeOption }) {
   if (variant === "system") {
     return (
-      <div className="w-32 overflow-hidden rounded-lg border border-neutral-400 bg-white shadow-sm">
+      <div className="w-44 overflow-hidden rounded-lg border border-neutral-400 bg-white shadow-sm">
         <div className="relative flex h-20 items-center justify-center">
           <div className="absolute inset-y-0 left-0 w-1/2 bg-neutral-100" />
           <div className="absolute inset-y-0 right-0 w-1/2 bg-neutral-900" />
@@ -38,7 +38,7 @@ function ThemeMockup({ variant }: { variant: ThemeOption }) {
   return (
     <div
       className={cn(
-        "w-32 overflow-hidden rounded-lg border shadow-sm",
+        "w-44 overflow-hidden rounded-lg border shadow-sm",
         dark ? "border-neutral-700 bg-neutral-950" : "border-neutral-200 bg-white",
       )}
     >
@@ -69,7 +69,7 @@ function ThemeOptionPreview({ variant, selected }: { variant: ThemeOption; selec
           <Check aria-hidden="true" className="size-3.5" />
         </span>
       )}
-      <span className="absolute -right-2 -bottom-2">
+      <span className="absolute right-3 bottom-3">
         <ThemeMockup variant={variant} />
       </span>
     </div>
