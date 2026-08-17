@@ -74,7 +74,7 @@ function ThemeOptionPreview({ variant, selected }: { variant: ThemeOption; selec
   return (
     <div
       className={cn(
-        "relative flex h-24 overflow-hidden rounded-t-[calc(var(--radius-lg)-2px)]",
+        "relative flex h-24 w-full overflow-hidden rounded-t-[calc(var(--radius-lg)-2px)]",
         variant === "light" && "bg-neutral-100",
         variant === "dark" && "bg-neutral-900",
       )}
@@ -122,24 +122,27 @@ export function ExperienceSettings() {
         <RadioGroup className="grid grid-cols-3 gap-3" value={theme ?? "system"} onValueChange={setTheme}>
           <Label
             htmlFor="appearance-light"
-            className="cursor-pointer rounded-lg border-2 border-input transition-colors has-[[data-state=checked]]:border-primary"
+            className="flex-col items-stretch cursor-pointer rounded-lg border-2 border-input transition-colors has-[[data-state=checked]]:border-primary"
           >
             <ThemeOptionPreview variant="light" selected={(theme ?? "system") === "light"} />
             <span className="block px-3 py-2 text-sm font-medium">{t("appearanceLight")}</span>
+            <RadioGroupItem value="light" id="appearance-light" className="sr-only" />
           </Label>
           <Label
             htmlFor="appearance-dark"
-            className="cursor-pointer rounded-lg border-2 border-input transition-colors has-[[data-state=checked]]:border-primary"
+            className="flex-col items-stretch cursor-pointer rounded-lg border-2 border-input transition-colors has-[[data-state=checked]]:border-primary"
           >
             <ThemeOptionPreview variant="dark" selected={(theme ?? "system") === "dark"} />
             <span className="block px-3 py-2 text-sm font-medium">{t("appearanceDark")}</span>
+            <RadioGroupItem value="dark" id="appearance-dark" className="sr-only" />
           </Label>
           <Label
             htmlFor="appearance-system"
-            className="cursor-pointer rounded-lg border-2 border-input transition-colors has-[[data-state=checked]]:border-primary"
+            className="flex-col items-stretch cursor-pointer rounded-lg border-2 border-input transition-colors has-[[data-state=checked]]:border-primary"
           >
             <ThemeOptionPreview variant="system" selected={(theme ?? "system") === "system"} />
             <span className="block px-3 py-2 text-sm font-medium">{t("appearanceSystem")}</span>
+            <RadioGroupItem value="system" id="appearance-system" className="sr-only" />
           </Label>
         </RadioGroup>
         <input type="hidden" name="appearance" value={theme ?? "system"} />
