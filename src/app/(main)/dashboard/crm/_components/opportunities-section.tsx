@@ -114,9 +114,9 @@ export function OpportunitiesSection() {
           <CardTitle className="leading-none">{t("recentOpportunities")}</CardTitle>
           <CardDescription>{t("recentOpportunitiesDescription")}</CardDescription>
           <CardAction className="col-start-1! row-span-auto! row-start-auto! justify-self-stretch! @[560px]/card:col-start-2! @[560px]/card:row-span-2! @[560px]/card:row-start-1! @[560px]/card:justify-self-end!">
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-col gap-2 @[560px]/card:items-end">
               <Input
-                className="h-7 min-w-40 flex-1 @[560px]/card:w-52 @[560px]/card:flex-none"
+                className="h-7 w-full min-w-40 @[560px]/card:w-52"
                 placeholder={t("searchDeals")}
                 value={searchQuery}
                 onChange={(event) => {
@@ -124,54 +124,56 @@ export function OpportunitiesSection() {
                   table.setPageIndex(0);
                 }}
               />
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" size="sm">
-                    <ListFilter data-icon="inline-start" />
-                    {t("stage")}
-                    <ChevronDownIcon data-icon="inline-end" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-40">
-                  <DropdownMenuRadioGroup
-                    value={stageFilter}
-                    onValueChange={(value) => {
-                      table.getColumn("stage")?.setFilterValue(value === "all" ? undefined : value);
-                      table.setPageIndex(0);
-                    }}
-                  >
-                    {stageOptions.map((option) => (
-                      <DropdownMenuRadioItem key={option.value} value={option.value}>
-                        {t(option.labelKey)}
-                      </DropdownMenuRadioItem>
-                    ))}
-                  </DropdownMenuRadioGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" size="sm">
-                    <ListFilter data-icon="inline-start" />
-                    {t("health")}
-                    <ChevronDownIcon data-icon="inline-end" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-40">
-                  <DropdownMenuRadioGroup
-                    value={healthFilter}
-                    onValueChange={(value) => {
-                      table.getColumn("health")?.setFilterValue(value === "all" ? undefined : value);
-                      table.setPageIndex(0);
-                    }}
-                  >
-                    {healthOptions.map((option) => (
-                      <DropdownMenuRadioItem key={option.value} value={option.value}>
-                        {t(option.labelKey)}
-                      </DropdownMenuRadioItem>
-                    ))}
-                  </DropdownMenuRadioGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <div className="flex flex-wrap items-center gap-2">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" size="sm">
+                      <ListFilter data-icon="inline-start" />
+                      {t("stage")}
+                      <ChevronDownIcon data-icon="inline-end" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-40">
+                    <DropdownMenuRadioGroup
+                      value={stageFilter}
+                      onValueChange={(value) => {
+                        table.getColumn("stage")?.setFilterValue(value === "all" ? undefined : value);
+                        table.setPageIndex(0);
+                      }}
+                    >
+                      {stageOptions.map((option) => (
+                        <DropdownMenuRadioItem key={option.value} value={option.value}>
+                          {t(option.labelKey)}
+                        </DropdownMenuRadioItem>
+                      ))}
+                    </DropdownMenuRadioGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" size="sm">
+                      <ListFilter data-icon="inline-start" />
+                      {t("health")}
+                      <ChevronDownIcon data-icon="inline-end" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-40">
+                    <DropdownMenuRadioGroup
+                      value={healthFilter}
+                      onValueChange={(value) => {
+                        table.getColumn("health")?.setFilterValue(value === "all" ? undefined : value);
+                        table.setPageIndex(0);
+                      }}
+                    >
+                      {healthOptions.map((option) => (
+                        <DropdownMenuRadioItem key={option.value} value={option.value}>
+                          {t(option.labelKey)}
+                        </DropdownMenuRadioItem>
+                      ))}
+                    </DropdownMenuRadioGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             </div>
           </CardAction>
         </CardHeader>

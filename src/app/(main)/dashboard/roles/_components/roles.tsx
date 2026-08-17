@@ -120,7 +120,7 @@ export function Roles({ roles }: { roles: Role[] }) {
             </Alert>
 
             <div className="overflow-hidden rounded-xl border border-border/70 bg-background">
-              <div className="flex flex-col items-stretch gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+              <div className="flex flex-col gap-4 px-4 py-4">
                 <InputGroup className="h-7 w-full rounded-md sm:w-82">
                   <InputGroupAddon>
                     <Search />

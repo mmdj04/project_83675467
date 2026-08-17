@@ -135,49 +135,51 @@ export function Kanban({ initialBoard }: KanbanProps) {
           </TabsList>
         </Tabs>
 
-        <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center 2xl:justify-end">
-          <InputGroup className="min-w-0 sm:w-64 2xl:w-48">
+        <div className="flex min-w-0 flex-col gap-2">
+          <InputGroup className="w-full sm:w-64 2xl:w-48">
             <InputGroupInput type="search" placeholder={t("kanban.searchTasks")} />
             <InputGroupAddon>
               <Search />
             </InputGroupAddon>
           </InputGroup>
-          <Button variant="outline" className="w-full sm:w-auto">
-            <SlidersHorizontal data-icon="inline-start" />
-            {t("kanban.filter")}
-          </Button>
-          <Button variant="outline" className="w-full sm:w-auto">
-            <ArrowUpDown data-icon="inline-start" />
-            {t("kanban.sort")}
-          </Button>
-          <ButtonGroup className="w-full sm:w-fit">
-            <Button className="flex-1 sm:flex-none">
-              <Plus data-icon="inline-start" />
-              {t("kanban.addTask")}
+          <div className="flex flex-wrap items-center gap-2 2xl:justify-end">
+            <Button variant="outline" className="w-full sm:w-auto">
+              <SlidersHorizontal data-icon="inline-start" />
+              {t("kanban.filter")}
             </Button>
-            <ButtonGroupSeparator />
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button aria-label={t("kanban.openAddTaskMenu")}>
-                  <ChevronDown />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
-                <DropdownMenuItem>
-                  <Upload />
-                  {t("kanban.importCsv")}
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <LayoutTemplate />
-                  {t("kanban.addFromTemplate")}
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Bot />
-                  {t("kanban.createAutomation")}
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </ButtonGroup>
+            <Button variant="outline" className="w-full sm:w-auto">
+              <ArrowUpDown data-icon="inline-start" />
+              {t("kanban.sort")}
+            </Button>
+            <ButtonGroup className="w-full sm:w-fit">
+              <Button className="flex-1 sm:flex-none">
+                <Plus data-icon="inline-start" />
+                {t("kanban.addTask")}
+              </Button>
+              <ButtonGroupSeparator />
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button aria-label={t("kanban.openAddTaskMenu")}>
+                    <ChevronDown />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuItem>
+                    <Upload />
+                    {t("kanban.importCsv")}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <LayoutTemplate />
+                    {t("kanban.addFromTemplate")}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Bot />
+                    {t("kanban.createAutomation")}
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </ButtonGroup>
+          </div>
         </div>
       </div>
 
