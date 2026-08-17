@@ -6,12 +6,21 @@ import { Badge } from "@/components/ui/badge";
 import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia } from "@/components/ui/empty";
 
 import { accountItems, useActiveSection } from "../../_components/sidebar/account-navigation";
+import { ProfileSettings } from "./profile-settings";
 
 export function AccountContent() {
   const t = useTranslations("account");
   const activeId = useActiveSection();
   const active = accountItems.find((item) => item.id === activeId) ?? accountItems[0];
   const ActiveIcon = active.icon;
+
+  if (active.id === "profile") {
+    return (
+      <div className="flex min-h-0 flex-1 flex-col px-4 md:px-6">
+        <ProfileSettings />
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-0 flex-1 flex-col px-4 md:px-6">
