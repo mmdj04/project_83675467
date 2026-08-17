@@ -22,38 +22,11 @@ const LOCALES: readonly { code: string; label: string; isNew?: boolean }[] = [
 
 type ThemeOption = "light" | "dark" | "system";
 
-function ThemeMockup({ variant }: { variant: ThemeOption }) {
-  if (variant === "system") {
-    return (
-      <div className="w-44 overflow-hidden rounded-lg border border-neutral-400 bg-white shadow-sm">
-        <div className="relative flex h-20 items-center justify-center">
-          <div className="absolute inset-y-0 left-0 w-1/2 bg-neutral-100" />
-          <div className="absolute inset-y-0 right-0 w-1/2 bg-neutral-900" />
-          <span className="relative z-10 font-semibold text-base text-neutral-500">Aa</span>
-        </div>
-      </div>
-    );
-  }
-  const dark = variant === "dark";
-  return (
-    <div
-      className={cn(
-        "w-44 overflow-hidden rounded-lg border shadow-sm",
-        dark ? "border-neutral-700 bg-neutral-950" : "border-neutral-200 bg-white",
-      )}
-    >
-      <div className={cn("flex h-20 items-center justify-center", dark ? "text-white" : "text-neutral-950")}>
-        <span className="font-semibold text-base">Aa</span>
-      </div>
-    </div>
-  );
-}
-
 function ThemeOptionPreview({ variant, selected }: { variant: ThemeOption; selected: boolean }) {
   return (
     <div
       className={cn(
-        "relative h-24 w-full rounded-t-[calc(var(--radius-lg)-2px)]",
+        "relative h-32 w-full overflow-hidden rounded-lg p-2.5",
         variant === "light" && "bg-neutral-100",
         variant === "dark" && "bg-neutral-900",
       )}
@@ -64,14 +37,34 @@ function ThemeOptionPreview({ variant, selected }: { variant: ThemeOption; selec
           <div className="absolute inset-y-0 right-0 w-1/2 bg-neutral-900" />
         </>
       )}
+
+      {variant === "system" ? (
+        <div className="relative flex h-full w-full gap-2.5">
+          <div className="flex flex-1 flex-col justify-end overflow-hidden rounded-lg border border-neutral-200 bg-white p-3">
+            <span className="text-2xl font-bold text-neutral-950">Aa</span>
+          </div>
+          <div className="flex flex-1 flex-col justify-end overflow-hidden rounded-lg border border-neutral-700 bg-neutral-950 p-3">
+            <span className="text-2xl font-bold text-white">Aa</span>
+          </div>
+        </div>
+      ) : (
+        <div
+          className={cn(
+            "flex h-full w-full flex-col justify-end overflow-hidden rounded-lg border p-3",
+            variant === "dark" ? "border-neutral-700 bg-neutral-950" : "border-neutral-200 bg-white",
+          )}
+        >
+          <span className={cn("text-2xl font-bold", variant === "dark" ? "text-white" : "text-neutral-950")}>
+            Aa
+          </span>
+        </div>
+      )}
+
       {selected && (
-        <span className="absolute top-2 right-2 z-10 flex size-6 items-center justify-center rounded-full bg-primary text-primary-foreground">
+        <span className="absolute bottom-3 right-3 z-10 flex size-6 items-center justify-center rounded-full bg-primary text-primary-foreground">
           <Check aria-hidden="true" className="size-3.5" />
         </span>
       )}
-      <span className="absolute right-3 bottom-3">
-        <ThemeMockup variant={variant} />
-      </span>
     </div>
   );
 }
