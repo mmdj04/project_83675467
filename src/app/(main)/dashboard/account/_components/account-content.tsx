@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia } from "@/components/ui/empty";
 
 import { accountItems, useActiveSection } from "../../_components/sidebar/account-navigation";
+import { ExperienceSettings } from "./experience-settings";
 import { ProfileSettings } from "./profile-settings";
 
 export function AccountContent() {
@@ -18,6 +19,14 @@ export function AccountContent() {
     return (
       <div className="flex min-h-0 flex-1 flex-col px-4 md:px-6">
         <ProfileSettings />
+      </div>
+    );
+  }
+
+  if (active.id === "experience") {
+    return (
+      <div className="flex min-h-0 flex-1 flex-col px-4 md:px-6">
+        <ExperienceSettings />
       </div>
     );
   }
