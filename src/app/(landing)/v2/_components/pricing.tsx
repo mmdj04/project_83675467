@@ -107,7 +107,7 @@ export function Pricing() {
       </div>
       <div className="mt-14">
         <h3 className="text-center text-2xl font-semibold tracking-tight">Compare os planos</h3>
-        <div className="mt-8 overflow-hidden rounded-xl border">
+        <div className="mt-8 hidden overflow-hidden rounded-xl border md:block">
           <Table>
             <TableHeader>
               <TableRow>
@@ -136,6 +136,28 @@ export function Pricing() {
               ))}
             </TableBody>
           </Table>
+        </div>
+        <div className="mt-8 space-y-4 md:hidden">
+          {comparison.map((row) => (
+            <div key={row.feature} className="overflow-hidden rounded-xl border">
+              <div className="bg-muted/50 px-4 py-2.5 text-sm font-medium">{row.feature}</div>
+              <div className="divide-y">
+                {[
+                  { label: "Starter", value: row.starter, highlighted: false },
+                  { label: "Pro", value: row.pro, highlighted: true },
+                  { label: "Enterprise", value: row.enterprise, highlighted: false },
+                ].map(({ label, value, highlighted }) => (
+                  <div
+                    key={label}
+                    className={cn("flex items-center justify-between px-4 py-2.5", highlighted && "bg-primary/5")}
+                  >
+                    <span className={cn("text-sm", highlighted && "font-semibold text-primary")}>{label}</span>
+                    <FeatureValue value={value} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

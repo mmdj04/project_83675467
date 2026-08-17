@@ -143,15 +143,35 @@ function LiveMockup() {
 
 function GrowthMockup() {
   return (
-    <div className="relative flex h-full items-end gap-1.5">
-      {bars.map((height) => (
-        <div
-          key={height}
-          className={cn("max-w-6 flex-1 rounded-t-md", height === 85 ? "bg-primary" : "bg-muted-foreground/20")}
-          style={{ height: `${height}%` }}
+    <div className="flex h-full flex-col justify-center gap-2">
+      <div className="flex items-center justify-between">
+        <span className="text-muted-foreground text-[9px] font-medium">Receita mensal</span>
+        <span className="bg-emerald-500/15 text-emerald-600 flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[9px] font-semibold">
+          <TrendingUp className="size-2.5" />
+          +32%
+        </span>
+      </div>
+      <svg viewBox="0 0 100 40" preserveAspectRatio="none" className="text-primary h-12 w-full">
+        <title>Gráfico de crescimento de receita</title>
+        <defs>
+          <linearGradient id="growth-fill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M0,34 C20,30 25,24 40,22 C55,20 60,12 75,10 C85,8 92,6 100,4 L100,40 L0,40 Z"
+          fill="url(#growth-fill)"
         />
-      ))}
-      <TrendingUp className="absolute top-0 right-0 size-5 text-primary" />
+        <path
+          d="M0,34 C20,30 25,24 40,22 C55,20 60,12 75,10 C85,8 92,6 100,4"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+        <circle cx="100" cy="4" r="2.5" fill="currentColor" />
+      </svg>
     </div>
   );
 }
