@@ -131,11 +131,12 @@ export function useActiveSection(): string {
 function AccountNavLink({ section, isActive }: { readonly section: AccountItem; readonly isActive: boolean }) {
   const t = useTranslations("account");
   const Icon = section.icon;
+  const { setOpenMobile } = useSidebar();
 
   return (
     <SidebarMenuItem>
       <SidebarMenuButton asChild tooltip={t(section.labelKey)} isActive={isActive}>
-        <a href={`#${section.id}`} aria-current={isActive ? "page" : undefined}>
+        <a href={`#${section.id}`} aria-current={isActive ? "page" : undefined} onClick={() => setOpenMobile(false)}>
           <Icon />
           <span>{t(section.labelKey)}</span>
         </a>
@@ -155,6 +156,7 @@ function AccountNavCollapsible({
 }) {
   const t = useTranslations("account");
   const Icon = section.icon;
+  const { setOpenMobile } = useSidebar();
 
   return (
     <Collapsible asChild defaultOpen className="group/collapsible">
@@ -174,7 +176,11 @@ function AccountNavCollapsible({
               return (
                 <SidebarMenuSubItem key={subItem.id}>
                   <SidebarMenuSubButton asChild isActive={isSubActive}>
-                    <a href={`#${subItem.id}`} aria-current={isSubActive ? "page" : undefined}>
+                    <a
+                      href={`#${subItem.id}`}
+                      aria-current={isSubActive ? "page" : undefined}
+                      onClick={() => setOpenMobile(false)}
+                    >
                       {SubIcon && <SubIcon />}
                       <span>{t(subItem.labelKey)}</span>
                     </a>
@@ -200,6 +206,7 @@ function AccountNavDropdown({
 }) {
   const t = useTranslations("account");
   const Icon = section.icon;
+  const { setOpenMobile } = useSidebar();
 
   return (
     <SidebarMenuItem>
@@ -221,6 +228,7 @@ function AccountNavDropdown({
                     href={`#${subItem.id}`}
                     aria-current={isSubActive ? "page" : undefined}
                     className="flex items-center gap-2"
+                    onClick={() => setOpenMobile(false)}
                   >
                     {SubIcon && <SubIcon />}
                     <span>{t(subItem.labelKey)}</span>

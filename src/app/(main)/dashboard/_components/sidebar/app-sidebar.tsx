@@ -13,6 +13,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { APP_CONFIG } from "@/config/app-config";
 import { rootUser } from "@/data/users";
@@ -32,6 +33,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       isSynced: s.isSynced,
     })),
   );
+  const { setOpenMobile } = useSidebar();
 
   const variant = isSynced ? sidebarVariant : props.variant;
   const collapsible = isSynced ? sidebarCollapsible : props.collapsible;
@@ -43,7 +45,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenu className="flex-1">
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <Link prefetch={false} href="/dashboard/default">
+                <Link prefetch={false} href="/dashboard/default" onClick={() => setOpenMobile(false)}>
                   <Command />
                   <span className="font-semibold text-base">{APP_CONFIG.name}</span>
                 </Link>

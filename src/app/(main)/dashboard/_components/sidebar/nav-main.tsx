@@ -178,6 +178,7 @@ function NavItem({ item, isItemActive, isSubItemActive, isSubmenuOpen }: NavItem
 
 function NavLinkItem({ item, isActive, showIconFallback }: NavLinkItemProps) {
   const t = useTranslations("shell");
+  const { setOpenMobile } = useSidebar();
 
   return (
     <SidebarMenuItem>
@@ -192,6 +193,7 @@ function NavLinkItem({ item, isActive, showIconFallback }: NavLinkItemProps) {
           href={item.url}
           target={item.newTab ? "_blank" : undefined}
           rel={item.newTab ? "noreferrer" : undefined}
+          onClick={() => setOpenMobile(false)}
         >
           <NavLinkIcon item={item} showFallback={showIconFallback} />
           <span>{item.titleKey ? t(item.titleKey) : item.title}</span>
@@ -219,6 +221,7 @@ function NavLinkIcon({ item, showFallback }: NavLinkIconProps) {
 function NavDropdownItem({ item, isActive, isSubItemActive }: NavDropdownItemProps) {
   const t = useTranslations("shell");
   const Icon = item.icon;
+  const { setOpenMobile } = useSidebar();
 
   return (
     <SidebarMenuItem>
@@ -248,6 +251,7 @@ function NavDropdownItem({ item, isActive, isSubItemActive }: NavDropdownItemPro
                     rel={subItem.newTab ? "noreferrer" : undefined}
                     aria-current={isSubItemActive(subItem.url) ? "page" : undefined}
                     className="flex items-center gap-2"
+                    onClick={() => setOpenMobile(false)}
                   >
                     {SubIcon && <SubIcon />}
                     <span>{subItem.titleKey ? t(subItem.titleKey) : subItem.title}</span>
@@ -265,6 +269,7 @@ function NavDropdownItem({ item, isActive, isSubItemActive }: NavDropdownItemPro
 function NavCollapsibleItem({ item, isActive, defaultOpen, isSubItemActive }: NavCollapsibleItemProps) {
   const t = useTranslations("shell");
   const Icon = item.icon;
+  const { setOpenMobile } = useSidebar();
 
   return (
     <Collapsible asChild defaultOpen={defaultOpen} className="group/collapsible">
@@ -299,6 +304,7 @@ function NavCollapsibleItem({ item, isActive, defaultOpen, isSubItemActive }: Na
                       href={subItem.url}
                       target={subItem.newTab ? "_blank" : undefined}
                       rel={subItem.newTab ? "noreferrer" : undefined}
+                      onClick={() => setOpenMobile(false)}
                     >
                       {SubIcon && <SubIcon />}
                       <span>{subItem.titleKey ? t(subItem.titleKey) : subItem.title}</span>

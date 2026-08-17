@@ -28,7 +28,7 @@ export function NavUser({
   };
 }) {
   const t = useTranslations("shell");
-  const { isMobile } = useSidebar();
+  const { isMobile, setOpenMobile } = useSidebar();
 
   return (
     <SidebarMenu>
@@ -71,7 +71,7 @@ export function NavUser({
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem asChild>
-                <Link href="/dashboard/account">
+                <Link href="/dashboard/account" onClick={() => setOpenMobile(false)}>
                   <CircleUser />
                   {t("account")}
                 </Link>

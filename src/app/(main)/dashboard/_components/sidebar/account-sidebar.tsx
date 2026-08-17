@@ -14,6 +14,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { rootUser } from "@/data/users";
 import { usePreferencesStore } from "@/stores/preferences/preferences-provider";
@@ -35,6 +36,7 @@ export function AccountSidebar({ ...props }: React.ComponentProps<typeof Sidebar
 
   const variant = isSynced ? sidebarVariant : props.variant;
   const collapsible = isSynced ? sidebarCollapsible : props.collapsible;
+  const { setOpenMobile } = useSidebar();
 
   return (
     <Sidebar {...props} variant={variant} collapsible={collapsible}>
@@ -43,7 +45,7 @@ export function AccountSidebar({ ...props }: React.ComponentProps<typeof Sidebar
           <SidebarMenu className="flex-1">
             <SidebarMenuItem>
               <SidebarMenuButton asChild tooltip={t("breadcrumbAccount")}>
-                <Link prefetch={false} href="/dashboard/account">
+                <Link prefetch={false} href="/dashboard/account" onClick={() => setOpenMobile(false)}>
                   <Command />
                   <span className="font-semibold text-base">{t("breadcrumbAccount")}</span>
                 </Link>
