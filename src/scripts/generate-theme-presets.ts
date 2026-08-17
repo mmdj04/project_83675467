@@ -28,7 +28,10 @@ if (!fs.existsSync(presetDir)) {
 
 const outputPath = path.resolve(__dirname, "../lib/preferences/theme.ts");
 
-const files = fs.readdirSync(presetDir).filter((file) => file.endsWith(".css"));
+const files = fs
+  .readdirSync(presetDir)
+  .filter((file) => file.endsWith(".css"))
+  .sort();
 
 if (files.length === 0) {
   console.warn("⚠️ No preset CSS files found. Only default preset will be included.");
