@@ -1,10 +1,11 @@
 import Link from "next/link";
 
-import { CircleCheck } from "lucide-react";
+import { CircleCheck, Minus } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 
 const plans = [
@@ -37,6 +38,32 @@ const plans = [
     buttonText: "Falar com vendas",
   },
 ];
+
+const comparison: {
+  feature: string;
+  starter: boolean | string;
+  pro: boolean | string;
+  enterprise: boolean | string;
+}[] = [
+  { feature: "Módulos de dashboard", starter: "1", pro: "Todos", enterprise: "Todos" },
+  { feature: "Usuários", starter: "Até 3", pro: "Até 15", enterprise: "Ilimitados" },
+  { feature: "Tema claro e escuro", starter: true, pro: true, enterprise: true },
+  { feature: "Multi-idioma (PT/EN)", starter: false, pro: true, enterprise: true },
+  { feature: "Presets de tema personalizados", starter: false, pro: true, enterprise: true },
+  { feature: "Suporte prioritário", starter: false, pro: true, enterprise: true },
+  { feature: "Integrações personalizadas", starter: false, pro: false, enterprise: true },
+  { feature: "Gerente de conta dedicado", starter: false, pro: false, enterprise: true },
+];
+
+function FeatureValue({ value }: { value: boolean | string }) {
+  if (value === true) {
+    return <CircleCheck className="size-4 text-green-600" />;
+  }
+  if (value === false) {
+    return <Minus className="size-4 text-muted-foreground" />;
+  }
+  return <span className="text-muted-foreground">{value}</span>;
+}
 
 export function Pricing() {
   return (
@@ -77,6 +104,39 @@ export function Pricing() {
             </Button>
           </div>
         ))}
+      </div>
+      <div className="mt-14">
+        <h3 className="text-center text-2xl font-semibold tracking-tight">Compare os planos</h3>
+        <div className="mt-8 overflow-hidden rounded-xl border">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-1/2">Recursos</TableHead>
+                <TableHead className="text-center">Starter</TableHead>
+                <TableHead className="bg-primary/5 text-center">
+                  <span className="font-semibold text-primary">Pro</span>
+                </TableHead>
+                <TableHead className="text-center">Enterprise</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {comparison.map((row) => (
+                <TableRow key={row.feature}>
+                  <TableCell className="font-medium">{row.feature}</TableCell>
+                  <TableCell className="text-center">
+                    <FeatureValue value={row.starter} />
+                  </TableCell>
+                  <TableCell className="bg-primary/5 text-center">
+                    <FeatureValue value={row.pro} />
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <FeatureValue value={row.enterprise} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
     </div>
   );
