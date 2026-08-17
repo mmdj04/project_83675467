@@ -1,23 +1,23 @@
+import { Comparison } from "./_components/comparison";
 import { Faq } from "./_components/faq";
 import { Features } from "./_components/features";
 import { Footer } from "./_components/footer";
-import { Hero } from "./_components/hero";
-import { Navbar } from "./_components/navbar";
 import { Pricing } from "./_components/pricing";
 import { Testimonials } from "./_components/testimonials";
 
 export default function LandingV2() {
   return (
-    <div className="bg-background flex min-h-screen flex-col text-foreground">
-      <Navbar />
-      <main className="flex-1">
-        <Hero />
-        <Features />
-        <Faq />
-        <Testimonials />
-        <Pricing />
+    <div className="bg-background min-h-screen [filter:invert(1)_hue-rotate(180deg)]">
+      <main className="mx-auto flex max-w-6xl flex-col items-center px-6 py-16">
+        <div className="w-full overflow-hidden rounded-2xl border bg-background shadow-2xl [filter:invert(1)_hue-rotate(180deg)]">
+          <Comparison />
+          <Features />
+          <Faq />
+          <Testimonials />
+          <Pricing />
+          <Footer />
+        </div>
       </main>
-      <Footer />
     </div>
   );
 }
