@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { BadgeCheck, Bell, Check, CreditCard, Globe, LogOut } from "lucide-react";
@@ -96,9 +97,11 @@ export function AccountSwitcher({
         ))}
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <BadgeCheck />
-            {t("account")}
+          <DropdownMenuItem asChild>
+            <Link href="/dashboard/account">
+              <BadgeCheck />
+              {t("account")}
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <CreditCard />

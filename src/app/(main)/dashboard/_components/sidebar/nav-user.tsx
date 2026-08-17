@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { CircleUser, CreditCard, EllipsisVertical, LogOut, MessageSquareDot } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -68,9 +70,11 @@ export function NavUser({
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <CircleUser />
-                {t("account")}
+              <DropdownMenuItem asChild>
+                <Link href="/dashboard/account">
+                  <CircleUser />
+                  {t("account")}
+                </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <CreditCard />
