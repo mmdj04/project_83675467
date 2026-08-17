@@ -1,4 +1,3 @@
-import { Comparison } from "./_components/comparison";
 import { Faq } from "./_components/faq";
 import { Features } from "./_components/features";
 import { Footer } from "./_components/footer";
@@ -10,7 +9,6 @@ export default function LandingV2() {
     <div className="bg-background min-h-screen [filter:invert(1)_hue-rotate(180deg)]">
       <main className="mx-auto flex max-w-6xl flex-col items-center px-6 py-16">
         <div className="w-full overflow-hidden rounded-2xl border bg-background shadow-2xl [filter:invert(1)_hue-rotate(180deg)]">
-          <Comparison />
           <Features />
           <Faq />
           <Testimonials />
