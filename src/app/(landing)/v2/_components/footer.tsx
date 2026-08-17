@@ -11,7 +11,6 @@ const footerSections = [
       { title: "Visão geral", href: "/v2" },
       { title: "Recursos", href: "/v2#features" },
       { title: "Planos", href: "/v2#pricing" },
-      { title: "Documentação", href: "/docs" },
     ],
   },
   {
