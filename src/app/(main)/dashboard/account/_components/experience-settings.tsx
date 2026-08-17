@@ -54,9 +54,7 @@ function ThemeOptionPreview({ variant, selected }: { variant: ThemeOption; selec
             variant === "dark" ? "border-neutral-700 bg-neutral-950" : "border-neutral-200 bg-white",
           )}
         >
-          <span className={cn("text-2xl font-bold", variant === "dark" ? "text-white" : "text-neutral-950")}>
-            Aa
-          </span>
+          <span className={cn("text-2xl font-bold", variant === "dark" ? "text-white" : "text-neutral-950")}>Aa</span>
         </div>
       )}
 
