@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 
-import { Command } from "lucide-react";
+import { Command, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useShallow } from "zustand/react/shallow";
 
+import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -14,7 +16,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { APP_CONFIG } from "@/config/app-config";
 import { rootUser } from "@/data/users";
 import { usePreferencesStore } from "@/stores/preferences/preferences-provider";
 
@@ -23,6 +24,7 @@ import { NavUser } from "./nav-user";
 import { SupportCard } from "./support-card";
 
 export function AccountSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const t = useTranslations("account");
   const { sidebarVariant, sidebarCollapsible, isSynced } = usePreferencesStore(
     useShallow((s) => ({
       sidebarVariant: s.values.sidebar_variant,
@@ -37,16 +39,29 @@ export function AccountSidebar({ ...props }: React.ComponentProps<typeof Sidebar
   return (
     <Sidebar {...props} variant={variant} collapsible={collapsible}>
       <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link prefetch={false} href="/dashboard/default">
-                <Command />
-                <span className="font-semibold text-base">{APP_CONFIG.name}</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
+        <div className="flex items-center gap-1">
+          <SidebarMenu className="flex-1">
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild tooltip={t("breadcrumbAccount")}>
+                <Link prefetch={false} href="/dashboard/account">
+                  <Command />
+                  <span className="font-semibold text-base">{t("breadcrumbAccount")}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+          <Button
+            asChild
+            aria-label={t("exitAccount")}
+            className="group-data-[collapsible=icon]:hidden"
+            size="icon-sm"
+            variant="ghost"
+          >
+            <Link prefetch={false} href="/dashboard/default">
+              <X />
+            </Link>
+          </Button>
+        </div>
       </SidebarHeader>
       <SidebarContent>
         <AccountNav />
