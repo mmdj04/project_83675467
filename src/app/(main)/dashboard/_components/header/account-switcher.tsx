@@ -26,8 +26,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { setClientCookie } from "@/lib/cookie.client";
 import { cn, getInitials } from "@/lib/utils";
+
+import { AccountDialog } from "./account-dialog";
 
 const LOCALES = [
   { code: "pt-BR", label: "Português (Brasil)" },
@@ -48,6 +51,7 @@ export function AccountSwitcher({
   const t = useTranslations("shell");
   const locale = useLocale();
   const router = useRouter();
+  const isMobile = useIsMobile();
   const [activeUser, setActiveUser] = useState(users[0]);
 
   if (!activeUser) {
@@ -103,12 +107,16 @@ export function AccountSwitcher({
               {t("home")}
             </Link>
           </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href="/dashboard/account">
-              <BadgeCheck />
-              {t("account")}
-            </Link>
-          </DropdownMenuItem>
+          {isMobile ? (
+            <DropdownMenuItem asChild>
+              <Link href="/dashboard/account">
+                <BadgeCheck />
+                {t("account")}
+              </Link>
+            </DropdownMenuItem>
+          ) : (
+            <AccountDialog />
+          )}
           <DropdownMenuItem>
             <CreditCard />
             {t("billing")}
