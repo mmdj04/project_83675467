@@ -104,13 +104,14 @@ export function AccountDialog() {
           {t("account")}
         </DropdownMenuItem>
       </DialogTrigger>
-      <DialogContent showCloseButton={false} className="!gap-0 !p-0 sm:max-w-4xl">
+      <DialogContent showCloseButton={false} className="!gap-0 !p-0 sm:max-w-5xl">
         <div className="flex max-h-[85vh] flex-col overflow-hidden">
-          <DialogHeader className="relative border-b px-6 pt-5 pb-4 pr-12">
+          <DialogHeader className="flex items-center border-b px-6 py-4">
             <DialogTitle>{tAccount("breadcrumbAccount")}</DialogTitle>
             <DialogClose asChild>
-              <Button variant="ghost" size="icon-sm" className="absolute top-3 right-3" aria-label={tAccount("close")}>
+              <Button variant="ghost" size="icon-sm" className="ml-auto shrink-0">
                 <XIcon />
+                <span className="sr-only">{tAccount("close")}</span>
               </Button>
             </DialogClose>
           </DialogHeader>
