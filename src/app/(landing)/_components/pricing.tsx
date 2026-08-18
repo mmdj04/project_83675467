@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { CircleCheck, Minus } from "lucide-react";
+import { CircleCheck, HardDrive, Minus } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -11,30 +11,41 @@ import { cn } from "@/lib/utils";
 const plans = [
   {
     name: "Starter",
-    price: "R$ 49",
+    price: "R$ 550",
     description: "Para começar a organizar o seu negócio com os módulos essenciais.",
-    features: ["1 módulo de dashboard", "Tema claro e escuro", "Até 3 usuários", "Suporte por e-mail"],
-    buttonText: "Começar grátis",
+    features: [
+      "Módulos essenciais do dashboard",
+      "Tema claro e escuro",
+      "Dados 100% no seu computador",
+      "Funciona offline",
+      "Suporte por e-mail",
+    ],
+    buttonText: "Assinar agora",
   },
   {
     name: "Pro",
-    price: "R$ 99",
+    price: "R$ 880",
     isPopular: true,
-    description: "Para equipes que querem todos os módulos e mais produtividade.",
+    description: "Para quem quer todos os módulos e mais produtividade.",
     features: [
-      "Todos os módulos",
+      "Todos os módulos (CRM, Finanças, Infra e mais)",
       "Multi-idioma (PT/EN)",
-      "Até 15 usuários",
       "Presets de tema personalizados",
+      "Usuários ilimitados",
       "Suporte prioritário",
     ],
-    buttonText: "Testar por 14 dias",
+    buttonText: "Assinar agora",
   },
   {
     name: "Enterprise",
-    price: "R$ 199",
+    price: "R$ 2.250",
     description: "Para empresas que precisam de escala, integrações e suporte dedicado.",
-    features: ["Tudo do plano Pro", "Usuários ilimitados", "Integrações personalizadas", "Gerente de conta dedicado"],
+    features: [
+      "Tudo do plano Pro",
+      "Integrações e APIs personalizadas",
+      "Implementação e treinamento",
+      "Suporte dedicado",
+    ],
     buttonText: "Falar com vendas",
   },
 ];
@@ -45,14 +56,16 @@ const comparison: {
   pro: boolean | string;
   enterprise: boolean | string;
 }[] = [
-  { feature: "Módulos de dashboard", starter: "1", pro: "Todos", enterprise: "Todos" },
-  { feature: "Usuários", starter: "Até 3", pro: "Até 15", enterprise: "Ilimitados" },
+  { feature: "Preço mensal", starter: "R$ 550", pro: "R$ 880", enterprise: "R$ 2.250" },
+  { feature: "Infraestrutura externa (servidores/nuvem)", starter: "Nenhuma", pro: "Nenhuma", enterprise: "Nenhuma" },
+  { feature: "Dados no seu computador", starter: true, pro: true, enterprise: true },
+  { feature: "Módulos", starter: "Essenciais", pro: "Todos", enterprise: "Todos" },
   { feature: "Tema claro e escuro", starter: true, pro: true, enterprise: true },
   { feature: "Multi-idioma (PT/EN)", starter: false, pro: true, enterprise: true },
   { feature: "Presets de tema personalizados", starter: false, pro: true, enterprise: true },
+  { feature: "Usuários", starter: "Até 3", pro: "Ilimitados", enterprise: "Ilimitados" },
   { feature: "Suporte prioritário", starter: false, pro: true, enterprise: true },
-  { feature: "Integrações personalizadas", starter: false, pro: false, enterprise: true },
-  { feature: "Gerente de conta dedicado", starter: false, pro: false, enterprise: true },
+  { feature: "Implementação personalizada", starter: false, pro: false, enterprise: true },
 ];
 
 function FeatureValue({ value }: { value: boolean | string }) {
@@ -69,6 +82,13 @@ export function Pricing() {
   return (
     <div id="pricing" className="mx-auto max-w-5xl px-6 py-12 lg:py-20">
       <h2 className="text-center text-4xl font-semibold tracking-tight sm:text-5xl">Planos</h2>
+      <div className="mx-auto mt-4 flex max-w-2xl items-start gap-2 rounded-xl border bg-muted/50 px-4 py-3 text-sm text-muted-foreground">
+        <HardDrive className="mt-0.5 size-4 shrink-0 text-primary" />
+        <p>
+          100% local: o Studio Admin é instalado no seu Desktop e não usa infraestrutura externa — sem servidores, sem
+          nuvem e sem custos ocultos. Você paga apenas o plano mensal.
+        </p>
+      </div>
       <div className="mt-8 grid grid-cols-1 items-center gap-8 lg:mt-14 lg:grid-cols-3 lg:gap-0">
         {plans.map((plan) => (
           <div
@@ -83,7 +103,10 @@ export function Pricing() {
               <Badge className="absolute top-0 right-1/2 -translate-y-1/2 translate-x-1/2">Mais popular</Badge>
             )}
             <h3 className="text-lg font-medium">{plan.name}</h3>
-            <p className="mt-2 text-4xl font-bold">{plan.price}</p>
+            <p className="mt-2 text-4xl font-bold">
+              {plan.price}
+              <span className="text-muted-foreground ml-1 text-sm font-normal">/mês</span>
+            </p>
             <p className="text-muted-foreground mt-4 font-medium">{plan.description}</p>
             <Separator className="my-6" />
             <ul className="space-y-2">
