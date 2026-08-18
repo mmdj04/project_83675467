@@ -8,7 +8,6 @@ import { useTranslations } from "next-intl";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -43,6 +42,26 @@ const devices: readonly Device[] = [
   },
 ];
 
+function SettingRow({
+  title,
+  description,
+  children,
+}: {
+  readonly title: string;
+  readonly description: string;
+  readonly children: React.ReactNode;
+}) {
+  return (
+    <div className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+      <div className="min-w-0">
+        <h3 className="font-medium text-sm">{title}</h3>
+        <p className="mt-0.5 text-muted-foreground text-xs">{description}</p>
+      </div>
+      <div className="flex flex-wrap items-center gap-2">{children}</div>
+    </div>
+  );
+}
+
 export function ProfileSettings() {
   const t = useTranslations("account");
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -60,123 +79,83 @@ export function ProfileSettings() {
   }
 
   return (
-    <div className="flex flex-col gap-4 pb-8">
-      <Card>
-        <CardHeader>
-          <CardTitle>{t("profilePicture")}</CardTitle>
-          <CardDescription>{t("profilePictureDescription")}</CardDescription>
-        </CardHeader>
-        <CardContent className="flex items-center gap-4">
-          <Avatar className="size-20 rounded-full">
-            <AvatarImage src={avatar || undefined} alt={t("profilePicture")} />
-            <AvatarFallback className="rounded-full text-lg">{getInitials(rootUser.name)}</AvatarFallback>
-          </Avatar>
-          <div className="flex flex-wrap gap-2">
-            <Button type="button" onClick={() => fileInputRef.current?.click()} size="sm" variant="outline">
-              <Upload aria-hidden="true" />
-              {t("uploadPicture")}
-            </Button>
-            <Button
-              type="button"
-              onClick={() => setAvatar("")}
-              size="sm"
-              variant="ghost"
-              className="text-destructive hover:text-destructive"
-            >
-              {t("removePicture")}
-            </Button>
-          </div>
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            className="hidden"
-            aria-hidden="true"
-            tabIndex={-1}
-            onChange={handlePictureChange}
-          />
-        </CardContent>
-      </Card>
+    <div className="flex flex-col divide-y rounded-xl border">
+      <SettingRow title={t("profilePicture")} description={t("profilePictureDescription")}>
+        <Avatar className="size-12 rounded-full">
+          <AvatarImage src={avatar || undefined} alt={t("profilePicture")} />
+          <AvatarFallback className="rounded-full text-sm">{getInitials(rootUser.name)}</AvatarFallback>
+        </Avatar>
+        <Button type="button" onClick={() => fileInputRef.current?.click()} size="sm" variant="outline">
+          <Upload aria-hidden="true" />
+          {t("uploadPicture")}
+        </Button>
+        <Button
+          type="button"
+          onClick={() => setAvatar("")}
+          size="sm"
+          variant="ghost"
+          className="text-destructive hover:text-destructive"
+        >
+          {t("removePicture")}
+        </Button>
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          className="hidden"
+          aria-hidden="true"
+          tabIndex={-1}
+          onChange={handlePictureChange}
+        />
+      </SettingRow>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>{t("name")}</CardTitle>
-          <CardDescription>{t("nameDescription")}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="profile-first-name">{t("firstName")}</Label>
-              <Input id="profile-first-name" value={firstName} onChange={(event) => setFirstName(event.target.value)} />
-            </div>
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="profile-last-name">{t("lastName")}</Label>
-              <Input id="profile-last-name" value={lastName} onChange={(event) => setLastName(event.target.value)} />
-            </div>
-          </div>
-          <div className="mt-4 flex justify-end">
-            <Button size="sm">{t("save")}</Button>
-          </div>
-        </CardContent>
-      </Card>
+      <SettingRow title={t("name")} description={t("nameDescription")}>
+        <div className="flex flex-col gap-1.5">
+          <Label htmlFor="profile-first-name">{t("firstName")}</Label>
+          <Input id="profile-first-name" value={firstName} onChange={(event) => setFirstName(event.target.value)} />
+        </div>
+        <div className="flex flex-col gap-1.5">
+          <Label htmlFor="profile-last-name">{t("lastName")}</Label>
+          <Input id="profile-last-name" value={lastName} onChange={(event) => setLastName(event.target.value)} />
+        </div>
+        <Button size="sm">{t("save")}</Button>
+      </SettingRow>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>{t("email")}</CardTitle>
-          <CardDescription>{t("emailDescription")}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-col gap-2">
-            <Label htmlFor="profile-email">{t("email")}</Label>
-            <Input id="profile-email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
-          </div>
-          <div className="mt-4 flex justify-end">
-            <Button size="sm">{t("save")}</Button>
-          </div>
-        </CardContent>
-      </Card>
+      <SettingRow title={t("email")} description={t("emailDescription")}>
+        <div className="flex flex-col gap-1.5">
+          <Label htmlFor="profile-email" className="sr-only">
+            {t("email")}
+          </Label>
+          <Input id="profile-email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
+        </div>
+        <Button size="sm">{t("save")}</Button>
+      </SettingRow>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>{t("twoFactor")}</CardTitle>
-          <CardDescription>{t("twoFactorDescription")}</CardDescription>
-        </CardHeader>
-        <CardContent className="flex items-center justify-between gap-4">
-          <Badge className={cn(twoFactorEnabled && "border-green-600 text-green-600")} variant="outline">
-            {twoFactorEnabled ? t("twoFactorEnabled") : t("twoFactorDisabled")}
-          </Badge>
-          <Switch checked={twoFactorEnabled} onCheckedChange={setTwoFactorEnabled} aria-label={t("twoFactor")} />
-        </CardContent>
-      </Card>
+      <SettingRow title={t("twoFactor")} description={t("twoFactorDescription")}>
+        <Badge className={cn(twoFactorEnabled && "border-green-600 text-green-600")} variant="outline">
+          {twoFactorEnabled ? t("twoFactorEnabled") : t("twoFactorDisabled")}
+        </Badge>
+        <Switch checked={twoFactorEnabled} onCheckedChange={setTwoFactorEnabled} aria-label={t("twoFactor")} />
+      </SettingRow>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>{t("setPassword")}</CardTitle>
-          <CardDescription>{t("setPasswordDescription")}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="profile-new-password">{t("newPassword")}</Label>
-              <Input id="profile-new-password" type="password" autoComplete="new-password" />
-            </div>
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="profile-confirm-password">{t("confirmPassword")}</Label>
-              <Input id="profile-confirm-password" type="password" autoComplete="new-password" />
-            </div>
-          </div>
-          <div className="mt-4 flex justify-end">
-            <Button size="sm">{t("save")}</Button>
-          </div>
-        </CardContent>
-      </Card>
+      <SettingRow title={t("setPassword")} description={t("setPasswordDescription")}>
+        <div className="flex flex-col gap-1.5">
+          <Label htmlFor="profile-new-password">{t("newPassword")}</Label>
+          <Input id="profile-new-password" type="password" autoComplete="new-password" />
+        </div>
+        <div className="flex flex-col gap-1.5">
+          <Label htmlFor="profile-confirm-password">{t("confirmPassword")}</Label>
+          <Input id="profile-confirm-password" type="password" autoComplete="new-password" />
+        </div>
+        <Button size="sm">{t("save")}</Button>
+      </SettingRow>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>{t("devices")}</CardTitle>
-          <CardDescription>{t("devicesDescription")}</CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 p-4">
+        <div className="min-w-0">
+          <h3 className="font-medium text-sm">{t("devices")}</h3>
+          <p className="mt-0.5 text-muted-foreground text-xs">{t("devicesDescription")}</p>
+        </div>
+        <div className="flex flex-col gap-2">
           {devices.map((device) => {
             const Icon = device.icon;
             return (
@@ -204,21 +183,15 @@ export function ProfileSettings() {
               </div>
             );
           })}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
-      <Card className="border-destructive/40">
-        <CardHeader>
-          <CardTitle className="text-destructive">{t("dangerZone")}</CardTitle>
-          <CardDescription>{t("dangerZoneDescription")}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Button variant="destructive" size="sm">
-            <Trash2 aria-hidden="true" />
-            {t("deleteAccount")}
-          </Button>
-        </CardContent>
-      </Card>
+      <SettingRow title={t("dangerZone")} description={t("dangerZoneDescription")}>
+        <Button variant="destructive" size="sm" className="text-destructive-foreground">
+          <Trash2 aria-hidden="true" />
+          {t("deleteAccount")}
+        </Button>
+      </SettingRow>
     </div>
   );
 }
