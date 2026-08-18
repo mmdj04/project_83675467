@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import Link from "next/link";
+
 import {
   BadgeCheck,
   Blocks,
@@ -25,6 +27,7 @@ import { useTranslations } from "next-intl";
 
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 
 import { AccountContent } from "../../account/_components/account-content";
@@ -90,7 +93,19 @@ const NAV_CATEGORIES: readonly AccountNavCategory[] = [
 export function AccountDialog() {
   const t = useTranslations("shell");
   const tAccount = useTranslations("account");
+  const isMobile = useIsMobile();
   const [activeSection, setActiveSection] = useState("profile");
+
+  if (isMobile) {
+    return (
+      <DropdownMenuItem asChild>
+        <Link href="/dashboard/account">
+          <BadgeCheck />
+          {t("account")}
+        </Link>
+      </DropdownMenuItem>
+    );
+  }
 
   return (
     <Dialog>
@@ -115,7 +130,7 @@ export function AccountDialog() {
                 )}
               >
                 <BadgeCheck className="size-4 shrink-0" />
-                <span className="truncate">{tAccount("account")}</span>
+                <span className="truncate">{t("account")}</span>
               </button>
               <div className="mx-2 my-1.5 border-t" />
               {NAV_CATEGORIES.map((category) => (
