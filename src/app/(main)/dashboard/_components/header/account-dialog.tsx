@@ -139,64 +139,66 @@ export function AccountDialog() {
           {t("account")}
         </DropdownMenuItem>
       </DialogTrigger>
-      <DialogContent className="flex max-h-[min(100dvh-4rem)] flex-col gap-0 overflow-hidden p-0 sm:max-w-3xl">
-        <DialogHeader className="border-b px-6 pt-5 pb-4 pr-12">
-          <DialogTitle>{tAccount("breadcrumbAccount")}</DialogTitle>
-        </DialogHeader>
-        <div className="flex min-h-0 flex-1 overflow-hidden">
-          <nav className="w-48 shrink-0 overflow-y-auto border-r py-2">
-            {NAV_CATEGORIES.map((category) => (
-              <div key={category.id}>
-                <p className="px-4 py-1.5 font-medium text-muted-foreground text-xs uppercase tracking-wider">
-                  {tAccount(category.labelKey)}
-                </p>
-                {category.items.map((item) => {
-                  const Icon = item.icon;
-                  const isActive = activeSection === item.id;
-                  const hasSubItems = Boolean(item.subItems?.length);
-                  return (
-                    <div key={item.id}>
-                      <button
-                        type="button"
-                        onClick={() => setActiveSection(item.id)}
-                        className={cn(
-                          "flex w-full items-center gap-2 rounded-md px-4 py-1.5 text-sm transition-colors",
-                          isActive
-                            ? "bg-accent font-medium text-accent-foreground"
-                            : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
-                        )}
-                      >
-                        <Icon className="size-4 shrink-0" />
-                        <span className="truncate">{tAccount(item.labelKey)}</span>
-                      </button>
-                      {hasSubItems &&
-                        item.subItems?.map((subItem) => {
-                          const SubIcon = subItem.icon;
-                          const isSubActive = activeSection === subItem.id;
-                          return (
-                            <button
-                              key={subItem.id}
-                              type="button"
-                              onClick={() => setActiveSection(subItem.id)}
-                              className={cn(
-                                "flex w-full items-center gap-2 rounded-md py-1.5 pl-10 pr-4 text-sm transition-colors",
-                                isSubActive
-                                  ? "bg-accent font-medium text-accent-foreground"
-                                  : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
-                              )}
-                            >
-                              <SubIcon className="size-4 shrink-0" />
-                              <span className="truncate">{tAccount(subItem.labelKey)}</span>
-                            </button>
-                          );
-                        })}
-                    </div>
-                  );
-                })}
-              </div>
-            ))}
-          </nav>
-          <div className="min-h-0 flex-1 overflow-y-auto p-6">{renderContent()}</div>
+      <DialogContent className="!gap-0 !p-0 sm:max-w-3xl">
+        <div className="flex max-h-[85vh] flex-col overflow-hidden">
+          <DialogHeader className="border-b px-6 pt-5 pb-4 pr-12">
+            <DialogTitle>{tAccount("breadcrumbAccount")}</DialogTitle>
+          </DialogHeader>
+          <div className="flex min-h-0 flex-1 overflow-hidden">
+            <nav className="w-48 shrink-0 overflow-y-auto border-r py-2">
+              {NAV_CATEGORIES.map((category) => (
+                <div key={category.id}>
+                  <p className="px-4 py-1.5 font-medium text-muted-foreground text-xs uppercase tracking-wider">
+                    {tAccount(category.labelKey)}
+                  </p>
+                  {category.items.map((item) => {
+                    const Icon = item.icon;
+                    const isActive = activeSection === item.id;
+                    const hasSubItems = Boolean(item.subItems?.length);
+                    return (
+                      <div key={item.id}>
+                        <button
+                          type="button"
+                          onClick={() => setActiveSection(item.id)}
+                          className={cn(
+                            "flex w-full items-center gap-2 rounded-md px-4 py-1.5 text-sm transition-colors",
+                            isActive
+                              ? "bg-accent font-medium text-accent-foreground"
+                              : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
+                          )}
+                        >
+                          <Icon className="size-4 shrink-0" />
+                          <span className="truncate">{tAccount(item.labelKey)}</span>
+                        </button>
+                        {hasSubItems &&
+                          item.subItems?.map((subItem) => {
+                            const SubIcon = subItem.icon;
+                            const isSubActive = activeSection === subItem.id;
+                            return (
+                              <button
+                                key={subItem.id}
+                                type="button"
+                                onClick={() => setActiveSection(subItem.id)}
+                                className={cn(
+                                  "flex w-full items-center gap-2 rounded-md py-1.5 pl-10 pr-4 text-sm transition-colors",
+                                  isSubActive
+                                    ? "bg-accent font-medium text-accent-foreground"
+                                    : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
+                                )}
+                              >
+                                <SubIcon className="size-4 shrink-0" />
+                                <span className="truncate">{tAccount(subItem.labelKey)}</span>
+                              </button>
+                            );
+                          })}
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </nav>
+            <div className="min-h-0 flex-1 overflow-y-auto p-6">{renderContent()}</div>
+          </div>
         </div>
       </DialogContent>
     </Dialog>
