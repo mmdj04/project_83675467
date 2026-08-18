@@ -143,8 +143,8 @@ export function AccountDialog() {
         <DialogHeader className="border-b px-6 pt-5 pb-4 pr-12">
           <DialogTitle>{tAccount("breadcrumbAccount")}</DialogTitle>
         </DialogHeader>
-        <div className="flex min-h-0 flex-1">
-          <nav className="w-48 shrink-0 border-r py-2">
+        <div className="flex min-h-0 flex-1 overflow-hidden">
+          <nav className="w-48 shrink-0 overflow-y-auto border-r py-2">
             {NAV_CATEGORIES.map((category) => (
               <div key={category.id}>
                 <p className="px-4 py-1.5 font-medium text-muted-foreground text-xs uppercase tracking-wider">
