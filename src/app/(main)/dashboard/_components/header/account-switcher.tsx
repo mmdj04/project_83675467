@@ -3,21 +3,11 @@
 import { useState } from "react";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
-import { BadgeCheck, Bell, Check, CreditCard, Globe, Home, LogOut } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import { BadgeCheck, Bell, Check, CreditCard, Home, LogOut } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,15 +16,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { setClientCookie } from "@/lib/cookie.client";
 import { cn, getInitials } from "@/lib/utils";
 
 import { AccountDialog } from "./account-dialog";
-
-const LOCALES = [
-  { code: "pt-BR", label: "Português (Brasil)" },
-  { code: "en", label: "English" },
-] as const;
 
 export function AccountSwitcher({
   users,
@@ -48,17 +32,10 @@ export function AccountSwitcher({
   }>;
 }) {
   const t = useTranslations("shell");
-  const locale = useLocale();
-  const router = useRouter();
   const [activeUser, setActiveUser] = useState(users[0]);
 
   if (!activeUser) {
     return null;
-  }
-
-  function setLocale(code: string) {
-    setClientCookie("locale", code, 365);
-    router.refresh();
   }
 
   return (
@@ -114,46 +91,6 @@ export function AccountSwitcher({
             <Bell />
             {t("notifications")}
           </DropdownMenuItem>
-          <Dialog>
-            <DialogTrigger asChild>
-              <DropdownMenuItem onSelect={(event) => event.preventDefault()}>
-                <Globe />
-                {t("language")}
-                <Badge className="ml-auto border-green-600 text-green-600" variant="outline">
-                  {t("badgeNew")}
-                </Badge>
-              </DropdownMenuItem>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-xs">
-              <DialogHeader>
-                <DialogTitle>{t("languageDialogTitle")}</DialogTitle>
-                <DialogDescription>{t("languageDialogDescription")}</DialogDescription>
-              </DialogHeader>
-              <div className="flex flex-col gap-1">
-                {LOCALES.map((option) => (
-                  <DropdownMenuItem
-                    key={option.code}
-                    className="justify-between"
-                    onClick={() => setLocale(option.code)}
-                  >
-                    {option.label}
-                    <span className="flex items-center gap-2">
-                      {option.code === "pt-BR" && (
-                        <Badge className="border-green-600 text-green-600" variant="outline">
-                          {t("badgeNew")}
-                        </Badge>
-                      )}
-                      {locale === option.code && <Check className="size-4" />}
-                    </span>
-                  </DropdownMenuItem>
-                ))}
-              </div>
-              <p className="flex items-start gap-1.5 rounded-lg bg-muted/50 px-2.5 py-2 text-muted-foreground text-xs">
-                <span aria-hidden>⚠</span>
-                {t("languageDialogWarning")}
-              </p>
-            </DialogContent>
-          </Dialog>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>

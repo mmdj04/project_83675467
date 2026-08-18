@@ -1777,7 +1777,6 @@
     "languageDialogTitle": "Language",
     "languageDialogDescription": "Choose your preferred language.",
     "languageDialogWarning": "In development — some translations may contain errors or be incomplete.",
-    "language": "Language",
     "accountRole": {
       "administrator": "Administrator",
       "admin": "Admin"
