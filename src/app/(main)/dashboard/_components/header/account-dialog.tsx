@@ -21,10 +21,12 @@ import {
   Plug,
   Settings,
   Users,
+  XIcon,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
@@ -102,10 +104,15 @@ export function AccountDialog() {
           {t("account")}
         </DropdownMenuItem>
       </DialogTrigger>
-      <DialogContent className="!gap-0 !p-0 sm:max-w-4xl">
+      <DialogContent showCloseButton={false} className="!gap-0 !p-0 sm:max-w-4xl">
         <div className="flex max-h-[85vh] flex-col overflow-hidden">
-          <DialogHeader className="border-b px-6 pt-5 pb-4 pr-12">
+          <DialogHeader className="relative border-b px-6 pt-5 pb-4 pr-12">
             <DialogTitle>{tAccount("breadcrumbAccount")}</DialogTitle>
+            <DialogClose asChild>
+              <Button variant="ghost" size="icon-sm" className="absolute top-3 right-3" aria-label={tAccount("close")}>
+                <XIcon />
+              </Button>
+            </DialogClose>
           </DialogHeader>
           <div className="flex min-h-0 flex-1 overflow-hidden">
             <nav className="w-48 shrink-0 overflow-y-auto border-r py-2">
