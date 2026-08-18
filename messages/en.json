@@ -1824,6 +1824,7 @@
       "confirmPasswordLabel": "Confirm Password",
       "confirmPasswordTooShort": "Confirm Password must be at least 6 characters.",
       "passwordsDoNotMatch": "Passwords do not match.",
+      "invalidCredentials": "Invalid email or password. Use the demo credentials.",
       "submittedValues": "You submitted the following values",
       "continueWithGoogle": "Continue with Google"
     }

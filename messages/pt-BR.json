@@ -1824,6 +1824,7 @@
       "confirmPasswordLabel": "Confirmar senha",
       "confirmPasswordTooShort": "A confirmação de senha deve ter pelo menos 6 caracteres.",
       "passwordsDoNotMatch": "As senhas não coincidem.",
+      "invalidCredentials": "E-mail ou senha inválidos. Use as credenciais da demo.",
       "submittedValues": "Você enviou os seguintes valores",
       "continueWithGoogle": "Continuar com o Google"
     }

@@ -1,13 +1,32 @@
-import { Hero } from "./_components/hero";
-import { ModulesSection } from "./_components/modules-section";
+import { ThemeTogglerButton } from "@/components/theme-toggler-button";
 
-export default function Home() {
+import { Faq } from "./_components/faq";
+import { Features } from "./_components/features";
+import { Footer } from "./_components/footer";
+import { Hero } from "./_components/hero";
+import { Pricing } from "./_components/pricing";
+import { Testimonials } from "./_components/testimonials";
+
+export default function LandingPage() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <main className="flex-1">
+    <>
+      <div className="fixed top-6 right-6 z-50 [filter:invert(1)_hue-rotate(180deg)]">
+        <ThemeTogglerButton />
+      </div>
+      <div className="min-h-screen overflow-hidden bg-background [filter:invert(1)_hue-rotate(180deg)]">
         <Hero />
-        <ModulesSection />
-      </main>
-    </div>
+        <main className="mx-auto flex max-w-6xl flex-col items-center px-6 py-16">
+          <div className="w-full overflow-hidden rounded-2xl border bg-background shadow-2xl [filter:invert(1)_hue-rotate(180deg)]">
+            <Features />
+            <Faq />
+            <Testimonials />
+            <Pricing />
+          </div>
+          <div className="mt-8 w-full overflow-hidden rounded-2xl border bg-background shadow-2xl [filter:invert(1)_hue-rotate(180deg)]">
+            <Footer />
+          </div>
+        </main>
+      </div>
+    </>
   );
 }

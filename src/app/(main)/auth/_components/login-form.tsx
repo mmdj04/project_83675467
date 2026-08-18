@@ -2,6 +2,8 @@
 
 import { useMemo } from "react";
 
+import { useRouter } from "next/navigation";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { Controller, useForm } from "react-hook-form";
@@ -12,9 +14,14 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Field, FieldContent, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { setClientCookie } from "@/lib/cookie.client";
+
+const DEMO_EMAIL = "matheusmoraesdj2025@gmail.com";
+const DEMO_PASSWORD = "10092004@Matheus";
 
 export function LoginForm() {
   const t = useTranslations("auth.form");
+  const router = useRouter();
 
   const formSchema = useMemo(
     () =>
@@ -36,13 +43,12 @@ export function LoginForm() {
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
-    toast(t("submittedValues"), {
-      description: (
-        <pre className="mt-2 w-[320px] rounded-md bg-neutral-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+    if (data.email === DEMO_EMAIL && data.password === DEMO_PASSWORD) {
+      setClientCookie("demo-auth", "1", 1);
+      router.push("/dashboard/default");
+      return;
+    }
+    toast.error(t("invalidCredentials"));
   }
 
   return (
