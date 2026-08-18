@@ -102,7 +102,7 @@ export function AccountDialog() {
           {t("account")}
         </DropdownMenuItem>
       </DialogTrigger>
-      <DialogContent className="!gap-0 !p-0 sm:max-w-3xl">
+      <DialogContent className="!gap-0 !p-0 sm:max-w-4xl">
         <div className="flex max-h-[85vh] flex-col overflow-hidden">
           <DialogHeader className="border-b px-6 pt-5 pb-4 pr-12">
             <DialogTitle>{tAccount("breadcrumbAccount")}</DialogTitle>
