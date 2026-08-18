@@ -24,14 +24,11 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia } from "@/components/ui/empty";
 import { cn } from "@/lib/utils";
 
-import { ExperienceSettings } from "../../account/_components/experience-settings";
-import { ProfileSettings } from "../../account/_components/profile-settings";
+import { AccountContent } from "../../account/_components/account-content";
 
 interface AccountNavItem {
   readonly id: string;
@@ -96,40 +93,6 @@ export function AccountDialog() {
   const t = useTranslations("shell");
   const tAccount = useTranslations("account");
   const [activeSection, setActiveSection] = useState("profile");
-
-  function renderContent() {
-    if (activeSection === "profile") {
-      return <ProfileSettings />;
-    }
-
-    if (activeSection === "experience") {
-      return <ExperienceSettings />;
-    }
-
-    const allItems = NAV_CATEGORIES.flatMap((c) => c.items).flatMap((i) => (i.subItems ? [i, ...i.subItems] : [i]));
-    const activeItem = allItems.find((i) => i.id === activeSection);
-    const ActiveIcon = activeItem?.icon ?? CircleUser;
-
-    return (
-      <Empty className="rounded-xl border">
-        <EmptyMedia variant="icon">
-          <ActiveIcon aria-hidden="true" />
-        </EmptyMedia>
-        <EmptyHeader>
-          <h2 className="font-semibold text-lg">{tAccount(activeItem?.labelKey ?? "profile")}</h2>
-          {activeItem?.descriptionKey && (
-            <p className="text-muted-foreground text-sm">{tAccount(activeItem.descriptionKey)}</p>
-          )}
-          <Badge className="border-primary/20 text-primary" variant="outline">
-            {tAccount("inDevelopmentTitle")}
-          </Badge>
-        </EmptyHeader>
-        <EmptyContent>
-          <EmptyDescription>{tAccount("inDevelopmentDescription")}</EmptyDescription>
-        </EmptyContent>
-      </Empty>
-    );
-  }
 
   return (
     <Dialog>
@@ -197,7 +160,9 @@ export function AccountDialog() {
                 </div>
               ))}
             </nav>
-            <div className="min-h-0 flex-1 overflow-y-auto p-6">{renderContent()}</div>
+            <div className="min-h-0 flex-1 overflow-y-auto p-6">
+              <AccountContent activeId={activeSection} dense />
+            </div>
           </div>
         </div>
       </DialogContent>

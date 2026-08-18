@@ -14,6 +14,8 @@ import { Switch } from "@/components/ui/switch";
 import { rootUser } from "@/data/users";
 import { cn, getInitials } from "@/lib/utils";
 
+import { SettingRow } from "./settings-row";
+
 interface Device {
   readonly id: string;
   readonly name: string;
@@ -41,26 +43,6 @@ const devices: readonly Device[] = [
     current: false,
   },
 ];
-
-function SettingRow({
-  title,
-  description,
-  children,
-}: {
-  readonly title: string;
-  readonly description: string;
-  readonly children: React.ReactNode;
-}) {
-  return (
-    <div className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-      <div className="min-w-0">
-        <h3 className="font-medium text-sm">{title}</h3>
-        <p className="mt-0.5 text-muted-foreground text-xs">{description}</p>
-      </div>
-      <div className="flex flex-wrap items-center gap-2">{children}</div>
-    </div>
-  );
-}
 
 export function ProfileSettings() {
   const t = useTranslations("account");
