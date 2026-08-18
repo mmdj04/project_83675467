@@ -9,7 +9,6 @@ import {
   Bot,
   Briefcase,
   Calendar,
-  CircleUser,
   CreditCard,
   Database,
   LayoutGrid,
@@ -21,12 +20,10 @@ import {
   Plug,
   Settings,
   Users,
-  XIcon,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
@@ -51,7 +48,6 @@ const NAV_CATEGORIES: readonly AccountNavCategory[] = [
     id: "user",
     labelKey: "categoryUser",
     items: [
-      { id: "profile", labelKey: "profile", icon: CircleUser },
       { id: "experience", labelKey: "experience", icon: Briefcase },
       {
         id: "accounts",
@@ -106,17 +102,22 @@ export function AccountDialog() {
       </DialogTrigger>
       <DialogContent showCloseButton={false} className="!gap-0 !p-0 sm:max-w-5xl">
         <div className="flex max-h-[85vh] flex-col overflow-hidden">
-          <DialogHeader className="flex items-center border-b px-6 py-4">
-            <DialogTitle>{tAccount("breadcrumbAccount")}</DialogTitle>
-            <DialogClose asChild>
-              <Button variant="ghost" size="icon-sm" className="ml-auto shrink-0">
-                <XIcon />
-                <span className="sr-only">{tAccount("close")}</span>
-              </Button>
-            </DialogClose>
-          </DialogHeader>
           <div className="flex min-h-0 flex-1 overflow-hidden">
             <nav className="w-48 shrink-0 overflow-y-auto border-r py-2">
+              <button
+                type="button"
+                onClick={() => setActiveSection("profile")}
+                className={cn(
+                  "flex w-full items-center gap-2 rounded-md px-4 py-1.5 text-sm transition-colors",
+                  activeSection === "profile"
+                    ? "bg-accent font-medium text-accent-foreground"
+                    : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
+                )}
+              >
+                <BadgeCheck className="size-4 shrink-0" />
+                <span className="truncate">{tAccount("account")}</span>
+              </button>
+              <div className="mx-2 my-1.5 border-t" />
               {NAV_CATEGORIES.map((category) => (
                 <div key={category.id}>
                   <p className="px-4 py-1.5 font-medium text-muted-foreground text-xs uppercase tracking-wider">
